@@ -7,6 +7,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css')}}">
 
+  
 <style>
   @media only screen and (min-width: 1026px) {
     #hamburger {
