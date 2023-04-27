@@ -18,6 +18,21 @@ Route::get('/', function () {
 });
 
 
+//services
+Route::get('/services', function(){
+    return view('Admin.services.index');
+});
+Route::get('/tambah_service', function(){
+    return view('Admin.services.tambah');
+});
+Route::get('/edit_service', function(){
+    return view('Admin.services.edit');
+});
+Route::get('/detail_service', function(){
+    return view('Admin.services.detail');
+});
+
+
 //blog
 Route::get('/blog', function () {
     return view('Admin.blog.index');
