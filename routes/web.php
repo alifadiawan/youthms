@@ -31,3 +31,18 @@ Route::get('/edit', function () {
 Route::get('/detail', function () {
     return view('Admin.blog.detail');
 });
+
+
+//user
+Route::get('/user', function(){
+    return view('Admin.user.index');
+});
+Route::get('/userdetail', function(){
+    return view('Admin.user.user-detail');
+});
+Route::get('/edituser', function(){
+    return view('Admin.user.edit-user');
+});
+Route::get('/adduser', function(){
+    return view('Admin.user.add-user');
+});
