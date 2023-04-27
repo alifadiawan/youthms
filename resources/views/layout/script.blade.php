@@ -11,3 +11,5 @@
 <script src="{{ asset('dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard3.js')}}"></script>
+
+<script src="{{ asset('https://kit.fontawesome.com/e4a753eb05.js')}}" crossorigin="anonymous"></script>

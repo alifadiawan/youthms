@@ -2,7 +2,8 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" id="hamburger" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <h4 class="navbar-brands"><strong>@yield('judul')</strong></h4>
       </li>
       
     </ul>
