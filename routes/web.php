@@ -63,6 +63,12 @@ Route::get('/detail', function () {
     return view('Admin.blog.detail');
 });
 
+Route::get('/transaction', function () {
+    return view('Admin.transaction.index');
+});
+
+
+
 
 //user
 Route::get('/user', function(){
@@ -77,3 +83,4 @@ Route::get('/edituser', function(){
 Route::get('/adduser', function(){
     return view('Admin.user.add-user');
 });
+

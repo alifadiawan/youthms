@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('content')
-@section('add', 'Edit Artikel')
+@section('judul', 'Edit Artikel')
 <div class="row">
 
     {{-- awidjaij --}}
@@ -26,6 +26,9 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-12 text-center">
+            <a href="/blog" class="btn btn btn-secondary text-white text-end">Kembali</a>
+        </div>
     </div>
 
     {{-- compose --}}
@@ -37,7 +40,7 @@
             <!-- /.card-header -->
             <div class="card-body">
                 <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" style="height: 300px">
+                    <textarea id="summernote" class="form-control" style="height: 300px">
                         </textarea>
                 </div>
             </div>
