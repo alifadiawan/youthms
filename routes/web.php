@@ -16,3 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('Admin.dashboard');
 });
+
+Route::get('/blog', function () {
+    return view('Admin.blog.index');
+});
+
+Route::get('/addartikel', function () {
+    return view('Admin.blog.add');
+});
+
+Route::get('/edit', function () {
+    return view('Admin.blog.edit');
+});
+
+Route::get('/detail', function () {
+    return view('Admin.blog.detail');
+});
