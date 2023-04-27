@@ -17,3 +17,17 @@ Route::get('/', function () {
     return view('Admin.dashboard');
 });
 
+
+// Services
+Route::get('/services', function(){
+    return view('Admin.services.index');
+});
+Route::get('/service_detail', function(){
+    return view('Admin.services.detail');
+});
+Route::get('/edit_service', function(){
+    return view('Admin.services.edit');
+});
+Route::get('/tambah_service', function(){
+    return view('Admin.services.tambah');
+});

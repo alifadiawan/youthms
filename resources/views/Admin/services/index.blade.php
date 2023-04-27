@@ -2,11 +2,12 @@
 @section('content-title', 'Services')
 @section('content')
     
+    <a href="{{url('/tambah_service')}}" class="btn btn-info mb-3 rounded-pill">Tambah</a>
     <div class="row">
         <div class="col-lg-12">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
-                    <tr class="bg-info rounded-lg">
+                    <tr class="bg-info rounded-pill">
                         <th>No</th>
                         <th>Jenis Layanan</th>
                         <th>Judul</th>
@@ -19,7 +20,7 @@
                         <td>Aplikasi</td>
                         <td>Pengembangan aplikasi</td>
                         <td>
-                            <a href="{{ url('/detail_service')}}" class="btn btn-info">Detail</a>
+                            <a href="{{ url('/service_detail')}}" class="btn btn-info">Detail</a>
                         </td>
                     </tr>
                     <tr>
@@ -27,7 +28,7 @@
                         <td>Aplikasi</td>
                         <td>Pengembangan aplikasi</td>
                         <td>
-                            <a href="{{ url('/detail_service')}}" class="btn btn-info">Detail</a>
+                            <a href="{{ url('/service_detail')}}" class="btn btn-info">Detail</a>
                         </td>
                     </tr>
                 </tbody>
