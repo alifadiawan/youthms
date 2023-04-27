@@ -70,7 +70,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="/transaction" class="nav-link">
                 <i class="nav-icon fa-solid fa-cart-shopping"></i>
               <p>
                 Transaksi

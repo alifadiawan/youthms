@@ -31,3 +31,7 @@ Route::get('/edit', function () {
 Route::get('/detail', function () {
     return view('Admin.blog.detail');
 });
+Route::get('/transaction', function () {
+    return view('Admin.transaction.index');
+});
+

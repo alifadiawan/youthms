@@ -1,9 +1,7 @@
 @extends('layout.admin')
 @section('content')
-@section('add', 'Tambah Artikel Baru')
+@section('judul', 'Tambah Artikel Baru')
 <div class="row">
-
-    {{-- awidjaij --}}
     <div class="col-md-3">
         <div class="card">
             <div class="card-body">
@@ -26,6 +24,9 @@
                 </div>
             </div>
         </div>
+        <div>
+            <a href="/blog" class="btn btn btn-secondary text-white text-end">Kembali</a>
+        </div>
     </div>
 
     {{-- compose --}}
@@ -37,7 +38,7 @@
             <!-- /.card-header -->
             <div class="card-body">
                 <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" style="height: 500px">
+                    <textarea id="summernote" class="form-control" style="height: 500px">
                         </textarea>
                 </div>
             </div>
@@ -57,4 +58,11 @@
 
 </div>
 </div>
+
 @endsection
+<script>
+$(document).ready(function() {
+  $('#summernote').summernote();
+});
+</script>
+
