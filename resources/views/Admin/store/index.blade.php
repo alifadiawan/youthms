@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col">
             <a href="/store_tambah" class="btn mb-3 text-white" style="background-color: #0EA1E2">Tambah produk</a>
-            <table class="table" >
+            <table class="table table-hover" >
                 <thead class="text-white" style="background-color: #0EA1E2">
                     <tr>
                         <th>No</th>

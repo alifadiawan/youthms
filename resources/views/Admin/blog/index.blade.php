@@ -4,7 +4,7 @@
 <a href="/addartikel" class="btn btn-md text-white rounded-pill mb-3" style="background-color: #1864BA">Tambah</a>
 <div class="card">
     <div class="col-lg-12">
-        <table class="table table-striped mt-2">
+        <table class="table table-striped table-hover mt-2">
             <thead>
                 <tr style="background-color: #0EA1E2">
                     <th class="text-white">No</th>

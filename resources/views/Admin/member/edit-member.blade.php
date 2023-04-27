@@ -1,7 +1,7 @@
 @extends('layout.admin')
-@section('content-title', 'Add User')
+@section('content-title', 'Edit Member')
 @section('content')
-@section('judul', 'Add User')
+@section('judul', 'Edit Member')
 
 <div class="container">
 	<div class="col-lg-12">
@@ -12,30 +12,26 @@
 						<div class="row">
 							<div class="col-6">
 								<div class="form-group">
-									<label>Name</label>
-									<input class="form-control" type="text">
+									<label>ID Member</label>
+									<input class="form-control" type="number" value="000123">
 								</div>
 								<div class="form-group">
-									<label>Username</label>
-									<input class="form-control" type="text">
+									<label>Nama</label>
+									<input class="form-control" type="text" value="Steven Alden">
 								</div>
 								<div class="form-group">
-									<label>Jabatan</label>
-									<input class="form-control" type="text">
+									<label>Email</label>
+									<input class="form-control" type="email" value="stevena@gmail.com">
 								</div>
 							</div>
 							<div class="col-6">
 								<div class="form-group">
-									<label>Password</label>
-									<input class="form-control" type="text">
-								</div>
-								<div class="form-group">
-									<label>Email</label>
-									<input class="form-control" type="text">
-								</div>
-								<div class="form-group">
 									<label>No. HP</label>
-									<input class="form-control" type="text">
+									<input class="form-control" type="number" value="0811122211">
+								</div>
+								<div class="form-group">
+									<label>Role</label>
+									<input class="form-control" type="text" value="Client">
 								</div>
 							</div>
 						</div>
