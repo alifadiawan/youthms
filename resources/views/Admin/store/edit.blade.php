@@ -8,42 +8,31 @@
             <div class="card-body">
                 <form action="" method="">
                     
-                    {{-- Nama produk --}}
-                    <div class="row mb-3">
-                        <div class="col">
-                            <strong>Nama Produk</strong>
-                        </div>
-                        <div class="col">
-                            <input type="text" name="" id="" class="form-control" placeholder="aplikasi">
-                        </div>
-                    </div>
-
-                    {{-- Harga --}}
-                    <div class="row mb-3">
-                        <div class="col">
-                            <strong>Harga</strong>
-                        </div>
-                        <div class="col">
-                            <input type="number" name="" id="" class="form-control" placeholder="500.000">
-                        </div>
-                    </div>
-
-                    {{-- Deskripsi Produk --}}
-                    <div class="row mb-3">
-                        <div class="col">
-                            <strong>Deskripsi Produk</strong>
-                        </div>
-                        <div class="col">
-                            <textarea name="" id="" cols="30" rows="5" class="form-control" placeholder="jasa membuat aplikasi"></textarea>    
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <a href="/store" class="btn" style="background-color: #0EA1E2">Submit</a>
-                            <a href="/store" class="btn btn-secondary">cancel</a>
-                        </div>
-                    </div>
+                    {{-- nama produk --}}
+                    <div class="form-group">
+                        <label for="">Nama produk</label>
+                        <input type="text" name="" id="" class="form-control" placeholder="jasa desain" aria-describedby="helpId">
+                      </div>
+  
+                      {{-- harga --}}
+                      <div class="form-group">
+                          <label for="">Harga</label>
+                          <input type="text" name="" id="" class="form-control" placeholder="Rp.500.000" aria-describedby="helpId">
+                      </div>
+  
+                      {{-- deskripsi produk --}}
+                      <div class="form-group">
+                          <label for="">Deskripsi produk</label>
+                          <textarea name="" id="" cols="30" rows="5" class="form-control"></textarea>
+                      </div>
+                      
+  
+                      <div class="row">
+                          <div class="col">
+                              <a href="/store" class="btn text-white" style="background-color: #0EA1E2">Submit</a>
+                              <a href="/store" class="btn btn-secondary">cancel</a>
+                          </div>
+                      </div>
 
                 </form>
             </div> <!-- end card-body -->

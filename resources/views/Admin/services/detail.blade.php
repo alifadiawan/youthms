@@ -48,8 +48,10 @@
                 </div>
 
                 <div class="row">
-                    <a href="/edit_service" class="btn btn-info">Edit</a>
-                    <a href="/services" class="btn btn-danger">Hapus</a>
+                    <div class="col">
+                        <a href="/edit_service" class="btn btn-info" style="background-color: #0EA1E2">Edit</a>
+                        <a href="/services" class="btn btn-danger">Hapus</a>
+                    </div>
                 </div>
 
             </div><!-- end card-body -->

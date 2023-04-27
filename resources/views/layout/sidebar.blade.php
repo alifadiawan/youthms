@@ -61,10 +61,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="/services" class="nav-link">
                 <i class="nav-icon fa-solid fa-cubes"></i>
               <p>
                 Services
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/store" class="nav-link">
+                <i class="nav-icon fa-solid fa-cart-shopping"></i>
+              <p>
+                Store
               </p>
             </a>
           </li>
