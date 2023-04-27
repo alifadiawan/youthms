@@ -18,16 +18,19 @@ Route::get('/', function () {
 });
 
 
-// Services
-Route::get('/services', function(){
-    return view('Admin.services.index');
+
+
+
+//blog
+Route::get('/blog', function () {
+    return view('Admin.blog.index');
 });
-Route::get('/service_detail', function(){
-    return view('Admin.services.detail');
+Route::get('/addartikel', function () {
+    return view('Admin.blog.add');
 });
-Route::get('/edit_service', function(){
-    return view('Admin.services.edit');
+Route::get('/edit', function () {
+    return view('Admin.blog.edit');
 });
-Route::get('/tambah_service', function(){
-    return view('Admin.services.tambah');
+Route::get('/detail', function () {
+    return view('Admin.blog.detail');
 });
