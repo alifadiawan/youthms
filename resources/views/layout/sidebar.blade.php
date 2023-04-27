@@ -34,8 +34,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-        
-          <li class="nav-header">MENU</li>
+          <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
             <a href="pages/calendar.html" class="nav-link">
                 <i class="nav-icon fa-solid fa-circle-user"></i>
@@ -46,7 +45,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="/user" class="nav-link">
                 <i class="nav-icon fa-solid fa-circle-user"></i>
               <p>
                 User

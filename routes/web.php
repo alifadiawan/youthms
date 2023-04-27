@@ -18,6 +18,37 @@ Route::get('/', function () {
 });
 
 
+
+//store
+Route::get('/store', function(){
+    return view('Admin.store.index');
+});
+Route::get('/store_detail', function(){
+    return view('Admin.store.detail');
+});
+Route::get('/store_edit', function(){
+    return view('Admin.store.edit');
+});
+Route::get('/store_tambah', function(){
+    return view('Admin.store.tambah');
+});
+
+
+//services
+Route::get('/services', function(){
+    return view('Admin.services.index');
+});
+Route::get('/tambah_service', function(){
+    return view('Admin.services.tambah');
+});
+Route::get('/edit_service', function(){
+    return view('Admin.services.edit');
+});
+Route::get('/detail_service', function(){
+    return view('Admin.services.detail');
+});
+
+
 //blog
 Route::get('/blog', function () {
     return view('Admin.blog.index');
@@ -31,7 +62,25 @@ Route::get('/edit', function () {
 Route::get('/detail', function () {
     return view('Admin.blog.detail');
 });
+
 Route::get('/transaction', function () {
     return view('Admin.transaction.index');
+});
+
+
+
+
+//user
+Route::get('/user', function(){
+    return view('Admin.user.index');
+});
+Route::get('/userdetail', function(){
+    return view('Admin.user.user-detail');
+});
+Route::get('/edituser', function(){
+    return view('Admin.user.edit-user');
+});
+Route::get('/adduser', function(){
+    return view('Admin.user.add-user');
 });
 
