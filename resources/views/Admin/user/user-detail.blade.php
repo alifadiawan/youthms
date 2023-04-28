@@ -60,7 +60,7 @@
 
       <div class="modal-footer">
       	<button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
-        <a href="/edituser" class="btn btn-warning text-white">Ya</a>
+        <a href="/edituser" class="btn btn-warning text-white">Iya</a>
       </div>
     </div>
   </div>
@@ -79,10 +79,27 @@
 
       <div class="modal-footer">
       	<button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
-        <a href="/user" class="btn btn-warning text-white">Ya</a>
+        <a href="/user" class="btn btn-warning text-white">Iya</a>
       </div>
     </div>
   </div>
 </div>
 
+
+<style>
+	.modal-footer {
+	    display: -ms-flexbox;
+	    display: flex;
+	    -ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	    -ms-flex-align: center;
+	    align-items: center;
+	    -ms-flex-pack: end;
+	    justify-content: space-between;
+	    padding: 0.75rem;
+	    border-top: 1px solid #e9ecef;
+	    border-bottom-right-radius: calc(0.3rem - 1px);
+	    border-bottom-left-radius: calc(0.3rem - 1px);
+	}
+</style>
 @endsection
