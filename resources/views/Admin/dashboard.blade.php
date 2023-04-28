@@ -1,4 +1,6 @@
 @extends('layout.admin')
+@section('judul', 'Dashboard')
+@section('content-title', 'Dashboard')
 @section('content')
     <div class="row">
 
