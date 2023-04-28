@@ -63,6 +63,8 @@ Route::get('/detail', function () {
     return view('Admin.blog.detail');
 });
 
+
+//transaction
 Route::get('/transaction', function () {
     return view('Admin.transaction.index');
 });
@@ -84,3 +86,18 @@ Route::get('/adduser', function(){
     return view('Admin.user.add-user');
 });
 
+
+//member
+//user
+Route::get('/member', function(){
+    return view('Admin.member.index');
+});
+Route::get('/memberdetail', function(){
+    return view('Admin.member.member-detail');
+});
+Route::get('/editmember', function(){
+    return view('Admin.member.edit-member');
+});
+Route::get('/addmember', function(){
+    return view('Admin.member.add-member');
+});

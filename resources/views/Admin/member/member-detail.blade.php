@@ -1,7 +1,7 @@
 @extends('layout.admin')
-@section('content-title', 'User Detail')
+@section('content-title', 'Member Detail')
 @section('content')
-@section('judul', 'User Detail')
+@section('judul', 'Member Detail')
 
 <div class="container">
 	<div class="row">
@@ -11,12 +11,12 @@
 					<table class="table table-borderless">
 						<tbody>
 							<tr>
-								<td class="text-center"><strong>Name</strong></td>
-								<td>Steven Alden Airlangga</td>
+								<td class="text-center"><strong>ID Member</strong></td>
+								<td>000123</td>
 							</tr>
 							<tr>
-								<td class="text-center"><strong>Username</strong></td>
-								<td>stevena1304</td>
+								<td class="text-center"><strong>Name</strong></td>
+								<td>Steven Alden Airlangga</td>
 							</tr>
 							<tr>
 								<td class="text-center"><strong>Email</strong></td>
@@ -27,8 +27,8 @@
 								<td>08111222111</td>
 							</tr>
 							<tr>
-								<td class="text-center"><strong>Jabatan</strong></td>
-								<td>Admin</td>
+								<td class="text-center"><strong>Role</strong></td>
+								<td>Client</td>
 							</tr>
 						</tbody>
 					</table>
@@ -60,7 +60,7 @@
 
       <div class="modal-footer">
       	<button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
-        <a href="/edituser" class="btn btn-warning text-white">Ya</a>
+        <a href="/editmember" class="btn btn-warning text-white">Ya</a>
       </div>
     </div>
   </div>
@@ -79,7 +79,7 @@
 
       <div class="modal-footer">
       	<button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
-        <a href="/user" class="btn btn-warning text-white">Ya</a>
+        <a href="/member" class="btn btn-warning text-white">Ya</a>
       </div>
     </div>
   </div>

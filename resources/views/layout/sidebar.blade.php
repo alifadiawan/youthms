@@ -36,7 +36,7 @@
 
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="/member" class="nav-link">
                 <i class="nav-icon fa-solid fa-circle-user"></i>
               <p>
                 Member
