@@ -48,8 +48,10 @@
                 </div>
 
                 <div class="row mb-3">
-                    <a href="/services" class="btn btn-info" style="background-color: #0EA1E2">Submit</a>
-                    <a href="/services" class="btn btn-secondary">Batal</a>
+                    <div class="col">
+                        <a href="/services" class="btn btn-info" style="background-color: #0EA1E2">Submit</a>
+                        <a href="/services" class="btn btn-secondary">Batal</a>
+                    </div>
                 </div>
 
             </div><!-- end card-body -->

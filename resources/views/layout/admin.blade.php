@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Youthms.id | @yield('content-title')</title>
+        <title>Youthms.id | @yield('judul')</title>
 
         @include('layout.style')
 

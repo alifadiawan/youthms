@@ -5,7 +5,7 @@
 <div class="card p-3">
     <div class="row">
         <div class="col">
-            <a href="/tambah_service" class="btn btn-info mb-3 rounded-pill" style="background-color: #0EA1E2">Tambah</a>
+            <a href="/tambah_service" class="btn btn-info mb-3 " style="background-color: #1864BA">Tambah</a>
             <table class="table table-hover">
                 <thead class="text-white" style="background-color: #0EA1E2">
                     <tr>
@@ -21,7 +21,7 @@
                         <td>Aplikasi</td>
                         <td>Desain aplikasi</td>
                         <td>
-                            <a href="/detail_service" class="btn btn-info rounded-pill" style="background-color: #0EA1E2">Detail</a>
+                            <a href="/detail_service" class="btn btn-info btn-sm rounded-pill" style="background-color: #0EA1E2">Detail</a>
                         </td>
                     </tr>
                     <tr>
@@ -29,7 +29,7 @@
                         <td>Aplikasi</td>
                         <td>Pengembangan aplikasi</td>
                         <td>
-                            <a href="/detail_service" class="btn btn-info rounded-pill" style="background-color: #0EA1E2">Detail</a>
+                            <a href="/detail_service" class="btn btn-info btn-sm rounded-pill" style="background-color: #0EA1E2">Detail</a>
                         </td>
                     </tr>
                     <tr>
@@ -37,7 +37,7 @@
                         <td>Editing</td>
                         <td>Editing buku + cover</td>
                         <td>
-                            <a href="/detail_service" class="btn btn-info rounded-pill" style="background-color: #0EA1E2">Detail</a>
+                            <a href="/detail_service" class="btn btn-info btn-sm rounded-pill" style="background-color: #0EA1E2">Detail</a>
                         </td>
                     </tr>
                 </tbody>
