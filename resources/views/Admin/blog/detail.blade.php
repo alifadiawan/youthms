@@ -1,7 +1,7 @@
 @extends('layout.admin')
 @section('content')
 @section('judul', 'Detail Artikel')
-<div class="row">
+<div class="row p-2">
     <div class="col-md-3">
         <div class="card">
             <div class="card-body">

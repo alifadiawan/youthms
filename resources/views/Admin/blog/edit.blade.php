@@ -1,9 +1,7 @@
 @extends('layout.admin')
 @section('content')
 @section('judul', 'Edit Artikel')
-<div class="row">
-
-    {{-- awidjaij --}}
+<div class="row p-2">
     <div class="col-md-3">
         <div class="card">
             <div class="card-body">
