@@ -36,6 +36,15 @@
 
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
+            <a href="/" class="nav-link">
+              <i class="nav-icon fa-solid fa-chart-simple"></i>
+              <p>
+                Dashboard
+                <span class="badge badge-info right">2</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/member" class="nav-link">
                 <i class="nav-icon fa-solid fa-circle-user"></i>
               <p>
@@ -70,7 +79,7 @@
           </li>
           <li class="nav-item">
             <a href="/store" class="nav-link">
-                <i class="nav-icon fa-solid fa-cart-shopping"></i>
+              <i class="nav-icon fa-solid fa-store"></i>
               <p>
                 Store
               </p>
