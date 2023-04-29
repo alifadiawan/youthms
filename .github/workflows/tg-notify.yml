@@ -1,12 +1,16 @@
 name: Testing telegram notification
 
-on:[push]
+on:
+  push:
+    branches: [origin/main]
+  pull_request:
+    branches: [origin/main]]
 
 jobs:
   send-notif-on-success:
-    uses: ./.github/workflows/send-telegram.yml
+    uses: ./.github/workflows/tg-notify.yml
     secrets: inherit # MUST PUT THIS!
 
   send-notif-on-failure:
-    uses: ./.github/workflows/send-telegram.yml
+    uses: ./.github/workflows/tg-notify.yml
     secrets: inherit # MUST PUT THIS!
