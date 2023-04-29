@@ -1,18 +1,17 @@
 name: tg-notify
 on: [push, pull_request]
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Update status
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
+  send-notif-on-success:
+    uses: ./.github/workflows/tg-notify.yml
+    secrets: inherit # MUST PUT THIS!
+     message: |
             "${{ github.actor }}" created commit:
             Commit Message : ${{ github.event.commits[0].message }}
             
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+
+  send-notif-on-failure:
+    uses: ./.github/workflows/tg-notify.yml
+    secrets: inherit # MUST PUT THIS
