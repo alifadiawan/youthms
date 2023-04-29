@@ -1,4 +1,4 @@
-name: telegram message
+name: Telegram Message Notify
 on: [push, pull_request]
 jobs:
 
@@ -6,11 +6,11 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: send telegram message on push
+      - name: Telegram Message Notify
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: '-1001880550261'
+          token: '6227288716:AAEhs-dacIzzwFuzz545VbnjDGGJCpjuIg0'
           message: |
             "${{ github.actor }}" created commit.
             Commit message: ${{ github.event.commits[0].message }}
