@@ -4,7 +4,7 @@ on:
   push:
     branches: [origin/main]
   pull_request:
-    branches: [origin/main]]
+    branches: [origin/main]
 
 jobs:
   send-notif-on-success:
