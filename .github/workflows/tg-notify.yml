@@ -2,7 +2,7 @@ name: tg-notify
 on: [push, pull_request]
 jobs:
   send-notif-on-success:
-    uses: ./.github/workflows/tg-notify.yml
+    uses: appleboy/telegram-action@master
     secrets: inherit # MUST PUT THIS!
      message: |
             "${{ github.actor }}" created commit:
@@ -13,5 +13,5 @@ jobs:
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
 
   send-notif-on-failure:
-    uses: ./.github/workflows/tg-notify.yml
+    uses: appleboy/telegram-action@master
     secrets: inherit # MUST PUT THIS
