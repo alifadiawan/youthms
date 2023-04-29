@@ -1,16 +1,20 @@
-name: Testing telegram notification
-
-on:
-  push:
-    branches: [origin/main]
-  pull_request:
-    branches: [origin/main]
-
+name: telegram message
+on: [push, pull_request]
 jobs:
-  send-notif-on-success:
-    uses: ./.github/workflows/tg-notify.yml
-    secrets: inherit # MUST PUT THIS!
 
-  send-notif-on-failure:
-    uses: ./.github/workflows/tg-notify.yml
-    secrets: inherit # MUST PUT THIS!
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: inherit
+          token: inherit
+          message: |
+            "${{ github.actor }}" created commit.
+            Commit message: ${{ github.event.commits[0].message }}
+            
+            Repository: ${{ github.repository }}
+            
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
