@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,18 +54,20 @@ Route::get('/detail_service', function(){
 
 
 //blog
-Route::get('/blog', function () {
-    return view('Admin.blog.index');
-});
-Route::get('/addartikel', function () {
-    return view('Admin.blog.add');
-});
-Route::get('/edit', function () {
-    return view('Admin.blog.edit');
-});
-Route::get('/detail', function () {
-    return view('Admin.blog.detail');
-});
+// Route::get('/blog', function () {
+//     return view('Admin.blog.index');
+// });
+// Route::get('/addartikel', function () {
+//     return view('Admin.blog.add');
+// });
+// Route::get('/edit', function () {
+//     return view('Admin.blog.edit');
+// });
+// Route::get('/detail', function () {
+//     return view('Admin.blog.detail');
+// });
+
+Route::resource('blog', BlogController::class);
 
 
 //transaction

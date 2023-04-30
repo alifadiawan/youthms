@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
 use Illuminate\Http\Request;
+use App\Models\Blog;
+use App\Models\Segmen;
 
 class BlogController extends Controller
 {
@@ -12,7 +13,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $data = Blog::all();
+        return view('Admin.blog.index', compact('data'));
     }
 
     /**
@@ -36,7 +38,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        //
+        return view('Admin.blog.detail');
     }
 
     /**
