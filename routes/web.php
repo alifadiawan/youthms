@@ -109,3 +109,9 @@ Route::get('/addmember', function(){
 Route::get('/landing-page', function(){
     return view('Admin.landing-page crud.landing-page');
 });
+
+
+//pesan
+Route::get('/pesan', function () {
+    return view('Admin.chat.index');
+});
