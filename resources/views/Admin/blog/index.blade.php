@@ -15,24 +15,17 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($data as $i)
                 <tr>
-                    <td scope="row">1</td>
-                    <td>12 November 2022</td>
-                    <td>5 Hosting Terbaik</td>
-                    <td>Pemrograman</td>
+                    <td scope="row">{{$loop->iteration}}</td>
+                    <td>{{$i -> created_at}}</td>
+                    <td>{{$i -> judul}}</td>
+                    <td>{{$i -> segmen -> segmen}}</td>
                     <td>
-                        <a href="/detail" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a>
+                        <a href="{{route('blog.show',$i->id)}}" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a>
                     </td>
                 </tr>
-                <tr>
-                    <td scope="row">2</td>
-                    <td>12 November 2022</td>
-                    <td>5 Hosting Terbaik</td>
-                    <td>Pemrograman</td>
-                    <td>
-                        <a href="/detail" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

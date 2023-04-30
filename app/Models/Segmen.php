@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Segmen extends Model
 {
     use HasFactory;
+    protected $table = 'segmen';
     protected $guarded = [];
+
+    public function blog()
+    {
+        return $this->hasMany(Blog::class);
+    }
 }
