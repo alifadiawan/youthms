@@ -91,7 +91,6 @@ Route::get('/adduser', function(){
 
 
 //member
-//user
 Route::get('/member', function(){
     return view('Admin.member.index');
 });
@@ -103,4 +102,10 @@ Route::get('/editmember', function(){
 });
 Route::get('/addmember', function(){
     return view('Admin.member.add-member');
+});
+
+
+//landing page
+Route::get('/landing-page', function(){
+    return view('Admin.landing-page crud.landing-page');
 });
