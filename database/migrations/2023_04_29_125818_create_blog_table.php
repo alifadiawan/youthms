@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->integer('id_artikel');
             $table->string('judul');
+            $table->date('tanggal');
             $table->text('isi');
             $table->unsignedBigInteger('segmen_id');
             $table->foreign('segmen_id')->references('id')->on('segmen')

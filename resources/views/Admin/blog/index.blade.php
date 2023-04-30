@@ -18,7 +18,7 @@
                 @foreach($data as $i)
                 <tr>
                     <td scope="row">{{$loop->iteration}}</td>
-                    <td>{{$i -> date}}</td>
+                    <td>{{$i -> created_at}}</td>
                     <td>{{$i -> judul}}</td>
                     <td>{{$i -> segmen -> segmen}}</td>
                     <td>
