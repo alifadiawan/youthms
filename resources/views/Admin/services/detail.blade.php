@@ -10,10 +10,10 @@
                 {{-- ID Pelanggan --}}
                 <div class="row">
                     <div class="col">
-                        <strong>ID Pelanggan</strong>
+                        <strong>ID Layanan</strong>
                     </div>
                     <div class="col">
-                        <p>18017</p>
+                        <p>{{$services->id_services}}</p>
                     </div>
                 </div>
         
@@ -23,7 +23,7 @@
                         <strong>Jenis Layanan</strong>
                     </div>
                     <div class="col">
-                        <p>Aplikasi</p>
+                        <p>{{$services->jenis_layanan->layanan}}</p>
                     </div>
                 </div>
         
@@ -33,7 +33,7 @@
                         <strong>Judul</strong>
                     </div>
                     <div class="col">
-                        <p>Jasa desain membuat aplikas</p>
+                        <p>{{$services->judul}}</p>
                     </div>
                 </div>
                 
@@ -43,14 +43,14 @@
                         <strong>Deskripsi</strong>
                     </div>
                     <div class="col">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui, porro aliquid ullam animi, fugiat dignissimos voluptas quas a cumque optio vel consectetur nihil? Quam maiores laboriosam deleniti alias fugit soluta.</p>
+                        <p>{{$services->deskripsi}}</p>    
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <a href="/edit_service" class="btn btn-info" style="background-color: #0EA1E2">Edit</a>
-                        <a href="/services" class="btn btn-danger">Hapus</a>
+                        <a href="{{route('services.edit', $services->id)}}" class="btn btn-info" style="background-color: #0EA1E2">Edit</a>
+                        <a href="{{route('services.hapus', $services->id)}}" class="btn btn-danger">Hapus</a>
                     </div>
                 </div>
 
