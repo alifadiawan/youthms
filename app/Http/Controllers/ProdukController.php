@@ -12,7 +12,8 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        //
+        $product = Produk::all();
+        return view('Admin.store.index' , compact('product'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.store.tambah');
     }
 
     /**
@@ -28,31 +29,41 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produk_baru = $request->all();
+        Produk::create($produk_baru);
+
+        return redirect('/store');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Produk $produk)
+    public function show($id)
     {
-        //
+        $product = Produk::find($id);
+        return view('Admin.store.detail', compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Produk $produk)
+    public function edit($id)
     {
-        //
+        $product = Produk::find($id);
+        return view('Admin.store.edit' , compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Produk $produk)
+    public function update(Request $request, $id)
     {
-        //
+        $product = Produk::find($id);
+        $input = $request->all();
+        
+        $product->fill($input)->save();
+
+        return redirect('/store');
     }
 
     /**
@@ -61,5 +72,14 @@ class ProdukController extends Controller
     public function destroy(Produk $produk)
     {
         //
+    }
+
+    public function hapus($id)
+    {
+        $product = Produk::find($id);
+        $product->delete();
+
+        return redirect('/store');
+
     }
 }

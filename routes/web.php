@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\JenisLayananController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ServicesController;
+use App\Models\Services;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,33 +28,16 @@ Route::get('/dashboard', function () {
 
 
 //store
-Route::get('/store', function(){
-    return view('Admin.store.index');
-});
-Route::get('/store_detail', function(){
-    return view('Admin.store.detail');
-});
-Route::get('/store_edit', function(){
-    return view('Admin.store.edit');
-});
-Route::get('/store_tambah', function(){
-    return view('Admin.store.tambah');
-});
+Route::resource('store', ProdukController::class);
+Route::get('/store/{id}/hapus', [ProdukController::class, 'hapus'])->name('store.hapus');
 
 
 //services
-Route::get('/services', function(){
-    return view('Admin.services.index');
-});
-Route::get('/tambah_service', function(){
-    return view('Admin.services.tambah');
-});
-Route::get('/edit_service', function(){
-    return view('Admin.services.edit');
-});
-Route::get('/detail_service', function(){
-    return view('Admin.services.detail');
-});
+Route::resource('services', ServicesController::class);
+Route::POST('jenislayanan', [JenisLayananController::class, 'store'])->name('jenislayanan.store');
+Route::GET('jenislayanan/{id}/hapus', [JenisLayananController::class, 'hapus'])->name('jenislayanan.hapus');
+Route::GET('services/{id}/hapus', [ServicesController::class, 'hapus'])->name('services.hapus');
+Route::get('id_services', [ServicesController::class, 'id_services']);
 
 
 //blog

@@ -28,7 +28,10 @@ class JenisLayananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        JenisLayanan::create($input);
+
+        return redirect('/services');
     }
 
     /**
@@ -61,5 +64,13 @@ class JenisLayananController extends Controller
     public function destroy(JenisLayanan $jenisLayanan)
     {
         //
+    }
+
+    public function hapus($id)
+    {
+        $jenis_layanan = JenisLayanan::find($id);
+        $jenis_layanan->delete();
+        
+        return redirect()->back();
     }
 }

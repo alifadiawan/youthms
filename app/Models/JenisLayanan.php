@@ -10,4 +10,9 @@ class JenisLayanan extends Model
     use HasFactory;
     protected $table = 'jenis_layanan';
     protected $guarded = [];
+
+    public function services()
+    {
+        return $this->hasMany(Services::class);
+    }
 }
