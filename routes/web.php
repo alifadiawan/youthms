@@ -67,6 +67,7 @@ Route::get('/detail_service', function(){
 //     return view('Admin.blog.detail');
 // });
 
+Route::get('blog/{id}/hapus', [BlogController::class, 'hapus'])->name('blog.hapus');
 Route::resource('blog', BlogController::class);
 
 
