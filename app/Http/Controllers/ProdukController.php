@@ -32,6 +32,8 @@ class ProdukController extends Controller
         $produk_baru = $request->all();
         Produk::create($produk_baru);
 
+
+        notify()->success('Laravel Notify is awesome!');
         return redirect('/store');
     }
 

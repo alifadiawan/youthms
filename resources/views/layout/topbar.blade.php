@@ -6,6 +6,8 @@
         <a class="navbar-brand"><strong>@yield('judul')</strong></a>
       </li>
       
+      <x-notify::notify />
+      
     </ul>
 
     <!-- Right navbar links -->

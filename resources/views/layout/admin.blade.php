@@ -7,21 +7,17 @@
         <title>Youthms.id | @yield('judul')</title>
 
         @include('layout.style')
+        @notifyCss
 
     </head>
 
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
-
-            <!-- Preloader -->
-            <div class="preloader flex-column justify-content-center align-items-center">
-                <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-            </div>
-
+            
             <!-- Navbar -->
             @include('layout.topbar')
             <!-- /.navbar -->
-
+            
             <!-- Main Sidebar Container -->
             @include('layout.sidebar')
 
@@ -34,6 +30,7 @@
                     </div><!-- /.container-fluid -->
                 </div>
                 <!-- /.content-header -->
+
 
                 <!-- Main content -->
                 <section class="content">
@@ -54,6 +51,8 @@
         <!-- ./wrapper -->
 
         @include('layout.script')
+        <br>
+        @notifyJs
 
     </body>
 
