@@ -9,7 +9,7 @@ class Blog extends Model
 {
     use HasFactory;
     protected $table = 'blog';
-    protected $guarded = [];
+    protected $fillable = ['id_artikel', 'judul', 'tanggal', 'segmen_id', 'isi',];
 
     public function segmen()
     {

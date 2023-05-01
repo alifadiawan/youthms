@@ -23,9 +23,12 @@
 <!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 <script>
     $(document).ready(function() {
-  $('#summernote').summernote();
+        var isi = $('#isi').val();
+        $('#tampilan_isi').html(isi);
+        $('.summernote').summernote();
 });
 </script>
 
