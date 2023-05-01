@@ -16,17 +16,24 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($data as $i)
+                @if(count($data)==0)
                 <tr>
-                    <td scope="row">{{$loop->iteration}}</td>
-                    <td>{{$i -> tanggal}}</td>
-                    <td>{{$i -> judul}}</td>
-                    <td>{{$i -> segmen -> segmen}}</td>
-                    <td>
-                        <a href="{{route('blog.show',$i->id)}}" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a>
-                    </td>
+                    <td colspan="5" class="text-center">Belum Ada Artikel !!</td>
                 </tr>
-                @endforeach
+
+                @else
+                    @foreach($data as $i)
+                    <tr>
+                        <td scope="row">{{$loop->iteration}}</td>
+                        <td>{{$i -> tanggal}}</td>
+                        <td>{{$i -> judul}}</td>
+                        <td>{{$i -> segmen -> segmen}}</td>
+                        <td>
+                            <a href="{{route('blog.show',$i->id)}}" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     </div>

@@ -11,16 +11,11 @@
                 <div class="card-body">
                     <div class="form">
                         <div class="form-group">
-                            <label for="id_artikel">ID Artikel</label>
-                            <input type="number" class="form-control" name="id_artikel" id="id_artikel" value="{{$data->id_artikel}}">
+                            <input type="hidden" class="form-control" name="id_artikel" id="id_artikel" value="{{$data->id_artikel}}">
                         </div>
                         <div class="form-group">
                             <label for="judul">Judul</label>
                             <input type="text" class="form-control" name="judul" id="judul" value="{{$data->judul}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="tanggal">Tanggal</label>
-                            <input type="date" class="form-control" name="tanggal" id="tanggal" value="{{$data->tanggal}}">
                         </div>
                         <div class="form-group">
                             <label for="segmen_id">Segmen</label>
@@ -54,7 +49,7 @@
                 <div class="card-footer">
                     <div class="float-right">
                         <div class="form-group">
-                            <input type="submit"class="btn btn-sm btn-success" value="Simpan">
+                            <input type="submit" class="btn btn-sm btn-success" value="Simpan">
                         </div>
                     </div>
                     
