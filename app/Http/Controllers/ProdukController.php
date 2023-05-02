@@ -32,8 +32,7 @@ class ProdukController extends Controller
         $produk_baru = $request->all();
         Produk::create($produk_baru);
 
-
-        notify()->success('Laravel Notify is awesome!');
+        notify()->success('Berhasil ditambahkan',$request->nama_produk,);
         return redirect('/store');
     }
 
@@ -65,6 +64,7 @@ class ProdukController extends Controller
         
         $product->fill($input)->save();
 
+        notify()->success('Produk berhasil diupdate');
         return redirect('/store');
     }
 
@@ -81,6 +81,7 @@ class ProdukController extends Controller
         $product = Produk::find($id);
         $product->delete();
 
+        notify()->success('Produk berhasil dihapus');
         return redirect('/store');
 
     }

@@ -6,10 +6,9 @@
     <div class="col-10">
         <div class="card rounded shadow-md">
             <div class="card-body">
-                <form action="{{route('store.update',$product->id)}}" method="POST">
+                <form action="{{ route('store.update', $product->id) }}" method="POST">
                     @method('PUT')
                     @csrf
-
                     {{-- nama produk --}}
                     <div class="form-group">
                         <label for="">Nama produk</label>
@@ -33,15 +32,34 @@
 
                     <div class="row">
                         <div class="col">
-                            <input type="submit" class="btn text-white" style="background-color: #0EA1E2">
+                            <a class="btn btn-warning" data-toggle="modal" data-target="#editproduk">
+                                Edit
+                            </a>
                             <a href="/store" class="btn btn-secondary">cancel</a>
                         </div>
                     </div>
 
-                </form>
             </div> <!-- end card-body -->
         </div> <!-- end card -->
     </div> <!-- end col -->
 </div> <!-- end row -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="editproduk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3 class="text-center">Yakin Ingin Merubah ?</h3>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="submit" class="btn btn-warning active">Iya</button>
+                <a class="btn btn-outline-secondary" data-dismiss="modal">Tidak</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

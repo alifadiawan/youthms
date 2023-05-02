@@ -50,6 +50,8 @@ class ServicesController extends Controller
             'id_services' => $nextNumber
         ]);
 
+        notify()->success('Berhasil ditambhakan',$request->judul);
+
         return redirect('services');
     }
 
@@ -84,6 +86,8 @@ class ServicesController extends Controller
 
         $services->fill($input)->save();
 
+        notify()->success('Perubahan telah tersimpan');
+
         return redirect('/services');
     }
 
@@ -103,6 +107,7 @@ class ServicesController extends Controller
         $services = Services::find($id);
         $services->delete();
 
+        notify()->success('Layanan telah dihapus');
         return redirect('/services');
     }
 }
