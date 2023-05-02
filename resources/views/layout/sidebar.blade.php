@@ -4,6 +4,8 @@
       <img src="{{asset('youth-logo.svg')}}" alt="AdminLTE Logo" class="m-3 brand-images" style="opacity: .8">
     </a>
 
+    <x-notify::notify />
+
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -103,7 +105,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/landing-page" class="nav-link">
+            <a href="{{url('landing-page')}}" class="nav-link">
                 <i class="nav-icon fa-solid fa-display"></i>
               <p>
                 Landing Page

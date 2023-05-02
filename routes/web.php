@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\JenisLayananController;
+use App\Http\Controllers\landingpageController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ServicesController;
 use App\Models\Services;
@@ -97,9 +98,7 @@ Route::get('/addmember', function(){
 
 
 //landing page
-Route::get('/landing-page', function(){
-    return view('Admin.landing-page crud.landing-page');
-});
+Route::resource('landing-page', landingpageController::class);  
 
 
 //pesan
