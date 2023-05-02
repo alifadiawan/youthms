@@ -32,7 +32,46 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //insert id artikel
+        $blog = Blog::count();
+        $currentNumber = $blog;
+        $nextNumber = str_pad(++$currentNumber, 5, '0', STR_PAD_LEFT); // "00002"
+
+        //insert tanggal sekarang
+        $tanggal = date('Y-m-d');
+
+        //proses image dari summernote
+        $content = $request->isi;
+        $dom = new \DomDocument();
+        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('img');
+ 
+        foreach($imageFile as $item => $image){
+           $data = $image->getAttribute('src');
+           list($type, $data) = explode(';', $data);
+           list(, $data)      = explode(',', $data);
+           $imgeData = base64_decode($data);
+           $image_name= "/upload/" . time().$item.'.png';
+           $path = public_path() . $image_name;
+           file_put_contents($path, $imgeData);
+           
+           $image->removeAttribute('src');
+           $image->setAttribute('src', $image_name);
+        }
+ 
+        $content = $dom->saveHTML();
+
+        //simpan ke db
+        Blog::create([
+            'id_artikel' => $nextNumber,
+            'judul' =>  $request->judul,
+            'tanggal' =>  $tanggal,
+            'segmen_id' =>  $request->segmen_id,
+            'isi' => $content,
+        ]);
+
+        notify()->success('Artikel Berhasil Ditambahkan !!');
+        return redirect('blog');
     }
 
     /**
@@ -59,20 +98,10 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $message = [
-            'required' => ':attribute isi woi',
-            'min' => ':attribute minimal :min karakter cuyh',
-            'max' => ':attribute maximal :max karakter cuyh',
-        ];
+        //insert tanggal sekarang
+        $tanggal = date('Y-m-d');
 
-        $this->validate($request, [
-            'id_artikel' => 'required | min:6 | numeric',
-            'judul' => 'required',
-            'tanggal' => 'required',
-            'segmen_id' => 'required',
-            'isi' => 'required | min:7',
-        ], $message);
-
+        //proses image dari summernote
         $content = $request->isi;
         $dom = new \DomDocument();
         $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -93,16 +122,16 @@ class BlogController extends Controller
  
         $content = $dom->saveHTML();
 
-            //simpan ke database
+            //simpan ke db
             $data=Blog::find($id);
             $data->update([
                 'id_artikel' => $request->id_artikel,
-                'judul' => $request->judul,
-                'tanggal' => $request->tanggal,
-                'segmen_id' => $request->segmen_id,
+                'judul' =>  $request->judul,
+                'tanggal' =>  $tanggal,
+                'segmen_id' =>  $request->segmen_id,
                 'isi' => $content,
             ]);
-            Session::flash('berhasil', 'Artikel Berhasil Diupdate !!');
+            notify()->success('Artikel Berhasil Diubah !!');
             return redirect('blog/'.$id);
     }
 
@@ -118,6 +147,7 @@ class BlogController extends Controller
     {
         $data = Blog::find($id);
         $data->delete();
+        notify()->success('Artikel Berhasil Dihapus !!');
         return redirect('blog')->with('hapus', 'Artikel Berhasil Dihapus!!');
     }
 }

@@ -1,12 +1,12 @@
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
+      <x-notify::notify />
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" id="hamburger" href="#" role="button"><i class="fas fa-bars"></i></a>
         <a class="navbar-brand"><strong>@yield('judul')</strong></a>
       </li>
       
-      <x-notify::notify />
       
     </ul>
 
