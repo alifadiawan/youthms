@@ -28,7 +28,10 @@ class SegmenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Segmen::create($input);
+        notify()->success('Segmen Berhasil Ditambahkan !!');
+        return redirect('blog');
     }
 
     /**
@@ -61,5 +64,14 @@ class SegmenController extends Controller
     public function destroy(Segmen $segmen)
     {
         //
+    }
+
+    public function hapus($id)
+    {
+        $segmen = Segmen::find($id);
+        $segmen->delete();
+        
+        notify()->success('Segmen Telah Dihapus !!');
+        return redirect()->back();
     }
 }

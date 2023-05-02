@@ -14,8 +14,9 @@ class BlogController extends Controller
      */
     public function index()
     {
+        $segmen = Segmen::all();
         $data = Blog::all();
-        return view('Admin.blog.index', compact('data'));
+        return view('Admin.blog.index', compact('data','segmen'));
     }
 
     /**

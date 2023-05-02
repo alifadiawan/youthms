@@ -6,6 +6,7 @@ use App\Http\Controllers\JenisLayananController;
 use App\Http\Controllers\landingpageController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\SegmenController;
 use App\Models\Services;
 
 /*
@@ -42,21 +43,10 @@ Route::get('id_services', [ServicesController::class, 'id_services']);
 
 
 //blog
-// Route::get('/blog', function () {
-//     return view('Admin.blog.index');
-// });
-// Route::get('/addartikel', function () {
-//     return view('Admin.blog.add');
-// });
-// Route::get('/edit', function () {
-//     return view('Admin.blog.edit');
-// });
-// Route::get('/detail', function () {
-//     return view('Admin.blog.detail');
-// });
-
 Route::get('blog/{id}/hapus', [BlogController::class, 'hapus'])->name('blog.hapus');
 Route::resource('blog', BlogController::class);
+Route::post('segmen', [SegmenController::class, 'store'])->name('segmen.store');
+Route::get('segmen/{id}/hapus', [SegmenController::class, 'hapus'])->name('segmen.hapus');
 
 
 //transaction
