@@ -3,24 +3,20 @@
 @section('judul', 'Tambah Artikel Baru')
 
 <form action="{{route('blog.store')}}" method="post" id="upload-image-form" enctype="multipart/form-data">
+    @csrf
     <div class="row p-2">
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
                     <div class="form">
                         <div class="form-group">
-                            <label for="id_artikel">ID Artikel</label>
-                            <input type="number" class="form-control" name="id_artikel" id="id_artikel" aria-describedby="helpId"
-                                placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="tanggal">Tanggal</label>
-                            <input type="date" class="form-control" name="tanggal" id="tanggal"
-                                aria-describedby="helpId" placeholder="">
+                            <label for="judul">Judul Artikel</label>
+                            <input type="text" class="form-control" name="judul" id="judul" aria-describedby="helpId">
                         </div>
                         <div class="form-group">
                             <label for="segmen_id">Segmen</label>
                             <select class="form-control form-select" name="segmen_id" id="segmen_id">
+                                <option>Silahkan Pilih Segmen</option>
                                 @foreach($segmen as $s)
                                 <option value="{{$s -> id}}">{{$s -> segmen}}</option>
                                 @endforeach

@@ -2,29 +2,6 @@
 @section('content')
 @section('judul', 'Detail Artikel')
 
-@if ($message = Session::get('berhasil'))
-    <!-- <div class="alert alert-success" role="alert">
-        {{ $message }}
-    </div> -->
-
-    <div class="modal fade" id="messageModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <div class="modal-body">
-            <br><br>
-            <h3 class="text-center">{{$message}}</h3>
-            <br><br>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
-          </div>
-        </div>
-      </div>
-    </div>
-@endif
-
 <div class="row p-2">
     <div class="col-md-3">
         <div class="card">
@@ -32,8 +9,11 @@
                 <div class="form">
                     <div class="form-group">
                         <label for="id_artikel">ID Artikel</label>
-                        <input type="number" class="form-control" name="id" id="id" aria-describedby="helpId"
-                            value="{{$data->id_artikel}}" disabled>
+                        <input type="number" class="form-control" name="id_artikel" id="id_artikel" aria-describedby="helpId" value="{{$data->id_artikel}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="judul">Judul</label>
+                        <input type="text" class="form-control" name="judul" id="judul" aria-describedby="helpId" value="{{$data->judul}}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="Tanggal">Tanggal</label>
@@ -49,8 +29,8 @@
             </div>
         </div>
         <div class="col-md-12 text-center">
-            <a href="{{route('blog.edit', $data->id)}}" class="btn btn btn-warning text-white text-end">Edit</a>
-            <a href="{{route('blog.hapus', $data->id)}}" class="btn btn btn-danger text-white">Hapus</a>
+            <button class="btn btn btn-warning text-white text-end" data-toggle="modal" data-target="#editmodal">Edit</button>
+            <button class="btn btn btn-danger text-white" data-toggle="modal" data-target="#hapusmodal">Hapus</button>
             <a href="{{route('blog.index')}}" class="btn btn btn-secondary text-white text-end">Kembali</a>
         </div>
     </div>
@@ -74,6 +54,62 @@
 
 </div>
 </div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editmodal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <br><br>
+        <h1 class="text-center" style="font-size: 30px;">Yakin Ingin Merubah Data ?</h1>
+        <br><br>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn btn-danger text-white" data-dismiss="modal">Tidak</button>
+        <a href="{{route('blog.edit', $data->id)}}" class="btn btn btn-warning text-white">Iya</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hapus Modal -->
+<div class="modal fade" id="hapusmodal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <br><br>
+        <h1 class="text-center" style="font-size: 30px;">Yakin Ingin Menghapus Data ?</h1>
+        <br><br>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn btn-danger text-white" data-dismiss="modal">Tidak</button>
+        <a href="{{route('blog.hapus', $data->id)}}" class="btn btn btn-warning text-white">Iya</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+    .modal-footer {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: end;
+        justify-content: space-between;
+        padding: 0.75rem;
+        border-top: 1px solid #e9ecef;
+        border-bottom-right-radius: calc(0.3rem - 1px);
+        border-bottom-left-radius: calc(0.3rem - 1px);
+    }
+</style>
 
 @if(Session::has('berhasil'))
     <script>
