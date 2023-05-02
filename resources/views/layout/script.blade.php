@@ -8,9 +8,9 @@
 <!-- OPTIONAL SCRIPTS -->
 <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
 
-<script src="{{ asset('dist/js/pages/dashboard3.js')}}"></script>
+<script src="{{ asset('dist/js/pages/dashboard3.js') }}"></script>
 
-<script src="{{ asset('https://kit.fontawesome.com/e4a753eb05.js')}}" crossorigin="anonymous"></script>
+<script src="{{ asset('https://kit.fontawesome.com/e4a753eb05.js') }}" crossorigin="anonymous"></script>
 
 <!-- include libraries(jQuery, bootstrap) -->
 {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> --}}
@@ -28,8 +28,24 @@
         var isi = $('#isi').val();
         $('#tampilan_isi').html(isi);
         $('.summernote').summernote();
-});
+    });
+
+    /*** add active class and stay opened when selected ***/
+    var url = window.location;
+
+    // for sidebar menu entirely but not cover treeview
+    $('ul.nav-sidebar a').filter(function() {
+        if (this.href) {
+            return this.href == url || url.href.indexOf(this.href) == 0;
+        }
+    }).addClass('active');
+
+    // for the treeview
+    $('ul.nav-treeview a').filter(function() {
+        if (this.href) {
+            return this.href == url || url.href.indexOf(this.href) == 0;
+        }
+    }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
 </script>
 
 {{-- <script src="{{ asset('dist/js/pages/dashboard3.js')}}"></script> --}}
-

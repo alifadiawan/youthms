@@ -27,7 +27,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama_produk }}</td>
-                                <td>{{ $item->harga }}</td>
+                                <td>Rp. {{ number_format($item->harga) }}</td>
                                 <td>{{ $item->deskripsi }}</td>
                                 <td>
                                     <a href="{{ route('store.show', $item->id) }}"

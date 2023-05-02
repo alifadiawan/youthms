@@ -4,11 +4,22 @@
 
 
 <div class="row">
-    <div class="col">
-        <a href="{{ route('services.create') }}" class="btn text-white" style="background-color: #0EA1E2">
-            <i class="fas fa-plus"></i> Tambahkan Layanan
-        </a>
-    </div>
+    @if (count($jenis_layanan) > 0)
+        <div class="col">
+            <a href="{{ route('services.create') }}" class="btn text-white" style="background-color: #0EA1E2">
+                <i class="fas fa-plus"></i> Tambahkan Layanan
+            </a>
+            <a class="btn text-white" data-toggle="modal" data-target="#exampleModal"
+                style="background-color: #0EA1E2">Tambah
+                jenis layanan</a>
+        </div>
+    @else
+        <div class="col">
+            <a class="btn text-white" data-toggle="modal" data-target="#exampleModal"
+                style="background-color: #0EA1E2">Tambah
+                jenis layanan</a>
+        </div>
+    @endif
 </div>
 <div class="row mt-3">
     <div class="col-lg-9">
@@ -18,7 +29,6 @@
                 <thead class="text-white" style="background-color: #0EA1E2">
                     <tr>
                         <th>No</th>
-                        <th>ID Services</th>
                         <th>Jenis Layanan</th>
                         <th>Judul</th>
                         <th>Action</th>
@@ -30,11 +40,14 @@
                             <td colspan="6" class="text-center">Mohon tambahkan jenis layanan terlebih dahulu
                             </td>
                         </tr>
-                    @elseif (count($jenis_layanan) > 0)
+                    @elseif (count($jenis_layanan) > 0 && count($services) < 1)
+                        <tr>
+                            <td colspan="6" class="text-center">Belum ada layanan</td>
+                        </tr>
+                    @else
                         @foreach ($services as $item)
                             <tr>
                                 <td scope="row">{{ $loop->iteration }}</td>
-                                <td>{{ $item->id_services }}</td>
                                 <td>{{ $item->jenis_layanan->layanan }}</td>
                                 <td>{{ $item->judul }}</td>
                                 <td>
@@ -60,7 +73,6 @@
             <table class="table">
                 <thead class="text-white" style="background-color: #0EA1E2">
                     <tr>
-                        <th>No</th>
                         <th>Nama layanan</th>
                         <th>Action</th>
                     </tr>
@@ -72,8 +84,7 @@
                         </tr>
                     @else
                         @foreach ($jenis_layanan as $item)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
+                            <tr class="text-center">
                                 <td>{{ $item->layanan }}</td>
                                 <td>
                                     <button type="button" class="btn text-white" data-toggle="modal"
@@ -87,12 +98,12 @@
                     @endif
                 </tbody>
             </table>
-            <div class="card-footer text-center">
+            {{-- <div class="card-footer text-center">
                 <div class="div">
                     <a class="btn text-white" data-toggle="modal" data-target="#exampleModal"
-                    style="background-color: #0EA1E2">Tambah jenis layanan</a>
+                        style="background-color: #0EA1E2">Tambah jenis layanan</a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
@@ -131,9 +142,8 @@
                     <h3 class="text-center">Yakin Ingin Menghapus {{ $hapus->layanan }} ?</h3>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <a href="{{ route('jenislayanan.hapus', $hapus->id) }}"
-                        class="btn btn-danger text-white">Hapus</a>
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">tidak</button>
+                    <a href="{{ route('jenislayanan.hapus', $hapus->id) }}" class="btn btn-danger text-white">Hapus</a>
+                    <button class="btn btn-outline-secondary" data-dismiss="modal">tidak</button>
                 </div>
             </div>
         </div>
