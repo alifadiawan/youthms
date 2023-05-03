@@ -7,6 +7,8 @@ use App\Http\Controllers\landingpageController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SegmenController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\JabatanController;
 use App\Models\Services;
 
 /*
@@ -58,18 +60,10 @@ Route::get('/transaction', function () {
 
 
 //user
-Route::get('/user', function(){
-    return view('Admin.user.index');
-});
-Route::get('/userdetail', function(){
-    return view('Admin.user.user-detail');
-});
-Route::get('/edituser', function(){
-    return view('Admin.user.edit-user');
-});
-Route::get('/adduser', function(){
-    return view('Admin.user.add-user');
-});
+Route::post('jabatan', [JabatanController::class, 'store'])->name('jabatan.store');
+Route::get('jabatan/{id}/hapus', [JabatanController::class, 'hapus'])->name('jabatan.hapus');
+Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
+Route::resource('user', UserController::class);
 
 
 //member
