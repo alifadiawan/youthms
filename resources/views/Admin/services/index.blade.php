@@ -62,7 +62,6 @@
             </table>
 
             <div class="card-footer">
-
                 {{ $services->links() }}
             </div>
         </div>

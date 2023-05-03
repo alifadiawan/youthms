@@ -80,8 +80,8 @@
                 <h3 class="text-center">Yakin Ingin Merubah ?</h3>
             </div>
             <div class="modal-footer justify-content-center">
-                <input type="submit" class="btn btn-warning">
-                <a type="button" class="btn btn-outline-secondary" data-dismiss="modal">tidak</a>
+                <button class="btn btn-warning">Edit</button>
+                <a class="btn btn-outline-secondary" data-dismiss="modal">tidak</a>
             </div>
         </form>
         </div>

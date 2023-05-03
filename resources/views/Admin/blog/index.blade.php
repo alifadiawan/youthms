@@ -5,7 +5,13 @@
 <div class="row">
     <div class="col-lg-9">
         <div class="card p-3">
-            <a href="{{route('blog.create')}}" class="btn btn-md text-white rounded mb-2 mr-1" style="background-color: #1864BA; width: 17%;">Tambah Artikel</a>
+            @if (count($segmen) > 0)
+                <a href="{{ route('blog.create') }}" class="btn btn-md text-white rounded mb-2 mr-1"
+                    style="background-color: #1864BA; width: 17%;">Tambah Artikel</a>
+            @else
+                <a href="{{ route('blog.create') }}" class="btn btn-md text-white rounded mb-2 mr-1 disabled"
+                    style="background-color: #1864BA; width: 17%;">Tambah Artikel</a>
+            @endif
             <table class="table table-striped table-hover mt-2">
                 <thead>
                     <tr style="background-color: #0EA1E2">
@@ -17,22 +23,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if(count($data)==0)
-                    <tr>
-                        <td colspan="5" class="text-center">Belum Ada Artikel !!</td>
-                    </tr>
-
-                    @else
-                        @foreach($data as $i)
+                    @if (count($data) == 0)
                         <tr>
-                            <td scope="row">{{$loop->iteration}}</td>
-                            <td>{{$i -> tanggal}}</td>
-                            <td>{{$i -> judul}}</td>
-                            <td>{{$i -> segmen -> segmen}}</td>
-                            <td>
-                                <a href="{{route('blog.show',$i->id)}}" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a>
-                            </td>
+                            <td colspan="5" class="text-center">Belum Ada Artikel !!</td>
                         </tr>
+                    @else
+                        @foreach ($data as $i)
+                            <tr>
+                                <td scope="row">{{ $loop->iteration }}</td>
+                                <td>{{ $i->tanggal }}</td>
+                                <td>{{ $i->judul }}</td>
+                                <td>{{ $i->segmen->segmen }}</td>
+                                <td>
+                                    <a href="{{ route('blog.show', $i->id) }}"
+                                        class="btn btn-sm btn text-white rounded-pill"
+                                        style="background-color: #0EA1E2">Detail</a>
+                                </td>
+                            </tr>
                         @endforeach
                     @endif
                 </tbody>
@@ -41,7 +48,8 @@
     </div>
     <div class="col-lg-3">
         <div class="card p-3">
-            <button data-toggle="modal" data-target="#addSegmen" class="btn btn-md btn-primary" style="width: 37%;">Tambah</button>
+            <button data-toggle="modal" data-target="#addSegmen" class="btn btn-md btn-primary"
+                style="width: 37%;">Tambah</button>
             <table class="table table-hover table-striped mt-3">
                 <thead>
                     <tr style="background-color: #0EA1E2">
@@ -50,16 +58,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if(count($segmen)<1)
-                    <tr>
-                        <td colspan="2" class="text-center">Kosong</td>
-                    </tr>
-                    @else
-                        @foreach($segmen as $s)
+                    @if (count($segmen) < 1)
                         <tr>
-                            <td>{{$s->segmen}}</td>
-                            <td><button data-toggle="modal" data-target="#hapusSegmen{{$s->id}}" class="btn btn-primary"><i class="fas fa fa-trash"></i></button></td>
+                            <td colspan="2" class="text-center">Kosong</td>
                         </tr>
+                    @else
+                        @foreach ($segmen as $s)
+                            <tr>
+                                <td>{{ $s->segmen }}</td>
+                                <td><button data-toggle="modal" data-target="#hapusSegmen{{ $s->id }}"
+                                        class="btn btn-primary"><i class="fas fa fa-trash"></i></button></td>
+                            </tr>
                         @endforeach
                     @endif
                 </tbody>
@@ -100,8 +109,7 @@
                     <h3 class="text-center">Yakin Ingin Menghapus {{ $hapus->segmen }} ?</h3>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <a href="{{ route('segmen.hapus', $hapus->id) }}"
-                        class="btn btn-danger text-white">Hapus</a>
+                    <a href="{{ route('segmen.hapus', $hapus->id) }}" class="btn btn-danger text-white">Hapus</a>
                     <button class="btn btn-outline-secondary" data-dismiss="modal">Tidak</button>
                 </div>
             </div>
