@@ -61,7 +61,7 @@
                 <form>
                     <textarea class="form-control summernote"></textarea>
                     <br>
-                    <button type="submit" class="btn btn-md btn-success">Simpan</button>
+                    <button class="btn btn-md btn-success">Simpan</button>
                 </form>
             </div>
         </div>

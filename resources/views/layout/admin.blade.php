@@ -54,7 +54,6 @@
         <!-- ./wrapper -->
 
         @include('layout.script')
-        <br>
         @notifyJs
 
     </body>
