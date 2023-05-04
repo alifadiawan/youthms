@@ -6,19 +6,32 @@
     <div class="col-8">
         <div class="card rounded shadow-md">
             <div class="card-body">
-                <form action="{{route('store.store')}}" method="POST">
+                <form action="{{ route('store.store') }}" method="POST">
                     @csrf
 
                     {{-- nama produk --}}
                     <div class="form-group">
-                      <label for="">Nama produkk</label>
-                      <input type="text" name="nama_produk" id="" class="form-control" placeholder="jasa desain" aria-describedby="helpId">
+                        <label for="">Nama Produk</label>
+                        <input type="text" name="nama_produk" id="" class="form-control"
+                            placeholder="jasa desain" aria-describedby="helpId">
+                    </div>
+
+                    {{-- services --}}
+                    <div class="form-group">
+                        <label for="">Jenis Services</label>
+                        <select name="jenis_services_id" id="" class="form-control">
+                            <option value="" class="form-control">Pilih Services jika perlu</option>
+                            @foreach ($jenis_services as $item)
+                                <option value="{{$item->id}}" class="form-control">{{$item->judul}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     {{-- harga --}}
                     <div class="form-group">
                         <label for="">Harga</label>
-                        <input type="number" name="harga" id="" class="form-control" placeholder="Rp.500.000" aria-describedby="helpId">
+                        <input type="number" name="harga" id="" class="form-control"
+                            placeholder="Rp.500.000" aria-describedby="helpId">
                     </div>
 
                     {{-- deskripsi produk --}}
@@ -26,12 +39,13 @@
                         <label for="">Deskripsi produk</label>
                         <textarea name="deskripsi" id="" cols="30" rows="5" class="form-control"></textarea>
                     </div>
-                    
+
 
                     <div class="row">
                         <div class="col">
-                            <input type="submit" href="{{route('store.create')}}" value="Submit" class="btn text-white" style="background-color: #0EA1E2">
-                            <a href="{{route('store.index')}}" class="btn btn-secondary">cancel</a>
+                            <input type="submit" href="{{ route('store.create') }}" value="Submit"
+                                class="btn text-white" style="background-color: #0EA1E2">
+                            <a href="{{ route('store.index') }}" class="btn btn-secondary">cancel</a>
                         </div>
                     </div>
 

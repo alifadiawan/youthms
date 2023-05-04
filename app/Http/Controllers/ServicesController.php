@@ -43,14 +43,10 @@ class ServicesController extends Controller
         $currentNumber = $services;
         $nextNumber = str_pad(++$currentNumber, 5, '0', STR_PAD_LEFT); // "00002"
 
-        Services::create([
-            'judul' =>  $request->judul,
-            'jenis_layanan_id' =>  $request->jenis_layanan_id,
-            'deskripsi' =>  $request->deskripsi,
-            'id_services' => $nextNumber
-        ]);
+        $data = $request->all();
+        Services::create($data);
 
-        notify()->success('Berhasil ditambhakan',$request->judul);
+        notify()->success('Berhasil ditambahkan',$request->judul);
 
         return redirect('services');
     }

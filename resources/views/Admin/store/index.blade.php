@@ -11,9 +11,9 @@
                 <thead class="text-white" style="background-color: #0EA1E2">
                     <tr>
                         <th>No</th>
+                        <th>Jenis Layanan</th>
                         <th>Nama</th>
                         <th>Harga</th>
-                        <th>Deskripsi</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -26,9 +26,9 @@
                         @foreach ($product as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->jenis_services->judul }}</td>
                                 <td>{{ $item->nama_produk }}</td>
-                                <td>Rp. {{ number_format($item->harga) }}</td>
-                                <td>{{ $item->deskripsi }}</td>
+                                <td>{{ $item->harga }}</td>
                                 <td>
                                     <a href="{{ route('store.show', $item->id) }}"
                                         class="btn btn-sm rounded-pill text-white"

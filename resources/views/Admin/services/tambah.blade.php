@@ -10,8 +10,6 @@
                 <form action="{{ route('services.store') }}" method="POST">
                     @csrf
 
-                    <input type="hidden" name="id_services" id="">
-
                     {{-- Jenis Layanan --}}
                     <div class="row mb-3">
                         <div class="col">
@@ -34,16 +32,6 @@
                         </div>
                         <div class="col">
                             <input type="text" name="judul" placeholder="judul" class="form-control" required>
-                        </div>
-                    </div>
-
-                    {{-- Deskripsi --}}
-                    <div class="row mb-3">
-                        <div class="col">
-                            <strong>Deskripsi</strong>
-                        </div>
-                        <div class="col">
-                            <textarea name="deskripsi" id="" class="form-control" cols="30" rows="5"  minlength="5"></textarea>
                         </div>
                     </div>
 
