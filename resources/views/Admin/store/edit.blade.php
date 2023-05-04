@@ -12,6 +12,17 @@
                     {{-- nama produk --}}
                     <div class="form-group">
                         <label for="">Nama produk</label>
+                        <select name="" id="" class="form-control">
+                            <option value="">Pilih layanan</option>
+                            @foreach ($services as $item)
+                                <option value="{{$item->id}}">{{$item->judul}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    {{-- nama produk --}}
+                    <div class="form-group">
+                        <label for="">Nama produk</label>
                         <input type="text" name="nama_produk" id="" class="form-control"
                             placeholder="jasa desain" value="{{ $product->nama_produk }}" aria-describedby="helpId">
                     </div>

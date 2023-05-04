@@ -55,7 +55,8 @@ class ProdukController extends Controller
     public function edit($id)
     {
         $product = Produk::find($id);
-        return view('Admin.store.edit' , compact('product'));
+        $services = Services::all();
+        return view('Admin.store.edit' , compact('product' , 'services'));
     }
 
     /**
