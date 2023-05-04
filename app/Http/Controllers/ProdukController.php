@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JenisLayanan;
 use App\Models\Produk;
+use App\Models\Services;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -13,7 +15,8 @@ class ProdukController extends Controller
     public function index()
     {
         $product = Produk::all();
-        return view('Admin.store.index' , compact('product'));
+        $services = Services::all();
+        return view('Admin.store.index' , compact('product' , 'services'));
     }
 
     /**
@@ -21,7 +24,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        return view('Admin.store.tambah');
+        $jenis_services = Services::all();    
+        return view('Admin.store.tambah' , compact('jenis_services'));
     }
 
     /**
@@ -51,7 +55,8 @@ class ProdukController extends Controller
     public function edit($id)
     {
         $product = Produk::find($id);
-        return view('Admin.store.edit' , compact('product'));
+        $services = Services::all();
+        return view('Admin.store.edit' , compact('product' , 'services'));
     }
 
     /**

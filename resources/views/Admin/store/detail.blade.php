@@ -8,20 +8,30 @@
             <div class="card rounded shadow-md">
                 <div class="card-body">
 
+                    <div class="row">
+                        
+                    </div>
+
                     {{-- nama produk --}}
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="">Nama produk</label>
                         <p>{{ $product->nama_produk }}</p>
                     </div>
+                    
+                    {{-- jenis services --}}
+                    <div class="form-group mb-3">
+                        <label for="">Jenis Services</label>
+                        <p>{{ $product->jenis_services->judul }}</p>
+                    </div>
 
                     {{-- harga --}}
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="">Harga</label>
                         <p>{{ $product->harga }}</p>
                     </div>
 
                     {{-- deskripsi produk --}}
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="">Deskripsi produk</label>
                         <p>{{ $product->deskripsi }}</p>
                     </div>

@@ -3,27 +3,27 @@
 @section('judul', 'Services')
 
 
-<div class="row">
-    @if (count($jenis_layanan) > 0)
-        <div class="col">
-            <a href="{{ route('services.create') }}" class="btn text-white" style="background-color: #0EA1E2">
-                <i class="fas fa-plus"></i> Tambahkan Layanan
-            </a>
-            <a class="btn text-white" data-toggle="modal" data-target="#exampleModal"
-                style="background-color: #0EA1E2">Tambah
-                jenis layanan</a>
-        </div>
-    @else
-        <div class="col">
-            <a class="btn text-white" data-toggle="modal" data-target="#exampleModal"
-                style="background-color: #0EA1E2">Tambah
-                jenis layanan</a>
-        </div>
-    @endif
-</div>
 <div class="row mt-3">
     <div class="col-lg-9">
-        <div class="card">
+        <div class="card p-3">
+
+            <div class="row mb-3">
+                @if (count($jenis_layanan) < 1)
+                    <div class="col">
+                        <a href="{{ route('services.create') }}" class="btn text-white disabled"
+                            style="background-color: #1864BA">
+                            <i class="fas fa-plus"></i> Tambahkan Layanan
+                        </a>
+                    </div>
+                @else
+                    <div class="col">
+                        <a href="{{ route('services.create') }}" class="btn text-white"
+                            style="background-color: #1864BA">
+                            <i class="fas fa-plus"></i> Tambahkan Layanan
+                        </a>
+                    </div>
+                @endif
+            </div>
 
             <table class="table">
                 <thead class="text-white" style="background-color: #0EA1E2">
@@ -61,14 +61,23 @@
                 </tbody>
             </table>
 
-            <div class="card-footer">
+            {{-- <div class="card-footer">
                 {{ $services->links() }}
-            </div>
+            </div> --}}
         </div>
 
     </div>
     <div class="col">
-        <div class="card">
+        <div class="card p-3">
+
+            <div class="row mb-3">
+                <div class="col">
+                    <a class="btn text-white" data-toggle="modal" data-target="#exampleModal"
+                    style="background-color: #1864BA">Tambah
+                        jenis layanan</a>
+                </div>
+            </div>
+
             <table class="table">
                 <thead class="text-white" style="background-color: #0EA1E2">
                     <tr>
@@ -86,7 +95,7 @@
                             <tr class="text-center">
                                 <td>{{ $item->layanan }}</td>
                                 <td>
-                                    <button type="button" class="btn text-white" data-toggle="modal"
+                                    <button type="button" class="btn btn-sm text-white" data-toggle="modal"
                                         data-target="#hapusjenislayanan{{ $item->id }}"
                                         style="background-color: #1864BA">
                                         <i class="fa-solid fa-trash"></i>
