@@ -12,7 +12,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $member = Member::all();
+        return view('Admin.member.index', compact('member'));    
     }
 
     /**
@@ -20,7 +21,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.member.add-member');
     }
 
     /**
@@ -28,31 +29,45 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Member::create([
+            'id_member' => $request->id_member,
+            'name' => $request->name,
+            'email' => $request->email,
+            'no_hp' => $request->no_hp,
+            'role' => $request->role,
+        ]);
+        notify()->success('Member Berhasil Ditambahkan !!');
+        return redirect('member');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Member $member)
+    public function show($id)
     {
-        //
+        $member = Member::find($id);
+        return view('Admin.member.member-detail', compact('member'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Member $member)
+    public function edit($id)
     {
-        //
+        $member = Member::find($id);
+        return view('Admin.member.edit-member', compact('member'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Member $member)
+    public function update(Request $request, $id)
     {
-        //
+        $Member=Member::find($id);
+        $input=$request->all();
+        $Member->update($input);
+        notify()->success('Member Berhasil Diupdate !!');
+        return redirect('member');
     }
 
     /**
@@ -61,5 +76,13 @@ class MemberController extends Controller
     public function destroy(Member $member)
     {
         //
+    }
+
+    public function hapus($id)
+    {
+        $member = Member::find($id);
+        $member->delete();
+        notify()->success('Member Berhasil Dihapus !!');
+        return redirect('member');
     }
 }

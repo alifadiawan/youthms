@@ -9,6 +9,7 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SegmenController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\MemberController;
 use App\Models\Services;
 
 /*
@@ -67,18 +68,8 @@ Route::resource('user', UserController::class);
 
 
 //member
-Route::get('/member', function(){
-    return view('Admin.member.index');
-});
-Route::get('/memberdetail', function(){
-    return view('Admin.member.member-detail');
-});
-Route::get('/editmember', function(){
-    return view('Admin.member.edit-member');
-});
-Route::get('/addmember', function(){
-    return view('Admin.member.add-member');
-});
+Route::get('member/{id}/hapus', [MemberController::class, 'hapus'])->name('member.hapus');
+Route::resource('member', MemberController::class);
 
 
 //landing page
