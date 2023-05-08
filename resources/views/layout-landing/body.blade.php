@@ -40,6 +40,11 @@
                             <i class="fas fa-cart"></i>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/login" class="btn btn-outline-light">
+                            Login
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -54,7 +59,7 @@
                     <span>kami menyediakan aawjaojo</span>
                 </div>
                 <div class="col text-center ">
-                    <img src="{{ asset('illustration/group-390.png.png') }}" alt="">
+                    <img src="{{ asset('illustration/group-390.png') }}" alt="">
                 </div>
             </div>
         </div>
