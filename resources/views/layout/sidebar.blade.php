@@ -1,29 +1,20 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #1864BA;>
     <!-- Brand Logo -->
     <a href="{{url('/')}}" class="brand-link">
-      <img src="{{asset('youth-logo.svg')}}" alt="AdminLTE Logo" class="m-3 brand-images" style="opacity: .8">
+      <img src="{{asset('youth-logo.svg')}}" alt="AdminLTE Logo" class="m-3 brand-images">
     </a>
 
     <x-notify::notify />
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{ asset('youth-blue.svg') }}" class="img-circle-500" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Youthms.id</a>
-        </div>
-      </div>
 
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
+      <div class="form-inline mt-3">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control " type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
-            <button class="btn btn-sidebar">
+            <button class="btn btn-primary">
               <i class="fas fa-search fa-fw"></i>
             </button>
           </div>
@@ -106,12 +97,50 @@
 
           <li class="nav-item">
             <a href="{{url('landing-page')}}" class="nav-link">
+              <i class="nav-icon fa-solid fa-display"></i>
+            <p>
+              Landing Page
+            </p>
+            <i class="right fas fa-angle-left"></i>
+          </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/landing-page/illustration" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Illustration</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/landing-page/data" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/landing-page/text" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Text</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          {{-- <li class="nav-item menu-open">
+            <a href="{{url('landing-page')}}" class="nav-link">
                 <i class="nav-icon fa-solid fa-display"></i>
               <p>
                 Landing Page
               </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v1</p>
+                </a>
+              </li>
+            </ul>
+          </li> --}}
           
           
             {{-- <li class="nav-header">LABELS</li>

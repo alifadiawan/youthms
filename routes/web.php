@@ -26,6 +26,9 @@ use App\Models\Services;
 Route::get('/', function () {
     return view('login');
 });
+// Route::get('/login', function () {
+//     return view('login');
+// });
 Route::get('/dashboard', function () {
     return view('Admin.dashboard');
 });
@@ -73,7 +76,11 @@ Route::resource('member', MemberController::class);
 
 
 //landing page
-Route::resource('landing-page', landingpageController::class);  
+Route::resource('/landingpage', landingpageController::class);  
+Route::get('/landing-page/illustration', [landingpageController::class , 'illustration'])->name('landingpage.illustration');
+Route::get('/landing-page/data/', [landingpageController::class , 'data'])->name('landingpage.data');
+Route::get('/landing-page/text', [landingpageController::class , 'text'])->name('landingpage.text');
+Route::get('/text/{$id}/edit', [landingpageController::class , 'edit_text'])->name('landingpage.edittext');
 
 
 //pesan

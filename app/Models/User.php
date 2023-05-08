@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Jabatan::class);
     }
+
+    public function testimoni()
+    {
+        return $this->hasMany(testimonial::class);
+    }
 }

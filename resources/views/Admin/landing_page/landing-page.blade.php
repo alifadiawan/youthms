@@ -4,57 +4,52 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <input type="file" name="image" id="image" class="form-control">
-                    <img id="preview" src="#" class="form-control">
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <input type="file" name="image" id="image2" class="form-control">
-                    <img id="preview2" src="#" class="form-control">
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <input type="file" name="image" id="image3" class="form-control">
-                    <img id="preview3" src="#" class="form-control">
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <input type="file" name="image" id="image4" class="form-control">
-                    <img id="preview4" src="#" class="form-control">
-                </div>
-            </div>
-            {{-- <div class="row">
-                <div class="col-lg-3">
-                    <form method="post" action="/upload" enctype="multipart/form-data">
-                        @csrf
-                        <input type="file" name="image" id="image">
-                        <img id="preview" src="#">
-                        <button type="submit">Upload</button>	
-                </div>
-                <div class="col-lg-3">
-                    <input type="file" name="image" id="image">
-                    <img id="preview" src="#">
-                    <button type="submit">Upload</button>
-                </div>
-                <div class="col-lg-3">
-                    <input type="file" name="image" id="image">
-                    <img id="preview" src="#">
-                    <button type="submit">Upload</button>
-                </div>
-                <div class="col-lg-3">
-                    <input type="file" name="image" id="image">
-                    <img id="preview" src="#">
-                    <button type="submit">Upload</button>
-                </div>
-            </div> --}}
-            </form>
+
+        <div class="content">
+            <h2 class="font-weight-bold h2 fs-">Illustration</h2>
+
         </div>
+        <div class="content">
+            <h2 class="font-weight-bold h2 fs-">Data</h2>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <input type="file" name="image" id="image" class="form-control">
+                        <img id="preview" src="#" class="form-control">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input type="file" name="image" id="image2" class="form-control">
+                        <img id="preview2" src="#" class="form-control">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input type="file" name="image" id="image3" class="form-control">
+                        <img id="preview3" src="#" class="form-control">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input type="file" name="image" id="image4" class="form-control">
+                        <img id="preview4" src="#" class="form-control">
+                    </div>
+                </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="content">
+            <!-- Carousel images -->
+        </div>
+        <div class="content">
+            <h2 class="font-weight-bold h2 fs-">Text</h2>
+
+        </div>
+
+
+        <!-- desciption box -->
         <div class="row mt-5">
             <div class="col">
                 <h4>Edit Description</h4>
@@ -67,22 +62,25 @@
         </div>
 
         <style>
-            #preview{
+            #preview {
                 width: 100%;
                 height: 200px;
                 object-fit: contain;
             }
-            #preview2{
+
+            #preview2 {
                 width: 100%;
                 height: 200px;
                 object-fit: contain;
             }
-            #preview3{
+
+            #preview3 {
                 width: 100%;
                 height: 200px;
                 object-fit: contain;
             }
-            #preview4{
+
+            #preview4 {
                 width: 100%;
                 height: 200px;
                 object-fit: contain;
@@ -109,7 +107,7 @@
                 }
                 reader.readAsDataURL(this.files[0]);
             });
-            
+
             document.getElementById("image3").addEventListener("change", function() {
                 var reader = new FileReader();
                 reader.onload = function() {
@@ -119,7 +117,7 @@
                 }
                 reader.readAsDataURL(this.files[0]);
             });
-            
+
             document.getElementById("image4").addEventListener("change", function() {
                 var reader = new FileReader();
                 reader.onload = function() {
@@ -129,6 +127,5 @@
                 }
                 reader.readAsDataURL(this.files[0]);
             });
-            
         </script>
     @endsection

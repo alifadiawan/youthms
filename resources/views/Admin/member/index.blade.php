@@ -19,7 +19,7 @@
             <tbody>
                 @if(count($member) < 1)
                     <tr>
-                        <td colspan="4" class="text-center">Belum Ada Member !!</td>
+                        <td colspan="5" class="text-center">Belum Ada Member !!</td>
                     </tr>
                 @else
                     @foreach($member as $m)
