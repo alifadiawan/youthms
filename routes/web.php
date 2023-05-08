@@ -27,7 +27,7 @@ use App\Models\Services;
 
 //guest
 Route::middleware('guest')->group(function () {
-    // Route::resource()
+    Route::resource('/', landingpageController::class);
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'authenticate']);
 });

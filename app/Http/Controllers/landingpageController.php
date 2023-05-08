@@ -32,7 +32,7 @@ class landingpageController extends Controller
 
     public function index()
     {   
-        return view('Admin.landing_page.landing-page');
+        return view('landing-page');
     }
 
     /**
