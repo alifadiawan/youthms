@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\landingpage;
 use Illuminate\Http\Request;
 
 class landingpageController extends Controller
@@ -9,10 +10,28 @@ class landingpageController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function illustration()
+     {   
+         return view('Admin.landing_page.illustration');
+     }
+ 
+ 
+     public function data()
+     {   
+         return view('Admin.landing_page.data');
+     }
+ 
+     
+     public function text()
+     {   
+        $text = landingpage::all();
+         return view('Admin.landing_page.text' , compact('text'));
+     }
+ 
+
     public function index()
-    {
-        $i = 1;
-        
+    {   
         return view('Admin.landing_page.landing-page');
     }
 
@@ -55,6 +74,11 @@ class landingpageController extends Controller
     public function edit(string $id)
     {
         //
+    }
+
+    public function edit_text($id)
+    {
+        return view('Admin.landing_page.edit-text');
     }
 
     /**

@@ -30,7 +30,7 @@
                     <tr>
                         <th>No</th>
                         <th>Jenis Layanan</th>
-                        <th>Judul</th>
+                        <th>Nama Layanan</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -61,7 +61,7 @@
                 </tbody>
             </table>
 
-            {{-- <div class="card-footer">
+            {{-- <div class="card-footer">  
                 {{ $services->links() }}
             </div> --}}
         </div>

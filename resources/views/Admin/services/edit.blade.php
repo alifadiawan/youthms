@@ -10,16 +10,6 @@
                 <form action="{{ route('services.update', $services->id) }}" method="post">
                     @method('PUT')
                     @csrf
-                    {{-- ID Pelanggan --}}
-                    <div class="row mb-3">
-                        <div class="col">
-                            <strong>ID Layanan</strong>
-                        </div>
-                        <div class="col">
-                            <input type="number" value="{{ $services->id_services }}" name="id_services" id=""
-                                class="form-control">
-                        </div>
-                    </div>
 
                     {{-- Jenis Layanan --}}
                     <div class="row mb-3">
@@ -28,6 +18,7 @@
                         </div>
                         <div class="col">
                             <select name="jenis_layanan_id" id="" class="form-control">
+                                <option value="">Pilih jenis services</option>
                                 @foreach ($jenis_layanan as $item)
                                     <option name="jenis_layanan_id" id="" class="form-control"
                                         value="{{ $item->id }}">{{ $item->layanan }}</option>
@@ -44,17 +35,6 @@
                         <div class="col">
                             <input type="text" name="judul" value="{{ $services->judul }}" placeholder="judul"
                                 class="form-control">
-                        </div>
-                    </div>
-
-                    {{-- Deskripsi --}}
-                    <div class="row mb-3">
-                        <div class="col">
-                            <strong>Deskripsi</strong>
-                        </div>
-                        <div class="col">
-                            <input type="text" name="deskripsi" value="{{ $services->deskripsi }}"
-                                placeholder="deskrpsi" class="form-control">
                         </div>
                     </div>
 
