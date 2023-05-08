@@ -24,20 +24,35 @@
                         <div class="row justify-content-center">
                             <img src="{{ asset('youth-blue.svg') }}" alt="" class="my-5" style="width: 150px">
                         </div>
-                        <form action="" method="get">
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $item)
+                                        <li>
+                                            {{ $item }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+
+                        @endif
+
+                        <form action="login" method="post" class="user">
+                            @csrf
                             <div class="form-group">
-                                <label for="">Email</label>
-                                <input type="text" name="" id="" class="form-control"
-                                    placeholder="youremail@gmail.com" aria-describedby="helpId" required>
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control form-control-user"
+                                    id="exampleInputEmail" aria-describedby="emailHelp" name="email"
+                                    placeholder="Enter Email Address...">
                             </div>
                             <div class="form-group">
-                                <label for="">Password</label>
-                                <input type="password" name="" id="" class="form-control"
-                                    placeholder="a67shi" aria-describedby="helpId" required>
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control form-control-user"
+                                    id="exampleInputPassword" name="password" placeholder="Password">
                             </div>
                             <div class="form-group text-center ">
-                                <a href="/dashboard" class="btn text-white w-100"
-                                    style="background-color: #0EA1E2">Login</a>
+                                <button class="btn text-white w-100"
+                                    style="background-color: #0EA1E2">Login</button>
                                 <hr>
                                 <p>Don't have an account ?
                                     <a href="">Sign up here</a>

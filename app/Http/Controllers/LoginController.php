@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Session;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -11,54 +14,36 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        return view('login');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function authenticate(Request $request)
     {
-        //
+        $data=$request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
+
+        if (Auth::attempt($data)) {
+            $request->session()->regenerate();
+            notify()->success('Berhasil Login !!');
+            return redirect()->intended('dashboard');
+            
+        }
+        else {
+            return back()->withErrors([
+                'email' => 'Email Salah!!',
+                'password' => 'Password Salah!!',
+            ]);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function logout(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        notify()->success('Berhasil Logout !!');
+        return redirect('login');
     }
 }
