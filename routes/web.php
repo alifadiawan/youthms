@@ -70,9 +70,17 @@ Route::middleware('auth')->group(function() {
 
     //landing page
     Route::resource('landing_page', landingpageController::class);  
+
+    //landing illustration
     Route::get('/landing-page/illustration', [landingpageController::class, 'illustration'])->name('landing.illustration');
+
+    //landing data
     Route::get('/landing-page/data', [landingpageController::class, 'data'])->name('landing.data');
+
+    //landing text
     Route::get('/landing-page/text', [landingpageController::class, 'text'])->name('landing.text');
+    Route::get('/landing-page/text/{id}/edit', [landingpageController::class, 'edit_text'])->name('landing.text_edit');
+    Route::get('/landing-page/text/{id}/update', [landingpageController::class, 'update_text'])->name('landing.text_update');
 
     Route::get('/landing-page/edit', function () {
         return view('Admin.landing_page.edit_illustration');
@@ -82,9 +90,6 @@ Route::middleware('auth')->group(function() {
     });
     Route::get('/data/edit', function () {
         return view('Admin.landing_page.edit_data');
-    });
-    Route::get('/text/edit', function () {
-        return view('Admin.landing_page.edit_text');
     });
 
 

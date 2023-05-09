@@ -5,7 +5,10 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Jabatan;
-use App\Models\landingpage;
+use App\Models\LandingText;
+use App\Models\LandingData;
+use App\Models\LandingIllustration;
+use App\Models\LandingPartner;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -23,10 +26,30 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        landingpage::create([
+        landingText::create([
             'mainline' => 'Gather more customers in your businees area',
             'secondline' => 'Kami youthms.id menyediakan blablablabla'
         ]);
+
+        LandingData::create([
+            'foto' => 'coba-testi.png',
+            'nama' => 'Steven Alden',
+            'jabatan' => 'Direktur Perusahaan',
+            'review' => 'jadi youthms.id ini blablablabla',
+        ]);
+
+        LandingIllustration::create([
+            'illustration' => 'Glowillustration.png',
+        ]);
+
+        $partner = [
+            ['partner' => 'partner1.png'],
+            ['partner' => 'partner1.png'],
+            ['partner' => 'partner1.png'],
+            ['partner' => 'partner1.png'],
+        ];
+
+        LandingPartner::insert($partner);
 
         $jabatan = ['jabatan' => 'admin'];
         $users = [

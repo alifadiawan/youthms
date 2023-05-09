@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\landingpage;
+use App\Models\LandingText;
+use App\Models\LandingData;
+use App\Models\LandingIllustration;
+use App\Models\LandingPartner;
 use Illuminate\Http\Request;
 
 class landingpageController extends Controller
@@ -25,10 +28,24 @@ class landingpageController extends Controller
      
      public function text()
      {   
-        $text = landingpage::all();
-         return view('Admin.landing_page.text' , compact('text'));
+        $text = landingText::all();
+        return view('Admin.landing_page.text' , compact('text'));
      }
  
+    public function edit_text($id)
+    {
+        $text = LandingText::find($id);
+        return view('Admin.landing_page.edit_text', compact('text'));
+    }
+
+    public function update_text(Request $request, $id)
+    {
+        $text = LandingText::find($id);
+        $input = $request->all();
+        $text->update($input);
+        notify()->success('Text Berhasil Diupdate !!');
+        return redirect('landing-page/text');
+    }
 
     public function index()
     {   
@@ -76,10 +93,6 @@ class landingpageController extends Controller
         //
     }
 
-    public function edit_text($id)
-    {
-        return view('Admin.landing_page.edit-text');
-    }
 
     /**
      * Update the specified resource in storage.

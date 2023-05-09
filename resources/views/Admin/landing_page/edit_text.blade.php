@@ -8,18 +8,18 @@
         <p class="h3">Welcome Page text</p>
         <div class="card p-3">
             <div class="card-body">
-                <form action="">
+                <form action="{{route('landing.text_update', $text->id)}}">
                     <div class="form-group mb-3">
                         <p class="font-weight-bold">Mainline :</p>
-                        <input type="text" class="form-control" name="" id="">
+                        <input type="text" class="form-control" name="mainline" id="mainline" value="{{$text->mainline}}">
                     </div>
                     <div class="form-group mb-3">
                         <p class="font-weight-bold">Secondline</p>
-                        <input type="text" class="form-control" name="" id="">
+                        <input type="text" class="form-control" name="secondline" id="secondline" value="{{$text->secondline}}">
                     </div>
                     <div class="form-group">
-                        <a href="" class="btn btn-warning">Submit</a>
-                        <a href="/landing-page/text" class="btn btn-secondary">Cancel</a>
+                        <button class="btn btn-warning">Submit</button>
+                        <a href="{{route('landing.text')}}" class="btn btn-secondary">Cancel</a>
                     </div>
                 </form>
             </div>
