@@ -12,9 +12,12 @@
         transition: all 0.5s;
     }
 
-    .navbar-scrolled {
-        background-color: white;
-        color: black;
+    .nav-link{
+        color: #white !important;
+    }
+
+    .nav-link.scrolled{
+        color: #4070B5;
     }
 
     .btn-login {

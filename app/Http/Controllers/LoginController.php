@@ -44,6 +44,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         notify()->success('Berhasil Logout !!');
-        return redirect('login');
+        return redirect('/');
     }
 }

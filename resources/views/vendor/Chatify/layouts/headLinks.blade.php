@@ -16,15 +16,33 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
 
+
 {{-- styles --}}
 <link rel='stylesheet' href='https://unpkg.com/nprogress@0.2.0/nprogress.css'/>
 <link href="{{ asset('css/chatify/style.css') }}" rel="stylesheet" />
 <link href="{{ asset('css/chatify/'.$dark_mode.'.mode.css') }}" rel="stylesheet" />
 <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+<link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css')}}">
+<link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback')}}">
+
 
 {{-- Setting messenger primary color to css --}}
 <style>
     :root {
         --primary-color: {{ $messengerColor }};
     }
+
+    .navbar {
+        background-image: linear-gradient(to right, #436ba8, #3c629b, #34598f, #2d5082, #264776);
+    }
+
+    .navbar-logo {
+        width: 50px;
+    }
+
+    #user_details{
+        display: none;
+    }
+
 </style>
+
