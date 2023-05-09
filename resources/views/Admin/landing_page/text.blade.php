@@ -12,7 +12,7 @@
                     <p class="h3 font-weight-bold">{{ $item->mainline }}</p>
                     <p class="h4 font-weight-bold">Secondline</p>
                     <p>{{ $item->secondline }}</p>
-                    <a href="{{ route('landingpage.edit', $item->id) }}" class="btn btn-warning">Edit</a>
+                    <a href="/text/edit" class="btn btn-warning">Edit</a>
                 @endforeach
             </div>
         </div>
