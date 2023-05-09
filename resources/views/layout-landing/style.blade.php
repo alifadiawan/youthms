@@ -36,6 +36,7 @@
     #choose {
         margin-left: 0px;
         margin-right: 0px;
-        border-radius: 100px 100px 100px 100px;
+        border-radius: 80px 80px 80px 80px;
     }
+    
 </style>
