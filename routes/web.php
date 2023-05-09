@@ -69,7 +69,24 @@ Route::middleware('auth')->group(function() {
     Route::resource('member', MemberController::class);
 
     //landing page
-    Route::resource('landing-page', landingpageController::class);  
+    Route::resource('landing_page', landingpageController::class);  
+    Route::get('/landing-page/illustration', [landingpageController::class, 'illustration'])->name('landing.illustration');
+    Route::get('/landing-page/data', [landingpageController::class, 'data'])->name('landing.data');
+    Route::get('/landing-page/text', [landingpageController::class, 'text'])->name('landing.text');
+
+    Route::get('/landing-page/edit', function () {
+        return view('Admin.landing_page.edit_illustration');
+    });
+    Route::get('/our-partners/edit', function () {
+        return view('Admin.landing_page.edit-ourpartners');
+    });
+    Route::get('/data/edit', function () {
+        return view('Admin.landing_page.edit_data');
+    });
+    Route::get('/text/edit', function () {
+        return view('Admin.landing_page.edit_text');
+    });
+
 
     //pesan
     Route::get('/pesan', function () {

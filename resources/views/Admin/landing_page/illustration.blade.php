@@ -14,7 +14,7 @@
                         <img id="illustration" src="{{ asset('illustration/group-390.png') }}">
                     </div>
                     <div class="row">
-                        <a href="" class="text-start btn btn-warning">Edit</a>
+                        <a href="/landing-page/edit" class="text-start btn btn-warning">Edit</a>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href="" class="text-start btn btn-warning">Edit</a>
+                        <a href="/our-partners/edit" class="text-start btn btn-warning">Edit</a>
                     </div>
                 </div>
             </div>

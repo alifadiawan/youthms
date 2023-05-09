@@ -10,31 +10,39 @@
             <div class="card">
                 <div class="card-body">
 
-                    <div class="row">
-                        <div class="col">
+                    <div class="row justify-content-center">
+                        <div class="col-4">
                             <img src="{{ asset('youth-logo-nobg.png') }}" style="height: 300px">
                         </div>
-                        <div class="row">
+                    </div>
 
+                    <div class="row justify-content-center w-100">
+                        <div class="col">
+                            <form action="" method="get">
+                                <div class="form-group">
+                                    <label for="">Nama</label>
+                                    <p>Steven Alden</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Jabatan</label>
+                                    <p>Wirausaha</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Review</label>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti aliquid blanditiis odio, ipsa sunt reiciendis, temporibus, molestiae recusandae ducimus ipsam labore a? Numquam eveniet quaerat expedita, fuga ut ipsum officiis.
+                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta aut non quam perspiciatis corporis possimus doloribus inventore repudiandae ratione eius, impedit omnis eveniet at nam officia nihil dolorem commodi voluptates.
+                                    </p>
+                                </div>
+                            </form>
+                            <a href="/data/edit" class="btn btn-warning">Edit</a>
                         </div>
                     </div>
-                   
-                        <div class="col">
-                            <span>Nama</span>
-                            <p class="h4 font-weight-bold">Steven Alden</p>
-                        </div>
-                        <div class="col">
-                            <span>Star Rating</span>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        {{-- </div> --}}
-                    </div>
+
+
 
 
                     <!-- desciption box -->
-                    <div class="row mt-5">
+                    {{-- <div class="row mt-5">
                         <div class="col">
                             <h4>Edit Description</h4>
                             <form>
@@ -43,7 +51,7 @@
                                 <button class="btn btn-md btn-success">Simpan</button>
                             </form>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>
