@@ -87,10 +87,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/pesan" class="nav-link">
+            <a href="/chat" class="nav-link">
                 <i class="nav-icon fa-solid fa-comment-dots"></i>
               <p>
-                Pesan
+                Chat
               </p>
             </a>
           </li>

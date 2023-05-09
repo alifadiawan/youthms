@@ -34,7 +34,7 @@ Route::middleware('guest')->group(function () {
 
 //role admin
 Route::middleware('auth')->group(function() {
-    Route::resource('dashboard', DashboardController::class);
+    Route::resource('/', DashboardController::class);
 
     //store
     Route::resource('store', ProdukController::class);
