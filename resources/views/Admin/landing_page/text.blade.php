@@ -10,9 +10,11 @@
                 @foreach ($text as $item)
                     <p class="h4 font-weight-bold">Mainline :</p>
                     <p class="h3 font-weight-bold">{{ $item->mainline }}</p>
-                    <p class="h4 font-weight-bold">Secondline</p>
+                    <br>
+                    <p class="h4 font-weight-bold">Secondline :</p>
                     <p>{{ $item->secondline }}</p>
-                    <a href="/text/edit" class="btn btn-warning">Edit</a>
+                    <br>
+                    <a href="{{route('landing.text_edit', $item->id)}}" class="btn btn-warning">Edit</a>
                 @endforeach
             </div>
         </div>

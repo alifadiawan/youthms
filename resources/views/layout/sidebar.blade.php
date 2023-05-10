@@ -29,7 +29,7 @@
 
           <li class="nav-header">MENU</li>
           <li class="nav-item">
-            <a href="/dashboard" class="nav-link">
+            <a href="/" class="nav-link">
               <i class="nav-icon fa-solid fa-chart-simple"></i>
               <p>
                 Dashboard
@@ -96,7 +96,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{url('landing-page')}}" class="nav-link">
+            <a href="{{url('landing_page')}}" class="nav-link">
               <i class="nav-icon fa-solid fa-display"></i>
             <p>
               Landing Page
@@ -105,19 +105,19 @@
           </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/landing-page/illustration" class="nav-link">
+                <a href="{{route('landing.illustration')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Illustration</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/landing-page/data" class="nav-link">
+                <a href="{{route('landing.data')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/landing-page/text" class="nav-link">
+                <a href="{{route('landing.text')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Text</p>
                 </a>

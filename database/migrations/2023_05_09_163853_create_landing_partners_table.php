@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('landingpages', function (Blueprint $table) {
+        Schema::create('landing_partners', function (Blueprint $table) {
             $table->id();
-            $table->string('mainline');
-            $table->string('secondline');
+            $table->string('partner');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('landingpages');
+        Schema::dropIfExists('landing_partners');
     }
 };
