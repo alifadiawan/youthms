@@ -29,7 +29,9 @@
 
           <li class="nav-header">MENU</li>
           <li class="nav-item">
-            <a href="{{route('dashboard.index')}}" class="nav-link">
+
+            <a href="/dashboard" class="nav-link">
+
               <i class="nav-icon fa-solid fa-chart-simple"></i>
               <p>
                 Dashboard
@@ -113,13 +115,13 @@
               <li class="nav-item">
                 <a href="{{route('landing.data')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data</p>
+                  <p>Testimonial</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('landing.text')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Text</p>
+                  <p>Welcome</p>
                 </a>
               </li>
             </ul>
