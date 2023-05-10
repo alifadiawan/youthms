@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\JenisLayananController;
 use App\Http\Controllers\landingpageController;
@@ -27,14 +28,14 @@ use App\Models\Services;
 
 //guest
 Route::middleware('guest')->group(function () {
-    Route::resource('/', landingpageController::class);
+    Route::resource('/', HomeController::class);
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'authenticate']);
 });
 
 //role admin
 Route::middleware('auth')->group(function() {
-    Route::resource('/', DashboardController::class);
+    Route::resource('/dashboard', DashboardController::class);
 
     //store
     Route::resource('store', ProdukController::class);

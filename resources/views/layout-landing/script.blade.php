@@ -8,7 +8,7 @@
     });
 </script> --}}
 
-<script>
+{{-- <script>
     window.onscroll = function() {
         scrollFunction()
     };
@@ -20,6 +20,6 @@
             document.getElementById("navbar").style.background = "#4070B5";
         }
     }
-</script>
+</script> --}}
 
 

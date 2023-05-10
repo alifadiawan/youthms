@@ -21,10 +21,23 @@
 <link href="{{ asset('css/chatify/style.css') }}" rel="stylesheet" />
 <link href="{{ asset('css/chatify/'.$dark_mode.'.mode.css') }}" rel="stylesheet" />
 <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+<link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css')}}">
 
 {{-- Setting messenger primary color to css --}}
 <style>
     :root {
         --primary-color: {{ $messengerColor }};
+    }
+
+    .navbar {
+        background-image: linear-gradient(to right, #436ba8, #3c629b, #34598f, #2d5082, #264776);
+    }
+
+    .navbar-logo {
+        width: 50px;
+    }
+
+    #user_details{
+      display: none;
     }
 </style>
