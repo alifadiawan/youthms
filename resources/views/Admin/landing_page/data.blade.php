@@ -7,12 +7,13 @@
 
         <div class="content">
             <h1 class="h3 font-weight-bold">Testimonial</h1>
+            @foreach($data as $d)
             <div class="card">
                 <div class="card-body">
 
                     <div class="row justify-content-center">
                         <div class="col-4">
-                            <img src="{{ asset('youth-logo-nobg.png') }}" style="height: 300px">
+                            <img id="testi" src="{{ asset('./testimonial/'.$d->foto) }}">
                         </div>
                     </div>
 
@@ -21,20 +22,18 @@
                             <form action="" method="get">
                                 <div class="form-group">
                                     <label for="">Nama</label>
-                                    <p>Steven Alden</p>
+                                    <p>{{$d->nama}}</p>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Jabatan</label>
-                                    <p>Wirausaha</p>
+                                    <p>{{$d->jabatan}}</p>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Review</label>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti aliquid blanditiis odio, ipsa sunt reiciendis, temporibus, molestiae recusandae ducimus ipsam labore a? Numquam eveniet quaerat expedita, fuga ut ipsum officiis.
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta aut non quam perspiciatis corporis possimus doloribus inventore repudiandae ratione eius, impedit omnis eveniet at nam officia nihil dolorem commodi voluptates.
-                                    </p>
+                                    <p>{{$d->review}}</p>
                                 </div>
                             </form>
-                            <a href="/data/edit" class="btn btn-warning">Edit</a>
+                            <a href="{{route('landing.data_edit', $d->id)}}" class="btn btn-warning">Edit</a>
                         </div>
                     </div>
 
@@ -42,7 +41,7 @@
 
 
                     <!-- desciption box -->
-                    {{-- <div class="row mt-5">
+                    <!-- {{-- <div class="row mt-5">
                         <div class="col">
                             <h4>Edit Description</h4>
                             <form>
@@ -51,11 +50,18 @@
                                 <button class="btn btn-md btn-success">Simpan</button>
                             </form>
                         </div>
-                    </div> --}}
+                    </div> --}} -->
 
                 </div>
             </div>
+            @endforeach
         </div>
 
-
+<style>
+    #testi {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+    }
+</style>
     @endsection

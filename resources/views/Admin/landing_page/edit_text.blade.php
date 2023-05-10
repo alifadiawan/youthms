@@ -9,6 +9,8 @@
         <div class="card p-3">
             <div class="card-body">
                 <form action="{{route('landing.text_update', $text->id)}}">
+                    @csrf
+                    @method('PUT')
                     <div class="form-group mb-3">
                         <p class="font-weight-bold">Mainline :</p>
                         <input type="text" class="form-control" name="mainline" id="mainline" value="{{$text->mainline}}">

@@ -96,7 +96,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{url('landing-page')}}" class="nav-link">
+            <a href="{{url('landing_page')}}" class="nav-link">
               <i class="nav-icon fa-solid fa-display"></i>
             <p>
               Landing Page

@@ -10,12 +10,15 @@
             <h1 class="h3 font-weight-bold">Landing page Illustration</h1>
             <div class="card mb-5">
                 <div class="card-body">
+                    @foreach($illustration as $i)
                     <div class="row justify-content-center">
-                        <img id="illustration" src="{{ asset('illustration/group-390.png') }}">
+                        <img id="illustration" src="{{ asset('./illustration/'.$i->illustration) }}">
                     </div>
+                    <br>
                     <div class="row">
-                        <a href="/landing-page/edit" class="text-start btn btn-warning">Edit</a>
+                        <a href="{{route('landing.illustration_edit', $i->id)}}" class="text-start btn btn-warning">Edit</a>
                     </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -23,23 +26,15 @@
             <h1 class="h3 font-weight-bold">Our Partners</h1>
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <img src="{{ asset('youth-logo-nobg.png') }}" alt="">
-                        </div>
-                        <div class="col">
-                            <img src="{{ asset('youth-logo-nobg.png') }}" alt="">
-                        </div>
-                        <div class="col">
-                            <img src="{{ asset('youth-logo-nobg.png') }}" alt="">
-                        </div>
-                        <div class="col">
-                            <img src="{{ asset('youth-logo-nobg.png') }}" alt="">
-                        </div>
+                    @foreach($partner as $p)
+                    <div class="col">
+                        <img id="partner" src="{{ asset('./partner/'.$p->partner) }}">
+                        <a href="{{route('landing.partner_edit', $p->id)}}" class="text-start btn btn-warning">Edit</a>
                     </div>
-                    <div class="row">
-                        <a href="/our-partners/edit" class="text-start btn btn-warning">Edit</a>
-                    </div>
+                    @endforeach
+                </div>
+                <div class="card-footer  d-flex justify-content-end">
+                    {{$partner->links()}}
                 </div>
             </div>
 
@@ -47,19 +42,27 @@
     </div>
 
     <style>
-        #preview {
+        /*#preview {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }*/
+
+        #illustration {
             width: 100%;
             height: 200px;
             object-fit: contain;
         }
 
-        #illustration {
-            width: 500px;
-            height: 500px;
+        #partner {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
         }
+
     </style>
 
-    <script>
+    <!-- <script>
         document.getElementById("image").addEventListener("change", function() {
             var reader = new FileReader();
             reader.onload = function() {
@@ -69,6 +72,6 @@
             }
             reader.readAsDataURL(this.files[0]);
         });
-    </script>
+    </script> -->
 
 @endsection

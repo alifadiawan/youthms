@@ -73,9 +73,17 @@ Route::middleware('auth')->group(function() {
 
     //landing illustration
     Route::get('/landing-page/illustration', [landingpageController::class, 'illustration'])->name('landing.illustration');
+    Route::get('/landing-page/illustration/{id}/edit', [landingpageController::class, 'edit_illustration'])->name('landing.illustration_edit');
+    Route::put('/landing-page/illustration/{id}/update', [landingpageController::class, 'update_illustration'])->name('landing.illustration_update');
+
+    //landing partner
+    Route::get('/landing-page/illustration/partner/{id}/edit', [landingpageController::class, 'edit_partner'])->name('landing.partner_edit');
+    Route::put('/landing-page/illustration/partner/{id}/update', [landingpageController::class, 'update_partner'])->name('landing.partner_update');
 
     //landing data
     Route::get('/landing-page/data', [landingpageController::class, 'data'])->name('landing.data');
+    Route::get('/landing-page/data/{id}/edit', [landingpageController::class, 'edit_data'])->name('landing.data_edit');
+    Route::put('/landing-page/data/{id}/update', [landingpageController::class, 'update_data'])->name('landing.data_update');
 
     //landing text
     Route::get('/landing-page/text', [landingpageController::class, 'text'])->name('landing.text');

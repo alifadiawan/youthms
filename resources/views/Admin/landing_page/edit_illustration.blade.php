@@ -7,16 +7,31 @@
         <h1 class="h3 font-weight-bold">Landing page Edit Illustration</h1>
         <div class="card mb-5">
             <div class="card-body">
-                <div class="row justify-content-center">
-                    <div class="form-group">
-                        <input type="file" name="image" id="image" class="form-control">
-                        <img id="preview" src="#" class="form-control">
+                <form action="{{route('landing.illustration_update', $illustration->id)}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>Illustration Lama : </label>
+                                <br><br><br>
+                                <img src="{{asset('./illustration/'.$illustration->illustration)}}" id="lama">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="illustration">Illustration Baru : </label>
+                                <input type="file" name="illustration" id="illustration" class="form-control">
+                                <img id="preview" src="#" class="form-control">
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <a href="/landing-page/edit" class="text-start btn btn-warning">Submit</a>
-                    <a href="/landing-page/illustration" class="text-start btn btn-secondary">Cancel</a>
-                </div>
+                    <div class="row">
+                        <button class="text-start btn btn-warning">Submit</button>
+                        <br>
+                        <a href="{{route('landing.illustration')}}" class="text-start btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -26,11 +41,16 @@
                 width: 100%;
                 height: 200px;
                 object-fit: contain;
-            }
+        }
+        #lama {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }
     </style>
 
     <script>
-        document.getElementById("image").addEventListener("change", function() {
+        document.getElementById("illustration").addEventListener("change", function() {
                 var reader = new FileReader();
                 reader.onload = function() {
                     var preview = document.getElementById("preview");

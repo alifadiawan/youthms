@@ -6,6 +6,7 @@ use App\Models\LandingText;
 use App\Models\LandingData;
 use App\Models\LandingIllustration;
 use App\Models\LandingPartner;
+use File;
 use Illuminate\Http\Request;
 
 class landingpageController extends Controller
@@ -13,24 +14,136 @@ class landingpageController extends Controller
     /**
      * Display a listing of the resource.
      */
+    //landing illustration
+    public function illustration()
+    {   
+        $illustration = LandingIllustration::all();
+        $partner = LandingPartner::paginate(1);
+        return view('Admin.landing_page.illustration', compact('illustration', 'partner'));
+    }
 
-     public function illustration()
-     {   
-         return view('Admin.landing_page.illustration');
-     }
+    public function edit_illustration($id)
+    {   
+        $illustration = LandingIllustration::find($id);
+        return view('Admin.landing_page.edit_illustration', compact('illustration'));
+    }
+
+    public function update_illustration(Request $request, $id)
+    {
+        //ganti foto
+
+        //hapus foto lama
+        $illustration=LandingIllustration::find($id);
+        File::delete('./illustration/'.$illustration->illustration);
+
+        //ambil info file
+        $file = $request->file('illustration');
+
+        //rename
+        $nama_file = time()."_".$file->getClientOriginalName();
+
+        //proses upload
+        $tujuan_upload = './illustration/';
+        $file->move($tujuan_upload,$nama_file);
+
+        //simpan ke database
+        $illustration->illustration = $nama_file;
+        $illustration->save();
+        notify()->success('Illustration Berhasil Diupdate !!');
+        return redirect('landing-page/illustration');
+    }
+
+    //landing partner
+    public function edit_partner($id)
+    {   
+        $partner = LandingPartner::find($id);
+        return view('Admin.landing_page.edit_partner', compact('partner'));
+    }
+
+    public function update_partner(Request $request, $id)
+    {
+        //ganti foto
+
+        //hapus foto lama
+        $partner=LandingPartner::find($id);
+        File::delete('./partner/'.$partner->partner);
+
+        //ambil info file
+        $file = $request->file('partner');
+
+        //rename
+        $nama_file = time()."_".$file->getClientOriginalName();
+
+        //proses upload
+        $tujuan_upload = './partner/';
+        $file->move($tujuan_upload,$nama_file);
+
+        //simpan ke database
+        $partner->partner = $nama_file;
+        $partner->save();
+        notify()->success('Partner Berhasil Diupdate !!');
+        return redirect('landing-page/illustration');
+    }
  
+    //landing data
+    public function data()
+    {   
+        $data = LandingData::all();
+        return view('Admin.landing_page.data', compact('data'));
+    }
+
+     public function edit_data($id)
+    {
+        $data = LandingData::find($id);
+        return view('Admin.landing_page.edit_data', compact('data'));
+    }
+
+    public function update_data(Request $request, $id)
+    {
+        if ($request->foto != '') {
+            //ganti foto
+
+            //hapus foto lama
+            $data=LandingData::find($id);
+            File::delete('./testimonial/'.$data->foto);
+
+            //ambil info file
+            $file = $request->file('foto');
+
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './testimonial/';
+            $file->move($tujuan_upload,$nama_file);
+
+            //simpan ke database
+            $data->foto = $nama_file;
+            $data->nama = $request->nama;
+            $data->jabatan = $request->jabatan;
+            $data->review = $request->review;
+            $data->save();
+            notify()->success('Testimonial Berhasil Diupdate !!');
+            return redirect('landing-page/data');
+        }
+        else{
+            $data=LandingData::find($id);
+            $data->nama = $request->nama;
+            $data->jabatan = $request->jabatan;
+            $data->review = $request->review;
+            $data->save();
+            notify()->success('Testimonial Berhasil Diupdate !!');
+            return redirect('landing-page/data');
+
+        }
+    }
  
-     public function data()
-     {   
-         return view('Admin.landing_page.data');
-     }
- 
-     
-     public function text()
-     {   
+    //landing text
+    public function text()
+    {   
         $text = landingText::all();
         return view('Admin.landing_page.text' , compact('text'));
-     }
+    }
  
     public function edit_text($id)
     {
