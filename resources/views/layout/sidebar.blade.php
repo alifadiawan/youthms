@@ -29,7 +29,9 @@
 
           <li class="nav-header">MENU</li>
           <li class="nav-item">
+
             <a href="/dashboard" class="nav-link">
+
               <i class="nav-icon fa-solid fa-chart-simple"></i>
               <p>
                 Dashboard
