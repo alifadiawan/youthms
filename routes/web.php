@@ -79,11 +79,17 @@ Route::middleware('auth')->group(function() {
 
     //landing partner
     Route::get('/landing-page/illustration/partner/{id}/edit', [landingpageController::class, 'edit_partner'])->name('landing.partner_edit');
+    Route::get('/landing-page/illustration/partner/create', [landingpageController::class, 'create_partner'])->name('landing.partner_create');
+    Route::post('/landing-page/illustration/partner/store', [landingpageController::class, 'store_partner'])->name('landing.partner_store');
     Route::put('/landing-page/illustration/partner/{id}/update', [landingpageController::class, 'update_partner'])->name('landing.partner_update');
+    Route::get('/landing-page/illustration/partner/{id}/hapus', [landingpageController::class, 'hapus_partner'])->name('landing.partner_hapus');
 
     //landing data
     Route::get('/landing-page/data', [landingpageController::class, 'data'])->name('landing.data');
     Route::get('/landing-page/data/{id}/edit', [landingpageController::class, 'edit_data'])->name('landing.data_edit');
+    Route::get('/landing-page/data/create', [landingpageController::class, 'create_data'])->name('landing.data_create');
+    Route::get('/landing-page/data/{id}/hapus', [landingpageController::class, 'hapus_data'])->name('landing.data_hapus');
+    Route::post('/landing-page/data/store', [landingpageController::class, 'store_data'])->name('landing.data_store');
     Route::put('/landing-page/data/{id}/update', [landingpageController::class, 'update_data'])->name('landing.data_update');
 
     //landing text
@@ -91,21 +97,10 @@ Route::middleware('auth')->group(function() {
     Route::get('/landing-page/text/{id}/edit', [landingpageController::class, 'edit_text'])->name('landing.text_edit');
     Route::get('/landing-page/text/{id}/update', [landingpageController::class, 'update_text'])->name('landing.text_update');
 
-    Route::get('/landing-page/edit', function () {
-        return view('Admin.landing_page.edit_illustration');
-    });
-    Route::get('/our-partners/edit', function () {
-        return view('Admin.landing_page.edit-ourpartners');
-    });
-    Route::get('/data/edit', function () {
-        return view('Admin.landing_page.edit_data');
-    });
-
-
     //pesan
-    Route::get('/pesan', function () {
-        return view('Admin.chat.index');
-    });
+    // Route::get('/pesan', function () {
+    //     return view('Admin.chat.index');
+    // });
 });
 
 

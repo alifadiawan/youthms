@@ -6,9 +6,18 @@
     <div class="container">
 
         <div class="content">
-            <h1 class="h3 font-weight-bold">Testimonial</h1>
-            @foreach($data as $d)
+            <div class="container">
+                <div class="row">
+                    <div class="text-left">
+                        <h1 class="h3 font-weight-bold">Testimonial</h1>
+                    </div>
+                    <div class="text-right">
+                        <a href="{{route('landing.data_create')}}" class="btn btn-md btn-success">Tambah</a>
+                    </div>
+                </div>
+            </div>
             <div class="card">
+            @foreach($data as $d)
                 <div class="card-body">
 
                     <div class="row justify-content-center">
@@ -34,6 +43,7 @@
                                 </div>
                             </form>
                             <a href="{{route('landing.data_edit', $d->id)}}" class="btn btn-warning">Edit</a>
+                            <a href="{{route('landing.data_hapus', $d->id)}}" class="btn btn-danger">Hapus</a>
                         </div>
                     </div>
 
@@ -53,8 +63,11 @@
                     </div> --}} -->
 
                 </div>
-            </div>
             @endforeach
+                <div class="card-footer d-flex justify-content-end">
+                    {{$data->links()}}
+                </div>
+            </div>
         </div>
 
 <style>
@@ -62,6 +75,16 @@
         width: 100%;
         height: 200px;
         object-fit: contain;
+    }
+
+    .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -7.5px;
+        margin-left: -7.5px;
+        justify-content: space-between;
     }
 </style>
     @endsection
