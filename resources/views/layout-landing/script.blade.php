@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/e4a753eb05.js" crossorigin="anonymous"></script>
 {{-- <script>
     const navEl = document.querySelector(.navbar);
 

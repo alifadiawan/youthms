@@ -6,6 +6,12 @@
 </script>
 
 <style>
+
+    .content{
+        margin-top: 150px;
+        margin-bottom: 150px;
+    }
+
     #navbar {
         background: #4070B5;
         word-spacing: 50px;
@@ -38,5 +44,15 @@
         margin-right: 0px;
         border-radius: 80px 80px 80px 80px;
     }
-    
+
+    /* Testimonial*/
+
+    /* end testimonial */
+
+    /* Footer */
+    #footer{
+        background-color: #4070B5;
+        height: 30vh;
+    }
+    /*  */
 </style>

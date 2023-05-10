@@ -10,15 +10,14 @@
                 <form action="{{route('landing.illustration_update', $illustration->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="row justify-content-center">
-                        <div class="col-4">
+                    <div class="row justify-content-center ">
+                        <div class="col">
                             <div class="form-group">
                                 <label>Illustration Lama : </label>
-                                <br><br><br>
                                 <img src="{{asset('./illustration/'.$illustration->illustration)}}" id="lama">
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col">
                             <div class="form-group">
                                 <label for="illustration">Illustration Baru : </label>
                                 <input type="file" name="illustration" id="illustration" class="form-control">
@@ -28,7 +27,6 @@
                     </div>
                     <div class="row">
                         <button class="text-start btn btn-warning">Submit</button>
-                        <br>
                         <a href="{{route('landing.illustration')}}" class="text-start btn btn-secondary">Cancel</a>
                     </div>
                 </form>
@@ -39,12 +37,12 @@
     <style>
         #preview {
                 width: 100%;
-                height: 200px;
+                height: 190px;
                 object-fit: contain;
         }
         #lama {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: contain;
         }
     </style>

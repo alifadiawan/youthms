@@ -7,7 +7,7 @@
 
         <!-- Welcome page illustration -->
         <div class="content">
-            <h1 class="h3 font-weight-bold">Landing page Illustration</h1>
+            <h1 class="h3 font-weight-bold">Landing page Picture</h1>
             <div class="card mb-5">
                 <div class="card-body">
                     @foreach($illustration as $i)
