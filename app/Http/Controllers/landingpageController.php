@@ -54,6 +54,30 @@ class landingpageController extends Controller
     }
 
     //landing partner
+    public function create_partner()
+    {
+        return view('Admin.landing_page.create_partner');
+    }
+
+    public function store_partner(Request $request)
+    {
+        //ambil info file
+        $file = $request->file('partner');
+        //rename
+        $nama_file = time()."_".$file->getClientOriginalName();
+
+        $tujuan_upload = './partner/';
+        $file->move($tujuan_upload,$nama_file);
+
+        //insert data
+        LandingPartner::create([
+            'partner' => $nama_file,
+        ]);
+
+        notify()->success('Partner Berhasil Ditambah !!');
+        return redirect('landing-page/illustration');
+    }
+
     public function edit_partner($id)
     {   
         $partner = LandingPartner::find($id);
@@ -84,15 +108,51 @@ class landingpageController extends Controller
         notify()->success('Partner Berhasil Diupdate !!');
         return redirect('landing-page/illustration');
     }
+
+    public function hapus_partner($id)
+    {
+        $partner = LandingPartner::find($id);
+        File::delete('./partner/'.$partner->foto);
+        $partner->delete();
+        notify()->success('Partner Berhasil Dihapus !!');
+        return redirect('landing-page/illustration');
+    }
  
     //landing data
     public function data()
     {   
-        $data = LandingData::all();
+        $data = LandingData::paginate(1);
         return view('Admin.landing_page.data', compact('data'));
     }
 
-     public function edit_data($id)
+    public function create_data()
+    {
+        return view('Admin.landing_page.create_data');
+    }
+
+    public function store_data(Request $request)
+    {
+        //ambil info file
+        $file = $request->file('foto');
+        //rename
+        $nama_file = time()."_".$file->getClientOriginalName();
+
+        $tujuan_upload = './testimonial/';
+        $file->move($tujuan_upload,$nama_file);
+
+        //insert data
+        LandingData::create([
+            'foto' => $nama_file,
+            'nama' => $request->nama,
+            'jabatan' => $request->jabatan,
+            'review' => $request->review,
+        ]);
+
+        notify()->success('Testimonial Berhasil Ditambah !!');
+        return redirect('landing-page/data');
+    }
+
+    public function edit_data($id)
     {
         $data = LandingData::find($id);
         return view('Admin.landing_page.edit_data', compact('data'));
@@ -137,6 +197,15 @@ class landingpageController extends Controller
 
         }
     }
+
+    public function hapus_data($id)
+    {
+        $data = LandingData::find($id);
+        File::delete('./testimonial/'.$data->foto);
+        $data->delete();
+        notify()->success('Testimonial Berhasil Dihapus !!');
+        return redirect('landing-page/data');
+    }
  
     //landing text
     public function text()
@@ -160,6 +229,7 @@ class landingpageController extends Controller
         return redirect('landing-page/text');
     }
 
+    //standard
     public function index()
     {   
         return view('landing-page');
