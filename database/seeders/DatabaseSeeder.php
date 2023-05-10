@@ -44,9 +44,9 @@ class DatabaseSeeder extends Seeder
 
         $partner = [
             ['partner' => 'partner1.png'],
-            ['partner' => 'partner1.png'],
-            ['partner' => 'partner1.png'],
-            ['partner' => 'partner1.png'],
+            ['partner' => 'partner2.png'],
+            ['partner' => 'partner3.png'],
+            ['partner' => 'partner4.png'],
         ];
 
         LandingPartner::insert($partner);
