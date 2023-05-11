@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\visitor;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
 {
@@ -11,7 +14,18 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('Admin.dashboard');
+        $chart_options = [
+            'chart_title' => 'Visitor per day',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\visitor',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'day',
+            'chart_type' => 'line',
+            'chart_color' =>  "51, 133, 255"
+        ];
+        $chart1 = new LaravelChart($chart_options);
+
+        return view('Admin.dashboard' , compact('chart1'));
     }
 
     /**
