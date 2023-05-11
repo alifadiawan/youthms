@@ -53,7 +53,7 @@
     <!-- hero / illustration -->
     <div id="hero">
         <div class="container d-flex">
-            <div class="row justify-content-between align-items-center">
+            <div class="row justify-content-between align-items-center" data-aos="fade-up" data-aos-duration="2000">
                 <div class="col-lg-6 col-sm-4 text-start">
                     <h1 class="fw-bolder">Gather more customers in your business area</h1>
                     <span>kami menyediakan aawjaojo</span>
@@ -66,7 +66,7 @@
     </div>
 
     <!-- Content -->
-    <div class="container-fluid content">
+    <div data-aos="fade-up" data-aos-duration="2000" class="container-fluid content">
 
         <!-- Our Services -->
         <div id="our-services" class="content mt-5">
@@ -106,7 +106,7 @@
 
 
     <!-- Choose what you need card-->
-    <div class="content text-white">
+    <div class="content text-white" data-aos="fade-up" data-aos-duration="2000">
         <div id="choose" class="px-5" style="background-color: #406CAB">
             <div class="card-content p-5">
                 <h1 class="fw-bolder">Choose</h1>
@@ -162,7 +162,7 @@
 
 
     <!-- Our Partners -->
-    <div class="container content">
+    <div class="container content" data-aos="fade-up" data-aos-duration="2000">
         <div class="row">
             <div class="col-md-12">
                 <h1 class="text-center">Our Partners</h1>
@@ -269,7 +269,7 @@
 
 
     <!-- Testimonials -->
-    <div class="content text-white">
+    <div class="content text-white" data-aos="fade-up" data-aos-duration="2000">
         <div id="choose" class="px-5" style="background-color: #406CAB">
             <div class="card-content p-5">
                 <h1 class="fw-bolder">Our</h1>
@@ -376,7 +376,7 @@
     </div>
 
     <!-- About us -->
-    <div class="container content">
+    <div class="container content" data-aos="fade-up" data-aos-duration="2000">
         <h1 class="text-center">About Us</h1>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium sed maxime distinctio ea, voluptas porro
             earum aliquam rem ullam, dicta facilis alias sapiente. Asperiores optio, ea a reiciendis molestiae
