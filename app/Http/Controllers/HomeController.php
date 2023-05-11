@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\visitor;
 
 class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $ip = $request->ip();
+        $visitor = visitor::firstOrCreate(['ip_address' => $ip]);
+        $visitor->increment('visits');
+        $visitor->save();
+
+
         return view('landing-page');
     }
 

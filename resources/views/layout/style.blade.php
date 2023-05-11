@@ -8,11 +8,24 @@
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css')}}">
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
+
+  <!-- Data AOS Anitamtion-->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   
 <style>
   @media only screen and (min-width: 1026px) {
     #hamburger {
         display: none;
     }
+}
+
+.yms-blue{
+  background-color: #436ba8;
+  color: white;
+}
+
+.yms-blue:hover{
+  color: white;
+  background-color: #3c629b;
 }
 </style>

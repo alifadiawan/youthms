@@ -21,8 +21,13 @@
             <div class="col-lg-4 col-md-5 col-sm-7">
                 <div class="card shadow-lg" style="border-radius: 10px">
                     <div class="card-body">
+                        <div class="row">
+                            <a href="/" class="btn yms-blue">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
                         <div class="row justify-content-center">
-                            <img src="{{ asset('youth-blue.svg') }}" alt="" class="my-5" style="width: 150px">
+                            <img src="{{ asset('youth-blue.svg') }}" alt="" class="my-4 " style="width: 200px">
                         </div>
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
@@ -51,8 +56,7 @@
                                     id="exampleInputPassword" name="password" placeholder="Password">
                             </div>
                             <div class="form-group text-center ">
-                                <button class="btn text-white w-100"
-                                    style="background-color: #0EA1E2">Login</button>
+                                <button class="btn yms-blue w-100">Login</button>
                                 <hr>
                                 <p>Don't have an account ?
                                     <a href="">Sign up here</a>
