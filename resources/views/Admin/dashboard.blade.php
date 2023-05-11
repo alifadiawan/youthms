@@ -13,6 +13,9 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    {!! $chart1->renderHtml() !!}
+                </div>
+                {{-- <div class="card-body">
                     <div class="d-flex">
                         <p class="d-flex flex-column">
                             <span class="text-bold text-lg">820</span>
@@ -40,7 +43,7 @@
                             <i class="fas fa-square text-gray"></i> Last Week
                         </span>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         
@@ -198,4 +201,6 @@
         </div>
 
     </div>
+    
+
 @endsection
