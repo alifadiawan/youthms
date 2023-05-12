@@ -32,8 +32,8 @@
 </script>
 
 <!-- Dashboard Charts -->
-{!! $chart1->renderChartJsLibrary() !!}
-{!! $chart1->renderJs() !!}
+    {{-- {!! $chart1->renderChartJsLibrary() !!}
+    {!! $chart1->renderJs() !!} --}}
 
 
 <!-- Summernote scirpt -->
