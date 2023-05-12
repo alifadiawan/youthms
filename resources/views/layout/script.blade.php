@@ -31,10 +31,6 @@
     AOS.init();
 </script>
 
-<!-- Dashboard Charts -->
-    {{-- {!! $chart1->renderChartJsLibrary() !!}
-    {!! $chart1->renderJs() !!} --}}
-
 
 <!-- Summernote scirpt -->
 <script>

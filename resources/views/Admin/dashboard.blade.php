@@ -201,6 +201,10 @@
         </div>
 
     </div>
-    
+
+    <!-- Dashboard Charts -->
+    {!! $chart1->renderChartJsLibrary() !!}
+    {!! $chart1->renderJs() !!}
+
 
 @endsection
