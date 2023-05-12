@@ -56,9 +56,6 @@ Route::middleware('auth')->group(function() {
     Route::get('segmen/{id}/hapus', [SegmenController::class, 'hapus'])->name('segmen.hapus');
 
     //transaction
-    // Route::get('/transaction', function () {
-    //     return view('Admin.transaction.index');
-    // });
     Route::resource('transaksi', TransaksiController::class);
 
     //user

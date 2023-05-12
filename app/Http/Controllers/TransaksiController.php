@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JenisLayanan;
 use App\Models\Transaksi;
 use App\Models\Produk;
 use Illuminate\Http\Request;
@@ -24,7 +25,8 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        //
+        $produk = produk::all();
+        return view("EU.transaction.index");
     }
 
     /**
@@ -32,7 +34,7 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
