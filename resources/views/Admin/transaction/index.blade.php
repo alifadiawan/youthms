@@ -14,6 +14,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 <tr>
                     <td scope="row">1</td>
                     <td>Maulana Gustaf</td>
@@ -37,12 +38,23 @@
                     <td>Steven Alden</td>
                     <td>Web Kasir</td>
                     <td>750.000</td>
-                    {{-- <td style="background-color: rgb(241, 218, 16)" class="text-white">Kredit</td> --}}
                     <td>
                         <button disabled="disabled" class="btn btn-sm btn-warning"></button><span class="badge">Kredit</span>
                     </td>
                 </tr>
             </tbody>
+
+            {{-- <body>
+                <table>
+                    @foreach ($Produk as $p)
+                        <tr>
+                            <td>
+                                {{ $p }}
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </body> --}}
         </table>
     </div>
 </div>

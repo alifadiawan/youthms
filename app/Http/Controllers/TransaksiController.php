@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -12,7 +13,10 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+        $transaksi = Transaksi::all();
+        $Produk = Produk::all('nama_produk');
+        // return $Produk;
+        return view("Admin.transaction.index",compact('Produk'));
     }
 
     /**
