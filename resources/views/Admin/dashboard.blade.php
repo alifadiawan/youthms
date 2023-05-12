@@ -46,8 +46,8 @@
                 </div> --}}
             </div>
         </div>
-        
-        
+
+
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header border-0">
@@ -70,16 +70,16 @@
                         </p>
                     </div>
                     <!-- /.d-flex -->
-    
+
                     <div class="position-relative mb-4">
                         <canvas id="sales-chart" height="200"></canvas>
                     </div>
-    
+
                     <div class="d-flex flex-row justify-content-end">
                         <span class="mr-2">
                             <i class="fas fa-square text-primary"></i> This year
                         </span>
-    
+
                         <span>
                             <i class="fas fa-square text-gray"></i> Last year
                         </span>
@@ -87,7 +87,7 @@
                 </div>
             </div>
         </div>
-        
+
         {{-- produk --}}
         <div class="col-lg-12">
             <div class="card">
@@ -201,6 +201,10 @@
         </div>
 
     </div>
-    
+
+    <!-- Dashboard Charts -->
+    {!! $chart1->renderChartJsLibrary() !!}
+    {!! $chart1->renderJs() !!}
+
 
 @endsection
