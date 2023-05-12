@@ -1,4 +1,4 @@
-@include('layout.script')
+@include('layout-landing.script')
 <!DOCTYPE html>
 <html lang="en">
 
