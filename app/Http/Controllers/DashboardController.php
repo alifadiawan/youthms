@@ -14,8 +14,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $chart_options = [
-            'chart_title' => 'Visitor per day',
+        $online_visitor = [
+            'chart_title' => 'Visitor Counter',
             'report_type' => 'group_by_date',
             'model' => 'App\Models\visitor',
             'group_by_field' => 'created_at',
@@ -23,9 +23,20 @@ class DashboardController extends Controller
             'chart_type' => 'line',
             'chart_color' =>  "51, 133, 255"
         ];
-        $chart1 = new LaravelChart($chart_options);
+        $chart1 = new LaravelChart($online_visitor);
+        
+        $penjualan = [
+            'chart_title' => 'Penjualan',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\Transaksi',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'day',
+            'chart_type' => 'bar',
+            'chart_color' =>  "51, 133, 255"
+        ];
+        $chart2 = new LaravelChart($penjualan);
 
-        return view('Admin.dashboard' , compact('chart1'));
+        return view('Admin.dashboard' , compact('chart1', 'chart2'));
     }
 
     /**

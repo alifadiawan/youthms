@@ -20,7 +20,7 @@
 }
 
 .yms-blue{
-  background-color: #436ba8;
+  background-color: #0098fe;
   color: white;
 }
 
