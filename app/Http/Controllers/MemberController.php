@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\User;
+use Auth;
+use App\Notifications\NewMessageNotification;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -13,7 +17,9 @@ class MemberController extends Controller
     public function index()
     {
         $member = Member::all();
-        return view('Admin.member.index', compact('member'));    
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.member.index', compact('member', 'notifications'));    
     }
 
     /**
@@ -21,7 +27,9 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('Admin.member.add-member');
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.member.add-member', compact('notifications'));
     }
 
     /**
@@ -37,6 +45,10 @@ class MemberController extends Controller
             'role' => $request->role,
         ]);
         notify()->success('Member Berhasil Ditambahkan !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Member Berhasil Ditambahkan !!";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('member');
     }
 
@@ -46,7 +58,9 @@ class MemberController extends Controller
     public function show($id)
     {
         $member = Member::find($id);
-        return view('Admin.member.member-detail', compact('member'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.member.member-detail', compact('member', 'notifications'));
     }
 
     /**
@@ -55,7 +69,9 @@ class MemberController extends Controller
     public function edit($id)
     {
         $member = Member::find($id);
-        return view('Admin.member.edit-member', compact('member'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.member.edit-member', compact('member', 'notifications'));
     }
 
     /**
@@ -67,6 +83,10 @@ class MemberController extends Controller
         $input=$request->all();
         $Member->update($input);
         notify()->success('Member Berhasil Diupdate !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Member Berhasil Diupdate !!";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('member');
     }
 
@@ -83,6 +103,10 @@ class MemberController extends Controller
         $member = Member::find($id);
         $member->delete();
         notify()->success('Member Berhasil Dihapus !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Member Berhasil Dihapus !!";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('member');
     }
 }

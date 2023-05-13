@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Segmen;
+use App\Models\User;
+use Auth;
+use App\Notifications\NewMessageNotification;
+use Illuminate\Support\Facades\Notification;
 use Session;
 
 class BlogController extends Controller
@@ -16,7 +20,9 @@ class BlogController extends Controller
     {
         $segmen = Segmen::all();
         $data = Blog::all();
-        return view('Admin.blog.index', compact('data','segmen'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.blog.index', compact('data','segmen', 'notifications'));
     }
 
     /**
@@ -25,7 +31,9 @@ class BlogController extends Controller
     public function create()
     {
         $segmen = Segmen::all();
-        return view('Admin.blog.add', compact('segmen'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.blog.add', compact('segmen', 'notifications'));
     }
 
     /**
@@ -72,6 +80,10 @@ class BlogController extends Controller
         ]);
 
         notify()->success('Artikel Berhasil Ditambahkan !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Artikel Baru Telah Ditambahkan !";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('blog');
     }
 
@@ -81,7 +93,9 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         $data = Blog::find($blog->id);
-        return view('Admin.blog.detail', compact('data'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.blog.detail', compact('data', 'notifications'));
     }
 
     /**
@@ -91,7 +105,9 @@ class BlogController extends Controller
     {
         $segmen = Segmen::all();
         $data = Blog::find($blog->id);
-        return view('Admin.blog.edit', compact('data', 'segmen'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.blog.edit', compact('data', 'segmen', 'notifications'));
     }
 
     /**
@@ -133,6 +149,10 @@ class BlogController extends Controller
                 'isi' => $content,
             ]);
             notify()->success('Artikel Berhasil Diubah !!');
+            // mengirim notifikasi
+            $user = Auth::user();
+            $message = "Artikel Telah Dirubah !";
+            Notification::send($user, new NewMessageNotification($message));
             return redirect('blog/'.$id);
     }
 
@@ -149,6 +169,10 @@ class BlogController extends Controller
         $data = Blog::find($id);
         $data->delete();
         notify()->success('Artikel Berhasil Dihapus !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Artikel Telah Dihapus !";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('blog')->with('hapus', 'Artikel Berhasil Dihapus!!');
     }
 }
