@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notifications\NewMessageNotification;
+use Illuminate\Support\Facades\Notification;
 use App\Models\User;
+use Auth;
 use App\Models\Jabatan;
 
 class UserController extends Controller
@@ -15,7 +18,9 @@ class UserController extends Controller
     {
         $user = User::all();
         $jabatan = Jabatan::all();
-        return view('Admin.user.index', compact('user', 'jabatan'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.user.index', compact('user', 'jabatan', 'notifications'));
     }
 
     /**
@@ -41,6 +46,10 @@ class UserController extends Controller
             'no_hp'=>$request->no_hp,
         ]);
         notify()->success('User Berhasil Ditambahkan !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Data baru telah ditambahkan!";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('user');
     }
 

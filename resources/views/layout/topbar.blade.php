@@ -84,6 +84,8 @@
             <i class="fa-solid fa-circle-info text-success"></i> Produk Telah di Tambahkan
             <span class="float-right text-muted text-sm">3 mins</span>
           </a>
+
+          @include('Admin.notif')
         </div>
       </li>
     

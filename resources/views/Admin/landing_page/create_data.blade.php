@@ -14,7 +14,7 @@
                         <div class="row justify-content-center">
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label for="foto">Foto : </label>
+                                    <label for="foto">Photo : </label>
                                     <input type="file" name="foto" id="foto" class="form-control">
                                     <img id="preview" src="#" class="form-control">
                                 </div>
