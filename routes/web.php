@@ -13,6 +13,7 @@ use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransaksiController;
 use App\Models\Services;
 
 /*
@@ -55,9 +56,7 @@ Route::middleware('auth')->group(function() {
     Route::get('segmen/{id}/hapus', [SegmenController::class, 'hapus'])->name('segmen.hapus');
 
     //transaction
-    Route::get('/transaction', function () {
-        return view('Admin.transaction.index');
-    });
+    Route::resource('transaksi', TransaksiController::class);
 
     //user
     Route::post('jabatan', [JabatanController::class, 'store'])->name('jabatan.store');

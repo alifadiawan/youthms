@@ -16,7 +16,7 @@ class Produk extends Model
         return $this->belongsTo(JenisLayanan::class);
     }
 
-    public function jenis_services()
+    public function services()
     {
         return $this->belongsTo(Services::class);
     }
