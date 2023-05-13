@@ -29,7 +29,9 @@ class UserController extends Controller
     public function create()
     {
         $jabatan = Jabatan::all();
-        return view('Admin.user.add-user', compact('jabatan'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.user.add-user', compact('jabatan', 'notifications'));
     }
 
     /**
@@ -48,7 +50,7 @@ class UserController extends Controller
         notify()->success('User Berhasil Ditambahkan !!');
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "Data baru telah ditambahkan!";
+        $message = "User Baru Telah Ditambahkan !";
         Notification::send($user, new NewMessageNotification($message));
         return redirect('user');
     }
@@ -59,7 +61,9 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = User::find($id);
-        return view('Admin.user.user-detail', compact('user'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.user.user-detail', compact('user', 'notifications'));
     }
 
     /**
@@ -69,7 +73,9 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $jabatan = Jabatan::all();
-        return view('Admin.user.edit-user', compact('user', 'jabatan'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.user.edit-user', compact('user', 'jabatan', 'notifications'));
     }
 
     /**
@@ -100,6 +106,10 @@ class UserController extends Controller
             ]);
         }
         notify()->success('User Berhasil Diupdate !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "User Telah Diubah!";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('user/'.$id);
         
     }
@@ -117,6 +127,10 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         notify()->success('User Berhasil Dihapus !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "User Telah Dihapus!";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('user');
     }
 }

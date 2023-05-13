@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
+use App\Notifications\NewMessageNotification;
+use Illuminate\Support\Facades\Notification;
 use App\Models\visitor;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
@@ -35,8 +38,10 @@ class DashboardController extends Controller
             'chart_color' =>  "51, 133, 255"
         ];
         $chart2 = new LaravelChart($penjualan);
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
 
-        return view('Admin.dashboard' , compact('chart1', 'chart2'));
+        return view('Admin.dashboard' , compact('chart1', 'chart2', 'notifications'));
     }
 
     /**
