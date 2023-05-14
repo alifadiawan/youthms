@@ -30,6 +30,9 @@ class DatabaseSeeder extends Seeder
             ServicesSeeder::class,
             ProdukSeeder::class,
 
+            //misc
+            VisitorSeeder::class,
+
         ]);
     }
 
