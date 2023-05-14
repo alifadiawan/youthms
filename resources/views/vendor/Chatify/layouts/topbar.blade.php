@@ -14,7 +14,7 @@
     </div>
     <div class="mx-auto order-0">
         {{-- <img src="{{ asset('yms-logo.png') }}" alt="youth-logo" height="50px"> --}}
-        <img src="{{ asset('youth-logo.svg') }}" alt="youth-logo" height="50px">
+        <img src="{{ asset('yms-logo-notext.png') }}" alt="youth-logo" height="60px">
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         

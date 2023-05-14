@@ -3,6 +3,20 @@
 @section('content')
 @section('judul', 'User')
 
+<!-- <div class="notifications">
+    @foreach ($notifications as $notification)
+        <div class="notification">
+            <p>{{ $notification->data['message'] }}</p>
+            <small>{{ $notification->created_at->diffForHumans() }}</small>
+            <ul>
+                <li>
+                    {{ $notification->data['message'] }}
+                </li>            
+            </ul>
+        </div>
+    @endforeach
+</div> -->
+
 <div class="row">
     <div class="col-lg-9">
         <div class="card p-3">
