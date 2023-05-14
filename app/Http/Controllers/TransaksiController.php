@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JenisLayanan;
 use App\Models\Transaksi;
 use App\Models\Produk;
-
-//untuk notif
+use App\Models\Services;
 use App\Models\User;
 use Auth;
 use App\Notifications\NewMessageNotification;
@@ -35,7 +34,11 @@ class TransaksiController extends Controller
      */
     public function create()
     {
+        $layanan = JenisLayanan::all();
         $produk = produk::all();
+        $services = Services::all();
+        // return $services;
+      
         //untuk menampilkan notifikasi di topbar
         $users = Auth::user();
         $notifications = $users->unreadNotifications;
