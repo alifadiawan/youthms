@@ -106,7 +106,7 @@
                                 </td>
                                 <td>Rafli</td>
                                 <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#exampleModal">
+                                    <a href="#" class="text-muted">
                                         <i class="fa-solid fa-circle-info"></i>
                                     </a>
                                 </td>
@@ -117,41 +117,6 @@
             </div>
         </div>
 
-    </div>
-
-
-    <!-- Modals -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Transaksi oleh ...</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="d-flex flex-column font-weight-bold">
-                                <p>Layanan / Produk</p>
-                                <p>Total</p>
-                                <p>Tanggal Pembelian</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-flex flex-column">
-                                <p>: Aplikasi Kasir</p>
-                                <p>: Rp. 1.000.000</p>
-                                <p>: 13 Mei 2023</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
     </div>
 
 

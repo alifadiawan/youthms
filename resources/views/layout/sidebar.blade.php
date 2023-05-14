@@ -96,6 +96,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/portofolio" class="nav-link">
+                <i class="nav-icon fa-solid fa-briefcase"></i>
+              <p>
+                Portofolio
+              </p>
+            </a>
+          </li>
 
           <li class="nav-item">
             <a href="{{url('landing_page')}}" class="nav-link">
