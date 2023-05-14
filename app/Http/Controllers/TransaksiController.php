@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JenisLayanan;
 use App\Models\Transaksi;
 use App\Models\Produk;
+use App\Models\Services;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -25,7 +26,10 @@ class TransaksiController extends Controller
      */
     public function create()
     {
+        $layanan = JenisLayanan::all();
         $produk = produk::all();
+        $services = Services::all();
+        // return $services;
         return view("EU.transaction.index");
     }
 
