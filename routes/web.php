@@ -103,6 +103,7 @@ Route::middleware('auth')->group(function() {
     //portofolio
     Route::resource('/portofolio', PortofolioController::class);
     Route::get('/edit', [PortofolioController::class, 'test'])->name('portofolio.test');
+    Route::get('/tambah', [PortofolioController::class, 'test'])->name('portofolio.tambah');
 
     //notif
     Route::resource('notif', NotificationController::class);

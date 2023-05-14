@@ -33,7 +33,10 @@ class PortofolioController extends Controller
      */
     public function create()
     {
-        //
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+
+        return view('Admin.portofolio.create-portofolio', compact('notifications'));
     }
 
     /**
