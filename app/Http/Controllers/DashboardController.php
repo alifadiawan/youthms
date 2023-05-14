@@ -32,8 +32,8 @@ class DashboardController extends Controller
             'chart_title' => 'Penjualan',
             'report_type' => 'group_by_date',
             'model' => 'App\Models\Transaksi',
-            'group_by_field' => 'created_at',
-            'group_by_period' => 'day',
+            'group_by_field' => 'tanggal',
+            'group_by_period' => 'month',
             'chart_type' => 'bar',
             'chart_color' =>  "51, 133, 255"
         ];
