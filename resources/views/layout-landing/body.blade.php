@@ -41,6 +41,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                       @auth
+                           <a class="btn btn-outline-light" href="/dashboard">Dashboard</a>
+                       @endauth
                         <a href="/login" class="btn btn-outline-light">
                             Login
                         </a>

@@ -58,4 +58,6 @@
     }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
 </script>
 
+
+
 {{-- <script src="{{ asset('dist/js/pages/dashboard3.js')}}"></script> --}}
