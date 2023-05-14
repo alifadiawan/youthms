@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\JenisLayanan;
 use App\Models\Services;
+use App\Models\User;
+use Auth;
+use App\Notifications\NewMessageNotification;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 
@@ -16,7 +20,9 @@ class ServicesController extends Controller
     {
         $services = Services::paginate(9);
         $jenis_layanan = JenisLayanan::all();
-        return view('Admin.services.index', compact('services', 'jenis_layanan'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.services.index', compact('services', 'jenis_layanan', 'notifications'));
     }
 
     /**
@@ -25,7 +31,9 @@ class ServicesController extends Controller
     public function create()
     {
         $jenis_layanan = JenisLayanan::all();
-        return view('Admin.services.tambah', compact('jenis_layanan'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.services.tambah', compact('jenis_layanan', 'notifications'));
     }
 
     /**
@@ -47,6 +55,10 @@ class ServicesController extends Controller
         Services::create($data);
 
         notify()->success('Berhasil ditambahkan',$request->judul);
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Layanan Berhasil ditambahkan";
+        Notification::send($user, new NewMessageNotification($message));
 
         return redirect('services');
     }
@@ -58,7 +70,9 @@ class ServicesController extends Controller
     {
         $services = Services::find($id);
         $jenis_layanan = JenisLayanan::find($id);
-        return view('Admin.services.detail', compact('services', 'jenis_layanan'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.services.detail', compact('services', 'jenis_layanan', 'notifications'));
     }
 
     /**
@@ -69,7 +83,9 @@ class ServicesController extends Controller
 
         $services = Services::find($id);
         $jenis_layanan = JenisLayanan::all();
-        return view('Admin.services.edit', compact('services', 'jenis_layanan'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.services.edit', compact('services', 'jenis_layanan', 'notifications'));
     }
 
     /**
@@ -83,6 +99,10 @@ class ServicesController extends Controller
         $services->fill($input)->save();
 
         notify()->success('Perubahan telah tersimpan');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Perubahan telah tersimpan";
+        Notification::send($user, new NewMessageNotification($message));
 
         return redirect('/services');
     }
@@ -104,6 +124,10 @@ class ServicesController extends Controller
         $services->delete();
 
         notify()->success('Layanan telah dihapus');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Layanan telah dihapus";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('/services');
     }
 }

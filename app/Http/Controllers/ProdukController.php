@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\JenisLayanan;
 use App\Models\Produk;
 use App\Models\Services;
+use App\Models\User;
+use Auth;
+use App\Notifications\NewMessageNotification;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -16,7 +20,9 @@ class ProdukController extends Controller
     {
         $product = Produk::all();
         $services = Services::all();
-        return view('Admin.store.index' , compact('product' , 'services'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.store.index' , compact('product' , 'services', 'notifications'));
     }
 
     /**
@@ -25,7 +31,9 @@ class ProdukController extends Controller
     public function create()
     {
         $jenis_services = Services::all();    
-        return view('Admin.store.tambah' , compact('jenis_services'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.store.tambah' , compact('jenis_services', 'notifications'));
     }
 
     /**
@@ -37,6 +45,10 @@ class ProdukController extends Controller
         Produk::create($produk_baru);
 
         notify()->success('Berhasil ditambahkan',$request->nama_produk,);
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Produk Berhasil ditambahkan";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('/store');
     }
 
@@ -46,7 +58,9 @@ class ProdukController extends Controller
     public function show($id)
     {
         $product = Produk::find($id);
-        return view('Admin.store.detail', compact('product'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.store.detail', compact('product', 'notifications'));
     }
 
     /**
@@ -56,7 +70,9 @@ class ProdukController extends Controller
     {
         $product = Produk::find($id);
         $services = Services::all();
-        return view('Admin.store.edit' , compact('product' , 'services'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.store.edit' , compact('product' , 'services', 'notifications'));
     }
 
     /**
@@ -70,6 +86,10 @@ class ProdukController extends Controller
         $product->fill($input)->save();
 
         notify()->success('Produk berhasil diupdate');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Produk berhasil diupdate";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('/store');
     }
 
@@ -87,6 +107,10 @@ class ProdukController extends Controller
         $product->delete();
 
         notify()->success('Produk berhasil dihapus');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Produk berhasil dihapus";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('/store');
 
     }

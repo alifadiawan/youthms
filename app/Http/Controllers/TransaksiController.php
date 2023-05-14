@@ -6,6 +6,10 @@ use App\Models\JenisLayanan;
 use App\Models\Transaksi;
 use App\Models\Produk;
 use App\Models\Services;
+use App\Models\User;
+use Auth;
+use App\Notifications\NewMessageNotification;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -18,7 +22,11 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::all();
         $Produk = Produk::all('nama_produk');
         // return $Produk;
-        return view("Admin.transaction.index",compact('Produk'));
+
+        //untuk menampilkan notifikasi di topbar
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view("Admin.transaction.index",compact('Produk', 'notifications'));
     }
 
     /**
@@ -30,7 +38,11 @@ class TransaksiController extends Controller
         $produk = produk::all();
         $services = Services::all();
         // return $services;
-        return view("EU.transaction.index");
+      
+        //untuk menampilkan notifikasi di topbar
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view("EU.transaction.index", compact('produk', 'notifications'));
     }
 
     /**
@@ -46,7 +58,9 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
-        //
+        //untuk menampilkan notifikasi di topbar
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
     }
 
     /**
@@ -54,7 +68,9 @@ class TransaksiController extends Controller
      */
     public function edit(Transaksi $transaksi)
     {
-        //
+        //untuk menampilkan notifikasi di topbar
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
     }
 
     /**

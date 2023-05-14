@@ -14,6 +14,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\NotificationController;
 use App\Models\Services;
 
 /*
@@ -32,6 +33,7 @@ Route::middleware('guest')->group(function () {
     Route::resource('/', HomeController::class);
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'authenticate']);
+
 });
 
 //role admin
@@ -100,6 +102,10 @@ Route::middleware('auth')->group(function() {
     // Route::get('/pesan', function () {
     //     return view('Admin.chat.index');
     // });
+
+    //notif
+    Route::resource('notif', NotificationController::class);
+    Route::get('/read', [NotificationController::class, 'read'])->name('notif.read');
 });
 
 

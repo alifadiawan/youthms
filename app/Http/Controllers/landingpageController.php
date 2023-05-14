@@ -6,6 +6,10 @@ use App\Models\LandingText;
 use App\Models\LandingData;
 use App\Models\LandingIllustration;
 use App\Models\LandingPartner;
+use App\Notifications\NewMessageNotification;
+use Illuminate\Support\Facades\Notification;
+use App\Models\User;
+use Auth;
 use File;
 use Illuminate\Http\Request;
 
@@ -19,13 +23,17 @@ class landingpageController extends Controller
     {   
         $illustration = LandingIllustration::all();
         $partner = LandingPartner::paginate(1);
-        return view('Admin.landing_page.illustration', compact('illustration', 'partner'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.landing_page.illustration', compact('illustration', 'partner', 'notifications'));
     }
 
     public function edit_illustration($id)
     {   
         $illustration = LandingIllustration::find($id);
-        return view('Admin.landing_page.edit_illustration', compact('illustration'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.landing_page.edit_illustration', compact('illustration', 'notifications'));
     }
 
     public function update_illustration(Request $request, $id)
@@ -50,13 +58,19 @@ class landingpageController extends Controller
         $illustration->illustration = $nama_file;
         $illustration->save();
         notify()->success('Illustration Berhasil Diupdate !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Illustration Berhasil Diupdate !!";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('landing-page/illustration');
     }
 
     //landing partner
     public function create_partner()
     {
-        return view('Admin.landing_page.create_partner');
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.landing_page.create_partner', compact('notifications', 'notifications'));
     }
 
     public function store_partner(Request $request)
@@ -75,13 +89,19 @@ class landingpageController extends Controller
         ]);
 
         notify()->success('Partner Berhasil Ditambah !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Partner Berhasil Ditambah !!";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('landing-page/illustration');
     }
 
     public function edit_partner($id)
     {   
         $partner = LandingPartner::find($id);
-        return view('Admin.landing_page.edit_partner', compact('partner'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.landing_page.edit_partner', compact('partner', 'notifications'));
     }
 
     public function update_partner(Request $request, $id)
@@ -106,6 +126,10 @@ class landingpageController extends Controller
         $partner->partner = $nama_file;
         $partner->save();
         notify()->success('Partner Berhasil Diupdate !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Partner Berhasil Diupdate !!";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('landing-page/illustration');
     }
 
@@ -115,6 +139,10 @@ class landingpageController extends Controller
         File::delete('./partner/'.$partner->foto);
         $partner->delete();
         notify()->success('Partner Berhasil Dihapus !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Partner Berhasil Dihapus !!";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('landing-page/illustration');
     }
  
@@ -122,12 +150,16 @@ class landingpageController extends Controller
     public function data()
     {   
         $data = LandingData::paginate(1);
-        return view('Admin.landing_page.data', compact('data'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.landing_page.data', compact('data', 'notifications'));
     }
 
     public function create_data()
     {
-        return view('Admin.landing_page.create_data');
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.landing_page.create_data', compact('notifications'));
     }
 
     public function store_data(Request $request)
@@ -149,13 +181,19 @@ class landingpageController extends Controller
         ]);
 
         notify()->success('Testimonial Berhasil Ditambah !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Testimonial Baru Telah Ditambah !";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('landing-page/data');
     }
 
     public function edit_data($id)
     {
         $data = LandingData::find($id);
-        return view('Admin.landing_page.edit_data', compact('data'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.landing_page.edit_data', compact('data', 'notifications'));
     }
 
     public function update_data(Request $request, $id)
@@ -184,6 +222,10 @@ class landingpageController extends Controller
             $data->review = $request->review;
             $data->save();
             notify()->success('Testimonial Berhasil Diupdate !!');
+            // mengirim notifikasi
+            $user = Auth::user();
+            $message = "Testimonial Telah Diupdate !";
+            Notification::send($user, new NewMessageNotification($message));
             return redirect('landing-page/data');
         }
         else{
@@ -193,6 +235,10 @@ class landingpageController extends Controller
             $data->review = $request->review;
             $data->save();
             notify()->success('Testimonial Berhasil Diupdate !!');
+            // mengirim notifikasi
+            $user = Auth::user();
+            $message = "Testimonial Telah Diupdate !";
+            Notification::send($user, new NewMessageNotification($message));
             return redirect('landing-page/data');
 
         }
@@ -204,6 +250,10 @@ class landingpageController extends Controller
         File::delete('./testimonial/'.$data->foto);
         $data->delete();
         notify()->success('Testimonial Berhasil Dihapus !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Data Telah Dihapus !";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('landing-page/data');
     }
  
@@ -211,13 +261,17 @@ class landingpageController extends Controller
     public function text()
     {   
         $text = landingText::all();
-        return view('Admin.landing_page.text' , compact('text'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.landing_page.text' , compact('text', 'notifications'));
     }
  
     public function edit_text($id)
     {
         $text = LandingText::find($id);
-        return view('Admin.landing_page.edit_text', compact('text'));
+        $users = Auth::user();
+        $notifications = $users->unreadNotifications;
+        return view('Admin.landing_page.edit_text', compact('text', 'notifications'));
     }
 
     public function update_text(Request $request, $id)
@@ -226,6 +280,10 @@ class landingpageController extends Controller
         $input = $request->all();
         $text->update($input);
         notify()->success('Text Berhasil Diupdate !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Text Telah Diupdate !";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('landing-page/text');
     }
 
