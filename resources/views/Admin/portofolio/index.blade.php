@@ -115,7 +115,7 @@
                     </nav>
                 </div>
                 <div class="col text-right">
-                    <a href="" class="btn btn-success mb-2">Tambah</a>
+                    <a href="{{route('portofolio.create')}}" class="btn btn-success mb-2">Tambah</a>
                 </div>
             </div>
         </div>
