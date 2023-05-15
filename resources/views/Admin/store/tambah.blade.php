@@ -19,7 +19,7 @@
                     {{-- services --}}
                     <div class="form-group">
                         <label for="">Jenis Services</label>
-                        <select name="jenis_services_id" id="" class="form-control">
+                        <select name="services_id" id="" class="form-control">
                             <option value="" class="form-control">Pilih Services jika perlu</option>
                             @foreach ($jenis_services as $item)
                                 <option value="{{$item->id}}" class="form-control">{{$item->judul}}</option>

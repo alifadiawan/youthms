@@ -11,7 +11,7 @@
                 <thead class="text-white" style="background-color: #0EA1E2">
                     <tr>
                         <th>No</th>
-                        <th>Jenis Layanan</th>
+                        <th>Layanan</th>
                         <th>Nama</th>
                         <th>Harga</th>
                         <th>Action</th>
@@ -26,7 +26,7 @@
                         @foreach ($product as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->jenis_services->judul }}</td>
+                                <td>{{ $item->service->judul }}</td>
                                 <td>{{ $item->nama_produk }}</td>
                                 <td>{{ number_format( $item->harga) }}</td>
                                 <td>

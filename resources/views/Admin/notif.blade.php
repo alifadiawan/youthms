@@ -7,9 +7,9 @@
       </div>
     </div> -->
 
-    <a href="{{route('notif.read')}}" class="dropdown-item">
+    <li data-notification-id="{{ $notification->id }}" class="dropdown-item notification-item">
       <i class="fa-solid fa-circle-info"></i> {{ $notification->data['message'] }}
       <span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
-    </a>
+    </li>
   @endforeach
 @endif

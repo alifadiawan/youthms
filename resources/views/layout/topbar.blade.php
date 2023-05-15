@@ -68,10 +68,10 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">{{count($notifications)}}</span>
+          <span class="badge bell-badge badge-warning navbar-badge">{{count($notifications)}}</span>
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">{{count($notifications)}} Notifications</span>
+        <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header" id="notificationCount">{{count($notifications)}} Notifications</span>
           <div class="dropdown-divider"></div>
           <!-- <a href="#" class="dropdown-item">
             <i class="fa-solid fa-circle-info text-warning"></i> Produk Telah di Update
@@ -86,7 +86,7 @@
           </a> -->
 
           @include('Admin.notif')
-        </div>
+        </ul>
       </li>
     
 
@@ -132,3 +132,47 @@
           </div>
       </div>
   </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.notification-item').on('click', function(e) {
+            e.preventDefault();
+            
+            var notificationId = $(this).data('notification-id');
+            var notificationItem = $(this); // Simpan elemen notifikasi yang diklik
+            var notificationCount = $('#notificationCount'); // Simpan elemen yang berisi jumlah notifikasi
+
+            
+            $.ajax({
+                url: '/read/' + notificationId,
+                type: 'GET',
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    console.log(response.message);
+                    // Lakukan tindakan lain setelah notifikasi ditandai sebagai "dibaca"
+                    // Misalnya, perbarui tampilan notifikasi, tampilkan pesan sukses, dll.
+                    // Perbarui tampilan dropdown notifikasi
+                    notificationItem.remove(); // Hapus elemen notifikasi yang diklik dari tampilan dropdown
+                
+                    // Perbarui jumlah notifikasi yang belum dibaca
+                    var badge = $('.bell-badge');
+                    var unreadCount = parseInt(badge.text());
+                    badge.text(unreadCount - 1); // Kurangi jumlah notifikasi yang belum dibaca
+
+                    // Perbarui jumlah notifikasi yang belum dibaca
+                  var unreadCount = parseInt(notificationCount.text().trim());
+                  notificationCount.text(unreadCount - 1 + ' Notifications'); // Update jumlah notifikasi
+                
+                    // Lakukan tindakan lain setelah notifikasi ditandai sebagai "dibaca"
+                    // Misalnya, tampilkan pesan sukses, dll.
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                    // Lakukan tindakan jika terjadi kesalahan
+                }
+            });
+        });
+    });
+</script>

@@ -11,12 +11,7 @@ class Produk extends Model
     protected $table = 'produk';
     protected $guarded = [];
 
-    public function jenis_layanan()
-    {
-        return $this->belongsTo(JenisLayanan::class);
-    }
-
-    public function services()
+    public function service()
     {
         return $this->belongsTo(Services::class);
     }

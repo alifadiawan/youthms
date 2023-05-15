@@ -107,7 +107,7 @@ Route::middleware('auth')->group(function() {
 
     //notif
     Route::resource('notif', NotificationController::class);
-    Route::get('/read', [NotificationController::class, 'read'])->name('notif.read');
+    Route::get('/read/{notificationId}', [NotificationController::class, 'read'])->name('notif.read');
 });
 
 
