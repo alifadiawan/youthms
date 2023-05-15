@@ -16,6 +16,10 @@
                         <input type="text" class="form-control" name="judul" id="judul" aria-describedby="helpId" value="{{$data->judul}}" disabled>
                     </div>
                     <div class="form-group">
+                        <label for="author">Author</label>
+                        <input type="text" class="form-control" name="author" id="author" aria-describedby="helpId" value="{{$data->users->username}}" disabled>
+                    </div>
+                    <div class="form-group">
                         <label for="Tanggal">Tanggal</label>
                         <input type="date" class="form-control" name="tanggal" id="tanggal"
                             aria-describedby="helpId" value="{{$data->tanggal}}" disabled>

@@ -9,7 +9,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SegmenController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
@@ -76,8 +76,8 @@ Route::middleware('auth')->group(function() {
     Route::resource('transaksi', TransaksiController::class);
 
     //user
-    Route::post('jabatan', [JabatanController::class, 'store'])->name('jabatan.store');
-    Route::get('jabatan/{id}/hapus', [JabatanController::class, 'hapus'])->name('jabatan.hapus');
+    Route::post('role', [RoleController::class, 'store'])->name('role.store');
+    Route::get('role/{id}/hapus', [RoleController::class, 'hapus'])->name('role.hapus');
     Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
     Route::resource('user', UserController::class);
 
