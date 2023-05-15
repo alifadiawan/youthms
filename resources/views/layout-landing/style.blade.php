@@ -9,8 +9,7 @@
 </script>
 
 <style>
-
-    .content{
+    .content {
         margin-top: 150px;
         margin-bottom: 150px;
     }
@@ -19,11 +18,6 @@
         background: #4070B5;
         word-spacing: 50px;
         transition: all 0.5s;
-    }
-
-    .navbar-scrolled {
-        background-color: white;
-        color: black;
     }
 
     .btn-login {
@@ -48,14 +42,32 @@
         border-radius: 80px 80px 80px 80px;
     }
 
-    /* Testimonial*/
+    /* store page */
+    #thumbnail {
+        position: relative;
+    }
 
-    /* end testimonial */
+    #caption {
+        position: absolute;
+        top: 45%;
+        left: 1%;
+        width: 30%;
+    }
+
+    @media (min-width: 576px) {
+        .caption {
+            position: absolute;
+            top: 10%;
+            left: 1%;
+            width: 10%;
+        }
+    }
+
+
 
     /* Footer */
-    #footer{
+    #footer {
         background-color: #4070B5;
         height: 30vh;
     }
-    /*  */
 </style>

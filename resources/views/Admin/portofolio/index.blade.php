@@ -115,7 +115,7 @@
                     </nav>
                 </div>
                 <div class="col text-right">
-                    <a href="{{route('portofolio.create')}}" class="btn btn-success mb-2">Tambah</a>
+                    <a href="{{ route('portofolio.create') }}" class="btn btn-success mb-2">Tambah</a>
                 </div>
             </div>
         </div>
@@ -134,11 +134,19 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <img src="{{ asset('/illustration/bmw.jpg') }}" class="card-img-top" style="width: 500px">  
-                    </div>
-                </div>
+                <ul id="lightSlider">
+                    <li>
+                        <img src="{{ asset('/illustration/bmw.jpg') }}" class="card-img-top">
+                        <h3>First Slide</h3>
+                        <p>Lorem ipsum Cupidatat quis pariatur anim.</p>
+                    </li>
+                    <li>
+                        <img src="{{ asset('/illustration/bmw.jpg') }}" class="card-img-top">
+                        <h3>Second Slide</h3>
+                        <p>Lorem ipsum Excepteur amet adipisicing fugiat velit nisi.</p>
+                    </li>
+                    ...
+                </ul>
             </div>
         </div>
     </div>
@@ -166,7 +174,15 @@
     .modal .modal-body {
         overflow-y: auto;
     }
+
+    .splide__slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 </style>
+
+
 
 
 

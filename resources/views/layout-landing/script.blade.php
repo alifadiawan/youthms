@@ -6,6 +6,7 @@
 <script>
     AOS.init();
 </script>
+
 {{-- <script>
     const navEl = document.querySelector(.navbar);
 

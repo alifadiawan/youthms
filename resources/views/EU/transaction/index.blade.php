@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('layout-landing.body')
 @section('content')
 @section('judul', 'Transaction')
 <div class="card">
