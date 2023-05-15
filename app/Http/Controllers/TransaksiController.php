@@ -32,11 +32,12 @@ class TransaksiController extends Controller
         //     ->join('services', 'produk.jenis_services_id', '=', 'services.id')
         //     ->select('produk.jenis_services_id', 'services.id')
         //     ->get();
-            $p= produk::where('jenis_services_id', '>', '0')->with('services')->get();
-            return $p;
+            // $p= produk::where('jenis_services_id', '>', '0')->with('services')->get();
+            // return $p;
         // $Produk = Produk::where()->with('services')->get();
         // return $produk;
         // return $Produk;
+        $Produk = 'a';
 
         //
         return view("Admin.transaction.index",compact('Produk'));

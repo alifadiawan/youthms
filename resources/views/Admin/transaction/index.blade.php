@@ -14,12 +14,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($p as $item)
+                {{-- @foreach ($p as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item }}</td>
                     </tr>
-                @endforeach
+                @endforeach --}}
                 <tr>
                     <td scope="row">1</td>
                     <td>Maulana Gustaf</td>
