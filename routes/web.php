@@ -13,6 +13,7 @@ use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EUController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PortofolioController;
@@ -32,9 +33,21 @@ use App\Models\Services;
 
 //guest
 Route::middleware('guest')->group(function () {
-    Route::resource('/', HomeController::class);
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'authenticate']);
+
+    //landing page EU
+    Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
+    
+    //Store EU
+    Route::get('/store/all', [EUController::class, 'store'])->name('storeEU.index');
+    Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
+    Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
+
+    //cart
+    Route::get('/cart', function () {
+        return view('EU.transaction.cart');
+    });
 
 });
 
@@ -107,7 +120,7 @@ Route::middleware('auth')->group(function() {
 
     //notif
     Route::resource('notif', NotificationController::class);
-    Route::get('/read', [NotificationController::class, 'read'])->name('notif.read');
+    Route::get('/read/{notificationId}', [NotificationController::class, 'read'])->name('notif.read');
 });
 
 

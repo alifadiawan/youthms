@@ -20,9 +20,7 @@ class BlogController extends Controller
     {
         $segmen = Segmen::all();
         $data = Blog::all();
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.blog.index', compact('data','segmen', 'notifications'));
+        return view('Admin.blog.index', compact('data','segmen'));
     }
 
     /**
@@ -31,9 +29,7 @@ class BlogController extends Controller
     public function create()
     {
         $segmen = Segmen::all();
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.blog.add', compact('segmen', 'notifications'));
+        return view('Admin.blog.add', compact('segmen'));
     }
 
     /**
@@ -93,9 +89,7 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         $data = Blog::find($blog->id);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.blog.detail', compact('data', 'notifications'));
+        return view('Admin.blog.detail', compact('data'));
     }
 
     /**
@@ -105,9 +99,7 @@ class BlogController extends Controller
     {
         $segmen = Segmen::all();
         $data = Blog::find($blog->id);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.blog.edit', compact('data', 'segmen', 'notifications'));
+        return view('Admin.blog.edit', compact('data', 'segmen'));
     }
 
     /**

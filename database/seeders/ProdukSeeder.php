@@ -13,7 +13,7 @@ class ProdukSeeder extends Seeder
      */
     public function run(): void
     {
-        $j = 'jenis_services_id';
+        $j = 'services_id';
         $n = 'nama_produk';
         $h =  'harga';
         $d = 'deskripsi';
