@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jabatan;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
-class JabatanController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,16 +28,13 @@ class JabatanController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        Jabatan::create($input);
-        notify()->success('Jabatan Berhasil Ditambahkan !!');
-        return redirect('user');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Jabatan $jabatan)
+    public function show(Role $role)
     {
         //
     }
@@ -45,7 +42,7 @@ class JabatanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Jabatan $jabatan)
+    public function edit(Role $role)
     {
         //
     }
@@ -53,7 +50,7 @@ class JabatanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Jabatan $jabatan)
+    public function update(Request $request, Role $role)
     {
         //
     }
@@ -61,16 +58,17 @@ class JabatanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jabatan $jabatan)
+    public function destroy(Role $role)
     {
         //
     }
 
     public function hapus($id)
     {
-        $jabatan = Jabatan::find($id);
-        $jabatan->delete();
-        notify()->success('Jabatan Berhasil Dihapus !!');
+        $Role = Role::find($id);
+        $Role->delete();
+        notify()->success('Role Berhasil Dihapus !!');
         return redirect('user');
     }
+
 }

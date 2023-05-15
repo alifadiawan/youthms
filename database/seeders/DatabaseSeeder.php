@@ -18,12 +18,13 @@ class DatabaseSeeder extends Seeder
         return $this->call([
             // dashboard
             LandingSeeder::class,
-            JabatanSeeder::class,
+            RoleSeeder::class,
             UserSeeder::class,
 
             // end user
             MemberSeeder::class,
             TransaksiSeeder::class,
+            DetailTransaksiSeeder::class,
 
             // produk
             Jenis_LayananSeeder::class,

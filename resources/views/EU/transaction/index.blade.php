@@ -19,8 +19,7 @@
                             data-parent="#accordion">
                             <div class="card-body">
                                 <label for="FormControl">Pilih item:</label>
-                                <select class="form-control custom-scroll" id="FormControl" size="3"
-                                    multiple>
+                                <select class="form-control custom-scroll" id="FormControl" size="3" multiple>
                                     <option>Item 1</option>
                                     <option>Item 2</option>
                                     <option>Item 3</option>
@@ -90,8 +89,8 @@
 
 <style>
     #FormControl {
-    max-height: 7000px;
-    overflow-y: auto;
-}
+        max-height: 7000px;
+        overflow-y: auto;
+    }
 </style>
 @endsection

@@ -6,11 +6,15 @@ use App\Models\JenisLayanan;
 use App\Models\Transaksi;
 use App\Models\Produk;
 use App\Models\Services;
+
+//untuk notif
 use App\Models\User;
-use Auth;
+// use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransaksiController extends Controller
 {
@@ -20,8 +24,20 @@ class TransaksiController extends Controller
     public function index()
     {
         $transaksi = Transaksi::all();
-        $Produk = Produk::all('nama_produk');
+        $services = Services::all();
+        $jenis_layanan = JenisLayanan::all();
+        // $Produk = Produk::where()->get();
+        // $Produk = Produk::all();
+        // $produk = DB::table('produk')
+        //     ->join('services', 'produk.jenis_services_id', '=', 'services.id')
+        //     ->select('produk.jenis_services_id', 'services.id')
+        //     ->get();
+            // $p= produk::where('jenis_services_id', '>', '0')->with('services')->get();
+            // return $p;
+        // $Produk = Produk::where()->with('services')->get();
+        // return $produk;
         // return $Produk;
+        $Produk = 'a';
 
         //
         return view("Admin.transaction.index",compact('Produk'));

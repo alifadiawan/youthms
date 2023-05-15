@@ -24,7 +24,8 @@ class MemberSeeder extends Seeder
 
                 // client
                 // customer
-                'role' => "customer"
+                
+                'user_id' => '2'
             ],
             [
                 'id_member' => 2,
@@ -35,7 +36,7 @@ class MemberSeeder extends Seeder
 
                 // client
                 // customer
-                'role' => "customer"
+                'user_id' => '2'
             ],
             [
                 'id_member' => 3,
@@ -46,7 +47,7 @@ class MemberSeeder extends Seeder
 
                 // client
                 // customer
-                'role' => "client"
+                'user_id' => '2'
             ],
 
         ];
