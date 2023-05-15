@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\EU;
 use Illuminate\Http\Request;
 use App\Models\visitor;
+use App\Models\Services;
+use App\Models\Produk;
+use App\Models\JenisLayanan;
 
 class EUController extends Controller
 {
@@ -33,17 +36,38 @@ class EUController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+    public function storeindex()
+    {
+        $layanan = JenisLayanan::all();
+        // return true;
+        // return $layanan;
+        return view('EU.store.index', compact('layanan'));
+    }
+
     public function store(Request $request)
     {
+        return true;
         //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(EU $eU)
+    public function show(EU $eU, $id)
     {
-        //
+        $s = Services::all();
+        $layanan = JenisLayanan::all();
+        $services = Services::where('jenis_layanan_id', $id)->get();
+        $idservices = $services->pluck('id');
+        $jenis_layanan = JenisLayanan::find($id);
+        // return $jenis_layanan;
+        foreach ($services as $serv) {
+            $produk[$serv->id] = produk::where('services_id', $serv->id)->with('services')->get();
+        }
+        $produk = collect($produk)->flatten();
+        
+        return view('EU.store.show',compact('layanan','produk','jenis_layanan'));
     }
 
     /**

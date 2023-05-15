@@ -16,12 +16,13 @@ return new class extends Migration
             $table->integer('subtotal');
             $table->unsignedBigInteger('transaksi_id');
             $table->foreign('transaksi_id')->references('id')->on('transaksi')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');        
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->unsignedBigInteger('produk_id');
             $table->foreign('produk_id')->references('id')->on('produk')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

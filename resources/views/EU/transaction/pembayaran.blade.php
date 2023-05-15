@@ -14,24 +14,18 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        {{-- @foreach ($cart as $c)
                         <tr>
-                            <td></td>
+                            <td>Full Marketing Web</td>
+                            <td>1</td>
+                            <td>Rp. 1.000.000</td>
                         </tr>
-                        @endforeach --}}
-                            <tr>
-                                <td>Full Marketing Web</td>
-                                <td>
-                                    <input type="number" class="form-control" name="quantity" min="1" id="quantity">
-                                </td>
-                                <td>
-                                </td>
-                                <td><button class="btn btn-danger">batalkan</button></td>
-                            </tr>
+                        <tr>
+                            <td>Desain feed Instagram</td>
+                            <td>1</td>
+                            <td>Rp. 300.000</td>
+                        </tr>
                         <th colspan="2" class="text-end">TOTAL : </th>
                         <th class="text-start">RP. 2.000.000</th>
-                        <th class="text-start"><button href="" class="btn button-primary">checkout</button></th>
                     </tbody>
                     <thead>
                     </thead>
@@ -89,8 +83,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        var qty = document.getelementbyid("quantity");
-    </script>
 @endsection

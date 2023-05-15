@@ -9,7 +9,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SegmenController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\JabatanController;
+// use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
@@ -40,9 +40,11 @@ Route::middleware('guest')->group(function () {
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
     
     //Store EU
-    Route::get('/store/all', [EUController::class, 'store'])->name('storeEU.index');
+    Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
     Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
     Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
+    Route::resource('/store', EUController::class);
+    route::get('/store/{id}',[EUController::class,'show']);
 
     //cart
     Route::get('/cart', function () {
@@ -76,8 +78,8 @@ Route::middleware('auth')->group(function() {
     Route::resource('transaksi', TransaksiController::class);
 
     //user
-    Route::post('jabatan', [JabatanController::class, 'store'])->name('jabatan.store');
-    Route::get('jabatan/{id}/hapus', [JabatanController::class, 'hapus'])->name('jabatan.hapus');
+    // Route::post('jabatan', [JabatanController::class, 'store'])->name('jabatan.store');
+    // Route::get('jabatan/{id}/hapus', [JabatanController::class, 'hapus'])->name('jabatan.hapus');
     Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
     Route::resource('user', UserController::class);
 
