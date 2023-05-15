@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             // end user
             MemberSeeder::class,
             TransaksiSeeder::class,
+            DetailTransaksiSeeder::class,
 
             // produk
             Jenis_LayananSeeder::class,

@@ -14,9 +14,9 @@
                 </tr>
             </thead>
             <tbody>
-                <div class="container text-center">
+                {{-- <div class="container text-center">
                     <a href="{{ route('transaksi.create') }}" type="button" class="btn btn-success">buat transaksi</a>
-                </div>
+                </div> --}}
                 <tr>
                     <td scope="row">1</td>
                     <td>Maulana Gustaf</td>

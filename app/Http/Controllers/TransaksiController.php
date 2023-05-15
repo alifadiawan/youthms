@@ -23,6 +23,8 @@ class TransaksiController extends Controller
     public function index()
     {
         $transaksi = Transaksi::all();
+        $services = Services::all();
+        $jenis_layanan = JenisLayanan::all();
         $Produk = Produk::all('nama_produk');
         // return $Produk;
 
