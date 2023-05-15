@@ -16,6 +16,9 @@
     <div class="container mb-5">
         {{-- navbar kategori --}}
         <div class="d-flex flex-row text-center">
+            {{-- <a href="{{ route('storeEU.index') }}" class="btn my-3 active">All</a>
+            <a href="{{ route('storeEU.editing') }}" class="btn my-3">Editing</a>
+            <a href="{{ route('storeEU.design') }}" class="btn my-3">Design</a> --}}
             <a href="{{ route('storeEU.index') }}" class="btn my-3 active">All</a>
             <a href="{{ route('storeEU.editing') }}" class="btn my-3">Editing</a>
             <a href="{{ route('storeEU.design') }}" class="btn my-3">Design</a>

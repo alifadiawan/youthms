@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EU;
 use Illuminate\Http\Request;
 use App\Models\visitor;
 
 class EUController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index(Request $request)
     {
         $ip = $request->ip();
@@ -18,18 +22,51 @@ class EUController extends Controller
         return view('landing-page');
     }
 
-    public function store()
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        return view('EU.store.index');
+        //
     }
 
-    public function editing()
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        return view('EU.store.editing');
+        //
     }
 
-    public function design()
+    /**
+     * Display the specified resource.
+     */
+    public function show(EU $eU)
     {
-        return view('EU.store.design');
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(EU $eU)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, EU $eU)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(EU $eU)
+    {
+        //
     }
 }

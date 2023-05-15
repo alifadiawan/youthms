@@ -56,8 +56,8 @@ Route::middleware('auth')->group(function() {
     Route::resource('/dashboard', DashboardController::class);
 
     //store
-    Route::resource('store', ProdukController::class);
-    Route::get('/store/{id}/hapus', [ProdukController::class, 'hapus'])->name('store.hapus');
+    Route::resource('adm_store', ProdukController::class);
+    Route::get('/adm_store/{id}/hapus', [ProdukController::class, 'hapus'])->name('store.hapus');
 
     //services
     Route::resource('services', ServicesController::class);
