@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         return $this->call([
             // dashboard
             LandingSeeder::class,
-            JabatanSeeder::class,
+            RoleSeeder::class,
             UserSeeder::class,
 
             // end user
@@ -30,6 +30,9 @@ class DatabaseSeeder extends Seeder
             Jenis_LayananSeeder::class,
             ServicesSeeder::class,
             ProdukSeeder::class,
+
+            //misc
+            VisitorSeeder::class,
 
         ]);
     }

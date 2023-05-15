@@ -13,12 +13,12 @@ class DetailTransaksiSeeder extends Seeder
      */
     public function run(): void
     {
-        $a = [
-            'subtotal' => '',
-            'transaksi_id' => '',
-            'produk_id' => '',
-        ];
+        // $a = [
+        //     'subtotal' => '',
+        //     'transaksi_id' => '',
+        //     'produk_id' => '',
+        // ];
 
-        TransaksiDetail::insert();
+        // TransaksiDetail::insert();
     }
 }

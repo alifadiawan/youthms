@@ -15,6 +15,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PortofolioController;
+use App\Models\portofolio;
 use App\Models\Services;
 
 /*
@@ -98,10 +100,10 @@ Route::middleware('auth')->group(function() {
     Route::get('/landing-page/text/{id}/edit', [landingpageController::class, 'edit_text'])->name('landing.text_edit');
     Route::get('/landing-page/text/{id}/update', [landingpageController::class, 'update_text'])->name('landing.text_update');
 
-    //pesan
-    // Route::get('/pesan', function () {
-    //     return view('Admin.chat.index');
-    // });
+    //portofolio
+    Route::resource('/portofolio', PortofolioController::class);
+    Route::get('/edit', [PortofolioController::class, 'test'])->name('portofolio.test');
+    Route::get('/tambah', [PortofolioController::class, 'test'])->name('portofolio.tambah');
 
     //notif
     Route::resource('notif', NotificationController::class);

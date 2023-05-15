@@ -9,7 +9,6 @@
                 <div class="card-header border-0">
                     <div class="d-flex justify-content-between">
                         <h3 class="card-title">{{ $chart1->options['chart_title'] }}</h3>
-                        <a href="javascript:void(0);">View Report</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -25,13 +24,10 @@
                 <div class="card-header border-0">
                     <div class="d-flex justify-content-between">
                         <h3 class="card-title">{{ $chart2->options['chart_title'] }}</h3>
-                        <a href="javascript:void(0);">View Report</a>
                     </div>
                 </div>
                 <div class="card-body">
                     {!! $chart2->renderHtml() !!}
-
-
                 </div>
             </div>
         </div>
@@ -40,13 +36,10 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header border-0">
-                    <h3 class="card-title">Products</h3>
+                    <h3 class="card-title">Transaksi Terbaru</h3>
                     <div class="card-tools">
                         <a href="#" class="btn btn-tool btn-sm">
                             <i class="fas fa-download"></i>
-                        </a>
-                        <a href="#" class="btn btn-tool btn-sm">
-                            <i class="fas fa-bars"></i>
                         </a>
                     </div>
                 </div>
@@ -54,91 +47,67 @@
                     <table class="table table-striped table-valign-middle">
                         <thead>
                             <tr>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Sales</th>
-                                <th>More</th>
+                                <th>Produk</th>
+                                <th>Tanggal Pembelian</th>
+                                <th>Nama Pembeli</th>
+                                <th>More Info</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
-                                    <img src="dist/img/default-150x150.png" alt="Product 1"
-                                        class="img-circle img-size-32 mr-2">
-                                    Some Product
-                                </td>
-                                <td>$13 USD</td>
-                                <td>
-                                    <small class="text-success mr-1">
-                                        <i class="fas fa-arrow-up"></i>
-                                        12%
-                                    </small>
-                                    12,000 Sold
-                                </td>
-                                <td>
-                                    <a href="#" class="text-muted">
-                                        <i class="fas fa-search"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="dist/img/default-150x150.png" alt="Product 1"
-                                        class="img-circle img-size-32 mr-2">
-                                    Another Product
-                                </td>
-                                <td>$29 USD</td>
-                                <td>
-                                    <small class="text-warning mr-1">
-                                        <i class="fas fa-arrow-down"></i>
-                                        0.5%
-                                    </small>
-                                    123,234 Sold
-                                </td>
-                                <td>
-                                    <a href="#" class="text-muted">
-                                        <i class="fas fa-search"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="dist/img/default-150x150.png" alt="Product 1"
-                                        class="img-circle img-size-32 mr-2">
-                                    Amazing Product
-                                </td>
-                                <td>$1,230 USD</td>
-                                <td>
-                                    <small class="text-danger mr-1">
-                                        <i class="fas fa-arrow-down"></i>
-                                        3%
-                                    </small>
-                                    198 Sold
-                                </td>
-                                <td>
-                                    <a href="#" class="text-muted">
-                                        <i class="fas fa-search"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="dist/img/default-150x150.png" alt="Product 1"
-                                        class="img-circle img-size-32 mr-2">
-                                    Perfect Item
                                     <span class="badge bg-danger">NEW</span>
+                                    Aplikasi Kasir
                                 </td>
-                                <td>$199 USD</td>
                                 <td>
-                                    <small class="text-success mr-1">
-                                        <i class="fas fa-arrow-up"></i>
-                                        63%
-                                    </small>
-                                    87 Sold
+                                    13 Mei 2023
                                 </td>
+                                <td>Steven</td>
+                                <td>
+                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#exampleModal">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    React Native
+                                </td>
+                                <td>
+                                    3 Mei 2023
+                                </td>
+                                <td>Ilham</td>
+                                <td>
+                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#exampleModal">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Logo
+                                </td>
+                                <td>
+                                    28 April 2023
+                                </td>
+                                <td>Alif</td>
+                                <td>
+                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#exampleModal">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Web Profile
+                                </td>
+                                <td>
+                                    20 April 2023
+                                </td>
+                                <td>Rafli</td>
                                 <td>
                                     <a href="#" class="text-muted">
-                                        <i class="fas fa-search"></i>
+                                        <i class="fa-solid fa-circle-info"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -149,6 +118,8 @@
         </div>
 
     </div>
+
+
 
     <!-- Dashboard Charts -->
     {!! $chart1->renderChartJsLibrary() !!}

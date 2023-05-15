@@ -22,19 +22,19 @@ class LandingSeeder extends Seeder
         ]);
 
         LandingData::create([
-            'foto' => 'coba-testi.png',
+            'foto' => 'partner3.png',
             'nama' => 'Steven Alden',
             'jabatan' => 'Direktur Perusahaan',
             'review' => 'jadi youthms.id ini blablablabla',
         ]);
 
         LandingIllustration::create([
-            'illustration' => 'Glowillustration.png',
+            'illustration' => 'group-390.png',
         ]);
 
         $partner = [
-            ['partner' => 'partner1.png'],
-            ['partner' => 'partner2.png'],
+            ['partner' => 'partner3.png'],
+            ['partner' => 'partner3.png'],
             ['partner' => 'partner3.png'],
             ['partner' => 'partner4.png'],
         ];
