@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('produk', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('jenis_services_id');
-            $table->foreign('jenis_services_id')->references('id')->on('services')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
             $table->string('nama_produk');
             $table->integer('harga');
             $table->text('deskripsi');
+            $table->unsignedBigInteger('services_id');
+            $table->foreign('services_id')->references('id')->on('services')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

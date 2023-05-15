@@ -15,9 +15,4 @@ class JenisLayanan extends Model
     {
         return $this->hasMany(Services::class);
     }
-
-    public function produk()
-    {
-        return $this->hasMany(Produk::class);
-    }
 }

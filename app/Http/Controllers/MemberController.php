@@ -17,9 +17,8 @@ class MemberController extends Controller
     public function index()
     {
         $member = Member::all();
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.member.index', compact('member', 'notifications'));    
+        
+        return view('Admin.member.index', compact('member'));    
     }
 
     /**
@@ -27,9 +26,8 @@ class MemberController extends Controller
      */
     public function create()
     {
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.member.add-member', compact('notifications'));
+        
+        return view('Admin.member.add-member');
     }
 
     /**
@@ -58,9 +56,8 @@ class MemberController extends Controller
     public function show($id)
     {
         $member = Member::find($id);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.member.member-detail', compact('member', 'notifications'));
+        
+        return view('Admin.member.member-detail', compact('member'));
     }
 
     /**
@@ -69,9 +66,8 @@ class MemberController extends Controller
     public function edit($id)
     {
         $member = Member::find($id);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.member.edit-member', compact('member', 'notifications'));
+        
+        return view('Admin.member.edit-member', compact('member'));
     }
 
     /**

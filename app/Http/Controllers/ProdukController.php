@@ -20,9 +20,8 @@ class ProdukController extends Controller
     {
         $product = Produk::all();
         $services = Services::all();
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.store.index' , compact('product' , 'services', 'notifications'));
+        
+        return view('Admin.store.index' , compact('product' , 'services'));
     }
 
     /**
@@ -31,9 +30,8 @@ class ProdukController extends Controller
     public function create()
     {
         $jenis_services = Services::all();    
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.store.tambah' , compact('jenis_services', 'notifications'));
+        
+        return view('Admin.store.tambah' , compact('jenis_services'));
     }
 
     /**
@@ -58,9 +56,8 @@ class ProdukController extends Controller
     public function show($id)
     {
         $product = Produk::find($id);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.store.detail', compact('product', 'notifications'));
+        
+        return view('Admin.store.detail', compact('product'));
     }
 
     /**
@@ -70,9 +67,8 @@ class ProdukController extends Controller
     {
         $product = Produk::find($id);
         $services = Services::all();
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.store.edit' , compact('product' , 'services', 'notifications'));
+        
+        return view('Admin.store.edit' , compact('product' , 'services'));
     }
 
     /**

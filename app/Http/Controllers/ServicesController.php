@@ -20,9 +20,8 @@ class ServicesController extends Controller
     {
         $services = Services::paginate(9);
         $jenis_layanan = JenisLayanan::all();
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.services.index', compact('services', 'jenis_layanan', 'notifications'));
+        
+        return view('Admin.services.index', compact('services', 'jenis_layanan'));
     }
 
     /**
@@ -31,9 +30,8 @@ class ServicesController extends Controller
     public function create()
     {
         $jenis_layanan = JenisLayanan::all();
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.services.tambah', compact('jenis_layanan', 'notifications'));
+        
+        return view('Admin.services.tambah', compact('jenis_layanan'));
     }
 
     /**
@@ -70,9 +68,8 @@ class ServicesController extends Controller
     {
         $services = Services::find($id);
         $jenis_layanan = JenisLayanan::find($id);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.services.detail', compact('services', 'jenis_layanan', 'notifications'));
+        
+        return view('Admin.services.detail', compact('services', 'jenis_layanan'));
     }
 
     /**
@@ -83,9 +80,8 @@ class ServicesController extends Controller
 
         $services = Services::find($id);
         $jenis_layanan = JenisLayanan::all();
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.services.edit', compact('services', 'jenis_layanan', 'notifications'));
+        
+        return view('Admin.services.edit', compact('services', 'jenis_layanan'));
     }
 
     /**

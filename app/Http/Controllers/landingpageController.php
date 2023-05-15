@@ -23,17 +23,15 @@ class landingpageController extends Controller
     {   
         $illustration = LandingIllustration::all();
         $partner = LandingPartner::paginate(1);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.landing_page.illustration', compact('illustration', 'partner', 'notifications'));
+    
+        return view('Admin.landing_page.illustration', compact('illustration', 'partner'));
     }
 
     public function edit_illustration($id)
     {   
         $illustration = LandingIllustration::find($id);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.landing_page.edit_illustration', compact('illustration', 'notifications'));
+    
+        return view('Admin.landing_page.edit_illustration', compact('illustration'));
     }
 
     public function update_illustration(Request $request, $id)
@@ -68,9 +66,8 @@ class landingpageController extends Controller
     //landing partner
     public function create_partner()
     {
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.landing_page.create_partner', compact('notifications', 'notifications'));
+    
+        return view('Admin.landing_page.create_partner');
     }
 
     public function store_partner(Request $request)
@@ -99,9 +96,8 @@ class landingpageController extends Controller
     public function edit_partner($id)
     {   
         $partner = LandingPartner::find($id);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.landing_page.edit_partner', compact('partner', 'notifications'));
+    
+        return view('Admin.landing_page.edit_partner', compact('partner'));
     }
 
     public function update_partner(Request $request, $id)
@@ -150,16 +146,14 @@ class landingpageController extends Controller
     public function data()
     {   
         $data = LandingData::paginate(1);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.landing_page.data', compact('data', 'notifications'));
+    
+        return view('Admin.landing_page.data', compact('data'));
     }
 
     public function create_data()
     {
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.landing_page.create_data', compact('notifications'));
+    
+        return view('Admin.landing_page.create_data');
     }
 
     public function store_data(Request $request)
@@ -191,9 +185,8 @@ class landingpageController extends Controller
     public function edit_data($id)
     {
         $data = LandingData::find($id);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.landing_page.edit_data', compact('data', 'notifications'));
+    
+        return view('Admin.landing_page.edit_data', compact('data'));
     }
 
     public function update_data(Request $request, $id)
@@ -261,17 +254,15 @@ class landingpageController extends Controller
     public function text()
     {   
         $text = landingText::all();
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.landing_page.text' , compact('text', 'notifications'));
+    
+        return view('Admin.landing_page.text' , compact('text'));
     }
  
     public function edit_text($id)
     {
         $text = LandingText::find($id);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.landing_page.edit_text', compact('text', 'notifications'));
+    
+        return view('Admin.landing_page.edit_text', compact('text'));
     }
 
     public function update_text(Request $request, $id)

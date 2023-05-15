@@ -38,10 +38,8 @@ class DashboardController extends Controller
             'chart_color' =>  "51, 133, 255"
         ];
         $chart2 = new LaravelChart($penjualan);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
 
-        return view('Admin.dashboard' , compact('chart1', 'chart2', 'notifications'));
+        return view('Admin.dashboard' , compact('chart1', 'chart2'));
     }
 
     /**

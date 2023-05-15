@@ -18,9 +18,8 @@ class UserController extends Controller
     {
         $user = User::all();
         $jabatan = Jabatan::all();
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.user.index', compact('user', 'jabatan', 'notifications'));
+        
+        return view('Admin.user.index', compact('user', 'jabatan'));
     }
 
     /**
@@ -29,9 +28,8 @@ class UserController extends Controller
     public function create()
     {
         $jabatan = Jabatan::all();
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.user.add-user', compact('jabatan', 'notifications'));
+        
+        return view('Admin.user.add-user', compact('jabatan'));
     }
 
     /**
@@ -61,9 +59,8 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = User::find($id);
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.user.user-detail', compact('user', 'notifications'));
+        
+        return view('Admin.user.user-detail', compact('user'));
     }
 
     /**
@@ -73,9 +70,8 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $jabatan = Jabatan::all();
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view('Admin.user.edit-user', compact('user', 'jabatan', 'notifications'));
+        
+        return view('Admin.user.edit-user', compact('user', 'jabatan'));
     }
 
     /**

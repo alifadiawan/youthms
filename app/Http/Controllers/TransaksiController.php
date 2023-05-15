@@ -23,10 +23,8 @@ class TransaksiController extends Controller
         $Produk = Produk::all('nama_produk');
         // return $Produk;
 
-        //untuk menampilkan notifikasi di topbar
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view("Admin.transaction.index",compact('Produk', 'notifications'));
+        //
+        return view("Admin.transaction.index",compact('Produk'));
     }
 
     /**
@@ -39,10 +37,8 @@ class TransaksiController extends Controller
         $services = Services::all();
         // return $services;
       
-        //untuk menampilkan notifikasi di topbar
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
-        return view("EU.transaction.index", compact('produk', 'notifications'));
+        //
+        return view("EU.transaction.index", compact('produk'));
     }
 
     /**
@@ -58,9 +54,7 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
-        //untuk menampilkan notifikasi di topbar
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
+        //
     }
 
     /**
@@ -68,9 +62,7 @@ class TransaksiController extends Controller
      */
     public function edit(Transaksi $transaksi)
     {
-        //untuk menampilkan notifikasi di topbar
-        $users = Auth::user();
-        $notifications = $users->unreadNotifications;
+        //
     }
 
     /**
