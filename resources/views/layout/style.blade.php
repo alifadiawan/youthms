@@ -11,6 +11,9 @@
 
   <!-- Data AOS Anitamtion-->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- Portofolio Carousel -->
+  <link type="text/css" rel="stylesheet" href="css/lightslider.css" /> 
   
 <style>
   @media only screen and (min-width: 1026px) {
