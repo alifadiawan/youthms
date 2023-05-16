@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('transaksi', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamp('tanggal');
+            // $table->integer('');
             $table->integer('total');
             $table->integer('total_bayar');
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')->references('id')->on('member')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
