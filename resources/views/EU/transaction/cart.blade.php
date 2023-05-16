@@ -38,7 +38,7 @@
     <!-- Metode Pembayaran -->
     <div class="container my-5">
         <h5>Metode Pembayaran :</h5>
-        <div class="d-flex flex-row gap-3">
+        <div class="d-flex flex-lg-row flex-md-column flex-sm-column justify-content-lg-start justify-content-sm-center gap-3">
             <a href="" class="btn">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">

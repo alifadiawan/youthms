@@ -49,6 +49,23 @@ Route::middleware('guest')->group(function () {
         return view('EU.transaction.cart');
     });
 
+    //blog
+    Route::get('/blog/editing', function(){
+        return view('EU.blog.editing');
+    });
+    Route::get('/blog/design', function(){
+        return view('EU.blog.design');
+    });
+    Route::get('/blog/pemrograman', function(){
+        return view('EU.blog.pemrograman');
+    });
+
+
+    //services
+    Route::get('/services', function(){
+        return view('EU.services.index');
+    });
+
 });
 
 //role admin
