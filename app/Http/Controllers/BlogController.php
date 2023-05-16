@@ -72,6 +72,7 @@ class BlogController extends Controller
             'judul' =>  $request->judul,
             'tanggal' =>  $tanggal,
             'segmen_id' =>  $request->segmen_id,
+            'users_id' => auth()->user()->id,
             'isi' => $content,
         ]);
 
@@ -138,6 +139,7 @@ class BlogController extends Controller
                 'judul' =>  $request->judul,
                 'tanggal' =>  $tanggal,
                 'segmen_id' =>  $request->segmen_id,
+                'users_id' => $request->users_id,
                 'isi' => $content,
             ]);
             notify()->success('Artikel Berhasil Diubah !!');

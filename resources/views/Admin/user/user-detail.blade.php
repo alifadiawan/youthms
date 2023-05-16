@@ -11,10 +11,6 @@
 					<table class="table table-borderless">
 						<tbody>
 							<tr>
-								<td class="text-center"><strong>Name</strong></td>
-								<td>{{$user->name}}</td>
-							</tr>
-							<tr>
 								<td class="text-center"><strong>Username</strong></td>
 								<td>{{$user->username}}</td>
 							</tr>
@@ -23,12 +19,12 @@
 								<td>{{$user->email}}</td>
 							</tr>
 							<tr>
-								<td class="text-center"><strong>No. HP</strong></td>
-								<td>{{$user->no_hp}}</td>
+								<td class="text-center"><strong>Password</strong></td>
+								<td>{{$user->password}}</td>
 							</tr>
 							<tr>
-								<td class="text-center"><strong>Jabatan</strong></td>
-								<td>{{$user->jabatan->jabatan}}</td>
+								<td class="text-center"><strong>Role</strong></td>
+								<td>{{$user->role->role}}</td>
 							</tr>
 						</tbody>
 					</table>

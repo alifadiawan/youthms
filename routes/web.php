@@ -9,7 +9,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SegmenController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
@@ -40,9 +40,11 @@ Route::middleware('guest')->group(function () {
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
     
     //Store EU
-    Route::get('/store/all', [EUController::class, 'store'])->name('storeEU.index');
+    Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
     Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
     Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
+    Route::resource('/store', EUController::class);
+    route::get('/store/{id}',[EUController::class,'show']);
 
     //cart
     Route::get('/cart', function () {
@@ -73,8 +75,8 @@ Route::middleware('auth')->group(function() {
     Route::resource('/dashboard', DashboardController::class);
 
     //store
-    Route::resource('store', ProdukController::class);
-    Route::get('/store/{id}/hapus', [ProdukController::class, 'hapus'])->name('store.hapus');
+    Route::resource('adm_store', ProdukController::class);
+    Route::get('/adm_store/{id}/hapus', [ProdukController::class, 'hapus'])->name('store.hapus');
 
     //services
     Route::resource('services', ServicesController::class);
@@ -93,8 +95,10 @@ Route::middleware('auth')->group(function() {
     Route::resource('transaksi', TransaksiController::class);
 
     //user
-    Route::post('jabatan', [JabatanController::class, 'store'])->name('jabatan.store');
-    Route::get('jabatan/{id}/hapus', [JabatanController::class, 'hapus'])->name('jabatan.hapus');
+
+    Route::post('role', [RoleController::class, 'store'])->name('role.store');
+    Route::get('role/{id}/hapus', [RoleController::class, 'hapus'])->name('role.hapus');
+
     Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
     Route::resource('user', UserController::class);
 

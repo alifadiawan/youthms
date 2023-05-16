@@ -7,7 +7,7 @@ use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Models\User;
 use Auth;
-use App\Models\Jabatan;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -17,9 +17,9 @@ class UserController extends Controller
     public function index()
     {
         $user = User::all();
-        $jabatan = Jabatan::all();
+        $role = Role::all();
         
-        return view('Admin.user.index', compact('user', 'jabatan'));
+        return view('Admin.user.index', compact('user', 'role'));
     }
 
     /**
@@ -27,9 +27,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        $jabatan = Jabatan::all();
+        $role = Role::all();
         
-        return view('Admin.user.add-user', compact('jabatan'));
+        return view('Admin.user.add-user', compact('role'));
     }
 
     /**

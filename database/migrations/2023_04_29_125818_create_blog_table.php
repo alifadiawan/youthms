@@ -21,6 +21,10 @@ return new class extends Migration
             $table->foreign('segmen_id')->references('id')->on('segmen')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
+            $table->unsignedBigInteger('users_id');
+            $table->foreign('users_id')->references('id')->on('users')
+                  ->onUpdate('cascade')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }

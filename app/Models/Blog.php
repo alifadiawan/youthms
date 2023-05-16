@@ -9,10 +9,15 @@ class Blog extends Model
 {
     use HasFactory;
     protected $table = 'blog';
-    protected $fillable = ['id_artikel', 'judul', 'tanggal', 'segmen_id', 'isi',];
+    protected $fillable = ['id_artikel', 'judul', 'tanggal', 'segmen_id', 'isi','users_id'];
 
     public function segmen()
     {
         return $this->belongsTo(Segmen::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
     }
 }
