@@ -30,7 +30,7 @@ class EUController extends Controller
      */
     public function create()
     {
-        //
+        return true;
     }
 
     /**
