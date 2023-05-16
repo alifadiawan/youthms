@@ -94,7 +94,7 @@
       @auth
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{auth()->user()->name}}
+              {{auth()->user()->username}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -132,7 +132,6 @@
           </div>
       </div>
   </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         $('.notification-item').on('click', function(e) {

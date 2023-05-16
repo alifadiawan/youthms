@@ -17,6 +17,7 @@
                             <label for="judul">Judul</label>
                             <input type="text" class="form-control" name="judul" id="judul" value="{{$data->judul}}">
                         </div>
+                        <input type="hidden" name="users_id" value="{{$data->users_id}}">
                         <div class="form-group">
                             <label for="segmen_id">Segmen</label>
                             <select class="form-control form-select" name="segmen_id" id="segmen_id">
@@ -42,7 +43,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <div class="form-group">
-                        <textarea class="summernote" id="isi" name="isi" class="form-control" style="height: 300px">{{$data -> isi }}</textarea>
+                        <textarea class="summernote" id="summernote" name="isi" class="form-control" style="height: 300px">{{$data -> isi }}</textarea>
                     </div>
                 </div>
                 <!-- /.card-body -->
