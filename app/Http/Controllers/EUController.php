@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\visitor;
 use App\Models\Services;
 use App\Models\Produk;
+use App\Models\Transaksi;
 use App\Models\JenisLayanan;
 
 class EUController extends Controller
@@ -30,7 +31,14 @@ class EUController extends Controller
      */
     public function create()
     {
-        return true;
+        // return true;
+
+        // Transaksi::create([
+        //     'total' => '',
+        //     'total_bayar' =>0,
+        //     'member_id' =>'aowe'
+        // ]);
+        return view('EU.transaction.pembayaran');
     }
 
     /**

@@ -28,7 +28,7 @@ class TransaksiController extends Controller
         $jenis_layanan = JenisLayanan::all();
         $Produk = 'a';
 
-        return view("EU.store.design",compact('Produk'));
+        return view("EU.store.design", compact('Produk'));
     }
 
     /**
@@ -40,7 +40,7 @@ class TransaksiController extends Controller
         $produk = produk::all();
         $services = Services::all();
         // return $services;
-      
+
         //
         return view("EU.transaction.index", compact('produk'));
     }
