@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="card container mb-5">
+    <div class="container mb-5">
         {{-- navbar kategori --}}
         <div class="d-flex flex-row text-center">
             {{-- <a href="{{ route('storeEU.editing') }}" class="btn my-3">Editing</a>
@@ -27,23 +27,23 @@
         <!-- promo content -->
 
         <p class="h2 fw-bold">{{ $jenis_layanan->layanan }}</p>
-        @foreach ($produk as $p)
-            <div class="d-flex row mb-5 justify-content-center">
+        <div class="d-flex row mb-5 justify-content-start">
+                @foreach ($produk as $p)
                 <div class="my-3 col-lg-4 col-md-6 col-sm-12">
                     <div class="card">
                         <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h4 class="card-title">{{ $p->nama_produk }}</h4>
                             <p class="card-title text-secondary">{{ $p->services->judul }}</p>
-                            <h3 class="card-text">Rp. {{ $p->harga }}</h3>
+                            <h3 class="card-text">Rp.{{ number_format($p->harga) }}</h3>
                             <a href="#" class="btn btn-primary">
                                 <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                             </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-        @endforeach
         {{-- <div class="my-3 col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
