@@ -18,6 +18,7 @@
                         <th class="text-white">No</th>
                         <th class="text-white">Tanggal</th>
                         <th class="text-white">Judul</th>
+                        <th class="text-white">Author</th>
                         <th class="text-white">Segmen</th>
                         <th class="text-white">Action</th>
                     </tr>
@@ -25,7 +26,7 @@
                 <tbody>
                     @if (count($data) == 0)
                         <tr>
-                            <td colspan="5" class="text-center">Belum Ada Artikel !!</td>
+                            <td colspan="6" class="text-center">Belum Ada Artikel !!</td>
                         </tr>
                     @else
                         @foreach ($data as $i)
@@ -33,6 +34,7 @@
                                 <td scope="row">{{ $loop->iteration }}</td>
                                 <td>{{ $i->tanggal }}</td>
                                 <td>{{ $i->judul }}</td>
+                                <td>{{ $i->users->username}}</td>
                                 <td>{{ $i->segmen->segmen }}</td>
                                 <td>
                                     <a href="{{ route('blog.show', $i->id) }}"

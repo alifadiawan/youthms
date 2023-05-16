@@ -39,7 +39,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <div class="form-group">
-                        <textarea id="isi" name="isi" class="form-control summernote" style="height: 500px">
+                        <textarea id="summernote" name="isi" class="form-control summernote" style="height: 500px">
                             </textarea>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
 @endsection
 <script>
 $(document).ready(function() {
-  $('.summernote').summernote();
+  $('#summernote').summernote();
 });
 </script>
 
