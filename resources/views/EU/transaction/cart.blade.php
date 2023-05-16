@@ -48,7 +48,7 @@
                     </thead>
                     <thead>
                         <th colspan="2" class="text-end">
-                            <a href="" class=" btn btn-outline-success">Checkout</a>
+                            <a href="{{ route('store.create') }}" class=" btn btn-outline-success">Checkout</a>
                         </th>
                     </thead>
                 </table>
