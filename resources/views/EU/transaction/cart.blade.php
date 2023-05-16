@@ -11,55 +11,51 @@
                             <th>Nama Produk</th>
                             <th>Jumlah</th>
                             <th>Harga</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        {{-- @foreach ($cart as $c)
                         <tr>
-                            <td></td>
+                            <td>Aplikasi Laravel</td>
+                            <td>
+                                <input type="number" class="form-control w-25" name="" id="" value="1"
+                                    min="1">
+                            </td>
+                            <td>
+                                Rp. 1.000.000
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-danger">Hapus</a>
+                            </td>
                         </tr>
-                        @endforeach --}}
-                            <tr>
-                                <td>Full Marketing Web</td>
-                                <td>
-                                    <input type="number" class="form-control" name="quantity" min="1" id="quantity">
-                                </td>
-                                <td>
-                                </td>
-                                <td><button class="btn btn-danger">batalkan</button></td>
-                            </tr>
-                        <th colspan="2" class="text-end">TOTAL : </th>
-                        <th class="text-start">RP. 2.000.000</th>
-                        <th class="text-start"><button href="" class="btn button-primary">checkout</button></th>
+                        <tr>
+                            <td>Aplikasi Laravel</td>
+                            <td>
+                                <input type="number" class="form-control w-25" name="" id="" value="1"
+                                    min="1">
+                            </td>
+                            <td>
+                                Rp. 1.000.000
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-danger">Hapus</a>
+                            </td>
+                        </tr>
                     </tbody>
                     <thead>
+                        <th colspan="2" class="text-end">Total : </th>
+                        <th class="text-start">RP.1.000.000</th>
+                    </thead>
+                    <thead>
+                        <th colspan="2" class="text-end">
+                            <a href="" class=" btn btn-outline-success">Checkout</a>
+                        </th>
                     </thead>
                 </table>
             </div>
         </div>
     </div>
 
-    <!-- Metode Pembayaran -->
-    <div class="container my-5">
-        <h5>Metode Pembayaran :</h5>
-        <div class="d-flex flex-lg-row flex-md-column flex-sm-column justify-content-lg-start justify-content-sm-center gap-3">
-            <a href="" class="btn">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title"> <i class="fa-solid fa-building-columns"></i> Virtual Account</h5>
-                    </div>
-                </div>
-            </a>
-            <a class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title"> <i class="fa-solid fa-building-columns"></i> Transfer Bank</h5>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
 
 
     <!-- Modal -->

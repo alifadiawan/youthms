@@ -67,6 +67,11 @@ Route::middleware('guest')->group(function () {
     Route::get('/services', function(){
         return view('EU.services.index');
     });
+    
+    //services
+    Route::get('/pembayaran', function(){
+        return view('EU.transaction.pembayaran');
+    });
 
 });
 
