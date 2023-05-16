@@ -14,19 +14,15 @@
 						<div class="row">
 							<div class="col-6">
 								<div class="form-group">
-									<label>Name</label>
-									<input class="form-control" type="text" value="{{$user->name}}" name="name" id="name">
-								</div>
-								<div class="form-group">
 									<label>Username</label>
 									<input class="form-control" type="text" value="{{$user->username}}" name="username" id="username">
 								</div>
 								<div class="form-group">
-									<label for="jabatan_id">Segmen</label>
-									<select class="form-control form-select" name="jabatan_id" id="jabatan_id">
-										<option>Pilih Jabatan</option>
-									    @foreach($jabatan as $j)
-									    <option value="{{$j -> id}}" @if($j->id == $user->jabatan->id) selected @endif>{{$j -> jabatan}}</option>
+									<label for="role_id">Role</label>
+									<select class="form-control form-select" name="role_id" id="role_id">
+										<option>Pilih Role</option>
+									    @foreach($role as $r)
+									    <option value="{{$r -> id}}" @if($r->id == $user->role->id) selected @endif>{{$r -> role}}</option>
 									    @endforeach
 									</select><br>
 								</div>
@@ -39,10 +35,6 @@
 								<div class="form-group">
 									<label>Email</label>
 									<input class="form-control" type="text" value="{{$user->email}}"name="email" id="email">
-								</div>
-								<div class="form-group">
-									<label>No. HP</label>
-									<input class="form-control" type="text" value="{{$user->no_hp}}"name="no_hp" id="no_hp">
 								</div>
 							</div>
 						</div>

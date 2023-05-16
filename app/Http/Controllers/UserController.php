@@ -38,12 +38,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         User::create([
-            'name'=>$request->name,
             'username'=>$request->username,
-            'jabatan_id'=>$request->jabatan_id,
+            'role_id'=>$request->role_id,
             'password'=>bcrypt($request->password),
             'email'=>$request->email,
-            'no_hp'=>$request->no_hp,
         ]);
         notify()->success('User Berhasil Ditambahkan !!');
         // mengirim notifikasi
@@ -69,9 +67,9 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user = User::find($id);
-        $jabatan = Jabatan::all();
+        $role = Role::all();
         
-        return view('Admin.user.edit-user', compact('user', 'jabatan'));
+        return view('Admin.user.edit-user', compact('user', 'role'));
     }
 
     /**
@@ -83,22 +81,18 @@ class UserController extends Controller
 
         if ($request->password == null) {
             $user->update([
-                'name'=>$request->name,
                 'username'=>$request->username,
-                'jabatan_id'=>$request->jabatan_id,
+                'role_id'=>$request->role_id,
                 'email'=>$request->email,
-                'no_hp'=>$request->no_hp,
             ]);
         }
 
         else {
             $user->update([
-                'name'=>$request->name,
                 'username'=>$request->username,
-                'jabatan_id'=>$request->jabatan_id,
+                'role_id'=>$request->role_id,
                 'password'=>bcrypt($request->password),
                 'email'=>$request->email,
-                'no_hp'=>$request->no_hp,
             ]);
         }
         notify()->success('User Berhasil Diupdate !!');

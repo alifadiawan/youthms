@@ -16,38 +16,28 @@ class MemberSeeder extends Seeder
     {
         $member = [
             [
-                'id_member' => 1,
-                'name' => "suparjo",
-                'email' => "suparjo@weewoo.com",
+                'id_member' => "000111",
+                'name' => "Steven Alden",
+                'nik' => "102021023910",
                 'no_hp' =>"0857123123",
-                // contoh role
-
-                // client
-                // customer
-                
+                'alamat' => "Indonesia",
+                'user_id' => '1'
+            ],
+            [
+                'id_member' => "000112",
+                'name' => "Alif Adiawan",
+                'nik' => "102021023911",
+                'no_hp' =>"0857123123",
+                'alamat' => "Indonesia",
                 'user_id' => '2'
             ],
             [
-                'id_member' => 2,
-                'name' => "soeharti",
-                'email' => "soeharti@weewoo.com",
-                'no_hp' =>"0712783",
-                // contoh role
-
-                // client
-                // customer
-                'user_id' => '2'
-            ],
-            [
-                'id_member' => 3,
-                'name' => "gus",
-                'email' => "gus@weewoo.com",
-                'no_hp' =>"0712783",
-                // contoh role
-
-                // client
-                // customer
-                'user_id' => '2'
+                'id_member' => "000113",
+                'name' => "Ilham Bintang",
+                'nik' => "102021023912",
+                'no_hp' =>"0857123123",
+                'alamat' => "Indonesia",
+                'user_id' => '3'
             ],
 
         ];

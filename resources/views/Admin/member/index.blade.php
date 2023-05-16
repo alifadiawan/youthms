@@ -10,9 +10,9 @@
             <thead>
                 <tr style="background-color: #0EA1E2">
                     <th class="text-white">No</th>
+                    <th class="text-white">ID Member</th>
                     <th class="text-white">Nama</th>
-                    <th class="text-white">Email</th>
-                    <th class="text-white">Role</th>
+                    <th class="text-white">Alamat</th>
                     <th class="text-white">Action</th>
                 </tr>
             </thead>
@@ -25,9 +25,9 @@
                     @foreach($member as $m)
                     <tr>
                         <td scope="row">{{$loop->iteration}}</td>
+                        <td>{{$m -> id_member}}</td>
                         <td>{{$m -> name}}</td>
-                        <td>{{$m -> email}}</td>
-                        <td>{{$m -> role}}</td>
+                        <td>{{$m -> alamat}}</td>
                         <td>
                             <a href="{{route('member.show',$m->id)}}" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a>
                         </td>

@@ -13,17 +13,18 @@
 					<div class="container">
 							<div class="row">
 								<div class="col-6">
+									<input type="hidden" name="user_id" value="{{$member->user_id}}">
 									<div class="form-group">
 										<label>ID Member</label>
 										<input class="form-control" type="number" value="{{$member->id_member}}" name="id_member" id="id_member">
 									</div>
 									<div class="form-group">
-										<label>Nama</label>
-										<input class="form-control" type="text" value="{{$member->name}}" name="name" id="name">
+										<label>NIK</label>
+										<input class="form-control" type="nik" value="{{$member->nik}}" name="nik" id="nik">
 									</div>
 									<div class="form-group">
-										<label>Email</label>
-										<input class="form-control" type="email" value="{{$member->email}}" name="email" id="email">
+										<label>Nama</label>
+										<input class="form-control" type="text" value="{{$member->name}}" name="name" id="name">
 									</div>
 								</div>
 								<div class="col-6">
@@ -32,8 +33,8 @@
 										<input class="form-control" type="number" value="{{$member->no_hp}}" name="no_hp" id="no_hp">
 									</div>
 									<div class="form-group">
-										<label>Role</label>
-										<input class="form-control" type="text" value="{{$member->role}}" name="role" id="role">
+										<label>Alamat</label>
+										<input class="form-control" type="text" value="{{$member->alamat}}" name="alamat" id="alamat">
 									</div>
 								</div>
 							</div>

@@ -26,7 +26,6 @@ class MemberController extends Controller
      */
     public function create()
     {
-        
         return view('Admin.member.add-member');
     }
 
@@ -36,11 +35,12 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         Member::create([
+            'user_id' => $request->user_id,
             'id_member' => $request->id_member,
+            'nik' => $request->nik,
             'name' => $request->name,
-            'email' => $request->email,
             'no_hp' => $request->no_hp,
-            'role' => $request->role,
+            'alamat' => $request->alamat,
         ]);
         notify()->success('Member Berhasil Ditambahkan !!');
         // mengirim notifikasi
@@ -56,8 +56,8 @@ class MemberController extends Controller
     public function show($id)
     {
         $member = Member::find($id);
-        
-        return view('Admin.member.member-detail', compact('member'));
+        $user = User::find($id);
+        return view('Admin.member.member-detail', compact('member', 'user'));
     }
 
     /**
@@ -96,8 +96,18 @@ class MemberController extends Controller
 
     public function hapus($id)
     {
+        // $member = Member::find($id);
+        // $user = User::where();
+        // dd($user);
+        // $member->delete();
+
+        // Menghapus User yang memiliki id yang sama dengan user_id pada Member
         $member = Member::find($id);
+        $user = User::find($id);
+
         $member->delete();
+        $user->delete();
+
         notify()->success('Member Berhasil Dihapus !!');
         // mengirim notifikasi
         $user = Auth::user();

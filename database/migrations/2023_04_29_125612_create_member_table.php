@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('member', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_member');
+            $table->string('id_member');
             $table->string('name');
-            $table->string('email');
+            $table->string('nik');
             $table->string('no_hp');
+            $table->string('alamat');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             // $table->string('role');
