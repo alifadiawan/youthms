@@ -1,7 +1,5 @@
 @extends('layout-landing.body')
 @section('content')
-
-
     <div class="row">
         <div id="thumbnail" class="text-start">
             <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
@@ -16,10 +14,13 @@
     <div class="container mb-5">
         {{-- navbar kategori --}}
         <div class="d-flex flex-row text-center">
+            {{-- <a href="{{ route('storeEU.editing') }}" class="btn my-3">Editing</a>
+            <a href="{{ route('storeEU.design') }}" class="btn my-3">Design</a> --}}
             <a href="{{ route('storeEU.index') }}" class="btn my-3 active">All</a>
-            <a href="{{ route('storeEU.editing') }}" class="btn my-3">Editing</a>
-            <a href="{{ route('storeEU.design') }}" class="btn my-3">Design</a>
-            <a href="" class="btn my-3">Pemrograman</a>
+            @foreach ($layanan as $l)
+                <a href="{{ route("store.show",$l->id) }}" class="btn my-3">{{ $l->layanan }}</a>
+            @endforeach
+
         </div>
 
 
@@ -110,5 +111,4 @@
         </div>
 
     </div>
-
 @endsection

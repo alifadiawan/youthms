@@ -26,21 +26,9 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::all();
         $services = Services::all();
         $jenis_layanan = JenisLayanan::all();
-        // $Produk = Produk::where()->get();
-        // $Produk = Produk::all();
-        // $produk = DB::table('produk')
-        //     ->join('services', 'produk.jenis_services_id', '=', 'services.id')
-        //     ->select('produk.jenis_services_id', 'services.id')
-        //     ->get();
-            // $p= produk::where('jenis_services_id', '>', '0')->with('services')->get();
-            // return $p;
-        // $Produk = Produk::where()->with('services')->get();
-        // return $produk;
-        // return $Produk;
         $Produk = 'a';
 
-        //
-        return view("Admin.transaction.index",compact('Produk'));
+        return view("EU.store.design",compact('Produk'));
     }
 
     /**

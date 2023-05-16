@@ -26,7 +26,7 @@
                         @foreach ($product as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->service->judul }}</td>
+                                <td>{{ $item->services->judul }}</td>
                                 <td>{{ $item->nama_produk }}</td>
                                 <td>{{ number_format( $item->harga) }}</td>
                                 <td>

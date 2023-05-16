@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Produk;
+use App\Models\Transaksi;
+use App\Models\TransaksiDetail;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -12,7 +15,10 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $produk = produk::doesnthave('cart')->where('stock','>','0')->get();
+        $cart = produk::has('cart')->sortbydesc('cart.created_at');
+        return $cart;
+        return view('EU.transaction.cart',compact('cart'));
     }
 
     /**
