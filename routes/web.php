@@ -39,13 +39,13 @@ Route::middleware('guest')->group(function () {
 
     //landing page EU
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
-    
+
     //Store EU
     Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
     Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
     Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
     Route::resource('/store', EUController::class);
-    route::get('/store/{id}',[EUController::class,'show']);
+    route::get('/store/{id}', [EUController::class, 'show']);
 
     //cart
     Route::get('/cart', function () {
@@ -53,29 +53,34 @@ Route::middleware('guest')->group(function () {
     });
 
     //blog
-    Route::get('/blog/editing', function(){
+    Route::get('/blog/editing', function () {
         return view('EU.blog.editing');
     });
-    Route::get('/blog/design', function(){
+    Route::get('/blog/design', function () {
         return view('EU.blog.design');
     });
-    Route::get('/blog/pemrograman', function(){
+    Route::get('/blog/pemrograman', function () {
         return view('EU.blog.pemrograman');
     });
 
     //register
-    Route::get('/register', function(){
+    Route::get('/register', function () {
         return view('register');
     });
 
     //services
-    Route::get('/services/all', function(){
+    Route::get('/services/all', function () {
         return view('EU.services.index');
     });
-    
+
     //transaction
-    Route::get('/pembayaran', function(){
+    Route::get('/pembayaran', function () {
         return view('EU.transaction.pembayaran');
+    });
+
+
+    route::get('/returnan', function () {
+        return view('returnan');
     });
 
     // user EU
@@ -86,10 +91,12 @@ Route::middleware('guest')->group(function () {
         return view('EU.user.index');
     });
 
+
 });
 
-//role admin
+// role admin
 Route::middleware('auth')->group(function() {
+// Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('/dashboard', DashboardController::class);
 
     //store
@@ -129,7 +136,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('employee', EmployeeController::class);
 
     //landing page
-    Route::resource('landing_page', landingpageController::class);  
+    Route::resource('landing_page', landingpageController::class);
 
     //landing illustration
     Route::get('/landing-page/illustration', [landingpageController::class, 'illustration'])->name('landing.illustration');

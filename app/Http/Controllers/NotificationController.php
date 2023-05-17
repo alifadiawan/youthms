@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
     public function read($notificationId)
     {
+        
         $user = Auth::user();
             
             // Dapatkan notifikasi berdasarkan ID

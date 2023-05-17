@@ -41,8 +41,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="card">
                         <div class="card-header" id="Pembayaran">
                             <h2 class="mb-0">
@@ -61,7 +59,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="card">
                         <div class="card-header" id="Struk">
                             <h2 class="mb-0">
@@ -81,7 +78,6 @@
                         </div>
                     </div>
                 </div>
-
             </form>
         </table>
     </div>
