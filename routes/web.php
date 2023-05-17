@@ -56,6 +56,7 @@ route::get('/returnan', function () {
 //guest
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
+    Route::get('authcheck', [LoginController::class, 'authcheck'])->name('authcheck');
     Route::post('login', [LoginController::class, 'authenticate']);
 
     //landing page EU
@@ -99,7 +100,7 @@ Route::middleware('guest')->group(function () {
 });
 
 //  client
-route::middleware('client')->group(function () {
+// route::middleware('client')->group(function () {
     // landing page
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 
@@ -143,7 +144,7 @@ route::middleware('client')->group(function () {
     Route::get('/profile', function () {
         return view('EU.user.index');
     });
-});
+// });
 
 // role admin
 Route::middleware('auth')->group(function () {

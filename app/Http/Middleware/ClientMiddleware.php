@@ -20,6 +20,8 @@ class ClientMiddleware
             return $next($request);
         };
 
+        // return redirect()->back();
+
         // return redirect('/returnan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
     
     }

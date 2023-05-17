@@ -10,11 +10,12 @@
             <li class="nav-item"><a class="nav-link" href="/blog/editing">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('storeEU.index') }}">Store</a></li>
             <li class="nav-item"><a class="nav-link" href="/services/all">Service</a></li>
-            <li class="nav-item"><a class="nav-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
             @guest
+                <li class="nav-item"><a class="nav-link" href="{{ route('authcheck') }}"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 <li><a class="getstarted" href="/login">Login</a></li>
             @endguest
             @auth
+                <li class="nav-item"><a class="nav-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
