@@ -77,6 +77,14 @@ Route::middleware('guest')->group(function () {
         return view('EU.transaction.pembayaran');
     });
 
+    // user EU
+    Route::get('/edit-profile', function(){
+        return view('EU.user.edit');
+    });
+    Route::get('/profile', function(){
+        return view('EU.user.index');
+    });
+
 });
 
 //role admin

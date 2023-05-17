@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Youthms | Register</title>
+    <title>Youthms | Login</title>
     @include('layout.style')
     <style>
         .bgcolor {
@@ -58,7 +58,7 @@
                             <button class="btn yms-blue w-100">Submit</button>
                             <hr>
                             <p>Don't have an account ?
-                                <a href="">Sign up here</a>
+                                <a href="/register">Sign up here</a>
                             </p>
                         </div>
                     </form>
