@@ -1,6 +1,7 @@
 <!-- ======= Header ======= -->
     <div class="container d-flex align-items-center">
 
+
         <!-- logo -->
        <a href="/" class="logo me-auto"><img src="{{ asset('youth-logo.png') }}" alt="" class="img-fluid"></a>
 
