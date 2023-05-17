@@ -18,10 +18,10 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $u = auth()->user()->role->role;
-        if ($u != 'admin' ||'emplooyee'||'owner') {
-            return redirect()->back();
+        if (auth()->check() && $u == 'admin') {
+            return $next($request);
         };
-
-        return $next($request);
+        
+        // return redirect()->back();
     }
 }
