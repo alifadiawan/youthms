@@ -15,6 +15,12 @@ class ClientMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        $u = auth()->user()->role->role;
+        if (auth()->check() && $u == 'client') {
+            return $next($request);
+        };
+
+        // return redirect('/returnan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
+    
     }
 }
