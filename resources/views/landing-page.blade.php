@@ -1,4 +1,5 @@
 @extends('layout-landing2.body')
+{{-- @extends('layout-landing.body') --}}
 @section('content')
 
 

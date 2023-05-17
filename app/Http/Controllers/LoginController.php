@@ -19,18 +19,25 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $data=$request->validate([
+        
+        $data = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required']
         ]);
-
+        
+        // jika user telah mengisi data
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
             notify()->success('Berhasil Login !!');
-            return redirect()->intended('dashboard');
             
-        }
-        else {
+            // cek role suatu user
+            $user = auth()->user()->role->role;
+            if ($user == 'admin'||'owner'||'employee') {
+                return redirect()->intended('dashboard');
+            } elseif ($user == 'client') {
+                return redirect()->intended('dashboard');
+            }
+        } else {
             return back()->withErrors([
                 'email' => 'Email Salah!!',
                 'password' => 'Password Salah!!',
