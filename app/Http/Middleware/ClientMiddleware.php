@@ -33,6 +33,8 @@ class ClientMiddleware
 
         return redirect('/')->with('error', 'Anda tidak diizinkan mengakses halaman ini.');
 
+        // return redirect()->back();
+
         // return redirect('/returnan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
     
     }
