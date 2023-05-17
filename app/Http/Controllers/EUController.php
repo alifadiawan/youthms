@@ -8,6 +8,7 @@ use App\Models\visitor;
 use App\Models\Services;
 use App\Models\Produk;
 use App\Models\Transaksi;
+use Illuminate\Support\Facades\Auth;
 use App\Models\JenisLayanan;
 
 class EUController extends Controller
@@ -38,7 +39,14 @@ class EUController extends Controller
         //     'total_bayar' =>0,
         //     'member_id' =>'aowe'
         // ]);
-        return view('EU.transaction.pembayaran');
+        // return true;
+        if (auth::check()) {
+            return true;
+        } else {
+            return redirect(route('login'))->with('status','anda belum login');
+        }
+
+        // return view('EU.transaction.pembayaran');
     }
 
     /**
@@ -56,6 +64,8 @@ class EUController extends Controller
     public function store(Request $request)
     {
         return true;
+
+
         //
     }
 
@@ -74,8 +84,8 @@ class EUController extends Controller
             $produk[$serv->id] = produk::where('services_id', $serv->id)->with('services')->get();
         }
         $produk = collect($produk)->flatten();
-        
-        return view('EU.store.show',compact('layanan','produk','jenis_layanan'));
+
+        return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan'));
     }
 
     /**

@@ -18,6 +18,7 @@
 
 <body>
     {{-- <div class="container"> --}}
+
     <div class="bgcolor h-100 d-flex justify-content-center align-items-center">
         <div class="col-lg-4 col-md-5 col-sm-7">
             <div class="card shadow-lg" style="border-radius: 10px">
@@ -28,7 +29,8 @@
                         </a>
                     </div>
                     <div class="row justify-content-center">
-                        <img src="{{ asset('yms-logo-notext.png') }}" alt="" class="my-3" style="width: 250px">
+                        <img src="{{ asset('yms-logo-notext.png') }}" alt="" class="my-3"
+                            style="width: 250px">
                     </div>
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
@@ -39,6 +41,12 @@
                                     </li>
                                 @endforeach
                             </ul>
+                        </div>
+                    @endif
+
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
                         </div>
                     @endif
 

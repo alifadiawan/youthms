@@ -18,7 +18,8 @@
             {{-- <a href="{{ route('storeEU.editing') }}" class="btn my-3">Editing</a>
             <a href="{{ route('storeEU.design') }}" class="btn my-3">Design</a> --}}
             @foreach ($layanan as $l)
-                <a href="{{ route('store.show', $l->id) }}" class="btn my-3 {{ (request()->is('/store')) ? 'active' : '' }}">{{ $l->layanan }}</a>
+                <a href="{{ route('store.show', $l->id) }}"
+                    class="btn my-3 {{ request()->is('/store') ? 'active' : '' }}">{{ $l->layanan }}</a>
             @endforeach
 
         </div>
@@ -35,17 +36,17 @@
                             <h4 class="card-title">{{ $p->nama_produk }}</h4>
                             <p class="card-title text-secondary">{{ $p->services->judul }}</p>
                             <h3 class="card-text">Rp.{{ number_format($p->harga) }}</h3>
-                            {{-- <form action="{{ route('') }}"> --}}
-
-                                <a href="#" class="btn btn-primary">
+                            <form action="{{ route('store.create') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">
                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                </a>
+                                </button>
                             </form>
                         </div>
                     </div>
                 </div>
-                @endforeach
-            </div>
+            @endforeach
+        </div>
         {{-- <div class="my-3 col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">

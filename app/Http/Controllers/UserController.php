@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $user = User::all();
         $role = Role::all();
-        
+
         return view('Admin.user.index', compact('user', 'role'));
     }
 
@@ -28,7 +28,7 @@ class UserController extends Controller
     public function create()
     {
         $role = Role::all();
-        
+
         return view('Admin.user.add-user', compact('role'));
     }
 
@@ -38,10 +38,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         User::create([
-            'username'=>$request->username,
-            'role_id'=>$request->role_id,
-            'password'=>bcrypt($request->password),
-            'email'=>$request->email,
+            'username' => $request->username,
+            'role_id' => $request->role_id,
+            'password' => bcrypt($request->password),
+            'email' => $request->email,
         ]);
         notify()->success('User Berhasil Ditambahkan !!');
         // mengirim notifikasi
@@ -57,7 +57,7 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = User::find($id);
-        
+
         return view('Admin.user.user-detail', compact('user'));
     }
 
@@ -68,7 +68,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $role = Role::all();
-        
+
         return view('Admin.user.edit-user', compact('user', 'role'));
     }
 
@@ -81,18 +81,16 @@ class UserController extends Controller
 
         if ($request->password == null) {
             $user->update([
-                'username'=>$request->username,
-                'role_id'=>$request->role_id,
-                'email'=>$request->email,
+                'username' => $request->username,
+                'role_id' => $request->role_id,
+                'email' => $request->email,
             ]);
-        }
-
-        else {
+        } else {
             $user->update([
-                'username'=>$request->username,
-                'role_id'=>$request->role_id,
-                'password'=>bcrypt($request->password),
-                'email'=>$request->email,
+                'username' => $request->username,
+                'role_id' => $request->role_id,
+                'password' => bcrypt($request->password),
+                'email' => $request->email,
             ]);
         }
         notify()->success('User Berhasil Diupdate !!');
@@ -100,8 +98,7 @@ class UserController extends Controller
         $user = Auth::user();
         $message = "User Telah Diubah!";
         Notification::send($user, new NewMessageNotification($message));
-        return redirect('user/'.$id);
-        
+        return redirect('user/' . $id);
     }
 
     /**
