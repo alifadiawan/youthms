@@ -18,6 +18,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\RegisterController;
 use App\Models\portofolio;
 use App\Models\Services;
 
@@ -64,9 +65,7 @@ Route::middleware('guest')->group(function () {
     });
 
     //register
-    Route::get('/register', function () {
-        return view('register');
-    });
+    Route::resource('register', RegisterController::class);
 
     //services
     Route::get('/services/all', function () {
@@ -132,7 +131,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('member', MemberController::class);
 
     //employee
-    Route::get('employee/{id}/hapus', [MemberController::class, 'hapus'])->name('employee.hapus');
+    Route::get('employee/{id}/hapus', [EmployeeController::class, 'hapus'])->name('employee.hapus');
     Route::resource('employee', EmployeeController::class);
 
     //landing page

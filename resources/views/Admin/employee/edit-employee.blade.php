@@ -5,7 +5,7 @@
 
 <div class="container">
 	<div class="col-lg-12">
-		<form class="form" action="{{route('member.update', $member->id)}}" method="post">
+		<form class="form" action="{{route('employee.update', $member->id)}}" method="post">
 			@csrf
 			@method('PUT')
 			<div class="card">
@@ -13,9 +13,9 @@
 					<div class="container">
 							<div class="row">
 								<div class="col-6">
-									<input type="hidden" name="user_id" value="{{$member->user_id}}">
-									<!-- <div class="form-group">
-										<label>ID Member</label>
+									<input type="hidden" name="user_id" value="{{$member->user_id}}"><!-- 
+									<div class="form-group">
+										<label>Kode Member</label>
 										<input class="form-control" type="number" value="{{$member->id_member}}" name="id_member" id="id_member">
 									</div> -->
 									<div class="form-group">

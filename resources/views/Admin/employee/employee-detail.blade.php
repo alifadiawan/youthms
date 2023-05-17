@@ -5,7 +5,7 @@
 
 <div class="container">
 	<div class="row">
-		@if(auth()->user()->role_id == 1 || auth()->user()->id == $user->id)
+		@if(auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
 		<div class="col-lg-10">
 		@else
 		<div class="col-lg-12">
@@ -47,7 +47,7 @@
 				</div>
 			</div>
 		</div>
-		@if(auth()->user()->role_id == 1 || auth()->user()->id == $user->id)
+		@if(auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
 		<div class="col-lg-2">
 			<div class="container">
 				<button class="btn btn-md btn-warning" data-toggle="modal" data-target="#editmodal" style="width: 80%;"><strong>Edit</strong></button>
