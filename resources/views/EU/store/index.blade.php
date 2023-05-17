@@ -1,4 +1,5 @@
 @extends('layout-landing.body')
+@section('title', 'Store')
 @section('content')
     <div class="row">
         <div id="thumbnail" class="text-start">
