@@ -18,7 +18,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $u = auth()->user()->role->role;
-        if ($u == 'client') {
+        if ($u != 'admin' ||'emplooyee'||'owner') {
             return redirect()->back();
         };
 
