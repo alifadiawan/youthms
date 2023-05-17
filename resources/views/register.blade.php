@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Youthms | Login</title>
+    <title>Youthms | Register</title>
     @include('layout.style')
     <style>
         .bgcolor {
@@ -44,22 +44,22 @@
                         </div>
                     @endif
 
-                    <form action="" method="post" class="user">
+                    <form action="{{route('register.store')}}" method="post" class="user">
                         @csrf
                         <div class="form-group">
-                            <label for="email">Username</label>
-                            <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                name="email" placeholder="username">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control form-control-user" name="username" placeholder="username" value="{{old('username')}}">
                         </div>
+                        <input type="hidden" name="role_id" value="2">
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                aria-describedby="emailHelp" name="email" placeholder="Enter Email Address...">
+                                aria-describedby="emailHelp" name="email" placeholder="Enter Email Address..." value="{{old('email')}}">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control form-control-user" id="exampleInputPassword"
-                                name="password" placeholder="Password">
+                                name="password" placeholder="Password" value="{{old('password')}}">
                         </div>
                         <div class="form-group text-center ">
                             <button class="btn yms-blue w-100">Register</button>

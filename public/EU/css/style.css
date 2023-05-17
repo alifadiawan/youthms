@@ -81,6 +81,17 @@ h6 {
   background-color: #064bac !important;
 }
 
+#caption {
+  position: absolute;
+  top: 45%;
+  left: 1%;
+  width: 30%;
+}
+
+#store{
+  margin-top: 72px;
+}
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -888,6 +899,105 @@ section {
 
 .services .icon-box:hover h4 a {
   color: #47b2e4;
+}
+
+/*--------------------------------------------------------------
+# Service EU
+--------------------------------------------------------------*/
+.main-banner p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  align-items: flex-end;
+  line-height:1.5cm;
+}
+
+.main-banner {
+  display: flex;
+}
+
+.main-banner img{
+  width: 1000px;
+  height: 643px;
+  margin-right: -250px;
+  float: left;
+  /* margin: 40px -58px 0 0; */
+  justify-content: start;
+}
+
+.layanan h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  line-height:1.5cm;
+  text-align: center;
+  padding: 30px;
+}
+
+.layanan .informasi {
+  background-color: #2FA5FB;
+  border-radius: 0 100px 100px 0;
+  height: 975px; 
+}
+
+.layanan h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 65px 0 30px 30px;
+}
+
+
+.layanan .dg {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 30px 50px 30px 30px;
+}
+
+
+.layanan h3 {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: -15px;
+}
+
+
+.layanan p {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-size: 20px;
+  line-height:normal;
+  /* font-weight: bold; */
+  margin: 30px 20px 30px 30px;
+}
+
+.layanan .web {
+  background-color: #2FA5FB;
+  border-radius: 100px 0 0 100px;
+  height: 650px;
+  width: 350px; 
+  justify-content: end;
+}
+
+.layanan .web h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 85px;
+  margin-left: 30px;
+}
+
+.layanan .web{
+  display: flex;
 }
 
 /*--------------------------------------------------------------

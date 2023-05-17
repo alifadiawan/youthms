@@ -69,7 +69,8 @@ class EmployeeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $member = Member::find($id);
+        return view('Admin.employee.edit-employee', compact('member'));
     }
 
     /**
@@ -77,7 +78,15 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $Member=Member::find($id);
+        $input=$request->all();
+        $Member->update($input);
+        notify()->success('Profile Berhasil Diupdate !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Profile Berhasil Diupdate !!";
+        Notification::send($user, new NewMessageNotification($message));
+        return redirect('employee');
     }
 
     /**
@@ -90,6 +99,18 @@ class EmployeeController extends Controller
 
     public function hapus($id)
     {
-        // code...
+        // Menghapus User yang memiliki id yang sama dengan user_id pada Member
+        $member = Member::find($id);
+        $user = User::find($id);
+
+        $member->delete();
+        $user->delete();
+
+        notify()->success('Employee Berhasil Dihapus !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Employee Berhasil Dihapus !!";
+        Notification::send($user, new NewMessageNotification($message));
+        return redirect('employee');
     }
 }
