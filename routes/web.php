@@ -211,4 +211,6 @@ Route::middleware(['admin', 'owner', 'employee'])->group(function () {
 
 
 //logout
-Route::post('logout', [LoginController::class, 'logout'])->middleware('auth');
+// Route::post('logout', [LoginController::class, 'logout'])->middleware('auth');
+Route::post('logout', [LoginController::class, 'logout']);
+
