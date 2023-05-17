@@ -11,7 +11,7 @@
 					<table class="table table-borderless">
 						<tbody>
 							<tr>
-								<td class="text-center"><strong>ID Member</strong></td>
+								<td class="text-center"><strong>Kode Member</strong></td>
 								<td>{{$member->id_member}}</td>
 							</tr>
 							<tr>
@@ -23,7 +23,7 @@
 								<td>{{$member->name}}</td>
 							</tr>
 							<tr>
-								<td class="text-center"><strong>Email</strong></td>
+								<td class="text-center"><strong>Alamat</strong></td>
 								<td>{{$member->alamat}}</td>
 							</tr>
 							<tr>
@@ -36,7 +36,7 @@
 							</tr>
 							<tr>
 								<td class="text-center"><strong>Role</strong></td>
-								<td>{{$user->roles->role}}</td>
+								<td>{{$user->role->role}}</td>
 							</tr>
 						</tbody>
 					</table>

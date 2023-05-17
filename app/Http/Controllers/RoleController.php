@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewMessageNotification;
+use Illuminate\Support\Facades\Notification;
 
 class RoleController extends Controller
 {
@@ -28,7 +31,13 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Role::create($request->all());
+        notify()->success('Role Berhasil Ditambahkan!!', $request->role);
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Role Berhasil ditambahkan";
+        Notification::send($user, new NewMessageNotification($message));
+        return redirect('user');
     }
 
     /**
@@ -68,6 +77,10 @@ class RoleController extends Controller
         $Role = Role::find($id);
         $Role->delete();
         notify()->success('Role Berhasil Dihapus !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Role Berhasil Dihapus !!";
+        Notification::send($user, new NewMessageNotification($message));
         return redirect('user');
     }
 

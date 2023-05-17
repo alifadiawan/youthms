@@ -5,7 +5,11 @@
 
 <div class="container">
 	<div class="row">
+		@if(auth()->user()->role_id == 1 || auth()->user()->id == $user->id)
 		<div class="col-lg-10">
+		@else
+		<div class="col-lg-12">
+		@endif
 			<div class="card">
 				<div class="container">
 					<table class="table table-borderless">
@@ -31,6 +35,7 @@
 				</div>
 			</div>
 		</div>
+		@if(auth()->user()->role_id == 1 || auth()->user()->id == $user->id)
 		<div class="col-lg-2">
 			<div class="container">
 				<button class="btn btn-md btn-warning" data-toggle="modal" data-target="#editmodal" style="width: 80%;"><strong>Edit</strong></button>
@@ -39,6 +44,7 @@
 				<br><br>
 			</div>
 		</div>
+		@endif
 	</div>
 </div>
 

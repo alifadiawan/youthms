@@ -18,9 +18,12 @@ class UserSeeder extends Seeder
         $users = [
             ['username' => 'Stevana1304',  'role_id' => '1', 'password' => bcrypt('12345678'), 'email' => 'steven@gmail.com'],
             ['username' => 'alif_adiawan',  'role_id' => '1', 'password' => bcrypt('12345678'), 'email' => 'alif@gmail.com'],
-            ['username' => 'ilhmstxr',  'role_id' => '1', 'password' => bcrypt('123'), 'email' => 'ilhxm@gmail.com']
+            ['username' => 'ilhmstxr',  'role_id' => '1', 'password' => bcrypt('123'), 'email' => 'ilhxm@gmail.com'],
+            ['username' => 'client',  'role_id' => '2', 'password' => bcrypt('123'), 'email' => 'client@gmail.com'],
+            ['username' => 'owner',  'role_id' => '3', 'password' => bcrypt('123'), 'email' => 'owner@gmail.com'],
+            ['username' => 'employee',  'role_id' => '4', 'password' => bcrypt('123'), 'email' => 'employee@gmail.com']
         ];
-
+        
         User::insert($users);
     }
 }

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Youthms | Register</title>
+    <title>Youthms | Login</title>
     @include('layout.style')
     <style>
         .bgcolor {
@@ -18,6 +18,7 @@
 
 <body>
     {{-- <div class="container"> --}}
+
     <div class="bgcolor h-100 d-flex justify-content-center align-items-center">
         <div class="col-lg-4 col-md-5 col-sm-7">
             <div class="card shadow-lg" style="border-radius: 10px">
@@ -28,7 +29,8 @@
                         </a>
                     </div>
                     <div class="row justify-content-center">
-                        <img src="{{ asset('yms-logo-notext.png') }}" alt="" class="my-3" style="width: 250px">
+                        <img src="{{ asset('yms-logo-notext.png') }}" alt="" class="my-3"
+                            style="width: 250px">
                     </div>
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
@@ -39,6 +41,12 @@
                                     </li>
                                 @endforeach
                             </ul>
+                        </div>
+                    @endif
+
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
                         </div>
                     @endif
 
@@ -58,7 +66,7 @@
                             <button class="btn yms-blue w-100">Submit</button>
                             <hr>
                             <p>Don't have an account ?
-                                <a href="">Sign up here</a>
+                                <a href="/register">Sign up here</a>
                             </p>
                         </div>
                     </form>

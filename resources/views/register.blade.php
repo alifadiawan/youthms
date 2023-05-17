@@ -24,7 +24,8 @@
                 <div class="card-body">
                     <div class="row">
                         <a href="/login" class="btn yms-blue">
-                            <i class="fas fa-arrow-left"></i> Back to Login
+                            <i class="fas fa-chevron-left"></i>
+                            <span>Login</span>
                         </a>
                     </div>
                     <div class="row justify-content-center">
@@ -43,8 +44,13 @@
                         </div>
                     @endif
 
-                    <form action="login" method="post" class="user">
+                    <form action="" method="post" class="user">
                         @csrf
+                        <div class="form-group">
+                            <label for="email">Username</label>
+                            <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                name="email" placeholder="username">
+                        </div>
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control form-control-user" id="exampleInputEmail"
@@ -56,10 +62,10 @@
                                 name="password" placeholder="Password">
                         </div>
                         <div class="form-group text-center ">
-                            <button class="btn yms-blue w-100">Login</button>
+                            <button class="btn yms-blue w-100">Register</button>
                             <hr>
                             <p>Already have an account ?
-                                <a href="/login">Sign in here</a>
+                                <a href="/login">Log in</a>
                             </p>
                         </div>
                     </form>

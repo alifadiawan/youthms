@@ -6,13 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Segmen;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
 use Session;
 
 class BlogController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
+    }
+    
     /**
      * Display a listing of the resource.
      */

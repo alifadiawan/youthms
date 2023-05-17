@@ -17,6 +17,7 @@ use App\Http\Controllers\EUController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\EmployeeController;
 use App\Models\portofolio;
 use App\Models\Services;
 
@@ -31,6 +32,11 @@ use App\Models\Services;
 |
 */
 
+// undefined route
+route::get('/returnan', function () {
+    return view('returnan');
+});
+
 //guest
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
@@ -38,49 +44,96 @@ Route::middleware('guest')->group(function () {
 
     //landing page EU
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
-    
+
+    //blog
+    Route::get('/blog/editing', function () {
+        return view('EU.blog.editing');
+    });
+    Route::get('/blog/design', function () {
+        return view('EU.blog.design');
+    });
+    Route::get('/blog/pemrograman', function () {
+        return view('EU.blog.pemrograman');
+    });
+
     //Store EU
     Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
     Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
     Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
     Route::resource('/store', EUController::class);
-    route::get('/store/{id}',[EUController::class,'show']);
+    route::get('/store/{id}', [EUController::class, 'show']);
 
+    //services
+    Route::get('/services/all', function () {
+        return view('EU.services.index');
+    });
+
+
+    //register
+    Route::get('/register', function () {
+        return view('register');
+    });
+
+
+    // user EU
+    Route::get('/edit-profile', function () {
+        return view('EU.user.edit');
+    });
+    Route::get('/profile', function () {
+        return view('EU.user.index');
+    });
+});
+
+//  client
+route::middleware('client')->group(function () {
+    // landing page
+    Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
+
+    //blog
+    Route::get('/blog/editing', function () {
+        return view('EU.blog.editing');
+    });
+    Route::get('/blog/design', function () {
+        return view('EU.blog.design');
+    });
+    Route::get('/blog/pemrograman', function () {
+        return view('EU.blog.pemrograman');
+    });
+
+    //Store EU
+    Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
+    Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
+    Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
+    Route::resource('/store', EUController::class);
+    route::get('/store/{id}', [EUController::class, 'show']);
+    
+    //services
+    Route::get('/services/all', function () {
+        return view('EU.services.index');
+    });
+    
     //cart
     Route::get('/cart', function () {
         return view('EU.transaction.cart');
     });
 
-    //blog
-    Route::get('/blog/editing', function(){
-        return view('EU.blog.editing');
-    });
-    Route::get('/blog/design', function(){
-        return view('EU.blog.design');
-    });
-    Route::get('/blog/pemrograman', function(){
-        return view('EU.blog.pemrograman');
-    });
-
-    //register
-    Route::get('/register', function(){
-        return view('register');
-    });
-
-    //services
-    Route::get('/services/all', function(){
-        return view('EU.services.index');
-    });
-    
     //transaction
-    Route::get('/pembayaran', function(){
+    Route::get('/pembayaran', function () {
         return view('EU.transaction.pembayaran');
     });
 
+    // user EU
+    Route::get('/edit-profile', function () {
+        return view('EU.user.edit');
+    });
+    Route::get('/profile', function () {
+        return view('EU.user.index');
+    });
 });
 
-//role admin
-Route::middleware('auth')->group(function() {
+// role admin
+// Route::middleware('auth')->group(function() {
+Route::middleware(['admin', 'owner', 'employee'])->group(function () {
     Route::resource('/dashboard', DashboardController::class);
 
     //store
@@ -115,8 +168,12 @@ Route::middleware('auth')->group(function() {
     Route::get('member/{id}/hapus', [MemberController::class, 'hapus'])->name('member.hapus');
     Route::resource('member', MemberController::class);
 
+    //employee
+    Route::get('employee/{id}/hapus', [MemberController::class, 'hapus'])->name('employee.hapus');
+    Route::resource('employee', EmployeeController::class);
+
     //landing page
-    Route::resource('landing_page', landingpageController::class);  
+    Route::resource('landing_page', landingpageController::class);
 
     //landing illustration
     Route::get('/landing-page/illustration', [landingpageController::class, 'illustration'])->name('landing.illustration');

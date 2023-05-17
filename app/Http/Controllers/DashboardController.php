@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Auth;
+use App\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Models\visitor;
@@ -12,6 +13,7 @@ use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -27,7 +29,7 @@ class DashboardController extends Controller
             'chart_color' =>  "51, 133, 255"
         ];
         $chart1 = new LaravelChart($online_visitor);
-        
+
         $penjualan = [
             'chart_title' => 'Penjualan',
             'report_type' => 'group_by_date',
@@ -38,8 +40,7 @@ class DashboardController extends Controller
             'chart_color' =>  "51, 133, 255"
         ];
         $chart2 = new LaravelChart($penjualan);
-
-        return view('Admin.dashboard' , compact('chart1', 'chart2'));
+        return view('Admin.dashboard', compact('chart1', 'chart2'));
     }
 
     /**

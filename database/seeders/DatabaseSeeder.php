@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             ProdukSeeder::class,
 
             //misc
-            VisitorSeeder::class,
+            // VisitorSeeder::class,
 
         ]);
     }

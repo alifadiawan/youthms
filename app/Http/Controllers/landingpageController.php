@@ -9,8 +9,8 @@ use App\Models\LandingPartner;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Models\User;
-use Auth;
-use File;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 class landingpageController extends Controller
