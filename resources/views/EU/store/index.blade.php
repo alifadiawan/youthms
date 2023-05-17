@@ -1,10 +1,13 @@
 @extends('layout-landing2.body')
 @section('title', 'Store')
 @section('content')
-    <div class="row">
+
+
+    <div id="store" class="row">
         <div id="thumbnail" class="text-start">
             <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
             <div id="caption">
+                <h3 class="text-white">aowkaokwa</h3>
                 <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus fugit
                     pariatur, magnam aliquam et qui hic corporis odio neque nobis doloribus quidem delectus saepe commodi
                     illum minima blanditiis nostrum quod.</p>

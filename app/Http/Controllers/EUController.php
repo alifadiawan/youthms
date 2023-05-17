@@ -10,6 +10,7 @@ use App\Models\Produk;
 use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 use App\Models\JenisLayanan;
+use Mckenziearts\Notify\LaravelNotify;
 
 class EUController extends Controller
 {
@@ -43,7 +44,8 @@ class EUController extends Controller
         if (auth::check()) {
             return true;
         } else {
-            return redirect(route('login'))->with('status','anda belum login');
+            notify()->success('Anda belum login');
+            return redirect(route('login'));
         }
 
         // return view('EU.transaction.pembayaran');

@@ -1,4 +1,4 @@
- 
+
  <!-- Vendor CSS Files -->
  <link href="{{asset('EU/vendor/aos/aos.css')}}" rel="stylesheet">
  <link href="{{asset('EU/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

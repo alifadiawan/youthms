@@ -1,14 +1,14 @@
 @extends('layout-landing2.body')
 @section('content')
     <!-- hero / illustration -->
-    <section class="main-banner" id="main-banner">
+    <section class="main-banner mt-5" id="main-banner">
         <div id="hero-services">
             <div class="container">
-                <div class="row" data-aos="fade-up" data-aos-duration="2000">
-                    <div class="col">
+                <div class="row align-items-center" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="col-lg-6">
                         <img class="img-fluid" src="{{ asset('illustration/services.png') }}" alt="">
                     </div>
-                    <div class="col-lg-7 col-sm-4">
+                    <div class="col-lg-6 col-sm-4">
                         <p>YouthMS memiliki 3 jenis layanan
                             yang bergerak dibidang Aplikasi, <br>
                             Desain, dan Editing</p>
