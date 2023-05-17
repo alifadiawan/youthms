@@ -4,11 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class OwnerMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,11 +15,6 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $u = auth()->user()->role->role;
-        if ($u == 'client') {
-            return redirect()->back();
-        };
-
         return $next($request);
     }
 }

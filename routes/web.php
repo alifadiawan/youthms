@@ -33,7 +33,7 @@ use App\Models\Services;
 */
 
 //guest
-Route::middleware('guest')->group(function () {
+Route::middleware(['guest','client'])->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'authenticate']);
 
@@ -95,8 +95,8 @@ Route::middleware('guest')->group(function () {
 });
 
 // role admin
-Route::middleware('auth')->group(function() {
-// Route::middleware(['auth', 'admin'])->group(function () {
+// Route::middleware('auth')->group(function() {
+Route::middleware(['admin','owner','employee'])->group(function () {
     Route::resource('/dashboard', DashboardController::class);
 
     //store

@@ -13,7 +13,7 @@ use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -29,7 +29,7 @@ class DashboardController extends Controller
             'chart_color' =>  "51, 133, 255"
         ];
         $chart1 = new LaravelChart($online_visitor);
-        
+
         $penjualan = [
             'chart_title' => 'Penjualan',
             'report_type' => 'group_by_date',
@@ -40,20 +40,7 @@ class DashboardController extends Controller
             'chart_color' =>  "51, 133, 255"
         ];
         $chart2 = new LaravelChart($penjualan);
-
-        // $u = user::with('roles')->get();
-        // $u = role::with('users')->get();
-        // $u = Auth::user()->load('roles');
-        // $user = auth::id();
-        // $u = user::find($user)->role->role;
-        // return $u;
-        // $u = User::with('roles')->find($user);
-        // $u = role::with('users')->get();
-        // $h = $u;
-        // return $u;
-        // return true;
-
-        return view('Admin.dashboard' , compact('chart1', 'chart2'));
+        return view('Admin.dashboard', compact('chart1', 'chart2'));
     }
 
     /**
