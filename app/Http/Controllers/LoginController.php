@@ -33,10 +33,10 @@ class LoginController extends Controller
             // cek role suatu user
             $user = auth()->user()->role->role;
             if ($user == 'admin'||'owner'||'employee') {
-                return redirect()->intended('dashboard');
+                return redirect('dashboard');
             } elseif ($user == 'client') {
                 // return redirect()->intended('dashboard');
-                // return redirect('returnan');
+                return redirect('returnan');
             }
         } else {
             return back()->withErrors([
