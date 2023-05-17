@@ -62,12 +62,17 @@ Route::middleware('guest')->group(function () {
         return view('EU.blog.pemrograman');
     });
 
+    //register
+    Route::get('/register', function(){
+        return view('register');
+    });
+
     //services
     Route::get('/services/all', function(){
         return view('EU.services.index');
     });
     
-    //services
+    //transaction
     Route::get('/pembayaran', function(){
         return view('EU.transaction.pembayaran');
     });

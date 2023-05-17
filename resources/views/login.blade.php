@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Youthms | Login</title>
+    <title>Youthms | Register</title>
     @include('layout.style')
     <style>
         .bgcolor {
@@ -40,7 +40,6 @@
                                 @endforeach
                             </ul>
                         </div>
-
                     @endif
 
                     <form action="login" method="post" class="user">
@@ -56,7 +55,7 @@
                                 name="password" placeholder="Password">
                         </div>
                         <div class="form-group text-center ">
-                            <button class="btn yms-blue w-100">Login</button>
+                            <button class="btn yms-blue w-100">Submit</button>
                             <hr>
                             <p>Don't have an account ?
                                 <a href="">Sign up here</a>
