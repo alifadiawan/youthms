@@ -4,6 +4,7 @@
 @section('judul', 'Employee Detail')
 
 <div class="container">
+
     <div class="row">
         @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
             <div class="col-lg-10">
