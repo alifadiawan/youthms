@@ -17,7 +17,7 @@
                     <a class="nav-link" href="{{route('storeEU.index')}}">Store</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#our-services">Services</a>
+                    <a class="nav-link" href="/services/all">Services</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
