@@ -12,17 +12,18 @@
 					<div class="container">
 							<div class="row">
 								<div class="col-6">
+									<input type="hidden" name="user_id" value="{{auth()->user()->id}}">
 									<div class="form-group">
 										<label>ID Member</label>
-										<input class="form-control" type="text" name="id_member" id="id_member" value="{{old('id_member')}}">
+										<input class="form-control" type="number" name="id_member" id="id_member" value="{{old('id_member')}}">
+									</div>
+									<div class="form-group">
+										<label>NIK</label>
+										<input class="form-control" type="number" name="nik" id="nik" value="{{old('nik')}}">
 									</div>
 									<div class="form-group">
 										<label>Nama</label>
 										<input class="form-control" type="text" name="name" id="name" value="{{old('name')}}">
-									</div>
-									<div class="form-group">
-										<label>Email</label>
-										<input class="form-control" type="email" name="email" id="email" value="{{old('email')}}">
 									</div>
 								</div>
 								<div class="col-6">
@@ -31,8 +32,8 @@
 										<input class="form-control" type="number" name="no_hp" id="no_hp" value="{{old('no_hp')}}">
 									</div>
 									<div class="form-group">
-										<label>Role</label>
-										<input class="form-control" type="text" name="role" id="role" value="{{old('role')}}">
+										<label>Alamat</label>
+										<input class="form-control" type="text" name="alamat" id="alamat" value="{{old('alamat')}}">
 									</div>
 								</div>
 							</div>

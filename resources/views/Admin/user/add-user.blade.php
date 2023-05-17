@@ -13,19 +13,15 @@
 								@csrf
 								<div class="col-6">
 									<div class="form-group">
-										<label for="name">Name</label>
-										<input class="form-control" type="text" name="name" id="name" value="{{old('name')}}">
-									</div>
-									<div class="form-group">
 										<label for="username">Username</label>
 										<input class="form-control" type="text" name="username" id="username" value="{{old('username')}}">
 									</div>
 									<div class="form-group">
-										<label for="jabatan_id">Jabatan</label>
-										<select class="form-control" name="jabatan_id" id="jabatan_id">
-											<option>Pilih Jabatan</option>
-											@foreach($jabatan as $j)
-											<option value="{{$j->id}}">{{$j -> jabatan}}</option>
+										<label for="role_id">Role</label>
+										<select class="form-control" name="role_id" id="role_id">
+											<option>Pilih Role</option>
+											@foreach($role as $r)
+											<option value="{{$r->id}}">{{$r -> role}}</option>
 											@endforeach
 										</select>
 									</div>
@@ -38,10 +34,6 @@
 									<div class="form-group">
 										<label for="email">Email</label>
 										<input class="form-control" type="email" name="email" id="email" value="{{old('email')}}">
-									</div>
-									<div class="form-group">
-										<label for="no_hp">No. HP</label>
-										<input class="form-control" type="text" name="no_hp" id="no_hp" value="{{old('no_hp')}}">
 									</div>
 								</div>
 							</div>

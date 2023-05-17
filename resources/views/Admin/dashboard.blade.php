@@ -2,6 +2,14 @@
 @section('judul', 'Dashboard')
 @section('content-title', 'Dashboard')
 @section('content')
+
+@if(auth()->check())
+    @if(auth()->user()->hasIncompleteProfile())
+        <div class="alert alert-warning">
+            Anda harus segera melengkapi biodata Anda. <a href="{{route('member.create')}}" class="text-primary">Klik ini.</a>
+        </div>
+    @endif
+@endif
     <div class="row">
 
         <div class="col-lg-6">

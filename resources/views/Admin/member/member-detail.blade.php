@@ -12,7 +12,11 @@
 						<tbody>
 							<tr>
 								<td class="text-center"><strong>ID Member</strong></td>
-								<td>000{{$member->id_member}}</td>
+								<td>{{$member->id_member}}</td>
+							</tr>
+							<tr>
+								<td class="text-center"><strong>NIK</strong></td>
+								<td>{{$member->nik}}</td>
 							</tr>
 							<tr>
 								<td class="text-center"><strong>Name</strong></td>
@@ -20,15 +24,19 @@
 							</tr>
 							<tr>
 								<td class="text-center"><strong>Email</strong></td>
-								<td>{{$member->email}}</td>
+								<td>{{$member->alamat}}</td>
 							</tr>
 							<tr>
 								<td class="text-center"><strong>No. HP</strong></td>
 								<td>{{$member->no_hp}}</td>
 							</tr>
 							<tr>
+								<td class="text-center"><strong>Username</strong></td>
+								<td>{{$member->user->username}}</td>
+							</tr>
+							<tr>
 								<td class="text-center"><strong>Role</strong></td>
-								<td>{{$member->role}}</td>
+								<td>{{$user->role->role}}</td>
 							</tr>
 						</tbody>
 					</table>
