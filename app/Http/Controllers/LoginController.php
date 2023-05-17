@@ -35,7 +35,8 @@ class LoginController extends Controller
             if ($user == 'admin'||'owner'||'employee') {
                 return redirect()->intended('dashboard');
             } elseif ($user == 'client') {
-                return redirect()->intended('dashboard');
+                // return redirect()->intended('dashboard');
+                // return redirect('returnan');
             }
         } else {
             return back()->withErrors([
