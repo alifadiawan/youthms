@@ -1,9 +1,10 @@
 @extends('layout.admin')
-@section('content-title', 'Member')
+@section('content-title', 'Employee')
 @section('content')
-@section('judul', 'Member')
+@section('judul', 'Employee')
 
-<!-- <a href="{{route('member.create')}}" class="btn btn-md text-white rounded-pill mb-3" style="background-color: #1864BA">Tambah</a> -->
+
+<!-- <a href="{{route('employee.create')}}" class="btn btn-md text-white rounded-pill mb-3" style="background-color: #1864BA">Tambah</a> -->
 <div class="card">
     <div class="col-lg-12">
         <table class="table table-striped table-hover mt-2">
@@ -19,7 +20,7 @@
             <tbody>
                 @if(count($member) < 1)
                     <tr>
-                        <td colspan="5" class="text-center">Belum Ada Member !!</td>
+                        <td colspan="5" class="text-center">Belum Ada Employee !!</td>
                     </tr>
                 @else
                     @foreach($member as $m)
@@ -29,7 +30,7 @@
                         <td>{{$m -> alamat}}</td>
                         <td>{{$m -> no_hp}}</td>
                         <td>
-                            <a href="{{route('member.show',$m->id)}}" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a>
+                            <a href="{{route('employee.show',$m->id)}}" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a>
                         </td>
                     </tr>
                     @endforeach

@@ -16,8 +16,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $member = Member::all();
-        
+        $user = User::where("role_id", "=", 2)->pluck("id");
+        $member = Member::whereIn("user_id", $user)->get();
         return view('Admin.member.index', compact('member'));    
     }
 
@@ -34,9 +34,13 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
+        //insert id member
+        $member = Member::count();
+        $currentNumber = $member;
+        $nextNumber = str_pad(++$currentNumber, 5, '0', STR_PAD_LEFT); // "00002"
         Member::create([
             'user_id' => $request->user_id,
-            'id_member' => $request->id_member,
+            'id_member' => $nextNumber,
             'nik' => $request->nik,
             'name' => $request->name,
             'no_hp' => $request->no_hp,

@@ -1,17 +1,21 @@
 @extends('layout.admin')
-@section('content-title', 'Member Detail')
+@section('content-title', 'Employee Detail')
 @section('content')
-@section('judul', 'Member Detail')
+@section('judul', 'Employee Detail')
 
 <div class="container">
 	<div class="row">
+		@if(auth()->user()->role_id == 1 || auth()->user()->id == $user->id)
 		<div class="col-lg-10">
+		@else
+		<div class="col-lg-12">
+		@endif
 			<div class="card">
 				<div class="container">
 					<table class="table table-borderless">
 						<tbody>
 							<tr>
-								<td class="text-center"><strong>Kode Member</strong></td>
+								<td class="text-center"><strong>Kode Employee</strong></td>
 								<td>{{$member->id_member}}</td>
 							</tr>
 							<tr>
@@ -43,6 +47,7 @@
 				</div>
 			</div>
 		</div>
+		@if(auth()->user()->role_id == 1 || auth()->user()->id == $user->id)
 		<div class="col-lg-2">
 			<div class="container">
 				<button class="btn btn-md btn-warning" data-toggle="modal" data-target="#editmodal" style="width: 80%;"><strong>Edit</strong></button>
@@ -51,6 +56,7 @@
 				<br><br>
 			</div>
 		</div>
+		@endif
 	</div>
 </div>
 
@@ -68,7 +74,7 @@
 
       <div class="modal-footer">
       	<button class="btn btn-danger" data-dismiss="modal">Tidak</button>
-      	<a href="{{route('member.edit', $member->id)}}" class="btn btn-warning text-white">Iya</a>
+      	<a href="{{route('employee.edit', $member->id)}}" class="btn btn-warning text-white">Iya</a>
       </div>
     </div>
   </div>
@@ -87,7 +93,7 @@
 
       <div class="modal-footer">
       	<button class="btn btn-danger" data-dismiss="modal">Tidak</button>
-        <a href="{{route('member.hapus', $member->id)}}" class="btn btn-warning text-white">Iya</a>
+        <a href="{{route('employee.hapus', $member->id)}}" class="btn btn-warning text-white">Iya</a>
       </div>
     </div>
   </div>

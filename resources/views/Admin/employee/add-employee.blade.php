@@ -1,11 +1,11 @@
 @extends('layout.admin')
-@section('content-title', 'Add Member')
+@section('content-title', 'Add Employee')
 @section('content')
-@section('judul', 'Add Member')
+@section('judul', 'Add Employee')
 
 <div class="container">
 	<div class="col-lg-12">
-		<form class="form" action="{{route('member.store')}}" method="post">
+		<form class="form" action="{{route('employee.store')}}" method="post">
 			@csrf
 			<div class="card">
 				<div class="card-body">
