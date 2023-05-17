@@ -3,12 +3,16 @@
 @section('content-title', 'Dashboard')
 @section('content')
 
-@if(auth()->check())
-    @if(auth()->user()->hasIncompleteProfile())
+@if(auth()->user()->hasIncompleteProfile())
+    
         <div class="alert alert-warning">
-            Anda harus segera melengkapi biodata Anda. <a href="{{route('member.create')}}" class="text-primary">Klik ini.</a>
+            Anda harus segera melengkapi biodata Anda. 
+            @if(auth()->user()->role_id == 2) 
+            <a href="{{route('member.create')}}" class="text-primary">Klik ini.</a> 
+            @else 
+            <a href="{{route('employee.create')}}" class="text-primary">Klik ini.</a> 
+            @endif
         </div>
-    @endif
 @endif
     <div class="row">
 

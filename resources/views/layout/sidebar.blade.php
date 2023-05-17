@@ -37,7 +37,6 @@
                         <i class="nav-icon fa-solid fa-chart-simple"></i>
                         <p>
                             Dashboard
-                            <span class="badge badge-info right">2</span>
                         </p>
                     </a>
                 </li>
@@ -46,7 +45,6 @@
                         <i class="nav-icon fa-solid fa-circle-user"></i>
                         <p>
                             Member
-                            <span class="badge badge-info right">2</span>
                         </p>
                     </a>
                 </li>
@@ -55,7 +53,6 @@
                         <i class="nav-icon fa-solid fa-users"></i>
                         <p>
                             Employee
-                            <span class="badge badge-info right">2</span>
                         </p>
                     </a>
                 </li>

@@ -18,9 +18,15 @@
 </div> -->
 
 <div class="row">
+    @if(auth()->user()->role_id !== 1)
+    <div class="col-lg-12">
+    @else
     <div class="col-lg-9">
+    @endif
         <div class="card p-3">
+            @if(auth()->user()->role_id == 1)
             <a href="{{route('user.create')}}" class="btn btn-md text-white rounded mb-2 mr-1" style="background-color: #1864BA; width: 14%;">Tambah User</a>
+            @endif
             <table class="table table-striped table-hover mt-2">
                 <thead>
                     <tr style="background-color: #0EA1E2">
@@ -51,6 +57,7 @@
             </table>
         </div>
     </div>
+    @if(auth()->user()->role_id == 1)
     <div class="col-lg-3">
         <div class="card p-3">
             <button data-toggle="modal" data-target="#addJabatan" class="btn btn-md text-white rounded mb-2 mr-1" style="background-color: #1864BA; width: 42%;" >Tambah</button>
@@ -78,6 +85,7 @@
             </table>
         </div>
     </div>
+    @endif
 </div>
 
 <!-- Add jabatan Modal -->

@@ -17,6 +17,7 @@ use App\Http\Controllers\EUController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\EmployeeController;
 use App\Models\portofolio;
 use App\Models\Services;
 
@@ -77,9 +78,20 @@ Route::middleware('guest')->group(function () {
         return view('EU.transaction.pembayaran');
     });
 
+
     route::get('/returnan', function () {
         return view('returnan');
     });
+
+    // user EU
+    Route::get('/edit-profile', function(){
+        return view('EU.user.edit');
+    });
+    Route::get('/profile', function(){
+        return view('EU.user.index');
+    });
+
+
 });
 
 // role admin
@@ -118,6 +130,10 @@ Route::middleware('auth')->group(function() {
     //member
     Route::get('member/{id}/hapus', [MemberController::class, 'hapus'])->name('member.hapus');
     Route::resource('member', MemberController::class);
+
+    //employee
+    Route::get('employee/{id}/hapus', [MemberController::class, 'hapus'])->name('employee.hapus');
+    Route::resource('employee', EmployeeController::class);
 
     //landing page
     Route::resource('landing_page', landingpageController::class);
