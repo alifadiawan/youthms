@@ -2,7 +2,7 @@
     <div class="container d-flex align-items-center">
 
         <!-- logo -->
-       <a href="index.html" class="logo me-auto"><img src="{{ asset('youth-logo.png') }}" alt="" class="img-fluid"></a>
+       <a href="/" class="logo me-auto"><img src="{{ asset('youth-logo.png') }}" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar">
         <ul>

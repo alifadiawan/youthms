@@ -1,4 +1,4 @@
-@extends('layout-landing.body')
+@extends('layout-landing2.body')
 @section('title', 'Store')
 @section('content')
     <div class="row">
