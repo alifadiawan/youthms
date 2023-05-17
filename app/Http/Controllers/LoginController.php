@@ -40,6 +40,7 @@ class LoginController extends Controller
             } elseif ($user == 'client') {
                 return redirect('/');
             }
+            
         } else {
             return back()->withErrors([
                 'email' => 'Email Salah!!',
