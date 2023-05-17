@@ -62,9 +62,8 @@ Route::middleware('guest')->group(function () {
         return view('EU.blog.pemrograman');
     });
 
-
     //services
-    Route::get('/services', function(){
+    Route::get('/services/all', function(){
         return view('EU.services.index');
     });
     
