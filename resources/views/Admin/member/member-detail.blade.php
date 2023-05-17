@@ -36,7 +36,7 @@
 							</tr>
 							<tr>
 								<td class="text-center"><strong>Role</strong></td>
-								<td>{{$user->role->role}}</td>
+								<td>{{$user->roles->role}}</td>
 							</tr>
 						</tbody>
 					</table>

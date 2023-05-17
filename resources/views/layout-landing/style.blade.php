@@ -1,5 +1,11 @@
+<!-- bootstrap 5.3 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+<!-- font -->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+</style>
 
 <!-- Data AOS Animations -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -9,6 +15,10 @@
 </script>
 
 <style>
+    .konten p{
+        font-size: 20px !important;
+    }
+
     .content {
         margin-top: 150px;
         margin-bottom: 150px;
@@ -34,6 +44,13 @@
         color: white;
         background-color: #4070B5;
         height: 93vh;
+    }
+    
+    #hero-services {
+        overflow: hidden;
+        margin-top: 100px;
+        color: black;
+        height: 100vh;
     }
 
     #choose {
