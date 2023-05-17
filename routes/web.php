@@ -99,55 +99,55 @@ Route::middleware('guest')->group(function () {
 });
 
 //  client
-// route::middleware('client')->group(function () {
-//     // landing page
-//     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
+route::middleware('client')->group(function () {
+    // landing page
+    Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 
-//     //blog
-//     Route::get('/blog/editing', function () {
-//         return view('EU.blog.editing');
-//     });
-//     Route::get('/blog/design', function () {
-//         return view('EU.blog.design');
-//     });
-//     Route::get('/blog/pemrograman', function () {
-//         return view('EU.blog.pemrograman');
-//     });
+    //blog
+    Route::get('/blog/editing', function () {
+        return view('EU.blog.editing');
+    });
+    Route::get('/blog/design', function () {
+        return view('EU.blog.design');
+    });
+    Route::get('/blog/pemrograman', function () {
+        return view('EU.blog.pemrograman');
+    });
 
-//     //Store EU
-//     Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
-//     Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
-//     Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
-//     Route::resource('/store', EUController::class);
-//     route::get('/store/{id}', [EUController::class, 'show']);
+    //Store EU
+    Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
+    Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
+    Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
+    Route::resource('/store', EUController::class);
+    route::get('/store/{id}', [EUController::class, 'show']);
 
-//     //services
-//     Route::get('/services/all', function () {
-//         return view('EU.services.index');
-//     });
+    //services
+    Route::get('/services/all', function () {
+        return view('EU.services.index');
+    });
 
-//     //cart
-//     Route::get('/cart', function () {
-//         return view('EU.transaction.cart');
-//     });
+    //cart
+    Route::get('/cart', function () {
+        return view('EU.transaction.cart');
+    });
 
-//     //transaction
-//     Route::get('/pembayaran', function () {
-//         return view('EU.transaction.pembayaran');
-//     });
+    //transaction
+    Route::get('/pembayaran', function () {
+        return view('EU.transaction.pembayaran');
+    });
 
-//     // user EU
-//     Route::get('/edit-profile', function () {
-//         return view('EU.user.edit');
-//     });
-//     Route::get('/profile', function () {
-//         return view('EU.user.index');
-//     });
-// });
+    // user EU
+    Route::get('/edit-profile', function () {
+        return view('EU.user.edit');
+    });
+    Route::get('/profile', function () {
+        return view('EU.user.index');
+    });
+});
 
 // role admin
 Route::middleware('auth')->group(function () {
-// Route::middleware(['auth','admin', 'owner', 'employee'])->group(function () {
+// Route::middleware(['admin', 'owner', 'employee'])->group(function () {
 // route::group(['middleware' => ['admin', 'owner', 'employee']], function () {
     Route::resource('/dashboard', DashboardController::class);
 
