@@ -57,9 +57,7 @@ class EUController extends Controller
 
     public function storeindex()
     {
-        $layanan = JenisLayanan::all();
-        // return true;
-        // return $layanan;
+        $layanan = JenisLayanan::with('services.produk')->get();
         return view('EU.store.index', compact('layanan'));
     }
 
@@ -76,7 +74,6 @@ class EUController extends Controller
      */
     public function show(EU $eU, $id)
     {
-        $s = Services::all();
         $layanan = JenisLayanan::all();
         $services = Services::where('jenis_layanan_id', $id)->get();
         $idservices = $services->pluck('id');

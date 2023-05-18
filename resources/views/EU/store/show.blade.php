@@ -17,6 +17,7 @@
         <div class="d-flex flex-row text-center">
             {{-- <a href="{{ route('storeEU.editing') }}" class="btn my-3">Editing</a>
             <a href="{{ route('storeEU.design') }}" class="btn my-3">Design</a> --}}
+            <a href="{{ route('storeEU.index') }}" class="btn my-3 active">All</a>
             @foreach ($layanan as $l)
                 <a href="{{ route('store.show', $l->id) }}"
                     class="btn my-3 {{ request()->is('/store') ? 'active' : '' }}">{{ $l->layanan }}</a>
@@ -29,7 +30,7 @@
         <p class="h2 fw-bold">{{ $jenis_layanan->layanan }}</p>
         <div class="d-flex row mb-5 justify-content-start">
             @foreach ($produk as $p)
-                <div class="my-3 col-lg-4 col-md-6 col-sm-12">
+            <div class="my-3 col-lg-4 col-md-6 col-sm-12">
                     <div class="card">
                         <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
                         <div class="card-body">
