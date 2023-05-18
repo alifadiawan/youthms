@@ -29,7 +29,7 @@ class LandingSeeder extends Seeder
         ]);
 
         LandingIllustration::create([
-            'illustration' => 'group-390.png',
+            'illustration' => 'group-404.png',
         ]);
 
         $partner = [

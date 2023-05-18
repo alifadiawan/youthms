@@ -165,6 +165,11 @@ route::middleware(['client'])->group(function () {
     
     // // //transaction
     Route::resource('/transaksi', TransaksiController::class);
+
+    //portofolio EU
+    Route::get('/portofolio/all', function () {
+        return view('EU.portofolio.index');
+    });
 });
 
 

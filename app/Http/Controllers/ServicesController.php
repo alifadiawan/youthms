@@ -57,7 +57,7 @@ class ServicesController extends Controller
         $user = Auth::user();
         $message = "Service Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('services.show', ['services'=> $servis->id])); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('services.show', ['service'=> $servis->id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
 
         return redirect('services');
@@ -101,7 +101,7 @@ class ServicesController extends Controller
         $user = Auth::user();
         $message = "Servis Berhasil Diupdate !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('services.show', ['services'=> $services->id])); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('services.show', ['service'=> $services->id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
 
         return redirect('/services');
