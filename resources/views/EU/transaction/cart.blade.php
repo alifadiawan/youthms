@@ -1,7 +1,6 @@
 @extends('layout-landing2.body')
 @section('content')
-    
-<!-- Cart -->
+    <!-- Cart -->
     <div class="container">
         <h5>Jasa yang anda pilih : </h5>
         <div class="card">
@@ -16,19 +15,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Aplikasi Laravel</td>
-                            <td>
-                                <input type="number" class="form-control w-25" name="" id="" value="1"
-                                    min="1">
-                            </td>
-                            <td>
-                                Rp. 1.000.000
-                            </td>
-                            <td>
-                                <a href="" class="btn btn-danger">Hapus</a>
-                            </td>
-                        </tr>
                         <tr>
                             <td>Aplikasi Laravel</td>
                             <td>

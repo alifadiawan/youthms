@@ -11,6 +11,7 @@ use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 use App\Models\JenisLayanan;
 use App\Models\User;
+use App\Models\Cart;
 use Mckenziearts\Notify\LaravelNotify;
 
 class EUController extends Controller
@@ -34,16 +35,8 @@ class EUController extends Controller
      */
     public function create()
     {
-        // return true;
-
-        // Transaksi::create([
-        //     'total' => '',
-        //     'total_bayar' =>0,
-        //     'member_id' =>'aowe'
-        // ]);
-        // return true;
         if (auth::check()) {
-            return true;
+            return 'eu';
         } else {
             notify()->success('Anda belum login');
             return redirect(route('login'));
@@ -65,9 +58,6 @@ class EUController extends Controller
     public function store(Request $request)
     {
         return true;
-
-
-        //
     }
 
     /**
@@ -76,16 +66,40 @@ class EUController extends Controller
     public function show(EU $eU, $id)
     {
         $layanan = JenisLayanan::all();
-        $services = Services::where('jenis_layanan_id', $id)->get();
-        $idservices = $services->pluck('id');
-        $jenis_layanan = JenisLayanan::find($id);
-        // return $jenis_layanan;
-        foreach ($services as $serv) {
-            $produk[$serv->id] = produk::where('services_id', $serv->id)->with('services')->get();
-        }
-        $produk = collect($produk)->flatten();
 
-        return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan'));
+        $jenis_layanan = JenisLayanan::find($id);
+        $services = $jenis_layanan->services;
+
+        foreach ($services as $s) {
+            foreach ($s->produk as $serv) {
+                $pr[$serv->id] = $serv->id;
+                $z[$serv->id] = $serv;
+            }
+        }
+        $cek = produk::doesnthave('cart')->pluck('id')->toarray();
+        $cart = produk::has('cart')->get('id');
+
+        $irisan_produk = array_intersect_key($pr, array_flip($cek));
+        $produk = produk::wherein('id', $pr)->get();
+        $p = produk::wherein('id', $pr)->get('id');
+        $c = produk::wherein('id', $cart)->get('id');
+        
+        $pcart = [];
+        foreach ($p as $pp) {
+            $idp = $pp->id;
+
+            $pc = $c->where('id', $idp)->first();
+            if ($pc) {
+                $pcart[]= $pc;
+            } else {
+                $pproduk[] =$pp;
+            }
+        }
+
+        // return $pproduk;
+        // return $pcart;
+
+        return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan', 'c'));
     }
 
     /**

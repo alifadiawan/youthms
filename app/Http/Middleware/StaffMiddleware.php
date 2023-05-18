@@ -20,7 +20,6 @@ class StaffMiddleware
         if (auth()->check() && in_array($u, $staff)) {
             return $next($request);
         }
-
         else {
             return redirect()->back();
         }

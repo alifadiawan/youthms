@@ -41,12 +41,8 @@ class LoginController extends Controller
                 // return redirect('/');
                 return redirect()->intended('/');
             }else{
-<<<<<<< HEAD
-                return redirect('login');
-=======
                 // return redirect('dashboard');
                 return redirect()->intended('/');
->>>>>>> a39278ffc1f2ac4c1070893c9f4329022992d8d1
             }
 
         } else {

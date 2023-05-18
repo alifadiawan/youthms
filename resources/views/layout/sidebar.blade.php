@@ -89,7 +89,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/transaksi" class="nav-link">
+                    {{-- <a href="{{ route('transaksi.history') }}" class="nav-link"> --}}
                         <i class="nav-icon fa-solid fa-cart-shopping"></i>
                         <p>
                             Transaksi

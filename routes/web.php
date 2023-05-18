@@ -76,11 +76,11 @@ Route::middleware('guest')->group(function () {
     });
 
     //Store EU
-    Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
-    Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
-    Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
-    Route::resource('/store', EUController::class);
-    route::get('/store/{id}', [EUController::class, 'show']);
+    // Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
+    // Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
+    // Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
+    // Route::resource('/store', EUController::class);
+    // route::get('/store/{layanan}', [EUController::class, 'show']);
 
     //services
     Route::get('/services/all', function () {
@@ -104,11 +104,15 @@ Route::middleware('guest')->group(function () {
     Route::get('/portofolio/all', function () {
         return view('EU.portofolio.index');
     });
+
+
+    // //transaction
+    // Route::resource('/transaksi', TransaksiController::class);
 });
 
 
 //  client
-route::middleware('client')->group(function () {
+route::middleware(['auth','client'])->group(function () {
     // landing page
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 
@@ -128,7 +132,7 @@ route::middleware('client')->group(function () {
     Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
     Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
     Route::resource('/store', EUController::class);
-    route::get('/store/{id}', [EUController::class, 'show']);
+    route::get('/store/{id}/haugh', [EUController::class, 'show']);
 
     //services
     Route::get('/services/all', function () {
@@ -152,11 +156,15 @@ route::middleware('client')->group(function () {
     Route::get('/profile', function () {
         return view('EU.user.index');
     });
+
+    
+    // // //transaction
+    Route::resource('/transaksi', TransaksiController::class);
 });
 
+
 // role admin
-// route::middleware('auth')->group(function(){
-Route::middleware(['auth',StaffMiddleware::class])->group(function () {
+Route::middleware('staff')->group(function () {
     Route::resource('/dashboard', DashboardController::class);
 
     //store
@@ -176,8 +184,6 @@ Route::middleware(['auth',StaffMiddleware::class])->group(function () {
     Route::post('segmen', [SegmenController::class, 'store'])->name('segmen.store');
     Route::get('segmen/{id}/hapus', [SegmenController::class, 'hapus'])->name('segmen.hapus');
 
-    //transaction
-    Route::resource('transaksi', TransaksiController::class);
 
     //user
 
@@ -231,6 +237,9 @@ Route::middleware(['auth',StaffMiddleware::class])->group(function () {
     //notif
     Route::resource('notif', NotificationController::class);
     Route::get('/read/{notificationId}', [NotificationController::class, 'read'])->name('notif.read');
+
+    // transaction
+    Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
 });
 // });
 
