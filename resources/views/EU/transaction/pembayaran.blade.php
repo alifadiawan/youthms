@@ -1,86 +1,97 @@
 @extends('layout-landing2.body')
 @section('content')
-    <!-- Cart -->
-    <div class="container my-5">
-        <h5>Jasa yang anda pilih : </h5>
-        <div class="card">
-            <div class="card-body">
-                <table class="table table-borderless table-hover">
-                    <thead>
-                        <tr>
-                            <th>Nama Produk</th>
-                            <th>Jumlah</th>
-                            <th>Harga</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Full Marketing Web</td>
-                            <td>1</td>
-                            <td>Rp. 1.000.000</td>
-                        </tr>
-                        <tr>
-                            <td>Desain feed Instagram</td>
-                            <td>1</td>
-                            <td>Rp. 300.000</td>
-                        </tr>
-                        <th colspan="2" class="text-end">TOTAL : </th>
-                        <th class="text-start">RP. 2.000.000</th>
-                    </tbody>
-                    <thead>
-                    </thead>
-                </table>
-            </div>
-        </div>
-    </div>
+    <div id="container" class="container">
 
-    <!-- Metode Pembayaran -->
-    <div class="container my-5">
-        <h5>Metode Pembayaran :</h5>
-        <div class="d-flex flex-row gap-3">
-            <a href="" class="btn">
-                <div class="card" style="width: 18rem;">
+        <div class="row d-flex justify-content-center my-4">
+            <div class="col-md-8">
+                <a href="/cart" class="btn my-3">
+                    <i class="fas fa-arrow-left"></i></a>
+                <div class="card mb-4">
+                    <div class="card-header py-3">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="mb-0 me-auto">Summary</h5>
+                            </div>
+
+                            <!-- countdown -->
+                            <div class="col text-end text-danger">
+                                <h5 id="time"></h5>
+                            </div>
+
+                        </div>
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title"> <i class="fa-solid fa-building-columns"></i> Virtual Account</h5>
+                        <ul class="list-group list-group-flush">
+                            <li
+                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                Products
+                                <span>Rp. 900.000</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                Biaya Layanan
+                                <span>Rp. 2.000.000</span>
+                            </li>
+                            <li
+                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                <div>
+                                    <strong>Total</strong>
+                                </div>
+                                <span><strong>Rp. 2.900.000</strong></span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </a>
-            <a class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title"> <i class="fa-solid fa-building-columns"></i> Transfer Bank</h5>
+                <div class="card mb-4 mb-lg-0 p-0">
+                    <div class="card-header">
+                        <h4>Metode Pembayaran</h4>
                     </div>
-                </div>
-            </a>
-        </div>
-    </div>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h5>Pilih Bank</h5>
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <img src="{{ asset('bca.png') }}" class="img-thumbnail">
-                        </div>
-                        <div class="col">
-                            <img src="{{ asset('bri.png') }}" class="img-thumbnail">
-                        </div>
-                        <div class="col">
-                            <img src="{{ asset('bni.png') }}" class="img-thumbnail">
-                        </div>
-                        <div class="col">
-                            <img src="{{ asset('mandiri.png') }}" class="img-thumbnail">
-                        </div>
+                    <div class="card-body">
+                        <a href="" class="btn card-hover">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title"> <i class="fa-solid fa-building-columns"></i> Virtual Account
+                                    </h5>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title"> <i class="fa-solid fa-building-columns"></i> Transfer Bank</h5>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+
+    {{-- <script>
+        function startTimer(duration, display) {
+            var timer = duration,
+                minutes, seconds;
+            setInterval(function() {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        window.onload = function() {
+            var fiveMinutes = 60 * 30,
+                display = document.querySelector('#time');
+            startTimer(fiveMinutes, display);
+        };
+    </script> --}}
+
 @endsection
