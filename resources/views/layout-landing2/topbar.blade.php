@@ -23,9 +23,7 @@
                         {{auth()->user()->username}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/logout">logout</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-
+                        <li><a class="dropdown-item" href="/profile">Edit Profile</a></li>
                         <li>
                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 Logout
