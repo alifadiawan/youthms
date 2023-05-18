@@ -79,7 +79,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
     Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
     Route::resource('/store', EUController::class);
-    route::get('/store/{id}', [EUController::class, 'show']);
+    route::get('/store/{type}', [EUController::class, 'show']);
 
     //services
     Route::get('/services/all', function () {
@@ -161,7 +161,7 @@ Route::middleware(['staff'])->group(function () {
 
     //store
     Route::resource('adm_store', ProdukController::class);
-    Route::get('/adm_store/{id}/hapus', [ProdukController::class, 'hapus'])->name('store.hapus');
+    Route::get('/adm_store/{id}/hapus', [ProdukController::class, 'hapus'])->name('adm_store.hapus');
 
     //services
     Route::resource('services', ServicesController::class);
@@ -229,8 +229,8 @@ Route::middleware(['staff'])->group(function () {
     Route::get('/tambah', [PortofolioController::class, 'test'])->name('portofolio.tambah');
 
     //notif
-    Route::resource('notif', NotificationController::class);
-    Route::get('/read/{notificationId}', [NotificationController::class, 'read'])->name('notif.read');
+    // Route::resource('notif', NotificationController::class);
+    Route::post('/read', [NotificationController::class, 'read'])->name('read');
 });
 // });
 

@@ -1,7 +1,7 @@
 @extends('layout.admin')
-@section('content-title', 'Add Employee')
+@section('content-title', 'Add Profile')
 @section('content')
-@section('judul', 'Add Employee')
+@section('judul', 'Add Profile')
 
 <div class="container">
 	<div class="col-lg-12">

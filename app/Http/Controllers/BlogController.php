@@ -14,12 +14,6 @@ use Session;
 class BlogController extends Controller
 {
     
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('admin');
-    }
-    
     /**
      * Display a listing of the resource.
      */
@@ -74,7 +68,7 @@ class BlogController extends Controller
         $content = $dom->saveHTML();
 
         //simpan ke db
-        Blog::create([
+        $blog = Blog::create([
             'id_artikel' => $nextNumber,
             'judul' =>  $request->judul,
             'tanggal' =>  $tanggal,
@@ -86,8 +80,10 @@ class BlogController extends Controller
         notify()->success('Artikel Berhasil Ditambahkan !!');
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "Artikel Baru Telah Ditambahkan !";
-        Notification::send($user, new NewMessageNotification($message));
+        $message = "Artikel Berhasil Ditambahkan !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('blog.show', ['blog' => $blog->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('blog');
     }
 
@@ -152,8 +148,10 @@ class BlogController extends Controller
             notify()->success('Artikel Berhasil Diubah !!');
             // mengirim notifikasi
             $user = Auth::user();
-            $message = "Artikel Telah Dirubah !";
-            Notification::send($user, new NewMessageNotification($message));
+            $message = "Artikel Berhasil Diubah !!";
+            $notification = new NewMessageNotification($message);
+            $notification->setUrl(route('blog.show', ['blog' => $data->id])); // Ganti dengan rute yang sesuai
+            Notification::send($user, $notification);
             return redirect('blog/'.$id);
     }
 
@@ -172,8 +170,10 @@ class BlogController extends Controller
         notify()->success('Artikel Berhasil Dihapus !!');
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "Artikel Telah Dihapus !";
-        Notification::send($user, new NewMessageNotification($message));
+        $message = "Artikel Berhasil Dihapus !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('blog.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('blog')->with('hapus', 'Artikel Berhasil Dihapus!!');
     }
 }

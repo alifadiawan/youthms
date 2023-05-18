@@ -40,14 +40,16 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $produk_baru = $request->all();
-        Produk::create($produk_baru);
+        $produk = Produk::create($produk_baru);
 
         notify()->success('Berhasil ditambahkan',$request->nama_produk,);
         // mengirim notifikasi
         $user = Auth::user();
         $message = "Produk Berhasil ditambahkan";
-        Notification::send($user, new NewMessageNotification($message));
-        return redirect('/store');
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('adm_store.show', ['adm_store' => $produk->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+        return redirect('/adm_store');
     }
 
     /**
@@ -79,14 +81,16 @@ class ProdukController extends Controller
         $product = Produk::find($id);
         $input = $request->all();
         
-        $product->fill($input)->save();
+        $product->update($input);
 
         notify()->success('Produk berhasil diupdate');
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "Produk berhasil diupdate";
-        Notification::send($user, new NewMessageNotification($message));
-        return redirect('/store');
+        $message = "Produk Berhasil diupdate";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('adm_store.show', ['adm_store' => $product->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+        return redirect('/adm_store');
     }
 
     /**
@@ -99,15 +103,17 @@ class ProdukController extends Controller
 
     public function hapus($id)
     {
-        $product = Produk::find($id);
-        $product->delete();
+        $products = Produk::find($id);
+        $product = $products->delete();
 
         notify()->success('Produk berhasil dihapus');
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "Produk berhasil dihapus";
-        Notification::send($user, new NewMessageNotification($message));
-        return redirect('/store');
+        $message = "Produk Berhasil dihapus";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('adm_store.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+        return redirect('/adm_store');
 
     }
 }

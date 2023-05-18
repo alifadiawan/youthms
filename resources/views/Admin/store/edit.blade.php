@@ -6,7 +6,7 @@
     <div class="col-10">
         <div class="card rounded shadow-md">
             <div class="card-body">
-                <form action="{{ route('store.update', $product->id) }}" method="POST">
+                <form action="{{ route('adm_store.update', $product->id) }}" method="POST">
                     @method('PUT')
                     @csrf
                     {{-- nama produk --}}

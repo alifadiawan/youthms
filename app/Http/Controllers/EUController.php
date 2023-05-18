@@ -75,17 +75,36 @@ class EUController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(EU $eU, $id)
+    public function show(EU $eU, $type)
     {
+        $jenis_layanan = JenisLayanan::where('layanan', $type)->first();
+            
+        if (!$jenis_layanan) {
+            abort(404); // Tambahkan penanganan jika jenis layanan tidak ditemukan
+        }
+
+        // $s = Services::all();
+        // $layanan = JenisLayanan::all();
+        // $services = Services::where('jenis_layanan_id', $id)->get();
+        // $idservices = $services->pluck('id');
+        // $jenis_layanan = JenisLayanan::find($id);
+        // // return $jenis_layanan;
+        // foreach ($services as $serv) {
+        //     $produk[$serv->id] = produk::where('services_id', $serv->id)->with('services')->get();
+        // }
+        // $produk = collect($produk)->flatten();
+
         $s = Services::all();
         $layanan = JenisLayanan::all();
-        $services = Services::where('jenis_layanan_id', $id)->get();
+        $services = Services::where('jenis_layanan_id', $jenis_layanan->id)->get();
         $idservices = $services->pluck('id');
-        $jenis_layanan = JenisLayanan::find($id);
-        // return $jenis_layanan;
+
+        $produk = [];
+            
         foreach ($services as $serv) {
-            $produk[$serv->id] = produk::where('services_id', $serv->id)->with('services')->get();
+            $produk[$serv->id] = Produk::where('services_id', $serv->id)->with('services')->get();
         }
+            
         $produk = collect($produk)->flatten();
 
         return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan'));
