@@ -1,7 +1,8 @@
 @extends('layout-landing2.body')
 @section('content')
-    <!-- Cart -->
-    <div class="container my-5">
+    
+<!-- Cart -->
+    <div class="container">
         <h5>Jasa yang anda pilih : </h5>
         <div class="card">
             <div class="card-body">

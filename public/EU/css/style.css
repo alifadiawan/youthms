@@ -90,6 +90,7 @@ h6 {
 
 #store{
   margin-top: 72px;
+  width: fit-content;
 }
 
 /*--------------------------------------------------------------
@@ -415,6 +416,14 @@ h6 {
   height: 100vh;
   background: #406CAB;
   border-radius: 0px 0px 200px 0px;
+}
+
+#hero-portofolio{
+  color: white;
+  width: 100%;
+  height: 100vh;
+  background: #406CAB;
+  border-radius: 0px 0px 200px 200px;
 }
 
 #hero .container {
@@ -792,6 +801,17 @@ section {
     min-height: 200px;
   }
 }
+
+.project{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.card-hover:hover{
+  transform: translateY(-10px);
+  transition: all ease-in-out .3s;
+}
+
 
 /*--------------------------------------------------------------
 # Skills

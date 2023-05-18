@@ -53,6 +53,7 @@ route::get('/returnan', function () {
     return view('returnan');
 });
 
+
 //guest
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
@@ -97,7 +98,13 @@ Route::middleware('guest')->group(function () {
     Route::get('/profile', function () {
         return view('EU.user.index');
     });
+
+    //portofolio EU
+    Route::get('/portofolio/all', function () {
+        return view('EU.portofolio.index');
+    });
 });
+
 
 //  client
 // route::middleware('client')->group(function () {

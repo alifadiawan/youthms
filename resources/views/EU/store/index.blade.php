@@ -2,8 +2,8 @@
 @section('title', 'Store')
 @section('content')
 
-
-    <div id="store" class="row">
+    <!-- hero section -->
+    <div id="store" class="row" data-aos="fade-right" data-aos-duration="1000">
         <div id="thumbnail" class="text-start">
             <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
             <div id="caption">
@@ -15,14 +15,16 @@
         </div>
     </div>
 
+    
+    <!-- tombol kategori jasa -->
     <div class="container mb-5">
-        {{-- navbar kategori --}}
-        <div class="d-flex flex-row text-center">
+        <div class="d-flex flex-row text-center gap-3">
             {{-- <a href="{{ route('storeEU.editing') }}" class="btn my-3">Editing</a>
             <a href="{{ route('storeEU.design') }}" class="btn my-3">Design</a> --}}
-            <a href="{{ route('storeEU.index') }}" class="btn my-3 active">All</a>
+            <a href="{{ route('storeEU.index') }}" class="text-capitalize my-3 active">Promo</a>
             @foreach ($layanan as $l)
-                <a href="{{ route("store.show",$l->id) }}" class="btn my-3">{{ $l->layanan }}</a>
+                <a href="{{ route('store.show', $l->id) }}"
+                    class=" my-3 text-capitalize">{{ $l->layanan }}</a>
             @endforeach
 
         </div>
@@ -30,7 +32,7 @@
 
         <!-- promo content -->
         <p class="h2 fw-bold">PROMO</p>
-        <div class="d-flex row mb-5 justify-content-center">
+        <div class="d-flex row mb-5 justify-content-center" data-aos="fade-down" data-aos-duration="1000">
             <div class="my-3 col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">

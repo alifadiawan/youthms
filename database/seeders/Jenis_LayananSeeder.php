@@ -15,10 +15,10 @@ class Jenis_LayananSeeder extends Seeder
     {
         $jenis = [
             [
-                'layanan' => 'desain'
+                'layanan' => 'Design'
             ],
             [
-                'layanan' => 'aplikasi'
+                'layanan' => 'Aplikasi'
             ]
         ];
 
