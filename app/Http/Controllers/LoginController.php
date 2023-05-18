@@ -34,16 +34,15 @@ class LoginController extends Controller
             $user = auth()->user()->role->role;
             $company = ['admin','owner','employee'];
             
-            // if (in_array($user,$company)) {
-            if ($user == 'admin') {
+            if (in_array($user,$company)) {
                 // return true;
                 return redirect()->intended('dashboard');
             } elseif ($user == 'client') {
                 // return redirect('/');
-                return redirect()->intended('home');
+                return redirect()->intended('/');
             }else{
                 // return redirect('dashboard');
-                return redirect()->intended('dashboard');
+                return redirect()->intended('/');
             }
 
         } else {
