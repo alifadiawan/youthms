@@ -11,7 +11,6 @@
             <li class="nav-item"><a class="nav-link" href="{{ route('storeEU.index') }}">Store</a></li>
             <li class="nav-item"><a class="nav-link" href="/services/all">Service</a></li>
             <li class="nav-item"><a class="nav-link" href="/portofolio/all">Portofolio</a></li>
-            <li class="nav-item"><a class="nav-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
             @guest
                 <li class="nav-item"><a class="nav-link" href="{{ route('authcheck') }}"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 <li><a class="getstarted" href="/login">Login</a></li>
@@ -24,9 +23,7 @@
                         {{auth()->user()->username}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/logout">logout</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-
+                        <li><a class="dropdown-item" href="/profile">Edit Profile</a></li>
                         <li>
                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 Logout

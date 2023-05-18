@@ -10,6 +10,7 @@ use App\Models\Produk;
 use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 use App\Models\JenisLayanan;
+use App\Models\User;
 use Mckenziearts\Notify\LaravelNotify;
 
 class EUController extends Controller
