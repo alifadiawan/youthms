@@ -10,4 +10,9 @@ class Cart extends Model
     use HasFactory;
     protected $table = 'cart';
     protected $guarded = [];
+
+    public function produk()
+    {
+        return $this->belongsTo(produk::class);
+    }
 }
