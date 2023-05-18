@@ -107,7 +107,7 @@ Route::middleware('guest')->group(function () {
 
 
 //  client
-// route::middleware('client')->group(function () {
+route::middleware('client')->group(function () {
     // landing page
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 
@@ -151,11 +151,11 @@ Route::middleware('guest')->group(function () {
     Route::get('/profile', function () {
         return view('EU.user.index');
     });
-// });
+});
 
 // role admin
-Route::middleware('auth')->group(function () {
-// Route::middleware(['admin', 'owner', 'employee'])->group(function () {
+// Route::middleware('auth')->group(function () {
+Route::middleware(['staff'])->group(function () {
 // route::group(['middleware' => ['admin', 'owner', 'employee']], function () {
     Route::resource('/dashboard', DashboardController::class);
 
@@ -237,3 +237,6 @@ Route::middleware('auth')->group(function () {
 
 //logout
 Route::post('logout', [LoginController::class, 'logout'])->middleware('auth');
+
+//logout khusus jika eror (akses dari ketik url /logout)
+// Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
