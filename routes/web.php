@@ -151,6 +151,11 @@ route::middleware('client')->group(function () {
     Route::get('/profile', function () {
         return view('EU.user.index');
     });
+
+    //portofolio EU
+    Route::get('/portofolio/all', function () {
+        return view('EU.portofolio.index');
+    });
 });
 
 // role admin
