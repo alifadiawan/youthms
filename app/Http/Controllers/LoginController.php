@@ -32,17 +32,30 @@ class LoginController extends Controller
             
             // cek role suatu user
             $user = auth()->user()->role->role;
-            if ($user == 'admin'||'owner'||'employee') {
+            $company = ['admin','owner','employee'];
+            
+            if (in_array($user,$company)) {
+                // return true;
                 return redirect()->intended('dashboard');
             } elseif ($user == 'client') {
+                // return redirect('/');
+                return redirect()->intended('dashboard');
+            }else{
+                // return redirect('dashboard');
                 return redirect()->intended('dashboard');
             }
+
         } else {
             return back()->withErrors([
                 'email' => 'Email Salah!!',
                 'password' => 'Password Salah!!',
             ]);
         }
+    }
+
+    public function authcheck()
+    {
+        return redirect('login')->with('status','anda belum login');
     }
 
     public function logout(Request $request)

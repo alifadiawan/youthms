@@ -34,6 +34,21 @@ use App\Models\Services;
 */
 
 // undefined route
+route::get('/1', function () {
+    return view('returnan');
+});
+route::get('/2', function () {
+    return view('returnan');
+});
+route::get('/3', function () {
+    return view('returnan');
+});
+route::get('/4', function () {
+    return view('returnan');
+});
+route::get('/5', function () {
+    return view('returnan');
+});
 route::get('/returnan', function () {
     return view('returnan');
 });
@@ -41,6 +56,7 @@ route::get('/returnan', function () {
 //guest
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
+    Route::get('authcheck', [LoginController::class, 'authcheck'])->name('authcheck');
     Route::post('login', [LoginController::class, 'authenticate']);
 
     //landing page EU
@@ -84,7 +100,7 @@ Route::middleware('guest')->group(function () {
 });
 
 //  client
-route::middleware('client')->group(function () {
+// route::middleware('client')->group(function () {
     // landing page
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 
@@ -105,12 +121,12 @@ route::middleware('client')->group(function () {
     Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
     Route::resource('/store', EUController::class);
     route::get('/store/{id}', [EUController::class, 'show']);
-    
+
     //services
     Route::get('/services/all', function () {
         return view('EU.services.index');
     });
-    
+
     //cart
     Route::get('/cart', function () {
         return view('EU.transaction.cart');
@@ -128,11 +144,12 @@ route::middleware('client')->group(function () {
     Route::get('/profile', function () {
         return view('EU.user.index');
     });
-});
+// });
 
 // role admin
-// Route::middleware('auth')->group(function() {
-Route::middleware(['admin', 'owner', 'employee'])->group(function () {
+Route::middleware('auth')->group(function () {
+// Route::middleware(['admin', 'owner', 'employee'])->group(function () {
+// route::group(['middleware' => ['admin', 'owner', 'employee']], function () {
     Route::resource('/dashboard', DashboardController::class);
 
     //store
@@ -208,6 +225,7 @@ Route::middleware(['admin', 'owner', 'employee'])->group(function () {
     Route::resource('notif', NotificationController::class);
     Route::get('/read/{notificationId}', [NotificationController::class, 'read'])->name('notif.read');
 });
+// });
 
 
 //logout
