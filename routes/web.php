@@ -248,6 +248,7 @@ Route::middleware('staff')->group(function () {
 
     // Route::resource('notif', NotificationController::class);
     Route::post('/read', [NotificationController::class, 'read'])->name('read');
+    Route::get('/read_chat/{notifId}', [NotificationController::class, 'read_chat'])->name('read.chat');
 
     // transaction
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
