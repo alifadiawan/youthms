@@ -26,6 +26,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/logout">logout</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
+
                         <li>
                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 Logout
@@ -34,7 +35,7 @@
                     </ul>
 
                 </li>
-            @endauth
+            @endauth
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
