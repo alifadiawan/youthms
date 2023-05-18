@@ -21,7 +21,6 @@ class AdminMiddleware
         if (auth()->check() && $u == 'admin') {
             return $next($request);
         };
-        
-        // return redirect()->back();
+        return redirect()->back();
     }
 }
