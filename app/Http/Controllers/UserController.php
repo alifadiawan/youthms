@@ -19,6 +19,7 @@ class UserController extends Controller
         $user = User::all();
         $role = Role::all();
 
+
         return view('Admin.user.index', compact('user', 'role'));
     }
 
@@ -60,7 +61,15 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        return view('Admin.user.user-detail', compact('user'));
+        $u = auth()->user()->role->role;
+        $staff = ['admin', 'owner', 'employee'];
+        if (in_array($u, $staff)) {
+
+            return view('Admin.user.user-detail', compact('user'));
+        } else {
+
+            return view('EU.user.index', compact('user'));
+        }
     }
 
     /**
@@ -68,10 +77,20 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+
         $user = User::find($id);
         $role = Role::all();
 
-        return view('Admin.user.edit-user', compact('user', 'role'));
+
+        $u = auth()->user()->role->role;
+        $staff = ['admin', 'owner', 'employee'];
+        if (in_array($u, $staff)) {
+
+            return view('Admin.user.edit-user', compact('user', 'role'));
+        } else {
+
+            return view('EU.user.edit', compact('user'));
+        }
     }
 
     /**
@@ -80,6 +99,7 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $u = User::find($id);
+
 
         if ($request->password == null) {
             $u->update([
@@ -103,6 +123,7 @@ class UserController extends Controller
         $notification->setUrl(route('user.show', ['user'=> $u->id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
         return redirect('user/' . $id);
+
     }
 
     /**
@@ -115,9 +136,17 @@ class UserController extends Controller
 
     public function hapus(string $id)
     {
-        $u = User::find($id);
-        $u->delete();
-        notify()->success('Akun Berhasil Dihapus !!');
+        $u = auth()->user()->id;
+        $user = User::find($id);
+        $user_id = User::where('id', $id)->pluck('id')->first();
+        $user->delete();
+        // jika user yang akan dihapus adalah user itu sendiri maka otomatis kelogout
+        if ($u == $user_id) {
+            return redirect('login');
+        }
+
+        notify()->success('User Berhasil Dihapus !!');
+
         // mengirim notifikasi
         $user = Auth::user();
         $message = "Akun Berhasil Dihapus !!";

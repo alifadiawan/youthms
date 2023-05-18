@@ -16,4 +16,14 @@ class Produk extends Model
         return $this->belongsTo(Services::class);
         // return $this->belongsTo();
     }
+
+    public function cart()
+    {
+        return $this->hasMany(cart::class);
+    }
+
+    public function hasnocart()
+    {
+        return !$this->cart;
+    }
 }

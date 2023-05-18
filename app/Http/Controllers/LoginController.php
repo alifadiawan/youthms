@@ -55,7 +55,9 @@ class LoginController extends Controller
 
     public function authcheck()
     {
-        return redirect('login')->with('status','anda belum login');
+        // return redirect('login')->with('status','anda belum login');
+        notify()->success('anda belum login');
+        return redirect('login');
     }
 
     public function logout(Request $request)
