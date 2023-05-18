@@ -57,6 +57,7 @@ route::get('/returnan', function () {
 //guest
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
+    Route::get('authcheck', [LoginController::class, 'authcheck'])->name('authcheck');
     Route::post('login', [LoginController::class, 'authenticate']);
 
     //landing page EU

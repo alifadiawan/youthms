@@ -40,12 +40,19 @@
                             <h4 class="card-title text-capitalize">{{ $p->nama_produk }}</h4>
                             <p class="card-title text-secondary">{{ $p->services->judul }}</p>
                             <h3 class="card-text">Rp.{{ number_format($p->harga) }}</h3>
-                            <form action="{{ route('store.create') }}">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">
+                            @guest
+                                <a href="{{ route('authcheck') }}" class="btn btn-primary">
                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                </button>
-                            </form>
+                                </a>
+                            @endguest
+                            @auth
+                                <form action="{{ route('store.create') }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </form>
+                            @endauth
                         </div>
                     </div>
                 </div>
