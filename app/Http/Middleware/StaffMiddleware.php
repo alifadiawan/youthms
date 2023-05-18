@@ -25,6 +25,6 @@ class StaffMiddleware
         }
     
         // Redirect ke halaman lain jika peran tidak cocok
-        return redirect('/returnan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
+        // return redirect('/returnan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
     }
 }

@@ -35,6 +35,12 @@ class TransaksiController extends Controller
         // return $history;
         return view('Admin.transaction.index');
     }
+
+    public function cart()
+    {
+        $cart = cart::where()->get();
+        return $cart;
+    }
     /**
      * Show the form for creating a new resource.
      */

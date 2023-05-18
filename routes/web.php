@@ -93,9 +93,9 @@ Route::middleware('guest')->group(function () {
 
 
     // user EU
-    Route::get('/edit-profile', function () {
-        return view('EU.user.edit');
-    });
+    // Route::get('/edit-profile', function () {
+    //     return view('EU.user.edit');
+    // });
     Route::get('/profile', function () {
         return view('EU.user.index');
     });
@@ -112,10 +112,9 @@ Route::middleware('guest')->group(function () {
 
 
 //  client
-route::middleware(['auth','client'])->group(function () {
+route::middleware(['client'])->group(function () {
     // landing page
-    Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
-
+    
     //blog
     Route::get('/blog/editing', function () {
         return view('EU.blog.editing');
@@ -126,13 +125,18 @@ route::middleware(['auth','client'])->group(function () {
     Route::get('/blog/pemrograman', function () {
         return view('EU.blog.pemrograman');
     });
+    Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
+    Route::get('/edit_profile', [EUController::class, 'editprofile'])->name('storeEU.edit_profile');
+    Route::get('/show_profile', [EUController::class, 'showprofile'])->name('storeEU.show_profile');
+    Route::get('/update_profile', [EUController::class, 'updateprofile'])->name('storeEU.update_profile');
+    Route::get('/hapus_profile', [EUController::class, 'hapusprofile'])->name('storeEU.hapus_profile');
 
     //Store EU
     Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
     Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
     Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
     Route::resource('/store', EUController::class);
-    route::get('/store/{id}/haugh', [EUController::class, 'show']);
+    route::get('/store/{id}', [EUController::class, 'show']);
 
     //services
     Route::get('/services/all', function () {
@@ -150,9 +154,9 @@ route::middleware(['auth','client'])->group(function () {
     });
 
     // user EU
-    Route::get('/edit-profile', function () {
-        return view('EU.user.edit');
-    });
+    // Route::get('/edit-profile', function () {
+    //     return view('EU.user.edit');
+    // });
     Route::get('/profile', function () {
         return view('EU.user.index');
     });
@@ -194,8 +198,8 @@ Route::middleware('staff')->group(function () {
     Route::resource('user', UserController::class);
 
     //member
-    Route::get('member/{id}/hapus', [MemberController::class, 'hapus'])->name('member.hapus');
     Route::resource('member', MemberController::class);
+    Route::get('member/{id}/hapus', [MemberController::class, 'hapus'])->name('member.hapus');
 
     //employee
     Route::get('employee/{id}/hapus', [EmployeeController::class, 'hapus'])->name('employee.hapus');

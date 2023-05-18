@@ -19,6 +19,7 @@ class UserController extends Controller
         $user = User::all();
         $role = Role::all();
 
+
         return view('Admin.user.index', compact('user', 'role'));
     }
 
@@ -58,7 +59,15 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        return view('Admin.user.user-detail', compact('user'));
+        $u = auth()->user()->role->role;
+        $staff = ['admin', 'owner', 'employee'];
+        if (in_array($u, $staff)) {
+
+            return view('Admin.user.user-detail', compact('user'));
+        } else {
+
+            return view('EU.user.index', compact('user'));
+        }
     }
 
     /**
@@ -66,10 +75,20 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+
         $user = User::find($id);
         $role = Role::all();
 
-        return view('Admin.user.edit-user', compact('user', 'role'));
+
+        $u = auth()->user()->role->role;
+        $staff = ['admin', 'owner', 'employee'];
+        if (in_array($u, $staff)) {
+
+            return view('Admin.user.edit-user', compact('user', 'role'));
+        } else {
+
+            return view('EU.user.edit', compact('user'));
+        }
     }
 
     /**
@@ -79,26 +98,35 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        if ($request->password == null) {
-            $user->update([
-                'username' => $request->username,
-                'role_id' => $request->role_id,
-                'email' => $request->email,
-            ]);
+        $u = auth()->user()->role->role;
+        $staff = ['admin', 'owner', 'employee'];
+        if (in_array($u, $staff)) {
+            if ($request->password == null) {
+                $user->update([
+                    'username' => $request->username,
+                    'role_id' => $request->role_id,
+                    'email' => $request->email,
+                ]);
+            } else {
+                $user->update([
+                    'username' => $request->username,
+                    'role_id' => $request->role_id,
+                    'password' => bcrypt($request->password),
+                    'email' => $request->email,
+                ]);
+            }
+            $user = Auth::user();
+            $message = "User Telah Diubah!";
+            Notification::send($user, new NewMessageNotification($message));
+            notify()->success('User Berhasil Diupdate !!');
+            return redirect('user/' . $id);
         } else {
-            $user->update([
-                'username' => $request->username,
-                'role_id' => $request->role_id,
-                'password' => bcrypt($request->password),
-                'email' => $request->email,
-            ]);
+
+            // update profile client
         }
-        notify()->success('User Berhasil Diupdate !!');
+
+
         // mengirim notifikasi
-        $user = Auth::user();
-        $message = "User Telah Diubah!";
-        Notification::send($user, new NewMessageNotification($message));
-        return redirect('user/' . $id);
     }
 
     /**
@@ -111,8 +139,15 @@ class UserController extends Controller
 
     public function hapus(string $id)
     {
+        $u = auth()->user()->id;
         $user = User::find($id);
+        $user_id = User::where('id', $id)->pluck('id')->first();
         $user->delete();
+        // jika user yang akan dihapus adalah user itu sendiri maka otomatis kelogout
+        if ($u == $user_id) {
+            return redirect('login');
+        }
+
         notify()->success('User Berhasil Dihapus !!');
         // mengirim notifikasi
         $user = Auth::user();

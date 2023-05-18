@@ -1,4 +1,4 @@
-@extends('layout-landing.body')
+@extends('layout-landing2.body')
 @section('content')
     <!-- Cart -->
     <div class="container my-5">

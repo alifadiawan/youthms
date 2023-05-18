@@ -11,6 +11,7 @@ use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 use App\Models\JenisLayanan;
 use App\Models\User;
+use App\Models\Member;
 use App\Models\Cart;
 use Mckenziearts\Notify\LaravelNotify;
 
@@ -67,6 +68,10 @@ class EUController extends Controller
     {
         $layanan = JenisLayanan::all();
 
+        
+        $user = auth()->user()->id;
+        $member = member::where('user_id',$user)->get();
+        // return $member;
         $jenis_layanan = JenisLayanan::find($id);
         $services = $jenis_layanan->services;
 
@@ -84,20 +89,17 @@ class EUController extends Controller
         $p = produk::wherein('id', $pr)->get('id');
         $c = produk::wherein('id', $cart)->get('id');
         
-        $pcart = [];
-        foreach ($p as $pp) {
-            $idp = $pp->id;
+        // $pcart = [];
+        // foreach ($p as $pp) {
+        //     $idp = $pp->id;
 
-            $pc = $c->where('id', $idp)->first();
-            if ($pc) {
-                $pcart[]= $pc;
-            } else {
-                $pproduk[] =$pp;
-            }
-        }
-
-        // return $pproduk;
-        // return $pcart;
+        //     $pc = $c->where('id', $idp)->first();
+        //     if ($pc) {
+        //         $pcart[]= $pc;
+        //     } else {
+        //         $pproduk[] =$pp;
+        //     }
+        // }
 
         return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan', 'c'));
     }
@@ -105,6 +107,42 @@ class EUController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    public function showprofile()
+    {
+        // return true;
+        $user = auth()->user()->id;
+        $member = member::where('user_id',$user)->get();
+        
+        return view('EU.user.index',compact('member'));
+    }
+
+    public function editprofile()
+    {
+        // return true;
+        $user = auth()->user()->id;
+        $member = member::where('user_id',$user)->get();
+        
+        return view('EU.user.index',compact('member'));
+    }
+
+    public function updateprofile()
+    {
+        // return true;
+        $user = auth()->user()->id;
+        $member = member::where('user_id',$user)->get();
+        
+        return view('EU.user.index',compact('member'));
+    }
+
+    public function hapusprofile()
+    {
+        // return true;
+        $user = auth()->user()->id;
+        $member = member::where('user_id',$user)->get();
+        
+        return view('EU.user.index',compact('member'));
+    }
+
     public function edit(EU $eU)
     {
         //

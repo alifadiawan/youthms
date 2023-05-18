@@ -24,7 +24,10 @@
                         {{auth()->user()->username}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li>
                         <li><a class="dropdown-item" href="/profile">Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="/profile">Struk</a></li>
+                        <li><a class="dropdown-item" href="/profile">Belum Bayar</a></li>
                         <li>
                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 Logout
