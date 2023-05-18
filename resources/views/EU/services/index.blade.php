@@ -17,13 +17,17 @@
             </div>
         </div>
     </section>
+
+
     <section class="layanan" id="layanan">
         <div class="konten">
-            <h1>Layanan yang kami Tawarkan</h1>
+            <h1 data-aos="fade-down" data-aos-duration="1000">Layanan yang kami Tawarkan</h1>
             <div class="row">
-                <div class="informasi col">
+
+                <!-- Design -->
+                <div class="informasi col" data-aos="fade-right" data-aos-duration="1000">
                     <div>
-                        <h2>Desain</h2>
+                        <h2>Design</h2>
                         <p>Untuk para pedagang online maupun offline, desain merupakan salah satu hal penting untuk menarik
                             pembeli. Di youthMS kami memiliki beberapa layanan yang dapat digunakan untuk membantu
                             meningkatkan
@@ -44,14 +48,16 @@
                     </div>
                 </div>
                 <div class="col">
-                    <img src="{{asset('illustration/service1.png')}}" alt="">
+                    <img src="{{asset('illustration/service1.png')}}" alt="" data-aos="fade-left" data-aos-duration="1000">
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <img src="{{asset('illustration/service1.png')}}" alt="">
+                    <img src="{{asset('illustration/service1.png')}}" alt="" data-aos="fade-right" data-aos-duration="1000">
                 </div>
-                <div class="web col">
+
+                <!-- Aplikasi -->
+                <div class="web col" data-aos="fade-left" data-aos-duration="1000">
                     <div>
                         <h2>Aplikasi</h2>
                         <p>Aplikasi merupakan salah satu tempat untuk memasrkan produk/jasa anda secara online. <br> YouthMS memiliki 2 layanan dalam bidang aplikasi</p>
@@ -66,7 +72,7 @@
                 
             </div>
             <div class="row">
-                <div class="informasi col">
+                <div class="informasi col" data-aos="fade-right" data-aos-duration="1000">
                     <div>
                         <h2>Desain</h2>
                         <p>Untuk para pedagang online maupun offline, desain merupakan salah satu hal penting untuk menarik
@@ -88,8 +94,8 @@
                         <a href="" class="href"><h3>Logo</h3></a>
                     </div>
                 </div>
-                <div class="col">
-                    <img src="{{asset('illustration/service1.png')}}" alt="">
+                <div class="col" data-aos="fade-left" data-aos-duration="1000">
+                    <img src="{{asset('illustration/service1.png')}}" alt="" >
                 </div>
             </div>
     </section>
