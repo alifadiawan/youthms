@@ -34,7 +34,7 @@ class ClientMiddleware
             return $next($request);
         }
 
-        return redirect('/')->with('error', 'Anda tidak diizinkan mengakses halaman ini.');
+        return redirect('/returnan')->with('error', 'Anda tidak diizinkan mengakses halaman ini.');
 
         // return redirect()->back();
 

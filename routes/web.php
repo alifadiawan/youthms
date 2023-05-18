@@ -19,6 +19,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Middleware\StaffMiddleware;
 use App\Models\portofolio;
 use App\Models\Services;
 
@@ -154,9 +155,8 @@ route::middleware('client')->group(function () {
 });
 
 // role admin
-// Route::middleware('auth')->group(function () {
-Route::middleware(['staff'])->group(function () {
-// route::group(['middleware' => ['admin', 'owner', 'employee']], function () {
+// route::middleware('auth')->group(function(){
+Route::middleware(['auth',StaffMiddleware::class])->group(function () {
     Route::resource('/dashboard', DashboardController::class);
 
     //store
