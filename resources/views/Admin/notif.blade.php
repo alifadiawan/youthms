@@ -7,9 +7,9 @@
       </div>
     </div> -->
 
-    <li data-notification-id="{{ $notification->id }}" class="dropdown-item notification-item">
+    <a href="#" data-url="{{ $notification->data['url'] }}" class="dropdown-item notification-item">
       <i class="fa-solid fa-circle-info"></i> {{ $notification->data['message'] }}
       <span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
-    </li>
+    </a>
   @endforeach
 @endif

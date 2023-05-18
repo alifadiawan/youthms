@@ -16,15 +16,15 @@ class StaffMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $u = auth()->user()->role->role;
-        if (auth()->check() && in_array($u, ['admin', 'owner', 'employee'])) {
+        $staff = ['admin', 'owner', 'employee'];
+        if (auth()->check() && in_array($u, $staff)) {
             return $next($request);
         }
-
         else {
             return redirect()->back();
         }
     
         // Redirect ke halaman lain jika peran tidak cocok
-        return redirect('/returnan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
+        // return redirect('/returnan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
     }
 }

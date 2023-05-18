@@ -38,7 +38,7 @@ class EmployeeController extends Controller
         $member = Member::count();
         $currentNumber = $member;
         $nextNumber = str_pad(++$currentNumber, 5, '0', STR_PAD_LEFT); // "00002"
-        Member::create([
+        $employee = Member::create([
             'user_id' => $request->user_id,
             'id_member' => $nextNumber,
             'nik' => $request->nik,
@@ -50,7 +50,9 @@ class EmployeeController extends Controller
         // mengirim notifikasi
         $user = Auth::user();
         $message = "Data Diri Berhasil Ditambahkan !!";
-        Notification::send($user, new NewMessageNotification($message));
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('employee.show', ['employee' => $employee->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('employee');
     }
 
@@ -85,7 +87,9 @@ class EmployeeController extends Controller
         // mengirim notifikasi
         $user = Auth::user();
         $message = "Profile Berhasil Diupdate !!";
-        Notification::send($user, new NewMessageNotification($message));
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('employee.show', ['employee' => $Member->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('employee');
     }
 
@@ -110,7 +114,9 @@ class EmployeeController extends Controller
         // mengirim notifikasi
         $user = Auth::user();
         $message = "Employee Berhasil Dihapus !!";
-        Notification::send($user, new NewMessageNotification($message));
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('employee.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('employee');
     }
 }
