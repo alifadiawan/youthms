@@ -64,11 +64,10 @@ class EUController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(EU $eU, $id)
+    public function show(EU $eU, $type)
     {
         $layanan = JenisLayanan::all();
 
-        
         $user = auth()->user()->id;
         $member = member::where('user_id',$user)->get();
         // return $member;

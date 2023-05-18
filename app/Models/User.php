@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return !$this->member;
     }
+
+    public function hasProfile()
+    {
+        return $this->member !== null;
+    }
 }

@@ -38,17 +38,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create([
+        $u = User::create([
             'username' => $request->username,
             'role_id' => $request->role_id,
             'password' => bcrypt($request->password),
             'email' => $request->email,
         ]);
-        notify()->success('User Berhasil Ditambahkan !!');
+        notify()->success('Akun Berhasil Ditambahkan !!');
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "User Baru Telah Ditambahkan !";
-        Notification::send($user, new NewMessageNotification($message));
+        $message = "Akun Berhasil Ditambahkan !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('user.show', ['user'=> $u->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('user');
     }
 
@@ -96,37 +98,32 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user = User::find($id);
+        $u = User::find($id);
 
-        $u = auth()->user()->role->role;
-        $staff = ['admin', 'owner', 'employee'];
-        if (in_array($u, $staff)) {
-            if ($request->password == null) {
-                $user->update([
-                    'username' => $request->username,
-                    'role_id' => $request->role_id,
-                    'email' => $request->email,
-                ]);
-            } else {
-                $user->update([
-                    'username' => $request->username,
-                    'role_id' => $request->role_id,
-                    'password' => bcrypt($request->password),
-                    'email' => $request->email,
-                ]);
-            }
-            $user = Auth::user();
-            $message = "User Telah Diubah!";
-            Notification::send($user, new NewMessageNotification($message));
-            notify()->success('User Berhasil Diupdate !!');
-            return redirect('user/' . $id);
+
+        if ($request->password == null) {
+            $u->update([
+                'username' => $request->username,
+                'role_id' => $request->role_id,
+                'email' => $request->email,
+            ]);
         } else {
-
-            // update profile client
+            $u->update([
+                'username' => $request->username,
+                'role_id' => $request->role_id,
+                'password' => bcrypt($request->password),
+                'email' => $request->email,
+            ]);
         }
-
-
+        notify()->success('Akun Berhasil Diupdate !!');
         // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Akun Berhasil Diupdate !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('user.show', ['user'=> $u->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+        return redirect('user/' . $id);
+
     }
 
     /**
@@ -149,10 +146,13 @@ class UserController extends Controller
         }
 
         notify()->success('User Berhasil Dihapus !!');
+
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "User Telah Dihapus!";
-        Notification::send($user, new NewMessageNotification($message));
+        $message = "Akun Berhasil Dihapus !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('user.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('user');
     }
 }

@@ -6,7 +6,7 @@
     <div class="col-8">
         <div class="card rounded shadow-md">
             <div class="card-body">
-                <form action="{{ route('store.store') }}" method="POST">
+                <form action="{{ route('adm_store.store') }}" method="POST">
                     @csrf
 
                     {{-- nama produk --}}

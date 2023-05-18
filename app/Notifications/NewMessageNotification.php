@@ -31,10 +31,17 @@ class NewMessageNotification extends Notification
         return ['database'];
     }
 
+    public function setUrl($url)
+    {
+        $this->url = $url;
+        return $this;
+    }
+
     public function toDatabase($notifiable)
     {
         return [
             'message' => $this->message,
+            'url' => $this->url
         ];
     }
 

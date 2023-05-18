@@ -38,7 +38,7 @@ class MemberController extends Controller
         $member = Member::count();
         $currentNumber = $member;
         $nextNumber = str_pad(++$currentNumber, 5, '0', STR_PAD_LEFT); // "00002"
-        Member::create([
+        $Member = Member::create([
             'user_id' => $request->user_id,
             'id_member' => $nextNumber,
             'nik' => $request->nik,
@@ -50,7 +50,9 @@ class MemberController extends Controller
         // mengirim notifikasi
         $user = Auth::user();
         $message = "Member Berhasil Ditambahkan !!";
-        Notification::send($user, new NewMessageNotification($message));
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('member.show', ['member'=> $Member->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('member');
     }
 
@@ -88,7 +90,9 @@ class MemberController extends Controller
         // mengirim notifikasi
         $user = Auth::user();
         $message = "Member Berhasil Diupdate !!";
-        Notification::send($user, new NewMessageNotification($message));
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('member.show', ['member'=> $Member->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('member');
     }
 
@@ -118,7 +122,9 @@ class MemberController extends Controller
         // mengirim notifikasi
         $user = Auth::user();
         $message = "Member Berhasil Dihapus !!";
-        Notification::send($user, new NewMessageNotification($message));
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('member.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('member');
     }
 }

@@ -82,6 +82,7 @@ Route::middleware('guest')->group(function () {
     // Route::resource('/store', EUController::class);
     // route::get('/store/{layanan}', [EUController::class, 'show']);
 
+
     //services
     Route::get('/services/all', function () {
         return view('EU.services.index');
@@ -173,7 +174,7 @@ Route::middleware('staff')->group(function () {
 
     //store
     Route::resource('adm_store', ProdukController::class);
-    Route::get('/adm_store/{id}/hapus', [ProdukController::class, 'hapus'])->name('store.hapus');
+    Route::get('/adm_store/{id}/hapus', [ProdukController::class, 'hapus'])->name('adm_store.hapus');
 
     //services
     Route::resource('services', ServicesController::class);
@@ -239,11 +240,13 @@ Route::middleware('staff')->group(function () {
     Route::get('/tambah', [PortofolioController::class, 'test'])->name('portofolio.tambah');
 
     //notif
-    Route::resource('notif', NotificationController::class);
-    Route::get('/read/{notificationId}', [NotificationController::class, 'read'])->name('notif.read');
+
+    // Route::resource('notif', NotificationController::class);
+    Route::post('/read', [NotificationController::class, 'read'])->name('read');
 
     // transaction
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
+
 });
 // });
 

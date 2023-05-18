@@ -20,7 +20,14 @@
         <div class="d-flex flex-row text-center gap-3">
             <a href="{{ route('storeEU.index') }}" class="text-capitalize my-3 active">Promo</a>
             @foreach ($layanan as $l)
+                
+                //branch main2
+                <a href="{{ route('store.show', $l->layanan) }}"
+                    class=" my-3 text-capitalize">{{ $l->layanan }}</a>
+
+                //branch main
                 <a href="{{ route('store.show', $l->id) }}" class=" my-3 text-capitalize">{{ $l->layanan }}</a>
+
             @endforeach
 
         </div>

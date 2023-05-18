@@ -100,6 +100,17 @@
                     {{ auth()->user()->username }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @if(auth()->user()->hasIncompleteProfile())
+                    <a class="dropdown-item" href="{{route('employee.create')}}">
+                        <i class="fas fa-user-pen fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Lengkapi Profile
+                    </a>
+                    @elseif(auth()->user()->hasProfile())
+                    <a class="dropdown-item" href="{{route('employee.edit', auth()->user()->member->id)}}">
+                        <i class="fas fa-user-pen fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Edit Profile
+                    </a>
+                    @endif
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Logout
@@ -137,7 +148,7 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+<!-- <script>
     $(document).ready(function() {
         $('.notification-item').on('click', function(e) {
             e.preventDefault();
@@ -181,6 +192,31 @@
                     // Lakukan tindakan jika terjadi kesalahan
                 }
             });
+        });
+    });
+</script> -->
+
+<script>
+    $(document).on('click', '.notification-item', function(e) {
+        e.preventDefault();
+        
+        var url = $(this).data('url');
+        
+        // Kirim permintaan Ajax untuk mengubah status notifikasi menjadi "dibaca"
+        $.ajax({
+            url: '{{ route('read') }}',
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                notificationUrl: url
+            },
+            success: function(response) {
+                // Redirect pengguna ke URL yang disimpan pada notifikasi
+                window.location.href = url;
+            },
+            error: function(xhr, status, error) {
+                // Tindakan penanganan kesalahan jika diperlukan
+            }
         });
     });
 </script>
