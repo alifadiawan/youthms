@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Notification;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Role;
+use App\Models\Member;
 
 class UserController extends Controller
 {
@@ -19,8 +20,20 @@ class UserController extends Controller
         $user = User::all();
         $role = Role::all();
 
+        $u = auth()->user()->role->role;
+        $uid = auth()->user()->id;
+        $users = user::where('id', $uid)->get();
+        // return $email;
 
-        return view('Admin.user.index', compact('user', 'role'));
+        $staff = ['admin', 'owner', 'employee'];
+        if (in_array($u, $staff)) {
+
+            return view('Admin.user.index', compact('user', 'role'));
+            // return view('Admin.user.user-detail', compact('user'));
+        } else {
+
+            return view('EU.user.index', compact('uid', 'users'));
+        }
     }
 
     /**
@@ -49,7 +62,7 @@ class UserController extends Controller
         $user = Auth::user();
         $message = "Akun Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('user.show', ['user'=> $u->id])); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('user.show', ['user' => $u->id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
         return redirect('user');
     }
@@ -60,6 +73,9 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = User::find($id);
+        $uid = auth()->user()->id;
+        $users = user::where('id', $uid)->get();
+        $member = member::where('user_id', $uid)->get();
 
         $u = auth()->user()->role->role;
         $staff = ['admin', 'owner', 'employee'];
@@ -68,7 +84,7 @@ class UserController extends Controller
             return view('Admin.user.user-detail', compact('user'));
         } else {
 
-            return view('EU.user.index', compact('user'));
+            return view('EU.user.index', compact('uid', 'users', 'member','users'));
         }
     }
 
@@ -81,15 +97,25 @@ class UserController extends Controller
         $user = User::find($id);
         $role = Role::all();
 
-
         $u = auth()->user()->role->role;
         $staff = ['admin', 'owner', 'employee'];
+        $uid = auth()->user()->id;
+
+        $users = user::where('id', $uid)->get();
+        $member = member::where('user_id', $uid)->get();
+        // return $member;
+
+        // pembuatan id_member
+        $m = Member::count();
+        $currentNumber = $m;
+        $nextNumber = str_pad(++$currentNumber, 5, '0', STR_PAD_LEFT); // "00002"
+
         if (in_array($u, $staff)) {
 
             return view('Admin.user.edit-user', compact('user', 'role'));
         } else {
 
-            return view('EU.user.edit', compact('user'));
+            return view('EU.user.edit', compact('uid', 'member', 'users', 'nextNumber'));
         }
     }
 
@@ -98,32 +124,78 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $u = User::find($id);
+        $user = User::find($id);
+        $u = auth()->user()->role->role;
+        $staff = ['admin', 'employee', 'owner'];
 
-
-        if ($request->password == null) {
-            $u->update([
-                'username' => $request->username,
-                'role_id' => $request->role_id,
-                'email' => $request->email,
-            ]);
+        if (in_array($u, $staff)) {
+            if ($request->password == null) {
+                $user->update([
+                    'username' => $request->username,
+                    'role_id' => $request->role_id,
+                    'email' => $request->email,
+                ]);
+            } else {
+                $user->update([
+                    'username' => $request->username,
+                    'role_id' => $request->role_id,
+                    'password' => bcrypt($request->password),
+                    'email' => $request->email,
+                ]);
+            }
+            notify()->success('Akun Berhasil Diupdate !!');
+            // mengirim notifikasi
+            $user = Auth::user();
+            $message = "Akun Berhasil Diupdate !!";
+            $notification = new NewMessageNotification($message);
+            $notification->setUrl(route('user.show', ['user' => $user->id])); // Ganti dengan rute yang sesuai
+            Notification::send($user, $notification);
+            return redirect('user/' . $id);
         } else {
-            $u->update([
-                'username' => $request->username,
-                'role_id' => $request->role_id,
-                'password' => bcrypt($request->password),
-                'email' => $request->email,
-            ]);
-        }
-        notify()->success('Akun Berhasil Diupdate !!');
-        // mengirim notifikasi
-        $user = Auth::user();
-        $message = "Akun Berhasil Diupdate !!";
-        $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('user.show', ['user'=> $u->id])); // Ganti dengan rute yang sesuai
-        Notification::send($user, $notification);
-        return redirect('user/' . $id);
+            // return $request;
 
+            // tabel user
+            if ($request->password == null) {
+                $user->update([
+                    'username' => $request->username,
+                    'email' => $request->email,
+                ]);
+            } else {
+                $user->update([
+                    'username' => $request->username,
+                    'password' => bcrypt($request->password),
+                    'email' => $request->email,
+                ]);
+            }
+
+            // tabel member
+            // pesan
+            $msg = [
+                'required' => ':attribute tidak boleh kosong!'
+            ];
+
+            // validasi
+            $this->validate($request, [
+                'name' => 'required',
+                'nik' => 'required',
+                'no_hp' => 'required',
+                'alamat' => 'required'
+            ], $msg);
+
+            $idm = $request->id_member;
+
+            // return $request;
+            member::updateorcreate([
+                'user_id' => $id,
+            ], [
+                'id_member' => $request->id_member != null ? $request->id_member : null,
+                'name' => $request->name,
+                'no_hp' => $request->no_hp,
+                'nik' => $request->nik,
+                'alamat' => $request->alamat
+            ]);
+            return redirect()->route('user.show',$id);
+        }
     }
 
     /**
