@@ -150,7 +150,12 @@ route::middleware(['client'])->group(function () {
         return view('EU.blog.show');
     });
 
+    //group-chats
+    Route::get('/groupchat', function(){
+        return view('EU.chat.index');
+    });
 
+    
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
     Route::get('/edit_profile', [EUController::class, 'editprofile'])->name('storeEU.edit_profile');
     Route::get('/show_profile', [EUController::class, 'showprofile'])->name('storeEU.show_profile');
