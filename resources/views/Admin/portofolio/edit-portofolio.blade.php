@@ -6,108 +6,67 @@
 
 <div class="card">
     <div class="card-body">
-        <div class="content">
-            
-            <div class="row mb-4">
-                <div class="col-4">
-                    <p>Client / Company</p>
-                    <input type="text" placeholder="pertamini" class="form-control" name="" id="">
-                    <p>Comment</p>
-                    <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+        <form action="{{route('portfolio.update', $porto->id)}}" method="post" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="content">
+                
+                <div class="row mb-4">
+                    <div class="col-4">
+                        <p>Project</p>
+                        <input type="text" class="form-control" name="project" id="project" value="{{$porto->project}}">
+                        <p>Deskripsi</p>
+                        <textarea name="deskripsi" class="form-control" id="" cols="30" rows="5">{{$porto->deskripsi}}</textarea>
+                    </div>
+                    <div class="col">
+                    </div>
                 </div>
-                <div class="col">
-                </div>
-            </div>
 
+                <div class="row">
+                    <div class="col">
+                        <label for="cover">Cover Lama : </label>
+                        <img src="{{ asset('./portofolio/'.$porto->cover) }}">
+                    </div>
+                    @foreach($pic as $p)
+                    <div class="col">
+                        <label for="foto">Screenshot Lama : </label>
+                        <img src="{{ asset('./portofolio/'.$p->foto) }}">
+                    </div>
+                    @endforeach
+                </div>
+
+
+                <div class="row mt-5" id="screenshots-container">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="cover">Cover Baru : </label>
+                            <input type="file" name="cover" id="illustration" class="form-control">
+                            <img id="preview" src="#" class="form-control">
+                        </div>
+                    </div>
+                    @foreach($pic as $pp)
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="foto">Screenshot Baru : </label>
+                                <input type="file" name="foto[]" id="foto" class="form-control">
+                                <img id="foto-preview" src="#" class="form-control">
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <button class="btn btn-sm btn-success" id="add-screenshot">Tambah Screenshot</button>
+            </div>
+            <br><br>
             <div class="row">
                 <div class="col">
-                    <label for="illustration">Cover Lama : </label>
-                    <img src="{{ asset('/illustration/bmw.jpg') }}">
-                </div>
-                <div class="col">
-                    <label for="illustration">Screenshot Lama : </label>
-                    <img src="{{ asset('/illustration/bmw.jpg') }}">
-                </div>
-                <div class="col">
-                    <label for="illustration">Screenshot Lama : </label>
-                    <img src="{{ asset('/illustration/bmw.jpg') }}">
-                </div>
-                <div class="col">
-                    <label for="illustration">Screenshot Lama : </label>
-                    <img src="{{ asset('/illustration/bmw.jpg') }}">
-                </div>
-                <div class="col">
-                    <label for="illustration">Screenshot Lama : </label>
-                    <img src="{{ asset('/illustration/bmw.jpg') }}">
-                </div>
-                <div class="col">
-                    <label for="illustration">Screenshot Lama : </label>
-                    <img src="{{ asset('/illustration/bmw.jpg') }}">
+                    <input type="hidden" name="portofolio_id" value="{{$porto->id}}">
+                    <button class="btn btn-warning">Submit</button>
+                    <a href="{{route('portfolio.index')}}" class="btn btn-outline-secondary">Cancel</a>
                 </div>
             </div>
-
-
-            <div class="row mt-5">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="illustration">Cover Baru : </label>
-                        <input type="file" name="illustration" id="illustration" class="form-control">
-                        <img id="preview" src="#" class="form-control">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="illustration">Screenshot Baru : </label>
-                        <input type="file" name="illustration" id="illustration2" class="form-control">
-                        <img id="preview2" src="#" class="form-control">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="illustration">Screenshot Baru : </label>
-                        <input type="file" name="illustration" id="illustration3" class="form-control">
-                        <img id="preview3" src="#" class="form-control">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="illustration">Screenshot Baru : </label>
-                        <input type="file" name="illustration" id="illustration4" class="form-control">
-                        <img id="preview4" src="#" class="form-control">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="illustration">Screenshot Baru : </label>
-                        <input type="file" name="illustration" id="illustration5" class="form-control">
-                        <img id="preview5" src="#" class="form-control">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="illustration">Screenshot Baru : </label>
-                        <input type="file" name="illustration6" id="illustration6" class="form-control">
-                        <img id="preview6" src="#" class="form-control">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <a href="" class="btn btn-warning">Submit</a>
-                <a href="/portofolio" class="btn btn-outline-secondary">Cancel</a>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
-
-
-
-
-
-
-
-
 
 <style>
     #preview {
@@ -116,31 +75,7 @@
         object-fit: contain;
     }
 
-    #preview2 {
-        width: 100%;
-        height: 190px;
-        object-fit: contain;
-    }
-
-    #preview3 {
-        width: 100%;
-        height: 190px;
-        object-fit: contain;
-    }
-
-    #preview4 {
-        width: 100%;
-        height: 190px;
-        object-fit: contain;
-    }
-
-    #preview5 {
-        width: 100%;
-        height: 190px;
-        object-fit: contain;
-    }
-
-    #preview6 {
+    #foto-preview {
         width: 100%;
         height: 190px;
         object-fit: contain;
@@ -157,55 +92,68 @@
         reader.readAsDataURL(this.files[0]);
     });
 
-    document.getElementById("illustration2").addEventListener("change", function() {
+    document.getElementById("foto").addEventListener("change", function() {
         var reader = new FileReader();
         reader.onload = function() {
-            var preview = document.getElementById("preview2");
+            var preview = document.getElementById("foto-preview");
             preview.src = reader.result;
             preview.style.display = "block";
         }
         reader.readAsDataURL(this.files[0]);
     });
 
-    document.getElementById("illustration3").addEventListener("change", function() {
-        var reader = new FileReader();
-        reader.onload = function() {
-            var preview = document.getElementById("preview3");
-            preview.src = reader.result;
-            preview.style.display = "block";
-        }
-        reader.readAsDataURL(this.files[0]);
-    });
+    document.addEventListener('DOMContentLoaded', function () {
+            const container = document.getElementById('screenshots-container');
+            const addButton = document.getElementById('add-screenshot');
+            let counter = 2;
+            const maxScreenshots = 6;
 
-    document.getElementById("illustration4").addEventListener("change", function() {
-        var reader = new FileReader();
-        reader.onload = function() {
-            var preview = document.getElementById("preview4");
-            preview.src = reader.result;
-            preview.style.display = "block";
-        }
-        reader.readAsDataURL(this.files[0]);
-    });
+            addButton.addEventListener('click', function () {
+                if (counter <= maxScreenshots) {
+                    const newDiv = document.createElement('div');
+                    const newLabel = document.createElement('label');
+                    const newInput = document.createElement('input');
+                    const newImg = document.createElement('img');
 
-    document.getElementById("illustration5").addEventListener("change", function() {
-        var reader = new FileReader();
-        reader.onload = function() {
-            var preview = document.getElementById("preview5");
-            preview.src = reader.result;
-            preview.style.display = "block";
-        }
-        reader.readAsDataURL(this.files[0]);
-    });
+                    newLabel.setAttribute('for', `screenshot${counter}`);
+                    newLabel.textContent = `Screenshot ${counter}:`;
 
-    document.getElementById("illustration6").addEventListener("change", function() {
-        var reader = new FileReader();
-        reader.onload = function() {
-            var preview = document.getElementById("preview6");
-            preview.src = reader.result;
-            preview.style.display = "block";
-        }
-        reader.readAsDataURL(this.files[0]);
-    });
+                    newInput.setAttribute('type', 'file');
+                    newInput.setAttribute('name', 'foto[]');
+                    newInput.classList.add('form-control');
+                    newInput.setAttribute('accept', 'image/jpeg, image/png');
+
+                    newImg.id = 'foto-preview';
+                    newImg.src = '#';
+                    newImg.classList.add('form-control');
+                    newImg.style.display = 'none';
+
+                    newDiv.appendChild(newLabel);
+                    newDiv.appendChild(newInput);
+                    newDiv.appendChild(newImg);
+                    container.appendChild(newDiv);
+
+                    counter++;
+
+                    // Set up event listener for the new screenshot input
+                    newInput.addEventListener('change', function () {
+                        const reader = new FileReader();
+                        const preview = newImg;
+
+                        reader.onload = function () {
+                            preview.src = reader.result;
+                            preview.style.display = 'block';
+                        }
+
+                        reader.readAsDataURL(this.files[0]);
+                    });
+                }
+
+                if (counter == maxScreenshots) {
+                    addButton.style.display = 'none';
+                }
+            });
+        });
 </script>
 
 @endsection

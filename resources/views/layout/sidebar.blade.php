@@ -105,7 +105,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/portofolio" class="nav-link">
+                    <a href="{{route('portfolio.index')}}" class="nav-link">
                         <i class="nav-icon fa-solid fa-briefcase"></i>
                         <p>
                             Portofolio

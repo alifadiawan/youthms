@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Portofolio extends Model
+class PortofolioPic extends Model
 {
     use HasFactory;
     protected $guarded=[];
 
-    public function portofoliopic()
+    public function portofolio()
     {
-        return $this->hasMany(PortofolioPic::class);
+        return $this->belongsTo(Portofolio::class);
     }
 }
