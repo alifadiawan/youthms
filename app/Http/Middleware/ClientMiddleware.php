@@ -26,13 +26,16 @@ class ClientMiddleware
             if (Auth::user()->role->role =='client') {
                 return $next($request);
             }
+            else {
+                return redirect()->back();
+            }
         } else {
             // jika pengguna tidak terotentikasi, lewati middleware dan izinkan akses ke rute
             return $next($request);
         }
 
-        return redirect('/')->with('error', 'Anda tidak diizinkan mengakses halaman ini.');
-
+        return redirect('/returnan');
+        // notify()->success('dilempar dari middleware client');
         // return redirect()->back();
 
         // return redirect('/returnan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');

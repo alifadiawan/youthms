@@ -16,51 +16,14 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
-                <span class="badge badge-danger navbar-badge">3</span>
+                @foreach($notifications as $notification)
+                @if($notification->type === 'App\Notifications\NewNotification')
+                <span class="badge bell-badge badge-warning navbar-badge">{{ count($notifications) }}</span>
+                @endif
+                @endforeach
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="#" class="dropdown-item">
-                    <!-- Message Start -->
-                    <div class="media">
-                        <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                        <div class="media-body">
-                            <h3 class="dropdown-item-title">
-                                Brad Diesel
-                            </h3>
-                            <p class="text-sm">Call me whenever you can...</p>
-                        </div>
-                    </div>
-                    <!-- Message End -->
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <!-- Message Start -->
-                    <div class="media">
-                        <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                        <div class="media-body">
-                            <h3 class="dropdown-item-title">
-                                John Pierce
-                            </h3>
-                            <p class="text-sm">I got your message bro</p>
-                        </div>
-                    </div>
-                    <!-- Message End -->
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <!-- Message Start -->
-                    <div class="media">
-                        <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                        <div class="media-body">
-                            <h3 class="dropdown-item-title">
-                                Nora Silvester
-                            </h3>
-                            <p class="text-sm">The subject goes here</p>
-                        </div>
-                    </div>
-                    <!-- Message End -->
-                </a>
-                <div class="dropdown-divider"></div>
+                @include('Admin.chat-notif')
                 <a href="/chat" class="dropdown-item dropdown-footer">See All Messages</a>
             </div>
         </li>
@@ -69,7 +32,11 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
+                @foreach($notifications as $notification)
+                @if($notification->type === 'App\Notifications\NewMessageNotification')
                 <span class="badge bell-badge badge-warning navbar-badge">{{ count($notifications) }}</span>
+                @endif
+                @endforeach
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <span class="dropdown-item dropdown-header" id="notificationCount">{{ count($notifications) }}
@@ -100,6 +67,17 @@
                     {{ auth()->user()->username }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @if(auth()->user()->hasIncompleteProfile())
+                    <a class="dropdown-item" href="{{route('employee.create')}}">
+                        <i class="fas fa-user-pen fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Lengkapi Profile
+                    </a>
+                    @elseif(auth()->user()->hasProfile())
+                    <a class="dropdown-item" href="{{route('employee.edit', auth()->user()->member->id)}}">
+                        <i class="fas fa-user-pen fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Edit Profile
+                    </a>
+                    @endif
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Logout
@@ -138,49 +116,45 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('.notification-item').on('click', function(e) {
-            e.preventDefault();
+    $(document).on('click', '.notification-item', function(e) {
+        e.preventDefault();
+        
+        var url = $(this).data('url');
+        
+        // Kirim permintaan Ajax untuk mengubah status notifikasi menjadi "dibaca"
+        $.ajax({
+            url: '{{ route('read') }}',
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                notificationUrl: url
+            },
+            success: function(response) {
+                // Redirect pengguna ke URL yang disimpan pada notifikasi
+                window.location.href = url;
+            },
+            error: function(xhr, status, error) {
+                // Tindakan penanganan kesalahan jika diperlukan
+            }
+        });
+    });
+</script>
 
-            var notificationId = $(this).data('notification-id');
-            var notificationItem = $(this); // Simpan elemen notifikasi yang diklik
-            var notificationCount = $(
-            '#notificationCount'); // Simpan elemen yang berisi jumlah notifikasi
-
-
-            $.ajax({
-                url: '/read/' + notificationId,
-                type: 'GET',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(response) {
-                    console.log(response.message);
-                    // Lakukan tindakan lain setelah notifikasi ditandai sebagai "dibaca"
-                    // Misalnya, perbarui tampilan notifikasi, tampilkan pesan sukses, dll.
-                    // Perbarui tampilan dropdown notifikasi
-                    notificationItem
-                .remove(); // Hapus elemen notifikasi yang diklik dari tampilan dropdown
-
-                    // Perbarui jumlah notifikasi yang belum dibaca
-                    var badge = $('.bell-badge');
-                    var unreadCount = parseInt(badge.text());
-                    badge.text(unreadCount -
-                    1); // Kurangi jumlah notifikasi yang belum dibaca
-
-                    // Perbarui jumlah notifikasi yang belum dibaca
-                    var unreadCount = parseInt(notificationCount.text().trim());
-                    notificationCount.text(unreadCount - 1 +
-                    ' Notifications'); // Update jumlah notifikasi
-
-                    // Lakukan tindakan lain setelah notifikasi ditandai sebagai "dibaca"
-                    // Misalnya, tampilkan pesan sukses, dll.
-                },
-                error: function(xhr, status, error) {
-                    console.log(xhr.responseText);
-                    // Lakukan tindakan jika terjadi kesalahan
-                }
-            });
+<script>
+    $(document).on('click', '.notif-chat', function() {
+        var notifId = $(this).data('notif-id');
+        
+        // Mengirim permintaan Ajax
+        $.ajax({
+            url: '/read_chat/' + notifId,
+            method: 'GET',
+            success: function(response) {
+                // Mengarahkan pengguna ke URL room chat setelah notifikasi dibaca
+                window.location.href = response.redirectUrl;
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
         });
     });
 </script>

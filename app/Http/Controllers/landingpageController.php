@@ -59,7 +59,9 @@ class landingpageController extends Controller
         // mengirim notifikasi
         $user = Auth::user();
         $message = "Illustration Berhasil Diupdate !!";
-        Notification::send($user, new NewMessageNotification($message));
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('landing.illustration')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('landing-page/illustration');
     }
 
@@ -89,7 +91,9 @@ class landingpageController extends Controller
         // mengirim notifikasi
         $user = Auth::user();
         $message = "Partner Berhasil Ditambah !!";
-        Notification::send($user, new NewMessageNotification($message));
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('landing.illustration')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('landing-page/illustration');
     }
 
@@ -125,7 +129,9 @@ class landingpageController extends Controller
         // mengirim notifikasi
         $user = Auth::user();
         $message = "Partner Berhasil Diupdate !!";
-        Notification::send($user, new NewMessageNotification($message));
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('landing.illustration')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('landing-page/illustration');
     }
 
@@ -138,7 +144,9 @@ class landingpageController extends Controller
         // mengirim notifikasi
         $user = Auth::user();
         $message = "Partner Berhasil Dihapus !!";
-        Notification::send($user, new NewMessageNotification($message));
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('landing.illustration')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('landing-page/illustration');
     }
  
@@ -167,7 +175,7 @@ class landingpageController extends Controller
         $file->move($tujuan_upload,$nama_file);
 
         //insert data
-        LandingData::create([
+        $landing = LandingData::create([
             'foto' => $nama_file,
             'nama' => $request->nama,
             'jabatan' => $request->jabatan,
@@ -177,8 +185,10 @@ class landingpageController extends Controller
         notify()->success('Testimonial Berhasil Ditambah !!');
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "Testimonial Baru Telah Ditambah !";
-        Notification::send($user, new NewMessageNotification($message));
+        $message = "Testimonial Berhasil Ditambah !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('landing.data')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('landing-page/data');
     }
 
@@ -217,8 +227,10 @@ class landingpageController extends Controller
             notify()->success('Testimonial Berhasil Diupdate !!');
             // mengirim notifikasi
             $user = Auth::user();
-            $message = "Testimonial Telah Diupdate !";
-            Notification::send($user, new NewMessageNotification($message));
+            $message = "Testimonial Berhasil Diupdate !!";
+            $notification = new NewMessageNotification($message);
+            $notification->setUrl(route('landing.data')); // Ganti dengan rute yang sesuai
+            Notification::send($user, $notification);
             return redirect('landing-page/data');
         }
         else{
@@ -230,8 +242,10 @@ class landingpageController extends Controller
             notify()->success('Testimonial Berhasil Diupdate !!');
             // mengirim notifikasi
             $user = Auth::user();
-            $message = "Testimonial Telah Diupdate !";
-            Notification::send($user, new NewMessageNotification($message));
+            $message = "Testimonial Berhasil Diupdate !!";
+            $notification = new NewMessageNotification($message);
+            $notification->setUrl(route('landing.data')); // Ganti dengan rute yang sesuai
+            Notification::send($user, $notification);
             return redirect('landing-page/data');
 
         }
@@ -245,8 +259,10 @@ class landingpageController extends Controller
         notify()->success('Testimonial Berhasil Dihapus !!');
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "Data Telah Dihapus !";
-        Notification::send($user, new NewMessageNotification($message));
+        $message = "Testimonial Berhasil Dihapus !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('landing.data')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('landing-page/data');
     }
  
@@ -273,8 +289,10 @@ class landingpageController extends Controller
         notify()->success('Text Berhasil Diupdate !!');
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "Text Telah Diupdate !";
-        Notification::send($user, new NewMessageNotification($message));
+        $message = "Text Berhasil Diupdate !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('landing.text')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('landing-page/text');
     }
 

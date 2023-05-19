@@ -2,8 +2,8 @@
 @section('title', 'Store')
 @section('content')
 
-
-    <div id="store" class="row">
+    <!-- hero section -->
+    <div id="store" class="row" data-aos="fade-right" data-aos-duration="1000">
         <div id="thumbnail" class="text-start">
             <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
             <div id="caption">
@@ -15,22 +15,76 @@
         </div>
     </div>
 
+    
+    <!-- tombol kategori jasa -->
     <div class="container mb-5">
-        {{-- navbar kategori --}}
-        <div class="d-flex flex-row text-center">
-            {{-- <a href="{{ route('storeEU.editing') }}" class="btn my-3">Editing</a>
-            <a href="{{ route('storeEU.design') }}" class="btn my-3">Design</a> --}}
-            <a href="{{ route('storeEU.index') }}" class="btn my-3 active">All</a>
+        <div class="d-flex flex-row text-center gap-3">
+            <a href="{{ route('storeEU.index') }}" class="text-capitalize my-3 active">Promo</a>
             @foreach ($layanan as $l)
-                <a href="{{ route("store.show",$l->id) }}" class="btn my-3">{{ $l->layanan }}</a>
+
+                {{-- //branch main 2 --}}
+                <a href="{{ route('store.show', $l->layanan) }}"
+                    class=" my-3 text-capitalize">{{ $l->layanan }}</a>
+
+                {{-- //branch main
+                <a href="{{ route('store.show', $l->id) }}" class="btn my-3">{{ $l->layanan }}</a> --}}
+
             @endforeach
 
         </div>
 
+        <div class="d-flex row mb-5 justify-content-start">
+            @foreach ($layanan as $l)
+                <p class="h2 fw-bold">{{ $l->layanan }}</p>
+                @foreach ($l->services as $ls)
+                    @foreach ($ls->produk as $p)
+                        <div class="my-3 col-lg-4 col-md-6 col-sm-12">
+                            <div class="card">
+                                <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ $ls->judul }}</h4>
+                                    <p class="card-title text-secondary">{{ $p->nama_produk }}</p>
+                                    <h3 class="card-text">Rp.{{ number_format($p->harga) }}</h3>
+                                    @guest
+                                <a href="{{ route('authcheck') }}" class="btn btn-primary">
+                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                </a>
+                            @endguest
 
-        <!-- promo content -->
+                            @if (empty($member))
+                                <a href="{{ route('user.show',$user) }}" class="btn btn-primary">
+                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                </a>
+                            @else
+                                @auth
+                                    @if ($c->contains('id', $p->id))
+                                        <button type="submit" class="btn btn-danger" disabled>
+                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                        </button>
+                                    @else
+                                        <form action="{{ route('transaksi.store') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="member_id" value="{{ $user }}">
+                                            <input type="hidden" class="form-control" name="quantity" value="1">
+                                            <input type="hidden" value="{{ $p->id }}" name="produk_id">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                            </button>
+                                        </form>
+                                    @endif
+                                @endauth
+                            @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endforeach
+            @endforeach
+        </div>
+
+        {{-- <!-- promo content -->
         <p class="h2 fw-bold">PROMO</p>
-        <div class="d-flex row mb-5 justify-content-center">
+        <div class="d-flex row mb-5 justify-content-center" data-aos="fade-down" data-aos-duration="1000">
             <div class="my-3 col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
@@ -112,7 +166,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 @endsection

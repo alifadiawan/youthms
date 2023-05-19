@@ -7,18 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewMessageNotification extends Notification
+class NewNotification extends Notification
 {
     use Queueable;
 
-    private $message;
+    protected $data;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct($message)
+    public function __construct(array $data)
     {
-        $this->message = $message;
+        $this->data = $data;
     }
 
     /**
@@ -26,23 +26,9 @@ class NewMessageNotification extends Notification
      *
      * @return array<int, string>
      */
-    public function via($notifiable)
+    public function via(object $notifiable): array
     {
-        return ['database'];
-    }
-
-    public function setUrl($url)
-    {
-        $this->url = $url;
-        return $this;
-    }
-
-    public function toDatabase($notifiable)
-    {
-        return [
-            'message' => $this->message,
-            'url' => $this->url
-        ];
+        return ['database', 'broadcast'];
     }
 
     /**
@@ -56,6 +42,13 @@ class NewMessageNotification extends Notification
                     ->line('Thank you for using our application!');
     }
 
+    public function toBroadcast(object $notifiable)
+    {
+        return [
+            'data' => $this->toArray($notifiable),
+        ];
+    }
+
     /**
      * Get the array representation of the notification.
      *
@@ -64,7 +57,11 @@ class NewMessageNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            'from_user_id' => $this->data['from_user_id'],
+            'from_user_name' => $this->data['from_user_name'],
+            'from_user_avatar' => $this->data['from_user_avatar'],
+            'message' => $this->data['message'],
+            'room_url' => $this->data['room_url'],
         ];
     }
 }

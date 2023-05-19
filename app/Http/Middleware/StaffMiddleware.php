@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class OwnerMiddleware
+class StaffMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,15 @@ class OwnerMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $u = auth()->user()->role->role;
-        if (auth()->check() && $u == 'owner') {
+        $staff = ['admin', 'owner', 'employee'];
+        if (auth()->check() && in_array($u, $staff)) {
             return $next($request);
-        };
-        return redirect('/returnan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
+        }
+        else {
+            return redirect()->back();
+        }
+    
+        // Redirect ke halaman lain jika peran tidak cocok
+        // return redirect('/returnan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
     }
 }

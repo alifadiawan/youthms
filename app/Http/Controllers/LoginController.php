@@ -39,10 +39,10 @@ class LoginController extends Controller
                 return redirect()->intended('dashboard');
             } elseif ($user == 'client') {
                 // return redirect('/');
-                return redirect()->intended('dashboard');
+                return redirect()->intended('/');
             }else{
                 // return redirect('dashboard');
-                return redirect()->intended('dashboard');
+                return redirect()->intended('/');
             }
 
         } else {
@@ -55,7 +55,9 @@ class LoginController extends Controller
 
     public function authcheck()
     {
-        return redirect('login')->with('status','anda belum login');
+        // return redirect('login')->with('status','anda belum login');
+        notify()->success('anda belum login');
+        return redirect('login');
     }
 
     public function logout(Request $request)

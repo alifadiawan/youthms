@@ -50,13 +50,15 @@ class ServicesController extends Controller
         $nextNumber = str_pad(++$currentNumber, 5, '0', STR_PAD_LEFT); // "00002"
 
         $data = $request->all();
-        Services::create($data);
+        $servis = Services::create($data);
 
         notify()->success('Berhasil ditambahkan',$request->judul);
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "Layanan Berhasil ditambahkan";
-        Notification::send($user, new NewMessageNotification($message));
+        $message = "Service Berhasil Ditambahkan !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('services.show', ['service'=> $servis->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
 
         return redirect('services');
     }
@@ -97,8 +99,10 @@ class ServicesController extends Controller
         notify()->success('Perubahan telah tersimpan');
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "Perubahan telah tersimpan";
-        Notification::send($user, new NewMessageNotification($message));
+        $message = "Servis Berhasil Diupdate !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('services.show', ['service'=> $services->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
 
         return redirect('/services');
     }
@@ -122,8 +126,10 @@ class ServicesController extends Controller
         notify()->success('Layanan telah dihapus');
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "Layanan telah dihapus";
-        Notification::send($user, new NewMessageNotification($message));
+        $message = "Service Berhasil Dihapus !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('services.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('/services');
     }
 }

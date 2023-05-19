@@ -43,6 +43,23 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        // Menambahkan grup middleware baru untuk peran tertentu
+        // 'admin' => [
+        //     \App\Http\Middleware\AdminMiddleware::class,
+        // ],
+
+        // 'owner' => [
+        //     \App\Http\Middleware\OwnerMiddleware::class,
+        // ],
+
+        // 'employee' => [
+        //     \App\Http\Middleware\EmployeeMiddleware::class,
+        // ],
+
+        'staff' => [
+            \App\Http\Middleware\StaffMiddleware::class,
+        ],
     ];
 
     /**
@@ -54,10 +71,11 @@ class Kernel extends HttpKernel
      */
     protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Authenticate::class,
-        'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        // 'admin' => \App\Http\Middleware\StaffMiddlewareMiddleware::class,
         'client' => \App\Http\Middleware\ClientMiddleware::class,
-        'owner' => \App\Http\Middleware\OwnerMiddleware::class,
-        'employee' => \App\Http\Middleware\EmployeeMiddleware::class,
+        'staff' => \App\Http\Middleware\StaffMiddleware::class,
+        // 'owner' => \App\Http\Middleware\StaffMiddleware::class,
+        // 'employee' => \App\Http\Middleware\StaffMiddleware::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

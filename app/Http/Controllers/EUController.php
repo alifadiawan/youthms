@@ -10,6 +10,9 @@ use App\Models\Produk;
 use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 use App\Models\JenisLayanan;
+use App\Models\User;
+use App\Models\Member;
+use App\Models\Cart;
 use Mckenziearts\Notify\LaravelNotify;
 
 class EUController extends Controller
@@ -33,16 +36,8 @@ class EUController extends Controller
      */
     public function create()
     {
-        // return true;
-
-        // Transaksi::create([
-        //     'total' => '',
-        //     'total_bayar' =>0,
-        //     'member_id' =>'aowe'
-        // ]);
-        // return true;
         if (auth::check()) {
-            return true;
+            return 'eu';
         } else {
             notify()->success('Anda belum login');
             return redirect(route('login'));
@@ -55,44 +50,105 @@ class EUController extends Controller
      * Store a newly created resource in storage.
      */
 
-    public function storeindex()
-    {
-        $layanan = JenisLayanan::all();
-        // return true;
-        // return $layanan;
-        return view('EU.store.index', compact('layanan'));
-    }
+    
 
     public function store(Request $request)
     {
         return true;
-
-
-        //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(EU $eU, $id)
-    {
-        $s = Services::all();
-        $layanan = JenisLayanan::all();
-        $services = Services::where('jenis_layanan_id', $id)->get();
-        $idservices = $services->pluck('id');
-        $jenis_layanan = JenisLayanan::find($id);
-        // return $jenis_layanan;
-        foreach ($services as $serv) {
-            $produk[$serv->id] = produk::where('services_id', $serv->id)->with('services')->get();
-        }
-        $produk = collect($produk)->flatten();
 
-        return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan'));
+    public function storeindex()
+    {
+        $user = auth()->user()->id;
+        $member = member::where('user_id', $user)->get();
+
+        $layanan = JenisLayanan::with('services.produk')->get();
+        // return $layanan;
+        // $layanan = JenisLayanan::all();
+        // $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
+
+        // return $member;
+
+        // $jl = JenisLayanan::where('layanan',$type)->first();
+        
+        $cek = produk::doesnthave('cart')->pluck('id')->toarray();
+        $cart = produk::has('cart')->get('id');
+
+        $c = produk::wherein('id', $cart)->get('id');
+
+
+        return view('EU.store.index', compact('layanan', 'c','user','member'));
+    }
+    
+    public function show(EU $eU, $type)
+    {
+        $layanan = JenisLayanan::all();
+        $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
+
+        $user = auth()->user()->id;
+        $member = member::where('user_id', $user)->get();
+        // return $member;
+
+        $jl = JenisLayanan::where('layanan',$type)->first();
+        $services = $jl->services;
+
+        foreach ($services as $s) {
+            foreach ($s->produk as $serv) {
+                $pr[$serv->id] = $serv->id;
+                $z[$serv->id] = $serv;
+            }
+        }
+        $cek = produk::doesnthave('cart')->pluck('id')->toarray();
+        $cart = produk::has('cart')->get('id');
+
+        $irisan_produk = array_intersect_key($pr, array_flip($cek));
+        $produk = produk::wherein('id', $pr)->get();
+        $p = produk::wherein('id', $pr)->get('id');
+        $c = produk::wherein('id', $cart)->get('id');
+
+        return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan', 'c','user','member'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
+    public function showprofile()
+    {
+        // return true;
+        $user = auth()->user()->id;
+        $member = member::where('user_id', $user)->get();
+
+        return view('EU.user.index', compact('member'));
+    }
+
+    public function editprofile()
+    {
+        // return true;
+        $user = auth()->user()->id;
+        $member = member::where('user_id', $user)->get();
+
+        return view('EU.user.index', compact('member'));
+    }
+
+    public function updateprofile()
+    {
+        // return true;
+        $user = auth()->user()->id;
+        $member = member::where('user_id', $user)->get();
+
+        return view('EU.user.index', compact('member'));
+    }
+
+    public function hapusprofile()
+    {
+        // return true;
+        $user = auth()->user()->id;
+        $member = member::where('user_id', $user)->get();
+
+        return view('EU.user.index', compact('member'));
+    }
+
     public function edit(EU $eU)
     {
         //

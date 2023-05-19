@@ -6,15 +6,16 @@ use App\Models\JenisLayanan;
 use App\Models\Transaksi;
 use App\Models\Produk;
 use App\Models\Services;
-
+use App\Models\TransaksiDetail;
 //untuk notif
 use App\Models\User;
-// use Auth;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\visitor;
 
 class TransaksiController extends Controller
 {
@@ -23,26 +24,31 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksi = Transaksi::all();
-        $services = Services::all();
-        $jenis_layanan = JenisLayanan::all();
-        $Produk = 'a';
-
-        return view("EU.store.design", compact('Produk'));
+        // $layanan = JenisLayanan::with('services.produk')->get();
+        // return view('EU.store.index', compact('layanan'));
     }
 
+
+    public function history()
+    {
+        $history = TransaksiDetail::all();
+        // return $history;
+        return view('Admin.transaction.index');
+    }
+
+    public function cart()
+    {
+        $user = auth()->user()->id;
+        $cart = cart::where('member_id',$user)->get();
+        // return $cart;
+        return view('EU.transaction.cart',compact('cart'));
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $layanan = JenisLayanan::all();
-        $produk = produk::all();
-        $services = Services::all();
-        // return $services;
-
-        //
-        return view("EU.transaction.index", compact('produk'));
+        // return view("EU.transaction.index", compact('produk'));
     }
 
     /**
@@ -50,7 +56,11 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        // return 'berhasil ditambahkan';
+        // return $request;
+        cart::create($request->all());
+        return redirect()->back();
+        // notify()->success('produk berhasil ditambahkan');    
     }
 
     /**
