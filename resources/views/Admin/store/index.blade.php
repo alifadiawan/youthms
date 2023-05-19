@@ -28,7 +28,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->services->judul }}</td>
                                 <td>{{ $item->nama_produk }}</td>
-                                <td>{{ number_format( $item->harga) }}</td>
+                                <td>Rp. {{ number_format( $item->harga) }}</td>
                                 <td>
                                     <a href="{{ route('adm_store.show', $item->id) }}"
                                         class="btn btn-sm rounded-pill text-white"

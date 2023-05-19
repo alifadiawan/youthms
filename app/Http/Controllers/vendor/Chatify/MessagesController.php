@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
 use App\Models\User;
+use App\Notifications\NewNotification;
 use App\Models\ChMessage as Message;
 use App\Models\ChFavorite as Favorite;
 use Chatify\Facades\ChatifyMessenger as Chatify;
@@ -146,6 +147,21 @@ class MessagesController extends Controller
                     'to_id' => $request['id'],
                     'message' => Chatify::messageCard($messageData, true)
                 ]);
+
+                // Send notification to the recipient user
+                $fromUserId = Auth::user()->id;
+                $fromUserName = Auth::user()->username;
+                $toUserId = $request['id'];
+                $messageBody = htmlentities(trim($request['message']), ENT_QUOTES, 'UTF-8');
+                $notificationData = [
+                    'from_user_avatar' => Auth::user()->avatar, // Menyimpan avatar pengirim
+                    'from_user_id' => $fromUserId, // Menyimpan ID pengirim
+                    'from_user_name' => $fromUserName,
+                    'message' => $messageBody,
+                    'room_url' => url('/chat/'. $fromUserId), // Menyimpan URL room chat
+                ];
+                $recipientUser = User::find($toUserId);
+                $recipientUser->notify(new NewNotification($notificationData));
             }
         }
 

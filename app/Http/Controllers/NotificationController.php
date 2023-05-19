@@ -45,4 +45,21 @@ class NotificationController extends Controller
         return response()->json(['success' => true]);
 
     }
+
+    public function read_chat($notifId)
+    {
+        // Temukan notifikasi berdasarkan ID
+            $notification = Auth::user()->notifications()->findOrFail($notifId);
+
+            // Ubah status notifikasi menjadi "dibaca"
+            $notification->markAsRead();
+
+            // Arahkan pengguna ke URL room chat
+            $roomUrl = $notification->data['room_url'];
+
+            // Mengembalikan respons JSON dengan URL room chat
+            return response()->json([
+                'redirectUrl' => $roomUrl,
+            ]);
+    }
 }

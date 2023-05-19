@@ -20,7 +20,6 @@ use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\StaffMiddleware;
-use App\Models\portofolio;
 use App\Models\Services;
 
 /*
@@ -71,9 +70,18 @@ Route::middleware('guest')->group(function () {
     Route::get('/blog/design', function () {
         return view('EU.blog.design');
     });
+
     Route::get('/blog/pemrograman', function () {
         return view('EU.blog.pemrograman');
     });
+    Route::get('/blog/show', function () {
+        return view('EU.blog.show');
+    });
+
+    // Route::get('/blog/pemrograman', function () {
+    //     return view('EU.blog.pemrograman');
+    // });
+
 
     //Store EU
     // Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
@@ -86,6 +94,14 @@ Route::middleware('guest')->group(function () {
     //services
     Route::get('/services/all', function () {
         return view('EU.services.index');
+    });
+
+    Route::get('/services/detail', function () {
+        return view('EU.services.detail');
+    });
+
+    Route::get('/blog/all', function () {
+        return view('EU.blog.index');
     });
 
 
@@ -130,6 +146,11 @@ route::middleware(['client'])->group(function () {
     Route::get('/blog/pemrograman', function () {
         return view('EU.blog.pemrograman');
     });
+    Route::get('/blog/show', function () {
+        return view('EU.blog.show');
+    });
+
+    
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
     Route::get('/edit_profile', [EUController::class, 'editprofile'])->name('storeEU.edit_profile');
     Route::get('/show_profile', [EUController::class, 'showprofile'])->name('storeEU.show_profile');
@@ -246,14 +267,14 @@ Route::middleware('staff')->group(function () {
     Route::get('/landing-page/text/{id}/update', [landingpageController::class, 'update_text'])->name('landing.text_update');
 
     //portofolio
-    Route::resource('/portofolio', PortofolioController::class);
-    Route::get('/edit', [PortofolioController::class, 'test'])->name('portofolio.test');
-    Route::get('/tambah', [PortofolioController::class, 'test'])->name('portofolio.tambah');
+    Route::resource('portfolio', PortofolioController::class);
+    Route::get('/portfolio/{id}/hapus', [PortofolioController::class, 'hapus'])->name('portfolio.hapus');
 
     //notif
 
     // Route::resource('notif', NotificationController::class);
     Route::post('/read', [NotificationController::class, 'read'])->name('read');
+    Route::get('/read_chat/{notifId}', [NotificationController::class, 'read_chat'])->name('read.chat');
 
     // transaction
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
@@ -262,7 +283,9 @@ Route::middleware('staff')->group(function () {
 
 
 //logout
-Route::post('logout', [LoginController::class, 'logout'])->middleware('auth');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
 
 //logout khusus jika eror (akses dari ketik url /logout)
 // Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
+

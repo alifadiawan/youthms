@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4"
-    style="background-color: #1864BA;>
+    style="background-color: #1864BA;">
     <!-- Brand Logo -->
     <a href="{{ url('/') }}" class="brand-link">
-    <img src="{{ asset('youth-logo.svg') }}" alt="AdminLTE Logo" class="m-3 brand-images">
+        <img src="{{ asset('youth-logo.svg') }}" alt="Youthms Logo" class="m-3 brand-images">
     </a>
 
     <x-notify::notify />
@@ -105,16 +105,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/portofolio" class="nav-link">
+                    <a href="{{route('portfolio.index')}}" class="nav-link">
                         <i class="nav-icon fa-solid fa-briefcase"></i>
                         <p>
                             Portofolio
                         </p>
                     </a>
                 </li>
-
                 <li class="nav-item">
-                    <a href="{{ url('landing_page') }}" class="nav-link">
+                    <a href="/landing-page" class="nav-link">
                         <i class="nav-icon fa-solid fa-display"></i>
                         <p>
                             Landing Page
@@ -142,6 +141,7 @@
                         </li>
                     </ul>
                 </li>
+
 
                 {{-- <li class="nav-item menu-open">
             <a href="{{url('landing-page')}}" class="nav-link">

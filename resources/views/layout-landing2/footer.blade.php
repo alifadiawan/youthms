@@ -1,4 +1,4 @@
-<footer class="text-white text-center" style="background-color: #406CAB;">
+    <footer class="text-white text-center" style="background-color: #406CAB;">
     <div class="d-flex justify-content-center">
         <div class="col mt-5 mb-5">
             <img src="{{ asset('youth-logo.png') }}" alt="" style="height: 50px;">
@@ -9,9 +9,8 @@
         <div class="row mt-4">
             <div class="col-lg-4 col-md-4 mb-4 mb-md-0">
                 <h5 class="text-uppercase mb-4">Address</h5>
-
                 <p>
-                    Perum Bluru Permai
+                    Perum Bluru Permai<br>
                     Blok V 25, Sidoarjo
                 </p>
 

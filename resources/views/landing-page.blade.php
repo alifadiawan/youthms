@@ -1,17 +1,18 @@
 @extends('layout-landing2.body')
 {{-- @extends('layout-landing.body') --}}
 @section('content')
-
-
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex align-items-center">
-
+    <section class="hero" id="hero" class="d-flex align-items-center">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+            <div class="row" >
+                <div class="col-lg-6 d-flex flex-column justify-content-center order-2 order-lg-1"
                     data-aos="fade-up" data-aos-delay="200">
                     <h1>Gather more customers in your business area</h1>
-                    <h2>kami menyediakan aawjaojo</h2>
+                    <h2>YouthMS.id is a start up company that focus on creating
+                        website, design, and editing correspondence.</h2>
+                    <h3>
+                        We Will Help You to Expand Your Busniess
+                    </h3>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
                     <img src="{{ asset('illustration/group-390.png') }}" class="img-fluid" alt="">
@@ -21,18 +22,13 @@
 
     </section>
     <!-- End Hero -->
-
-
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
         <div class="container" data-aos="fade-up">
-
             <div class="section-title">
                 <h2 class="text-dark">Our Services</h2>
             </div>
-
             <div class="row justify-content-around">
-
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
                     data-aos-delay="200">
                     <div class="icon-box">
@@ -44,22 +40,20 @@
                 </div>
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
                     data-aos-delay="200">
-                    <div class="card text-center" style="width: 18rem;">
-                        <div class="card-body">
-                            <h4>Design</h4>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Detail</a>
-                        </div>
+                    <div class="icon-box">
+                        <h4>Design</h4>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                        <a href="" class="">Lihat lebih lanjut</a>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
                     data-aos-delay="200">
-                    <div class="card text-center" style="width: 18rem;">
-                        <div class="card-body">
-                            <h4>Editing</h4>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Detail</a>
-                        </div>
+                    <div class="icon-box">
+                        <h4>Editing</h4>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                        <a href="" class="">Lihat lebih lanjut</a>
                     </div>
                 </div>
                 {{-- <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
@@ -83,7 +77,7 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
-                <h2 class="text-start">Choose what you need now</h2>
+                <h2 class="text-center">Choose what you need now</h2>
             </div>
 
             <div class="row justify-content-center">
@@ -104,27 +98,20 @@
                         <a href="" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-6 d-flex mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="card text-center align-items-center">
-                        <div class="card-body">
-                            <h5 class="card-title">Paket C</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of
-                                the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
+                    data-aos-delay="300">
+                    <div class="icon-box text-center">
+                        <h4><a href="">Paket B</a></h4>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                        <a href="" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-                    data-aos-delay="400">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h5 class="card-title">Paket D</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of
-                                the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
+                    data-aos-delay="300">
+                    <div class="icon-box text-center">
+                        <h4><a href="">Paket B</a></h4>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                        <a href="" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
 
@@ -139,7 +126,7 @@
     <section id="clients" class="clients section-bg">
         <div class="container">
 
-            <h2 class="text-dark">Our Partners</h2>
+            <h2 class="text-dark fw-bold">Our Partners</h2>
 
             <div class="row justify-content-center" data-aos="zoom-in">
 
@@ -280,7 +267,7 @@
 
             <div class="row content">
                 <div class="col pt-4 pt-lg-0">
-                    <p>
+                    <h5>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ad ratione consectetur possimus
                         totam excepturi repellat, minima rem tempora doloremque incidunt officia expedita voluptatem quas
                         voluptate quaerat voluptatum illum? Nesciunt.
@@ -290,7 +277,7 @@
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad molestias ab, aliquam praesentium neque
                         amet obcaecati consequuntur quas delectus maxime natus ipsa quae dolorum temporibus voluptatibus
                         modi? Ipsam, commodi aspernatur?
-                    </p>
+                    </h5>
                 </div>
             </div>
 

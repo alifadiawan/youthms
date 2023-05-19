@@ -7,17 +7,22 @@
     <nav id="navbar" class="navbar navbar-expand">
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/blog/editing">Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="/blog/all">Blog</a></li>
             {{-- <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.index') }}">Store</a></li> --}}
             <li class="nav-item"><a class="nav-link" href="{{ route('storeEU.index') }}">Store</a></li>
             <li class="nav-item"><a class="nav-link" href="/services/all">Service</a></li>
             <li class="nav-item"><a class="nav-link" href="/portofolio/all">Portofolio</a></li>
+
             @guest
-                <li class="nav-item"><a class="nav-link" href="{{ route('authcheck') }}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('authcheck') }}"><i
+                            class="fa-solid fa-cart-shopping"></i></a></li>
+
                 <li><a class="getstarted" href="/login">Login</a></li>
             @endguest
             @auth
-                <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.cart') }}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.cart') }}"><i
+                            class="fa-solid fa-cart-shopping"></i></a></li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,9 +30,13 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {{-- <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li> --}}
-                        <li><a class="dropdown-item" href="{{ route('user.show',auth()->user()->id) }}">Edit Profile</a></li>
-                        <li><a class="dropdown-item" href="/profile">Struk</a></li>
-                        <li><a class="dropdown-item" href="/profile">Belum Bayar</a></li>
+                        <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Edit Profile</a>
+                        </li>
+                        <li><a class="dropdown-item" href="/">Struk</a></li>
+                        <li><a class="dropdown-item" href="/">Belum Bayar</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li>
                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 Logout
@@ -38,12 +47,12 @@
                 </li>
             @endauth
 
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
 
-
-
+ 
 
     <!-- .navbar -->
 

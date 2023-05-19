@@ -122,6 +122,9 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+            <div class="modal-header">
+                <p>Konfirmasi</p>
+            </div>
             <div class="modal-body">
                 <form action="{{ route('jenislayanan.store') }}" method="post">
                     @csrf
@@ -146,6 +149,9 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
+                <div class="modal-header">
+                    <p>Konfirmasi</p>
+                </div>
                 <div class="modal-body">
                     <h3 class="text-center">Yakin Ingin Menghapus {{ $hapus->layanan }} ?</h3>
                 </div>
