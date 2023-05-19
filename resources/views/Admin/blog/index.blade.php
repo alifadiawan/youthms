@@ -50,9 +50,9 @@
     </div>
     <div class="col-lg-3">
         <div class="card p-3">
-            <button data-toggle="modal" data-target="#addSegmen" class="btn btn-md btn-primary"
+            <button data-toggle="modal" data-target="#addSegmen" class="btn btn-md yms-blue"
                 style="width: 37%;">Tambah</button>
-            <table class="table table-hover table-striped mt-3">
+            <table class="table table-hover table-striped mt-3 text-center">
                 <thead>
                     <tr style="background-color: #0EA1E2">
                         <th class="text-white">Segmen</th>
@@ -69,7 +69,7 @@
                             <tr>
                                 <td>{{ $s->segmen }}</td>
                                 <td><button data-toggle="modal" data-target="#hapusSegmen{{ $s->id }}"
-                                        class="btn btn-primary"><i class="fas fa fa-trash"></i></button></td>
+                                        class="btn text-danger"><i class="fas fa fa-trash"></i></button></td>
                             </tr>
                         @endforeach
                     @endif
@@ -84,6 +84,9 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+            <div class="modal-header">
+                <p>Tambah Segmen</p>
+            </div>
             <div class="modal-body">
                 <form action="{{ route('segmen.store') }}" method="post">
                     @csrf
@@ -93,8 +96,8 @@
                     </div>
             </div>
             <div class="modal-footer justify-content-start">
-                <button class="btn btn-primary">Simpan</button>
-                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-success">Simpan</button>
+                <button class="btn btn-outline-secondary" data-dismiss="modal">Batal</button>
             </div>
             </form>
         </div>
@@ -107,6 +110,9 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
+                <div class="modal-header">
+                    <p>Konfirmasi</p>
+                </div>
                 <div class="modal-body">
                     <h3 class="text-center">Yakin Ingin Menghapus {{ $hapus->segmen }} ?</h3>
                 </div>

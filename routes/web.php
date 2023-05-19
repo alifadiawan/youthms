@@ -70,9 +70,18 @@ Route::middleware('guest')->group(function () {
     Route::get('/blog/design', function () {
         return view('EU.blog.design');
     });
+
     Route::get('/blog/pemrograman', function () {
         return view('EU.blog.pemrograman');
     });
+    Route::get('/blog/show', function () {
+        return view('EU.blog.show');
+    });
+
+    // Route::get('/blog/pemrograman', function () {
+    //     return view('EU.blog.pemrograman');
+    // });
+
 
     //Store EU
     // Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
@@ -85,6 +94,14 @@ Route::middleware('guest')->group(function () {
     //services
     Route::get('/services/all', function () {
         return view('EU.services.index');
+    });
+
+    Route::get('/services/detail', function () {
+        return view('EU.services.detail');
+    });
+
+    Route::get('/blog/all', function () {
+        return view('EU.blog.index');
     });
 
 
@@ -110,11 +127,15 @@ Route::middleware('guest')->group(function () {
     // Route::resource('/transaksi', TransaksiController::class);
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::resource('user', UserController::class);
+    Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
+});
 
 //  client
 route::middleware(['client'])->group(function () {
     // landing page
-    
+
     //blog
     Route::get('/blog/editing', function () {
         return view('EU.blog.editing');
@@ -125,6 +146,11 @@ route::middleware(['client'])->group(function () {
     Route::get('/blog/pemrograman', function () {
         return view('EU.blog.pemrograman');
     });
+    Route::get('/blog/show', function () {
+        return view('EU.blog.show');
+    });
+
+    
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
     Route::get('/edit_profile', [EUController::class, 'editprofile'])->name('storeEU.edit_profile');
     Route::get('/show_profile', [EUController::class, 'showprofile'])->name('storeEU.show_profile');
@@ -136,7 +162,7 @@ route::middleware(['client'])->group(function () {
     Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
     Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
     Route::resource('/store', EUController::class);
-    route::get('/store/{id}', [EUController::class, 'show']);
+    route::get('/store/{type}', [EUController::class, 'show']);
 
     //services
     Route::get('/services/all', function () {
@@ -144,9 +170,9 @@ route::middleware(['client'])->group(function () {
     });
 
     //cart
-    Route::get('/cart', function () {
-        return view('EU.transaction.cart');
-    });
+    // Route::get('/cart', function () {
+    //     return view('EU.transaction.cart');
+    // });
 
     //transaction
     Route::get('/pembayaran', function () {
@@ -157,11 +183,14 @@ route::middleware(['client'])->group(function () {
     // Route::get('/edit-profile', function () {
     //     return view('EU.user.edit');
     // });
-    Route::get('/profile', function () {
-        return view('EU.user.index');
-    });
+    // Route::get('/profile', function () {
+    //     return view('EU.user.index');
+    // });
 
-    
+    // user
+
+
+
     // // //transaction
     Route::resource('/transaksi', TransaksiController::class);
 
@@ -169,6 +198,7 @@ route::middleware(['client'])->group(function () {
     Route::get('/portofolio/all', function () {
         return view('EU.portofolio.index');
     });
+    Route::get('/cart', [TransaksiController::class,'cart'])->name('transaksi.cart');
 });
 
 
@@ -199,8 +229,6 @@ Route::middleware('staff')->group(function () {
     Route::post('role', [RoleController::class, 'store'])->name('role.store');
     Route::get('role/{id}/hapus', [RoleController::class, 'hapus'])->name('role.hapus');
 
-    Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
-    Route::resource('user', UserController::class);
 
     //member
     Route::resource('member', MemberController::class);
@@ -250,7 +278,6 @@ Route::middleware('staff')->group(function () {
 
     // transaction
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
-
 });
 // });
 
@@ -258,5 +285,7 @@ Route::middleware('staff')->group(function () {
 //logout
 Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
+
 //logout khusus jika eror (akses dari ketik url /logout)
 // Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
+
