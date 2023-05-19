@@ -39,8 +39,9 @@ class TransaksiController extends Controller
     public function cart()
     {
         $user = auth()->user()->id;
-        $cart = cart::where('member_id',$user)->get();
-        // return $cart;
+        $cart = cart::where('member_id',$user)->get()->sortByDesc('cart.created_at');
+        // $cart = produk::has('cart')->get()->sortByDesc('cart.created_at');
+        // return $cart;   
         return view('EU.transaction.cart',compact('cart'));
     }
     /**

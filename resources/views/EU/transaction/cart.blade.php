@@ -84,7 +84,14 @@
                                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                     <div>
                                         <strong>Total </strong>
-                                        <h2 value="{{ $cart->sum(function ($cart) {return $cart->produk->quantity * $cart->produk->harga;}) }}"></h2>
+                                        <h2>
+                                            {{ $cart->sum(function ($cart) {
+                                                $h = $cart->quantity * $cart->produk->harga;
+                                                return $h;
+                                            }) }}
+
+                                        </h2>
+                                        {{-- <h2 value="{{ $cart->sum(function ($cart) {return $cart->produk->quantity * $cart->produk->harga;}) }}"></h2> --}}
 
                                     </div>
                                     <span><strong></strong></span>
