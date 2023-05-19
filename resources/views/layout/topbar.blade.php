@@ -101,7 +101,7 @@
                 <h3 class="text-center" style="font-size: 25px;">Anda Yakin Ingin Logout ?</h3>
             </div>
             <div class="modal-footer">
-                <form action="logout" method="post">
+                <form action="{{route('logout')}}" method="post">
                     @csrf
                     <button class="btn btn-danger">Logout</button>
                     <button class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>

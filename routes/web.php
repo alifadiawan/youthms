@@ -20,7 +20,6 @@ use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\StaffMiddleware;
-use App\Models\portofolio;
 use App\Models\Services;
 
 /*
@@ -268,9 +267,8 @@ Route::middleware('staff')->group(function () {
     Route::get('/landing-page/text/{id}/update', [landingpageController::class, 'update_text'])->name('landing.text_update');
 
     //portofolio
-    Route::resource('/portofolio', PortofolioController::class);
-    Route::get('/edit', [PortofolioController::class, 'test'])->name('portofolio.test');
-    Route::get('/tambah', [PortofolioController::class, 'test'])->name('portofolio.tambah');
+    Route::resource('portfolio', PortofolioController::class);
+    Route::get('/portfolio/{id}/hapus', [PortofolioController::class, 'hapus'])->name('portfolio.hapus');
 
     //notif
 
@@ -285,8 +283,8 @@ Route::middleware('staff')->group(function () {
 
 
 //logout
+Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::post('logout', [LoginController::class, 'logout'])->middleware('auth');
 
 //logout khusus jika eror (akses dari ketik url /logout)
 // Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
