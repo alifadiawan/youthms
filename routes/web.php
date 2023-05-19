@@ -71,9 +71,18 @@ Route::middleware('guest')->group(function () {
     Route::get('/blog/design', function () {
         return view('EU.blog.design');
     });
+
+    Route::get('/blog/pemrograman', function () {
+        return view('EU.blog.pemrograman');
+    });
+    Route::get('/blog/show', function () {
+        return view('EU.blog.show');
+    });
+
     // Route::get('/blog/pemrograman', function () {
     //     return view('EU.blog.pemrograman');
     // });
+
 
     //Store EU
     // Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
