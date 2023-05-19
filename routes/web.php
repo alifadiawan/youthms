@@ -69,9 +69,9 @@ Route::middleware('guest')->group(function () {
     Route::get('/blog/design', function () {
         return view('EU.blog.design');
     });
-    Route::get('/blog/pemrograman', function () {
-        return view('EU.blog.pemrograman');
-    });
+    // Route::get('/blog/pemrograman', function () {
+    //     return view('EU.blog.pemrograman');
+    // });
 
     //Store EU
     Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
@@ -83,6 +83,14 @@ Route::middleware('guest')->group(function () {
     //services
     Route::get('/services/all', function () {
         return view('EU.services.index');
+    });
+
+    Route::get('/services/detail', function () {
+        return view('EU.services.detail');
+    });
+
+    Route::get('/blog/all', function () {
+        return view('EU.blog.index');
     });
 
 

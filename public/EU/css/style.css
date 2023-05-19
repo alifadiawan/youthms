@@ -170,6 +170,8 @@ h6 {
 */
 .navbar {
   padding: 0;
+  font-family: 'Poppins', sans-serif;
+
 }
 
 .navbar ul {
@@ -410,32 +412,42 @@ h6 {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-#hero {
+.hero {
   width: 100%;
   height: 100vh;
   background: #406CAB;
   border-radius: 0px 0px 200px 0px;
 }
 
-#hero .container {
-  padding-top: 72px;
+.hero .container {
+  padding-top: 30px;
 }
 
-#hero h1 {
+.hero h1 {
   margin: 0 0 10px 0;
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 700;
   line-height: 56px;
   color: #fff;
+  font-family: 'Poppins', sans-serif;
 }
 
-#hero h2 {
+.hero h3 {
+  margin: 0 0 10px 0;
+  font-size: 36px;
+  font-weight: 700;
+  line-height:normal;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hero h2 {
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 50px;
   font-size: 24px;
 }
 
-#hero .btn-get-started {
+.hero .btn-get-started {
   font-family: "Jost", sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -449,11 +461,11 @@ h6 {
   background: #519bbe;
 }
 
-#hero .btn-get-started:hover {
+.hero .btn-get-started:hover {
   background: #209dd8;
 }
 
-#hero .btn-watch-video {
+.hero .btn-watch-video {
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -463,7 +475,7 @@ h6 {
   line-height: 1;
 }
 
-#hero .btn-watch-video i {
+.hero .btn-watch-video i {
   line-height: 0;
   color: #fff;
   font-size: 32px;
@@ -471,56 +483,56 @@ h6 {
   margin-right: 8px;
 }
 
-#hero .btn-watch-video:hover i {
+.hero .btn-watch-video:hover i {
   color: #47b2e4;
 }
 
-#hero .animated {
+.hero .animated {
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
 @media (max-width: 991px) {
-  #hero {
+  .hero {
     height: 100vh;
     text-align: center;
   }
 
-  #hero .animated {
+  .hero .animated {
     animation: none;
   }
 
-  #hero .hero-img {
+  .hero .hero-img {
     text-align: center;
   }
 
-  #hero .hero-img img {
+  .hero .hero-img img {
     width: 50%;
   }
 }
 
 @media (max-width: 768px) {
-  #hero h1 {
+  .hero h1 {
     font-size: 28px;
     line-height: 36px;
   }
 
-  #hero h2 {
+  .hero h2 {
     font-size: 18px;
     line-height: 24px;
     margin-bottom: 30px;
   }
 
-  #hero .hero-img img {
+  .hero .hero-img img {
     width: 70%;
   }
 }
 
 @media (max-width: 575px) {
-  #hero .hero-img img {
+  .hero .hero-img img {
     width: 80%;
   }
 
-  #hero .btn-get-started {
+  .hero .btn-get-started {
     font-size: 16px;
     padding: 10px 24px 11px 24px;
   }
@@ -859,11 +871,17 @@ section {
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
+.services {
+  margin-top: 20px;
+}
 .services .icon-box {
-  box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
-  padding: 50px 30px;
+  box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.3);
+  padding: 40px 30px;
+  border-radius: 25px;
   transition: all ease-in-out 0.4s;
   background: #fff;
+  font-family: 'Poppins', sans-serif;
+
 }
 
 .services .icon-box .icon {
@@ -874,16 +892,23 @@ section {
   color: #47b2e4;
   font-size: 36px;
   transition: 0.3s;
+  font-family: 'Poppins', sans-serif;
+
 }
 
 .services .icon-box h4 {
   font-weight: 500;
   margin-bottom: 15px;
   font-size: 24px;
+  font-family: 'Poppins', sans-serif;
+
+  
 }
 
 .services .icon-box h4 a {
   color: #37517e;
+  font-family: 'Poppins', sans-serif;
+
   transition: ease-in-out 0.3s;
 }
 
@@ -895,10 +920,12 @@ section {
 
 .services .icon-box:hover {
   transform: translateY(-10px);
+  box-shadow: #0c3c53;
 }
 
 .services .icon-box:hover h4 a {
   color: #47b2e4;
+  
 }
 
 /*--------------------------------------------------------------
@@ -907,10 +934,11 @@ section {
 .main-banner p {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
-  font-size: 40px;
-  margin-top: 100px;
+  font-size: 35px;
+  margin-top:-20px;
   align-items: flex-end;
-  line-height:1.5cm;
+  line-height:normal;
+  color: #000;
 }
 
 .main-banner {
@@ -918,8 +946,8 @@ section {
 }
 
 .main-banner img{
-  width: 1000px;
-  height: 643px;
+  width: 100%;
+  height: 100%;
   margin-right: -250px;
   float: left;
   /* margin: 40px -58px 0 0; */
@@ -932,13 +960,15 @@ section {
   font-size: 40px;
   line-height:1.5cm;
   text-align: center;
+  margin-top: -100px;
   padding: 30px;
+  color: #000;
 }
 
 .layanan .informasi {
   background-color: #2FA5FB;
   border-radius: 0 100px 100px 0;
-  height: 975px; 
+  height: 850px; 
 }
 
 .layanan h2 {
@@ -950,19 +980,19 @@ section {
 }
 
 
-.layanan .dg {
+/* .layanan .dg {
   font-family: 'Poppins', sans-serif;
   color: #fff;
   font-size: 40px;
   font-weight: bold;
   margin: 30px 50px 30px 30px;
-}
+} */
 
 
 .layanan h3 {
   font-family: 'Poppins', sans-serif;
   color: #fff;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
   margin-top: 30px;
   margin-left: 30px;
@@ -1001,6 +1031,73 @@ section {
   display: flex;
 }
 
+.layanan .informasi img{
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  margin-top: 500px;
+  float: right;
+  transform: translateX(0px);
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes img{
+  0%{
+    transform: translateY(0px);
+  }
+  50%{
+    transform: translateY(15px);
+  }
+  100%{
+    transform: translateY(-0px);
+  }
+}
+
+.layanan .editing {
+  background-color: #2FA5FB;
+  border-radius: 0 100px 100px 0;
+  height: 750px; 
+}
+
+.main h3:hover{
+  transform: translateY(-30px);
+}
+
+/*--------------------------------------------------------------
+# Detal-Service EU
+--------------------------------------------------------------*/
+.detail-service h1{
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+    margin-bottom: 25px;
+    font-size: 58px;
+    line-height: bold;
+    /* font-weight: bold; */
+    /* margin: 30px 20px 30px 30px; */
+}
+
+.detail-service h2{
+  font-family: 'Poppins', sans-serif;
+  color: #000;
+  font-size: 30px;
+  margin-top: 30px;
+  font-weight: bold;
+  /* font-weight: bold; */
+  /* margin: 30px 20px 30px 30px; */
+}
+
+.detail-service p{
+  margin-top: 70px;
+  font-family: 'Roboto', sans-serif;
+  color: #000;
+  font-size: 25px;
+  font-weight: normal;
+  line-height: normal;
+  /* font-weight: bold; */
+  /* margin: 30px 20px 30px 30px; */
+}
 /*--------------------------------------------------------------
 # Paket
 --------------------------------------------------------------*/
@@ -1770,6 +1867,7 @@ section {
 #footer {
   font-size: 14px;
   background: #37517e;
+  font-family: 'Poppins', sans-serif;
 }
 
 #footer .footer-newsletter {
@@ -1848,7 +1946,8 @@ section {
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
-  font-family: "Jost", sans-serif;
+  /* font-family: "Jost", sans-serif; */
+  font-family: 'Poppins', sans-serif;
   color: #5e5e5e;
 }
 
