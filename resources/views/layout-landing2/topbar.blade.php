@@ -6,7 +6,7 @@
 
     <nav id="navbar" class="navbar navbar-expand">
         <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            
             <li class="nav-item"><a class="nav-link" href="/blog/all">Blog</a></li>
             {{-- <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.index') }}">Store</a></li> --}}
             <li class="nav-item"><a class="nav-link" href="{{ route('storeEU.index') }}">Store</a></li>
@@ -20,6 +20,7 @@
                 <li><a class="getstarted" href="/login">Login</a></li>
             @endguest
             @auth
+            <li class="nav-item"><a class="nav-link" href="/groupchat">Chats</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.cart') }}"><i
                             class="fa-solid fa-cart-shopping"></i></a></li>
 
