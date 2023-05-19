@@ -21,12 +21,53 @@
     @if (auth()->user()->role->role !== 'admin')
         <div class="col-lg-12">
         @else
-        <div class="col-lg-9">
+            <div class="col-lg-9">
     @endif
-    {{-- <div class="card p-3"> --}}
+    <div class="card p-3">
         @if (auth()->user()->role_id == 1)
-            <a href="{{ route('user.create') }}" class="btn btn-md text-white rounded mb-2 mr-1"
-                style="background-color: #1864BA; width: 14%;">Tambah User</a>
+
+            <div class="row align-items-end">
+                <div class="col-7">
+                    <a class="btn font-weight-bold" data-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                         Sort By <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <a href="" class="btn btn-outline-primary ml-3" style="border-radius: 20px">Active role</a>
+                    <div class="collapse" id="collapseExample">
+                        <div class="my-3">
+                            <form action="" class="form-inline">
+                                <select name="" id="" class="form-control mr-2">
+                                    <option value="">Role</option>
+                                    @foreach ($role as $item)
+                                        <option value="{{ $item->id }}">{{ $item->role }}</option>
+                                    @endforeach
+                                </select>
+                                <a href="" class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+
+                    {{-- <p class="text-muted font-weight-bold">Sort By : </p>
+                    <form action="" class="form-inline">
+                        <select name="" id="" class="form-control mr-2">
+                            <option value="">Role</option>
+                            @foreach ($role as $item)
+                            <option value="{{ $item->id }}">{{ $item->role }}</option>
+                            @endforeach
+                        </select>
+                        <a href="" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </form> --}}
+
+                </div>
+                <div class="col-5 text-right">
+                    <a href="{{ route('user.create') }}" class="btn btn-md text-white rounded"
+                        style="background-color: #1864BA;">Tambah User</a>
+                </div>
+            </div>
         @endif
         <table class="table table-striped table-hover mt-2 bg-white">
             <thead>
@@ -58,11 +99,11 @@
                 @endif
             </tbody>
         </table>
-    {{-- </div> --}}
+    </div>
 </div>
 @if (auth()->user()->role->role == 'admin')
     <div class="col-lg-3">
-        {{-- <div class="card p-3"> --}}
+        <div class="card p-3">
             <button data-toggle="modal" data-target="#addJabatan" class="btn btn-md text-white rounded mb-2 mr-1"
                 style="background-color: #1864BA; width: 42%;">Tambah</button>
             <table class="table table-borderless table-hover mt-2 text-center bg-white">
@@ -88,7 +129,7 @@
                     @endif
                 </tbody>
             </table>
-        {{-- </div> --}}
+        </div>
     </div>
 @endif
 </div>
