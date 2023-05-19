@@ -51,18 +51,19 @@
 
 <!-- Edit Modal -->
 <div class="modal fade" id="editmodal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
+		<div class="modal-header">
+			<p>Konfirmasi</p>
+		</div>
 
       <div class="modal-body">
-      	<br><br>
         <h3 class="text-center" style="font-size: 30px;">Yakin Ingin Merubah Data ?</h3>
-        <br><br>
       </div>
 
       <div class="modal-footer">
-      	<button class="btn btn-danger" data-dismiss="modal">Tidak</button>
-        <a href="{{route('user.edit', $user->id)}}" class="btn btn-warning text-white">Iya</a>
+		  <a href="{{route('user.edit', $user->id)}}" class="btn btn-danger text-white">Iya</a>
+      	<button class="btn btn-outline-secondary" data-dismiss="modal">Tidak</button>
       </div>
     </div>
   </div>
@@ -70,38 +71,23 @@
 
 <!-- Hapus Modal -->
 <div class="modal fade" id="hapusmodal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
+		<div class="modal-header">
+			<p>Konfirmasi</p>
+		</div>
 
       <div class="modal-body">
-      	<br><br>
         <h3 class="text-center" style="font-size: 30px;">Yakin Ingin Menghapus Data ?</h3>
-        <br><br>
       </div>
 
       <div class="modal-footer">
-      	<button class="btn btn-danger" data-dismiss="modal">Tidak</button>
-        <a href="{{route('user.hapus', $user->id)}}" class="btn btn-warning text-white">Iya</a>
+		  <a href="{{route('user.hapus', $user->id)}}" class="btn btn-danger text-white">Iya</a>
+      	<button class="btn btn-outline-secondary" data-dismiss="modal">Tidak</button>
       </div>
     </div>
   </div>
 </div>
 
 
-<style>
-	.modal-footer {
-	    display: -ms-flexbox;
-	    display: flex;
-	    -ms-flex-wrap: wrap;
-	    flex-wrap: wrap;
-	    -ms-flex-align: center;
-	    align-items: center;
-	    -ms-flex-pack: end;
-	    justify-content: space-between;
-	    padding: 0.75rem;
-	    border-top: 1px solid #e9ecef;
-	    border-bottom-right-radius: calc(0.3rem - 1px);
-	    border-bottom-left-radius: calc(0.3rem - 1px);
-	}
-</style>
 @endsection

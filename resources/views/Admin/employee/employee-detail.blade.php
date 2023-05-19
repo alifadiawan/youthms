@@ -67,18 +67,19 @@
 <!-- Edit Modal -->
 <div class="modal fade" id="editmodal" data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+            <div class="modal-header text-center">
+                <p>Konfirmasi</p>
+            </div>
 
             <div class="modal-body">
-                <br><br>
                 <h3 class="text-center" style="font-size: 30px;">Yakin Ingin Merubah Data ?</h3>
-                <br><br>
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-danger" data-dismiss="modal">Tidak</button>
                 <a href="{{ route('employee.edit', $member->id) }}" class="btn btn-warning text-white">Iya</a>
+                <button class="btn btn-outline-secondary" data-dismiss="modal">Tidak</button>
             </div>
         </div>
     </div>
@@ -87,24 +88,25 @@
 <!-- Hapus Modal -->
 <div class="modal fade" id="hapusmodal" data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+            <div class="modal-header text-center">
+                <p>Konfirmasi</p>
+            </div>
 
             <div class="modal-body">
-                <br><br>
                 <h3 class="text-center" style="font-size: 30px;">Yakin Ingin Menghapus Data ?</h3>
-                <br><br>
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-danger" data-dismiss="modal">Tidak</button>
                 <a href="{{ route('employee.hapus', $member->id) }}" class="btn btn-warning text-white">Iya</a>
+                <button class="btn btn-danger" data-dismiss="modal">Tidak</button>
             </div>
         </div>
     </div>
 </div>
 
-<style>
+{{-- <style>
     .modal-footer {
         display: -ms-flexbox;
         display: flex;
@@ -119,5 +121,5 @@
         border-bottom-right-radius: calc(0.3rem - 1px);
         border-bottom-left-radius: calc(0.3rem - 1px);
     }
-</style>
+</style> --}}
 @endsection

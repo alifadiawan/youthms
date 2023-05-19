@@ -5,7 +5,11 @@
 
 
 <!-- <a href="{{route('employee.create')}}" class="btn btn-md text-white rounded-pill mb-3" style="background-color: #1864BA">Tambah</a> -->
-<div class="card">
+
+<div class="row">
+    <div class="col">
+
+</div>
     <div class="col-lg-12">
         <table class="table table-striped table-hover mt-2">
             <thead>
@@ -39,7 +43,6 @@
         </table>
     </div>
 </div>
-</div>
-</div>
+
 
 @endsection

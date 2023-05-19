@@ -4,8 +4,10 @@
 @section('judul', 'Member')
 
 <!-- <a href="{{route('member.create')}}" class="btn btn-md text-white rounded-pill mb-3" style="background-color: #1864BA">Tambah</a> -->
-<div class="card">
-    <div class="col-lg-12">
+
+    <div class="row">
+        <div class="col">
+
         <table class="table table-striped table-hover mt-2">
             <thead>
                 <tr style="background-color: #0EA1E2">
@@ -38,7 +40,6 @@
         </table>
     </div>
 </div>
-</div>
-</div>
+
 
 @endsection
