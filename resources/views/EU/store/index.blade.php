@@ -22,12 +22,12 @@
             <a href="{{ route('storeEU.index') }}" class="text-capitalize my-3 active">Promo</a>
             @foreach ($layanan as $l)
 
-                //branch main 2
+                {{-- //branch main 2 --}}
                 <a href="{{ route('store.show', $l->layanan) }}"
                     class=" my-3 text-capitalize">{{ $l->layanan }}</a>
 
-                //branch main
-                <a href="{{ route('store.show', $l->id) }}" class="btn my-3">{{ $l->layanan }}</a>
+                {{-- //branch main
+                <a href="{{ route('store.show', $l->id) }}" class="btn my-3">{{ $l->layanan }}</a> --}}
 
             @endforeach
 
@@ -46,18 +46,34 @@
                                     <p class="card-title text-secondary">{{ $p->nama_produk }}</p>
                                     <h3 class="card-text">Rp.{{ number_format($p->harga) }}</h3>
                                     @guest
-                                        <a href="{{ route('authcheck') }}" class="btn btn-primary">
+                                <a href="{{ route('authcheck') }}" class="btn btn-primary">
+                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                </a>
+                            @endguest
+
+                            @if (empty($member))
+                                <a href="{{ route('user.show',$user) }}" class="btn btn-primary">
+                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                </a>
+                            @else
+                                @auth
+                                    @if ($c->contains('id', $p->id))
+                                        <button type="submit" class="btn btn-danger" disabled>
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                        </a>
-                                    @endguest
-                                    @auth
-                                        <form action="{{ route('store.create') }}">
+                                        </button>
+                                    @else
+                                        <form action="{{ route('transaksi.store') }}" method="POST">
                                             @csrf
+                                            <input type="hidden" name="member_id" value="{{ $user }}">
+                                            <input type="hidden" class="form-control" name="quantity" value="1">
+                                            <input type="hidden" value="{{ $p->id }}" name="produk_id">
                                             <button type="submit" class="btn btn-primary">
                                                 <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                             </button>
                                         </form>
-                                    @endauth
+                                    @endif
+                                @endauth
+                            @endif
                                 </div>
                             </div>
                         </div>

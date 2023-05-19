@@ -17,15 +17,15 @@
                 <li><a class="getstarted" href="/login">Login</a></li>
             @endguest
             @auth
-                <li class="nav-item"><a class="nav-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.cart') }}"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         {{auth()->user()->username}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li>
-                        <li><a class="dropdown-item" href="/profile">Edit Profile</a></li>
+                        {{-- <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li> --}}
+                        <li><a class="dropdown-item" href="{{ route('user.show',auth()->user()->id) }}">Edit Profile</a></li>
                         <li><a class="dropdown-item" href="/profile">Struk</a></li>
                         <li><a class="dropdown-item" href="/profile">Belum Bayar</a></li>
                         <li>

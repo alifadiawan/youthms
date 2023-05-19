@@ -43,6 +43,9 @@ class DashboardController extends Controller
 
         
         $user = auth()->user()->role->role;
+        
+        $uid = auth()->user()->id;
+        // return $uid;
         // return $user;
         return view('Admin.dashboard', compact('chart1', 'chart2'));
     }

@@ -38,8 +38,10 @@ class TransaksiController extends Controller
 
     public function cart()
     {
-        $cart = cart::where()->get();
-        return $cart;
+        $user = auth()->user()->id;
+        $cart = cart::where('member_id',$user)->get();
+        // return $cart;
+        return view('EU.transaction.cart',compact('cart'));
     }
     /**
      * Show the form for creating a new resource.
@@ -55,6 +57,7 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         // return 'berhasil ditambahkan';
+        // return $request;
         cart::create($request->all());
         return redirect()->back();
         // notify()->success('produk berhasil ditambahkan');    
