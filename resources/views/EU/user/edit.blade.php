@@ -53,7 +53,7 @@
                     <input type="hidden" name="id_member" value="{{ $nextNumber }}">
                     <input type="hidden" name="user_id" value="{{ $uid }}">
                     <hr>
-                    @if (empty($member))
+                    @if ($member->isEmpty())
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Nama Lengkap</p>
@@ -89,9 +89,9 @@
                                 <input type="text" class="form-control" name="alamat" placeholder="Indonesia">
                             </div>
                         </div>
-                    @else
+                        {{-- @else --}}
+                    @endif
                     @foreach ($member as $m)
-                        
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Nama Lengkap</p>
@@ -106,7 +106,8 @@
                                 <p class="mb-0">Nomor Telp</p>
                             </div>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" value="{{ $m->no_hp }}" name="no_hp" placeholder="087654">
+                                <input type="number" class="form-control" value="{{ $m->no_hp }}" name="no_hp"
+                                    placeholder="087654">
                             </div>
                         </div>
                         <hr>
@@ -115,7 +116,8 @@
                                 <p class="mb-0">NIK</p>
                             </div>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" value="{{ $m->nik }}" name="nik" placeholder="3578231">
+                                <input type="number" class="form-control" value="{{ $m->nik }}" name="nik"
+                                    placeholder="3578231">
                             </div>
                         </div>
                         <hr>
@@ -124,12 +126,12 @@
                                 <p class="mb-0">Alamat</p>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" value="{{ $m->alamat}}" name="alamat" placeholder="Indonesia">
+                                <input type="text" class="form-control" value="{{ $m->alamat }}" name="alamat"
+                                    placeholder="Indonesia">
                             </div>
                         </div>
-                        
                     @endforeach
-                    @endif
+                    {{-- @endif --}}
 
                 </div>
             </div>

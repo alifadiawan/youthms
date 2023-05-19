@@ -4,9 +4,11 @@
 
     <section id="profile" class="container mt-5">
         <h1>Profile</h1>
-        <div class="alert alert-warning" role="alert">
-            Lengkapi data diri dulu. <a href="/edit-profile">Edit</a>
-        </div>
+        @if (auth()->user()->hasIncompleteProfile())
+            <div class="alert alert-warning" role="alert">
+                Lengkapi data diri dulu. <a href="/edit-profile">Edit</a>
+            </div>
+        @endif
         <div class="card mb-4">
             <div class="card-body">
                 @foreach ($users as $u)
@@ -27,9 +29,10 @@
                             <p class="text mb-0">{{ $u->email }}</p>
                         </div>
                     </div>
-                @endforeach
-                @if (empty($member))
                     <hr>
+                @endforeach
+
+                @if ($member->isEmpty())
                     <div class="row">
                         <div class="col-sm-3">
                             <p class="mb-0">Nama Lengkap</p>
@@ -65,11 +68,7 @@
                             <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
                         </div>
                     </div>
-            </div>
-        </div>
-    @else
-        <div class="card mb-4">
-            <div class="card-body">
+                @endif
                 @foreach ($member as $m)
                     <div class="row">
                         <div class="col-sm-3">
@@ -79,7 +78,6 @@
                             <p class="text mb-0">{{ $m->name }}</p>
                         </div>
                     </div>
-                    <hr>
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
@@ -108,9 +106,9 @@
                         </div>
                     </div>
                 @endforeach
+
             </div>
         </div>
-        @endif
         <a href="{{ route('user.edit', $uid) }}" class="btn btn-warning">Edit</a>
     </section>
 

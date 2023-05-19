@@ -23,11 +23,11 @@
             @foreach ($layanan as $l)
 
                 {{-- //branch main 2 --}}
-                {{-- <a href="{{ route('store.show', $l->layanan) }}"
-                    class=" my-3 text-capitalize">{{ $l->layanan }}</a> --}}
+                <a href="{{ route('store.show', $l->layanan) }}"
+                    class=" my-3 text-capitalize">{{ $l->layanan }}</a>
 
-                {{-- //branch main --}}
-                <a href="{{ route('store.show', $l->id) }}" class="btn my-3">{{ $l->layanan }}</a>
+                {{-- //branch main
+                <a href="{{ route('store.show', $l->id) }}" class="btn my-3">{{ $l->layanan }}</a> --}}
 
             @endforeach
 

@@ -84,7 +84,7 @@ class UserController extends Controller
             return view('Admin.user.user-detail', compact('user'));
         } else {
 
-            return view('EU.user.index', compact('uid', 'users','member'));
+            return view('EU.user.index', compact('uid', 'users', 'member','users'));
         }
     }
 
@@ -187,15 +187,14 @@ class UserController extends Controller
             // return $request;
             member::updateorcreate([
                 'user_id' => $id,
-                // 'user_id' => $request->user_id == null ? $request->user_id : null,
+            ], [
                 'id_member' => $request->id_member != null ? $request->id_member : null,
-                // 'id_member' => $idm,
                 'name' => $request->name,
                 'no_hp' => $request->no_hp,
                 'nik' => $request->nik,
                 'alamat' => $request->alamat
             ]);
-            return redirect()->back();
+            return redirect()->route('user.show',$id);
         }
     }
 

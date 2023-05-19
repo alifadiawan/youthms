@@ -141,7 +141,7 @@ route::middleware(['client'])->group(function () {
     Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
     Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
     Route::resource('/store', EUController::class);
-    route::get('/store/{id}', [EUController::class, 'show']);
+    route::get('/store/{type}', [EUController::class, 'show']);
 
     //services
     Route::get('/services/all', function () {
@@ -149,9 +149,9 @@ route::middleware(['client'])->group(function () {
     });
 
     //cart
-    Route::get('/cart', function () {
-        return view('EU.transaction.cart');
-    });
+    // Route::get('/cart', function () {
+    //     return view('EU.transaction.cart');
+    // });
 
     //transaction
     Route::get('/pembayaran', function () {
@@ -172,6 +172,7 @@ route::middleware(['client'])->group(function () {
 
     // // //transaction
     Route::resource('/transaksi', TransaksiController::class);
+    Route::get('/cart', [TransaksiController::class,'cart'])->name('transaksi.cart');
 });
 
 

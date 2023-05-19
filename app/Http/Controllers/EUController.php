@@ -53,6 +53,7 @@ class EUController extends Controller
     public function storeindex()
     {
         $layanan = JenisLayanan::with('services.produk')->get();
+
         return view('EU.store.index', compact('layanan'));
     }
 
@@ -67,12 +68,15 @@ class EUController extends Controller
     public function show(EU $eU, $type)
     {
         $layanan = JenisLayanan::all();
+        $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
 
         $user = auth()->user()->id;
-        $member = member::where('user_id',$user)->get();
+        $member = member::where('user_id', $user)->get();
         // return $member;
-        $jenis_layanan = JenisLayanan::find($id);
-        $services = $jenis_layanan->services;
+
+
+        $jl = JenisLayanan::where('layanan',$type)->first();
+        $services = $jl->services;
 
         foreach ($services as $s) {
             foreach ($s->produk as $serv) {
@@ -87,20 +91,8 @@ class EUController extends Controller
         $produk = produk::wherein('id', $pr)->get();
         $p = produk::wherein('id', $pr)->get('id');
         $c = produk::wherein('id', $cart)->get('id');
-        
-        // $pcart = [];
-        // foreach ($p as $pp) {
-        //     $idp = $pp->id;
 
-        //     $pc = $c->where('id', $idp)->first();
-        //     if ($pc) {
-        //         $pcart[]= $pc;
-        //     } else {
-        //         $pproduk[] =$pp;
-        //     }
-        // }
-
-        return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan', 'c'));
+        return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan', 'c','user','member'));
     }
 
     /**
@@ -110,36 +102,36 @@ class EUController extends Controller
     {
         // return true;
         $user = auth()->user()->id;
-        $member = member::where('user_id',$user)->get();
-        
-        return view('EU.user.index',compact('member'));
+        $member = member::where('user_id', $user)->get();
+
+        return view('EU.user.index', compact('member'));
     }
 
     public function editprofile()
     {
         // return true;
         $user = auth()->user()->id;
-        $member = member::where('user_id',$user)->get();
-        
-        return view('EU.user.index',compact('member'));
+        $member = member::where('user_id', $user)->get();
+
+        return view('EU.user.index', compact('member'));
     }
 
     public function updateprofile()
     {
         // return true;
         $user = auth()->user()->id;
-        $member = member::where('user_id',$user)->get();
-        
-        return view('EU.user.index',compact('member'));
+        $member = member::where('user_id', $user)->get();
+
+        return view('EU.user.index', compact('member'));
     }
 
     public function hapusprofile()
     {
         // return true;
         $user = auth()->user()->id;
-        $member = member::where('user_id',$user)->get();
-        
-        return view('EU.user.index',compact('member'));
+        $member = member::where('user_id', $user)->get();
+
+        return view('EU.user.index', compact('member'));
     }
 
     public function edit(EU $eU)
