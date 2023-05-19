@@ -5,7 +5,7 @@
     <section class="hero" id="hero" class="d-flex align-items-center">
         <div class="container">
             <div class="row" >
-                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+                <div class="col-lg-6 d-flex flex-column justify-content-center order-2 order-lg-1"
                     data-aos="fade-up" data-aos-delay="200">
                     <h1>Gather more customers in your business area</h1>
                     <h2>YouthMS.id is a start up company that focus on creating
@@ -126,7 +126,7 @@
     <section id="clients" class="clients section-bg">
         <div class="container">
 
-            <h2 class="text-dark">Our Partners</h2>
+            <h2 class="text-dark fw-bold">Our Partners</h2>
 
             <div class="row justify-content-center" data-aos="zoom-in">
 
@@ -267,7 +267,7 @@
 
             <div class="row content">
                 <div class="col pt-4 pt-lg-0">
-                    <p>
+                    <h5>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ad ratione consectetur possimus
                         totam excepturi repellat, minima rem tempora doloremque incidunt officia expedita voluptatem quas
                         voluptate quaerat voluptatum illum? Nesciunt.
@@ -277,7 +277,7 @@
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad molestias ab, aliquam praesentium neque
                         amet obcaecati consequuntur quas delectus maxime natus ipsa quae dolorum temporibus voluptatibus
                         modi? Ipsam, commodi aspernatur?
-                    </p>
+                    </h5>
                 </div>
             </div>
 

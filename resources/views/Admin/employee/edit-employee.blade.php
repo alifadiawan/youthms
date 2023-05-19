@@ -105,7 +105,7 @@
             </div>
         </div>
         <button class="btn btn-success">Simpan</button>
-        <a href="/profile" class="btn btn-outline-secondary">Cancel</a>
+        <a href="/employee" class="btn btn-outline-secondary">Cancel</a>
     </form>
 </section>
 

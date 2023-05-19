@@ -14,61 +14,46 @@
             <li class="nav-item"><a class="nav-link" href="/portofolio/all">Portofolio</a></li>
 
             @guest
+                <li class="nav-item"><a class="nav-link" href="{{ route('authcheck') }}"><i
+                            class="fa-solid fa-cart-shopping"></i></a></li>
+
                 <li><a class="getstarted" href="/login">Login</a></li>
             @endguest
             @auth
-
-                <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.cart') }}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.cart') }}"><i
+                            class="fa-solid fa-cart-shopping"></i></a></li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
+                        {{auth()->user()->username}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {{-- <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li> --}}
-                        <li><a class="dropdown-item" href="{{ route('user.show',auth()->user()->id) }}">Edit Profile</a></li>
-                        <li><a class="dropdown-item" href="/profile">Struk</a></li>
-                        <li><a class="dropdown-item" href="/profile">Belum Bayar</a></li>
+                        <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Edit Profile</a>
+                        </li>
+                        <li><a class="dropdown-item" href="/">Struk</a></li>
+                        <li><a class="dropdown-item" href="/">Belum Bayar</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li>
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                                Logout
+                            </a>
+                        </li>
                     </ul>
 
                 </li>
-                @endauth
+            @endauth
 
 
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
 
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="exampleModalLabel">Konfirmasi</h3>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
+ 
 
-                    <div class="modal-body">
-                        <h3 class="text-center" style="font-size: 25px;">Anda Yakin Ingin Logout ?</h3>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="logout" method="post">
-                            @csrf
-                            <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button class="btn btn-primary">Logout</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- .navbar -->
 
-        <!-- .navbar -->
-
-    </div>
+</div>

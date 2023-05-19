@@ -28,8 +28,8 @@
                                     <div class="col-lg-4" style="margin-top: 50px">
                                         <div class="single-bottom mb-35">
                                             <div class="trend-bottom-img mb-30">
-                                                <img src="{{ asset('illustration/18383.jpg') }}" alt="" width="100px"
-                                                    height="100px">
+                                                <img src="{{ asset('illustration/18383.jpg') }}" alt=""
+                                                    width="100px" height="100px">
                                             </div>
                                             <div class="trend-bottom-cap">
                                                 <span class="color1">Kelas 1</span>
@@ -41,8 +41,8 @@
                                     <div class="col-lg-4" style="margin-top: 50px">
                                         <div class="single-bottom mb-35">
                                             <div class="trend-bottom-img mb-30">
-                                                <img src="{{ asset('illustration/18383.jpg') }}" alt="" width="100%"
-                                                    height="100%">
+                                                <img src="{{ asset('illustration/18383.jpg') }}" alt=""
+                                                    width="100%" height="100%">
                                             </div>
                                             <div class="trend-bottom-cap">
                                                 <span class="color2">Kelas 3</span>
@@ -56,8 +56,8 @@
                                     <div class="col-lg-4" style="margin-top: 50px">
                                         <div class="single-bottom mb-35">
                                             <div class="trend-bottom-img mb-30">
-                                                <img src="{{ asset('illustration/18383.jpg') }}" alt="" width="100%"
-                                                    height="100%">
+                                                <img src="{{ asset('illustration/18383.jpg') }}" alt=""
+                                                    width="100%" height="100%">
                                             </div>
                                             <div class="trend-bottom-cap">
                                                 <span class="color3">Kelas 1</span>
@@ -73,7 +73,8 @@
                         <div class="col-lg-6">
                             <div class="trand-right-single d-flex">
                                 <div class="trand-right-img">
-                                    <img src="{{ asset('illustration/18383.jpg') }}" alt="" width="100%" height="100%">
+                                    <img src="{{ asset('illustration/18383.jpg') }}" alt="" width="100%"
+                                        height="100%">
                                 </div>
                                 <div class="trand-right-cap">
                                     <span class="color1">Kelas 2</span>
@@ -83,7 +84,8 @@
                             </div>
                             <div class="trand-right-single d-flex">
                                 <div class="trand-right-img">
-                                    <img src="{{ asset('illustration/18383.jpg') }}" alt="" width="100%" height="100%">
+                                    <img src="{{ asset('illustration/18383.jpg') }}" alt="" width="100%"
+                                        height="100%">
                                 </div>
                                 <div class="trand-right-cap">
                                     <span class="color3">Kelas 5</span>
@@ -93,7 +95,8 @@
                             </div>
                             <div class="trand-right-single d-flex">
                                 <div class="trand-right-img">
-                                    <img src="{{ asset('illustration/18383.jpg') }}" alt="" width="100%" height="100%">
+                                    <img src="{{ asset('illustration/18383.jpg') }}" alt="" width="100%"
+                                        height="100%">
                                 </div>
                                 <div class="trand-right-cap">
                                     <span class="color2">Kelas 4</span>
@@ -127,6 +130,8 @@
         </div>
         </div>
     </section>
+
+
     <!-- ======= Recent Blog Posts Section ======= -->
     <section id="berita-tv" class="berita-tv">
         <div class="container" data-aos="fade-up">
@@ -146,8 +151,7 @@
                         </div>
                         <span class="post-date">4 Oktober 2022</span>
                         <h3 class="post-title">Siswa Kelas 4 Belajar Ragam Flora Tanaman</h3>
-                        <a href="/tv_lengkap"
-                            class="readmore stretched-link mt-auto"><span>Tonton Video</span><i
+                        <a href="/tv_lengkap" class="readmore stretched-link mt-auto"><span>Tonton Video</span><i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -161,8 +165,7 @@
                         </div>
                         <span class="post-date">4 Oktober 2022</span>
                         <h3 class="post-title">KTS Dengan Tema Ragam Flora Gantung</h3>
-                        <a href="/tv_lengkap"
-                            class="readmore stretched-link mt-auto"><span>Tonton Video</span><i
+                        <a href="/tv_lengkap" class="readmore stretched-link mt-auto"><span>Tonton Video</span><i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -176,8 +179,7 @@
                         </div>
                         <span class="post-date">4 Oktober 2022</span>
                         <h3 class="post-title">Siswa Kelas 5 Menikmati Belajar di Luar Kelas</h3>
-                        <a href="/tv_lengkap"
-                            class="readmore stretched-link mt-auto"><span>Tonton Video</span><i
+                        <a href="/tv_lengkap" class="readmore stretched-link mt-auto"><span>Tonton Video</span><i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
