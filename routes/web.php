@@ -147,6 +147,11 @@ route::middleware(['client'])->group(function () {
     Route::get('/blog/pemrograman', function () {
         return view('EU.blog.pemrograman');
     });
+    Route::get('/blog/show', function () {
+        return view('EU.blog.show');
+    });
+
+    
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
     Route::get('/edit_profile', [EUController::class, 'editprofile'])->name('storeEU.edit_profile');
     Route::get('/show_profile', [EUController::class, 'showprofile'])->name('storeEU.show_profile');

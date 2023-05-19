@@ -423,6 +423,7 @@ h6 {
 
 .hero .container {
   padding-top: 30px;
+}
 
 #hero-portofolio{
   color: white;
@@ -431,11 +432,11 @@ h6 {
   background: #406CAB;
   border-radius: 0px 0px 200px 200px;
 }
-
+/* 
 #hero .container {
   padding-top: 72px;
 
-}
+} */
 
 .hero h1 {
   margin: 0 0 10px 0;
