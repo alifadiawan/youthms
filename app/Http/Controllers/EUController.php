@@ -50,21 +50,37 @@ class EUController extends Controller
      * Store a newly created resource in storage.
      */
 
-    public function storeindex()
-    {
-        $layanan = JenisLayanan::with('services.produk')->get();
-
-        return view('EU.store.index', compact('layanan'));
-    }
+    
 
     public function store(Request $request)
     {
         return true;
     }
 
-    /**
-     * Display the specified resource.
-     */
+
+    public function storeindex()
+    {
+        $user = auth()->user()->id;
+        $member = member::where('user_id', $user)->get();
+
+        $layanan = JenisLayanan::with('services.produk')->get();
+        // return $layanan;
+        // $layanan = JenisLayanan::all();
+        // $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
+
+        // return $member;
+
+        // $jl = JenisLayanan::where('layanan',$type)->first();
+        
+        $cek = produk::doesnthave('cart')->pluck('id')->toarray();
+        $cart = produk::has('cart')->get('id');
+
+        $c = produk::wherein('id', $cart)->get('id');
+
+
+        return view('EU.store.index', compact('layanan', 'c','user','member'));
+    }
+    
     public function show(EU $eU, $type)
     {
         $layanan = JenisLayanan::all();
@@ -73,7 +89,6 @@ class EUController extends Controller
         $user = auth()->user()->id;
         $member = member::where('user_id', $user)->get();
         // return $member;
-
 
         $jl = JenisLayanan::where('layanan',$type)->first();
         $services = $jl->services;

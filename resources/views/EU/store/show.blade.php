@@ -56,7 +56,7 @@
                                 </a>
                             @endguest
 
-                            @if (!empty($member))
+                            @if (empty($member))
                                 <a href="{{ route('user.show',$user) }}" class="btn btn-primary">
                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                 </a>
