@@ -115,6 +115,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
     Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
 });
+
 //  client
 route::middleware(['client'])->group(function () {
     // landing page

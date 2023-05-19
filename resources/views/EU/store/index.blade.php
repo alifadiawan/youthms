@@ -22,11 +22,11 @@
             <a href="{{ route('storeEU.index') }}" class="text-capitalize my-3 active">Promo</a>
             @foreach ($layanan as $l)
 
-                //branch main 2
-                <a href="{{ route('store.show', $l->layanan) }}"
-                    class=" my-3 text-capitalize">{{ $l->layanan }}</a>
+                {{-- //branch main 2 --}}
+                {{-- <a href="{{ route('store.show', $l->layanan) }}"
+                    class=" my-3 text-capitalize">{{ $l->layanan }}</a> --}}
 
-                //branch main
+                {{-- //branch main --}}
                 <a href="{{ route('store.show', $l->id) }}" class="btn my-3">{{ $l->layanan }}</a>
 
             @endforeach
