@@ -150,7 +150,7 @@ route::middleware(['client'])->group(function () {
         return view('EU.blog.show');
     });
 
-    
+
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
     Route::get('/edit_profile', [EUController::class, 'editprofile'])->name('storeEU.edit_profile');
     Route::get('/show_profile', [EUController::class, 'showprofile'])->name('storeEU.show_profile');
@@ -193,12 +193,16 @@ route::middleware(['client'])->group(function () {
 
     // // //transaction
     Route::resource('/transaksi', TransaksiController::class);
+    Route::get('/cart', [TransaksiController::class])->name('cart.index');
+    Route::post('/cart/increase', [TransaksiController::class])->name('cart.increase');
+
+    // Route::post('/transaksi/hapus/{id}', [TransaksiController::class,'hapus'])->name('transaksi.hapus');
 
     //portofolio EU
     Route::get('/portofolio/all', function () {
         return view('EU.portofolio.index');
     });
-    Route::get('/cart', [TransaksiController::class,'cart'])->name('transaksi.cart');
+    Route::get('/cart', [TransaksiController::class, 'cart'])->name('transaksi.cart');
 });
 
 
@@ -288,4 +292,3 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middl
 
 //logout khusus jika eror (akses dari ketik url /logout)
 // Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
-
