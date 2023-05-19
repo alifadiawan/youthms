@@ -111,11 +111,14 @@ Route::middleware('guest')->group(function () {
     // Route::resource('/transaksi', TransaksiController::class);
 });
 
-
+Route::middleware(['auth'])->group(function () {
+    Route::resource('user', UserController::class);
+    Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
+});
 //  client
 route::middleware(['client'])->group(function () {
     // landing page
-    
+
     //blog
     Route::get('/blog/editing', function () {
         return view('EU.blog.editing');
@@ -158,11 +161,14 @@ route::middleware(['client'])->group(function () {
     // Route::get('/edit-profile', function () {
     //     return view('EU.user.edit');
     // });
-    Route::get('/profile', function () {
-        return view('EU.user.index');
-    });
+    // Route::get('/profile', function () {
+    //     return view('EU.user.index');
+    // });
 
-    
+    // user
+
+
+
     // // //transaction
     Route::resource('/transaksi', TransaksiController::class);
 });
@@ -195,8 +201,6 @@ Route::middleware('staff')->group(function () {
     Route::post('role', [RoleController::class, 'store'])->name('role.store');
     Route::get('role/{id}/hapus', [RoleController::class, 'hapus'])->name('role.hapus');
 
-    Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
-    Route::resource('user', UserController::class);
 
     //member
     Route::resource('member', MemberController::class);
@@ -246,7 +250,6 @@ Route::middleware('staff')->group(function () {
 
     // transaction
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
-
 });
 // });
 
