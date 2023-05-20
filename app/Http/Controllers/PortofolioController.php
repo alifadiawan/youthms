@@ -66,7 +66,14 @@ class PortofolioController extends Controller
             }
         }
 
-        return redirect('/portfolio');
+        notify()->success('Portofolio Berhasil Ditambahkan !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Portofolio Berhasil Ditambahkan !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('portfolio.show', ['portfolio' => $porto->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+        return redirect('/portofolio/'.$porto->id);
     }
 
     /**
@@ -74,7 +81,7 @@ class PortofolioController extends Controller
      */
     public function show(Portofolio $portofolio)
     {
-        //
+        return view('Admin.portofolio.show');
     }
 
     /**
@@ -90,9 +97,64 @@ class PortofolioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Portofolio $portofolio)
+    public function update(Request $request, $id)
     {
-        
+        $portofolio = Portofolio::findOrFail($id);
+
+        $portofolio->project = $request->project;
+        $portofolio->deskripsi = $request->deskripsi;
+
+        if ($request->hasFile('cover')) {
+            //hapus foto lama
+            File::delete('./portofolio/'.$portofolio->cover);
+
+            //ambil info file
+            $file = $request->file('cover');
+
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './portofolio/';
+            $file->move($tujuan_upload,$nama_file);
+
+            //simpan ke database
+            $portofolio->cover = $nama_file;
+        }
+
+        $portofolio->save();
+
+        if ($request->hasFile('foto')) {
+            $pic = $request->file('foto');
+
+            // Hapus screenshot yang lama
+            foreach ($portofolio->portofoliopic as $p) {
+                //hapus foto lama
+                File::delete('./portofolio/'.$p->foto);
+            }
+
+            // Simpan screenshot yang baru
+            foreach ($pic as $pics) {
+                // Simpan relasi dengan project
+                $tujuan_upload = './portofolio/';
+                $p_name = time()."_".$pics->getClientOriginalName();
+                $pics->move($tujuan_upload,$p_name);
+
+                $p = PortofolioPic::create([
+                    'foto' => $p_name,
+                    'portofolio_id' => $portofolio->id,
+                ]);
+            }
+        }
+
+        notify()->success('Portofolio Berhasil Diupdate !!');
+        // mengirim notifikasi
+        $user = Auth::user();
+        $message = "Portofolio Berhasil Diupdate !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('portfolio.show', ['portfolio' => $porto->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+        return redirect('/portofolio/'.$porto->id);
     }
 
     /**

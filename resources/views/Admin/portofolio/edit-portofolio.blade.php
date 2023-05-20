@@ -54,13 +54,13 @@
                         </div>
                     @endforeach
                 </div>
-                <button class="btn btn-sm btn-success" id="add-screenshot">Tambah Screenshot</button>
+                <button type="button" class="btn btn-sm btn-success" id="add-screenshot">Tambah Screenshot</button>
             </div>
             <br><br>
             <div class="row">
                 <div class="col">
-                    <input type="hidden" name="portofolio_id" value="{{$porto->id}}">
-                    <button class="btn btn-warning">Submit</button>
+                    <!-- <input type="hidden" name="portofolio_id" value="{{$porto->id}}"> -->
+                    <button class="btn btn-success">Submit</button>
                     <a href="{{route('portfolio.index')}}" class="btn btn-outline-secondary">Cancel</a>
                 </div>
             </div>
