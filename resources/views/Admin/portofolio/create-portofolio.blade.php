@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success btn-sm" id="add-screenshot">Tambah Screenshot</button>
+                <button type="button" class="btn btn-success btn-sm" id="add-screenshot">Tambah Screenshot</button>
             </div>
             <br><br>
             <div class="row">
