@@ -48,12 +48,12 @@
                                         </a>
                                     @endguest
 
-                                    @if (empty($member))
-                                        <a href="{{ route('user.show', $user) }}" class="btn btn-primary">
-                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                        </a>
-                                    @else
-                                        @auth
+                                    @auth
+                                        @if (empty($member))
+                                            <a href="{{ route('user.show', $user) }}" class="btn btn-primary">
+                                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                            </a>
+                                        @else
                                             @if (auth()->user()->hasIncompleteProfile())
                                                 <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
                                                     class="btn btn-primary" disabled>
@@ -74,8 +74,8 @@
                                                     </button>
                                                 </form>
                                             @endif
-                                        @endauth
-                                    @endif
+                                        @endif
+                                    @endauth
                                 </div>
                             </div>
                         </div>

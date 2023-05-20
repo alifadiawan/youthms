@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamp('tanggal');
+            $table->date('tanggal');
             // $table->integer('');
             $table->integer('total');
             $table->integer('total_bayar');
@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('member_id')->references('id')->on('member')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

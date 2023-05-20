@@ -45,8 +45,22 @@ class TransaksiController extends Controller
      */
     public function create(Request $request)
     {
-        return $request;
-        transaksi::create($request->all());
+        date_default_timezone_set('Asia/Jakarta');
+
+        $today = today();
+        $today = date("Y-m-d H:i:s");
+        // return $today;
+        // return $timestamp; // Output: UNIX timestamp
+
+        transaksi::create([
+            'tanggal' => $today,
+            'member_id' => $request->member_id,
+            'total_bayar' => 0,
+            'total' => $request->total,
+        ]);
+        cart::truncate();
+
+
         return view('EU.transaction.pembayaran');
     }
 

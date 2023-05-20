@@ -39,7 +39,7 @@ class DashboardController extends Controller
             'chart_type' => 'bar',
             'chart_color' =>  "51, 133, 255"
         ];
-        $chart2 = new LaravelChart($penjualan);
+        // $chart2 = new LaravelChart($penjualan);
 
         
         $user = auth()->user()->role->role;
@@ -47,7 +47,7 @@ class DashboardController extends Controller
         $uid = auth()->user()->id;
         // return $uid;
         // return $user;
-        return view('Admin.dashboard', compact('chart1', 'chart2'));
+        return view('Admin.dashboard', compact('chart1'));
     }
 
     /**
