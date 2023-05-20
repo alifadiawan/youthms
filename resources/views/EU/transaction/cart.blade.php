@@ -22,30 +22,36 @@
 
                                     <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
                                         <div class="d-flex mb-4" style="max-width: 300px">
-                                            <button type="button" class="btn text-danger me-2" data-mdb-toggle="tooltip"
-                                                title="Remove item">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                            <button class="btn btn-outline-primary me-2"
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                            <form action="{{ route('transaksi.destroy', $c->id) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn text-danger me-2"
+                                                    data-mdb-toggle="tooltip" title="Remove item">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                            <button class="btn btn-outline-primary me-2" onclick="decreaseQuantity(this)">
                                                 <i class="fas fa-minus"></i>
                                             </button>
 
                                             <div class="form-outline">
-                                                <input id="form1" min="1" name="quantity" value="1"
-                                                    type="number" class="form-control" onchange="update()" readonly />
+                                                <input id="quantity_{{ $c->id }}" min="1" name="quantity"
+                                                    value="{{ $c->quantity }}" type="number" class="form-control"
+                                                    onchange="updateQuantity(this)" readonly />
                                             </div>
 
-                                            <button class="btn btn-outline-primary ms-2"
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                            <button class="btn btn-outline-primary ms-2" onclick="increaseQuantity(this)">
                                                 <i class="fas fa-plus"></i>
                                             </button>
                                         </div>
-                                        <p class="text-start text-md-center">
-                                            <strong>Rp. {{ number_format($c->produk->harga) }} </strong>
-                                        </p>
                                     </div>
+                                    <p class="text-start text-md-center">
+                                        <strong> harga / produk Rp. {{ number_format($c->produk->harga) }} </strong>
+                                    </p>
+                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                                 </div>
+
+
 
                                 <hr class="my-4" />
                             </div>
@@ -77,24 +83,34 @@
                                 @foreach ($cart as $c)
                                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                                         {{ $c->produk->nama_produk }}
-                                        <span>{{ $c->produk->harga }}</span>
+                                        <span id="total-price_{{ $c->id }}">Rp.
+                                            {{ number_format($c->quantity * $c->produk->harga) }}</span>
                                     </li>
                                 @endforeach
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                     <div>
-                                        <strong>Total </strong>
-                                        <h2 value="{{ $cart->sum(function ($cart) {return $cart->produk->quantity * $cart->produk->harga;}) }}"></h2>
-
+                                        <strong>Total : <span id="total-transaksi">Rp. 0</span></strong>
                                     </div>
                                     <span><strong></strong></span>
                                 </li>
                             </ul>
 
-                            <a type="button" href="/pembayaran" id="checkout" class="btn btn-success btn-lg btn-block"
-                                style="display: ">
-                                Go to checkout
-                            </a>
+                            <form action="{{ route('tranaski.store',) }}" method="POST">
+                                @csrf
+                                <button type="submit" id="checkout" class="btn btn-success btn-lg btn-block"
+                                    style="display: ">
+                                    Go to checkout
+                                </button>
+                            </form>
+                            <hr>
+                            <form action="{{ route('transaksi.cart') }}" method="get">
+                                @csrf
+                                <button type="submit" id="checkout" class="btn btn-primary btn-lg btn-block"
+                                    style="display: ">
+                                    check
+                                </button>
+                            </form>
                             <a type="button" id="update" class="btn btn-danger btn-lg btn-block" style="display: none;">
                                 Update
                             </a>
@@ -107,10 +123,79 @@
         </div>
     </section>
 
+
     <script>
-        function update() {
-            document.getElementById("checkout").style.display = "none";
-            document.getElementById("update").style.display = "inline";
+        function updateTotalTransaksi() {
+            var totalTransaksi = 0;
+            @foreach ($cart as $c)
+                var quantity = parseInt('{{ $c->quantity }}');
+                var harga = parseInt('{{ $c->produk->harga }}');
+                totalTransaksi += quantity * harga;
+            @endforeach
+
+            var formattedTotal = totalTransaksi.toLocaleString('id-ID');
+            $('#total-transaksi').text('Rp. ' + formattedTotal);
+        }
+        // function updateTotalTransaksi() {
+        //     $.ajax({
+        //         url: '{{ route('api.transaksi.total') }}',
+        //         method: 'GET',
+        //         success: function(response) {
+        //             if (response.success) {
+        //                 var totalTransaksi = response.totalTransaksi;
+        //                 var formattedTotal = formatCurrency(totalTransaksi);
+        //                 $('#total-transaksi').text('Rp. ' + formattedTotal);
+        //             }
+        //         }
+        //     });
+        // }
+
+        // function formatCurrency(amount) {
+        //     return amount.toLocaleString('id-ID', {
+        //         style: 'currency',
+        //         currency: 'IDR'
+        //     });
+        // }
+
+        // Panggil fungsi updateTotalTransaksi saat halaman dimuat
+        updateTotalTransaksi();
+
+        function updateQuantity(input) {
+            var cartId = $(input).attr('id').split('_')[1];
+            var newQuantity = $(input).val();
+
+            // Kirim permintaan Ajax untuk memperbarui kuantitas
+            $.ajax({
+                url: '{{ route('api.cart.update') }}',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    cart_id: cartId,
+                    quantity: newQuantity
+                },
+                success: function(response) {
+                    // if (response.success) {
+                    //     $('#total-price_' + cartId).text('Rp. ' + response.item_total_price);
+                    // }
+                    var formattedPrice = response.item_total_price.toLocaleString('id-ID');
+
+                    $('#total-price_' + cartId).text("Rp. " + formattedPrice);
+                }
+            });
+        }
+
+        function increaseQuantity(button) {
+            var input = $(button).siblings('.form-outline').find('input');
+            var quantity = parseInt($(input).val());
+            $(input).val(quantity + 1).trigger('change');
+        }
+
+        function decreaseQuantity(button) {
+            var input = $(button).siblings('.form-outline').find('input');
+            var quantity = parseInt($(input).val());
+            if (quantity > 1) {
+                $(input).val(quantity - 1).trigger('change');
+            }
         }
     </script>
 @endsection
