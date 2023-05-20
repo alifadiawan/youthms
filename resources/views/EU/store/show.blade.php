@@ -67,7 +67,7 @@
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </button>
                                     @else
-                                        <form action="{{ route('transaksi.store') }}" method="POST">
+                                        <form action="{{ route('cart.store') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="member_id" value="{{ $user }}">
                                             <input type="hidden" class="form-control" name="quantity" value="1">
