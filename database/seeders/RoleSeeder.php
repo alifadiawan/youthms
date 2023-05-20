@@ -25,8 +25,17 @@ class RoleSeeder extends Seeder
                 'role' => 'owner'
             ],
             [
-                'role' => 'employee'
-            ]
+                'role' => 'programmer'
+            ],
+            [
+                'role' => 'ui/ux'
+            ],
+            [
+                'role' => 'sekretariat'
+            ],
+            [
+                'role' => 'reborn'
+            ],
         ];
 
         role::insert($role);

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class ClientMiddleware
+class EmployeeMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class ClientMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {
+    {   
         $u = auth()->user()->role->role;
         $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
 
@@ -36,6 +36,5 @@ class ClientMiddleware
         }
 
         return redirect('/returnan');
-    
     }
 }

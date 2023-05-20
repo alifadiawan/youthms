@@ -25,7 +25,7 @@ class UserController extends Controller
         $users = user::where('id', $uid)->get();
         // return $email;
 
-        $staff = ['admin', 'owner', 'employee'];
+        $staff = ['admin', 'owner'];
         if (in_array($u, $staff)) {
 
             return view('Admin.user.index', compact('user', 'role'));
@@ -76,12 +76,13 @@ class UserController extends Controller
         $uid = auth()->user()->id;
         $users = user::where('id', $uid)->get();
         $member = member::where('user_id', $uid)->get();
+        $Member = member::where('user_id', $user->id)->get();
 
         $u = auth()->user()->role->role;
-        $staff = ['admin', 'owner', 'employee'];
+        $staff = ['admin', 'owner'];
         if (in_array($u, $staff)) {
 
-            return view('Admin.user.user-detail', compact('user'));
+            return view('Admin.user.user-detail', compact('user', 'Member'));
         } else {
 
             return view('EU.user.index', compact('uid', 'users', 'member','users'));
@@ -98,7 +99,7 @@ class UserController extends Controller
         $role = Role::all();
 
         $u = auth()->user()->role->role;
-        $staff = ['admin', 'owner', 'employee'];
+        $staff = ['admin', 'owner'];
         $uid = auth()->user()->id;
 
         $users = user::where('id', $uid)->get();
@@ -126,7 +127,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $u = auth()->user()->role->role;
-        $staff = ['admin', 'employee', 'owner'];
+        $staff = ['admin', 'owner'];
 
         if (in_array($u, $staff)) {
             if ($request->password == null) {
@@ -217,7 +218,7 @@ class UserController extends Controller
             return redirect('login');
         }
 
-        notify()->success('User Berhasil Dihapus !!');
+        notify()->success('Akun Berhasil Dihapus !!');
 
         // mengirim notifikasi
         $user = Auth::user();

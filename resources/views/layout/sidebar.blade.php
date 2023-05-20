@@ -48,7 +48,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="/employee" class="nav-link">
                         <i class="nav-icon fa-solid fa-users"></i>
                         <p>
@@ -56,7 +56,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+ -->                <li class="nav-item">
                     <a href="/user" class="nav-link">
                         <i class="nav-icon fa-solid fa-circle-user"></i>
                         <p>

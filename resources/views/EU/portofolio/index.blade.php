@@ -30,81 +30,18 @@
         <div class="project">
             <div class="row justify-content-start">
 
-                <div class="col-lg-3 col-md-6 d-flex mt-4 mb-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="card card-hover text-center" style="width: 18rem;">
-                        <img class="card-img-top" src="{{asset('illustration/bmw.jpg')}}" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="">Muslim Football Sidoarjo</a></h5>
+                @foreach ($porto as $item)
+                    <div class="col-lg-3 col-md-6 d-flex mt-4 mb-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="card card-hover text-center" style="width: 18rem;">
+                            <img class="card-img-top" src="{{ asset('./portofolio/'. $item->cover) }}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="">{{$item->project}}</a></h5>
+                            </div>
                         </div>
-                      </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex mt-4 mb-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="card card-hover text-center" style="width: 18rem;">
-                        <img class="card-img-top" src="{{asset('illustration/bmw.jpg')}}" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="">Muslim Football Sidoarjo</a></h5>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex mt-4 mb-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="card card-hover text-center" style="width: 18rem;">
-                        <img class="card-img-top" src="{{asset('illustration/bmw.jpg')}}" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="">Muslim Football Sidoarjo</a></h5>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex mt-4 mb-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="card card-hover text-center" style="width: 18rem;">
-                        <img class="card-img-top" src="{{asset('illustration/bmw.jpg')}}" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="">Muslim Football Sidoarjo</a></h5>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex mt-4 mb-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="card card-hover text-center" style="width: 18rem;">
-                        <img class="card-img-top" src="{{asset('illustration/bmw.jpg')}}" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="">Muslim Football Sidoarjo</a></h5>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex mt-4 mb-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="card card-hover text-center" style="width: 18rem;">
-                        <img class="card-img-top" src="{{asset('illustration/bmw.jpg')}}" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="">Muslim Football Sidoarjo</a></h5>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex mt-4 mb-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="card card-hover text-center" style="width: 18rem;">
-                        <img class="card-img-top" src="{{asset('illustration/bmw.jpg')}}" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="">Muslim Football Sidoarjo</a></h5>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex mt-4 mb-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="card card-hover text-center" style="width: 18rem;">
-                        <img class="card-img-top" src="{{asset('illustration/bmw.jpg')}}" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="">Muslim Football Sidoarjo</a></h5>
-                        </div>
-                      </div>
-                </div>
-                
-                
-                
+                    </div>
+                @endforeach
+
+
 
             </div>
         </div>

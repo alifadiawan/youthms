@@ -11,7 +11,7 @@
             {{-- <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.index') }}">Store</a></li> --}}
             <li class="nav-item"><a class="nav-link" href="{{ route('storeEU.index') }}">Store</a></li>
             <li class="nav-item"><a class="nav-link" href="/services/all">Service</a></li>
-            <li class="nav-item"><a class="nav-link" href="/portofolio/all">Portofolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('portfolio.index')}}">Portofolio</a></li>
 
             @guest
                 <li class="nav-item"><a class="nav-link" href="{{ route('authcheck') }}"><i
