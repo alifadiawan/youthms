@@ -16,10 +16,10 @@ class ClientMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $u = auth()->user()->role->role;
-        $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
 
         if (Auth::check()) {
+            $u = auth()->user()->role->role;
+            $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
             // cek apakah pengguna terdaftar sebagai klien
             if (in_array($u, $staff)) {
                 return $next($request);
