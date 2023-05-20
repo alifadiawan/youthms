@@ -87,28 +87,22 @@
                                     </li>
                                 </ul>
 
-                                <form action="{{ route('transaksi.create') }}" method="put">
-                                    @csrf
-                                    <button type="submit" id="checkout" class="btn btn-success btn-lg btn-block"
-                                        style="display: ">
-                                        <input type="hidden" name="member_id" value="{{ auth()->user()->id }}">
-                                        <input type="hidden" name="total_bayar" value="0">
-                                        <input type="hidden" name="total" id="total" value="{{ $totalTransaksi }}">
-                                        Go to checkout
-                                    </button>
-                                </form>
+                                @if ($cart->isEmpty())
+                                    <h2>GABOLE CHECK OUT</h2>
+                                    <h5>masi Rp. 0 tuh, kaya dompetku :(</h5>
+                                @else
+                                    <form action="{{ route('transaksi.create') }}" method="put">
+                                        @csrf
+                                        <button type="submit" id="checkout" class="btn btn-success btn-lg btn-block"
+                                            style="display: ">
+                                            <input type="hidden" name="member_id" value="{{ auth()->user()->id }}">
+                                            <input type="hidden" name="total" id="total"
+                                                value="{{ $totalTransaksi }}">
+                                            Go to checkout
+                                        </button>
+                                    </form>
+                                @endif
                                 <hr>
-                                {{-- <form action="{{ route('cart.store') }}" method="get"> --}}
-                                @csrf
-                                <button type="submit" id="checkout" class="btn btn-primary btn-lg btn-block"
-                                    style="display: ">
-                                    check
-                                </button>
-                                {{-- </form> --}}
-                                <a type="button" id="update" class="btn btn-danger btn-lg btn-block"
-                                    style="display: none;">
-                                    Update
-                                </a>
                             </div>
                         </div>
                     </div>
