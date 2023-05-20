@@ -33,7 +33,7 @@
                         {{-- <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li> --}}
                         <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Edit Profile</a>
                         </li>
-                        <li><a class="dropdown-item" href="{{  }}">transaski</a></li>
+                        {{-- <li><a class="dropdown-item" href="{{  }}">transaski</a></li> --}}
                         <li>
                             <hr class="dropdown-divider">
                         </li>

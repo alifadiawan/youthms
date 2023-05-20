@@ -60,25 +60,22 @@ class EUController extends Controller
 
     public function storeindex()
     {
-        $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->get();
-
+        
         $layanan = JenisLayanan::with('services.produk')->get();
-        // return $layanan;
-        // $layanan = JenisLayanan::all();
-        // $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
-
-        // return $member;
-
-        // $jl = JenisLayanan::where('layanan',$type)->first();
         
         $cek = produk::doesnthave('cart')->pluck('id')->toarray();
         $cart = produk::has('cart')->get('id');
 
         $c = produk::wherein('id', $cart)->get('id');
-
-
-        return view('EU.store.index', compact('layanan', 'c','user','member'));
+        
+        $compact = ['layanan','c'];
+        
+        if(auth::check()){
+            $user = auth()->user()->id;
+            $member = member::where('user_id', $user)->get();
+            $compact = array_merge($compact,['user','member']);
+        }
+        return view('EU.store.index', compact($compact));
     }
     
     public function show(EU $eU, $type)
