@@ -147,6 +147,7 @@
                     if (response.success) {
                         var totalTransaksi = response.totalTransaksi;
                         var formattedTotal = formatCurrency(totalTransaksi);
+                        $('#total').val(totalTransaksi);
                         $('#total-transaksi-b').hide();
                         $('#total-transaksi').text("Total : " + formattedTotal).show();
                     }
