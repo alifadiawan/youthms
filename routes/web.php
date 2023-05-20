@@ -128,6 +128,10 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
     Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
+
+    
+    // transaction
+    Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
 });
 
 //  client
@@ -288,8 +292,6 @@ Route::middleware('admin')->group(function () {
     Route::post('/read', [NotificationController::class, 'read'])->name('read');
     Route::get('/read_chat/{notifId}', [NotificationController::class, 'read_chat'])->name('read.chat');
 
-    // transaction
-    Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
 });
 // });
 

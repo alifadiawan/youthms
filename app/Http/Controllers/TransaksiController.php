@@ -35,6 +35,12 @@ class TransaksiController extends Controller
     {
         $history = TransaksiDetail::all();
         // return $history;
+        $user_role = auth()->user()->role->role; 
+        $staff_super = ['admin','owner'];
+        $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
+        if($user_role == 'client'){
+            return view('EU.transaction.index');
+        }
         return view('Admin.transaction.index');
     }
 

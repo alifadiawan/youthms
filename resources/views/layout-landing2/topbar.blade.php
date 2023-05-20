@@ -6,12 +6,12 @@
 
     <nav id="navbar" class="navbar navbar-expand">
         <ul class="navbar-nav">
-            
+
             <li class="nav-item"><a class="nav-link" href="/blog/all">Blog</a></li>
             {{-- <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.index') }}">Store</a></li> --}}
             <li class="nav-item"><a class="nav-link" href="{{ route('storeEU.index') }}">Store</a></li>
             <li class="nav-item"><a class="nav-link" href="/services/all">Service</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{route('portfolio.index')}}">Portofolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('portfolio.index') }}">Portofolio</a></li>
 
             @guest
                 <li class="nav-item"><a class="nav-link" href="{{ route('authcheck') }}"><i
@@ -20,20 +20,24 @@
                 <li><a class="getstarted" href="/login">Login</a></li>
             @endguest
             @auth
-            <li class="nav-item"><a class="nav-link" href="/groupchat">Chats</a></li>
+                <li class="nav-item"><a class="nav-link" href="/groupchat">Chats</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('cart.index') }}"><i
                             class="fa-solid fa-cart-shopping"></i></a></li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        {{auth()->user()->username}}
+                        {{ auth()->user()->username }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {{-- <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li> --}}
                         <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Edit Profile</a>
                         </li>
-                        {{-- <li><a class="dropdown-item" href="{{  }}">transaski</a></li> --}}
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('transaksi.history', auth()->user()->id) }}">Histori
+                                Transaksi</a>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -52,7 +56,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
 
- 
+
 
     <!-- .navbar -->
 

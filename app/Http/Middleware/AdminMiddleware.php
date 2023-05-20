@@ -19,11 +19,12 @@ class AdminMiddleware
         $staff = ['admin', 'owner'];
         if (auth()->check() && in_array($u, $staff)) {
             return $next($request);
-        }
-        else {
+        } else {
             return redirect()->back();
         }
-        
+
+        return redirect('/returnan')->with('message', 'Kamu dilemparkan ke /returnan dikarenakan tidak cocok dengan role admin/owner');
+
         // Redirect ke halaman lain jika peran tidak cocok
         // return redirect('/returnan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
     }
