@@ -133,7 +133,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 //  client
-route::middleware(['client'])->group(function () {
+route::middleware(['client', 'employee'])->group(function () {
     // landing page
 
     //blog
@@ -212,7 +212,7 @@ route::middleware(['client'])->group(function () {
 
 
 // role admin
-Route::middleware('staff')->group(function () {
+Route::middleware('admin')->group(function () {
     Route::resource('/dashboard', DashboardController::class);
 
     //store

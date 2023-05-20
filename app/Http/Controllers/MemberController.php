@@ -62,8 +62,7 @@ class MemberController extends Controller
     public function show($id)
     {
         $user = auth()->user()->id;
-        return $user;
-        
+        // return $user;
         $member = Member::find($id);
         $user = User::find($id);
         return view('Admin.member.member-detail', compact('member', 'user'));

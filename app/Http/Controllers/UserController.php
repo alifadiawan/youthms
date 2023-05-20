@@ -25,7 +25,7 @@ class UserController extends Controller
         $users = user::where('id', $uid)->get();
         // return $email;
 
-        $staff = ['admin', 'owner', 'employee'];
+        $staff = ['admin', 'owner'];
         if (in_array($u, $staff)) {
 
             return view('Admin.user.index', compact('user', 'role'));
@@ -78,7 +78,7 @@ class UserController extends Controller
         $member = member::where('user_id', $uid)->get();
 
         $u = auth()->user()->role->role;
-        $staff = ['admin', 'owner', 'employee'];
+        $staff = ['admin', 'owner'];
         if (in_array($u, $staff)) {
 
             return view('Admin.user.user-detail', compact('user'));
@@ -98,7 +98,7 @@ class UserController extends Controller
         $role = Role::all();
 
         $u = auth()->user()->role->role;
-        $staff = ['admin', 'owner', 'employee'];
+        $staff = ['admin', 'owner'];
         $uid = auth()->user()->id;
 
         $users = user::where('id', $uid)->get();
@@ -126,7 +126,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $u = auth()->user()->role->role;
-        $staff = ['admin', 'employee', 'owner'];
+        $staff = ['admin', 'owner'];
 
         if (in_array($u, $staff)) {
             if ($request->password == null) {
