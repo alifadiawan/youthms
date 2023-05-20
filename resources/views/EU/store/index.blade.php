@@ -66,7 +66,9 @@
                                             @else
                                                 <form action="{{ route('cart.store') }}" method="POST">
                                                     @csrf
-                                                    <input type="hidden" name="member_id" value="{{ $user }}">
+                                                    @foreach ($member as $m)
+                                                        <input type="hidden" name="member_id" value="{{ $m->id }}">
+                                                    @endforeach
                                                     <input type="hidden" class="form-control" name="quantity" value="1">
                                                     <input type="hidden" value="{{ $p->id }}" name="produk_id">
                                                     <button type="submit" class="btn btn-primary">

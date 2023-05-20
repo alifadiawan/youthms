@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Produk;
 use App\Models\Transaksi;
 use App\Models\TransaksiDetail;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -25,7 +26,9 @@ class CartController extends Controller
         }
 
         $user = auth()->user()->id;
-        $cart = cart::where('member_id', $user)->get()->sortByDesc('cart.created_at');
+        $member = member::where('user_id',$user)->pluck('id')->first();
+        $cart = cart::where('member_id', $member)->get()->sortByDesc('cart.created_at');
+        // return $user;
         return view('EU.transaction.cart', compact('cart','totalTransaksi'));
     }
 

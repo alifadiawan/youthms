@@ -56,20 +56,27 @@
                                 </a>
                             @endguest
 
-                            @if (empty($member))
-                                <a href="{{ route('user.show',$user) }}" class="btn btn-primary">
-                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                </a>
-                            @else
-                                @auth
-                                    @if ($c->contains('id', $p->id))
+                            @auth
+                                @if (empty($member))
+                                    <a href="{{ route('user.show', $user) }}" class="btn btn-primary">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </a>
+                                @else
+                                    @if (auth()->user()->hasIncompleteProfile())
+                                        <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
+                                            class="btn btn-primary" disabled>
+                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                        </a>
+                                    @elseif ($c->contains('id', $p->id))
                                         <button type="submit" class="btn btn-danger" disabled>
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </button>
                                     @else
                                         <form action="{{ route('cart.store') }}" method="POST">
                                             @csrf
-                                            <input type="hidden" name="member_id" value="{{ $user }}">
+                                            @foreach ($member as $m)
+                                                <input type="hidden" name="member_id" value="{{ $m->id }}">
+                                            @endforeach
                                             <input type="hidden" class="form-control" name="quantity" value="1">
                                             <input type="hidden" value="{{ $p->id }}" name="produk_id">
                                             <button type="submit" class="btn btn-primary">
@@ -77,8 +84,8 @@
                                             </button>
                                         </form>
                                     @endif
-                                @endauth
-                            @endif
+                                @endif
+                            @endauth
 
 
 

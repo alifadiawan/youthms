@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
         ];
 
         $member = [
-            ['id_member'=>0004,'name'=>'si paling klien','nik'=>36780413213,'no_hp'=>"08572312",'alamat'=>"indo",'user_id'=>"0004",]
+            ['id_member'=>"0004",'name'=>'si paling klien','nik'=>36780413213,'no_hp'=>"08572312",'alamat'=>"indo",'user_id'=>"0004",]
         ];
         
         User::insert($users);
