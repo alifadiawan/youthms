@@ -76,12 +76,13 @@ class UserController extends Controller
         $uid = auth()->user()->id;
         $users = user::where('id', $uid)->get();
         $member = member::where('user_id', $uid)->get();
+        $Member = member::where('user_id', $user->id)->get();
 
         $u = auth()->user()->role->role;
         $staff = ['admin', 'owner'];
         if (in_array($u, $staff)) {
 
-            return view('Admin.user.user-detail', compact('user'));
+            return view('Admin.user.user-detail', compact('user', 'Member'));
         } else {
 
             return view('EU.user.index', compact('uid', 'users', 'member','users'));
@@ -217,7 +218,7 @@ class UserController extends Controller
             return redirect('login');
         }
 
-        notify()->success('User Berhasil Dihapus !!');
+        notify()->success('Akun Berhasil Dihapus !!');
 
         // mengirim notifikasi
         $user = Auth::user();

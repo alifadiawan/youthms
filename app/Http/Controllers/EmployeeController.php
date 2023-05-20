@@ -51,9 +51,9 @@ class EmployeeController extends Controller
         $user = Auth::user();
         $message = "Data Diri Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('employee.show', ['employee' => $employee->id])); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('user.show', ['user' => $employee->user_id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
-        return redirect('employee');
+        return redirect('user');
     }
 
     /**
@@ -88,9 +88,9 @@ class EmployeeController extends Controller
         $user = Auth::user();
         $message = "Profile Berhasil Diupdate !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('employee.show', ['employee' => $Member->id])); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('user.show', ['user' => $Member->user_id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
-        return redirect('employee');
+        return redirect('/user/'.$Member->user_id);
     }
 
     /**
@@ -110,13 +110,13 @@ class EmployeeController extends Controller
         $member->delete();
         $user->delete();
 
-        notify()->success('Employee Berhasil Dihapus !!');
+        notify()->success('Profile Berhasil Dihapus !!');
         // mengirim notifikasi
         $user = Auth::user();
-        $message = "Employee Berhasil Dihapus !!";
+        $message = "Profile Berhasil Dihapus !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('employee.index')); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('user.index')); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
-        return redirect('employee');
+        return redirect('user');
     }
 }
