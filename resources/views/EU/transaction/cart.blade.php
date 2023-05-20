@@ -4,116 +4,133 @@
         var qty = document.getelementbyid("quantity");
     </script>  --}}
 
-    <section class="h-100 gradient-custom">
+    <section class="h-100">
         <div class="container py-5">
+            <a href="{{route('storeEU.index')}}" class="btn">
+                <i class="fas fa-arrow-left"></i>  Store
+            </a>
             <div class="row d-flex justify-content-center my-4">
-                <div class="col-md-8">
-                    <div class="card mb-4">
-                        <div class="card-header py-3">
-                            <h5 class="mb-0">Cart - 2 items</h5>
-                        </div>
-                        @if ($cart->isEmpty())
-                            <h2>hah kosong? astaghfirullah</h2>
-                        @endif
+
+                @if ($cart->isEmpty())
+                    <div class="col-12">
+                    @else
+                    <div class="col-md-8">
+                @endif
+
+
+                <div class="card mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="mb-0">Cart</h5>
+                    </div>
+
+                    @if ($cart->isEmpty())
+                        <h2 class="p-3 text-center fw-bold">Belum ada barang</h2>
+                    @endif
+
+                    <div class="card-body">
+                        <!-- first item -->
                         @foreach ($cart as $c)
-                            <div class="card-body">
-                                <!-- first item -->
-                                <div class="row align-items-center">
-                                    <div class="col-lg-9 col-md-6 mb-4 mb-lg-0">
-                                        <p><strong>{{ $c->produk->nama_produk }}</strong></p>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                                        <div class="d-flex mb-4" style="max-width: 300px">
-                                            <form action="{{ route('transaksi.destroy', $c->id) }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn text-danger me-2"
-                                                    data-mdb-toggle="tooltip" title="Remove item">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
-                                            <button class="btn btn-outline-primary me-2" onclick="decreaseQuantity(this);">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-
-                                            <div class="form-outline">
-                                                <input id="quantity_{{ $c->id }}" min="1" name="quantity"
-                                                    value="{{ $c->quantity }}" type="number" class="form-control"
-                                                    onchange="updateQuantity(this)" readonly />
-                                            </div>
-
-                                            <button class="btn btn-outline-primary ms-2" id="plus"
-                                                onclick="increaseQuantity(this)">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <p class="text-start text-md-center">
-                                        <strong> harga / produk Rp. {{ number_format($c->produk->harga) }} </strong>
-                                    </p>
-                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                            <div class="row align-items-center">
+                                <div class="col-lg-9 col-md-6 mb-4 mb-lg-0">
+                                    <p class="text-capitalize"><strong>{{ $c->produk->nama_produk }}</strong></p>
                                 </div>
-                                <hr class="my-4" />
+
+                                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                                    <div class="d-flex mb-4" style="max-width: 300px">
+                                        <form action="{{ route('transaksi.destroy', $c->id) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn text-danger me-2" data-mdb-toggle="tooltip"
+                                                title="Remove item">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                        <button class="btn btn-outline-primary me-2" onclick="decreaseQuantity(this);">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+
+                                        <div class="form-outline">
+                                            <input id="quantity_{{ $c->id }}" min="1" name="quantity"
+                                                value="{{ $c->quantity }}" type="number" class="form-control"
+                                                onchange="updateQuantity(this)" readonly />
+                                        </div>
+
+                                        <button class="btn btn-outline-primary ms-2" id="plus"
+                                            onclick="increaseQuantity(this)">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="text-end">
+                                    <strong>Rp. {{ number_format($c->produk->harga) }} </strong>
+                                </p>
+                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                             </div>
+                            <hr class="my-4" />
                         @endforeach
                     </div>
+                </div>
+            </div><!-- end cart -->
 
 
-                    <!-- Summary -->
-                    <div class="col-md-4">
-                        <div class="card mb-4">
-                            <div class="card-header py-3">
-                                <h5 class="mb-0">Summary</h5>
+            <!-- Summary -->
+            @if ($cart->isEmpty())
+                <div class="col-md-4" style="display: none">
+                @else
+                <div class="col-md-4">
+            @endif
+
+
+            <div class="card mb-4">
+                <div class="card-header py-3">
+                    <h5 class="mb-0">Summary</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        @foreach ($cart as $c)
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
+                                {{ $c->produk->nama_produk }}
+                                <span id="total-price_{{ $c->id }}">Rp.
+                                    {{ number_format($c->quantity * $c->produk->harga) }}</span>
+                            </li>
+                        @endforeach
+                        <li class="list-group-item d-flex justify-content-end align-items-center border-0 px-0 mb-3">
+                            <div>
+                                <strong> <span id="total-transaksi-b" class="">Total : Rp.
+                                        {{ number_format($totalTransaksi) }}</span></strong>
+                                <strong><span id="total-transaksi" style="display: none;">Total : Rp.
+                                    </span></strong>
                             </div>
-                            <div class="card-body">
-                                <ul class="list-group list-group-flush">
-                                    @foreach ($cart as $c)
-                                        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                            {{ $c->produk->nama_produk }}
-                                            <span id="total-price_{{ $c->id }}">Rp.
-                                                {{ number_format($c->quantity * $c->produk->harga) }}</span>
-                                        </li>
-                                    @endforeach
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                                        <div>
-                                            <strong> <span id="total-transaksi-b">Total : Rp.
-                                                    {{ number_format($totalTransaksi) }}</span></strong>
-                                            <strong><span id="total-transaksi" style="display: none;">Total : Rp.
-                                                </span></strong>
-                                        </div>
-                                        <span><strong></strong></span>
-                                    </li>
-                                </ul>
+                            <span><strong></strong></span>
+                        </li>
+                    </ul>
 
-                                <form action="{{ route('transaksi.create') }}" method="put">
-                                    @csrf
-                                    <button type="submit" id="checkout" class="btn btn-success btn-lg btn-block"
-                                        style="display: ">
-                                        <input type="hidden" name="member_id" value="{{ auth()->user()->id }}">
-                                        <input type="hidden" name="total_bayar" value="0">
-                                        <input type="hidden" name="total" id="total" value="{{ $totalTransaksi }}">
-                                        Go to checkout
-                                    </button>
-                                </form>
-                                <hr>
-                                {{-- <form action="{{ route('cart.store') }}" method="get"> --}}
+                    <div class="row">
+                        <div class="col">
+                            <form action="{{ route('transaksi.create') }}" method="put">
                                 @csrf
-                                <button type="submit" id="checkout" class="btn btn-primary btn-lg btn-block"
-                                    style="display: ">
-                                    check
+                                <button type="submit" id="checkout" class="btn btn-success" style="display: ">
+                                    <input type="hidden" name="member_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="total_bayar" value="0">
+                                    <input type="hidden" name="total" id="total" value="{{ $totalTransaksi }}">
+                                    Go to checkout
                                 </button>
-                                {{-- </form> --}}
-                                <a type="button" id="update" class="btn btn-danger btn-lg btn-block"
-                                    style="display: none;">
-                                    Update
-                                </a>
-                            </div>
+                            </form>
+                        </div>
+                        {{-- <form action="{{ route('cart.store') }}" method="get"> --}}
+                        @csrf
+                        <div class="col text-end">
+                            <button type="submit" id="checkout" class="btn btn-primary" style="display: ">
+                                <i class="fas fa-refresh"></i>
+                            </button>
                         </div>
                     </div>
+                    {{-- </form> --}}
                 </div>
             </div>
+        </div><!-- end summary -->
+
+        </div>
     </section>
 
 

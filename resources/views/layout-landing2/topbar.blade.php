@@ -31,10 +31,9 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {{-- <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li> --}}
-                        <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Edit Profile</a>
+                        <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                         </li>
-                        <li><a class="dropdown-item" href="/">Struk</a></li>
-                        <li><a class="dropdown-item" href="/">Belum Bayar</a></li>
+                        <li><a class="dropdown-item" href="/">Histori Transaksi</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
