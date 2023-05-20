@@ -35,6 +35,31 @@
             <div class="row mt-5 justify-content-around">
                 {{-- @foreach ($collection as $item) --}}
                 <div class="col mt-3">
+                    <a class="pop" data-toggle="modal" data-target="#exampleModal" >
+                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="" style="width: 18rem">
+                    </a>
+                </div>
+                <div class="col mt-3">
+                    <a class="pop" data-toggle="modal" data-target="#exampleModal" >
+                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="" style="width: 18rem">
+                    </a>
+                </div>
+                <div class="col mt-3">
+                    <a class="pop" data-toggle="modal" data-target="#exampleModal" >
+                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="" style="width: 18rem">
+                    </a>
+                </div>
+                <div class="col mt-3">
+                    <a class="pop" data-toggle="modal" data-target="#exampleModal" >
+                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="" style="width: 18rem">
+                    </a>
+                </div>
+                <div class="col mt-3">
+                    <a class="pop" data-toggle="modal" data-target="#exampleModal" >
+                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="" style="width: 18rem">
+                    </a>
+                </div>
+                {{-- <div class="col mt-3">
                     <a class="pop" data-toggle="modal" data-target="#exampleModal">
                         <img src="{{ asset('illustration/bmw.jpg') }}" alt="">
                     </a>
@@ -53,12 +78,7 @@
                     <a class="pop" data-toggle="modal" data-target="#exampleModal">
                         <img src="{{ asset('illustration/bmw.jpg') }}" alt="">
                     </a>
-                </div>
-                <div class="col mt-3">
-                    <a class="pop" data-toggle="modal" data-target="#exampleModal">
-                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="">
-                    </a>
-                </div>
+                </div> --}}
 
                 {{-- @endforeach --}}
             </div>

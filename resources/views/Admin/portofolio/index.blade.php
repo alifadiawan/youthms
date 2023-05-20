@@ -8,35 +8,32 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                @if($porto->isEmpty())
-                <div class="col-lg-12">
-                    <h3 class="h3 text-center">Belum Ada Porto !!</h3>
-                </div>  
-
+                @if ($porto->isEmpty())
+                    <div class="col-lg-12">
+                        <h3 class="h3 text-center">Belum Ada Porto !!</h3>
+                    </div>
                 @else
-                @foreach($porto as $p)
-                <div class="col">
-                    <div class="card" style="width: 15rem;">
-                        <img src="{{ asset('./portofolio/'.$p->cover) }}" class="card-img-top" style="width: 300px">
-                        <div class="card-body">
-                            <h5 class="card-title mb-2">{{$p->project}}</h5>
-                            <p class="card-text">{{$p->deskripsi}}</p>
-                            <div class="row">
-                                <div class="col">
-                                    <a href="{{route('portfolio.hapus', $p->id)}}" class="btn btn-danger mt-2 w-100">Hapus</a>
-                                </div>
-                                <div class="col">
-                                    <a href="{{route('portfolio.edit', $p->id)}}" class="btn btn-warning mt-2 w-100">Edit</a>
-                                </div>
-                                <div class="col">
-                                    <a href="{{route('portfolio.show', $p->id)}}" class="btn btn-primary mt-2 w-100">Lihat</a>
+                    @foreach ($porto as $p)
+                        <div class="col">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="{{ asset('./portofolio/' . $p->cover) }}"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text text-capitalize font-weight-bold">{{ $p->project }}</p>
+                                    <a href="{{ route('portfolio.show', $p->id) }}"
+                                        class="btn btn-primary mt-2">Lihat</a>
+                                    <a href="{{ route('portfolio.edit', $p->id) }}"
+                                        class="btn btn-warning mt-2 ">Edit</a>
+                                    <a href="{{ route('portfolio.hapus', $p->id) }}"
+                                        class="btn btn-danger mt-2 ">Hapus</a>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                @endforeach
+                    @endforeach
                 @endif
+
+
 
             </div>
         </div>
@@ -53,7 +50,7 @@
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
                         </ul>
                     </nav> -->
-                    {{$porto->links()}}
+                    {{ $porto->links() }}
                 </div>
                 <div class="col text-right">
                     <a href="{{ route('portfolio.create') }}" class="btn btn-success mb-2">Tambah</a>
