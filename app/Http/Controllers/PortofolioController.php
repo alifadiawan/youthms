@@ -18,9 +18,16 @@ class PortofolioController extends Controller
      */
     public function index()
     {
-        $porto = Portofolio::paginate(4);
+        $porto = Portofolio::paginate(6);
         $pic = PortofolioPic::all();
-        return view('Admin.portofolio.index', compact('porto', 'pic'));
+        $u = auth()->user()->role->role;
+        $admin = ['admin', 'owner'];
+
+        if (in_array($u, $admin)){
+            return view('Admin.portofolio.index', compact('porto', 'pic'));
+        }else{
+            return view('EU.portofolio.index', compact('porto', 'pic'));
+        }
     }
 
     /**
@@ -83,7 +90,15 @@ class PortofolioController extends Controller
     {
         $porto = Portofolio::find($id);
         $pic = $porto->portofoliopic;
-        return view('Admin.portofolio.show', compact('porto', 'pic'));
+        $u = auth()->user()->role->role;
+        $admin = ['admin', 'owner'];
+
+        if (in_array($u, $admin)){
+            return view('Admin.portofolio.show', compact('porto', 'pic'));
+        }else{
+            return view('EU.portofolio.index', compact('porto', 'pic'));
+        }
+
     }
 
     /**
