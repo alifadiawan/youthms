@@ -1,5 +1,7 @@
 @extends('layout.admin')
+@section('content-title', 'Detail Portofolio')
 @section('content')
+@section('judul', 'Detail Portofolio')
     <div class="container">
         <div class="card p-5">
 
@@ -11,14 +13,14 @@
             
             <!-- Detail -->
             <div class="row mb-5">
-                <a href="/portofolio" class="btn">
+                <a href="/portfolio" class="btn">
                     <i class="fas fa-arrow-left"></i>
                 </a>
-                <p class="h2 font-weight-bold">Nama project</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti voluptatum corrupti soluta voluptatem quidem minima quisquam praesentium cumque, quasi possimus perferendis fugit hic maxime cum, minus voluptatibus velit ullam doloribus.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut in explicabo eligendi iure, autem libero id pariatur suscipit fuga rem provident aliquid consequuntur maiores voluptatibus. Architecto unde mollitia suscipit corrupti.
-                </p>
+                <p class="h2 font-weight-bold">{{$porto->project}}</p>
             </div>
+                <p>
+                    {{$porto->deskripsi}}
+                </p>
             
             <hr>
             
@@ -26,61 +28,20 @@
 
                 <!-- Cover -->
                 <div class="col-lg-12">
-                    <img src="{{ asset('illustration/bmw.jpg') }}" alt="">
+                    <img src="{{ asset('./portofolio/'.$porto->cover) }}" alt="Cover">
                 </div>
 
             </div>
 
             <!-- images -->
             <div class="row mt-5 justify-content-around">
-                {{-- @foreach ($collection as $item) --}}
+                @foreach ($pic as $p)
                 <div class="col mt-3">
-                    <a class="pop" data-toggle="modal" data-target="#exampleModal" >
-                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="" style="width: 18rem">
+                    <a class="pop{{$p->id}}" data-toggle="modal" data-target="#foto{{$p->id}}">
+                        <img src="{{ asset('./portofolio/'.$p->foto) }}" alt="" style="width: 15rem;">
                     </a>
                 </div>
-                <div class="col mt-3">
-                    <a class="pop" data-toggle="modal" data-target="#exampleModal" >
-                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="" style="width: 18rem">
-                    </a>
-                </div>
-                <div class="col mt-3">
-                    <a class="pop" data-toggle="modal" data-target="#exampleModal" >
-                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="" style="width: 18rem">
-                    </a>
-                </div>
-                <div class="col mt-3">
-                    <a class="pop" data-toggle="modal" data-target="#exampleModal" >
-                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="" style="width: 18rem">
-                    </a>
-                </div>
-                <div class="col mt-3">
-                    <a class="pop" data-toggle="modal" data-target="#exampleModal" >
-                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="" style="width: 18rem">
-                    </a>
-                </div>
-                {{-- <div class="col mt-3">
-                    <a class="pop" data-toggle="modal" data-target="#exampleModal">
-                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="">
-                    </a>
-                </div>
-                <div class="col mt-3">
-                    <a class="pop" data-toggle="modal" data-target="#exampleModal">
-                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="">
-                    </a>
-                </div>
-                <div class="col mt-3">
-                    <a class="pop" data-toggle="modal" data-target="#exampleModal">
-                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="">
-                    </a>
-                </div>
-                <div class="col mt-3">
-                    <a class="pop" data-toggle="modal" data-target="#exampleModal">
-                        <img src="{{ asset('illustration/bmw.jpg') }}" alt="">
-                    </a>
-                </div> --}}
-
-                {{-- @endforeach --}}
+                @endforeach
             </div>
 
 
@@ -88,9 +49,9 @@
     </div>
 
 
-  
+  @foreach($pic as $modal)
   <!-- Show Images modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="foto{{$modal->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -104,13 +65,16 @@
       </div>
     </div>
   </div>
+  @endforeach
 
+    @foreach($pic as $pop)
     <script>
         $(function() {
-            $('.pop').on('click', function() {
+            $('.pop{{$pop->id}}').on('click', function() {
                 $('.imagepreview').attr('src', $(this).find('img').attr('src'));
                 $('#imagemodal').modal('show');
             });
         });
     </script>
+    @endforeach
 @endsection

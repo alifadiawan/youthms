@@ -7,7 +7,7 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <div class="row">
+            <div class="row justify-content-start">
                 @if ($porto->isEmpty())
                     <div class="col-lg-12">
                         <h3 class="h3 text-center">Belum Ada Porto !!</h3>
@@ -15,24 +15,45 @@
                 @else
                     @foreach ($porto as $p)
                         <div class="col">
-                            <div class="card" style="width: 18rem;">
+                            {{-- <div class="card" style="width: 18rem;">
                                 <img class="card-img-top" src="{{ asset('./portofolio/' . $p->cover) }}"
                                     alt="Card image cap">
-                                <div class="card-body">
+                                <div class="card-body text-center">
                                     <p class="card-text text-capitalize font-weight-bold">{{ $p->project }}</p>
                                     <a href="{{ route('portfolio.show', $p->id) }}"
                                         class="btn btn-primary mt-2">Lihat</a>
                                     <a href="{{ route('portfolio.edit', $p->id) }}"
                                         class="btn btn-warning mt-2 ">Edit</a>
                                     <a href="{{ route('portfolio.hapus', $p->id) }}"
-                                        class="btn btn-danger mt-2 ">Hapus</a>
-
+                                        class="btn btn-danger mt-2 ">Hapus</a>  
                                 </div>
-                            </div>
+                            </div> --}}
+                            <div class="card" style="width: 20rem;">
+                                <img src="{{ asset('./portofolio/' . $p->cover) }}" class="card-img-top" alt="...">
+                                <div class="card-body text-center">
+                                    <p class="h3 card-text text-capitalize font-weight-bold">{{ $p->project }}</p>
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <a href="" class="btn text-primary">
+                                                <i class="fas fa-eye"></i>    
+                                            </a>    
+                                            <a href="{{ route('portfolio.edit', $p->id) }}" class="btn text-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </a>    
+                                            <a href="{{ route('portfolio.hapus', $p->id) }}" class="btn text-danger">
+                                                <i class="fas fa-trash"></i>    
+                                            </a>    
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
                         </div>
                     @endforeach
                 @endif
 
+                <div class="col">
+                    
+                </div>
 
 
             </div>

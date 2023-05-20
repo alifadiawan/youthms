@@ -53,6 +53,8 @@ route::get('/returnan', function () {
     return view('returnan');
 });
 
+//portfolio
+Route::resource('portfolio', PortofolioController::class);
 
 //guest
 Route::middleware('guest')->group(function () {
@@ -117,11 +119,6 @@ Route::middleware('guest')->group(function () {
         return view('EU.user.index');
     });
 
-    //portofolio EU
-    Route::get('/portofolio/all', function () {
-        return view('EU.portofolio.index');
-    });
-
 
     // //transaction
     // Route::resource('/transaksi', TransaksiController::class);
@@ -183,6 +180,9 @@ route::middleware(['client'])->group(function () {
     Route::get('/pembayaran', function () {
         return view('EU.transaction.pembayaran');
     });
+
+
+    
 
     // user EU
     // Route::get('/edit-profile', function () {
@@ -276,7 +276,7 @@ Route::middleware('staff')->group(function () {
     Route::get('/landing-page/text/{id}/update', [landingpageController::class, 'update_text'])->name('landing.text_update');
 
     //portofolio
-    Route::resource('portfolio', PortofolioController::class);
+    // Route::resource('portfolio', PortofolioController::class);
     Route::get('/portfolio/{id}/hapus', [PortofolioController::class, 'hapus'])->name('portfolio.hapus');
 
     //notif

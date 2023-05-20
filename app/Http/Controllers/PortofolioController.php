@@ -18,9 +18,16 @@ class PortofolioController extends Controller
      */
     public function index()
     {
-        $porto = Portofolio::paginate(4);
+        $porto = Portofolio::paginate(6);
         $pic = PortofolioPic::all();
-        return view('Admin.portofolio.index', compact('porto', 'pic'));
+        $u = auth()->user()->role->role;
+        $admin = ['admin', 'owner'];
+
+        if (in_array($u, $admin)){
+            return view('Admin.portofolio.index', compact('porto', 'pic'));
+        }else{
+            return view('EU.portofolio.index', compact('porto', 'pic'));
+        }
     }
 
     /**
@@ -73,15 +80,25 @@ class PortofolioController extends Controller
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('portfolio.show', ['portfolio' => $porto->id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
-        return redirect('/portofolio/'.$porto->id);
+        return redirect('/portfolio/'.$porto->id);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Portofolio $portofolio)
+    public function show($id)
     {
-        return view('Admin.portofolio.show');
+        $porto = Portofolio::find($id);
+        $pic = $porto->portofoliopic;
+        $u = auth()->user()->role->role;
+        $admin = ['admin', 'owner'];
+
+        if (in_array($u, $admin)){
+            return view('Admin.portofolio.show', compact('porto', 'pic'));
+        }else{
+            return view('EU.portofolio.index', compact('porto', 'pic'));
+        }
+
     }
 
     /**
@@ -152,9 +169,9 @@ class PortofolioController extends Controller
         $user = Auth::user();
         $message = "Portofolio Berhasil Diupdate !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('portfolio.show', ['portfolio' => $porto->id])); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('portfolio.show', ['portfolio' => $portofolio->id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
-        return redirect('/portofolio/'.$porto->id);
+        return redirect('/portfolio/'.$portofolio->id);
     }
 
     /**
@@ -167,6 +184,27 @@ class PortofolioController extends Controller
 
     public function hapus($id)
     {
-        // code...
+        // Menghapus data Portofolio berdasarkan ID
+            $portofolio = Portofolio::findOrFail($id);
+            
+            // Hapus juga data PortofolioPic terkait
+            foreach ($portofolio->portofoliopic as $pic) {
+                //hapus foto lama
+                File::delete('./portofolio/'.$pic->foto);
+            }
+            //hapus cover lama
+            File::delete('./portofolio/'.$portofolio->cover);
+            // Hapus data Portofolio dari database
+            $portofolio->delete();
+
+            // Redirect atau berikan respon sesuai kebutuhan Anda
+            notify()->success('Portofolio Berhasil Dihapus !!');
+            // mengirim notifikasi
+            $user = Auth::user();
+            $message = "Portofolio Berhasil Dihapus !!";
+            $notification = new NewMessageNotification($message);
+            $notification->setUrl(route('portfolio.index')); // Ganti dengan rute yang sesuai
+            Notification::send($user, $notification);
+            return redirect('/portfolio');
     }
 }
