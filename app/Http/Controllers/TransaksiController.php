@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
+// use Symfony\Component\HttpFoundation\Session\Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\Models\visitor;
 
@@ -36,56 +38,16 @@ class TransaksiController extends Controller
         return view('Admin.transaction.index');
     }
 
-    public function getTotalTransaksi()
-    {
-        $cart = Cart::all();
-        $totalTransaksi = 0;
-
-        foreach ($cart as $c) {
-            $totalTransaksi += $c->quantity * $c->produk->harga;
-        }
-
-        return response()->json([
-            'success' => true,
-            'totalTransaksi' => $totalTransaksi,
-        ]);
-    }
 
 
-    public function updateQuantity(Request $request)
-    {
-        $cartId = $request->input('cart_id');
-        $newQuantity = $request->input('quantity');
-
-        $cart = Cart::find($cartId);
-        if ($cart) {
-            $cart->quantity = $newQuantity;
-            $cart->save();
-
-            $totalPrice = $cart->quantity * $cart->produk->harga;
-            return response()->json(['success' => true, 'item_total_price' => $totalPrice]);
-        }
-
-        return response()->json(['success' => false, 'message' => 'Cart not found']);
-    }
-
-
-
-    public function cart()
-    {
-        $user = auth()->user()->id;
-        $cart = cart::where('member_id', $user)->get()->sortByDesc('cart.created_at');
-        // $totalPrice = cart::sum('harga * quantity');
-        // $cart = produk::has('cart')->get()->sortByDesc('cart.created_at');
-        // return $cart;   
-        return view('EU.transaction.cart', compact('cart'));
-    }
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        // return view("EU.transaction.index", compact('produk'));
+        return $request;
+        transaksi::create($request->all());
+        return view('EU.transaction.pembayaran');
     }
 
     /**
@@ -93,7 +55,7 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // return $request;
     }
 
     /**

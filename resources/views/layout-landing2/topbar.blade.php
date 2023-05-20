@@ -21,7 +21,7 @@
             @endguest
             @auth
             <li class="nav-item"><a class="nav-link" href="/groupchat">Chats</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.cart') }}"><i
+                <li class="nav-item"><a class="nav-link" href="{{ route('cart.index') }}"><i
                             class="fa-solid fa-cart-shopping"></i></a></li>
 
                 <li class="nav-item dropdown">

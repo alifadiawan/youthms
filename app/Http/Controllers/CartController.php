@@ -15,10 +15,52 @@ class CartController extends Controller
      */
     public function index()
     {
-        $produk = produk::doesnthave('cart')->where('stock','>','0')->get();
-        $cart = produk::has('cart')->sortbydesc('cart.created_at');
-        return $cart;
-        return view('EU.transaction.cart',compact('cart'));
+
+        $user = auth()->user()->id;
+        
+        $totalTransaksi = 0;
+        $cart = cart::where('member_id',$user)->get();
+        foreach ($cart as $c) {
+            $totalTransaksi += $c->quantity * $c->produk->harga;
+        }
+
+        $user = auth()->user()->id;
+        $cart = cart::where('member_id', $user)->get()->sortByDesc('cart.created_at');
+        return view('EU.transaction.cart', compact('cart','totalTransaksi'));
+    }
+
+
+    public function getTotalTransaksi()
+    {
+        $cart = Cart::all();
+        $totalTransaksi = 0;
+
+        foreach ($cart as $c) {
+            $totalTransaksi += $c->quantity * $c->produk->harga;
+        }
+
+        return response()->json([
+            'success' => true,
+            'totalTransaksi' => $totalTransaksi,
+        ]);
+    }
+
+
+    public function updateQuantity(Request $request)
+    {
+        $cartId = $request->input('cart_id');
+        $newQuantity = $request->input('quantity');
+
+        $cart = Cart::find($cartId);
+        if ($cart) {
+            $cart->quantity = $newQuantity;
+            $cart->save();
+
+            $totalPrice = $cart->quantity * $cart->produk->harga;
+            return response()->json(['success' => true, 'item_total_price' => $totalPrice]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Cart not found']);
     }
 
     /**
@@ -34,7 +76,9 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        cart::create($request->all());
+        return redirect()->back();
     }
 
     /**

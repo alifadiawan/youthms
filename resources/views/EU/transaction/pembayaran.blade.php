@@ -4,7 +4,7 @@
 
         <div class="row d-flex justify-content-center my-4">
             <div class="col-md-8">
-                <a href="/cart" class="btn my-3">
+                <a href="{{ route('cart.index') }}" class="btn my-3">
                     <i class="fas fa-arrow-left"></i></a>
                 <div class="card mb-4">
                     <div class="card-header py-3">

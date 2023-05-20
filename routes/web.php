@@ -20,6 +20,7 @@ use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\StaffMiddleware;
+use App\Http\Controllers\CartController;
 use App\Models\Services;
 
 /*
@@ -148,11 +149,11 @@ route::middleware(['client', 'employee'])->group(function () {
     });
 
     //group-chats
-    Route::get('/groupchat', function(){
+    Route::get('/groupchat', function () {
         return view('EU.chat.index');
     });
 
-    
+
     Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
     Route::get('/edit_profile', [EUController::class, 'editprofile'])->name('storeEU.edit_profile');
     Route::get('/show_profile', [EUController::class, 'showprofile'])->name('storeEU.show_profile');
@@ -207,7 +208,9 @@ route::middleware(['client', 'employee'])->group(function () {
     Route::get('/portofolio/all', function () {
         return view('EU.portofolio.index');
     });
-    Route::get('/cart', [TransaksiController::class, 'cart'])->name('transaksi.cart');
+    // Route::get('/cart', [TransaksiController::class, 'cart'])->name('transaksi.cart');
+
+    Route::resource('/cart', CartController::class);
 });
 
 

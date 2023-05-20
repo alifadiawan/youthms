@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Member;
 
 class UserSeeder extends Seeder
 {
@@ -26,7 +27,12 @@ class UserSeeder extends Seeder
             ['username' => 'sekretariat',  'role_id' => '6', 'password' => bcrypt('123'), 'email' => 'sekretariat@gmail.com'],
             ['username' => 'reborn',  'role_id' => '7', 'password' => bcrypt('123'), 'email' => 'reborn@gmail.com'],
         ];
+
+        $member = [
+            ['id_member'=>0004,'name'=>'si paling klien','nik'=>36780413213,'no_hp'=>"08572312",'alamat'=>"indo",'user_id'=>"0004",]
+        ];
         
         User::insert($users);
+        member::insert($member);
     }
 }
