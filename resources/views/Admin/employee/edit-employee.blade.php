@@ -56,7 +56,7 @@
             <div class="card-body">
                 <div class="row my-2">
                     <div class="col-sm-3">
-                        <p class="mb-0">NIK</p>
+                        <p class="mb-0">Nama</p>
                     </div>
                     <div class="col-sm-9">
                         <input class="form-control" type="nik" value="{{ $member->nik }}" name="nik"
@@ -81,15 +81,6 @@
                     <div class="col-sm-9">
                         <input class="form-control" type="number" value="{{ $member->no_hp }}" name="no_hp"
                             id="no_hp">
-                    </div>
-                </div>
-                <hr>
-                <div class="row my-2">
-                    <div class="col-sm-3">
-                        <p class="mb-0">NIK</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <input type="number" class="form-control" name="" id="" placeholder="3578231">
                     </div>
                 </div>
                 <hr>
