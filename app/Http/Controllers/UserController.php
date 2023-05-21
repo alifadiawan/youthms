@@ -228,4 +228,26 @@ class UserController extends Controller
         Notification::send($user, $notification);
         return redirect('user');
     }
+
+    public function filterUsers(Request $request)
+    {
+        // return $roles;
+
+        if ($request->role_id == null) {
+            $user = User::whereHas('role')->with('role')->get(); 
+        }
+        else {
+            $roles = $request->role_id;
+            $user = User::where('role_id','=', $roles)->with('role')->get();
+            $r = Role::where('id','=',$roles)->get();
+        }
+
+        // Menggunakan array asosiatif untuk mengirim data ke AJAX
+        $response = [
+            'user' => $user
+        ];
+        // return $response;
+
+        return response()->json($response); // Mengirimkan respons dalam format JSON
+    }
 }
