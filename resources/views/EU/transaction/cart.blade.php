@@ -31,11 +31,11 @@
                         <!-- first item -->
                         @foreach ($cart as $c)
                             <div class="row align-items-center">
-                                <div class="col-lg-9 col-md-6 mb-4 mb-lg-0">
+                                <div class="col-lg-8 col-md-6 mb-4 mb-lg-0">
                                     <p class="text-capitalize"><strong>{{ $c->produk->nama_produk }}</strong></p>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                     <div class="d-flex mb-4" style="max-width: 300px">
                                         <form action="{{ route('transaksi.destroy', $c->id) }}" method="post">
                                             @csrf
