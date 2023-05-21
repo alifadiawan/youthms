@@ -6,7 +6,7 @@
 
     <section class="h-100">
         <div class="container py-5">
-            <a href="{{ route('storeEU.index') }}" class="btn">
+            <a href="{{ route('store.index') }}" class="btn">
                 <i class="fas fa-arrow-left"></i> Store
             </a>
             <div class="row d-flex justify-content-center my-4">

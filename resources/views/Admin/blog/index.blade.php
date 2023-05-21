@@ -46,6 +46,9 @@
                     @endif
                 </tbody>
             </table>
+            <div class="row">
+                {{$data->links()}}
+            </div>
         </div>
     </div>
     <div class="col-lg-3">

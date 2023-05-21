@@ -9,7 +9,7 @@
             
             <li class="nav-item"><a class="nav-link" href="/blog/all">Blog</a></li>
             {{-- <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.index') }}">Store</a></li> --}}
-            <li class="nav-item"><a class="nav-link" href="{{ route('storeEU.index') }}">Store</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('store.index')}}">Store</a></li>
             <li class="nav-item"><a class="nav-link" href="/services/all">Service</a></li>
             <li class="nav-item"><a class="nav-link" href="{{route('portfolio.index')}}">Portofolio</a></li>
 

@@ -24,7 +24,6 @@
             <div class="col-lg-9">
     @endif
     <div class="card p-3">
-
             <div class="row align-items-end">
                 <div class="col-7">
                     <a class="btn font-weight-bold" data-toggle="collapse" href="#collapseExample" role="button"
@@ -48,13 +47,13 @@
                         </div>
                     </div>
                 </div>
-        @if (auth()->user()->role->role == 'admin')
+                @if (auth()->user()->role->role == 'admin')
                 <div class="col-5 text-right">
                     <a href="{{ route('user.create') }}" class="btn btn-md text-white rounded"
                         style="background-color: #1864BA;">Tambah User</a>
                 </div>
+                @endif
             </div>
-        @endif
         <table id="userTable" class="table table-striped table-hover mt-2 bg-white">
             <thead>
                 <tr style="background-color: #0EA1E2">
@@ -85,6 +84,9 @@
                 @endif
             </tbody>
         </table>
+        <div class="row">
+            {{$user->links()}}
+        </div>
     </div>
 </div>
 @if (auth()->user()->role->role == 'admin')

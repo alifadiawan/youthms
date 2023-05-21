@@ -54,6 +54,8 @@ route::get('/returnan', function () {
     return view('returnan');
 });
 
+//landing page
+Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 
 //history transaksi
 Route::get('/history-transaction', function () {
@@ -64,14 +66,17 @@ Route::get('/history-transaction', function () {
 //portfolio
 Route::resource('portfolio', PortofolioController::class);
 
+//store
+Route::resource('store', ProdukController::class);
+Route::get('/store/{id}/hapus', [ProdukController::class, 'hapus'])->name('store.hapus');
+Route::get('/store/{id}/showid', [ProdukController::class, 'showid'])->name('store.showid');
+Route::get('/store/{type}/show', [ProdukController::class, 'showtype'])->name('store.showtype');
+
 //guest
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::get('authcheck', [LoginController::class, 'authcheck'])->name('authcheck');
     Route::post('login', [LoginController::class, 'authenticate']);
-
-    //landing page EU
-    Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 
     //blog
     Route::get('/blog/editing', function () {
@@ -87,19 +92,6 @@ Route::middleware('guest')->group(function () {
     Route::get('/blog/show', function () {
         return view('EU.blog.show');
     });
-
-    // Route::get('/blog/pemrograman', function () {
-    //     return view('EU.blog.pemrograman');
-    // });
-
-
-    //Store EU
-    // Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
-    // Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
-    // Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
-    // Route::resource('/store', EUController::class);
-    // route::get('/store/{layanan}', [EUController::class, 'show']);
-
 
     //services
     Route::get('/services/all', function () {
@@ -118,18 +110,9 @@ Route::middleware('guest')->group(function () {
     //register
     Route::resource('register', RegisterController::class);
 
-
-    // user EU
-    // Route::get('/edit-profile', function () {
-    //     return view('EU.user.edit');
-    // });
     Route::get('/profile', function () {
         return view('EU.user.index');
     });
-
-
-    // //transaction
-    // Route::resource('/transaksi', TransaksiController::class);
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -140,8 +123,6 @@ Route::middleware(['auth'])->group(function () {
 
 //  client
 route::middleware(['client', 'employee'])->group(function () {
-    // landing page
-
     //blog
     Route::get('/blog/editing', function () {
         return view('EU.blog.editing');
@@ -162,48 +143,20 @@ route::middleware(['client', 'employee'])->group(function () {
     });
 
 
-    Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
     Route::get('/edit_profile', [EUController::class, 'editprofile'])->name('storeEU.edit_profile');
     Route::get('/show_profile', [EUController::class, 'showprofile'])->name('storeEU.show_profile');
     Route::get('/update_profile', [EUController::class, 'updateprofile'])->name('storeEU.update_profile');
     Route::get('/hapus_profile', [EUController::class, 'hapusprofile'])->name('storeEU.hapus_profile');
-
-    //Store EU
-    Route::get('/store/all', [EUController::class, 'storeindex'])->name('storeEU.index');
-    Route::get('/store/editing', [EUController::class, 'editing'])->name('storeEU.editing');
-    Route::get('/store/design', [EUController::class, 'design'])->name('storeEU.design');
-    Route::resource('/store', EUController::class);
-    route::get('/store/{type}', [EUController::class, 'show']);
 
     //services
     Route::get('/services/all', function () {
         return view('EU.services.index');
     });
 
-    //cart
-    // Route::get('/cart', function () {
-    //     return view('EU.transaction.cart');
-    // });
-
     //transaction
     Route::get('/pembayaran', function () {
         return view('EU.transaction.pembayaran');
     });
-
-
-
-
-    // user EU
-    // Route::get('/edit-profile', function () {
-    //     return view('EU.user.edit');
-    // });
-    // Route::get('/profile', function () {
-    //     return view('EU.user.index');
-    // });
-
-    // user
-
-
 
     // // //transaction
     Route::resource('/transaksi', TransaksiController::class);
@@ -225,10 +178,6 @@ route::middleware(['client', 'employee'])->group(function () {
 // role admin
 Route::middleware('admin')->group(function () {
     Route::resource('/dashboard', DashboardController::class);
-
-    //store
-    Route::resource('adm_store', ProdukController::class);
-    Route::get('/adm_store/{id}/hapus', [ProdukController::class, 'hapus'])->name('adm_store.hapus');
 
     //services
     Route::resource('services', ServicesController::class);

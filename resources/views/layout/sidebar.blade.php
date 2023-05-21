@@ -96,7 +96,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="/adm_store" class="nav-link">
+                    <a href="{{route('store.index')}}" class="nav-link">
                         <i class="nav-icon fa-solid fa-store"></i>
                         <p>
                             Store

@@ -18,12 +18,10 @@
     <div class="container mb-5">
         {{-- navbar kategori --}}
         <div class="d-flex flex-row text-center gap-3">
-            <a href="{{ route('storeEU.index') }}" class="text-capitalize my-3 active">All</a>
+            <a href="{{ route('store.index') }}" class="text-capitalize my-3 active">All</a>
             @foreach ($layanan as $l)
                 {{-- //branch main2 --}}
-                <a href="{{ route('store.show', $l->layanan) }}" class=" my-3 text-capitalize">{{ $l->layanan }}</a>
-                {{-- //branch main
-                <a href="{{ route('store.show', $l->id) }}" class=" my-3 text-capitalize">{{ $l->layanan }}</a> --}}
+                <a href="{{ route('store.showtype', $l->layanan) }}" class=" my-3 text-capitalize">{{ $l->layanan }}</a>
             @endforeach
 
         </div>
@@ -55,7 +53,7 @@
                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                 </a>
                             @endguest
-
+                            @auth
                             @if (empty($member))
                                 <a href="{{ route('user.show',$user) }}" class="btn btn-primary">
                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
@@ -79,7 +77,7 @@
                                     @endif
                                 @endauth
                             @endif
-
+                            @endauth
 
 
                         </div>
