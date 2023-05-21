@@ -54,6 +54,13 @@ route::get('/returnan', function () {
     return view('returnan');
 });
 
+
+//history transaksi
+Route::get('/history-transaction', function () {
+    return view('EU.history.index');
+});
+
+
 //portfolio
 Route::resource('portfolio', PortofolioController::class);
 
@@ -184,7 +191,7 @@ route::middleware(['client', 'employee'])->group(function () {
     });
 
 
-    
+
 
     // user EU
     // Route::get('/edit-profile', function () {
