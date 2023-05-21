@@ -34,6 +34,11 @@ class ServicesController extends Controller
         return view('Admin.services.tambah', compact('jenis_layanan'));
     }
 
+    public function ilustrasi()
+    {
+        return view('Admin.services.ilustrasi');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
