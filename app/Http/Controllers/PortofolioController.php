@@ -96,7 +96,7 @@ class PortofolioController extends Controller
         if (in_array($u, $admin)){
             return view('Admin.portofolio.show', compact('porto', 'pic'));
         }else{
-            return view('EU.portofolio.index', compact('porto', 'pic'));
+            return view('EU.portofolio.show', compact('porto', 'pic'));
         }
 
     }

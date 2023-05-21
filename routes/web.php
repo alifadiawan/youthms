@@ -54,6 +54,13 @@ route::get('/returnan', function () {
     return view('returnan');
 });
 
+
+//history transaksi
+Route::get('/history-transaction', function () {
+    return view('EU.history.index');
+});
+
+
 //portfolio
 Route::resource('portfolio', PortofolioController::class);
 
@@ -127,6 +134,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
+    Route::get('/filter', [UserController::class, 'filterUsers'])->name('user.filter');
     Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
 
     
@@ -187,7 +195,7 @@ route::middleware(['client', 'employee'])->group(function () {
     });
 
 
-    
+
 
     // user EU
     // Route::get('/edit-profile', function () {
@@ -240,8 +248,7 @@ Route::middleware('admin')->group(function () {
     Route::get('segmen/{id}/hapus', [SegmenController::class, 'hapus'])->name('segmen.hapus');
 
 
-    //user
-
+    //role
     Route::post('role', [RoleController::class, 'store'])->name('role.store');
     Route::get('role/{id}/hapus', [RoleController::class, 'hapus'])->name('role.hapus');
 

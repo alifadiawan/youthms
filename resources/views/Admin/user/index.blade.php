@@ -31,36 +31,22 @@
                         aria-expanded="false" aria-controls="collapseExample">
                          Filter <i class="fas fa-chevron-down"></i>
                     </a>
-                    <a href="" class="btn btn-outline-primary ml-3" style="border-radius: 20px">Active role</a>
+                    <!-- <a href="" class="btn btn-outline-primary ml-3" id="activeRoleButton" style="border-radius: 20px">Active role</a> -->
                     <div class="collapse" id="collapseExample">
                         <div class="my-3">
-                            <form action="" class="form-inline">
-                                <select name="" id="" class="form-control mr-2">
+                            <form action="{{route('user.filter')}}" class="form-inline" id="filterForm">
+                                <select name="role_id" id="role_id" class="form-control mr-2">
                                     <option value="">Pilih Role</option>
                                     @foreach ($role as $item)
                                         <option value="{{ $item->id }}">{{ $item->role }}</option>
                                     @endforeach
                                 </select>
-                                <a href="" class="btn btn-primary">
+                                <button id="filterButton" class="btn btn-primary">
                                     <i class="fas fa-search"></i>
-                                </a>
+                                </button>
                             </form>
                         </div>
                     </div>
-
-                    {{-- <p class="text-muted font-weight-bold">Sort By : </p>
-                    <form action="" class="form-inline">
-                        <select name="" id="" class="form-control mr-2">
-                            <option value="">Role</option>
-                            @foreach ($role as $item)
-                            <option value="{{ $item->id }}">{{ $item->role }}</option>
-                            @endforeach
-                        </select>
-                        <a href="" class="btn btn-primary">
-                            <i class="fas fa-search"></i>
-                        </a>
-                    </form> --}}
-
                 </div>
         @if (auth()->user()->role->role == 'admin')
                 <div class="col-5 text-right">
@@ -69,7 +55,7 @@
                 </div>
             </div>
         @endif
-        <table class="table table-striped table-hover mt-2 bg-white">
+        <table id="userTable" class="table table-striped table-hover mt-2 bg-white">
             <thead>
                 <tr style="background-color: #0EA1E2">
                     <th class="text-white">No</th>
@@ -78,17 +64,17 @@
                     <th class="text-white">Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="userTableBody">
                 @if (count($user) < 1)
                     <tr>
                         <td colspan="5" class="text-center">Belum Ada User !!</td>
                     </tr>
                 @else
                     @foreach ($user as $u)
-                        <tr>
+                        <tr class="userTableRow">
                             <td scope="row">{{ $loop->iteration }}</td>
                             <td>{{ $u->username }}</td>
-                            <td class="text-capitalize">{{ $u->role->role }}</td>
+                            <td>{{ $u->role->role }}</td>
                             <td>
                                 <a href="{{ route('user.show', $u->id) }}"
                                     class="btn btn-sm btn text-white rounded-pill"
@@ -121,7 +107,7 @@
                     @else
                         @foreach ($role as $r)
                             <tr>
-                                <td class="text-capitalize">{{ $r->role }}</td>
+                                <td>{{ $r->role }}</td>
                                 <td><button data-toggle="modal" data-target="#hapusRole{{ $r->id }}"
                                         class="btn text-danger"><i class="fas fa fa-trash"></i></button></td>
                             </tr>
@@ -179,4 +165,50 @@
         </div>
     </div>
 @endforeach
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#filterForm').submit(function(event) {
+            event.preventDefault();
+
+            var formData = $(this).serialize();
+
+            // Menggunakan jQuery untuk melakukan permintaan Ajax
+            $.ajax({
+              url: '{{route('user.filter')}}', // Ganti 'nama_route_anda' dengan URL atau rute yang sesuai
+              type: 'GET', // Ganti dengan metode HTTP yang sesuai jika perlu
+              data: formData, // Ganti nilai_role_id dengan nilai yang Anda ingin kirimkan
+              success: function(response) {
+                // Respons berhasil diterima dari server
+                // Mengupdate tabel dengan baris baru
+                var tableBody = $('#userTable').find('tbody'); // Ganti 'nama_tabel' dengan ID tabel Anda
+                tableBody.empty(); // Menghapus baris yang ada sebelumnya
+
+                var counter = 1; // Variabel penghitung
+
+                // Mengisi tabel dengan data baru
+                $.each(response.user, function(index, user) {
+                  var detailUrl = '{{ route('user.show', ['user' => '__id__']) }}';
+                  detailUrl = detailUrl.replace('__id__', user.id);
+                  var newRow = '<tr>' +
+                                '<td>' + counter + '</td>' +
+                                '<td>' + user.username + '</td>' +
+                                '<td>' + user.role.role + '</td>' +
+                                '<td><a href="' + detailUrl + '" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a></td>' +
+                                // Tambahkan kolom tambahan sesuai kebutuhan
+                                '</tr>';
+                  tableBody.append(newRow); // Menambahkan baris baru ke tabel
+                  counter++;// Increment Penghitung
+                });
+              },
+              error: function(xhr) {
+                // Error saat melakukan permintaan Ajax
+                console.log(xhr.responseText);
+              }
+            });
+        })
+    })
+</script>
+
 @endsection
