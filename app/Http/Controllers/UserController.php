@@ -234,17 +234,22 @@ class UserController extends Controller
         // return $roles;
 
         if ($request->role_id == null) {
-            $user = User::whereHas('role')->with('role')->get(); 
+            $user = User::whereHas('role')->with('role')->get();
+            $activeRoleName = ''; // Tidak ada filter aktif, roleName kosong
         }
         else {
             $roles = $request->role_id;
             $user = User::where('role_id','=', $roles)->with('role')->get();
-            $r = Role::where('id','=',$roles)->get();
+            $r = Role::where('id','=',$roles)->first();
+            // return $r;
+            $activeRoleName = $r ? $r->role : ''; // Mengambil roleName jika role_id valid
+            // return $activeRoleName;
         }
 
         // Menggunakan array asosiatif untuk mengirim data ke AJAX
         $response = [
-            'user' => $user
+            'user' => $user,
+            'activeRoleName' => $activeRoleName
         ];
         // return $response;
 
