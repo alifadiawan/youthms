@@ -78,7 +78,22 @@
                         <p>
                             Services
                         </p>
+                        <i class="right fas fa-angle-left"></i>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/services" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Services</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/services" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Edit Services Illustration</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="/adm_store" class="nav-link">
@@ -110,7 +125,22 @@
                         <p>
                             Portofolio
                         </p>
+                        <i class="right fas fa-angle-left"></i>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('portfolio.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Portofolio</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('portfolio.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Edit Porto Illustration</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="/landing-page" class="nav-link">

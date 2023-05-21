@@ -35,7 +35,7 @@
                         <div class="card card-hover text-center" style="width: 18rem;">
                             <img class="card-img-top" src="{{ asset('./portofolio/'. $item->cover) }}" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title"><a href="">{{$item->project}}</a></h5>
+                                <h5 class="card-title"><a href="{{route('portfolio.show', $item->id)}}">{{$item->project}}</a></h5>
                             </div>
                         </div>
                     </div>

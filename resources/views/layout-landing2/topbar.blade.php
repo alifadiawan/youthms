@@ -15,7 +15,7 @@
 
             @guest
                 <li class="nav-item"><a class="nav-link" href="{{ route('authcheck') }}"><i
-                            class="fa-solid fa-cart-shopping"></i></a></li>
+                            class="fa-solid fa-cart-shopping"></i><span class="badge bg-primary ms-3">2</span></a></li>
 
                 <li><a class="getstarted" href="/login">Login</a></li>
             @endguest
@@ -33,7 +33,7 @@
                         {{-- <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li> --}}
                         <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                         </li>
-                        <li><a class="dropdown-item" href="/">Histori Transaksi</a></li>
+                        <li><a class="dropdown-item" href="/history-transaction">Histori Transaksi</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

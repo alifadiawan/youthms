@@ -6,15 +6,15 @@
 
     <section class="h-100">
         <div class="container py-5">
-            <a href="{{route('storeEU.index')}}" class="btn">
-                <i class="fas fa-arrow-left"></i>  Store
+            <a href="{{ route('storeEU.index') }}" class="btn">
+                <i class="fas fa-arrow-left"></i> Store
             </a>
             <div class="row d-flex justify-content-center my-4">
 
                 @if ($cart->isEmpty())
                     <div class="col-12">
                     @else
-                    <div class="col-md-8">
+                        <div class="col-md-8">
                 @endif
 
 
@@ -77,7 +77,7 @@
             @if ($cart->isEmpty())
                 <div class="col-md-4" style="display: none">
                 @else
-                <div class="col-md-4">
+                    <div class="col-md-4">
             @endif
 
 
@@ -88,7 +88,8 @@
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
                         @foreach ($cart as $c)
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
+                            <li
+                                class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
                                 {{ $c->produk->nama_produk }}
                                 <span id="total-price_{{ $c->id }}">Rp.
                                     {{ number_format($c->quantity * $c->produk->harga) }}</span>
@@ -105,32 +106,26 @@
                         </li>
                     </ul>
 
-                    <div class="row">
-                        <div class="col">
-                            <form action="{{ route('transaksi.create') }}" method="put">
-                                @csrf
-                                <button type="submit" id="checkout" class="btn btn-success" style="display: ">
-                                    <input type="hidden" name="member_id" value="{{ auth()->user()->id }}">
-                                    <input type="hidden" name="total_bayar" value="0">
-                                    <input type="hidden" name="total" id="total" value="{{ $totalTransaksi }}">
-                                    Go to checkout
-                                </button>
-                            </form>
-                        </div>
-                        {{-- <form action="{{ route('cart.store') }}" method="get"> --}}
-                        @csrf
-                        <div class="col text-end">
-                            <button type="submit" id="checkout" class="btn btn-primary" style="display: ">
-                                <i class="fas fa-refresh"></i>
+                    @if ($cart->isEmpty())
+                        <h2>GABOLE CHECK OUT</h2>
+                        <h5>masi Rp. 0 tuh, kaya dompetku :(</h5>
+                    @else
+                        <form action="{{ route('transaksi.create') }}" method="put">
+                            @csrf
+                            <button type="submit" id="checkout" class="btn btn-success btn-lg btn-block"
+                                style="display: ">
+                                <input type="hidden" name="member_id" value="{{ auth()->user()->id }}">
+                                <input type="hidden" name="total" id="total" value="{{ $totalTransaksi }}">
+                                Go to checkout
                             </button>
-                        </div>
-                    </div>
-                    {{-- </form> --}}
+                        </form>
+                    @endif
+                    <hr>
                 </div>
             </div>
-        </div><!-- end summary -->
-
         </div>
+        {{-- </form> --}}
+
     </section>
 
 
