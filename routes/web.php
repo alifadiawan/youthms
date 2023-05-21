@@ -236,6 +236,7 @@ Route::middleware('admin')->group(function () {
     Route::GET('jenislayanan/{id}/hapus', [JenisLayananController::class, 'hapus'])->name('jenislayanan.hapus');
     Route::GET('services/{id}/hapus', [ServicesController::class, 'hapus'])->name('services.hapus');
     Route::get('id_services', [ServicesController::class, 'id_services']);
+    Route::get('/service-ilustrasi', [ServicesController::class, 'ilustrasi'])->name('services.ilustrasi');
 
     //blog
     Route::get('blog/{id}/hapus', [BlogController::class, 'hapus'])->name('blog.hapus');
@@ -288,6 +289,7 @@ Route::middleware('admin')->group(function () {
     //portofolio
     // Route::resource('portfolio', PortofolioController::class);
     Route::get('/portfolio/{id}/hapus', [PortofolioController::class, 'hapus'])->name('portfolio.hapus');
+    Route::get('/portofolio-ilustrasi', [PortofolioController::class, 'ilustrasi'])->name('portfolio.ilustrasi');
 
     //notif
 

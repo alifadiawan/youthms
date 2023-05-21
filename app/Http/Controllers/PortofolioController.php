@@ -38,6 +38,11 @@ class PortofolioController extends Controller
         return view('Admin.portofolio.create-portofolio');
     }
 
+    public function ilustrasi()
+    {
+        return view('Admin.portofolio.ilustrasi');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
