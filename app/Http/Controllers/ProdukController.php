@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JenisLayanan;
 use App\Models\Produk;
 use App\Models\Services;
+use App\Models\Member;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
@@ -18,10 +19,33 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $product = Produk::all();
+        //untuk EU
+        $layanan = JenisLayanan::with('services.produk')->get();
+        $cek = produk::doesnthave('cart')->pluck('id')->toarray();
+        $cart = produk::has('cart')->get('id');
+        $c = produk::wherein('id', $cart)->get('id');
+        $compact = ['layanan','c'];
+
+        //untuk halaman admin
+        $product = Produk::paginate(5);
         $services = Services::all();
-        
-        return view('Admin.store.index' , compact('product' , 'services'));
+
+        if (auth()->check()) {
+            $u = auth()->user()->role->role;
+            $admin = ['admin', 'owner'];
+            if (in_array($u, $admin)) {
+                return view('Admin.store.index' , compact('product' , 'services'));
+            }
+            else {
+                $user = auth()->user()->id;
+                $member = member::where('user_id', $user)->get();
+                $compact = array_merge($compact,['user','member']);
+                return view('EU.store.index', compact($compact));
+            }
+        }
+        else{
+            return view('EU.store.index', compact($compact));
+        }
     }
 
     /**
@@ -55,11 +79,51 @@ class ProdukController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Produk $produk)
+    {
+        // code...
+    }
+
+    public function showid($id)
     {
         $product = Produk::find($id);
         
         return view('Admin.store.detail', compact('product'));
+    }
+
+    public function showtype($type)
+    {
+        $layanan = JenisLayanan::all();
+        $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
+
+        $jl = JenisLayanan::where('layanan',$type)->first();
+        $services = $jl->services;
+
+        foreach ($services as $s) {
+            foreach ($s->produk as $serv) {
+                $pr[$serv->id] = $serv->id;
+                $z[$serv->id] = $serv;
+            }
+        }
+        $cek = produk::doesnthave('cart')->pluck('id')->toarray();
+        $cart = produk::has('cart')->get('id');
+
+        $irisan_produk = array_intersect_key($pr, array_flip($cek));
+        $produk = produk::wherein('id', $pr)->get();
+        $p = produk::wherein('id', $pr)->get('id');
+        $c = produk::wherein('id', $cart)->get('id');
+
+        if (auth()->check()) {
+            $user = auth()->user()->id;
+            $member = member::where('user_id', $user)->get();
+            return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan', 'c','user','member'));
+            
+        }
+
+        else {
+            return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan', 'c'));
+        }
+
     }
 
     /**

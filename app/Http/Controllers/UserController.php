@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $user = User::paginate(5);
         $role = Role::all();
 
         $u = auth()->user()->role->role;

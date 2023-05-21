@@ -5,7 +5,7 @@
 <div class="card p-3">
     <div class="row">
         <div class="col">
-            <a href="{{ route('adm_store.create') }}" class="btn mb-3 text-white" style="background-color: #1864BA">Tambah
+            <a href="{{ route('store.create') }}" class="btn mb-3 text-white" style="background-color: #1864BA">Tambah
                 produk</a>
             <table class="table table-hover">
                 <thead class="text-white" style="background-color: #0EA1E2">
@@ -30,7 +30,7 @@
                                 <td>{{ $item->nama_produk }}</td>
                                 <td>Rp. {{ number_format( $item->harga) }}</td>
                                 <td>
-                                    <a href="{{ route('adm_store.show', $item->id) }}"
+                                    <a href="{{ route('store.showid', $item->id) }}"
                                         class="btn btn-sm rounded-pill text-white"
                                         style="background-color: #0EA1E2">Detail</a>
                                 </td>
@@ -40,6 +40,9 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="row">
+        {{$product->links()}}
     </div>
 
 </div>
