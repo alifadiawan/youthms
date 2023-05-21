@@ -32,7 +32,7 @@ class LoginController extends Controller
             
             // cek role suatu user
             $user = auth()->user()->role->role;
-            $company = ['admin','owner','employee'];
+            $company = ['admin','owner'];
             
             if (in_array($user,$company)) {
                 // return true;
@@ -66,6 +66,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         notify()->success('Berhasil Logout !!');
-        return redirect('login');
+        return redirect('/');
     }
 }

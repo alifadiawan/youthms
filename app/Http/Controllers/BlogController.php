@@ -19,9 +19,20 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $segmen = Segmen::all();
-        $data = Blog::paginate(5);
-        return view('Admin.blog.index', compact('data','segmen'));
+        if (auth()->check()) {
+            $u = auth()->user()->role->role;
+            $admin = ['admin', 'owner'];
+            if (in_array($u, $admin)) {
+                $segmen = Segmen::all();
+                $data = Blog::paginate(5);
+                return view('Admin.blog.index', compact('data','segmen'));
+            } else {
+                return view('EU.blog.index');
+            }
+        }
+        else {
+            return view('EU.blog.index');
+        }
     }
 
     /**

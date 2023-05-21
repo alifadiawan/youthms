@@ -68,9 +68,43 @@ Route::resource('portfolio', PortofolioController::class);
 
 //store
 Route::resource('store', ProdukController::class);
-Route::get('/store/{id}/hapus', [ProdukController::class, 'hapus'])->name('store.hapus');
 Route::get('/store/{id}/showid', [ProdukController::class, 'showid'])->name('store.showid');
 Route::get('/store/{type}/show', [ProdukController::class, 'showtype'])->name('store.showtype');
+    
+//blog
+Route::resource('blog', BlogController::class);
+Route::get('/blog/editing', function () {
+    return view('EU.blog.editing');
+});
+Route::get('/blog/design', function () {
+    return view('EU.blog.design');
+});
+
+Route::get('/blog/pemrograman', function () {
+    return view('EU.blog.pemrograman');
+});
+Route::get('/blog/show', function () {
+    return view('EU.blog.show');
+});
+
+//services
+Route::get('/services/all', function () {
+    return view('EU.services.index');
+});
+
+Route::get('/services/detail', function () {
+    return view('EU.services.detail');
+});
+
+Route::get('/profile', function () {
+    return view('EU.user.index');
+});
+
+//logout
+Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+//logout khusus jika eror (akses dari ketik url /logout)
+// Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
 
 //guest
 Route::middleware('guest')->group(function () {
@@ -78,41 +112,8 @@ Route::middleware('guest')->group(function () {
     Route::get('authcheck', [LoginController::class, 'authcheck'])->name('authcheck');
     Route::post('login', [LoginController::class, 'authenticate']);
 
-    //blog
-    Route::get('/blog/editing', function () {
-        return view('EU.blog.editing');
-    });
-    Route::get('/blog/design', function () {
-        return view('EU.blog.design');
-    });
-
-    Route::get('/blog/pemrograman', function () {
-        return view('EU.blog.pemrograman');
-    });
-    Route::get('/blog/show', function () {
-        return view('EU.blog.show');
-    });
-
-    //services
-    Route::get('/services/all', function () {
-        return view('EU.services.index');
-    });
-
-    Route::get('/services/detail', function () {
-        return view('EU.services.detail');
-    });
-
-    Route::get('/blog/all', function () {
-        return view('EU.blog.index');
-    });
-
-
     //register
     Route::resource('register', RegisterController::class);
-
-    Route::get('/profile', function () {
-        return view('EU.user.index');
-    });
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -123,35 +124,15 @@ Route::middleware(['auth'])->group(function () {
 
 //  client
 route::middleware(['client', 'employee'])->group(function () {
-    //blog
-    Route::get('/blog/editing', function () {
-        return view('EU.blog.editing');
-    });
-    Route::get('/blog/design', function () {
-        return view('EU.blog.design');
-    });
-    Route::get('/blog/pemrograman', function () {
-        return view('EU.blog.pemrograman');
-    });
-    Route::get('/blog/show', function () {
-        return view('EU.blog.show');
-    });
-
     //group-chats
     Route::get('/groupchat', function () {
         return view('EU.chat.index');
     });
 
-
     Route::get('/edit_profile', [EUController::class, 'editprofile'])->name('storeEU.edit_profile');
     Route::get('/show_profile', [EUController::class, 'showprofile'])->name('storeEU.show_profile');
     Route::get('/update_profile', [EUController::class, 'updateprofile'])->name('storeEU.update_profile');
     Route::get('/hapus_profile', [EUController::class, 'hapusprofile'])->name('storeEU.hapus_profile');
-
-    //services
-    Route::get('/services/all', function () {
-        return view('EU.services.index');
-    });
 
     //transaction
     Route::get('/pembayaran', function () {
@@ -164,13 +145,7 @@ route::middleware(['client', 'employee'])->group(function () {
     Route::post('/cart/increase', [TransaksiController::class])->name('cart.increase');
 
     // Route::post('/transaksi/hapus/{id}', [TransaksiController::class,'hapus'])->name('transaksi.hapus');
-
-    //portofolio EU
-    Route::get('/portofolio/all', function () {
-        return view('EU.portofolio.index');
-    });
     // Route::get('/cart', [TransaksiController::class, 'cart'])->name('transaksi.cart');
-
     Route::resource('/cart', CartController::class);
 });
 
@@ -189,10 +164,11 @@ Route::middleware('admin')->group(function () {
 
     //blog
     Route::get('blog/{id}/hapus', [BlogController::class, 'hapus'])->name('blog.hapus');
-    Route::resource('blog', BlogController::class);
     Route::post('segmen', [SegmenController::class, 'store'])->name('segmen.store');
     Route::get('segmen/{id}/hapus', [SegmenController::class, 'hapus'])->name('segmen.hapus');
 
+    //store
+    Route::get('/store/{id}/hapus', [ProdukController::class, 'hapus'])->name('store.hapus');
 
     //role
     Route::post('role', [RoleController::class, 'store'])->name('role.store');
@@ -236,25 +212,13 @@ Route::middleware('admin')->group(function () {
     Route::get('/landing-page/text/{id}/update', [landingpageController::class, 'update_text'])->name('landing.text_update');
 
     //portofolio
-    // Route::resource('portfolio', PortofolioController::class);
     Route::get('/portfolio/{id}/hapus', [PortofolioController::class, 'hapus'])->name('portfolio.hapus');
     Route::get('/portofolio-ilustrasi', [PortofolioController::class, 'ilustrasi'])->name('portfolio.ilustrasi');
 
     //notif
-
-    // Route::resource('notif', NotificationController::class);
     Route::post('/read', [NotificationController::class, 'read'])->name('read');
     Route::get('/read_chat/{notifId}', [NotificationController::class, 'read_chat'])->name('read.chat');
 
     // transaction
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
 });
-// });
-
-
-//logout
-Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
-
-
-//logout khusus jika eror (akses dari ketik url /logout)
-// Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
