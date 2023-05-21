@@ -41,22 +41,23 @@
 
     <!-- Show Images modal -->
     @foreach ($pic as $modal)
-    <div class="modal fade" id="foto{{$modal->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+      <div class="modal fade" id="foto{{$modal->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                <img src="" class="imagepreview" style="width: 100%;" >
+              <img src="" class="imagepreview" style="width: 100%;" >
             </div>
           </div>
         </div>
       </div>
     @endforeach
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @foreach($pic as $pop)
     <script>
         $(function() {
@@ -67,5 +68,4 @@
         });
     </script>
     @endforeach
-
 @endsection

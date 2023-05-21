@@ -31,12 +31,12 @@
                         aria-expanded="false" aria-controls="collapseExample">
                          Filter <i class="fas fa-chevron-down"></i>
                     </a>
-                    <!-- <a href="" class="btn btn-outline-primary ml-3" id="activeRoleButton" style="border-radius: 20px">Active role</a> -->
+                    <a href="" class="btn btn-outline-primary text-capitalize ml-3" id="activeRoleButton" style="border-radius: 20px">Active role</a>
                     <div class="collapse" id="collapseExample">
                         <div class="my-3">
                             <form action="{{route('user.filter')}}" class="form-inline" id="filterForm">
-                                <select name="role_id" id="role_id" class="form-control mr-2">
-                                    <option value="">Pilih Role</option>
+                                <select name="role_id" id="role_id" class="form-control text-capitalize mr-2">
+                                    <option value="">Semua</option>
                                     @foreach ($role as $item)
                                         <option value="{{ $item->id }}">{{ $item->role }}</option>
                                     @endforeach
@@ -74,7 +74,7 @@
                         <tr class="userTableRow">
                             <td scope="row">{{ $loop->iteration }}</td>
                             <td>{{ $u->username }}</td>
-                            <td>{{ $u->role->role }}</td>
+                            <td class="text-capitalize">{{ $u->role->role }}</td>
                             <td>
                                 <a href="{{ route('user.show', $u->id) }}"
                                     class="btn btn-sm btn text-white rounded-pill"
@@ -107,7 +107,7 @@
                     @else
                         @foreach ($role as $r)
                             <tr>
-                                <td>{{ $r->role }}</td>
+                                <td class="text-capitalize">{{ $r->role }}</td>
                                 <td><button data-toggle="modal" data-target="#hapusRole{{ $r->id }}"
                                         class="btn text-danger"><i class="fas fa fa-trash"></i></button></td>
                             </tr>
@@ -169,6 +169,31 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
+        var isFilterActive = false; // Status filter aktif
+
+        // Fungsi untuk mengubah status dan teks tombol "Active Role"
+        function toggleActiveRoleButton(active, roleName = '') {
+            var activeRoleButton = $('#activeRoleButton');
+            if (active) {
+                activeRoleButton.addClass('active');
+                activeRoleButton.text(roleName);
+            } else {
+                activeRoleButton.removeClass('active');
+                activeRoleButton.text('Active role');
+            }
+        }
+
+        // Fungsi untuk mengembalikan tabel ke keadaan awal
+        function resetTable() {
+            var tableBody = $('#userTable').find('tbody');
+            tableBody.empty();
+
+            // TODO: Tampilkan semua data di tabel
+
+            toggleActiveRoleButton(false);
+            isFilterActive = false;
+        }
+
         $('#filterForm').submit(function(event) {
             event.preventDefault();
 
@@ -201,13 +226,24 @@
                   tableBody.append(newRow); // Menambahkan baris baru ke tabel
                   counter++;// Increment Penghitung
                 });
+
+                // Mengubah status tombol "Active Role"
+                toggleActiveRoleButton(true, response.activeRoleName);
+                isFilterActive = true;
               },
               error: function(xhr) {
                 // Error saat melakukan permintaan Ajax
                 console.log(xhr.responseText);
               }
             });
-        })
+        });
+
+        // Event handler untuk tombol "Active Role"
+        $('#activeRoleButton').click(function() {
+            if (isFilterActive) {
+                resetTable();
+            }
+        });
     })
 </script>
 
