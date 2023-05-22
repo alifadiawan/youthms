@@ -48,7 +48,9 @@ class EmployeeController extends Controller
         ]);
         notify()->success('Data Diri Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Data Diri Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('user.show', ['user' => $employee->user_id])); // Ganti dengan rute yang sesuai
@@ -85,7 +87,9 @@ class EmployeeController extends Controller
         $Member->update($input);
         notify()->success('Profile Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Profile Berhasil Diupdate !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('user.show', ['user' => $Member->user_id])); // Ganti dengan rute yang sesuai
@@ -112,7 +116,9 @@ class EmployeeController extends Controller
 
         notify()->success('Profile Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Profile Berhasil Dihapus !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('user.index')); // Ganti dengan rute yang sesuai

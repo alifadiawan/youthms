@@ -28,7 +28,7 @@
                                             </p>
                                             <div class="row text-center">
                                                 <div class="col">
-                                                    <a href="" class="btn text-primary">
+                                                    <a href="{{route('portfolio.show', $p->id)}}" class="btn text-primary">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
                                                     <a href="{{ route('portfolio.edit', $p->id) }}"

@@ -59,7 +59,9 @@ class UserController extends Controller
         ]);
         notify()->success('Akun Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Akun Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('user.show', ['user' => $u->id])); // Ganti dengan rute yang sesuai
@@ -146,7 +148,9 @@ class UserController extends Controller
             }
             notify()->success('Akun Berhasil Diupdate !!');
             // mengirim notifikasi
-            $user = Auth::user();
+            $user = User::whereHas('role', function ($query) {
+                $query->whereIn('role', ['admin', 'owner']);
+            })->get();
             $message = "Akun Berhasil Diupdate !!";
             $notification = new NewMessageNotification($message);
             $notification->setUrl(route('user.show', ['user' => $user->id])); // Ganti dengan rute yang sesuai
@@ -221,7 +225,9 @@ class UserController extends Controller
         notify()->success('Akun Berhasil Dihapus !!');
 
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Akun Berhasil Dihapus !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('user.index')); // Ganti dengan rute yang sesuai

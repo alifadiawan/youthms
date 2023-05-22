@@ -6,7 +6,7 @@
     <div class="col-8">
         <div class="card rounded shadow-md">
             <div class="card-body">
-                <form action="{{ route('adm_store.store') }}" method="POST">
+                <form action="{{ route('store.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     {{-- nama produk --}}
@@ -36,15 +36,21 @@
 
                     {{-- deskripsi produk --}}
                     <div class="form-group">
-                        <label for="">Deskripsi produk</label>
+                        <label for="">Deskripsi Produk</label>
                         <textarea name="deskripsi" id="" cols="30" rows="5" class="form-control"></textarea>
+                    </div>
+
+                    {{-- foto produk --}}
+                    <div class="form-group">
+                        <label for="">Deskripsi Produk</label>
+                        <input type="file" name="foto" id="foto" class="form-control">
+                        <img id="preview" src="">
                     </div>
 
 
                     <div class="row">
                         <div class="col">
-                            <input type="submit" href="{{ route('store.create') }}" value="Submit"
-                                class="btn text-white" style="background-color: #0EA1E2">
+                            <input type="submit" value="Submit" class="btn text-white" style="background-color: #0EA1E2">
                             <a href="{{ route('store.index') }}" class="btn btn-secondary">cancel</a>
                         </div>
                     </div>
@@ -54,5 +60,25 @@
         </div> <!-- end card -->
     </div> <!-- end col -->
 </div> <!-- end row -->
+
+<style>
+    #preview {
+            width: 100%;
+            height: 190px;
+            object-fit: contain;
+    }
+</style>
+
+<script>
+    document.getElementById("foto").addEventListener("change", function() {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var preview = document.getElementById("preview");
+                preview.src = reader.result;
+                preview.style.display = "block";
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+</script>
 
 @endsection
