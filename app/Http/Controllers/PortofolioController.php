@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Notification;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Models\PortoIlls;
 
 class PortofolioController extends Controller
 {
@@ -44,9 +45,52 @@ class PortofolioController extends Controller
         return view('Admin.portofolio.create-portofolio');
     }
 
-    public function ilustrasi()
+    public function ilustrasi_index()
     {
-        return view('Admin.portofolio.ilustrasi');
+        $ills = PortoIlls::all();
+        return view('Admin.portofolio.ilustrasi', compact('ills'));
+    }
+
+    public function ilustrasi_edit($id)
+    {
+        $ills = PortoIlls::find($id);
+        return view('Admin.portofolio.edit-ilustrasi', compact('ills'));
+    }
+
+    public function ilustrasi_update(Request $request ,$id)
+    {
+        $ills = PortoIlls::find($id);
+        if ($request->hasFile('foto')) {
+            //hapus foto lama
+            File::delete('./illustration/'.$ills->foto);
+
+            //ambil info file
+            $file = $request->file('foto');
+
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './illustration/';
+            $file->move($tujuan_upload,$nama_file);
+
+            //simpan ke database
+            $ills->foto = $nama_file;   
+        }
+        $ills->text_head = $request->text_head;
+        $ills->text_body = $request->text_body;
+        $ills->save();
+
+        notify()->success('Ilustrasi Portofolio Berhasil Diupdate !!');
+        // mengirim notifikasi
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Ilustrasi Portofolio Berhasil Diubah !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('portofolio.ilustrasi')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+        return redirect('/portofolio-ilustrasi');
     }
 
     /**

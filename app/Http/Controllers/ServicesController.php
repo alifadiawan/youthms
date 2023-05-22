@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\File;
+use App\Models\ServicesIlls;
 
 class ServicesController extends Controller
 {
@@ -37,7 +38,99 @@ class ServicesController extends Controller
 
     public function ilustrasi()
     {
-        return view('Admin.services.ilustrasi');
+        $ills = ServicesIlls::all();
+        return view('Admin.services.ilustrasi', compact('ills'));
+    }
+
+    public function ilustrasi_edit($id)
+    {
+        $ills = ServicesIlls::find($id);
+        return view('Admin.services.edit-ilustrasi', compact('ills'));
+    }
+
+    public function ilustrasi_update(Request $request ,$id)
+    {
+        $ills = ServicesIlls::find($id);
+        
+        if ($request->hasFile('hero_ills')) {
+            //hapus foto lama
+            File::delete('./illustration/'.$ills->hero_ills);
+
+            //ambil info file
+            $file = $request->file('hero_ills');
+
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './illustration/';
+            $file->move($tujuan_upload,$nama_file);
+
+            //simpan ke database
+            $ills->hero_ills = $nama_file;   
+        }
+
+        if ($request->hasFile('ills1')) {
+            //hapus foto lama
+            File::delete('./illustration/'.$ills->ills1);
+
+            //ambil info file
+            $file = $request->file('ills1');
+
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './illustration/';
+            $file->move($tujuan_upload,$nama_file);
+            $ills->ills1 = $nama_file;
+        }
+
+        if ($request->hasFile('ills2')) {
+            //hapus foto lama
+            File::delete('./illustration/'.$ills->ills2);
+
+            //ambil info file
+            $file = $request->file('ills2');
+
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './illustration/';
+            $file->move($tujuan_upload,$nama_file);
+            $ills->ills2 = $nama_file;
+        }
+
+        if ($request->hasFile('ills3')) {
+            //hapus foto lama
+            File::delete('./illustration/'.$ills->ills3);
+
+            //ambil info file
+            $file = $request->file('ills3');
+
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './illustration/';
+            $file->move($tujuan_upload,$nama_file);
+            $ills->ills3 = $nama_file;
+        }
+
+        $ills->hero_text = $request->hero_text;
+        $ills->save();
+
+        notify()->success('Ilustrasi Service Berhasil Diupdate !!');
+        // mengirim notifikasi
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Ilustrasi Service Berhasil Diupdate !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('services.ilustrasi')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+        return redirect('/service-ilustrasi');
     }
 
     /**

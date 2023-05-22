@@ -1,36 +1,40 @@
 @extends('layout.admin')
-@section('content-title', 'Portofolio')
+@section('content-title', 'Edit Ilustrasi Portofolio')
 @section('content')
-@section('judul', 'Portofolio')
+@section('judul', 'Edit Ilustrasi Portofolio')
 
 
 <div class="container">
     <div class="row">
         <div class="col">
             <div class="card mb-5 p-5">
-                <div class="row">
-                    <div class="col">
-                        <p class="h3">Ilustrasi Lama</p>
-                        <img id="illustration" src="{{ asset('illustration/group-390.png') }}" style="width: 20rem">
+                <form action="{{route('portofolio.update_ilustrasi', $ills->id)}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="row">
+                        <div class="col">
+                            <p class="h3">Ilustrasi Lama</p>
+                            <img id="illustration" src="{{ asset('./illustration/'.$ills->foto) }}" style="width: 20rem">
+                        </div>
+                        <div class="col">
+                            <p class="h3">Ilustrasi Baru</p>
+                            <input type="file" name="foto" id="foto" class="form-control">
+                            <img id="preview" src="#" class="form-control">
+                        </div>
                     </div>
-                    <div class="col">
-                        <p class="h3">Ilustrasi Baru</p>
-                        <input type="file" name="partner" id="partner" class="form-control">
-                        <img id="preview" src="#" class="form-control">
+                    
+                    <div class="row mt-3">
+                        <p class="h3">Tagline</p>
+                        <input type="text" class="form-control" name="text_head" value="{{$ills->text_head}}">
+                        <p class="h3">description</p>
+                        <textarea name="text_body" class="form-control" cols="30" rows="3">{{$ills->text_body}}</textarea>
                     </div>
-                </div>
-                
-                <div class="row mt-3">
-                    <p class="h3">Tagline</p>
-                    <input type="text" class="form-control" value="Some of Our Amazing Projects">
-                    <p class="h3">description</p>
-                    <textarea name="" class="form-control" id="" cols="30" rows="3"> </textarea>
-                </div>
-                <div class="row mt-3">
-                    <div class="col">
-                        <a href="" class="btn btn-success">Submit</a>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <button class="btn btn-success">Submit</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -44,7 +48,7 @@
         }
 </style>
 <script>
-     document.getElementById("partner").addEventListener("change", function() {
+     document.getElementById("foto").addEventListener("change", function() {
             var reader = new FileReader();
             reader.onload = function() {
                 var preview = document.getElementById("preview");

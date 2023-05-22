@@ -135,7 +135,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('portfolio.ilustrasi')}}" class="nav-link">
+                            <a href="{{route('portofolio.ilustrasi')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Porto Page Illustration</p>
                             </a>
