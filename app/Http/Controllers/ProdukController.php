@@ -7,6 +7,7 @@ use App\Models\Produk;
 use App\Models\Services;
 use App\Models\Member;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
@@ -63,19 +64,33 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        $produk_baru = $request->all();
-        $produk = Produk::create($produk_baru);
+        //ambil info file
+        $file = $request->file('foto');
+        //rename
+        $nama_file = time()."_".$file->getClientOriginalName();
 
-        notify()->success('Berhasil ditambahkan',$request->nama_produk,);
+        $tujuan_upload = './produk/';
+        $file->move($tujuan_upload,$nama_file);
+
+        //insert data
+        $produk = Produk::create([
+            'foto' => $nama_file,
+            'nama_produk' => $request->nama_produk,
+            'harga' => $request->harga,
+            'deskripsi' => $request->deskripsi,
+            'services_id' => $request->services_id,
+        ]);
+
+        notify()->success('Berhasil Ditambahkan !!',$request->nama_produk,);
         // mengirim notifikasi
         $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
-        $message = "Produk Berhasil ditambahkan";
+        $message = $request->nama_produk." Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('adm_store.show', ['adm_store' => $produk->id])); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('store.showid', ['id' => $produk->id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
-        return redirect('/adm_store');
+        return redirect('/store');
     }
 
     /**
@@ -95,6 +110,8 @@ class ProdukController extends Controller
 
     public function showtype($type)
     {
+
+
         $layanan = JenisLayanan::all();
         $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
 
@@ -144,21 +161,40 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Produk::find($id);
-        $input = $request->all();
-        
-        $product->update($input);
+        $produk = Produk::find($id);
 
-        notify()->success('Produk berhasil diupdate');
+        if ($request->hasFile('foto')) {
+            //hapus foto lama
+            File::delete('./produk/'.$produk->foto);
+
+            //ambil info file
+            $file = $request->file('foto');
+
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './produk/';
+            $file->move($tujuan_upload,$nama_file);    
+            $produk->foto = $nama_file;
+        }
+        
+        $produk->nama_produk = $request->nama_produk;
+        $produk->deskripsi = $request->deskripsi;
+        $produk->harga = $request->harga;
+        $produk->services_id = $request->services_id;
+        $produk->save();
+
+        notify()->success($request->nama_produk.' Berhasil Diupdate !!');
         // mengirim notifikasi
         $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
-        $message = "Produk Berhasil diupdate";
+        $message = $request->nama_produk." Berhasil Diupdate !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('adm_store.show', ['adm_store' => $product->id])); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('store.showid', ['id' => $produk->id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
-        return redirect('/adm_store');
+        return redirect('/store');
     }
 
     /**
@@ -171,8 +207,9 @@ class ProdukController extends Controller
 
     public function hapus($id)
     {
-        $products = Produk::find($id);
-        $product = $products->delete();
+        $product = Produk::find($id);
+        File::delete('./produk/'.$product->foto);
+        $product->delete();
 
         notify()->success('Produk berhasil dihapus');
         // mengirim notifikasi
@@ -181,9 +218,9 @@ class ProdukController extends Controller
         })->get();
         $message = "Produk Berhasil dihapus";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('adm_store.index')); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('store.index')); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
-        return redirect('/adm_store');
+        return redirect('/store');
 
     }
 }

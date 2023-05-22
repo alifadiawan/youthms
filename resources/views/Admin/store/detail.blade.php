@@ -14,7 +14,7 @@
 
                     {{-- nama produk --}}
                     <div class="form-group mb-3">
-                        <label for="">Nama produk</label>
+                        <label for="">Nama Produk</label>
                         <p>{{ $product->nama_produk }}</p>
                     </div>
                     
@@ -27,13 +27,19 @@
                     {{-- harga --}}
                     <div class="form-group mb-3">
                         <label for="">Harga</label>
-                        <p>{{ $product->harga }}</p>
+                        <p>Rp. {{number_format($product->harga)}}</p>
                     </div>
 
                     {{-- deskripsi produk --}}
                     <div class="form-group mb-3">
-                        <label for="">Deskripsi produk</label>
+                        <label for="">Deskripsi Produk</label>
                         <p>{{ $product->deskripsi }}</p>
+                    </div>
+
+                    {{-- foto produk --}}
+                    <div class="form-group mb-3">
+                        <label for="">Foto Produk</label>
+                        <img style="width: 15rem;" src="{{asset('./produk/'.$product->foto)}}">
                     </div>
 
 

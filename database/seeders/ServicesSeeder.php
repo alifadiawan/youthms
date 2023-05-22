@@ -26,21 +26,21 @@ class ServicesSeeder extends Seeder
                     $judul => 'ui',
                     $jenis => '1',
                     $desk => 'lorem ipsum dolor sit amet',
-                    $foto => 'service-example.png'
+                    $foto => 'service-example1.png'
                 ],
                 [
                     $id => '0002',
                     $judul => 'ux',
                     $jenis => '1',
                     $desk => 'lorem ipsum dolor sit amet',
-                    $foto => 'service-example.png'
+                    $foto => 'service-example2.png'
                 ],
                 [
                     $id => '0003',
                     $judul => 'poster',
                     $jenis => '1',
                     $desk => 'lorem ipsum dolor sit amet',
-                    $foto => 'service-example.png'
+                    $foto => 'service-example3.png'
                 ]
             ];
 
@@ -51,21 +51,21 @@ class ServicesSeeder extends Seeder
                     $judul => 'website',
                     $jenis => '2',
                     $desk => 'lorem ipsum dolor sit amet',
-                    $foto => 'service-example.png'
+                    $foto => 'service-example4.png'
                 ],
                 [
                     $id => '0005',
                     $judul => 'mobile ',
                     $jenis => '2',
                     $desk => 'lorem ipsum dolor sit amet',
-                    $foto => 'service-example.png'
+                    $foto => 'service-example5.png'
                 ],
                 [
                     $id => '0006',
                     $judul => 'desktop ',
                     $jenis => '2',
                     $desk => 'lorem ipsum dolor sit amet',
-                    $foto => 'service-example.png'
+                    $foto => 'service-example6.png'
                 ]
 
             ];
