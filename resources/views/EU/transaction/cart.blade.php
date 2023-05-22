@@ -6,7 +6,7 @@
 
     <section class="h-100">
         <div class="container py-5">
-            <a href="{{ route('storeEU.index') }}" class="btn">
+            <a href="{{ route('store.index') }}" class="btn">
                 <i class="fas fa-arrow-left"></i> Store
             </a>
             <div class="row d-flex justify-content-center my-4">
@@ -97,7 +97,7 @@
                         @endforeach
                         <li class="list-group-item d-flex justify-content-end align-items-center border-0 px-0 mb-3">
                             <div>
-                                <strong> <span id="total-transaksi-b" class="">Total : Rp.
+                                <strong> <span id="total-transaksi-b">Total : Rp.
                                         {{ number_format($totalTransaksi) }}</span></strong>
                                 <strong><span id="total-transaksi" style="display: none;">Total : Rp.
                                     </span></strong>
@@ -110,12 +110,15 @@
                         <h2>GABOLE CHECK OUT</h2>
                         <h5>masi Rp. 0 tuh, kaya dompetku :(</h5>
                     @else
-                        <form action="{{ route('transaksi.create') }}" method="put">
+                        <form id="checkout-form" action="{{ route('transaksi.create') }}" method="post">
                             @csrf
+                            <input type="hidden" name="member_id" value="{{ auth()->user()->id }}">
+                            <input type="hidden" name="total" id="total">
+                            @foreach ($cart as $c)
+                                <input type="hidden" name="produk_id[]" value="{{ $c->produk->id }}">
+                            @endforeach
                             <button type="submit" id="checkout" class="btn btn-success btn-lg btn-block"
                                 style="display: ">
-                                <input type="hidden" name="member_id" value="{{ auth()->user()->id }}">
-                                <input type="hidden" name="total" id="total" value="{{ $totalTransaksi }}">
                                 Go to checkout
                             </button>
                         </form>
@@ -188,11 +191,6 @@
             if (quantity > 1) {
                 $(input).val(quantity - 1).trigger('change');
             }
-        }
-
-        function update() {
-            document.getElementById("ubah").style.display = "inline";
-            document.getElementById("hapus").style.display = "none";
-        }
+        }f
     </script>
 @endsection

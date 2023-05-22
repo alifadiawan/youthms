@@ -18,18 +18,18 @@ class CartController extends Controller
     {
 
         $user = auth()->user()->id;
-        
+        $member = member::where('user_id', $user)->pluck('id')->first();
+        $cart = cart::where('member_id', $member)->get()->sortByDesc('cart.created_at');
+
         $totalTransaksi = 0;
-        $cart = cart::where('member_id',$user)->get();
+        $cart = cart::where('member_id', $member)->get();
         foreach ($cart as $c) {
             $totalTransaksi += $c->quantity * $c->produk->harga;
         }
 
         $user = auth()->user()->id;
-        $member = member::where('user_id',$user)->pluck('id')->first();
-        $cart = cart::where('member_id', $member)->get()->sortByDesc('cart.created_at');
-        // return $user;
-        return view('EU.transaction.cart', compact('cart','totalTransaksi'));
+        // return $totalTransaksi;
+        return view('EU.transaction.cart', compact('cart', 'totalTransaksi'));
     }
 
 
@@ -42,10 +42,13 @@ class CartController extends Controller
             $totalTransaksi += $c->quantity * $c->produk->harga;
         }
 
-        return response()->json([
+        $response = response()->json([
             'success' => true,
             'totalTransaksi' => $totalTransaksi,
         ]);
+        $response->cookie('totalTransaksi', $totalTransaksi, 60);
+
+        return $response;
     }
 
 

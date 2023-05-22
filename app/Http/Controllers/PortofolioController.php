@@ -20,12 +20,18 @@ class PortofolioController extends Controller
     {
         $porto = Portofolio::paginate(6);
         $pic = PortofolioPic::all();
-        $u = auth()->user()->role->role;
-        $admin = ['admin', 'owner'];
+        if (auth()->check()) {
+            $u = auth()->user()->role->role;
+            $admin = ['admin', 'owner'];
 
-        if (in_array($u, $admin)){
-            return view('Admin.portofolio.index', compact('porto', 'pic'));
-        }else{
+            if (in_array($u, $admin)){
+                return view('Admin.portofolio.index', compact('porto', 'pic'));
+            }
+            else{
+                return view('EU.portofolio.index', compact('porto', 'pic'));
+            }
+        } 
+        else {
             return view('EU.portofolio.index', compact('porto', 'pic'));
         }
     }
@@ -36,6 +42,11 @@ class PortofolioController extends Controller
     public function create()
     {
         return view('Admin.portofolio.create-portofolio');
+    }
+
+    public function ilustrasi()
+    {
+        return view('Admin.portofolio.ilustrasi');
     }
 
     /**
@@ -90,12 +101,18 @@ class PortofolioController extends Controller
     {
         $porto = Portofolio::find($id);
         $pic = $porto->portofoliopic;
-        $u = auth()->user()->role->role;
-        $admin = ['admin', 'owner'];
+        if (auth()->check()) {
+            $u = auth()->user()->role->role;
+            $admin = ['admin', 'owner'];
 
-        if (in_array($u, $admin)){
-            return view('Admin.portofolio.show', compact('porto', 'pic'));
-        }else{
+            if (in_array($u, $admin)){
+                return view('Admin.portofolio.show', compact('porto', 'pic'));
+            }
+            else{
+                return view('EU.portofolio.show', compact('porto', 'pic'));
+            }
+        }
+        else{
             return view('EU.portofolio.show', compact('porto', 'pic'));
         }
 

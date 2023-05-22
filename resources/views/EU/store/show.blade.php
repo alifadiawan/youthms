@@ -18,12 +18,10 @@
     <div class="container mb-5">
         {{-- navbar kategori --}}
         <div class="d-flex flex-row text-center gap-3">
-            <a href="{{ route('storeEU.index') }}" class="text-capitalize my-3 active">All</a>
+            <a href="{{ route('store.index') }}" class="text-capitalize my-3 active">All</a>
             @foreach ($layanan as $l)
                 {{-- //branch main2 --}}
-                <a href="{{ route('store.show', $l->layanan) }}" class=" my-3 text-capitalize">{{ $l->layanan }}</a>
-                {{-- //branch main
-                <a href="{{ route('store.show', $l->id) }}" class=" my-3 text-capitalize">{{ $l->layanan }}</a> --}}
+                <a href="{{ route('store.showtype', $l->layanan) }}" class=" my-3 text-capitalize">{{ $l->layanan }}</a>
             @endforeach
 
         </div>
@@ -56,18 +54,22 @@
                                 </a>
                             @endguest
 
+                            {{-- << incoming --}}
                             @auth
                                 @if (empty($member))
                                     <a href="{{ route('user.show', $user) }}" class="btn btn-primary">
                                         <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                     </a>
                                 @else
+                                {{-- ======================= --}}
                                     @if (auth()->user()->hasIncompleteProfile())
                                         <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
                                             class="btn btn-primary" disabled>
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </a>
                                     @elseif ($c->contains('id', $p->id))
+                                    
+                                {{-- >> current --}}
                                         <button type="submit" class="btn btn-danger" disabled>
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </button>
@@ -84,8 +86,8 @@
                                             </button>
                                         </form>
                                     @endif
-                                @endif
-                            @endauth
+                                @endauth
+                            @endif
 
 
 

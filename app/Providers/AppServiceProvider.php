@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        View::composer('*', function ($view) {
+        View::composer(['layout.topbar', 'Admin.*'], function ($view) {
             $notifications = [];
             if (Auth::check()) {
                 $notifications = Auth::user()->unreadNotifications;

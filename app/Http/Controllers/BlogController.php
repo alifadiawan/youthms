@@ -20,7 +20,7 @@ class BlogController extends Controller
     public function index()
     {
         $segmen = Segmen::all();
-        $data = Blog::all();
+        $data = Blog::paginate(5);
         return view('Admin.blog.index', compact('data','segmen'));
     }
 

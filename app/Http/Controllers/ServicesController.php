@@ -18,7 +18,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $services = Services::paginate(9);
+        $services = Services::paginate(5);
         $jenis_layanan = JenisLayanan::all();
         
         return view('Admin.services.index', compact('services', 'jenis_layanan'));
@@ -32,6 +32,11 @@ class ServicesController extends Controller
         $jenis_layanan = JenisLayanan::all();
         
         return view('Admin.services.tambah', compact('jenis_layanan'));
+    }
+
+    public function ilustrasi()
+    {
+        return view('Admin.services.ilustrasi');
     }
 
     /**

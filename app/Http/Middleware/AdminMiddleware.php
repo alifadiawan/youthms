@@ -15,12 +15,18 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $u = auth()->user()->role->role;
-        $staff = ['admin', 'owner'];
-        if (auth()->check() && in_array($u, $staff)) {
-            return $next($request);
-        } else {
-            return redirect()->back();
+        if(auth()->check()){
+            $u = auth()->user()->role->role;
+            $staff = ['admin', 'owner'];
+            if (auth()->check() && in_array($u, $staff)) {
+                return $next($request);
+            }
+            else {
+                return redirect('/');
+            }
+        }
+        else{
+            return redirect('/');
         }
 
         return redirect('/returnan')->with('message', 'Kamu dilemparkan ke /returnan dikarenakan tidak cocok dengan role admin/owner');

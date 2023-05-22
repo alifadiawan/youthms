@@ -1,5 +1,5 @@
 @extends('layout-landing2.body')
-@section('content')
+@section('content') 
 <div class="card">
     <div class="col-lg-12">
         <table class="table table-striped mt-2">

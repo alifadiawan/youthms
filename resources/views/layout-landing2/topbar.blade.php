@@ -9,7 +9,7 @@
 
             <li class="nav-item"><a class="nav-link" href="/blog/all">Blog</a></li>
             {{-- <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.index') }}">Store</a></li> --}}
-            <li class="nav-item"><a class="nav-link" href="{{ route('storeEU.index') }}">Store</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('store.index')}}">Store</a></li>
             <li class="nav-item"><a class="nav-link" href="/services/all">Service</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('portfolio.index') }}">Portofolio</a></li>
 
@@ -33,15 +33,11 @@
                         {{-- <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li> --}}
                         <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                         </li>
-<<<<<<< HEAD
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li><a class="dropdown-item" href="{{ route('transaksi.history', auth()->user()->id) }}">Histori
                                 Transaksi</a>
-=======
-                        <li><a class="dropdown-item" href="/history-transaction">Histori Transaksi</a></li>
->>>>>>> 1e1eb910d9441332748b21b55199c084aa11e25f
                         <li>
                             <hr class="dropdown-divider">
                         </li>

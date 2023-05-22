@@ -7,6 +7,7 @@ use App\Models\Transaksi;
 use App\Models\Produk;
 use App\Models\Services;
 use App\Models\TransaksiDetail;
+use App\Models\Member;
 //untuk notif
 use App\Models\User;
 use App\Models\Cart;
@@ -35,13 +36,20 @@ class TransaksiController extends Controller
     {
         $history = TransaksiDetail::all();
         // return $history;
-        $user_role = auth()->user()->role->role; 
-        $staff_super = ['admin','owner'];
+        $user_role = auth()->user()->role->role;
+        $staff_super = ['admin', 'owner'];
         $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
-        if($user_role == 'client'){
+        $compact = ['staff_super', 'staff'];
+
+        // $status = transaksi::all();
+        $utang = transaksi::where('total_bayar', '=', 0)->get();
+        $kredit = transaksi::where('total', '>', 'total_bayar')->orwhere('total_bayar', '>', '0')->get();
+        $lunas = transaksi::where('total', '=', 'total_bayar')->orwhere('total_bayar', '>', 'total')->get();
+        return $utang;
+        if ($user_role == 'client') {
             return view('EU.transaction.index');
         }
-        return view('Admin.transaction.index');
+        return view('Admin.transaction.index', compact($compact));
     }
 
 
@@ -57,17 +65,47 @@ class TransaksiController extends Controller
         $today = date("Y-m-d H:i:s");
         // return $today;
         // return $timestamp; // Output: UNIX timestamp
+        $user = auth()->user()->id;
+        $member = member::where('user_id', $user)->pluck('id')->first();
 
-        transaksi::create([
+        $cart = cart::where('member_id', $member)->get();
+        $trx = transaksi::create([
             'tanggal' => $today,
             'member_id' => $request->member_id,
             'total_bayar' => 0,
             'total' => $request->total,
         ]);
+
+        $trxid = $trx->id;
+
+        $transaksi = transaksi::where('id', $trxid)->first();
+
+        foreach ($cart as $c) {
+            TransaksiDetail::insert([
+                'transaksi_id' => $trxid,
+                'produk_id' => $c->produk_id,
+                'quantity' => $c->quantity,
+                'subtotal' => $c->quantity * $c->produk->harga,
+            ]);
+        }
         cart::truncate();
 
+        $total = 0;
+        $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
+        foreach ($detail as $d) {
+            $total += $d->produk->harga * $d->quantity;
+        }
 
-        return view('EU.transaction.pembayaran');
+        // return $detail;
+        $compact = ['detail', 'total', 'transaksi'];
+
+        return $transaksi;
+        return view('EU.transaction.pembayaran', compact($compact));
+    }
+
+    public function cek()
+    {
+        return redirect()->back();  
     }
 
     /**

@@ -15,9 +15,11 @@ class MemberController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $user = User::where("role_id", "=", 2)->pluck("id");
-        $member = Member::whereIn("user_id", $user)->get();
+    {   
+        $user = User::whereHas('role', function ($query) {
+            $query->where('role', 'client');
+        })->pluck('id');
+        $member = Member::whereIn("user_id", $user)->paginate(5);
         return view('Admin.member.index', compact('member'));    
     }
 
@@ -61,10 +63,8 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        $user = auth()->user()->id;
-        // return $user;
         $member = Member::find($id);
-        $user = User::find($id);
+        $user = User::where('id', '=', $member->user_id)->first();
         return view('Admin.member.member-detail', compact('member', 'user'));
     }
 

@@ -6,24 +6,6 @@
 
 <div class="container">
 
-    <div class="row">
-        <div class="col">
-            <h1 class="h3 font-weight-bold">Portofolio Illustration</h1>
-            <div class="card mb-5">
-                <div class="card-body">
-                    <div class="row justify-content-center">
-                        <img id="illustration" src="{{ asset('illustration/group-390.png') }}" style="width: 20rem">
-                    </div>
-                    <br>
-                    <div class="row">
-                        <a href="" class="text-start btn btn-warning">Edit</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <!-- portofolio -->
     <div class="row">
         <div class="col">

@@ -29,7 +29,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                <li class="nav-header">MENU</li>
+                {{-- <li class="nav-header">MENU</li> --}}
                 <li class="nav-item">
 
                     <a href="/dashboard" class="nav-link">
@@ -42,7 +42,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="/member" class="nav-link">
-                        <i class="nav-icon fa-solid fa-circle-user"></i>
+                        <i class="nav-icon fa-solid fa-users"></i>
                         <p>
                             Member
                         </p>
@@ -58,7 +58,7 @@
                 </li>
  -->                <li class="nav-item">
                     <a href="/user" class="nav-link">
-                        <i class="nav-icon fa-solid fa-circle-user"></i>
+                        <i class="nav-icon fa-solid fa-user-gear"></i>
                         <p>
                             User
                         </p>
@@ -84,11 +84,11 @@
                         <li class="nav-item">
                             <a href="/services" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Services</p>
+                                <p>All Services</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/services" class="nav-link">
+                            <a href="/service-ilustrasi" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Edit Services Illustration</p>
                             </a>
@@ -96,7 +96,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="/adm_store" class="nav-link">
+                    <a href="{{route('store.index')}}" class="nav-link">
                         <i class="nav-icon fa-solid fa-store"></i>
                         <p>
                             Store
@@ -131,13 +131,13 @@
                         <li class="nav-item">
                             <a href="{{route('portfolio.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Portofolio</p>
+                                <p>All Portofolio</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('portfolio.index')}}" class="nav-link">
+                            <a href="/portofolio-ilustrasi" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Edit Porto Illustration</p>
+                                <p>Porto Page Illustration</p>
                             </a>
                         </li>
                     </ul>
