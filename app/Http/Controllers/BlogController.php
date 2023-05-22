@@ -121,34 +121,39 @@ class BlogController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {
+    {   
+        $blog=Blog::find($id);
         //insert tanggal sekarang
         $tanggal = date('Y-m-d');
 
         //proses image dari summernote
         $content = $request->isi;
-        $dom = new \DomDocument();
-        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        $imageFile = $dom->getElementsByTagName('img');
- 
-        foreach($imageFile as $item => $image){
-           $data = $image->getAttribute('src');
-           list($type, $data) = explode(';', $data);
-           list(, $data)      = explode(',', $data);
-           $imgeData = base64_decode($data);
-           $image_name= "/upload/" . time().$item.'.png';
-           $path = public_path() . $image_name;
-           file_put_contents($path, $imgeData);
-           
-           $image->removeAttribute('src');
-           $image->setAttribute('src', $image_name);
-        }
- 
-        $content = $dom->saveHTML();
+            libxml_use_internal_errors(true);
+            $dom = new \DomDocument();
+            $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | libxml_use_internal_errors(true));
+            $imageFile = $dom->getElementsByTagName('img');
+
+            foreach ($imageFile as $item => $image) {
+                $data = $image->getAttribute('src');
+                if (strpos($data, ';') === false) {
+                    continue;
+                }
+                list($type, $data) = explode(';', $data);
+                list(, $data)      = explode(',', $data);
+                $imgeData = base64_decode($data);
+                $image_name = "/upload/" . time() . $item . '.png';
+                $path = public_path() . $image_name;
+                file_put_contents($path, $imgeData);
+
+                $image->removeAttribute('src');
+                $image->setAttribute('src', $image_name);
+            }
+
+            $content = $dom->saveHTML();
+
 
             //simpan ke db
-            $data=Blog::find($id);
-            $data->update([
+            $blog->update([
                 'id_artikel' => $request->id_artikel,
                 'judul' =>  $request->judul,
                 'tanggal' =>  $tanggal,
@@ -156,12 +161,12 @@ class BlogController extends Controller
                 'users_id' => $request->users_id,
                 'isi' => $content,
             ]);
-            notify()->success('Artikel Berhasil Diubah !!');
+            notify()->success($request->judul.' Berhasil Diubah !!');
             // mengirim notifikasi
             $user = Auth::user();
-            $message = "Artikel Berhasil Diubah !!";
+            $message = $request->judul." Berhasil Diubah !!";
             $notification = new NewMessageNotification($message);
-            $notification->setUrl(route('blog.show', ['blog' => $data->id])); // Ganti dengan rute yang sesuai
+            $notification->setUrl(route('blog.show', ['blog' => $blog->id])); // Ganti dengan rute yang sesuai
             Notification::send($user, $notification);
             return redirect('blog/'.$id);
     }
