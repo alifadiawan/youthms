@@ -7,10 +7,10 @@
         <div class="card rounded">
             <div class="card-body">
 
-                <form action="{{ route('services.update', $services->id) }}" method="post">
+                <form action="{{ route('services.update', $services->id) }}" method="post" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
-
+                    <input type="hidden" name="id_service" value="{{$services->id_service}}">
                     {{-- Jenis Layanan --}}
                     <div class="row mb-3">
                         <div class="col">
@@ -21,7 +21,7 @@
                                 <option value="">Pilih jenis services</option>
                                 @foreach ($jenis_layanan as $item)
                                     <option name="jenis_layanan_id" id="" class="form-control"
-                                        value="{{ $item->id }}">{{ $item->layanan }}</option>
+                                        value="{{ $item->id }}" @if($services->jenis_layanan_id == $item->id) selected @endif>{{ $item->layanan }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -35,6 +35,29 @@
                         <div class="col">
                             <input type="text" name="judul" value="{{ $services->judul }}" placeholder="judul"
                                 class="form-control">
+                        </div>
+                    </div>
+
+                    {{-- Deskripsi --}}
+                    <div class="row mb-3">
+                        <div class="col">
+                            <strong>Deskripsi</strong>
+                        </div>
+                        <div class="col">
+                            <textarea name="deskripsi" id="deskripsi" class="form-control">{{$services->deskripsi}}</textarea>
+                        </div>
+                    </div>
+
+                    {{-- Foto --}}
+                    <div class="row mb-3">
+                        <div class="col">
+                            <strong>Foto Lama : </strong>
+                            <img id="lama" src="{{asset('./service/'.$services->foto)}}">
+                        </div>
+                        <div class="col">
+                            <strong>Foto Baru (Optional) :</strong>
+                            <input type="file" name="foto" id="foto" placeholder="foto" class="form-control">
+                            <img id="preview" src="#" class="form-control">
                         </div>
                     </div>
 
@@ -67,5 +90,30 @@
         </div>
     </div>
 </div>
+
+<style>
+    #preview {
+            width: 100%;
+            height: 190px;
+            object-fit: contain;
+    }
+    #lama {
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
+    }
+</style>
+
+<script>
+    document.getElementById("foto").addEventListener("change", function() {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var preview = document.getElementById("preview");
+                preview.src = reader.result;
+                preview.style.display = "block";
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+</script>
 
 @endsection

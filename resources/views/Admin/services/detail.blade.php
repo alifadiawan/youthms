@@ -13,7 +13,7 @@
                         <strong>ID Layanan</strong>
                     </div>
                     <div class="col">
-                        <p>{{$services->id_services}}</p>
+                        <p>{{$services->id_service}}</p>
                     </div>
                 </div>
         
@@ -23,7 +23,7 @@
                         <strong>Jenis Layanan</strong>
                     </div>
                     <div class="col">
-                        <p>{{$services->jenis_layanan->layanan}}</p>
+                        <p class="text-capitalize">{{$services->jenis_layanan->layanan}}</p>
                     </div>
                 </div>
         
@@ -33,7 +33,7 @@
                         <strong>Judul</strong>
                     </div>
                     <div class="col">
-                        <p>{{$services->judul}}</p>
+                        <p class="text-capitalize">{{$services->judul}}</p>
                     </div>
                 </div>
                 
@@ -44,6 +44,16 @@
                     </div>
                     <div class="col">
                         <p>{{$services->deskripsi}}</p>    
+                    </div>
+                </div>
+
+                {{-- Foto --}}
+                <div class="row mb-3">
+                    <div class="col">
+                        <strong>Foto</strong>
+                    </div>
+                    <div class="col">
+                        <img style="width: 13rem;" src="{{asset('./service/'.$services->foto)}}">    
                     </div>
                 </div>
 

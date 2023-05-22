@@ -237,8 +237,8 @@ class landingpageController extends Controller
             notify()->success('Testimonial Berhasil Diupdate !!');
             // mengirim notifikasi
             $user = User::whereHas('role', function ($query) {
-            $query->whereIn('role', ['admin', 'owner']);
-        })->get();
+                $query->whereIn('role', ['admin', 'owner']);
+            })->get();
             $message = "Testimonial Berhasil Diupdate !!";
             $notification = new NewMessageNotification($message);
             $notification->setUrl(route('landing.data')); // Ganti dengan rute yang sesuai
