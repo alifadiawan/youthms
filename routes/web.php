@@ -161,6 +161,8 @@ Route::middleware('admin')->group(function () {
     Route::GET('services/{id}/hapus', [ServicesController::class, 'hapus'])->name('services.hapus');
     Route::get('id_services', [ServicesController::class, 'id_services']);
     Route::get('/service-ilustrasi', [ServicesController::class, 'ilustrasi'])->name('services.ilustrasi');
+    Route::get('/service-ilustrasi/{id}/edit', [ServicesController::class, 'ilustrasi_edit'])->name('services.ilustrasi_edit');
+    Route::put('/service-ilustrasi/{id}/update', [ServicesController::class, 'ilustrasi_update'])->name('services.ilustrasi_update');
 
     //blog
     Route::get('blog/{id}/hapus', [BlogController::class, 'hapus'])->name('blog.hapus');
@@ -213,7 +215,9 @@ Route::middleware('admin')->group(function () {
 
     //portofolio
     Route::get('/portfolio/{id}/hapus', [PortofolioController::class, 'hapus'])->name('portfolio.hapus');
-    Route::get('/portofolio-ilustrasi', [PortofolioController::class, 'ilustrasi'])->name('portfolio.ilustrasi');
+    Route::get('/portofolio-ilustrasi', [PortofolioController::class, 'ilustrasi_index'])->name('portofolio.ilustrasi');
+    Route::get('/portofolio-ilustrasi/edit/{id}', [PortofolioController::class, 'ilustrasi_edit'])->name('portofolio.edit_ilustrasi');
+    Route::put('/portofolio-ilustrasi/update/{id}', [PortofolioController::class, 'ilustrasi_update'])->name('portofolio.update_ilustrasi');
 
     //notif
     Route::post('/read', [NotificationController::class, 'read'])->name('read');

@@ -29,10 +29,14 @@ class DatabaseSeeder extends Seeder
             // produk
             Jenis_LayananSeeder::class,
             ServicesSeeder::class,
+            ServicesIllsSeeder::class,
             ProdukSeeder::class,
 
             //misc
             // VisitorSeeder::class,
+
+            //portofolio
+            PortoIllsSeeder::class,
 
         ]);
     }
