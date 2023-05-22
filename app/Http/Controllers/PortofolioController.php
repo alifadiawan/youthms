@@ -86,7 +86,9 @@ class PortofolioController extends Controller
 
         notify()->success('Portofolio Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Portofolio Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('portfolio.show', ['portfolio' => $porto->id])); // Ganti dengan rute yang sesuai
@@ -183,7 +185,9 @@ class PortofolioController extends Controller
 
         notify()->success('Portofolio Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Portofolio Berhasil Diupdate !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('portfolio.show', ['portfolio' => $portofolio->id])); // Ganti dengan rute yang sesuai
@@ -217,7 +221,9 @@ class PortofolioController extends Controller
             // Redirect atau berikan respon sesuai kebutuhan Anda
             notify()->success('Portofolio Berhasil Dihapus !!');
             // mengirim notifikasi
-            $user = Auth::user();
+            $user = User::whereHas('role', function ($query) {
+                $query->whereIn('role', ['admin', 'owner']);
+            })->get();
             $message = "Portofolio Berhasil Dihapus !!";
             $notification = new NewMessageNotification($message);
             $notification->setUrl(route('portfolio.index')); // Ganti dengan rute yang sesuai

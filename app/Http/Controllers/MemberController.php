@@ -50,7 +50,9 @@ class MemberController extends Controller
         ]);
         notify()->success('Member Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Member Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('member.show', ['member'=> $Member->id])); // Ganti dengan rute yang sesuai
@@ -87,7 +89,9 @@ class MemberController extends Controller
         $Member->update($input);
         notify()->success('Member Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Member Berhasil Diupdate !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('member.show', ['member'=> $Member->id])); // Ganti dengan rute yang sesuai
@@ -119,7 +123,9 @@ class MemberController extends Controller
 
         notify()->success('Member Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Member Berhasil Dihapus !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('member.index')); // Ganti dengan rute yang sesuai

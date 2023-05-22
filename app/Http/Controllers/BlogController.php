@@ -90,7 +90,9 @@ class BlogController extends Controller
 
         notify()->success('Artikel Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Artikel Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('blog.show', ['blog' => $blog->id])); // Ganti dengan rute yang sesuai
@@ -163,7 +165,9 @@ class BlogController extends Controller
             ]);
             notify()->success($request->judul.' Berhasil Diubah !!');
             // mengirim notifikasi
-            $user = Auth::user();
+            $user = User::whereHas('role', function ($query) {
+                $query->whereIn('role', ['admin', 'owner']);
+            })->get();
             $message = $request->judul." Berhasil Diubah !!";
             $notification = new NewMessageNotification($message);
             $notification->setUrl(route('blog.show', ['blog' => $blog->id])); // Ganti dengan rute yang sesuai
@@ -185,7 +189,9 @@ class BlogController extends Controller
         $data->delete();
         notify()->success('Artikel Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Artikel Berhasil Dihapus !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('blog.index')); // Ganti dengan rute yang sesuai

@@ -59,7 +59,9 @@ class ServicesController extends Controller
 
         notify()->success('Berhasil ditambahkan',$request->judul);
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Service Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('services.show', ['service'=> $servis->id])); // Ganti dengan rute yang sesuai
@@ -103,7 +105,9 @@ class ServicesController extends Controller
 
         notify()->success('Perubahan telah tersimpan');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Servis Berhasil Diupdate !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('services.show', ['service'=> $services->id])); // Ganti dengan rute yang sesuai
@@ -130,7 +134,9 @@ class ServicesController extends Controller
 
         notify()->success('Layanan telah dihapus');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Service Berhasil Dihapus !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('services.index')); // Ganti dengan rute yang sesuai

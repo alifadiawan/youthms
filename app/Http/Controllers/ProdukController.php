@@ -68,7 +68,9 @@ class ProdukController extends Controller
 
         notify()->success('Berhasil ditambahkan',$request->nama_produk,);
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Produk Berhasil ditambahkan";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('adm_store.show', ['adm_store' => $produk->id])); // Ganti dengan rute yang sesuai
@@ -149,7 +151,9 @@ class ProdukController extends Controller
 
         notify()->success('Produk berhasil diupdate');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Produk Berhasil diupdate";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('adm_store.show', ['adm_store' => $product->id])); // Ganti dengan rute yang sesuai
@@ -172,7 +176,9 @@ class ProdukController extends Controller
 
         notify()->success('Produk berhasil dihapus');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Produk Berhasil dihapus";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('adm_store.index')); // Ganti dengan rute yang sesuai

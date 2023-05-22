@@ -57,7 +57,9 @@ class landingpageController extends Controller
         $illustration->save();
         notify()->success('Illustration Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Illustration Berhasil Diupdate !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('landing.illustration')); // Ganti dengan rute yang sesuai
@@ -89,7 +91,9 @@ class landingpageController extends Controller
 
         notify()->success('Partner Berhasil Ditambah !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Partner Berhasil Ditambah !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('landing.illustration')); // Ganti dengan rute yang sesuai
@@ -127,7 +131,9 @@ class landingpageController extends Controller
         $partner->save();
         notify()->success('Partner Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Partner Berhasil Diupdate !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('landing.illustration')); // Ganti dengan rute yang sesuai
@@ -142,7 +148,9 @@ class landingpageController extends Controller
         $partner->delete();
         notify()->success('Partner Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Partner Berhasil Dihapus !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('landing.illustration')); // Ganti dengan rute yang sesuai
@@ -184,7 +192,9 @@ class landingpageController extends Controller
 
         notify()->success('Testimonial Berhasil Ditambah !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Testimonial Berhasil Ditambah !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('landing.data')); // Ganti dengan rute yang sesuai
@@ -226,7 +236,9 @@ class landingpageController extends Controller
             $data->save();
             notify()->success('Testimonial Berhasil Diupdate !!');
             // mengirim notifikasi
-            $user = Auth::user();
+            $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
             $message = "Testimonial Berhasil Diupdate !!";
             $notification = new NewMessageNotification($message);
             $notification->setUrl(route('landing.data')); // Ganti dengan rute yang sesuai
@@ -241,7 +253,9 @@ class landingpageController extends Controller
             $data->save();
             notify()->success('Testimonial Berhasil Diupdate !!');
             // mengirim notifikasi
-            $user = Auth::user();
+            $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
             $message = "Testimonial Berhasil Diupdate !!";
             $notification = new NewMessageNotification($message);
             $notification->setUrl(route('landing.data')); // Ganti dengan rute yang sesuai
@@ -258,7 +272,9 @@ class landingpageController extends Controller
         $data->delete();
         notify()->success('Testimonial Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Testimonial Berhasil Dihapus !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('landing.data')); // Ganti dengan rute yang sesuai
@@ -288,7 +304,9 @@ class landingpageController extends Controller
         $text->update($input);
         notify()->success('Text Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Text Berhasil Diupdate !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('landing.text')); // Ganti dengan rute yang sesuai
