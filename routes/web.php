@@ -123,6 +123,7 @@ Route::middleware(['auth'])->group(function () {
     
     // transaction
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
+    Route::get('/transaksi/pembayaran', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
 });
 
 //  client

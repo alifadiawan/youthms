@@ -110,10 +110,11 @@
                         <h2>GABOLE CHECK OUT</h2>
                         <h5>masi Rp. 0 tuh, kaya dompetku :(</h5>
                     @else
-                        <form id="checkout-form" action="{{ route('transaksi.create') }}" method="post">
+                        <form id="checkout-form" action="{{ route('transaksi.create') }}" method="put">
                             @csrf
+                            @method('put')
                             <input type="hidden" name="member_id" value="{{ auth()->user()->id }}">
-                            <input type="hidden" name="total" id="total">
+                            <input type="hidden" name="total" id="total" value="{{ $totalTransaksi }}">
                             @foreach ($cart as $c)
                                 <input type="hidden" name="produk_id[]" value="{{ $c->produk->id }}">
                             @endforeach

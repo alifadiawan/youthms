@@ -45,9 +45,10 @@ class TransaksiController extends Controller
         $utang = transaksi::where('total_bayar', '=', 0)->get();
         $kredit = transaksi::where('total', '>', 'total_bayar')->orwhere('total_bayar', '>', '0')->get();
         $lunas = transaksi::where('total', '=', 'total_bayar')->orwhere('total_bayar', '>', 'total')->get();
-        return $utang;
+        
+
         if ($user_role == 'client') {
-            return view('EU.transaction.index');
+            return view('EU.history.index',compact($compact));
         }
         return view('Admin.transaction.index', compact($compact));
     }
@@ -99,8 +100,28 @@ class TransaksiController extends Controller
         // return $detail;
         $compact = ['detail', 'total', 'transaksi'];
 
-        return $transaksi;
-        return view('EU.transaction.pembayaran', compact($compact));
+        // return $transaksi;
+        // return redirect('EU.transaction.pembayaran', compact($compact));
+        return redirect()->route('transaksi.pembayaran')->with(compact($compact));
+    }
+
+
+    public function pembayaran()
+    {
+        $user = auth()->user()->id;
+        $member = member::where('user_id',$user)->pluck('id')->first();
+        
+        $trxid = transaksi::where('member_id',$user)->get();
+        // return $user;
+        // return $trxid;
+        $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
+        $total = 0;
+        foreach ($detail as $d) {
+            $total += $d->produk->harga * $d->quantity;
+        }
+
+        $compact = ['detail','total'];
+        return view('EU.transaction.pembayaran',compact($compact));    
     }
 
     public function cek()
