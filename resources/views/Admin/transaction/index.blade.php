@@ -11,42 +11,40 @@
                     <th class="text-white">Jasa yang dipesan</th>
                     <th class="text-white">Total harga</th>
                     <th class="text-white">Status</th>
+                    <th class="text-white">Detail</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($p as $item)
+                @foreach ($transaksi as $t)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item }}</td>
+                        <td>{{ $t->member->name }}</td>
+                        {{-- <td>{{ $t }}</td> --}}
+                        <td>skip sek males</td>
+                        <td>{{ number_format($t->total) }}</td>
+                        {{-- <td>{{ $ua[0] }}</td> --}}
+                        @if (in_array($t->id, $uu))
+                            <td>
+                                <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
+                                    class="badge">utang</span>
+                            </td>
+                        @elseif(in_array($t->id, $uk))
+                            <td>
+                                <button disabled="disabled" class="btn btn-sm btn-warning"></button><span
+                                    class="badge">Kredit</span>
+                            </td>
+                        @elseif(in_array($t->id, $ul))
+                            <td>
+                                <button disabled="disabled" class="btn btn-sm btn-success"></button><span
+                                    class="badge">Lunas</span>
+                            </td>
+                        @endif
+                        <td>
+                            <a href="/" class="btn-sm btn-success">Detail</a>
+                        </td>
+
                     </tr>
-                @endforeach --}}
-                <tr>
-                    <td scope="row">1</td>
-                    <td>Maulana Gustaf</td>
-                    <td>Poster Banner</td>
-                    <td>300.000</td>
-                    <td>
-                        <button disabled="disabled" class="btn btn-sm btn-success"></button><span class="badge">Lunas</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">2</td>
-                    <td>Rafli Dwi Ferdiansyah</td>
-                    <td>Design Logo</td>
-                    <td>150.000</td>
-                    <td>
-                        <button disabled="disabled" class="btn btn-sm btn-danger"></button><span class="badge">Pembayaran</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">3</td>
-                    <td>Steven Alden</td>
-                    <td>Web Kasir</td>
-                    <td>750.000</td>
-                    <td>
-                        <button disabled="disabled" class="btn btn-sm btn-warning"></button><span class="badge">Kredit</span>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
 
             {{-- <body>
