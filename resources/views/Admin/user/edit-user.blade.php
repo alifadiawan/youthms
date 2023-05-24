@@ -46,7 +46,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input class="form-control" type="text"
+                                    <input class="form-control" type="password"
                                         placeholder="!! Hanya Isi Jika Ingin Ganti Password !!" name="password"
                                         id="password">
                                 </div>
