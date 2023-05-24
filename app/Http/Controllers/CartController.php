@@ -16,7 +16,7 @@ class CartController extends Controller
      */
     public function index()
     {
-
+        // mencari data user & member
         $user = auth()->user()->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
         $cart = cart::where('member_id', $member)->get()->sortByDesc('cart.created_at');
@@ -115,11 +115,12 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart)
     {
+        // mencari data user & member
         $user = auth()->user()->id;
         $member = member::where('user_id',$user)->pluck('id')->first();
-        // return $cart->id;
+
+        // mencari produk di tabel cart menggunakkan id member lalu dihapus
         $item = cart::where('member_id', $member)->where('id', $cart->id)->first();
-        // return $item;
         $item->delete();
         return redirect()->back();
     }

@@ -79,6 +79,7 @@
                                                 <th>jatuh tempo</th>
                                                 <th>total</th>
                                                 <th>telah dibayar</th>
+                                                <th>sisa hutang</th>
                                                 <th>action</th>
                                             </tr>
                                         </thead>
@@ -96,6 +97,7 @@
                                                     <td scope=>{{ $k->date_expired }}</td>
                                                     <td>Rp. {{ number_format($k->total) }}</td>
                                                     <td>Rp. {{ number_format($k->total_bayar) }}</td>
+                                                    <td>Rp. {{ number_format($k->total - $k->total_bayar) }}</td>
                                                     <td>
                                                         <form action="{{ route('transaksi.show', $k->id) }}">
                                                             <button type="submit" class="btn btn-success">detail</button>

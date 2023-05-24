@@ -82,13 +82,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/services" class="nav-link">
+                            <a href="{{route('services.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All Services</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/service-ilustrasi" class="nav-link">
+                            <a href="{{route('services.ilustrasi')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Edit Services Illustration</p>
                             </a>
@@ -135,7 +135,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/portofolio-ilustrasi" class="nav-link">
+                            <a href="{{route('portofolio.ilustrasi')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Porto Page Illustration</p>
                             </a>

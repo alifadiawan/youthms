@@ -12,21 +12,21 @@
             <div class="card mb-5">
                 <div class="card-body">
                     <div class="row align-items-center">
+                        @foreach($ills as $i)
                         <div class="col-4">
-                            <img id="illustration" src="{{ asset('illustration/group-390.png') }}" style="width: 20rem">
+                            <img id="illustration" src="{{ asset('./illustration/'.$i->foto) }}" style="width: 20rem">
                         </div>
                         <div class="col">
-                            <h1 class="h3 font-weight-bold">Some of Our Amazing Projects</h1>
-                            <p>Because actions speak louder than words, we help you build better software today for your
-                                better tomorrow. When you choose Youthms to develop and service your software, you are
-                                joining hundreds of satisfied clients and market leader</p>
+                            <h1 class="h3 font-weight-bold">{{$i->text_head}}</h1>
+                            <p>{{$i->text_body}}</p>
 
                         </div>
                     </div>
                     <br>
                     <div class="row">
-                        <a href="" class="text-start btn btn-warning">Edit</a>
+                        <a href="{{route('portofolio.edit_ilustrasi', $i->id)}}" class="text-start btn btn-warning">Edit</a>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>

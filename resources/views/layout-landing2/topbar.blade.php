@@ -6,8 +6,8 @@
 
     <nav id="navbar" class="navbar navbar-expand">
         <ul class="navbar-nav">
-
-            <li class="nav-item"><a class="nav-link" href="/blog/all">Blog</a></li>
+            
+            <li class="nav-item"><a class="nav-link" href="{{route('blog.index')}}">Blog</a></li>
             {{-- <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.index') }}">Store</a></li> --}}
             <li class="nav-item"><a class="nav-link" href="{{route('store.index')}}">Store</a></li>
             <li class="nav-item"><a class="nav-link" href="/services/all">Service</a></li>
@@ -41,6 +41,11 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
+                        @if(auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'admin')
+                        <li>
+                            <a class="dropdown-item" href="{{route('dashboard.index')}}">Ke Dashboard Admin</a>
+                        </li>
+                        @endif
                         <li>
                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 Logout

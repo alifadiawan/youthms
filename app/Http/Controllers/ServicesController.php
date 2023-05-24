@@ -10,6 +10,8 @@ use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\File;
+use App\Models\ServicesIlls;
 
 class ServicesController extends Controller
 {
@@ -36,7 +38,99 @@ class ServicesController extends Controller
 
     public function ilustrasi()
     {
-        return view('Admin.services.ilustrasi');
+        $ills = ServicesIlls::all();
+        return view('Admin.services.ilustrasi', compact('ills'));
+    }
+
+    public function ilustrasi_edit($id)
+    {
+        $ills = ServicesIlls::find($id);
+        return view('Admin.services.edit-ilustrasi', compact('ills'));
+    }
+
+    public function ilustrasi_update(Request $request ,$id)
+    {
+        $ills = ServicesIlls::find($id);
+        
+        if ($request->hasFile('hero_ills')) {
+            //hapus foto lama
+            File::delete('./illustration/'.$ills->hero_ills);
+
+            //ambil info file
+            $file = $request->file('hero_ills');
+
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './illustration/';
+            $file->move($tujuan_upload,$nama_file);
+
+            //simpan ke database
+            $ills->hero_ills = $nama_file;   
+        }
+
+        if ($request->hasFile('ills1')) {
+            //hapus foto lama
+            File::delete('./illustration/'.$ills->ills1);
+
+            //ambil info file
+            $file = $request->file('ills1');
+
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './illustration/';
+            $file->move($tujuan_upload,$nama_file);
+            $ills->ills1 = $nama_file;
+        }
+
+        if ($request->hasFile('ills2')) {
+            //hapus foto lama
+            File::delete('./illustration/'.$ills->ills2);
+
+            //ambil info file
+            $file = $request->file('ills2');
+
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './illustration/';
+            $file->move($tujuan_upload,$nama_file);
+            $ills->ills2 = $nama_file;
+        }
+
+        if ($request->hasFile('ills3')) {
+            //hapus foto lama
+            File::delete('./illustration/'.$ills->ills3);
+
+            //ambil info file
+            $file = $request->file('ills3');
+
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './illustration/';
+            $file->move($tujuan_upload,$nama_file);
+            $ills->ills3 = $nama_file;
+        }
+
+        $ills->hero_text = $request->hero_text;
+        $ills->save();
+
+        notify()->success('Ilustrasi Service Berhasil Diupdate !!');
+        // mengirim notifikasi
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Ilustrasi Service Berhasil Diupdate !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('services.ilustrasi')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+        return redirect('/service-ilustrasi');
     }
 
     /**
@@ -54,12 +148,29 @@ class ServicesController extends Controller
         $currentNumber = $services;
         $nextNumber = str_pad(++$currentNumber, 5, '0', STR_PAD_LEFT); // "00002"
 
-        $data = $request->all();
-        $servis = Services::create($data);
+
+        //ambil info file
+        $file = $request->file('foto');
+        //rename
+        $nama_file = time()."_".$file->getClientOriginalName();
+
+        $tujuan_upload = './service/';
+        $file->move($tujuan_upload,$nama_file);
+
+        //insert data
+        $servis = Services::create([
+            'foto' => $nama_file,
+            'id_service' => $nextNumber,
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'jenis_layanan_id' => $request->jenis_layanan_id,
+        ]);
 
         notify()->success('Berhasil ditambahkan',$request->judul);
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Service Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('services.show', ['service'=> $servis->id])); // Ganti dengan rute yang sesuai
@@ -95,21 +206,62 @@ class ServicesController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {
-        $services = Services::find($id);
-        $input = $request->all();
+    { 
+        if($request->foto != ''){
+            //ganti foto
 
-        $services->fill($input)->save();
+            //hapus foto lama
+            $servis=Services::find($id);
+            File::delete('./service/'.$servis->foto);
 
-        notify()->success('Perubahan telah tersimpan');
-        // mengirim notifikasi
-        $user = Auth::user();
-        $message = "Servis Berhasil Diupdate !!";
-        $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('services.show', ['service'=> $services->id])); // Ganti dengan rute yang sesuai
-        Notification::send($user, $notification);
+            //ambil info file
+            $file = $request->file('foto');
 
-        return redirect('/services');
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            //proses upload
+            $tujuan_upload = './service/';
+            $file->move($tujuan_upload,$nama_file);
+
+            $servis->id_service = $request->id_service;
+            $servis->judul = $request->judul;
+            $servis->deskripsi = $request->deskripsi;
+            $servis->jenis_layanan_id = $request->jenis_layanan_id;
+            $servis->foto = $nama_file;
+            $servis->save();
+
+            notify()->success('Service '.$request->judul.' Berhasil Diupdate !!');
+            // mengirim notifikasi
+            $user = User::whereHas('role', function ($query) {
+                $query->whereIn('role', ['admin', 'owner']);
+            })->get();
+            $message = "Servis ".$request->judul." Berhasil Diupdate !!";
+            $notification = new NewMessageNotification($message);
+            $notification->setUrl(route('services.show', ['service'=> $servis->id])); // Ganti dengan rute yang sesuai
+            Notification::send($user, $notification);
+
+            return redirect('/services');
+        }
+        else {
+            $servis = Services::find($id);
+            $servis->id_service = $request->id_service;
+            $servis->judul = $request->judul;
+            $servis->deskripsi = $request->deskripsi;
+            $servis->jenis_layanan_id = $request->jenis_layanan_id;
+
+            notify()->success('Service '.$request->judul.' Berhasil Diupdate !!');
+            // mengirim notifikasi
+            $user = User::whereHas('role', function ($query) {
+                $query->whereIn('role', ['admin', 'owner']);
+            })->get();
+            $message = "Servis ".$request->judul." Berhasil Diupdate !!";
+            $notification = new NewMessageNotification($message);
+            $notification->setUrl(route('services.show', ['service'=> $servis->id])); // Ganti dengan rute yang sesuai
+            Notification::send($user, $notification);
+
+            return redirect('/services');
+        }
     }
 
     /**
@@ -126,11 +278,14 @@ class ServicesController extends Controller
     public function hapus($id)
     {
         $services = Services::find($id);
+        File::delete('./service/'.$services->foto);
         $services->delete();
 
         notify()->success('Layanan telah dihapus');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Service Berhasil Dihapus !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('services.index')); // Ganti dengan rute yang sesuai
