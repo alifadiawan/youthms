@@ -27,7 +27,7 @@
                                 <ul class="list-group list-group-flush">
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                        {{ $d->produk->nama_produkF }}
+                                        {{ $d->produk->nama_produk }}
                                         <span>Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</span>
                                     </li>
                                 </ul>
@@ -36,9 +36,24 @@
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                 <div>
-                                    <strong>Total</strong>
+                                    Total
                                 </div>
-                                <span><strong>Rp. {{ number_format($total, 0, ',', '.') }}</strong></span>
+                                <span>Rp. {{ number_format($total, 0, ',', '.') }}</span>
+                            </li>
+                            <li
+                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                <div>
+                                    biaya admin
+                                </div>
+                                <span>Rp. {{ number_format($admin, 0, ',', '.') }}</span>
+                            </li>
+                            <hr>
+                            <li
+                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                <div>
+                                    <strong>Grand Total</strong>
+                                </div>
+                                <span><strong>Rp. {{ number_format($grandtotal, 0, ',', '.') }}</strong></span>
                             </li>
                         </ul>
                     </div>

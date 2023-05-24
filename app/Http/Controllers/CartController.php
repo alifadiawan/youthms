@@ -27,9 +27,8 @@ class CartController extends Controller
             $totalTransaksi += $c->quantity * $c->produk->harga;
         }
 
-        $user = auth()->user()->id;
         // return $totalTransaksi;
-        return view('EU.transaction.cart', compact('cart', 'totalTransaksi'));
+        return view('EU.transaction.cart', compact('member','cart', 'totalTransaksi'));
     }
 
 
@@ -116,6 +115,12 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart)
     {
-        //
+        $user = auth()->user()->id;
+        $member = member::where('user_id',$user)->pluck('id')->first();
+        // return $cart->id;
+        $item = cart::where('member_id', $member)->where('id', $cart->id)->first();
+        // return $item;
+        $item->delete();
+        return redirect()->back();
     }
 }

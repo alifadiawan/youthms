@@ -120,9 +120,9 @@ class ProdukController extends Controller
             $compact = array_merge($compact,['user','member']);
         }
 
-        else {
-            return view('EU.store.show', compact($compact));
-        }
+        return view('EU.store.show', compact($compact));
+        // else {
+        // }
 
     }
 

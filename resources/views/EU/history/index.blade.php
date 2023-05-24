@@ -17,60 +17,139 @@
                 <div class="card-body">
 
                     <div class="accordion accordion-flush" id="accordionFlushExample">
-                        
+
                         <!-- item 1 -->
                         <div class="accordion-item">
-                          <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                              Belum Bayar <span class="badge bg-danger ms-3">2</span>
-                            </button>
-                          </h2>
-                          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Tanggal</th>
-                                            <th>Subtotal</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td scope="row">12 Mei 2023</td>
-                                            <td>Rp. 1.000.000</td>
-                                            <td>Rp. 1.000.000</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-utang" aria-expanded="false" aria-controls="flush-utang">
+                                    Belum Bayar <span class="badge bg-danger ms-3">2</span>
+                                </button>
+                            </h2>
+                            <div id="flush-utang" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                @if ($utang->isEmpty())
+                                    tidak ada utang
+                                @endif
+                                @foreach ($utang as $u)
+                                    <div class="accordion-body">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tanggal</th>
+                                                    <th>Subtotal</th>
+                                                    <th>Total</th>
+                                                    <th>action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td scope="row">{{ $u->tanggal }}</td>
+                                                    <td>Rp. {{ number_format($u->total) }}</td>
+                                                    <td>Rp. {{ number_format($u->total_bayar) }}</td>
+                                                    <td>
+                                                        <form action="{{ route('transaksi.show', $u->id) }}">
+                                                            <button type="submit" class="btn btn-success">detail</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endforeach
                             </div>
-                          </div>
                         </div>
 
                         <!-- item 2 -->
                         <div class="accordion-item">
-                          <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                              Sedang Berlangsung <span class="badge bg-danger ms-3">2</span>
-                              </span>
-                            </button>
-                          </h2>
-                          <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                          </div>
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-kredit" aria-expanded="false" aria-controls="flush-kredit">
+                                    Sedang Berlangsung <span class="badge bg-danger ms-3">2</span>
+                                    </span>
+                                </button>
+                            </h2>
+                            <div id="flush-kredit" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Tanggal</th>
+                                                <th>jatuh tempo</th>
+                                                <th>total</th>
+                                                <th>telah dibayar</th>
+                                                <th>action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="5" class="text-center">
+                                                    @if ($kredit->isEmpty())
+                                                        tidak ada kredit
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            @foreach ($kredit as $k)
+                                                <tr>
+                                                    <td scope="row">{{ $k->tanggal }}</td>
+                                                    <td scope=>{{ $k->date_expired }}</td>
+                                                    <td>Rp. {{ number_format($k->total) }}</td>
+                                                    <td>Rp. {{ number_format($k->total_bayar) }}</td>
+                                                    <td>
+                                                        <form action="{{ route('transaksi.show', $k->id) }}">
+                                                            <button type="submit" class="btn btn-success">detail</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                         <div class="accordion-item">
-                          <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                              Success ( 2 )
-                            </button>
-                          </h2>
-                          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                          </div>
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-lunas" aria-expanded="false" aria-controls="flush-lunas">
+                                    Success ( 2 )
+                                </button>
+                            </h2>
+                            <div id="flush-lunas" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                @if ($lunas->isEmpty())
+                                    tidak ada transaksi
+                                @endif
+                                @foreach ($lunas as $l)
+                                    <div class="accordion-body">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tanggal</th>
+                                                    <th>total</th>
+                                                    <th>total bayar</th>
+                                                    <th>action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td scope="row">{{ $l->tanggal }}</td>
+                                                    <td>Rp. {{ number_format($l->total) }}</td>
+                                                    <td>Rp. {{ number_format($l->total_bayar) }}</td>
+                                                    <td>
+                                                        <form action="{{ route('transaksi.show', $l->id) }}">
+                                                            <button type="submit" class="btn btn-success">detail</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
-                      </div>
-                    
+                    </div>
+
                 </div>
             </div>
         </div>

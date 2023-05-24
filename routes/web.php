@@ -166,9 +166,7 @@ route::middleware(['client', 'employee'])->group(function () {
     // // //transaction
     Route::resource('/transaksi', TransaksiController::class);
     Route::get('/cart', [TransaksiController::class])->name('cart.index');
-    Route::post('/cart/increase', [TransaksiController::class])->name('cart.increase');
-
-    // Route::post('/transaksi/hapus/{id}', [TransaksiController::class,'hapus'])->name('transaksi.hapus');
+    Route::get('/cart', [TransaksiController::class])->name('cart.index');
 
     //portofolio EU
     Route::get('/portofolio/all', function () {

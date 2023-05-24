@@ -36,19 +36,31 @@ class TransaksiController extends Controller
     {
         $history = TransaksiDetail::all();
         // return $history;
-        $user_role = auth()->user()->role->role;
+        $auth = auth()->user();
+        $user_role = $auth->role->role;
+        $user = $auth->id;
+        $member = member::where('user_id', $user)->pluck('id')->first();
+        // return $member;
+
+
+
+        $utang = transaksi::where('member_id', $member)->where('total_bayar', 0)->get();
+        $kredit = transaksi::where('member_id', $member)->whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0')->get();
+        $lunas = transaksi::where('member_id', $member)->where(function ($lunas) {
+            $lunas->whereColumn('total', '<', 'total_bayar')->orWhereColumn('total_bayar', 'total');
+        })->get();
+
+
         $staff_super = ['admin', 'owner'];
         $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
-        $compact = ['staff_super', 'staff'];
+        $status = ['utang', 'kredit', 'lunas'];
+        $compact = ['staff_super', 'staff', $status];
 
-        // $status = transaksi::all();
-        $utang = transaksi::where('total_bayar', '=', 0)->get();
-        $kredit = transaksi::where('total', '>', 'total_bayar')->orwhere('total_bayar', '>', '0')->get();
-        $lunas = transaksi::where('total', '=', 'total_bayar')->orwhere('total_bayar', '>', 'total')->get();
-        
+        // $compact = array_merge($compact,$status);
 
+        // return $compact;
         if ($user_role == 'client') {
-            return view('EU.history.index',compact($compact));
+            return view('EU.history.index', compact($compact));
         }
         return view('Admin.transaction.index', compact($compact));
     }
@@ -64,17 +76,21 @@ class TransaksiController extends Controller
 
         $today = today();
         $today = date("Y-m-d H:i:s");
-        // return $today;
-        // return $timestamp; // Output: UNIX timestamp
+
         $user = auth()->user()->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
+
+        $total = $request->total;
+        $admin = $total * 0.11;
+        $grandtotal = $total + $admin;
+        // return $request->member_id;
 
         $cart = cart::where('member_id', $member)->get();
         $trx = transaksi::create([
             'tanggal' => $today,
             'member_id' => $request->member_id,
             'total_bayar' => 0,
-            'total' => $request->total,
+            'total' => $grandtotal,
         ]);
 
         $trxid = $trx->id;
@@ -109,24 +125,30 @@ class TransaksiController extends Controller
     public function pembayaran()
     {
         $user = auth()->user()->id;
-        $member = member::where('user_id',$user)->pluck('id')->first();
-        
-        $trxid = transaksi::where('member_id',$user)->get();
+        $member = member::where('user_id', $user)->pluck('id')->first();
+        // return $member;
+
+        $trxid = transaksi::where('member_id', $member)->latest()->value('id');
+        // return $trxid;
         // return $user;
         // return $trxid;
         $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
+        // return $detail;
         $total = 0;
         foreach ($detail as $d) {
             $total += $d->produk->harga * $d->quantity;
         }
+        $admin = $total * 0.11;
+        $grandtotal = $total + $admin;
+        // return $total;
 
-        $compact = ['detail','total'];
-        return view('EU.transaction.pembayaran',compact($compact));    
+
+        $compact = ['detail', 'total', 'grandtotal', 'admin'];
+        return view('EU.transaction.pembayaran', compact($compact));
     }
 
-    public function cek()
+    public function bayar()
     {
-        return redirect()->back();  
     }
 
     /**
@@ -142,7 +164,7 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
-        //
+        return 'halodek';
     }
 
     /**
@@ -167,9 +189,5 @@ class TransaksiController extends Controller
 
     public function destroy($id)
     {
-        $user = auth()->user()->id;
-        $cart = cart::where('member_id', $user)->where('id', $id)->first();
-        $cart->delete();
-        return redirect()->back();
     }
 }

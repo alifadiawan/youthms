@@ -37,7 +37,7 @@
 
                                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
                                     <div class="d-flex mb-4" style="max-width: 300px">
-                                        <form action="{{ route('transaksi.destroy', $c->id) }}" method="post">
+                                        <form action="{{ route('cart.destroy', $c->id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn text-danger me-2" data-mdb-toggle="tooltip"
@@ -113,7 +113,7 @@
                         <form id="checkout-form" action="{{ route('transaksi.create') }}" method="put">
                             @csrf
                             @method('put')
-                            <input type="hidden" name="member_id" value="{{ auth()->user()->id }}">
+                            <input type="hidden" name="member_id" value="{{ $member }}">
                             <input type="hidden" name="total" id="total" value="{{ $totalTransaksi }}">
                             @foreach ($cart as $c)
                                 <input type="hidden" name="produk_id[]" value="{{ $c->produk->id }}">
