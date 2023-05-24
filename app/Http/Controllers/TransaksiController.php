@@ -41,20 +41,30 @@ class TransaksiController extends Controller
         $member = member::where('user_id', $user)->pluck('id')->first();
 
         // mencari status transaksi
-        $utang = transaksi::where('member_id', $member)->where('total_bayar', 0)->get();
-        $kredit = transaksi::where('member_id', $member)->whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0')->get();
-        $lunas = transaksi::where('member_id', $member)->where(function ($lunas) {
+        $transaksi = Transaksi::all();
+        $utang = transaksi::where('total_bayar', 0)->get();
+        $kredit = transaksi::whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0')->get();
+        $lunas = transaksi::where(function ($lunas) {
             $lunas->whereColumn('total', '<', 'total_bayar')->orWhereColumn('total_bayar', 'total');
         })->get();
+        $uu = $utang->pluck('id')->toarray();
+        $uk = $kredit->pluck('id')->toarray();
+        $ul = $lunas->pluck('id')->toarray();
+        // return $ul;
 
         // jenis role
         $staff_super = ['admin', 'owner'];
         $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
-        $status = ['utang', 'kredit', 'lunas'];
-        $compact = ['staff_super', 'staff', $status];
+        $stts = ['uu', 'uk', 'ul'];
+        $compact = ['staff_super', 'staff', $stts, 'transaksi'];
 
         // pengkondisian jika role user = client, akan terlempar ke history index
         if ($user_role == 'client') {
+            $utang = $utang->where('member_id', $member)->get();
+            $kredit = $kredit->where('member_id', $member)->get();
+            $lunas = $lunas->where('member_id', $member)->get();
+            $status = ['utang', 'kredit', 'lunas'];
+            $compact = array_merge($compact, ['status']);
             return view('EU.history.index', compact($compact));
         }
         return view('Admin.transaction.index', compact($compact));
