@@ -67,6 +67,8 @@
                     {{ auth()->user()->username }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <span class="dropdown-item dropdown-header">AKUN</span>
+                    <div class="dropdown-divider"></div>
                     @if(auth()->user()->hasIncompleteProfile())
                     <a class="dropdown-item" href="{{route('employee.create')}}">
                         <i class="fas fa-user-pen fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -78,6 +80,11 @@
                         Edit Profile
                     </a>
                     @endif
+                    <a class="dropdown-item" href="{{route('user.edit', auth()->user()->id)}}">
+                        <i class="fas fa-user-gear fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Edit Akun
+                    </a>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Logout

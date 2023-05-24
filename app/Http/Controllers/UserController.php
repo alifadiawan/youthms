@@ -148,13 +148,13 @@ class UserController extends Controller
             }
             notify()->success('Akun Berhasil Diupdate !!');
             // mengirim notifikasi
-            $user = User::whereHas('role', function ($query) {
+            $users = User::whereHas('role', function ($query) {
                 $query->whereIn('role', ['admin', 'owner']);
             })->get();
             $message = "Akun Berhasil Diupdate !!";
             $notification = new NewMessageNotification($message);
             $notification->setUrl(route('user.show', ['user' => $user->id])); // Ganti dengan rute yang sesuai
-            Notification::send($user, $notification);
+            Notification::send($users, $notification);
             return redirect('user/' . $id);
         } else {
             // return $request;
