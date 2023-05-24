@@ -5,7 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Transaksi;
-Use Illuminate\Support\Carbon;
+use App\Models\TransaksiDetail;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class TransaksiSeeder extends Seeder
 {
@@ -15,29 +17,54 @@ class TransaksiSeeder extends Seeder
     public function run(): void
     {
         $transaksi = [
+
             [
-                'tanggal' =>   today(),
-                'total' => 90000,
-                'total_bayar' => 100000,
-                'member_id' => 1,
-            ],
-            [
-                'tanggal' =>   today(),
-                'total' => 69000,
-                'total_bayar' => 200000,
-                'member_id' => 1,
-            ],
-            [
-                'tanggal' =>   today(),
+                'tanggal' =>   Carbon::parse('2023-04-20'),
                 'total' => 420000,
                 'total_bayar' => 500000,
                 'member_id' => 1,
             ],
             [
                 'tanggal' =>   Carbon::parse('2023-04-20'),
-                'total' => 420000,
-                'total_bayar' => 500000,
+                'total' => 690000,
+                'total_bayar' => 690000,
                 'member_id' => 1,
+            ],
+            [
+                'tanggal' =>   Carbon::parse('2023-04-20'),
+                'total' => 690000,
+                'total_bayar' => 420000,
+                'member_id' => 1,
+            ],
+            [
+                'tanggal' =>   Carbon::parse('2023-04-20'),
+                'total' => 690000,
+                'total_bayar' => 0,
+                'member_id' => 1,
+            ],
+            [
+                'tanggal' =>   Carbon::parse('2023-04-20'),
+                'total' => 293039,
+                'total_bayar' => 400000,
+                'member_id' => 2,
+            ],
+            [
+                'tanggal' =>   Carbon::parse('2023-04-20'),
+                'total' => 2847146,
+                'total_bayar' => 2847146,
+                'member_id' => 2,
+            ],
+            [
+                'tanggal' =>   Carbon::parse('2023-04-20'),
+                'total' => 1645020,
+                'total_bayar' => 100000,
+                'member_id' => 2,
+            ],
+            [
+                'tanggal' =>   Carbon::parse('2023-04-20'),
+                'total' => 382950,
+                'total_bayar' => 0,
+                'member_id' => 2,
             ],
 
         ];

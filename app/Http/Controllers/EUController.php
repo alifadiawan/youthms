@@ -83,8 +83,8 @@ class EUController extends Controller
         $layanan = JenisLayanan::all();
         $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
 
-        $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->get();
+        // $user = auth()->user()->id;
+        // $member = member::where('user_id', $user)->get();
         // return $member;
 
         $jl = JenisLayanan::where('layanan',$type)->first();
@@ -104,7 +104,14 @@ class EUController extends Controller
         $p = produk::wherein('id', $pr)->get('id');
         $c = produk::wherein('id', $cart)->get('id');
 
-        return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan', 'c','user','member'));
+        $compact = ['layanan', 'produk', 'jenis_layanan', 'c'];
+        if(auth::check()){
+            $user = auth()->user()->id;
+            $member = member::where('user_id', $user)->get();
+            $compact = array_merge($compact,['user','member']);
+        }
+
+        return view('EU.store.show', compact($compact));
     }
 
     /**

@@ -37,7 +37,7 @@
 
                                 <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                     <div class="d-flex mb-4" style="max-width: 300px">
-                                        <form action="{{ route('transaksi.destroy', $c->id) }}" method="post">
+                                        <form action="{{ route('cart.destroy', $c->id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn text-danger me-2" data-mdb-toggle="tooltip"
@@ -97,7 +97,7 @@
                         @endforeach
                         <li class="list-group-item d-flex justify-content-end align-items-center border-0 px-0 mb-3">
                             <div>
-                                <strong> <span id="total-transaksi-b" class="">Total : Rp.
+                                <strong> <span id="total-transaksi-b">Total : Rp.
                                         {{ number_format($totalTransaksi) }}</span></strong>
                                 <strong><span id="total-transaksi" style="display: none;">Total : Rp.
                                     </span></strong>
@@ -110,12 +110,16 @@
                         <h2>GABOLE CHECK OUT</h2>
                         <h5>masi Rp. 0 tuh, kaya dompetku :(</h5>
                     @else
-                        <form action="{{ route('transaksi.create') }}" method="put">
+                        <form id="checkout-form" action="{{ route('transaksi.create') }}" method="put">
                             @csrf
+                            @method('put')
+                            <input type="hidden" name="member_id" value="{{ $member }}">
+                            <input type="hidden" name="total" id="total" value="{{ $totalTransaksi }}">
+                            @foreach ($cart as $c)
+                                <input type="hidden" name="produk_id[]" value="{{ $c->produk->id }}">
+                            @endforeach
                             <button type="submit" id="checkout" class="btn btn-success btn-lg btn-block"
                                 style="display: ">
-                                <input type="hidden" name="member_id" value="{{ auth()->user()->id }}">
-                                <input type="hidden" name="total" id="total" value="{{ $totalTransaksi }}">
                                 Go to checkout
                             </button>
                         </form>
@@ -188,11 +192,6 @@
             if (quantity > 1) {
                 $(input).val(quantity - 1).trigger('change');
             }
-        }
-
-        function update() {
-            document.getElementById("ubah").style.display = "inline";
-            document.getElementById("hapus").style.display = "none";
-        }
+        }f
     </script>
 @endsection

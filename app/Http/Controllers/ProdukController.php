@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
+use App\Models\TransaksiDetail;
+use Illuminate\Support\Facades\DB;
 
 class ProdukController extends Controller
 {
@@ -25,26 +27,36 @@ class ProdukController extends Controller
         $cek = produk::doesnthave('cart')->pluck('id')->toarray();
         $cart = produk::has('cart')->get('id');
         $c = produk::wherein('id', $cart)->get('id');
-        $compact = ['layanan','c'];
 
         //untuk halaman admin
         $product = Produk::paginate(5);
         $services = Services::all();
 
+        $produkpopuler = TransaksiDetail::select('produk_id', DB::raw('SUM(quantity) as total_quantity'))
+            ->groupBy('produk_id')
+            ->orderByDesc('total_quantity')
+            ->limit(5)
+            ->pluck('produk_id');
+
+        $populer = produk::whereIn('id', $produkpopuler)->with(['services','services.jenis_layanan'])->get();
+
+        // return $populer;
+
+
+        $compact = ['layanan', 'c', 'populer'];
+
         if (auth()->check()) {
             $u = auth()->user()->role->role;
             $admin = ['admin', 'owner'];
             if (in_array($u, $admin)) {
-                return view('Admin.store.index' , compact('product' , 'services'));
-            }
-            else {
+                return view('Admin.store.index', compact('product', 'services'));
+            } else {
                 $user = auth()->user()->id;
                 $member = member::where('user_id', $user)->get();
-                $compact = array_merge($compact,['user','member']);
+                $compact = array_merge($compact, ['user', 'member']);
                 return view('EU.store.index', compact($compact));
             }
-        }
-        else{
+        } else {
             return view('EU.store.index', compact($compact));
         }
     }
@@ -54,9 +66,9 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        $jenis_services = Services::all();    
-        
-        return view('Admin.store.tambah' , compact('jenis_services'));
+        $jenis_services = Services::all();
+
+        return view('Admin.store.tambah', compact('jenis_services'));
     }
 
     /**
@@ -67,10 +79,10 @@ class ProdukController extends Controller
         //ambil info file
         $file = $request->file('foto');
         //rename
-        $nama_file = time()."_".$file->getClientOriginalName();
+        $nama_file = time() . "_" . $file->getClientOriginalName();
 
         $tujuan_upload = './produk/';
-        $file->move($tujuan_upload,$nama_file);
+        $file->move($tujuan_upload, $nama_file);
 
         //insert data
         $produk = Produk::create([
@@ -81,12 +93,12 @@ class ProdukController extends Controller
             'services_id' => $request->services_id,
         ]);
 
-        notify()->success('Berhasil Ditambahkan !!',$request->nama_produk,);
+        notify()->success('Berhasil Ditambahkan !!', $request->nama_produk,);
         // mengirim notifikasi
         $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
-        $message = $request->nama_produk." Berhasil Ditambahkan !!";
+        $message = $request->nama_produk . " Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('store.showid', ['id' => $produk->id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
@@ -104,7 +116,7 @@ class ProdukController extends Controller
     public function showid($id)
     {
         $product = Produk::find($id);
-        
+
         return view('Admin.store.detail', compact('product'));
     }
 
@@ -115,7 +127,7 @@ class ProdukController extends Controller
         $layanan = JenisLayanan::all();
         $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
 
-        $jl = JenisLayanan::where('layanan',$type)->first();
+        $jl = JenisLayanan::where('layanan', $type)->first();
         $services = $jl->services;
 
         foreach ($services as $s) {
@@ -132,16 +144,16 @@ class ProdukController extends Controller
         $p = produk::wherein('id', $pr)->get('id');
         $c = produk::wherein('id', $cart)->get('id');
 
+        $compact = ['layanan', 'produk', 'jenis_layanan', 'c'];
         if (auth()->check()) {
             $user = auth()->user()->id;
             $member = member::where('user_id', $user)->get();
-            return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan', 'c','user','member'));
-            
+            $compact = array_merge($compact, ['user', 'member']);
         }
 
-        else {
-            return view('EU.store.show', compact('layanan', 'produk', 'jenis_layanan', 'c'));
-        }
+        return view('EU.store.show', compact($compact));
+        // else {
+        // }
 
     }
 
@@ -152,8 +164,8 @@ class ProdukController extends Controller
     {
         $product = Produk::find($id);
         $services = Services::all();
-        
-        return view('Admin.store.edit' , compact('product' , 'services'));
+
+        return view('Admin.store.edit', compact('product', 'services'));
     }
 
     /**
@@ -165,32 +177,32 @@ class ProdukController extends Controller
 
         if ($request->hasFile('foto')) {
             //hapus foto lama
-            File::delete('./produk/'.$produk->foto);
+            File::delete('./produk/' . $produk->foto);
 
             //ambil info file
             $file = $request->file('foto');
 
             //rename
-            $nama_file = time()."_".$file->getClientOriginalName();
+            $nama_file = time() . "_" . $file->getClientOriginalName();
 
             //proses upload
             $tujuan_upload = './produk/';
-            $file->move($tujuan_upload,$nama_file);    
+            $file->move($tujuan_upload, $nama_file);
             $produk->foto = $nama_file;
         }
-        
+
         $produk->nama_produk = $request->nama_produk;
         $produk->deskripsi = $request->deskripsi;
         $produk->harga = $request->harga;
         $produk->services_id = $request->services_id;
         $produk->save();
 
-        notify()->success($request->nama_produk.' Berhasil Diupdate !!');
+        notify()->success($request->nama_produk . ' Berhasil Diupdate !!');
         // mengirim notifikasi
         $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
-        $message = $request->nama_produk." Berhasil Diupdate !!";
+        $message = $request->nama_produk . " Berhasil Diupdate !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('store.showid', ['id' => $produk->id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
@@ -208,7 +220,7 @@ class ProdukController extends Controller
     public function hapus($id)
     {
         $product = Produk::find($id);
-        File::delete('./produk/'.$product->foto);
+        File::delete('./produk/' . $product->foto);
         $product->delete();
 
         notify()->success('Produk berhasil dihapus');
@@ -221,6 +233,5 @@ class ProdukController extends Controller
         $notification->setUrl(route('store.index')); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
         return redirect('/store');
-
     }
 }

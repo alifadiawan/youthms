@@ -17,6 +17,7 @@ return new class extends Migration
             // $table->integer('');
             $table->integer('total');
             $table->integer('total_bayar');
+            $table->date('date_expired')->nullable();
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')->references('id')->on('member')
                 ->onUpdate('cascade')

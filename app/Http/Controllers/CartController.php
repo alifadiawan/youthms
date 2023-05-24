@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Produk;
 use App\Models\Transaksi;
 use App\Models\TransaksiDetail;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -15,18 +16,19 @@ class CartController extends Controller
      */
     public function index()
     {
-
+        // mencari data user & member
         $user = auth()->user()->id;
-        
+        $member = member::where('user_id', $user)->pluck('id')->first();
+        $cart = cart::where('member_id', $member)->get()->sortByDesc('cart.created_at');
+
         $totalTransaksi = 0;
-        $cart = cart::where('member_id',$user)->get();
+        $cart = cart::where('member_id', $member)->get();
         foreach ($cart as $c) {
             $totalTransaksi += $c->quantity * $c->produk->harga;
         }
 
-        $user = auth()->user()->id;
-        $cart = cart::where('member_id', $user)->get()->sortByDesc('cart.created_at');
-        return view('EU.transaction.cart', compact('cart','totalTransaksi'));
+        // return $totalTransaksi;
+        return view('EU.transaction.cart', compact('member','cart', 'totalTransaksi'));
     }
 
 
@@ -39,10 +41,13 @@ class CartController extends Controller
             $totalTransaksi += $c->quantity * $c->produk->harga;
         }
 
-        return response()->json([
+        $response = response()->json([
             'success' => true,
             'totalTransaksi' => $totalTransaksi,
         ]);
+        $response->cookie('totalTransaksi', $totalTransaksi, 60);
+
+        return $response;
     }
 
 
@@ -110,6 +115,13 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart)
     {
-        //
+        // mencari data user & member
+        $user = auth()->user()->id;
+        $member = member::where('user_id',$user)->pluck('id')->first();
+
+        // mencari produk di tabel cart menggunakkan id member lalu dihapus
+        $item = cart::where('member_id', $member)->where('id', $cart->id)->first();
+        $item->delete();
+        return redirect()->back();
     }
 }

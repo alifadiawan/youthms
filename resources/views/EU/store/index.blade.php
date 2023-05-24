@@ -24,10 +24,61 @@
                 {{-- //branch main 2 --}}
                 <a href="{{ route('store.showtype', $l->layanan) }}" class=" my-3 text-capitalize">{{ $l->layanan }}</a>
             @endforeach
-
         </div>
 
         <div class="d-flex row mb-5 justify-content-start">
+            <p class="h2 fw-bold">
+                Paling Diminati
+            </p>
+            @foreach ($populer as $p)
+                <div class="my-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="card">
+                        <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ $p->services->judul }}</h4>
+                            <p class="card-title text-secondary">{{ $p->nama_produk }}</p>
+                            <h3 class="card-text">Rp{{ number_format($p->harga) }}</h3>
+                            @guest
+                                <a href="{{ route('authcheck') }}" class="btn btn-primary">
+                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                </a>
+                            @endguest
+
+                            @auth
+                                @if (empty($member))
+                                    <a href="{{ route('user.show', $user) }}" class="btn btn-primary">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </a>
+                                @else
+                                    @if (auth()->user()->hasIncompleteProfile())
+                                        <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
+                                            class="btn btn-primary" disabled>
+                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                        </a>
+                                    @elseif ($c->contains('id', $p->id))
+                                        <button type="submit" class="btn btn-danger" disabled>
+                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                        </button>
+                                    @else
+                                        <form action="{{ route('cart.store') }}" method="POST">
+                                            @csrf
+                                            @foreach ($member as $m)
+                                                <input type="hidden" name="member_id" value="{{ $m->id }}">
+                                            @endforeach
+                                            <input type="hidden" class="form-control" name="quantity" value="1">
+                                            <input type="hidden" value="{{ $p->id }}" name="produk_id">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                            </button>
+                                        </form>
+                                    @endif
+                                @endif
+                            @endauth
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
             @foreach ($layanan as $l)
                 <p class="h2 fw-bold">{{ $l->layanan }}</p>
                 @foreach ($l->services as $ls)
@@ -63,7 +114,9 @@
                                             @else
                                                 <form action="{{ route('cart.store') }}" method="POST">
                                                     @csrf
-                                                    <input type="hidden" name="member_id" value="{{ $user }}">
+                                                    @foreach ($member as $m)
+                                                        <input type="hidden" name="member_id" value="{{ $m->id }}">
+                                                    @endforeach
                                                     <input type="hidden" class="form-control" name="quantity" value="1">
                                                     <input type="hidden" value="{{ $p->id }}" name="produk_id">
                                                     <button type="submit" class="btn btn-primary">
@@ -80,92 +133,20 @@
                 @endforeach
             @endforeach
         </div>
-
-        {{-- <!-- promo content -->
-        <p class="h2 fw-bold">PROMO</p>
-        <div class="d-flex row mb-5 justify-content-center" data-aos="fade-down" data-aos-duration="1000">
-            <div class="my-3 col-lg-4 col-md-6 col-sm-12">
-                <div class="card">
-                    <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-title">Powerpoint</h4>
-                        <p class="card-title text-secondary"><del>Rp.300.000</del></p>
-                        <h3 class="card-text">Rp.150.000</h3>
-                        <a href="#" class="btn btn-primary">
-                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="my-3 col-lg-4 col-md-6 col-sm-12">
-                <div class="card">
-                    <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-title">Powerpoint</h4>
-                        <p class="card-title text-secondary"><del>Rp.300.000</del></p>
-                        <h3 class="card-text">Rp.150.000</h3>
-                        <a href="#" class="btn btn-primary">
-                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="my-3 col-lg-4 col-md-6 col-sm-12">
-                <div class="card">
-                    <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-title">Powerpoint</h4>
-                        <p class="card-title text-secondary"><del>Rp.300.000</del></p>
-                        <h3 class="card-text">Rp.150.000</h3>
-                        <a href="#" class="btn btn-primary">
-                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- yg paling diminati -->
-        <p class="h2 fw-bold">PALING DIMINATI</p>
-        <div class="row">
-            <div class="my-3 col-lg-4 col-md-6 col-sm-12">
-                <div class="card">
-                    <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-title">Powerpoint</h4>
-                        <p class="card-text">Rp.150.000</p>
-                        <a href="#" class="btn btn-primary">
-                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="my-3 col-lg-4 col-md-6 col-sm-12">
-                <div class="card">
-                    <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-title">Powerpoint</h4>
-                        <p class="card-text">Rp.150.000</p>
-                        <a href="#" class="btn btn-primary">
-                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="my-3 col-lg-4 col-md-6 col-sm-12">
-                <div class="card">
-                    <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-title">Powerpoint</h4>
-                        <p class="card-text">Rp.150.000</p>
-                        <a href="#" class="btn btn-primary">
-                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
     </div>
+
+    <script>
+        window.onload = function() {
+            let scrollPosition = sessionStorage.getItem('scrollPosition');
+            if (scrollPosition) {
+                window.scrollTo(0, scrollPosition);
+                sessionStorage.removeItem('scrollPosition');
+            }
+        };
+
+        window.onbeforeunload = function() {
+            sessionStorage.setItem('scrollPosition', window.pageYOffset);
+        };
+    </script>
+
 @endsection

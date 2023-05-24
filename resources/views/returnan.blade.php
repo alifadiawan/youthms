@@ -1,8 +1,8 @@
 anda adalah benar
 
 
-@if (session('status'))
-<div class="alert alert-success" role="alert">
-    {{ session('status') }}
-</div>
+@if (session('message'))
+    <div class="alert alert-info">
+        {{ session('message') }}
+    </div>
 @endif

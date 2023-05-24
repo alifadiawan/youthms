@@ -23,19 +23,18 @@ class ClientMiddleware
             // cek apakah pengguna terdaftar sebagai klien
             if (in_array($u, $staff)) {
                 return $next($request);
-            }
-            elseif (Auth::user()->role->role =='client') {
+            } elseif (Auth::user()->role->role == 'client') {
                 return $next($request);
-            }
-            else {
+            } else {
                 return redirect()->back();
             }
         } else {
             // jika pengguna tidak terotentikasi, lewati middleware dan izinkan akses ke rute
             return $next($request);
         }
-
-        return redirect('/returnan');
-    
+        
+        
+        $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
+        return redirect('/returnan')->with('message', 'Kamu dilemparkan ke /returnan dikarenakan tidak cocok dengan role' . $staff);
     }
 }
