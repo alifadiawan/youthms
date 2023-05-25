@@ -35,8 +35,8 @@
                     <div class="card">
                         <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h4 class="card-title">{{ $p->services->judul }}</h4>
-                            <p class="card-title text-secondary">{{ $p->nama_produk }}</p>
+                            <h4 class="card-title">{{ $p->nama_produk }}</h4>
+                            <p class="card-title text-secondary">{{ $p->services->judul }}</p>
                             <h3 class="card-text">Rp{{ number_format($p->harga) }}</h3>
                             @guest
                                 <a href="{{ route('authcheck') }}" class="btn btn-primary">
@@ -55,7 +55,7 @@
                                             class="btn btn-primary" disabled>
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </a>
-                                    @elseif ($cart->contains('id', $p->id))
+                                    @elseif ($cart->contains('produk_id', $p->id))
                                         <button type="submit" class="btn btn-danger" disabled>
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </button>
@@ -87,8 +87,8 @@
                             <div class="card">
                                 <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h4 class="card-title">{{ $ls->judul }}</h4>
-                                    <p class="card-title text-secondary">{{ $p->nama_produk }}</p>
+                                    <h4 class="card-title">{{ $p->nama_produk }}</h4>
+                                    <p class="card-title text-secondary">{{ $ls->judul }}</p>
                                     <h3 class="card-text">Rp.{{ number_format($p->harga) }}</h3>
                                     @guest
                                         <a href="{{ route('authcheck') }}" class="btn btn-primary">
@@ -107,7 +107,7 @@
                                                     class="btn btn-primary" disabled>
                                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                                 </a>
-                                            @elseif ($cart->contains('id', $p->id))
+                                            @elseif ($cart->contains('produk_id', $p->id))
                                                 <button type="submit" class="btn btn-danger" disabled>
                                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                                 </button>
