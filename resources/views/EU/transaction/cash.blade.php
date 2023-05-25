@@ -4,7 +4,7 @@
 
         <div class="row d-flex justify-content-center my-4">
             <div class="col-md-8">
-                <a href="{{ route('cart.index') }}" class="btn my-3">
+                <a href="{{ route('transaksi.history') }}" class="btn my-3">
                     <i class="fas fa-arrow-left"></i></a>
                 <div class="card mb-4">
                     <div class="card-header py-3">
@@ -22,6 +22,19 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
+                            @if (in_array($detail[0]->transaksi_id, $utang))
+                                <div class="alert alert-danger" role="alert">
+                                    <h1>utang</h1>
+                                </div>
+                            @elseif(in_array($detail[0]->transaksi_id, $kredit))
+                                <div class="alert alert-warning" role="alert">
+                                    <h1>kredit</h1>
+                                </div>
+                            @else
+                                <div class="alert alert-success" role="alert">
+                                    <h1>lunas</h1>
+                                </div>
+                            @endif
 
                             @foreach ($detail as $d)
                                 <ul class="list-group list-group-flush">
@@ -74,7 +87,8 @@
                         <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title"> <i class="fa-solid fa-money-bill-transfer"></i> Transfer Bank</h5>
+                                    <h5 class="card-title"> <i class="fa-solid fa-money-bill-transfer"></i> Transfer Bank
+                                    </h5>
                                 </div>
                             </div>
                         </a>

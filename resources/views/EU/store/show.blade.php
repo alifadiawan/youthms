@@ -54,22 +54,18 @@
                                 </a>
                             @endguest
 
-                            {{-- << incoming --}}
                             @auth
-                                @if (empty($member))
+                                {{-- @if (empty($member))
                                     <a href="{{ route('user.show', $user) }}" class="btn btn-primary">
                                         <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                     </a>
-                                @else
-                                {{-- ======================= --}}
+                                @else --}}
                                     @if (auth()->user()->hasIncompleteProfile())
                                         <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
                                             class="btn btn-primary" disabled>
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </a>
                                     @elseif ($c->contains('id', $p->id))
-                                    
-                                {{-- >> current --}}
                                         <button type="submit" class="btn btn-danger" disabled>
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </button>
@@ -87,7 +83,7 @@
                                         </form>
                                     @endif
                                 @endauth
-                            @endif
+                            {{-- @endif --}}
 
 
 
