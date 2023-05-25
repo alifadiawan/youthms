@@ -40,7 +40,7 @@
                             </td>
                         @endif
                         <td>
-                            <a href="/" class="btn-sm btn-success">Detail</a>
+                            <a href="{{ route('transaksi.show',$t->id) }}" class="btn-sm btn-success">Detail</a>
                         </td>
 
                     </tr>

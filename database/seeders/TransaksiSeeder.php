@@ -17,31 +17,6 @@ class TransaksiSeeder extends Seeder
     public function run(): void
     {
         $transaksi = [
-
-            [
-                'tanggal' =>   Carbon::parse('2023-04-20'),
-                'total' => 420000,
-                'total_bayar' => 500000,
-                'member_id' => 1,
-            ],
-            [
-                'tanggal' =>   Carbon::parse('2023-04-20'),
-                'total' => 690000,
-                'total_bayar' => 690000,
-                'member_id' => 1,
-            ],
-            [
-                'tanggal' =>   Carbon::parse('2023-04-20'),
-                'total' => 690000,
-                'total_bayar' => 420000,
-                'member_id' => 1,
-            ],
-            [
-                'tanggal' =>   Carbon::parse('2023-04-20'),
-                'total' => 690000,
-                'total_bayar' => 0,
-                'member_id' => 1,
-            ],
             [
                 'tanggal' =>   Carbon::parse('2023-04-20'),
                 'total' => 293039,
