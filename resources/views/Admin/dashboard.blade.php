@@ -35,11 +35,11 @@
             <div class="card">
                 <div class="card-header border-0">
                     <div class="d-flex justify-content-between">
-                        {{-- <h3 class="card-title">{{ $chart2->options['chart_title'] }}</h3> --}}
+                        <h3 class="card-title">{{ $chart2->options['chart_title'] }}</h3>
                     </div>
                 </div>
                 <div class="card-body">
-                    {{-- {!! $chart2->renderHtml() !!} --}}
+                    {!! $chart2->renderHtml() !!}
                 </div>
             </div>
         </div>
@@ -137,7 +137,7 @@
     {!! $chart1->renderChartJsLibrary() !!}
 
     {!! $chart1->renderJs() !!}
-    {{-- {!! $chart2->renderJs() !!} --}}
+    {!! $chart2->renderJs() !!}
 
 
 @endsection

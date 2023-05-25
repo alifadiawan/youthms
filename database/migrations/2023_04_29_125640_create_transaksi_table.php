@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('tanggal');
+            $table->timestamp('tanggal');
             // $table->integer('');
             $table->integer('total');
             $table->integer('total_bayar');
