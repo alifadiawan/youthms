@@ -42,14 +42,14 @@ class TransaksiController extends Controller
 
         // mencari status transaksi
         $transaksi = Transaksi::all();
-        $utang = transaksi::where('total_bayar', 0)->get();
-        $kredit = transaksi::whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0')->get();
+        $utang = transaksi::where('total_bayar', 0);
+        $kredit = transaksi::whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0');
         $lunas = transaksi::where(function ($lunas) {
             $lunas->whereColumn('total', '<', 'total_bayar')->orWhereColumn('total_bayar', 'total');
-        })->get();
-        $uu = $utang->pluck('id')->toarray();
-        $uk = $kredit->pluck('id')->toarray();
-        $ul = $lunas->pluck('id')->toarray();
+        });
+        $uu = $utang->get()->pluck('id')->toarray();
+        $uk = $kredit->get()->pluck('id')->toarray();
+        $ul = $lunas->get()->pluck('id')->toarray();
         // return $ul;
 
         // jenis role
@@ -63,8 +63,9 @@ class TransaksiController extends Controller
             $utang = $utang->where('member_id', $member)->get();
             $kredit = $kredit->where('member_id', $member)->get();
             $lunas = $lunas->where('member_id', $member)->get();
+            // return $utang;   
             $status = ['utang', 'kredit', 'lunas'];
-            $compact = array_merge($compact, ['status']);
+            $compact = array_merge($compact, $status);
             return view('EU.history.index', compact($compact));
         }
         return view('Admin.transaction.index', compact($compact));
@@ -182,57 +183,64 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
-
         $user = auth()->user()->id;
+        $user_role = auth()->user()->role->role;
         $member = member::where('user_id', $user)->pluck('id')->first();
 
         // mencari status transaksi
-        $utang = transaksi::where('member_id', $member)->where('total_bayar', 0)->pluck('id')->toArray();
-        $kredit = transaksi::where('member_id', $member)->whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0')->pluck('id')->toArray();
-        $lunas = transaksi::where('member_id', $member)->where(function ($lunas) {
-            $lunas->whereColumn('total', '<', 'total_bayar')->orWhereColumn('total_bayar', 'total');
-        })->pluck('id')->toArray();
+            $utang = transaksi::where('total_bayar', 0)->pluck('id')->toArray();
+            $kredit = transaksi::whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0')->pluck('id')->toArray();
+            $lunas = transaksi::where(function ($lunas) {
+                $lunas->whereColumn('total', '<', 'total_bayar')->orWhereColumn('total_bayar', 'total');
+            })->pluck('id')->toArray();
+            // $utang = transaksi::where('member_id', $member)->where('total_bayar', 0)->pluck('id')->toArray();
+        // $kredit = transaksi::where('member_id', $member)->whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0')->pluck('id')->toArray();
+        // $lunas = transaksi::where('member_id', $member)->where(function ($lunas) {
+        //     $lunas->whereColumn('total', '<', 'total_bayar')->orWhereColumn('total_bayar', 'total');
+        // })->pluck('id')->toArray();
 
         $tid = [];
         $tid[] = $transaksi->id;
         $transaksi = transaksi::where('id', $transaksi->id)->get();
+        // return $transaksi;
 
-        if (in_array($tid, $utang)) {
-            return 'utang';
-            $compact = [];
-            return view('EU.transaction.cash', compact($compact));
-        } elseif (in_array($tid, $kredit)) {
+        // if (in_array($tid, $utang)) {
+        //     return 'utang';
+        //     $compact = [];
+        //     return view('EU.transaction.cash', compact($compact));
+        // } elseif (in_array($tid, $kredit)) {
 
-            return 'kredit';
-            $compact = [];
-            return view('EU.transaction.cash', compact($compact));
-        } elseif (in_array($tid, $lunas)) {
+        //     return 'kredit';
+        //     $compact = [];
+        //     return view('EU.transaction.cash', compact($compact));
+        // } elseif (in_array($tid, $lunas)) {
 
-            return 'acumalaka';
-            $compact = [];
-            return view('EU.transaction.detail', compact($compact));
-        } else {
+        //     return 'acumalaka';
+        //     $compact = [];
+        //     return view('EU.transaction.detail', compact($compact));
+        // } else {
 
-            $trxid = $tid;
-            // mencari detail transaksi id dengan $trxid
-            $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
-
-            // menghitung total produk serta jumlah total
-            $total = 0;
-            foreach ($detail as $d) {
-                $total += $d->produk->harga * $d->quantity;
-            }
-
-            // mencari biaya admin serta harga setelah admin
-            $admin = $total * 0.11;
-            $grandtotal = $total + $admin;
-
-
-            $compact = ['detail', 'total', 'grandtotal', 'admin'];
-
-            return view('EU.transaction.pembayaran', compact($compact));
-            // return 'transaksi tidak cocok dengan user / transaksi tidak ditemukan';
+        $trxid = $tid;
+        // mencari detail transaksi id dengan $trxid
+        $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
+        // menghitung total produk serta jumlah total
+        $total = 0;
+        foreach ($detail as $d) {
+            $total += $d->produk->harga * $d->quantity;
         }
+
+        // mencari biaya admin serta harga setelah admin
+        $admin = $total * 0.11;
+        $grandtotal = $total + $admin;
+
+        $status = ['utang','kredit','lunas'];
+        $compact = ['detail', 'total', 'grandtotal', 'admin', $status];
+
+        if ($user_role == 'client') {
+            return view('EU.transaction.pembayaran', compact($compact));
+        }
+        return view('Admin.transaction.detail', compact($compact));
+        // }
     }
 
     /**

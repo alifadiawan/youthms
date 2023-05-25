@@ -123,6 +123,7 @@ Route::middleware(['auth'])->group(function () {
 
     
     // transaction
+    Route::resource('/transaksi', TransaksiController::class);
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
     Route::get('/transaksi/pembayaran', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
 });
@@ -139,13 +140,12 @@ route::middleware(['client', 'employee'])->group(function () {
     Route::get('/update_profile', [EUController::class, 'updateprofile'])->name('storeEU.update_profile');
     Route::get('/hapus_profile', [EUController::class, 'hapusprofile'])->name('storeEU.hapus_profile');
 
-    //transaction
+    // transaction
     Route::get('/pembayaran', function () {
         return view('EU.transaction.pembayaran');
     });
 
-    // // //transaction
-    Route::resource('/transaksi', TransaksiController::class);
+    // transaction
     Route::get('/cart', [TransaksiController::class])->name('cart.index');
     Route::post('/cart/increase', [TransaksiController::class])->name('cart.increase');
 
