@@ -15,4 +15,9 @@ class Cart extends Model
     {
         return $this->belongsTo(produk::class);
     }
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
 }

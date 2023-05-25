@@ -15,14 +15,22 @@
 
             @guest
                 <li class="nav-item"><a class="nav-link" href="{{ route('authcheck') }}"><i
-                            class="fa-solid fa-cart-shopping"></i><span class="badge bg-primary ms-3">2</span></a></li>
+                            class="fa-solid fa-cart-shopping"></i></a></li>
 
                 <li><a class="getstarted" href="/login">Login</a></li>
             @endguest
             @auth
                 <li class="nav-item"><a class="nav-link" href="/groupchat">Chats</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('cart.index') }}"><i
-                            class="fa-solid fa-cart-shopping"></i></a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cart.index') }}">
+                        @if($badge->isEmpty())
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        @else
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="badge bg-primary ms-3">{{ $badge->count() }}</span>
+                        @endif
+                    </a>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
