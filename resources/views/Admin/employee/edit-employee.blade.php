@@ -96,7 +96,7 @@
             </div>
         </div>
         <button class="btn btn-success">Simpan</button>
-        <a href="/employee" class="btn btn-outline-secondary">Cancel</a>
+        <a href="{{URL()->previous()}}" class="btn btn-outline-secondary">Cancel</a>
         <a href="{{route('user.edit', auth()->user()->id)}}" class="btn btn-warning">Edit Akun</a>
     </form>
 </section>

@@ -54,6 +54,19 @@ route::get('/returnan', function () {
     return view('returnan');
 });
 
+
+route::get('/lunas', function () {
+    return view('EU.transaction.lunas');
+});
+route::get('/kredit', function () {
+    return view('EU.transaction.kredit');
+});
+route::get('/belumbayar', function () {
+    return view('EU.transaction.bb');
+});
+
+
+
 //landing page
 Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 

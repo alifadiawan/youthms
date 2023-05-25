@@ -1,5 +1,5 @@
 @extends('layout-landing2.body')
-@section('title', 'Portofolio')
+@section('title', 'Transaction History')
 @section('content')
 
     <div id="container" class="container my-5">
@@ -13,7 +13,143 @@
 
         <!-- content -->
         <div class="konten">
+
+
+            <!-- filter -->
+            <div class="row my-3">
+                <div class="col">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                aria-selected="true">Semua Transaksi</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="berhasil-tab" data-bs-toggle="pill" data-bs-target="#berhasil"
+                                type="button" role="tab" aria-controls="berhasil"
+                                aria-selected="false">Berhasil</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="sedang-berlangsung-tab" data-bs-toggle="pill"
+                                data-bs-target="#sedang-berlangsung" type="button" role="tab"
+                                aria-controls="sedang-berlangsung" aria-selected="false">Sedang Berlangsung</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="text-secondary nav-link" id="sedang-berlangsung-tab" data-bs-toggle="pill"
+                                data-bs-target="#sedang-berlangsung" type="button" role="tab"
+                                aria-controls="sedang-berlangsung" aria-selected="false">Kredit</button>
+                        </li>
+                    </ul>
+
+
+                    <div class="tab-content" id="pills-tabContent">
+
+                        <!-- transaksi berhasil -->
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                            aria-labelledby="pills-home-tab" tabindex="0">
+                            <table class="table table-borderless table-responsive table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Subtotal</th>
+                                        <th>Total</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($utang as $u)
+                                        <tr>
+                                            <td scope="row">{{ $u->tanggal }}</td>
+                                            <td>Rp. {{ number_format($u->total) }}</td>
+                                            <td>Rp. {{ number_format($u->total_bayar) }}</td>
+                                            <td>
+                                                <form action="{{ route('transaksi.show', $u->id) }}">
+                                                    <button type="submit" class="btn btn-success">detail</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <!-- transaksi sedang berlangsung -->
+                        <div class="tab-pane fade" id="berhasil" role="tabpanel" aria-labelledby="berhasil-tab"
+                            tabindex="0">
+                            <div class="accordion-body">
+                                <table class="table table-borderless table-responsive table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Tanggal</th>
+                                            <th>total</th>
+                                            <th>total bayar</th>
+                                            <th>action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($lunas as $l)
+                                            <tr>
+                                                <td scope="row">{{ $l->tanggal }}</td>
+                                                <td>Rp. {{ number_format($l->total) }}</td>
+                                                <td>Rp. {{ number_format($l->total_bayar) }}</td>
+                                                <td>
+                                                    <form action="{{ route('transaksi.show', $l->id) }}">
+                                                        <button type="submit" class="btn btn-success">detail</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- transaksi success -->
+
+
+                    </div>
+                    {{-- <a href="" class="btn btn-sm btn-outline-primary active">Semua Transaksi</a>
+                    <a href="" class="btn btn-sm btn-outline-secondary">Berhasil</a>
+                    <a href="" class="btn btn-sm btn-outline-secondary">Sedang Berlangsung</a>
+                    <a href="" class="btn btn-sm btn-outline-secondary">Gagal</a> --}}
+                </div>
+            </div>
+
+
             <div class="card">
+                <div class="card-body">
+                    <!-- kontent -->
+                    <div class="row">
+                        {{-- <table class="table table-borderless table-responsive table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Subtotal</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($utang as $u)
+                                    <tr>
+                                        <td scope="row">{{ $u->tanggal }}</td>
+                                        <td>Rp. {{ number_format($u->total) }}</td>
+                                        <td>Rp. {{ number_format($u->total_bayar) }}</td>
+                                        <td>
+                                            <form action="{{ route('transaksi.show', $u->id) }}">
+                                                <button type="submit" class="btn btn-success">detail</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table> --}}
+                    </div>
+
+                </div>
+            </div>
+            {{-- <div class="card">
                 <div class="card-body">
 
                     <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -31,18 +167,18 @@
                                 @if ($utang->isEmpty())
                                     tidak ada utang
                                 @endif
-                                @foreach ($utang as $u)
-                                    <div class="accordion-body">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Tanggal</th>
-                                                    <th>Subtotal</th>
-                                                    <th>Total</th>
-                                                    <th>action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                                <div class="accordion-body">
+                                    <table class="table table-borderless table-responsive table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Tanggal</th>
+                                                <th>Subtotal</th>
+                                                <th>Total</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                @foreach ($utang as $u)
                                                 <tr>
                                                     <td scope="row">{{ $u->tanggal }}</td>
                                                     <td>Rp. {{ number_format($u->total) }}</td>
@@ -53,10 +189,10 @@
                                                         </form>
                                                     </td>
                                                 </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
-                                @endforeach
                             </div>
                         </div>
 
@@ -72,7 +208,7 @@
                             <div id="flush-kredit" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
-                                    <table class="table table-bordered">
+                                    <table class="table table-borderless table-responsive ">
                                         <thead>
                                             <tr>
                                                 <th>Tanggal</th>
@@ -153,7 +289,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 

@@ -6,6 +6,86 @@
 <div class="container">
     <div class="row">
         @if (auth()->user()->role->role == 'admin')
+            <div class="col-lg-12">
+            @else
+                <div class="col-lg-12">
+        @endif
+        <div class="card">
+            <div class="container p-3">
+                <p class="h4 text-center text-bold mt-2">AKUN </p>
+                <div class="row my-3">
+                    <div class="col-sm-3">
+                        <p class="h5 font-weight-bold mb-0">Username</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text mb-0">{{ $member->id_member }}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row my-3">
+                    <div class="col-sm-3">
+                        <p class="h5 font-weight-bold mb-0">NIK</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text mb-0">{{ $member->nik }}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row my-3">
+                    <div class="col-sm-3">
+                        <p class="h5 font-weight-bold mb-0">Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text mb-0">{{ $member->name }}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row my-3">
+                    <div class="col-sm-3">
+                        <p class="h5 font-weight-bold mb-0">Alamat</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text mb-0">{{ $member->alamat }}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row my-3">
+                    <div class="col-sm-3">
+                        <p class="h5 font-weight-bold mb-0">Username</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text mb-0">{{ $member->user->username }}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row my-3">
+                    <div class="col-sm-3">
+                        <p class="h5 font-weight-bold mb-0">No HP</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text mb-0">{{ $member->no_hp }}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row my-3">
+                    <div class="col-sm-3">
+                        <p class="h5 font-weight-bold mb-0">Role</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text mb-0">{{ $user->role->role }}</p>
+                    </div>
+                </div>
+                <hr>
+                @if (auth()->user()->role->role == 'admin')
+                    <div class="row my-3">
+                        <div class="col">
+                            <button class="btn btn-md btn-warning" data-toggle="modal" data-target="#editmodal"><strong>Edit</strong></button>
+                            <button class="btn btn-md btn-danger" data-toggle="modal" data-target="#hapusmodal"><strong>Hapus</strong></button>
+                        </div>
+                    </div>
+                @endif
+            </div>
+            {{-- @if (auth()->user()->role->role == 'admin')
             <div class="col-lg-10">
             @else
                 <div class="col-lg-12">
@@ -46,8 +126,8 @@
                 </table>
             </div>
         </div>
-    </div>
-    @if (auth()->user()->role->role == 'admin')
+    </div> --}}
+            {{-- @if (auth()->user()->role->role == 'admin')
         <div class="col-lg-2">
             <div class="container">
                 <button class="btn btn-md btn-warning" data-toggle="modal" data-target="#editmodal"
@@ -58,65 +138,65 @@
                 <br><br>
             </div>
         </div>
-    @endif
-</div>
-</div>
+    @endif --}}
+        </div>
+    </div>
 
 
-<!-- Edit Modal -->
-<div class="modal fade" id="editmodal" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editmodal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-            <div class="modal-body">
-                <br><br>
-                <h3 class="text-center" style="font-size: 30px;">Yakin Ingin Merubah Data ?</h3>
-                <br><br>
-            </div>
+                <div class="modal-body">
+                    <br><br>
+                    <h3 class="text-center" style="font-size: 30px;">Yakin Ingin Merubah Data ?</h3>
+                    <br><br>
+                </div>
 
-            <div class="modal-footer">
-                <button class="btn btn-danger" data-dismiss="modal">Tidak</button>
-                <a href="{{ route('member.edit', $member->id) }}" class="btn btn-warning text-white">Iya</a>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                    <a href="{{ route('member.edit', $member->id) }}" class="btn btn-warning text-white">Iya</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Hapus Modal -->
-<div class="modal fade" id="hapusmodal" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <!-- Hapus Modal -->
+    <div class="modal fade" id="hapusmodal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-            <div class="modal-body">
-                <br><br>
-                <h3 class="text-center" style="font-size: 30px;">Yakin Ingin Menghapus Data ?</h3>
-                <br><br>
-            </div>
+                <div class="modal-body">
+                    <br><br>
+                    <h3 class="text-center" style="font-size: 30px;">Yakin Ingin Menghapus Data ?</h3>
+                    <br><br>
+                </div>
 
-            <div class="modal-footer">
-                <button class="btn btn-danger" data-dismiss="modal">Tidak</button>
-                <a href="{{ route('member.hapus', $member->id) }}" class="btn btn-warning text-white">Iya</a>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                    <a href="{{ route('member.hapus', $member->id) }}" class="btn btn-warning text-white">Iya</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<style>
-    .modal-footer {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        -ms-flex-align: center;
-        align-items: center;
-        -ms-flex-pack: end;
-        justify-content: space-between;
-        padding: 0.75rem;
-        border-top: 1px solid #e9ecef;
-        border-bottom-right-radius: calc(0.3rem - 1px);
-        border-bottom-left-radius: calc(0.3rem - 1px);
-    }
-</style>
+    <style>
+        .modal-footer {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: end;
+            justify-content: space-between;
+            padding: 0.75rem;
+            border-top: 1px solid #e9ecef;
+            border-bottom-right-radius: calc(0.3rem - 1px);
+            border-bottom-left-radius: calc(0.3rem - 1px);
+        }
+    </style>
 @endsection

@@ -18,7 +18,7 @@ class LandingSeeder extends Seeder
     {
         landingText::create([
             'mainline' => 'Gather more customers in your businees area',
-            'secondline' => 'Kami youthms.id menyediakan blablablabla'
+            'secondline' => 'YouthMS.id is a start up company that focus on creating website, design, and editing correspondence.'
         ]);
 
         LandingData::create([
