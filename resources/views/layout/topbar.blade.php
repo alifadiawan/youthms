@@ -75,14 +75,14 @@
                         Lengkapi Profile
                     </a>
                     @elseif(auth()->user()->hasProfile())
-                    <a class="dropdown-item" href="{{route('employee.show', auth()->user()->member->id)}}">
+                    <a class="dropdown-item" href="{{route('employee.edit', auth()->user()->member->id)}}">
                         <i class="fas fa-user-pen fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Profile
+                        Edit Profile
                     </a>
                     @endif
-                    <a class="dropdown-item" href="{{route('user.show', auth()->user()->id)}}">
+                    <a class="dropdown-item" href="{{route('user.edit', auth()->user()->id)}}">
                         <i class="fas fa-user-gear fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Akun / Profile
+                        Edit Akun
                     </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

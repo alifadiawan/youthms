@@ -11,13 +11,72 @@
                     <div class="container">
                         @csrf
                         @method('PUT')
-                        <div class="row">
+                        <div class="row my-3">
+                            <div class="col-sm-3">
+                                <p class="h5 font-weight-bold mb-0">Username</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" value="{{ $user->username }}" name="username"
+                                    id="username">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row my-3">
+                            <div class="col-sm-3">
+                                <p class="h5 font-weight-bold mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" value="{{ $user->email }}"name="email"
+                                        id="email">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row my-3">
+                            <div class="col-sm-3">
+                                <p class="h5 font-weight-bold mb-0">Role</p>
+                            </div>
+                            <div class="col-sm-9">
+                                @if (auth()->user()->role->role == 'admin')
+                                        <select class="form-control form-select" name="role_id" id="role_id">
+                                            <option>Pilih Role</option>
+                                            @foreach ($role as $r)
+                                                <option value="{{ $r->id }}"
+                                                    @if ($r->id == $user->role->id) selected @endif>
+                                                    {{ $r->role }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    @else
+                                        <select disabled class="form-control form-select" name="role_id" id="role_id">
+                                            @foreach ($role as $r)
+                                                <option value="{{ $r->id }}"
+                                                    @if ($r->id == $user->role->id) selected @endif>
+                                                    {{ $r->role }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    @endif
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row my-3">
+                            <div class="col-sm-3">
+                                <p class="h5 font-weight-bold mb-0">Password</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="password"
+                                        placeholder="!! Hanya Isi Jika Ingin Ganti Password !!" name="password"
+                                        id="password">
+                            </div>
+                        </div>
+                        <hr>
+                        {{-- <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input class="form-control" type="text" value="{{ $user->username }}"
                                         name="username" id="username">
-                                </div>
+                                </div>      
                                 <div class="form-group">
                                     <label for="role_id">Role</label>
                                     @if (auth()->user()->role->role == 'admin')
@@ -56,12 +115,13 @@
                                         id="email">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-success">Simpan</button>
+                <button class="btn btn-success">Simpan</button>
+                <a class="btn btn-secondary" href="{{URL()->previous()}}">Batal</a>
             </div>
         </form>
     </div>
