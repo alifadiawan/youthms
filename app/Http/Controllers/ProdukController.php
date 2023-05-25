@@ -25,37 +25,34 @@ class ProdukController extends Controller
     {
         //untuk EU
         $layanan = JenisLayanan::with('services.produk')->get();
-        
-        // cek user & member
-        $user = auth()->user()->id;
-        $member = member::where('user_id',$user)->pluck('id')->first();
 
-        // cek jika di sebuah keranjang member apakah ada produk?
-        $cart = cart::where('member_id',$member)->get();
-        // return $cart;
-        //untuk halaman admin
-        $product = Produk::paginate(5);
+        // mencari services
         $services = Services::all();
 
+        // cek user & member
+        $user = auth()->user()->id;
+        $member = member::where('user_id', $user)->pluck('id')->first();
+
+        // cek jika di sebuah keranjang member apakah ada produk?
+        $cart = cart::where('member_id', $member)->get();
+
+        // produk populer di limit maximal 5
+        $product = Produk::paginate(5);
+
+        // mencari produk yang palign banyak diminati di tabel transaksi detail
         $produkpopuler = TransaksiDetail::select('produk_id', DB::raw('SUM(quantity) as total_quantity'))
             ->groupBy('produk_id')
             ->orderByDesc('total_quantity')
             ->limit(5)
             ->pluck('produk_id');
 
-        $populer = produk::whereIn('id', $produkpopuler)->with(['services','services.jenis_layanan'])->get();
-        
-        // return $populer;
+        // mencari id produk yang banyak di minati di tabel produk 
+        $populer = produk::whereIn('id', $produkpopuler)->with(['services', 'services.jenis_layanan'])->get();
 
-        // foreach ($populer as $p ) {
-        //     $h[] = $p->id;
-        // }
-        // return $h;
-        // return $cart;
-
-
+        // inisialisasi $layanan & $populer
         $compact = ['layanan', 'populer'];
 
+        // pengkondisian jika admin maka masuk view admin, jika selain admin / owner maka dilempar ke view EU store
         if (auth()->check()) {
             $u = auth()->user()->role->role;
             $admin = ['admin', 'owner'];
@@ -64,7 +61,7 @@ class ProdukController extends Controller
             } else {
                 $user = auth()->user()->id;
                 $member = member::where('user_id', $user)->get();
-                $compact = array_merge($compact, ['user', 'member','cart']);
+                $compact = array_merge($compact, ['user', 'member', 'cart']);
                 return view('EU.store.index', compact($compact));
             }
         } else {
@@ -133,36 +130,37 @@ class ProdukController extends Controller
 
     public function showtype($type)
     {
-        $user = auth()->user()->id;
-        $member = member::where('user_id',$user)->pluck('id')->first();
-
+        // mencari id jenis layanan melalui $type
         $layanan = JenisLayanan::all();
         $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
 
-        $jl = JenisLayanan::where('layanan', $type)->first();
-        $services = $jl->services;
+        // mencari services di suatu jenis layanan
+        $services = $jenis_layanan->services;
 
+        // mencari seluruh data produk didalam seluruh data services di suatu jenis layanan
         foreach ($services as $s) {
             foreach ($s->produk as $serv) {
                 $pr[$serv->id] = $serv->id;
                 $z[$serv->id] = $serv;
             }
         }
-        
-        $cart = cart::where('member_id',$member)->get();
         $produk = produk::wherein('id', $pr)->get();
-        
-        $compact = ['layanan', 'produk', 'jenis_layanan','cart'];
+
+        // inisialiasi compact
+        $compact = ['layanan', 'produk', 'jenis_layanan', 'cart'];
+
+        // mengecek apakah user telah login
         if (auth()->check()) {
+            // cek user & member
             $user = auth()->user()->id;
             $member = member::where('user_id', $user)->get();
+
+            // mengecek keranjang 
+            $cart = cart::where('member_id', $member)->get();
             $compact = array_merge($compact, ['user', 'member']);
         }
 
         return view('EU.store.show', compact($compact));
-        // else {
-        // }
-
     }
 
     /**
