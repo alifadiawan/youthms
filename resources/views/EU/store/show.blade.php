@@ -65,7 +65,7 @@
                                             class="btn btn-primary" disabled>
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </a>
-                                    @elseif ($c->contains('id', $p->id))
+                                    @elseif ($cart->contains('produk_id', $p->id))
                                         <button type="submit" class="btn btn-danger" disabled>
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </button>

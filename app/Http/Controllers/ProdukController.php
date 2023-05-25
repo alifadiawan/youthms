@@ -25,15 +25,14 @@ class ProdukController extends Controller
     {
         //untuk EU
         $layanan = JenisLayanan::with('services.produk')->get();
-        // $cek = produk::doesnthave('cart')->pluck('id')->toarray();
-
+        
+        // cek user & member
         $user = auth()->user()->id;
-        $member = member::where('user_id',$user)->get();
+        $member = member::where('user_id',$user)->pluck('id')->first();
 
+        // cek jika di sebuah keranjang member apakah ada produk?
         $cart = cart::where('member_id',$member)->get();
-        $cek = produk::has('cart')->get('id');
-        $c = produk::wherein('id', $cek)->get('id');
-
+        // return $cart;
         //untuk halaman admin
         $product = Produk::paginate(5);
         $services = Services::all();
@@ -45,11 +44,17 @@ class ProdukController extends Controller
             ->pluck('produk_id');
 
         $populer = produk::whereIn('id', $produkpopuler)->with(['services','services.jenis_layanan'])->get();
-
+        
         // return $populer;
 
+        // foreach ($populer as $p ) {
+        //     $h[] = $p->id;
+        // }
+        // return $h;
+        // return $cart;
 
-        $compact = ['layanan', 'c', 'populer'];
+
+        $compact = ['layanan', 'populer'];
 
         if (auth()->check()) {
             $u = auth()->user()->role->role;
@@ -128,7 +133,8 @@ class ProdukController extends Controller
 
     public function showtype($type)
     {
-
+        $user = auth()->user()->id;
+        $member = member::where('user_id',$user)->pluck('id')->first();
 
         $layanan = JenisLayanan::all();
         $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
@@ -142,15 +148,11 @@ class ProdukController extends Controller
                 $z[$serv->id] = $serv;
             }
         }
-        $cek = produk::doesnthave('cart')->pluck('id')->toarray();
-        $cart = produk::has('cart')->get('id');
-
-        $irisan_produk = array_intersect_key($pr, array_flip($cek));
+        
+        $cart = cart::where('member_id',$member)->get();
         $produk = produk::wherein('id', $pr)->get();
-        $p = produk::wherein('id', $pr)->get('id');
-        $c = produk::wherein('id', $cart)->get('id');
-
-        $compact = ['layanan', 'produk', 'jenis_layanan', 'c'];
+        
+        $compact = ['layanan', 'produk', 'jenis_layanan','cart'];
         if (auth()->check()) {
             $user = auth()->user()->id;
             $member = member::where('user_id', $user)->get();
