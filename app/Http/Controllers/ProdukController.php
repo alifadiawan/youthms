@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 use App\Models\TransaksiDetail;
 use Illuminate\Support\Facades\DB;
+use App\Models\Cart;
 
 class ProdukController extends Controller
 {
@@ -24,9 +25,14 @@ class ProdukController extends Controller
     {
         //untuk EU
         $layanan = JenisLayanan::with('services.produk')->get();
-        $cek = produk::doesnthave('cart')->pluck('id')->toarray();
-        $cart = produk::has('cart')->get('id');
-        $c = produk::wherein('id', $cart)->get('id');
+        // $cek = produk::doesnthave('cart')->pluck('id')->toarray();
+
+        $user = auth()->user()->id;
+        $member = member::where('user_id',$user)->get();
+
+        $cart = cart::where('member_id',$member)->get();
+        $cek = produk::has('cart')->get('id');
+        $c = produk::wherein('id', $cek)->get('id');
 
         //untuk halaman admin
         $product = Produk::paginate(5);
@@ -53,7 +59,7 @@ class ProdukController extends Controller
             } else {
                 $user = auth()->user()->id;
                 $member = member::where('user_id', $user)->get();
-                $compact = array_merge($compact, ['user', 'member']);
+                $compact = array_merge($compact, ['user', 'member','cart']);
                 return view('EU.store.index', compact($compact));
             }
         } else {

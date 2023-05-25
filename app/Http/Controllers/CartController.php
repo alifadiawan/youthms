@@ -20,9 +20,11 @@ class CartController extends Controller
         $user = auth()->user()->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
         $cart = cart::where('member_id', $member)->get()->sortByDesc('cart.created_at');
+        // return $cart;
 
         $totalTransaksi = 0;
         $cart = cart::where('member_id', $member)->get();
+        // return $cart;
         foreach ($cart as $c) {
             $totalTransaksi += $c->quantity * $c->produk->harga;
         }

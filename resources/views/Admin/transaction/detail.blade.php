@@ -1,6 +1,7 @@
 @extends('layout.admin')
 @section('content')
 @section('judul', 'Transaction')
+
 <div id="container" class="container">
 
     <div class="row d-flex justify-content-center my-4">
