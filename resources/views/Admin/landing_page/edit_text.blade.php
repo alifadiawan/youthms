@@ -19,6 +19,10 @@
                         <p class="font-weight-bold">Secondline</p>
                         <input type="text" class="form-control" name="secondline" id="secondline" value="{{$text->secondline}}">
                     </div>
+                    <div class="form-group mb-3">
+                        <p class="font-weight-bold">Thirdline</p>
+                        <input type="text" class="form-control" name="secondline" id="thirdline" value="">
+                    </div>
                     <div class="form-group">
                         <button class="btn btn-warning">Submit</button>
                         <a href="{{route('landing.text')}}" class="btn btn-secondary">Cancel</a>
