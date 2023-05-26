@@ -1,15 +1,15 @@
 @extends('layout-landing2.body')
-@section('title', 'Lunas')
+@section('title', '| Kredit')
 @section('content')
 
 
     <div id="container" class="container mt-5">
-        <a href="{{ url()->previous() }}" class="btn btn-sm mb-3">
-            <i class="fas fa-arrow-left"></i> Back
+        <a href="{{ url()->previous() }}" class="btn btn-lg">
+            <i class="fas fa-arrow-left"></i>
         </a>
         <div class="row">
             {{-- <div class="card"> --}}
-            <div class="card mx-3">
+            <div class="card mx-3 my-3">
                 <div class="card-body">
 
 

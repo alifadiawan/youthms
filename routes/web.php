@@ -64,6 +64,9 @@ route::get('/kredit', function () {
 route::get('/belumbayar', function () {
     return view('EU.transaction.bb');
 });
+route::get('/gc', function () {
+    return view('EU.chat.index');
+});
 
 
 

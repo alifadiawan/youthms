@@ -35,7 +35,7 @@
                                 aria-controls="sedang-berlangsung" aria-selected="false">Sedang Berlangsung</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="text-secondary nav-link" id="sedang-berlangsung-tab" data-bs-toggle="pill"
+                            <button class="nav-link" id="sedang-berlangsung-tab" data-bs-toggle="pill"
                                 data-bs-target="#sedang-berlangsung" type="button" role="tab"
                                 aria-controls="sedang-berlangsung" aria-selected="false">Kredit</button>
                         </li>
