@@ -79,8 +79,10 @@
                 @if (auth()->user()->role->role == 'admin')
                     <div class="row my-3">
                         <div class="col">
-                            <button class="btn btn-md btn-warning" data-toggle="modal" data-target="#editmodal"><strong>Edit</strong></button>
-                            <button class="btn btn-md btn-danger" data-toggle="modal" data-target="#hapusmodal"><strong>Hapus</strong></button>
+                            <button class="btn btn-md btn-warning" data-toggle="modal"
+                                data-target="#editmodal"><strong>Edit</strong></button>
+                            <button class="btn btn-md btn-danger" data-toggle="modal"
+                                data-target="#hapusmodal"><strong>Hapus</strong></button>
                         </div>
                     </div>
                 @endif
@@ -146,7 +148,7 @@
     <!-- Edit Modal -->
     <div class="modal fade" id="editmodal" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
                 <div class="modal-body">
@@ -155,9 +157,12 @@
                     <br><br>
                 </div>
 
-                <div class="modal-footer">
-                    <button class="btn btn-danger" data-dismiss="modal">Tidak</button>
-                    <a href="{{ route('member.edit', $member->id) }}" class="btn btn-warning text-white">Iya</a>
+
+                <div class="row text-center p-3">
+                    <div class="col">
+                        <a href="{{ route('member.edit', $member->id) }}" class="btn btn-danger text-white">Iya</a>
+                        <a class="btn" data-dismiss="modal">Tidak</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -166,7 +171,7 @@
     <!-- Hapus Modal -->
     <div class="modal fade" id="hapusmodal" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
                 <div class="modal-body">
@@ -175,9 +180,11 @@
                     <br><br>
                 </div>
 
-                <div class="modal-footer">
-                    <button class="btn btn-danger" data-dismiss="modal">Tidak</button>
-                    <a href="{{ route('member.hapus', $member->id) }}" class="btn btn-warning text-white">Iya</a>
+                <div class="row text-center p-3">
+                    <div class="col">
+                        <a href="{{ route('member.hapus', $member->id) }}" class="btn btn-danger text-white">Iya</a>
+                        <button class="btn" data-dismiss="modal">Tidak</button>
+                    </div>
                 </div>
             </div>
         </div>

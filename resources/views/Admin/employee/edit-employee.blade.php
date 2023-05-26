@@ -56,7 +56,7 @@
             <div class="card-body">
                 <div class="row my-2">
                     <div class="col-sm-3">
-                        <p class="mb-0">Nama</p>
+                        <p class="mb-0 font-weight-bold">Nama</p>
                     </div>
                     <div class="col-sm-9">
                         <input class="form-control" type="nik" value="{{ $member->nik }}" name="nik"
@@ -66,7 +66,7 @@
                 <hr>
                 <div class="row my-2">
                     <div class="col-sm-3">
-                        <p class="mb-0">Nama</p>
+                        <p class="mb-0 font-weight-bold">Nama</p>
                     </div>
                     <div class="col-sm-9">
                         <input class="form-control" type="text" value="{{ $member->name }}" name="name"
@@ -76,7 +76,7 @@
                 <hr>
                 <div class="row my-2">
                     <div class="col-sm-3">
-                        <p class="mb-0">Nomor Telp</p>
+                        <p class="mb-0 font-weight-bold">Nomor Telp</p>
                     </div>
                     <div class="col-sm-9">
                         <input class="form-control" type="number" value="{{ $member->no_hp }}" name="no_hp"
@@ -86,7 +86,7 @@
                 <hr>
                 <div class="row my-2">
                     <div class="col-sm-3">
-                        <p class="mb-0">Alamat</p>
+                        <p class="mb-0 font-weight-bold">Alamat</p>
                     </div>
                     <div class="col-sm-9">
                         <input class="form-control" type="text" value="{{ $member->alamat }}" name="alamat"
@@ -95,9 +95,9 @@
                 </div>
             </div>
         </div>
+        <a href="{{route('user.edit', auth()->user()->id)}}" class="btn btn-warning">Edit Akun</a>
         <button class="btn btn-success">Simpan</button>
         <a href="{{URL()->previous()}}" class="btn btn-outline-secondary">Cancel</a>
-        <a href="{{route('user.edit', auth()->user()->id)}}" class="btn btn-warning">Edit Akun</a>
     </form>
 </section>
 

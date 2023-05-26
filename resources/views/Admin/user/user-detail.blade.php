@@ -50,13 +50,14 @@
                 </div>
                 <hr>
                 @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
-                <div class="row my-3">
-                    <div class="col">
-                        <button class="btn btn-md btn-warning" data-toggle="modal" data-target="#editakunmodal"
-                        ><strong>Edit Akun</strong></button>
-                        <button class="btn btn-md btn-danger" data-toggle="modal" data-target="#hapusmodal"><strong>Hapus</strong></button>
+                    <div class="row my-3">
+                        <div class="col">
+                            <button class="btn btn-md btn-warning" data-toggle="modal"
+                                data-target="#editakunmodal"><strong>Edit Akun</strong></button>
+                            <button class="btn btn-md btn-danger" data-toggle="modal"
+                                data-target="#hapusmodal"><strong>Hapus</strong></button>
+                        </div>
                     </div>
-                </div>
                 @endif
             </div>
 
@@ -121,63 +122,63 @@
             <div class="container p-3">
                 <p class="h4 text-center text-bold mt-2">PROFILE</p>
                 @if ($user->hasIncompleteProfile())
-                        <div class="alert alert-warning mt-2">
-                            Biodata Belum di Isi Oleh User.
-                        </div>
+                    <div class="alert alert-warning mt-2">
+                        Biodata Belum di Isi Oleh User.
+                    </div>
                 @else
-                @foreach ($Member as $m)
-                <div class="row my-3">
-                    <div class="col-sm-3">
-                        <p class="h5 font-weight-bold mb-0">Kode Employee</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text mb-0">{{ $m->id_member }}</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="row my-3">
-                    <div class="col-sm-3">
-                        <p class="h5 font-weight-bold mb-0">Name</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text mb-0">{{ $m->name }}</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="row my-3">
-                    <div class="col-sm-3">
-                        <p class="h5 font-weight-bold mb-0">NIK</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text mb-0">{{ $m->nik }}</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="row my-3">
-                    <div class="col-sm-3">
-                        <p class="h5 font-weight-bold mb-0">Nomor HP</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text mb-0">{{ $m->no_hp }}</p>
-                    </div>
-                </div>
-                <hr>
-                @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
-                <div class="row my-3">
-                    <div class="col">
-                        <button class="btn btn-md btn-warning" data-toggle="modal" data-target="#editprofilemodal"
-                        ><strong>Edit Profile</strong></button>
-                    </div>
-                </div>
-                @endif
-                @endforeach
+                    @foreach ($Member as $m)
+                        <div class="row my-3">
+                            <div class="col-sm-3">
+                                <p class="h5 font-weight-bold mb-0">Kode Employee</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text mb-0">{{ $m->id_member }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row my-3">
+                            <div class="col-sm-3">
+                                <p class="h5 font-weight-bold mb-0">Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text mb-0">{{ $m->name }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row my-3">
+                            <div class="col-sm-3">
+                                <p class="h5 font-weight-bold mb-0">NIK</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text mb-0">{{ $m->nik }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row my-3">
+                            <div class="col-sm-3">
+                                <p class="h5 font-weight-bold mb-0">Nomor HP</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text mb-0">{{ $m->no_hp }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
+                            <div class="row my-3">
+                                <div class="col">
+                                    <button class="btn btn-md btn-warning" data-toggle="modal"
+                                        data-target="#editprofilemodal"><strong>Edit Profile</strong></button>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 @endif
             </div>
         </div>
     </div>
 </div>
 </div>
-    {{-- @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
+{{-- @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
         <div class="row">
             <div class="col">
                 <div class="container">
@@ -190,22 +191,20 @@
 
 
 <!-- Edit Modal -->
-
 <div class="modal fade" id="editakunmodal" data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <p>Konfirmasi</p>
-            </div>
 
-            <div class="modal-body">
+            <div class="modal-body my-5">
                 <h3 class="text-center" style="font-size: 30px;">Yakin Ingin Merubah Data ?</h3>
             </div>
 
-            <div class="modal-footer">
-                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-danger text-white">Iya</a>
-                <button class="btn btn-outline-secondary" data-dismiss="modal">Tidak</button>
+            <div class="row text-center p-3">
+                <div class="col">
+                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-danger text-white">Iya</a>
+                    <button class="btn" data-dismiss="modal">Tidak</button>
+                </div>
             </div>
         </div>
     </div>
@@ -215,21 +214,21 @@
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <p>Konfirmasi</p>
-            </div>
 
-            <div class="modal-body">
+            <div class="modal-body my-5">
                 <h3 class="text-center" style="font-size: 30px;">Yakin Ingin Merubah Data ?</h3>
             </div>
 
-            <div class="modal-footer">
-                @if ($user->hasIncompleteProfile())
-                    <a href="{{ route('employee.create') }}" class="btn btn-danger text-white">Iya</a>
-                @else
-                    <a href="{{ route('employee.edit', $user->member->id) }}" class="btn btn-danger text-white">Iya</a>
-                @endif
-                <button class="btn btn-outline-secondary" data-dismiss="modal">Tidak</button>
+            <div class="row text-center p-3">
+                <div class="col">
+                    @if ($user->hasIncompleteProfile())
+                        <a href="{{ route('employee.create') }}" class="btn btn-danger text-white">Iya</a>
+                    @else
+                        <a href="{{ route('employee.edit', $user->member->id) }}"
+                            class="btn btn-danger text-white">Iya</a>
+                    @endif
+                    <button class="btn" data-dismiss="modal">Tidak</button>
+                </div>
             </div>
         </div>
     </div>
@@ -241,17 +240,16 @@
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <p>Konfirmasi</p>
-            </div>
 
-            <div class="modal-body">
+            <div class="modal-body my-5">
                 <h3 class="text-center" style="font-size: 30px;">Yakin Ingin Menghapus Data ?</h3>
             </div>
 
-            <div class="modal-footer">
-                <a href="{{ route('user.hapus', $user->id) }}" class="btn btn-danger text-white">Iya</a>
-                <button class="btn btn-outline-secondary" data-dismiss="modal">Tidak</button>
+            <div class="row text-center p-3">
+                <div class="col">
+                    <a href="{{ route('user.hapus', $user->id) }}" class="btn btn-danger text-white">Iya</a>
+                    <button class="btn btn" data-dismiss="modal">Tidak</button>
+                </div>
             </div>
         </div>
     </div>

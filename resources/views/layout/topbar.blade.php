@@ -16,10 +16,10 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
-                @foreach($notifications as $notification)
-                @if($notification->type === 'App\Notifications\NewNotification')
-                <span class="badge bell-badge badge-warning navbar-badge">{{ count($notifications) }}</span>
-                @endif
+                @foreach ($notifications as $notification)
+                    @if ($notification->type === 'App\Notifications\NewNotification')
+                        <span class="badge bell-badge badge-warning navbar-badge">{{ count($notifications) }}</span>
+                    @endif
                 @endforeach
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -32,10 +32,10 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
-                @foreach($notifications as $notification)
-                @if($notification->type === 'App\Notifications\NewMessageNotification')
-                <span class="badge bell-badge badge-warning navbar-badge">{{ count($notifications) }}</span>
-                @endif
+                @foreach ($notifications as $notification)
+                    @if ($notification->type === 'App\Notifications\NewMessageNotification')
+                        <span class="badge bell-badge badge-warning navbar-badge">{{ count($notifications) }}</span>
+                    @endif
                 @endforeach
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -69,18 +69,18 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <span class="dropdown-item dropdown-header">AKUN</span>
                     <div class="dropdown-divider"></div>
-                    @if(auth()->user()->hasIncompleteProfile())
-                    <a class="dropdown-item" href="{{route('employee.create')}}">
-                        <i class="fas fa-user-pen fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Lengkapi Profile
-                    </a>
+                    @if (auth()->user()->hasIncompleteProfile())
+                        <a class="dropdown-item" href="{{ route('employee.create') }}">
+                            <i class="fas fa-user-pen fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Lengkapi Profile
+                        </a>
                     @elseif(auth()->user()->hasProfile())
-                    <a class="dropdown-item" href="{{route('employee.edit', auth()->user()->member->id)}}">
-                        <i class="fas fa-user-pen fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Edit Profile
-                    </a>
+                        <a class="dropdown-item" href="{{ route('employee.edit', auth()->user()->member->id) }}">
+                            <i class="fas fa-user-pen fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Edit Profile
+                        </a>
                     @endif
-                    <a class="dropdown-item" href="{{route('user.edit', auth()->user()->id)}}">
+                    <a class="dropdown-item" href="{{ route('user.edit', auth()->user()->id) }}">
                         <i class="fas fa-user-gear fa-sm fa-fw mr-2 text-gray-400"></i>
                         Edit Akun
                     </a>
@@ -100,19 +100,18 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header text-center">
-                <h3 class="modal-title" id="exampleModalLabel">Konfirmasi</h3>
-            </div>
 
-            <div class="modal-body">
-                <h3 class="text-center" style="font-size: 25px;">Anda Yakin Ingin Logout ?</h3>
+            <div class="modal-body my-5">
+                <h3 class="h3 text-center">Anda Yakin Ingin Logout ?</h3>
             </div>
-            <div class="modal-footer">
-                <form action="{{route('logout')}}" method="post">
-                    @csrf
-                    <button class="btn btn-danger">Logout</button>
-                    <button class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                </form>
+            <div class="row text-center p-3">
+                <div class="col">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button class="btn btn-danger">Logout</button>
+                        <button class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -122,9 +121,9 @@
 <script>
     $(document).on('click', '.notification-item', function(e) {
         e.preventDefault();
-        
+
         var url = $(this).data('url');
-        
+
         // Kirim permintaan Ajax untuk mengubah status notifikasi menjadi "dibaca"
         $.ajax({
             url: '{{ route('read') }}',
@@ -147,7 +146,7 @@
 <script>
     $(document).on('click', '.notif-chat', function() {
         var notifId = $(this).data('notif-id');
-        
+
         // Mengirim permintaan Ajax
         $.ajax({
             url: '/read_chat/' + notifId,
