@@ -22,6 +22,7 @@
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                         {{ $d->produk->nama_produk }}
+                                        <span>x {{ $d->quantity }}</span>
                                         <span>Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</span>
                                     </li>
                                 </ul>
@@ -168,86 +169,29 @@
         </div>
     </div>
 
+    {{-- <script>
+        function startTimer(duration, display) {
+            var timer = duration,
+                minutes, seconds;
+            setInterval(function() {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
 
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
 
-  <!-- Modal transfer -->
-  <div class="modal fade" data-bs-backdrop="static" id="transfer-bank" tabindex="-1" aria-labelledby="transfer-bank" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Transfer Bank</h1>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col">
-                    <a href="">
-                        <img class="img-thumbnail" src="{{asset('mandiri.png')}}" style="width: 15rem" alt="">
-                    </a>
-                    <a href="">
-                        <img class="img-thumbnail" src="{{asset('bri.png')}}" style="width: 15rem" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                display.textContent = minutes + ":" + seconds;
 
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
 
-  <!-- Modal virtual account -->
-  <div class="modal fade" data-bs-backdrop="static" id="virtual-account" tabindex="-1" aria-labelledby="virtual-account" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Modal kredit -->
-  <div class="modal fade" data-bs-backdrop="static" id="kredit" tabindex="-1" aria-labelledby="kredit" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  <!-- Modal cash -->
-  <div class="modal fade" data-bs-backdrop="static" id="cash" tabindex="-1" aria-labelledby="cash" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
+        window.onload = function() {
+            var fiveMinutes = 60 * 30,
+                display = document.querySelector('#time');
+            startTimer(fiveMinutes, display);
+        };
+    </script> --}}
 @endsection

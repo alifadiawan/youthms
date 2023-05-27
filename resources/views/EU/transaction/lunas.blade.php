@@ -12,38 +12,40 @@
             <div class="card mx-3">
                 <div class="card-body">
                     <div class="details">
-                        <div class="row">
-                            <div class="col-lg-2 col-sm-3 fw-bold">
-                                <p>Tanggal Pembelian </p>
+                        @foreach ($c_lunas as $c)
+                            <div class="row">
+                                <div class="col-lg-2 col-sm-3 fw-bold">
+                                    <p>Tanggal Pembelian </p>
+                                </div>
+                                <div class="col">
+                                    <p>12 Mei 2023</p>
+                                </div>
                             </div>
-                            <div class="col">
-                                <p>12 Mei 2023</p>
+                            <div class="row">
+                                <div class="col-lg-2 col-sm-3 fw-bold">
+                                    <p>Pembeli </p>
+                                </div>
+                                <div class="col">
+                                    <p>alif_adiawan</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2 col-sm-3 fw-bold">
-                                <p>Pembeli </p>
+                            <div class="row">
+                                <div class="col-lg-2 col-sm-3 fw-bold">
+                                    <p>Tanggal Bayar</p>
+                                </div>
+                                <div class="col">
+                                    <p>12 Mei 2023</p>
+                                </div>
                             </div>
-                            <div class="col">
-                                <p>alif_adiawan</p>
+                            <div class="row">
+                                <div class="col-lg-2 col-sm-3 fw-bold">
+                                    <p>Status</p>
+                                </div>
+                                <div class="col">
+                                    <p class="text-success">LUNAS</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2 col-sm-3 fw-bold">
-                                <p>Tanggal Bayar</p>
-                            </div>
-                            <div class="col">
-                                <p>12 Mei 2023</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2 col-sm-3 fw-bold">
-                                <p>Status</p>
-                            </div>
-                            <div class="col">
-                                <p class="text-success">LUNAS</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <ul class="list-group list-group-flush mt-3">
                         {{-- @foreach ($detail as $d) --}}
@@ -79,7 +81,7 @@
                         {{-- @endforeach --}}
                         <li class="list-group-item d-flex justify-content-end align-items-center border-0 px-0 mb-3">
                             <div>
-                                <strong> <span id="total-transaksi-b">Total : Rp.
+                                <strong> <span id="total-transaksi-b">Total :
                                         Rp.500.000</span></strong>
                                 <strong><span id="total-transaksi" style="display: none;">Total : Rp.
                                     </span></strong>

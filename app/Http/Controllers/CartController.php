@@ -30,7 +30,7 @@ class CartController extends Controller
         }
 
         // return $totalTransaksi;
-        return view('EU.transaction.cart', compact('member','cart', 'totalTransaksi'));
+        return view('EU.transaction.cart', compact('member', 'cart', 'totalTransaksi'));
     }
 
 
@@ -119,7 +119,7 @@ class CartController extends Controller
     {
         // mencari data user & member
         $user = auth()->user()->id;
-        $member = member::where('user_id',$user)->pluck('id')->first();
+        $member = member::where('user_id', $user)->pluck('id')->first();
 
         // mencari produk di tabel cart menggunakkan id member lalu dihapus
         $item = cart::where('member_id', $member)->where('id', $cart->id)->first();
