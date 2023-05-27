@@ -3,12 +3,12 @@
 @section('content')
 
 
-<div id="container" class="container mt-5">
-    <a href="{{url()->previous()}}" class="btn btn-lg mb-3">
-        <i class="fas fa-arrow-left"></i>
-    </a>
-    <div class="row">
-        {{-- <div class="card"> --}}
+    <div id="container" class="container mt-5">
+        <a href="{{ url()->previous() }}" class="btn btn-lg mb-3">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <div class="row">
+            {{-- <div class="card"> --}}
             <div class="card mx-3">
                 <div class="card-body">
                     <div class="details">
@@ -45,32 +45,29 @@
                             </div>
                         </div>
                     </div>
+                    
                     <ul class="list-group list-group-flush mt-3">
                         {{-- @foreach ($detail as $d) --}}
-                            <li
-                                class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
-                                Laravel
-                                <span id="total-price_">Rp.
-                                   Rp.500.000</span>
-                            </li>
-                            <li
-                                class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
-                                Laravel
-                                <span id="total-price_">Rp.
-                                   Rp.500.000</span>
-                            </li>
-                            <li
-                                class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
-                                Laravel
-                                <span id="total-price_">Rp.
-                                   Rp.500.000</span>
-                            </li>
-                            <li
-                                class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
-                                Laravel
-                                <span id="total-price_">Rp.
-                                   Rp.500.000</span>
-                            </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
+                            Laravel
+                            <span id="total-price_">Rp.
+                                Rp.500.000</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
+                            Laravel
+                            <span id="total-price_">Rp.
+                                Rp.500.000</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
+                            Laravel
+                            <span id="total-price_">Rp.
+                                Rp.500.000</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
+                            Laravel
+                            <span id="total-price_">Rp.
+                                Rp.500.000</span>
+                        </li>
                         {{-- @endforeach --}}
                         <li class="list-group-item d-flex justify-content-end align-items-center border-0 px-0 mb-3">
                             <div>
@@ -139,7 +136,7 @@
             </div> --}}
         </div>
     </div>
-</div>
+    </div>
 
 
 @endsection

@@ -25,19 +25,17 @@
                                 aria-selected="true">Semua Transaksi</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="berhasil-tab" data-bs-toggle="pill" data-bs-target="#berhasil"
-                                type="button" role="tab" aria-controls="berhasil"
-                                aria-selected="false">Berhasil</button>
+                            <button class="nav-link" id="lunas-tab" data-bs-toggle="pill" data-bs-target="#lunas"
+                                type="button" role="tab" aria-controls="lunas" aria-selected="false">Lunas</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="sedang-berlangsung-tab" data-bs-toggle="pill"
-                                data-bs-target="#sedang-berlangsung" type="button" role="tab"
-                                aria-controls="sedang-berlangsung" aria-selected="false">Sedang Berlangsung</button>
+                            <button class="nav-link" id="kredit-tab" data-bs-toggle="pill" data-bs-target="#kredit"
+                                type="button" role="tab" aria-controls="kredit" aria-selected="false">kredit</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="sedang-berlangsung-tab" data-bs-toggle="pill"
-                                data-bs-target="#sedang-berlangsung" type="button" role="tab"
-                                aria-controls="sedang-berlangsung" aria-selected="false">Kredit</button>
+                            <button class="nav-link" id="belum-bayar-tab" data-bs-toggle="pill"
+                                data-bs-target="#belum-bayar" type="button" role="tab" aria-controls="belum-bayar"
+                                aria-selected="false">belum bayar</button>
                         </li>
                     </ul>
 
@@ -56,13 +54,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($utang as $u)
+                                    @foreach ($all as $a)
                                         <tr>
-                                            <td scope="row">{{ $u->tanggal }}</td>
-                                            <td>Rp. {{ number_format($u->total) }}</td>
-                                            <td>Rp. {{ number_format($u->total_bayar) }}</td>
+                                            <td scope="row">{{ $a->tanggal }}</td>
+                                            <td>Rp. {{ number_format($a->total) }}</td>
+                                            <td>Rp. {{ number_format($a->total_bayar) }}</td>
+                                            @if (in_array($a->id, $uu))
+                                                <td>
+                                                    <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
+                                                        class="badge text-dark">belum bayar</span>
+                                                </td>
+                                            @elseif(in_array($a->id, $uk))
+                                                <td>
+                                                    <button disabled="disabled"
+                                                        class="btn btn-sm btn-warning"></button><span
+                                                        class="badge text-dark">Kredit</span>
+                                                </td>
+                                            @elseif(in_array($a->id, $ul))
+                                                <td>
+                                                    <button disabled="disabled"
+                                                        class="btn btn-sm btn-success"></button><span
+                                                        class="badge text-dark">Lunas</span>
+                                                </td>
+                                            @endif
                                             <td>
-                                                <form action="{{ route('transaksi.show', $u->id) }}">
+                                                <form action="{{ route('transaksi.show', $a->id) }}">
                                                     <button type="submit" class="btn btn-success">detail</button>
                                                 </form>
                                             </td>
@@ -76,7 +92,7 @@
 
 
                     <!-- transaksi sedang berlangsung -->
-                    <div class="tab-pane fade" id="berhasil" role="tabpanel" aria-labelledby="berhasil-tab" tabindex="0">
+                    <div class="tab-pane fade" id="lunas" role="tabpanel" aria-labelledby="lunas-tab" tabindex="0">
                         <div class="accordion-body">
                             <table class="table table-borderless table-responsive table-hover">
                                 <thead>
@@ -94,6 +110,10 @@
                                             <td>Rp. {{ number_format($l->total) }}</td>
                                             <td>Rp. {{ number_format($l->total_bayar) }}</td>
                                             <td>
+                                                <button disabled="disabled" class="btn btn-sm btn-success"></button><span
+                                                    class="badge text-dark">Lunas</span>
+                                            </td>
+                                            <td>
                                                 <form action="{{ route('transaksi.show', $l->id) }}">
                                                     <button type="submit" class="btn btn-success">detail</button>
                                                 </form>
@@ -105,16 +125,82 @@
                         </div>
                     </div>
 
+
+                    <div class="tab-pane fade" id="kredit" role="tabpanel" aria-labelledby="kredit-tab" tabindex="0">
+                        <div class="accordion-body">
+                            <table class="table table-borderless table-responsive table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>total</th>
+                                        <th>total bayar</th>
+                                        <th>action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($kredit as $k)
+                                        <tr>
+                                            <td scope="row">{{ $k->tanggal }}</td>
+                                            <td>Rp. {{ number_format($k->total) }}</td>
+                                            <td>Rp. {{ number_format($k->total_bayar) }}</td>
+                                            <td>
+                                                <button disabled="disabled" class="btn btn-sm btn-warning"></button><span
+                                                    class="badge text-dark">Kredit</span>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('transaksi.show', $k->id) }}">
+                                                    <button type="submit" class="btn btn-success">detail</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="belum-bayar" role="tabpanel" aria-labelledby="belum-bayar-tab"
+                        tabindex="0">
+                        <div class="accordion-body">
+                            <table class="table table-borderless table-responsive table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>total</th>
+                                        <th>total bayar</th>
+                                        <th>action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($utang as $u)
+                                        <tr>
+                                            <td scope="row">{{ $u->tanggal }}</td>
+                                            <td>Rp. {{ number_format($u->total) }}</td>
+                                            <td>Rp. {{ number_format($u->total_bayar) }}</td>
+                                            <td>
+                                                <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
+                                                    class="badge text-dark">Belum Bayar</span>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('transaksi.show', $u->id) }}">
+                                                    <button type="submit" class="btn btn-success">detail</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     <!-- transaksi success -->
-
-
                 </div>
-                {{-- <a href="" class="btn btn-sm btn-outline-primary active">Semua Transaksi</a>
+            </div>
+        </div>
+        {{-- <a href="" class="btn btn-sm btn-outline-primary active">Semua Transaksi</a>
                     <a href="" class="btn btn-sm btn-outline-secondary">Berhasil</a>
                     <a href="" class="btn btn-sm btn-outline-secondary">Sedang Berlangsung</a>
                     <a href="" class="btn btn-sm btn-outline-secondary">Gagal</a> --}}
-            </div>
-        </div>
 
 
         {{-- <div class="card">
