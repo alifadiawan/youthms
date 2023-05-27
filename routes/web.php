@@ -55,15 +55,6 @@ route::get('/returnan', function () {
 });
 
 
-route::get('/lunas', function () {
-    return view('EU.transaction.lunas');
-});
-route::get('/kredit', function () {
-    return view('EU.transaction.kredit');
-});
-route::get('/belumbayar', function () {
-    return view('EU.transaction.bb');
-});
 route::get('/gc', function () {
     return view('EU.chat.index');
 });
@@ -86,7 +77,7 @@ Route::resource('portfolio', PortofolioController::class);
 Route::resource('store', ProdukController::class);
 Route::get('/store/{id}/showid', [ProdukController::class, 'showid'])->name('store.showid');
 Route::get('/store/{type}/show', [ProdukController::class, 'showtype'])->name('store.showtype');
-    
+
 //blog
 Route::resource('blog', BlogController::class);
 Route::get('/blog/editing', function () {
@@ -137,11 +128,21 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/filter', [UserController::class, 'filterUsers'])->name('user.filter');
     Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
 
-    
+
     // transaction
     Route::resource('/transaksi', TransaksiController::class);
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
     Route::get('/transaksi/pembayaran', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
+
+    route::get('/lunas', function () {
+        return view('EU.transaction.lunas');
+    });
+    route::get('/kredit', function () {
+        return view('EU.transaction.kredit');
+    });
+    route::get('/belumbayar', function () {
+        return view('EU.transaction.bb');
+    });
 });
 
 //  client
@@ -243,5 +244,4 @@ Route::middleware('admin')->group(function () {
     //notif
     Route::post('/read', [NotificationController::class, 'read'])->name('read');
     Route::get('/read_chat/{notifId}', [NotificationController::class, 'read_chat'])->name('read.chat');
-
 });

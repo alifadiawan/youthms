@@ -29,10 +29,10 @@
                                     class="badge">utang</span>
                             </td>
                         @elseif(in_array($t->id, $uk))
-                            <td>
-                                <button disabled="disabled" class="btn btn-sm btn-warning"></button><span
-                                    class="badge">Kredit</span>
-                            </td>
+                                <td>
+                                    <button disabled="disabled" class="btn btn-sm btn-warning"></button><span
+                                        class="badge">Kredit</span>
+                                </td>
                         @elseif(in_array($t->id, $ul))
                             <td>
                                 <button disabled="disabled" class="btn btn-sm btn-success"></button><span
