@@ -41,7 +41,8 @@ class TransaksiController extends Controller
         $member = member::where('user_id', $user)->pluck('id')->first();
 
         // mencari status transaksi
-        $transaksi = Transaksi::all();
+        // $transaksi = Transaksi::all();
+        $transaksi = Transaksi::paginate(5);
         $Q_utang = transaksi::where('total_bayar', 0);
         $Q_kredit = transaksi::whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0');
         $Q_lunas = transaksi::where(function ($lunas) {
@@ -88,8 +89,8 @@ class TransaksiController extends Controller
         // timezone di asia/jakarta
         date_default_timezone_set('Asia/Jakarta');
 
-        $today = today();
-        $today = date("Y-m-d H:i:s");
+        // $today = today();
+        // $today = date("Y-m-d H:i:s");
 
 
         // mencari data user & member
@@ -103,7 +104,7 @@ class TransaksiController extends Controller
 
         // membuat sebuah struk transaksi
         $trx = transaksi::create([
-            'tanggal' => $today,
+            // 'tanggal' => $today,
             'member_id' => $request->member_id,
             'total_bayar' => 0,
             'total' => $grandtotal,
@@ -143,13 +144,13 @@ class TransaksiController extends Controller
 
         // melempar ke fungsi pembayaran
         return redirect()->route('transaksi.pembayaran')->with($compact);
-
     }
 
 
     public function pembayaran()
     {
-        // return 'oksiep';
+        // return 'mamah pengen tidur :(';
+         
         // mencari data user & member
         $user = auth()->user()->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
@@ -192,6 +193,7 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
+
         $user = auth()->user()->id;
         $user_role = auth()->user()->role->role;
         $member = member::where('user_id', $user)->pluck('id')->first();
@@ -204,8 +206,8 @@ class TransaksiController extends Controller
         });
 
         $c_utang = $utang->where('member_id', $member)->get();
-        $c_kredit = $utang->where('member_id', $member)->get();
-        $c_lunas = $utang->where('member_id', $member)->get();
+        $c_kredit = $kredit->where('member_id', $member)->get();
+        $c_lunas = $lunas->where('member_id', $member)->get();
 
         $tid = [];
         $tid = $transaksi->id;
@@ -225,41 +227,35 @@ class TransaksiController extends Controller
         $grandtotal = $total + $admin;
 
 
-        $EU_utang = $utang->where('member_id', $member)->pluck('id')->toArray();
-        $EU_kredit = $kredit->where('member_id', $member)->pluck('id')->toArray();
-        $EU_lunas = $lunas->where('member_id', $member)->pluck('id')->toArray();
+        // return $EU_lunas;
 
         $status = ['EU_utang', 'EU_kredit', 'EU_lunas'];
-        $compact = ['detail', 'total', 'grandtotal', 'admin', $status];
-
-        // detail transaksi 
-        if (in_array($tid, $EU_utang)) {
-            // $compact = array_merge($compact, '');
-            return view('EU.transaction.bb', compact($compact));
-        } elseif (in_array($tid, $EU_kredit)) {
-            // $compact = array_merge($compact, '');
-            return view('EU.transaction.kredit', compact($compact));
-        } elseif (in_array($tid, $EU_lunas)) {
-            // $compact = array_merge($compact, '');
-            return view('EU.transaction.lunas', compact($compact));
-        } else {
-            return view('returnan');
-        }
+        $compact = ['detail', 'total', 'grandtotal', 'admin', $status, 'trx'];
+        
 
         // bayar 
         if ($user_role == 'client') {
-            return view('EU.transaction.cash', compact($compact));
+            $EU_utang = $utang->where('member_id', $member)->pluck('id')->toArray();
+            $EU_kredit = $kredit->where('member_id', $member)->pluck('id')->toArray();
+            $EU_lunas = $lunas->where('member_id', $member)->pluck('id')->toArray();
+
+            // return $EU_lunas;
+            $status_EU = ['EU_utang', 'EU_kredit', 'EU_lunas'];
+            return view('EU.transaction.bb', compact($compact,$status_EU));
+            //     return view('EU.transaction.cash', compact($compact));
         }
 
-        $utang = $utang->pluck('id')->toArray();
-        $lunas = $lunas->pluck('id')->toArray();
-        $kredit = $kredit->pluck('id')->toArray();
+        $adm_utang = transaksi::where('total_bayar', 0)->pluck('id')->toArray();
+        $adm_kredit = transaksi::whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0')->pluck('id')->toArray();
+        $adm_lunas = transaksi::where(function ($lunas) {
+            $lunas->whereColumn('total', '<', 'total_bayar')->orWhereColumn('total_bayar', 'total');
+        })->pluck('id')->toArray();
+        // return $adm_kredit;
 
-
-        $status = ['utang', 'kredit', 'lunas'];
+        $status = ['adm_utang', 'adm_kredit', 'adm_lunas'];
         $compact = ['detail', 'total', 'grandtotal', 'admin', $status];
+
         return view('Admin.transaction.detail', compact($compact));
-        // }
     }
 
     /**
