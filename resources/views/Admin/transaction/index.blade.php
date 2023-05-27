@@ -22,11 +22,10 @@
                         {{-- <td>{{ $t }}</td> --}}
                         <td>skip sek males</td>
                         <td>{{ number_format($t->total) }}</td>
-                        {{-- <td>{{ $ua[0] }}</td> --}}
                         @if (in_array($t->id, $uu))
                             <td>
                                 <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
-                                    class="badge">utang</span>
+                                    class="badge">Belum Bayar</span>
                             </td>
                         @elseif(in_array($t->id, $uk))
                                 <td>

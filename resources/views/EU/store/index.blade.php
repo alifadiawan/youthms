@@ -37,7 +37,7 @@
                         <div class="card-body">
                             <h4 class="card-title">{{ $p->nama_produk }}</h4>
                             <p class="card-title text-secondary">{{ $p->services->judul }}</p>
-                            <h3 class="card-text">Rp{{ number_format($p->harga) }}</h3>
+                            <h3 class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</h3>
                             @guest
                                 <a href="{{ route('authcheck') }}" class="btn btn-primary">
                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
@@ -89,7 +89,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">{{ $p->nama_produk }}</h4>
                                     <p class="card-title text-secondary">{{ $ls->judul }}</p>
-                                    <h3 class="card-text">Rp.{{ number_format($p->harga) }}</h3>
+                                    <h3 class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</h3>
                                     @guest
                                         <a href="{{ route('authcheck') }}" class="btn btn-primary">
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart

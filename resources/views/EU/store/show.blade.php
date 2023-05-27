@@ -45,7 +45,7 @@
                         <div class="card-body">
                             <h4 class="card-title text-capitalize">{{ $p->nama_produk }}</h4>
                             <p class="card-title text-secondary">{{ $p->services->judul }}</p>
-                            <h3 class="card-text">Rp.{{ number_format($p->harga) }}</h3>
+                            <h3 class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</h3>
                             {{-- <h5>{{ $p->id }}</h5> --}}
 
                             @guest
@@ -60,29 +60,29 @@
                                         <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                     </a>
                                 @else --}}
-                                    @if (auth()->user()->hasIncompleteProfile())
-                                        <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
-                                            class="btn btn-primary" disabled>
-                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                        </a>
-                                    @elseif ($cart->contains('produk_id', $p->id))
-                                        <button type="submit" class="btn btn-danger" disabled>
+                                @if (auth()->user()->hasIncompleteProfile())
+                                    <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
+                                        class="btn btn-primary" disabled>
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </a>
+                                @elseif ($cart->contains('produk_id', $p->id))
+                                    <button type="submit" class="btn btn-danger" disabled>
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                @else
+                                    <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        @foreach ($member as $m)
+                                            <input type="hidden" name="member_id" value="{{ $m->id }}">
+                                        @endforeach
+                                        <input type="hidden" class="form-control" name="quantity" value="1">
+                                        <input type="hidden" value="{{ $p->id }}" name="produk_id">
+                                        <button type="submit" class="btn btn-primary">
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </button>
-                                    @else
-                                        <form action="{{ route('cart.store') }}" method="POST">
-                                            @csrf
-                                            @foreach ($member as $m)
-                                                <input type="hidden" name="member_id" value="{{ $m->id }}">
-                                            @endforeach
-                                            <input type="hidden" class="form-control" name="quantity" value="1">
-                                            <input type="hidden" value="{{ $p->id }}" name="produk_id">
-                                            <button type="submit" class="btn btn-primary">
-                                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                            </button>
-                                        </form>
-                                    @endif
-                                @endauth
+                                    </form>
+                                @endif
+                            @endauth
                             {{-- @endif --}}
 
 

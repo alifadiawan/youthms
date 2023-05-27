@@ -128,11 +128,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/filter', [UserController::class, 'filterUsers'])->name('user.filter');
     Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
 
-
     // transaction
     Route::resource('/transaksi', TransaksiController::class);
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
-    Route::get('/transaksi/pembayaran', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
+    Route::get('/transaksi_pembayaran', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
 
     route::get('/lunas', function () {
         return view('EU.transaction.lunas');
