@@ -47,11 +47,35 @@
                     </div>
                     <ul class="list-group list-group-flush mt-3">
                         {{-- @foreach ($detail as $d) --}}
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
+                        <div class="list-barang my-5">
+                            <h5 class="fw-bold text-center">List Barang</h5>
+                            <table class="table table-borderless table-hover table-responsive text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="text-start">Nama Barang</th>
+                                        <th class="text-end">Qty</th>
+                                        <th class="text-end">Sub Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-start">Laravel</td>
+                                        <td class="text-end">2</td>
+                                        <td class="text-end">Rp.500.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-start">Laravel</td>
+                                        <td class="text-end">2</td>
+                                        <td class="text-end">Rp.500.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        {{-- <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
                             Laravel
                             <span id="total-price_">Rp.
                                 Rp.500.000</span>
-                        </li>
+                        </li> --}}
                         {{-- @endforeach --}}
                         <li class="list-group-item d-flex justify-content-end align-items-center border-0 px-0 mb-3">
                             <div>
