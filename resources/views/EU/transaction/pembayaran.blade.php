@@ -12,19 +12,13 @@
                             <div class="col">
                                 <h5 class="mb-0 me-auto">Summary</h5>
                             </div>
-
-                            <!-- countdown -->
-                            <div class="col text-end text-danger">
-                                <h5 id="time"></h5>
-                            </div>
-
                         </div>
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
 
                             @foreach ($detail as $d)
-                                <ul class="list-group list-group-flush">
+                                <ul class="list-group list-group-flush text-capitalize">
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                         {{ $d->produk->nama_produk }}
@@ -49,7 +43,7 @@
                             </li>
                             <hr>
                             <li
-                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3 fs-4">
                                 <div>
                                     <strong>Grand Total</strong>
                                 </div>
@@ -58,40 +52,115 @@
                         </ul>
                     </div>
                 </div>
+
+
+                <!-- MEtode pembayaran -->
                 <div class="card mb-4 mb-lg-0 p-0">
                     <div class="card-header">
-                        <h4>Metode Pembayaran</h4>
+                        <h5 class="mb-0 me-auto">Metode Pembayaran</h5>
                     </div>
                     <div class="card-body">
-                        <a href="" class="btn card-hover">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title"> <i class="fa-solid fa-building-columns"></i> Virtual Account
-                                    </h5>
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    <i class="fa-solid fa-money-bill-transfer me-2"></i>Transfer Bank
+                                </button>
+                              </h2>
+                              <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="">
+                                                <img class="img-thumbnail border-0" src="{{asset('mandiri.png')}}" style="width: 15rem" alt="">
+                                            </a>
+                                            <a href="">
+                                                <img class="img-thumbnail border-0" src="{{asset('bri.png')}}" style="width: 15rem" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
+                              </div>
                             </div>
-                        </a>
-                        <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title"> <i class="fa-solid fa-money-bill-transfer"></i> Transfer Bank</h5>
-                                </div>
+
+
+                            <!-- Virtaul Account -->
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                    <i class="fa-solid fa-building-columns me-2"></i> Virtual Account
+                                </button>
+                              </h2>
+                              <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                              </div>
                             </div>
-                        </a>
-                        <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title"> <i class="fa-solid fa-credit-card"></i> kredit </h5>
-                                </div>
+                            
+                            <!-- Virtaul Account -->
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                    <i class="fa-solid fa-credit-card me-2"></i> Kredit
+                                </button>
+                              </h2>
+                              <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                              </div>
                             </div>
-                        </a>
-                        <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title"> <i class="fa-solid fa-money-bill"></i> cash</h5>
-                                </div>
+                            
+                            <!-- Cash -->
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                    <i class="fa-solid fa-money-bill me-2"></i> Cash
+                                </button>
+                              </h2>
+                              <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                              </div>
                             </div>
-                        </a>
+                          </div>
+
+                            
+                        {{-- <div class="row justify-content-center">
+                            <div class="col">
+                                <a href="" class="btn card-hover">
+                                    <div class="card" style="width: 23rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title"> <i class="fa-solid fa-building-columns"></i> Virtual Account
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#transfer-bank">
+                                    <div class="card" style="width: 23rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title"> <i class="fa-solid fa-money-bill-transfer"></i> Transfer Bank</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#kredit">
+                                    <div class="card" style="width: 23rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title"> <i class="fa-solid fa-credit-card"></i> kredit </h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#cash">
+                                    <div class="card" style="width: 23rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title"> <i class="fa-solid fa-money-bill"></i> cash</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -99,29 +168,86 @@
         </div>
     </div>
 
-    {{-- <script>
-        function startTimer(duration, display) {
-            var timer = duration,
-                minutes, seconds;
-            setInterval(function() {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
 
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
 
-                display.textContent = minutes + ":" + seconds;
+  <!-- Modal transfer -->
+  <div class="modal fade" data-bs-backdrop="static" id="transfer-bank" tabindex="-1" aria-labelledby="transfer-bank" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Transfer Bank</h1>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <a href="">
+                        <img class="img-thumbnail" src="{{asset('mandiri.png')}}" style="width: 15rem" alt="">
+                    </a>
+                    <a href="">
+                        <img class="img-thumbnail" src="{{asset('bri.png')}}" style="width: 15rem" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                if (--timer < 0) {
-                    timer = duration;
-                }
-            }, 1000);
-        }
 
-        window.onload = function() {
-            var fiveMinutes = 60 * 30,
-                display = document.querySelector('#time');
-            startTimer(fiveMinutes, display);
-        };
-    </script> --}}
+  <!-- Modal virtual account -->
+  <div class="modal fade" data-bs-backdrop="static" id="virtual-account" tabindex="-1" aria-labelledby="virtual-account" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal kredit -->
+  <div class="modal fade" data-bs-backdrop="static" id="kredit" tabindex="-1" aria-labelledby="kredit" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Modal cash -->
+  <div class="modal fade" data-bs-backdrop="static" id="cash" tabindex="-1" aria-labelledby="cash" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 @endsection
