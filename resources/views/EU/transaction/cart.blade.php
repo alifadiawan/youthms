@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
                                 <p class="text-end">
-                                    <strong>Rp. {{ number_format($c->produk->harga) }} </strong>
+                                    <strong>Rp. {{ number_format($c->produk->harga, 0, ',', '.') }} </strong>
                                 </p>
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                             </div>
@@ -92,13 +92,13 @@
                                 class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
                                 {{ $c->produk->nama_produk }}
                                 <span id="total-price_{{ $c->id }}">Rp.
-                                    {{ number_format($c->quantity * $c->produk->harga) }}</span>
+                                    {{ number_format($c->quantity * $c->produk->harga, 0, ',', '.') }}</span>
                             </li>
                         @endforeach
                         <li class="list-group-item d-flex justify-content-end align-items-center border-0 px-0 mb-3">
                             <div>
                                 <strong> <span id="total-transaksi-b">Total : Rp.
-                                        {{ number_format($totalTransaksi) }}</span></strong>
+                                        {{ number_format($totalTransaksi, 0, ',', '.') }}</span></strong>
                                 <strong><span id="total-transaksi" style="display: none;">Total : Rp.
                                     </span></strong>
                             </div>
@@ -176,7 +176,7 @@
         // format currency
         function formatCurrency(number) {
             var formatted = new Intl.NumberFormat('id-ID').format(number);
-            formatted = formatted.replace(".", ",");
+            // formatted = formatted.replace(".", );
             return "Rp. " + formatted;
         }
 
@@ -192,6 +192,7 @@
             if (quantity > 1) {
                 $(input).val(quantity - 1).trigger('change');
             }
-        }f
+        }
+        f
     </script>
 @endsection

@@ -84,6 +84,7 @@ class TransaksiController extends Controller
      */
     public function create(Request $request)
     {
+        // return 'create coyh';
         // timezone di asia/jakarta
         date_default_timezone_set('Asia/Jakarta');
 
@@ -141,12 +142,14 @@ class TransaksiController extends Controller
         $compact = ['detail', 'total', 'transaksi'];
 
         // melempar ke fungsi pembayaran
-        return redirect()->route('transaksi.pembayaran')->with(compact($compact));
+        return redirect()->route('transaksi.pembayaran')->with($compact);
+
     }
 
 
     public function pembayaran()
     {
+        // return 'oksiep';
         // mencari data user & member
         $user = auth()->user()->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
