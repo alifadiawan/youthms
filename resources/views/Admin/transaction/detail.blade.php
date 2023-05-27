@@ -13,6 +13,7 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="mb-0 me-auto">Summary</h5>
+                            {{-- <h5 class="mb-0 me-auto">Summary</h5> --}}
                         </div>
 
                         <!-- countdown -->
@@ -24,15 +25,15 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        @if (in_array($detail[0]->transaksi_id, $utang))
+                        @if (in_array($detail[0]->transaksi_id, $adm_utang))
                             <div class="alert alert-danger" role="alert">
-                                <h1>utang</h1>
+                                <h1>Belum Bayar</h1>
                             </div>
-                            @elseif(in_array($detail[0]->transaksi_id, $kredit))
+                        @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
                             <div class="alert alert-warning" role="alert">
                                 <h1>kredit</h1>
                             </div>
-                            @else
+                        @else
                             <div class="alert alert-success" role="alert">
                                 <h1>lunas</h1>
                             </div>
@@ -42,6 +43,7 @@
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     {{ $d->produk->nama_produk }}
+                                    {{-- <span>Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</span> --}}
                                     <span>Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</span>
                                 </li>
                             </ul>

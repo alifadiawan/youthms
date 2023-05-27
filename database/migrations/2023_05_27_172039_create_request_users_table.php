@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pendings', function (Blueprint $table) {
+        Schema::create('request_users', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('transaksi_id');
+            $table->foreign('transaksi_id')->references('id')->on('transaksi')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->date('tanggal_mulai');
+            $table->date('jatuh_tempo');
             $table->timestamps();
         });
     }
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pendings');
+        Schema::dropIfExists('request_users');
     }
 };

@@ -48,8 +48,8 @@
                                 <thead>
                                     <tr>
                                         <th>Tanggal</th>
-                                        <th>Subtotal</th>
                                         <th>Total</th>
+                                        <th>Total Bayar</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

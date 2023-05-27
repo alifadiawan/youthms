@@ -28,6 +28,7 @@
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                         {{ $d->produk->nama_produk }}
+                                        <span>x {{ $d->quantity }}</span>
                                         <span>Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</span>
                                     </li>
                                 </ul>
@@ -98,30 +99,4 @@
 
         </div>
     </div>
-
-    {{-- <script>
-        function startTimer(duration, display) {
-            var timer = duration,
-                minutes, seconds;
-            setInterval(function() {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                display.textContent = minutes + ":" + seconds;
-
-                if (--timer < 0) {
-                    timer = duration;
-                }
-            }, 1000);
-        }
-
-        window.onload = function() {
-            var fiveMinutes = 60 * 30,
-                display = document.querySelector('#time');
-            startTimer(fiveMinutes, display);
-        };
-    </script> --}}
 @endsection
