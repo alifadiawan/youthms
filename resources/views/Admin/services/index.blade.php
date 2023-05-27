@@ -62,7 +62,7 @@
             </table>
 
             <div class="row">
-                {{$services->links()}}
+                {{ $services->links() }}
             </div>
         </div>
 
@@ -73,7 +73,7 @@
             <div class="row mb-3">
                 <div class="col">
                     <a class="btn text-white" data-toggle="modal" data-target="#exampleModal"
-                    style="background-color: #1864BA">Tambah
+                        style="background-color: #1864BA">Tambah
                         jenis layanan</a>
                 </div>
             </div>
@@ -122,9 +122,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <p>Konfirmasi</p>
-            </div>
+
             <div class="modal-body">
                 <form action="{{ route('jenislayanan.store') }}" method="post">
                     @csrf
@@ -134,9 +132,11 @@
                             id="">
                     </div>
             </div>
-            <div class="modal-footer justify-content-start">
-                <input type="submit" class="btn btn-primary">
-                <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
+            <div class="row text-center p-3">
+                <div class="col">
+                    <button class="btn btn-success">Tambah</button>
+                    <a type="button" class="btn" data-dismiss="modal">Close</a>
+                </div>
             </div>
             </form>
         </div>

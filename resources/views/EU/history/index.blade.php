@@ -43,7 +43,6 @@
 
 
                     <div class="tab-content" id="pills-tabContent">
-
                         <!-- transaksi berhasil -->
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab" tabindex="0">
@@ -72,56 +71,57 @@
                                 </tbody>
                             </table>
                         </div>
-
-
-                        <!-- transaksi sedang berlangsung -->
-                        <div class="tab-pane fade" id="berhasil" role="tabpanel" aria-labelledby="berhasil-tab"
-                            tabindex="0">
-                            <div class="accordion-body">
-                                <table class="table table-borderless table-responsive table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Tanggal</th>
-                                            <th>total</th>
-                                            <th>total bayar</th>
-                                            <th>action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($lunas as $l)
-                                            <tr>
-                                                <td scope="row">{{ $l->tanggal }}</td>
-                                                <td>Rp. {{ number_format($l->total) }}</td>
-                                                <td>Rp. {{ number_format($l->total_bayar) }}</td>
-                                                <td>
-                                                    <form action="{{ route('transaksi.show', $l->id) }}">
-                                                        <button type="submit" class="btn btn-success">detail</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <!-- transaksi success -->
-
-
                     </div>
-                    {{-- <a href="" class="btn btn-sm btn-outline-primary active">Semua Transaksi</a>
+
+
+
+                    <!-- transaksi sedang berlangsung -->
+                    <div class="tab-pane fade" id="berhasil" role="tabpanel" aria-labelledby="berhasil-tab" tabindex="0">
+                        <div class="accordion-body">
+                            <table class="table table-borderless table-responsive table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>total</th>
+                                        <th>total bayar</th>
+                                        <th>action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($lunas as $l)
+                                        <tr>
+                                            <td scope="row">{{ $l->tanggal }}</td>
+                                            <td>Rp. {{ number_format($l->total) }}</td>
+                                            <td>Rp. {{ number_format($l->total_bayar) }}</td>
+                                            <td>
+                                                <form action="{{ route('transaksi.show', $l->id) }}">
+                                                    <button type="submit" class="btn btn-success">detail</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- transaksi success -->
+
+
+                </div>
+                {{-- <a href="" class="btn btn-sm btn-outline-primary active">Semua Transaksi</a>
                     <a href="" class="btn btn-sm btn-outline-secondary">Berhasil</a>
                     <a href="" class="btn btn-sm btn-outline-secondary">Sedang Berlangsung</a>
                     <a href="" class="btn btn-sm btn-outline-secondary">Gagal</a> --}}
-                </div>
             </div>
+        </div>
 
 
-            <div class="card">
+        {{-- <div class="card">
                 <div class="card-body">
                     <!-- kontent -->
                     <div class="row">
-                        {{-- <table class="table table-borderless table-responsive table-hover">
+                        <table class="table table-borderless table-responsive table-hover">
                             <thead>
                                 <tr>
                                     <th>Tanggal</th>
@@ -144,12 +144,12 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                        </table> --}}
+                        </table>
                     </div>
 
                 </div>
-            </div>
-            {{-- <div class="card">
+            </div> --}}
+        {{-- <div class="card">
                 <div class="card-body">
 
                     <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -290,7 +290,7 @@
 
                 </div>
             </div> --}}
-        </div>
+    </div>
     </div>
 
 @endsection

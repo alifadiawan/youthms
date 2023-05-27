@@ -24,36 +24,37 @@
             <div class="col-lg-9">
     @endif
     <div class="card p-3">
-            <div class="row align-items-end">
-                <div class="col-7">
-                    <a class="btn font-weight-bold" data-toggle="collapse" href="#collapseExample" role="button"
-                        aria-expanded="false" aria-controls="collapseExample">
-                         Filter <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <a href="" class="btn btn-outline-primary text-capitalize ml-3" id="activeRoleButton" style="border-radius: 20px">Active role</a>
-                    <div class="collapse" id="collapseExample">
-                        <div class="my-3">
-                            <form action="{{route('user.filter')}}" class="form-inline" id="filterForm">
-                                <select name="role_id" id="role_id" class="form-control text-capitalize mr-2">
-                                    <option value="">Semua</option>
-                                    @foreach ($role as $item)
-                                        <option value="{{ $item->id }}">{{ $item->role }}</option>
-                                    @endforeach
-                                </select>
-                                <button id="filterButton" class="btn btn-primary">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </form>
-                        </div>
+        <div class="row align-items-end">
+            <div class="col-7">
+                <a class="btn font-weight-bold" data-toggle="collapse" href="#collapseExample" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    Filter <i class="fas fa-chevron-down"></i>
+                </a>
+                <a href="" class="btn btn-outline-primary text-capitalize ml-3" id="activeRoleButton"
+                    style="border-radius: 20px">Active role</a>
+                <div class="collapse" id="collapseExample">
+                    <div class="my-3">
+                        <form action="{{ route('user.filter') }}" class="form-inline" id="filterForm">
+                            <select name="role_id" id="role_id" class="form-control text-capitalize mr-2">
+                                <option value="">Semua</option>
+                                @foreach ($role as $item)
+                                    <option value="{{ $item->id }}">{{ $item->role }}</option>
+                                @endforeach
+                            </select>
+                            <button id="filterButton" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
-                @if (auth()->user()->role->role == 'admin')
+            </div>
+            @if (auth()->user()->role->role == 'admin')
                 <div class="col-5 text-right">
                     <a href="{{ route('user.create') }}" class="btn btn-md text-white rounded"
                         style="background-color: #1864BA;">Tambah User</a>
                 </div>
-                @endif
-            </div>
+            @endif
+        </div>
         <table id="userTable" class="table table-striped table-hover mt-2 bg-white">
             <thead>
                 <tr style="background-color: #0EA1E2">
@@ -85,7 +86,7 @@
             </tbody>
         </table>
         <div class="row">
-            {{$user->links()}}
+            {{ $user->links() }}
         </div>
     </div>
 </div>
@@ -127,9 +128,6 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <p>Tambah user</p>
-            </div>
             <div class="modal-body">
                 <form action="{{ route('role.store') }}" method="post">
                     @csrf
@@ -138,9 +136,11 @@
                         <input type="text" class="form-control" name="role" id="role">
                     </div>
             </div>
-            <div class="modal-footer justify-content-start">
-                <button class="btn btn-success">Simpan</button>
-                <button class="btn btn-outline-secondary" data-dismiss="modal">Batal</button>
+            <div class="row text-center p-3">
+                <div class="col">
+                    <button class="btn btn-success">Simpan</button>
+                    <button class="btn btn-outline-secondary" data-dismiss="modal">Batal</button>
+                </div>
             </div>
             </form>
         </div>
@@ -153,15 +153,14 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <p>Konfirmasi</p>
-                </div>
                 <div class="modal-body">
-                    <h3 class="text-center">Yakin Ingin Menghapus {{ $hapus->role }} ?</h3>
+                    <h3 class="h3 text-center my-5">Yakin Ingin Menghapus {{ $hapus->role }} ?</h3>
                 </div>
-                <div class="modal-footer justify-content-center">
-                    <a href="{{ route('role.hapus', $hapus->id) }}" class="btn btn-danger text-white">Hapus</a>
-                    <button class="btn btn-outline-secondary" data-dismiss="modal">Tidak</button>
+                <div class="row text-center p-3">
+                    <div class="col">
+                        <a href="{{ route('role.hapus', $hapus->id) }}" class="btn btn-danger">Hapus</a>
+                        <button class="btn" data-dismiss="modal">Tidak</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -203,40 +202,43 @@
 
             // Menggunakan jQuery untuk melakukan permintaan Ajax
             $.ajax({
-              url: '{{route('user.filter')}}', // Ganti 'nama_route_anda' dengan URL atau rute yang sesuai
-              type: 'GET', // Ganti dengan metode HTTP yang sesuai jika perlu
-              data: formData, // Ganti nilai_role_id dengan nilai yang Anda ingin kirimkan
-              success: function(response) {
-                // Respons berhasil diterima dari server
-                // Mengupdate tabel dengan baris baru
-                var tableBody = $('#userTable').find('tbody'); // Ganti 'nama_tabel' dengan ID tabel Anda
-                tableBody.empty(); // Menghapus baris yang ada sebelumnya
+                url: '{{ route('user.filter') }}', // Ganti 'nama_route_anda' dengan URL atau rute yang sesuai
+                type: 'GET', // Ganti dengan metode HTTP yang sesuai jika perlu
+                data: formData, // Ganti nilai_role_id dengan nilai yang Anda ingin kirimkan
+                success: function(response) {
+                    // Respons berhasil diterima dari server
+                    // Mengupdate tabel dengan baris baru
+                    var tableBody = $('#userTable').find(
+                        'tbody'); // Ganti 'nama_tabel' dengan ID tabel Anda
+                    tableBody.empty(); // Menghapus baris yang ada sebelumnya
 
-                var counter = 1; // Variabel penghitung
+                    var counter = 1; // Variabel penghitung
 
-                // Mengisi tabel dengan data baru
-                $.each(response.user, function(index, user) {
-                  var detailUrl = '{{ route('user.show', ['user' => '__id__']) }}';
-                  detailUrl = detailUrl.replace('__id__', user.id);
-                  var newRow = '<tr>' +
-                                '<td>' + counter + '</td>' +
-                                '<td>' + user.username + '</td>' +
-                                '<td>' + user.role.role + '</td>' +
-                                '<td><a href="' + detailUrl + '" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a></td>' +
-                                // Tambahkan kolom tambahan sesuai kebutuhan
-                                '</tr>';
-                  tableBody.append(newRow); // Menambahkan baris baru ke tabel
-                  counter++;// Increment Penghitung
-                });
+                    // Mengisi tabel dengan data baru
+                    $.each(response.user, function(index, user) {
+                        var detailUrl =
+                            '{{ route('user.show', ['user' => '__id__']) }}';
+                        detailUrl = detailUrl.replace('__id__', user.id);
+                        var newRow = '<tr>' +
+                            '<td>' + counter + '</td>' +
+                            '<td>' + user.username + '</td>' +
+                            '<td>' + user.role.role + '</td>' +
+                            '<td><a href="' + detailUrl +
+                            '" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a></td>' +
+                            // Tambahkan kolom tambahan sesuai kebutuhan
+                            '</tr>';
+                        tableBody.append(newRow); // Menambahkan baris baru ke tabel
+                        counter++; // Increment Penghitung
+                    });
 
-                // Mengubah status tombol "Active Role"
-                toggleActiveRoleButton(true, response.activeRoleName);
-                isFilterActive = true;
-              },
-              error: function(xhr) {
-                // Error saat melakukan permintaan Ajax
-                console.log(xhr.responseText);
-              }
+                    // Mengubah status tombol "Active Role"
+                    toggleActiveRoleButton(true, response.activeRoleName);
+                    isFilterActive = true;
+                },
+                error: function(xhr) {
+                    // Error saat melakukan permintaan Ajax
+                    console.log(xhr.responseText);
+                }
             });
         });
 

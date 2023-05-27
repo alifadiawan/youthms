@@ -87,9 +87,6 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <p>Tambah Segmen</p>
-            </div>
             <div class="modal-body">
                 <form action="{{ route('segmen.store') }}" method="post">
                     @csrf
@@ -98,9 +95,11 @@
                         <input type="text" class="form-control" name="segmen" id="segmen">
                     </div>
             </div>
-            <div class="modal-footer justify-content-start">
+            <div class="row text-center p-3">
+                <div class="col">
                 <button class="btn btn-success">Simpan</button>
-                <button class="btn btn-outline-secondary" data-dismiss="modal">Batal</button>
+                <button class="btn" data-dismiss="modal">Batal</button>
+            </div>
             </div>
             </form>
         </div>
@@ -113,15 +112,14 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <p>Konfirmasi</p>
-                </div>
-                <div class="modal-body">
+                <div class="modal-body my-5">
                     <h3 class="text-center">Yakin Ingin Menghapus {{ $hapus->segmen }} ?</h3>
                 </div>
-                <div class="modal-footer justify-content-center">
+                <div class="row text-center p-3">
+                    <div class="col">
                     <a href="{{ route('segmen.hapus', $hapus->id) }}" class="btn btn-danger text-white">Hapus</a>
-                    <button class="btn btn-outline-secondary" data-dismiss="modal">Tidak</button>
+                    <button class="btn" data-dismiss="modal">Tidak</button>
+                </div>
                 </div>
             </div>
         </div>
