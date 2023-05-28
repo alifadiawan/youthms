@@ -155,7 +155,7 @@ class ProdukController extends Controller
         if (auth()->check()) {
             // cek user & member
             $user = auth()->user()->id;
-            $member = member::where('user_id', $user)->get();
+            $member = member::where('user_id', $user)->pluck('id')->first();
 
             // mengecek keranjang 
             $cart = cart::where('member_id', $member)->get();
