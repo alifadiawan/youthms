@@ -10,6 +10,9 @@
         <div class="row">
             {{-- <div class="card"> --}}
             <div class="card mx-3 my-3">
+                <div class="card-header">
+                    <div class="h5">Order Detail</div>
+                </div>
                 <div class="card-body">
 
 
