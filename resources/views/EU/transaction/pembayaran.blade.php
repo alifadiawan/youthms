@@ -63,66 +63,109 @@
                     <div class="card-body">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
-                              <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    <i class="fa-solid fa-money-bill-transfer me-2"></i>Transfer Bank
-                                </button>
-                              </h2>
-                              <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <a href="">
-                                                <img class="img-thumbnail border-0" src="{{asset('mandiri.png')}}" style="width: 15rem" alt="">
-                                            </a>
-                                            <a href="">
-                                                <img class="img-thumbnail border-0" src="{{asset('bri.png')}}" style="width: 15rem" alt="">
-                                            </a>
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                        <i class="fa-solid fa-money-bill-transfer me-2"></i>Transfer Bank
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="">
+                                                    <img class="img-thumbnail border-0" src="{{ asset('mandiri.png') }}"
+                                                        style="width: 15rem" alt="">
+                                                </a>
+                                                <a href="">
+                                                    <img class="img-thumbnail border-0" src="{{ asset('bri.png') }}"
+                                                        style="width: 15rem" alt="">
+                                                </a>
+                                                <a href="">
+                                                    <img class="img-thumbnail border-0" src="{{ asset('btpn .png') }}"
+                                                        style="width: 15rem" alt="">
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                              </div>
                             </div>
 
 
                             <!-- Virtaul Account -->
                             <div class="accordion-item">
-                              <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                    <i class="fa-solid fa-building-columns me-2"></i> Virtual Account
-                                </button>
-                              </h2>
-                              <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                              </div>
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                        <i class="fa-solid fa-building-columns me-2"></i> Virtual Account
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the second item's
+                                        accordion body. Let's imagine this being filled with some actual content.</div>
+                                </div>
                             </div>
-                            
+
                             <!-- Virtaul Account -->
                             <div class="accordion-item">
-                              <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                    <i class="fa-solid fa-credit-card me-2"></i> Kredit
-                                </button>
-                              </h2>
-                              <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                              </div>
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                        aria-controls="flush-collapseFour">
+                                        <i class="fa-solid fa-credit-card me-2"></i> Kredit
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <div class="form">
+                                            <div class="form-gorup">
+                                                <label for="">Nama Pemesan / Instansi</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="form-gorup">
+                                                <label for="">Jangka Waktu</label>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <input type="date" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-gorup">
+                                                <label for="">Deskirpsi</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            
+
                             <!-- Cash -->
                             <div class="accordion-item">
-                              <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                    <i class="fa-solid fa-money-bill me-2"></i> Cash
-                                </button>
-                              </h2>
-                              <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                              </div>
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                        aria-controls="flush-collapseThree">
+                                        <i class="fa-solid fa-money-bill me-2"></i> Cash
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">Placeholder content for this accordion, which is intended
+                                        to demonstrate the <code>.accordion-flush</code> class. This is the third item's
+                                        accordion body. Nothing more exciting happening here in terms of content, but just
+                                        filling up the space to make it look, at least at first glance, a bit more
+                                        representative of how this would look in a real-world application.</div>
+                                </div>
                             </div>
-                          </div>
+                        </div>
 
-                            
+
                         {{-- <div class="row justify-content-center">
                             <div class="col">
                                 <a href="" class="btn card-hover">
@@ -169,29 +212,12 @@
         </div>
     </div>
 
-    {{-- <script>
-        function startTimer(duration, display) {
-            var timer = duration,
-                minutes, seconds;
-            setInterval(function() {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                display.textContent = minutes + ":" + seconds;
-
-                if (--timer < 0) {
-                    timer = duration;
-                }
-            }, 1000);
-        }
-
-        window.onload = function() {
-            var fiveMinutes = 60 * 30,
-                display = document.querySelector('#time');
-            startTimer(fiveMinutes, display);
-        };
-    </script> --}}
+    <script>
+        $(document).ready(function() {
+            $('#jangkawaktu').change(function() {
+                $("#hide-submenu").hide();
+                $("#w_" + this.value).show();
+            });
+        });
+    </script>
 @endsection
