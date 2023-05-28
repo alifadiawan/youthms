@@ -27,10 +27,8 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        // $layanan = JenisLayanan::with('services.produk')->get();
-        // return view('EU.store.index', compact('layanan'));
+    
     }
-
 
     public function history()
     {
@@ -94,7 +92,7 @@ class TransaksiController extends Controller
 
 
         // mencari data user & member
-        $user = auth()->user()->id;
+        $user = auth()->user()->id;54/
         $member = member::where('user_id', $user)->pluck('id')->first();
 
         // mencari harga total & admin
@@ -150,7 +148,7 @@ class TransaksiController extends Controller
     public function pembayaran()
     {
         // return 'mamah pengen tidur :(';
-         
+
         // mencari data user & member
         $user = auth()->user()->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
@@ -231,7 +229,7 @@ class TransaksiController extends Controller
 
         $status = ['EU_utang', 'EU_kredit', 'EU_lunas'];
         $compact = ['detail', 'total', 'grandtotal', 'admin', $status, 'trx'];
-        
+
 
         // bayar 
         if ($user_role == 'client') {
@@ -241,7 +239,7 @@ class TransaksiController extends Controller
 
             // return $EU_lunas;
             $status_EU = ['EU_utang', 'EU_kredit', 'EU_lunas'];
-            return view('EU.transaction.bb', compact($compact,$status_EU));
+            return view('EU.transaction.detail', compact($compact, $status_EU));
             //     return view('EU.transaction.cash', compact($compact));
         }
 
@@ -263,7 +261,7 @@ class TransaksiController extends Controller
      */
     public function edit(Transaksi $transaksi)
     {
-        //
+        // return 'edit';
     }
 
     /**
@@ -272,6 +270,8 @@ class TransaksiController extends Controller
     public function update(Request $request, Transaksi $transaksi)
     {
         //
+
+
     }
 
     /**

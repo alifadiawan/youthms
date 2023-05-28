@@ -21,6 +21,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\StaffMiddleware;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\RequestUserController;
 use App\Models\Services;
 
 /*
@@ -58,12 +59,12 @@ route::get('/returnan', function () {
 route::get('/gc', function () {
     return view('EU.chat.index');
 });
-route::get('/transaksi/acc', function () {
-    return view('Admin.transaction.acc');
-});
-route::get('/transaksi/acc/detail', function () {
-    return view('Admin.transaction.YesNo');
-});
+// route::get('/transaksi/acc', function () {
+//     return view('Admin.transaction.acc');
+// });
+// route::get('/transaksi/acc/detail', function () {
+//     return view('Admin.transaction.YesNo');
+// });
 
 
 
@@ -137,7 +138,7 @@ Route::middleware(['auth'])->group(function () {
     // transaction
     Route::resource('/transaksi', TransaksiController::class);
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
-    Route::get('/transaksi_pembayaran', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
+    Route::get('/transaksi_pembayaran/{id}', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
 
     route::get('/lunas', function () {
         return view('EU.transaction.lunas');
@@ -249,4 +250,7 @@ Route::middleware('admin')->group(function () {
     //notif
     Route::post('/read', [NotificationController::class, 'read'])->name('read');
     Route::get('/read_chat/{notifId}', [NotificationController::class, 'read_chat'])->name('read.chat');
+
+    // request user
+    Route::resource('requestuser', requestuserController::class );
 });

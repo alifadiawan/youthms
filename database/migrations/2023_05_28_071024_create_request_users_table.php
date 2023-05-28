@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('request_users', function (Blueprint $table) {
             $table->id();
             $table->string('nama_pemesan');
-            $table->unsignedBigInteger('transaksi_id');
-            $table->foreign('transaksi_id')->references('id')->on('transaksi')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
             $table->string('deskripsi')->nullable();
             $table->string('status');
             $table->date('tanggal_mulai');
             $table->date('jatuh_tempo');
+            $table->unsignedBigInteger('transaksi_id');
+            $table->foreign('transaksi_id')->references('id')->on('transaksi')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
