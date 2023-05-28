@@ -21,6 +21,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\StaffMiddleware;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\GroupChatController;
 use App\Models\Services;
 
 /*
@@ -55,9 +56,9 @@ route::get('/returnan', function () {
 });
 
 
-route::get('/gc', function () {
-    return view('EU.chat.index');
-});
+
+Route::get('/group-chat', [GroupChatController::class, 'index'])->name('gc.index');
+Route::post('group-chat/send-message', [GroupChatController::class, 'sendMessage']);
 
 
 
