@@ -104,12 +104,31 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('transaksi.history') }}" class="nav-link">
+                    <a href="" class="nav-link">
                         <i class="nav-icon fa-solid fa-cart-shopping"></i>
                         <p>
                             Transaksi
                         </p>
+                        <i class="right fas fa-angle-left"></i>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('transaksi.history') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Transaksi
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/transaksi/acc" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Status Kredit
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="/chat" class="nav-link">

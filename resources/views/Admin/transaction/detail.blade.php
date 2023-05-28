@@ -2,9 +2,9 @@
 @section('content')
 @section('judul', 'Transaction')
 
-<div id="container" class="container">
+<div class="container">
 
-    <div class="row d-flex justify-content-center my-4">
+    <div class="row justify-content-center">
         <div class="col-md-8">
             <a href="{{ route('transaksi.history') }}" class="btn my-3">
                 <i class="fas fa-arrow-left"></i></a>
@@ -12,73 +12,60 @@
                 <div class="card-header py-3">
                     <div class="row">
                         <div class="col">
-                            <h5 class="mb-0 me-auto">Summary</h5>
-                            {{-- <h5 class="mb-0 me-auto">Summary</h5> --}}
+                            <h5 class="mb-0 me-auto">Status</h5>
                         </div>
-
-                        <!-- countdown -->
-                        <div class="col text-end text-danger">
-                            <h5 id="time"></h5>
+                        <div class="col text-right">
+                            @if (in_array($detail[0]->transaksi_id, $adm_utang))
+                                <h5 class="mb-0 me-auto text-danger font-weight-bold">belum bayar</h5>
+                            @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
+                                <h5 class="mb-0 me-auto text-warning font-weight-bold">KREDIT</h5>
+                            @else
+                                <h5 class="mb-0 me-auto text-success font-weight-bold">LUNAS</h5>
+                            @endif
                         </div>
-
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body ">
                     <ul class="list-group list-group-flush">
-                        @if (in_array($detail[0]->transaksi_id, $adm_utang))
-                            <div class="alert alert-danger" role="alert">
-                                <h1>Belum Bayar</h1>
-                            </div>
-                        @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
-                            <div class="alert alert-warning" role="alert">
-                                <h1>kredit</h1>
-                            </div>
-                        @else
-                            <div class="alert alert-success" role="alert">
-                                <h1>lunas</h1>
-                            </div>
-                        @endif
                         @foreach ($detail as $d)
                             <ul class="list-group list-group-flush">
-                                <li
-                                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0 pb-0">
                                     {{ $d->produk->nama_produk }}
                                     {{-- <span>Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</span> --}}
                                     <span>Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</span>
                                 </li>
                             </ul>
                         @endforeach
-                        <hr>
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                            <div>
-                                Total
-                            </div>
-                            <span>Rp. {{ number_format($total, 0, ',', '.') }}</span>
-                        </li>
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                            <div>
-                                biaya admin
-                            </div>
-                            <span>Rp. {{ number_format($admin, 0, ',', '.') }}</span>
-                        </li>
-                        <hr>
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                            <div>
-                                <strong>Grand Total</strong>
-                            </div>
-                            <span><strong>Rp. {{ number_format($grandtotal, 0, ',', '.') }}</strong></span>
-                        </li>
+
+                        <ul class="list-group list-group-flush mt-5">
+                            <hr>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <div>
+                                    Total
+                                </div>
+                                <span>Rp. {{ number_format($total, 0, ',', '.') }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <div>
+                                    biaya admin
+                                </div>
+                                <span>Rp. {{ number_format($admin, 0, ',', '.') }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 mt-4 h4">
+                                <div>
+                                    <strong>Grand Total</strong>
+                                </div>
+                                <span><strong>Rp. {{ number_format($grandtotal, 0, ',', '.') }}</strong></span>
+                            </li>
+                        </ul>
                     </ul>
                 </div>
             </div>
-            <div class="card mb-4 mb-lg-0 p-0">
+            <div class="card ">
                 <div class="card-header">
                     <h4>Metode Pembayaran</h4>
                 </div>
-                <div class="card-body">
+                {{-- <div class="card-body">
                     <a href="" class="btn card-hover">
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
@@ -109,7 +96,7 @@
                             </div>
                         </div>
                     </a>
-                </div>
+                </div> --}}
             </div>
         </div>
 
