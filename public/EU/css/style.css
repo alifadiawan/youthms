@@ -991,6 +991,28 @@ section {
   color: #000;
 }
 
+.layanan h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  line-height:1.5cm;
+  text-align: center;
+  margin-top: 25px;
+  /* padding: 30px; */
+  color: #000;
+}
+
+.layanan h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  /* line-height:1.5cm; */
+  text-align: center;
+  /* margin-top: 35px; */
+  /* padding: 30px; */
+  color: #000;
+}
+
 .layanan .informasi {
   background-color: #2FA5FB;
   border-radius: 0 100px 100px 0;
@@ -1091,6 +1113,27 @@ section {
   transform: translateY(-30px);
 }
 
+.layanan button {
+  background: #37517e;
+  box-shadow: 0px 5px 30px #37517e;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.layanan button:hover {
+  transform: translateY(-7px);
+  background: #47b2e4;
+  box-shadow: 0px 5px 30px #47b2e4;
+  color: #fff;
+}
+
+.layanan button{
+  font-family: 'Poppins', sans-serif;
+
+}
 /*--------------------------------------------------------------
 # Detal-Service EU
 --------------------------------------------------------------*/
