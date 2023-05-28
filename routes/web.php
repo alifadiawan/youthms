@@ -58,6 +58,12 @@ route::get('/returnan', function () {
 route::get('/gc', function () {
     return view('EU.chat.index');
 });
+route::get('/transaksi/acc', function () {
+    return view('Admin.transaction.acc');
+});
+route::get('/transaksi/acc/detail', function () {
+    return view('Admin.transaction.YesNo');
+});
 
 
 
