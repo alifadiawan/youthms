@@ -48,8 +48,8 @@
                                 <thead>
                                     <tr>
                                         <th>Tanggal</th>
-                                        <th>Subtotal</th>
                                         <th>Total</th>
+                                        <th>Total Bayar</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -57,8 +57,8 @@
                                     @foreach ($all as $a)
                                         <tr>
                                             <td scope="row">{{ $a->tanggal }}</td>
-                                            <td>Rp. {{ number_format($a->total) }}</td>
-                                            <td>Rp. {{ number_format($a->total_bayar) }}</td>
+                                            <td>Rp. {{ number_format($a->total, 0, ',', '.') }}</td>
+                                            <td>Rp. {{ number_format($a->total_bayar, 0, ',', '.') }}</td>
                                             @if (in_array($a->id, $uu))
                                                 <td>
                                                     <button disabled="disabled" class="btn btn-sm btn-danger"></button><span

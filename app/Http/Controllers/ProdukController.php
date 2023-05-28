@@ -30,32 +30,34 @@ class ProdukController extends Controller
         $services = Services::all();
 
         // cek user & member
-        $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->pluck('id')->first();
-
+        // $user = auth()->user()->id;
+        
         // cek jika di sebuah keranjang member apakah ada produk?
-        $cart = cart::where('member_id', $member)->get();
-
+        
         // produk populer di limit maximal 5
         $product = Produk::paginate(5);
-
+        
         // mencari produk yang palign banyak diminati di tabel transaksi detail
         $produkpopuler = TransaksiDetail::select('produk_id', DB::raw('SUM(quantity) as total_quantity'))
-            ->groupBy('produk_id')
-            ->orderByDesc('total_quantity')
-            ->limit(5)
-            ->pluck('produk_id');
-
+        ->groupBy('produk_id')
+        ->orderByDesc('total_quantity')
+        ->limit(5)
+        ->pluck('produk_id');
+        
         // mencari id produk yang banyak di minati di tabel produk 
         $populer = produk::whereIn('id', $produkpopuler)->with(['services', 'services.jenis_layanan'])->get();
-
+        
         // inisialisasi $layanan & $populer
         $compact = ['layanan', 'populer'];
-
+        
         // pengkondisian jika admin maka masuk view admin, jika selain admin / owner maka dilempar ke view EU store
         if (auth()->check()) {
             $u = auth()->user()->role->role;
+            $user = auth()->user()->id;
+            $member = member::where('user_id', $user)->pluck('id')->first();
+            $cart = cart::where('member_id', $member)->get();
             $admin = ['admin', 'owner'];
+
             if (in_array($u, $admin)) {
                 return view('Admin.store.index', compact('product', 'services'));
             } else {

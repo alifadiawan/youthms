@@ -12,50 +12,76 @@
             <div class="card mx-3">
                 <div class="card-body">
                     <div class="details">
-                        <div class="row">
-                            <div class="col-lg-2 col-sm-3 fw-bold">
-                                <p>Tanggal Pembelian </p>
+                        @foreach ($c_lunas as $c)
+                            <div class="row">
+                                <div class="col-lg-2 col-sm-3 fw-bold">
+                                    <p>Tanggal Pembelian </p>
+                                </div>
+                                <div class="col">
+                                    <p>12 Mei 2023</p>
+                                </div>
                             </div>
-                            <div class="col">
-                                <p>12 Mei 2023</p>
+                            <div class="row">
+                                <div class="col-lg-2 col-sm-3 fw-bold">
+                                    <p>Pembeli </p>
+                                </div>
+                                <div class="col">
+                                    <p>alif_adiawan</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2 col-sm-3 fw-bold">
-                                <p>Pembeli </p>
+                            <div class="row">
+                                <div class="col-lg-2 col-sm-3 fw-bold">
+                                    <p>Tanggal Bayar</p>
+                                </div>
+                                <div class="col">
+                                    <p>12 Mei 2023</p>
+                                </div>
                             </div>
-                            <div class="col">
-                                <p>alif_adiawan</p>
+                            <div class="row">
+                                <div class="col-lg-2 col-sm-3 fw-bold">
+                                    <p>Status</p>
+                                </div>
+                                <div class="col">
+                                    <p class="text-success">LUNAS</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2 col-sm-3 fw-bold">
-                                <p>Tanggal Bayar</p>
-                            </div>
-                            <div class="col">
-                                <p>12 Mei 2023</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2 col-sm-3 fw-bold">
-                                <p>Status</p>
-                            </div>
-                            <div class="col">
-                                <p class="text-success">LUNAS</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <ul class="list-group list-group-flush mt-3">
                         {{-- @foreach ($detail as $d) --}}
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
+                        <div class="list-barang my-5">
+                            <h5 class="fw-bold text-center">List Barang</h5>
+                            <table class="table table-borderless table-hover table-responsive text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="text-start">Nama Barang</th>
+                                        <th class="text-end">Qty</th>
+                                        <th class="text-end">Sub Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-start">Laravel</td>
+                                        <td class="text-end">2</td>
+                                        <td class="text-end">Rp.500.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-start">Laravel</td>
+                                        <td class="text-end">2</td>
+                                        <td class="text-end">Rp.500.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        {{-- <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
                             Laravel
                             <span id="total-price_">Rp.
                                 Rp.500.000</span>
-                        </li>
+                        </li> --}}
                         {{-- @endforeach --}}
                         <li class="list-group-item d-flex justify-content-end align-items-center border-0 px-0 mb-3">
                             <div>
-                                <strong> <span id="total-transaksi-b">Total : Rp.
+                                <strong> <span id="total-transaksi-b">Total :
                                         Rp.500.000</span></strong>
                                 <strong><span id="total-transaksi" style="display: none;">Total : Rp.
                                     </span></strong>
