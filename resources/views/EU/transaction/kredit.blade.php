@@ -53,7 +53,7 @@
                             </div>
 
 
-                            <!-- Status Kredti -->
+                            <!-- Status Kredit -->
                             <div class="col">
                                 <div class="row text-end">
                                     <div class="row">
@@ -61,7 +61,7 @@
                                             <p>Tanggal Jatuh Tempo</p>
                                         </div>
                                         <div class="col-lg-3 col-sm-6">
-                                            <p class="text-danger">15 Mei 2023</p>
+                                            <p class="fw-bold text-danger">15 Mei 2023</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -85,9 +85,34 @@
 
                         </div>
                     </div>
-                    <ul class="list-group list-group-flush mt-3">
+
+                    <div class="list-barang my-5">
+                        <h5 class="fw-bold text-center">List Barang</h5>
+                        <table class="table table-borderless table-hover table-responsive text-center">
+                            <thead>
+                                <tr>
+                                    <th class="text-start">Nama Barang</th>
+                                    <th class="text-end">Qty</th>
+                                    <th class="text-end">Sub Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-start">Laravel</td>
+                                    <td class="text-end">2</td>
+                                    <td class="text-end">Rp.500.000</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">Laravel</td>
+                                    <td class="text-end">2</td>
+                                    <td class="text-end">Rp.500.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    {{-- <ul class="list-group list-group-flush mt-3">
                         {{-- @foreach ($detail as $d) --}}
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
+                    {{-- <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
                             Laravel
                             <span id="total-price_">Rp.
                                 Rp.500.000</span>
@@ -106,17 +131,17 @@
                             Laravel
                             <span id="total-price_">Rp.
                                 Rp.500.000</span>
-                        </li>
-                        {{-- @endforeach --}}
-                        <li class="list-group-item d-flex justify-content-end align-items-center border-0 px-0 mb-3">
-                            <div>
-                                <strong> <span id="total-transaksi-b">Total : Rp.
-                                        Rp.500.000</span></strong>
-                                <strong><span id="total-transaksi" style="display: none;">Total : Rp.
-                                    </span></strong>
-                            </div>
-                            <span><strong></strong></span>
-                        </li>
+                        </li> --}}
+                    {{-- @endforeach --}}
+                    <li class="list-group-item d-flex justify-content-end align-items-center border-0 px-0 mb-3">
+                        <div>
+                            <strong> <span id="total-transaksi-b">Total : Rp.
+                                    Rp.500.000</span></strong>
+                            <strong><span id="total-transaksi" style="display: none;">Total : Rp.
+                                </span></strong>
+                        </div>
+                        <span><strong></strong></span>
+                    </li>
                     </ul>
                     <hr>
                 </div>

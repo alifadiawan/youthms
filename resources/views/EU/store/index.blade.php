@@ -26,11 +26,84 @@
             @endforeach
         </div>
 
-        <div class="d-flex row mb-5 justify-content-start">
+
+        <div class="d-flex row mb-2 justify-content-start">
             <p class="h2 fw-bold">
                 Paling Diminati
             </p>
+        </div>
+
+
+        <!-- paling diminati -->
+        <div class="row row-cols-5 justify-content-between">
             @foreach ($populer as $p)
+                <div class="col my-2">
+                    <div class="card">
+                        <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
+                            <p class="card-title text-secondary">{{ $p->services->judul }}</p>
+                            <p class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
+                            @guest
+                                <a href="{{ route('authcheck') }}" class="btn btn-primary">
+                                    <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                                </a>
+                            @endguest
+
+                            @auth
+                                @if (empty($member))
+                                    <div class="row">
+                                        <a href="{{ route('user.show', $user) }}" class="btn btn-primary">
+                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                        </a>
+                                    </div>
+                                @else
+                                    @if (auth()->user()->hasIncompleteProfile())
+                                        <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
+                                            class="btn btn-primary" disabled>
+                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                        </a>
+                                    @elseif ($cart->contains('produk_id', $p->id))
+                                        <div class="row rows-cols-2">
+                                            <div class="col-lg-8">
+                                                <button href="" class="btn btn-outline-secondary w-100" disabled>
+                                                    Item Added
+                                                </button>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <a href="" class="btn btn-outline-danger w-100" disabled>
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <form action="{{ route('cart.store') }}" method="POST">
+                                            @csrf
+                                            @foreach ($member as $m)
+                                                <input type="hidden" name="member_id" value="{{ $m->id }}">
+                                            @endforeach
+                                            <input type="hidden" class="form-control" name="quantity" value="1">
+                                            <input type="hidden" value="{{ $p->id }}" name="produk_id">
+                                            <div class="row">
+                                                <button type="submit" class="btn yms-blue">
+                                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                                </button>
+                                            </div>
+                                        </form>
+                                    @endif
+                                @endif
+                            @endauth
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+
+
+
+        {{-- @foreach ($populer as $p)
+            <div class="row">
                 <div class="my-3 col-lg-4 col-md-6 col-sm-12">
                     <div class="card">
                         <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
@@ -77,8 +150,10 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            </div>
+            @endforeach --}}
 
+        <div class="row">
             @foreach ($layanan as $l)
                 <p class="h2 fw-bold">{{ $l->layanan }}</p>
                 @foreach ($l->services as $ls)
@@ -134,6 +209,7 @@
             @endforeach
         </div>
     </div>
+
 
     <script>
         window.onload = function() {
