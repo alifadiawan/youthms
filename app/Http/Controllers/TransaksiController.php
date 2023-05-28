@@ -239,7 +239,7 @@ class TransaksiController extends Controller
 
             // return $EU_lunas;
             $status_EU = ['EU_utang', 'EU_kredit', 'EU_lunas'];
-            return view('EU.transaction.detail', compact($compact, $status_EU));
+            return view('EU.transaction.bb', compact($compact, $status_EU));
             //     return view('EU.transaction.cash', compact($compact));
         }
 
@@ -261,7 +261,7 @@ class TransaksiController extends Controller
      */
     public function edit(Transaksi $transaksi)
     {
-        // return 'edit';
+
     }
 
     /**
