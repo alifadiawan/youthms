@@ -18,10 +18,10 @@
 </div> -->
 
 <div class="row">
-    @if (auth()->user()->role->role !== 'admin')
+    @if (auth()->user()->role->contains('role', 'admin'))
+        <div class="col-lg-9">
+    @else
         <div class="col-lg-12">
-        @else
-            <div class="col-lg-9">
     @endif
     <div class="card p-3">
         <div class="row align-items-end">
@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </div>
-            @if (auth()->user()->role->role == 'admin')
+            @if (auth()->user()->role->contains('role', 'admin'))
                 <div class="col-5 text-right">
                     <a href="{{ route('user.create') }}" class="btn btn-md text-white rounded"
                         style="background-color: #1864BA;">Tambah User</a>
@@ -74,7 +74,11 @@
                         <tr class="userTableRow">
                             <td scope="row">{{ $loop->iteration }}</td>
                             <td>{{ $u->username }}</td>
-                            <td class="text-capitalize">{{ $u->role->role }}</td>
+                            <td class="text-capitalize">
+                            @foreach($u->role as $roles)
+                                {{ $roles->role }} <br>
+                            @endforeach
+                            </td>
                             <td>
                                 <a href="{{ route('user.show', $u->id) }}"
                                     class="btn btn-sm btn text-white rounded-pill"
@@ -90,7 +94,7 @@
         </div>
     </div>
 </div>
-@if (auth()->user()->role->role == 'admin')
+@if (auth()->user()->role->contains('role', 'admin'))
     <div class="col-lg-3">
         <div class="card p-3">
             <button data-toggle="modal" data-target="#addJabatan" class="btn btn-md text-white rounded mb-2 mr-1"
