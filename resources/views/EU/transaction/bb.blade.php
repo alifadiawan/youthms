@@ -9,9 +9,9 @@
             <i class="fas fa-arrow-left"></i>
         </a>
 
-
         <div class="card my-3">
             <div class="card-body">
+
 
 
                 <!-- Lunas -->
@@ -59,9 +59,11 @@
                             <div class="alert alert-warning" role="alert">
                                Klik disini untuk bayar
                             </div>
+
                         </a>
                         <!-- Date -->
                         <div class="row mb-5">
+
                             <div class="col">
                                 {{-- {{ $t->created_at }} --}}
                                 Transaction Created <p class="text-muted">12 Mei 2023</p>
@@ -127,7 +129,7 @@
 
                     <!-- belum bayar -->
                     @foreach ($trx as $t)
-                        {{-- @if ($EU_lunas->contains($t->id)) --}}
+                        {{-- VIEW UTANG --}}
                         @if (in_array($t->id, $EU_utang))
                         <a href="">
                             <div class="alert alert-danger" role="alert">
@@ -173,9 +175,6 @@
                             </div>
                         @endif
                     @endforeach
-
-
-
 
                     <!-- list items -->
                     <table class="table table-bordered table-responsive mt-5">
