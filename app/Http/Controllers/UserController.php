@@ -20,13 +20,14 @@ class UserController extends Controller
         $user = User::paginate(5);
         $role = Role::all();
 
-        $u = auth()->user()->role->role;
+        $u = auth()->user()->role->pluck('role')->toArray();
+        // return $u;
         $uid = auth()->user()->id;
-        $users = user::where('id', $uid)->get();
+        $users = User::where('id', $uid)->get();
         // return $email;
 
-        $staff = ['admin', 'owner'];
-        if (in_array($u, $staff)) {
+        $staff = ["admin", "owner"];
+        if (count(array_intersect($u, $staff))>0) {
 
             return view('Admin.user.index', compact('user', 'role'));
             // return view('Admin.user.user-detail', compact('user'));
@@ -51,21 +52,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $u = User::create([
-            'username' => $request->username,
-            'role_id' => $request->role_id,
-            'password' => bcrypt($request->password),
-            'email' => $request->email,
-        ]);
+        // $u = User::create([
+        //     'username' => $request->username,
+        //     'role_id' => $request->role_id,
+        //     'password' => bcrypt($request->password),
+        //     'email' => $request->email,
+        // ]);
+
+        $user = new User();
+        $user->username = $request->input('username');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+        $user->role()->sync($request->input('role_id'));
+
         notify()->success('Akun Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $users = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Akun Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('user.show', ['user' => $u->id])); // Ganti dengan rute yang sesuai
-        Notification::send($user, $notification);
+        $notification->setUrl(route('user.show', ['user' => $user->id])); // Ganti dengan rute yang sesuai
+        Notification::send($users, $notification);
         return redirect('user');
     }
 
