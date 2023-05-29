@@ -161,8 +161,7 @@ class TransaksiController extends Controller
 
         // mencari data user & member
         $user = auth()->user()->id;
-        54 /
-            $member = member::where('user_id', $user)->pluck('id')->first();
+        $member = member::where('user_id', $user)->pluck('id')->first();
 
         // mencari harga total & admin
         $harga = $request->total;
@@ -222,7 +221,10 @@ class TransaksiController extends Controller
 
     public function pembayaran($id)
     {
-        // return 'mamah pengen tidur :(';
+        date_default_timezone_set('Asia/Jakarta');
+        $today = today();
+        $t = $today->format('Y-m-d');
+        // return $today;
 
         // mencari data user & member
         $user = auth()->user()->id;
@@ -245,8 +247,7 @@ class TransaksiController extends Controller
         $admin = $total * 0.11;
         $grandtotal = $total + $admin;
 
-
-        $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid'];
+        $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid', 't'];
         return view('EU.transaction.pembayaran', compact($compact));
     }
 
@@ -375,8 +376,18 @@ class TransaksiController extends Controller
         }
     }
 
-    public function kredit()
+    public function kredit(request $r)
     {
+        // return $r;
+        $req_user = request_user::create([
+            'nama_pemesan' => $r->nama_pemesan,
+            'tanggal_mulai' => $r->tanggal_mulai,
+            'jatuh_tempo' => $r->jatuh_tempo,
+            'deskripsi' => $r->deskripsi,
+            'status' => $r->status,
+            'transaksi_id' => $r->transaksi_id
+        ]);
+
         return view('EU.transaction.kredit');
     }
 

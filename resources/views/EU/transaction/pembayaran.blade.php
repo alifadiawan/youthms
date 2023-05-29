@@ -123,35 +123,38 @@
                                 <div id="flush-collapseFour" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                            <form action="{{ route('transaksi.kredit',$tid) }}">
-                                                <div class="form">
-                                                    <div class="form-gorup">
-                                                        <label for="">Nama Pemesan / Instansi</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                    <div class="form-gorup">
-                                                        <label for="">Jangka Waktu</label>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <label for="">tanggal mulai</label>
-                                                                <input type="date" class="form-control">
-                                                            </div>
-                                                            <div class="col">
-                                                                <label for="">tanggal akhir</label>
-                                                                <input type="date" class="form-control">
-                                                            </div>
+                                        <form action="{{ route('transaksi.kredit') }}" method="post">
+                                            @csrf
+                                            <div class="form">
+                                                <div class="form-gorup">
+                                                    <label for="">Nama Pemesan / Instansi</label>
+                                                    <input type="text" class="form-control" name="nama_pemesan">
+                                                </div>
+                                                <div class="form-gorup">
+                                                    <label for="">Jangka Waktu</label>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <label for="">tanggal mulai</label>
+                                                            <input type="date" id="tanggal" name="tanggal_mulai"
+                                                                class="form-control" value="{{ $t }}" min="{{ date('Y-m-d') }}">
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="">tanggal akhir</label>
+                                                            <input type="date" name="jatuh_tempo" class="form-control" min="{{ date('Y-m-d') }}">
                                                         </div>
                                                     </div>
-                                                    <div class="form-gorup">
-                                                        <label for="">Deskipsi (opsional)</label>
-                                                        {{-- <input type="" class="form-control"> --}}
-                                                        <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
-                                                    </div>
-                                                    <div class="form-group"><button class="btn btn-primary"
-                                                            type="submit">kirim request</button>
-                                                    </div>
                                                 </div>
-                                            </form>
+                                                <div class="form-gorup">
+                                                    <label for="">Deskripsi (opsional)</label>
+                                                        <textarea class="form-control" name="deskripsi" cols="30" rows="10"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="hidden" name="status" value="null">
+                                                    <input type="hidden" name="transaksi_id" value="{{ $tid }}">
+                                                    <button class="btn btn-primary" type="submit">kirim request</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
