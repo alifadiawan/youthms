@@ -13,6 +13,7 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="mb-0 me-auto">Status</h5>
+                            <p class="h6 text-danger">Jatuh Tempo : </p>
                         </div>
                         <div class="col text-right">
                             @if (in_array($detail[0]->transaksi_id, $adm_utang))

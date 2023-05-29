@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Segmen;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewMessageNotification;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 
 class SegmenController extends Controller
