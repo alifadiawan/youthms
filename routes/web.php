@@ -55,6 +55,12 @@ route::get('/5', function () {
 route::get('/returnan', function () {
     return view('returnan');
 });
+route::get('/flip', function () {
+    return view('EU.transaction.flip');
+});
+route::get('/invoice', function () {
+    return view('EU.transaction.alphastude');
+});
 
 
 

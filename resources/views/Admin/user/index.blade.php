@@ -225,8 +225,8 @@
                         detailUrl = detailUrl.replace('__id__', user.id);
 
                         // Mendapatkan array dari nama-nama role yang dimiliki oleh user
-                        var roles = user.roles.map(function(role) {
-                            return role.role;
+                        var roles = user.roles.map(function(r_u) {
+                            return r_u.role;
                         });
 
                         var roleNames = roles.join(', '); // Menggabungkan nama-nama role dengan koma

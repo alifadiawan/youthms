@@ -81,6 +81,23 @@ h6 {
     background-color: #064bac !important;
 }
 
+.yms-outline-blue{
+    border-color: #064bac;
+    color: rgb(0, 0, 0);
+}
+
+.yms-outline-blue:hover{
+    border-color: #064bac;
+    background-color: #064bac;
+    color: white;
+}
+
+.yms-outline-blue:active{
+    border-color: #064bac;
+    background-color: #064bac;
+    color: white;
+}
+
 #caption {
 
   position: absolute;
