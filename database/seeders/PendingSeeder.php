@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\request_user;
+use Illuminate\Support\Carbon;
 
 class PendingSeeder extends Seeder
 {
@@ -19,24 +20,24 @@ class PendingSeeder extends Seeder
             'deskripsi' =>null,  
             'status' =>null,  
             'tanggal_mulai' =>Carbon::parse('2023-06-21'),  
-            'jatuh_tempo' =>Carbon::parse('2023-06-21'),  
-            'transaksi_id' =>,  
+            'jatuh_tempo' =>Carbon::parse('2023-06-30'),  
+            'transaksi_id' =>5,  
         ],
             [
             'nama_pemesan' =>'ilham',  
             'deskripsi' =>null,  
             'status' =>'accept',  
             'tanggal_mulai' =>Carbon::parse('2023-06-21'),  
-            'jatuh_tempo' =>Carbon::parse('2023-06-21'),  
-            'transaksi_id' =>,  
+            'jatuh_tempo' =>Carbon::parse('2023-06-30'),  
+            'transaksi_id' =>6,  
         ],
             [
             'nama_pemesan' =>'ilham',  
             'deskripsi' =>null,  
             'status' =>'decline',  
             'tanggal_mulai' =>Carbon::parse('2023-06-21'),  
-            'jatuh_tempo' =>Carbon::parse('2023-06-21'),  
-            'transaksi_id' =>,  
+            'jatuh_tempo' =>Carbon::parse('2023-06-30'),  
+            'transaksi_id' =>7,  
         ],
         ];
 
