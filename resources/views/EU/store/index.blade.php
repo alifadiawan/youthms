@@ -29,7 +29,7 @@
 
     <div class="container">
         <div class="d-flex row mb-2">
-            <p class="h2 fw-bold text-sm-center">
+            <p class="h2 fw-bold text-left">
                 Paling Diminati
             </p>
         </div>
@@ -65,13 +65,13 @@
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </a>
                                     @elseif ($cart->contains('produk_id', $p->id))
-                                        <div class="row rows-cols-2">
-                                            <div class="col-lg-8">
+                                        <div class="row rows-cols-2 gx-2 gy-2">
+                                            <div class="col-lg-8 col-12">
                                                 <button href="" class="btn btn-outline-secondary w-100" disabled>
                                                     Item Added
                                                 </button>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-4 col-12">
                                                 <a href="" class="btn btn-outline-danger w-100" disabled>
                                                     <i class="fas fa-trash"></i>
                                                 </a>
@@ -173,34 +173,47 @@
                                     @endguest
 
                                     @auth
-                                        @if (empty($member))
-                                            <a href="{{ route('user.show', $user) }}" class="btn yms-blue w-100 rounded-3">
-                                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                            </a>
-                                        @else
-                                            @if (auth()->user()->hasIncompleteProfile())
-                                                <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
-                                                    class="btn yms-blue w-100 rounded-3" disabled>
-                                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    @if (empty($member))
+                                    <div class="row">
+                                        <a href="{{ route('user.show', $user) }}" class="btn yms-blue w-100 rounded-3">
+                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                        </a>
+                                    </div>
+                                @else
+                                    @if (auth()->user()->hasIncompleteProfile())
+                                        <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
+                                            class="btn yms-blue w-100 rounded-3" disabled>
+                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                        </a>
+                                    @elseif ($cart->contains('produk_id', $p->id))
+                                        <div class="row rows-cols-2 gx-2 gy-2">
+                                            <div class="col-lg-8 col-12">
+                                                <button href="" class="btn btn-outline-secondary w-100" disabled>
+                                                    Item Added
+                                                </button>
+                                            </div>
+                                            <div class="col-lg-4 col-12">
+                                                <a href="" class="btn btn-outline-danger w-100" disabled>
+                                                    <i class="fas fa-trash"></i>
                                                 </a>
-                                            @elseif ($cart->contains('produk_id', $p->id))
-                                                <button type="submit" class="btn btn-danger" disabled>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <form action="{{ route('cart.store') }}" method="POST">
+                                            @csrf
+                                            @foreach ($member as $m)
+                                                <input type="hidden" name="member_id" value="{{ $m->id }}">
+                                            @endforeach
+                                            <input type="hidden" class="form-control" name="quantity" value="1">
+                                            <input type="hidden" value="{{ $p->id }}" name="produk_id">
+                                            <div class="row">
+                                                <button type="submit" class="btn yms-blue w-100 rounded-3">
                                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                                 </button>
-                                            @else
-                                                <form action="{{ route('cart.store') }}" method="POST">
-                                                    @csrf
-                                                    @foreach ($member as $m)
-                                                        <input type="hidden" name="member_id" value="{{ $m->id }}">
-                                                    @endforeach
-                                                    <input type="hidden" class="form-control" name="quantity" value="1">
-                                                    <input type="hidden" value="{{ $p->id }}" name="produk_id">
-                                                    <button type="submit" class="btn yms-blue w-100 rounded-3">
-                                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                                    </button>
-                                                </form>
-                                            @endif
-                                        @endif
+                                            </div>
+                                        </form>
+                                    @endif
+                                @endif
                                     @endauth
                                 </div>
                             </div>

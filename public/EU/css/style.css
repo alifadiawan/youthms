@@ -93,13 +93,13 @@ h6 {
   width: fit-content;
 }
 
-@media (width <= 576px) {
+@media (max-width: 991px) {
   #caption{
     position: absolute;
-    top: 35%;
+    top: 13%;
     left: 5%;
     width: 30%;
-    font-size: 6px;
+    font-size: 2px;
   }
 }
 
@@ -326,9 +326,6 @@ h6 {
   color: #fff;
 }
 
-#navbar-mobile{
-  display: none;
-}
 
 @media (max-width: 991px) {
   .mobile-nav-toggle {
@@ -337,10 +334,6 @@ h6 {
 
   .logo{
     width: 100px !important;
-  }
-
-  #navbar-mobile {
-    /* display: inline; */
   }
 
   .navbar ul {
