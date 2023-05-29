@@ -45,6 +45,20 @@ class TransaksiSeeder extends Seeder
                 'total_bayar' => 0,
                 'member_id' => 2,
             ],
+            [
+                'unique_code' => 'YMS5611394',
+                'total' => 318570,
+                'total_bayar' => 0,
+                'date_expired' => null,
+                'member_id' => 2,
+            ],
+            [
+                'unique_code' => 'YMS7553512',
+                'total' => 342989,
+                'total_bayar' => 0,
+                'date_expired' => null,
+                'member_id' => 2,
+            ],
 
         ];
 

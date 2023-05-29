@@ -71,14 +71,14 @@
                                                 </button>
                                             </div>
                                             <div class="col-lg-4">
-                                                <form action="{{ route('cart.delete', $p->id) }}" method="post">
+                                                {{-- <form action="{{ route('cart.delete', $p->id) }}" method="post">
                                                     @csrf
-                                                    @method('delete')
+                                                    @method('delete') --}}
                                                     <button type="submit" class="btn btn-outline-danger">
                                                         {{-- <i class="fas fa-trash"></i> --}}
-                                                        to do
+                                                        ongoing
                                                     </button>
-                                                </form>
+                                                {{-- </form> --}}
                                             </div>
                                         </div>
                                     @else
