@@ -20,61 +20,61 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'username' => 'Stevana1304',
-                'password' => bcrypt('123'),
+                'password' => '123',
                 'email' => 'steven@gmail.com',
                 'role_id' => [1],
             ],
             [
                 'username' => 'alif_adiawan',
-                'password' => bcrypt('123'),
+                'password' => '123',
                 'email' => 'alif@gmail.com',
                 'role_id' => [1],
             ],
             [
                 'username' => 'ilhmstxr',
-                'password' => bcrypt('123'),
+                'password' => '123',
                 'email' => 'ilhxm@gmail.com',
                 'role_id' => [1],
             ],
             [
                 'username' => 'client',
-                'password' => bcrypt('123'), 
+                'password' => '123', 
                 'email' => 'client@gmail.com',
                 'role_id' => [1],
             ],
             [
                 'username' => 'clientacumalaka', 
-                'password' => bcrypt('123'), 
+                'password' => '123', 
                 'email' => 'client2@gmail.com',
                 'role_id' => [2],
             ],
             [
                 'username' => 'owner', 
-                'password' => bcrypt('123'), 
+                'password' => '123', 
                 'email' => 'owner@gmail.com',
                 'role_id' => [3],
             ],
             [
                 'username' => 'programmer',
-                'password' => bcrypt('123'), 
+                'password' => '123', 
                 'email' => 'programmer@gmail.com',
                 'role_id' => [4],
             ],
             [
                 'username' => 'uiux', 
-                'password' => bcrypt('123'), 
+                'password' => '123', 
                 'email' => 'uiux@gmail.com',
                 'role_id' => [5],
             ],
             [
                 'username' => 'sekretariat', 
-                'password' => bcrypt('123'), 
+                'password' => '123', 
                 'email' => 'sekretariat@gmail.com',
                 'role_id' => [6],
             ],
             [
                 'username' => 'reborn',                
-                'password' => bcrypt('123'), 
+                'password' => '123', 
                 'email' => 'reborn@gmail.com',
                 'role_id' => [7],
             ],
@@ -95,7 +95,7 @@ class UserSeeder extends Seeder
 
             // Atur relasi many-to-many dengan peran
             $roles = Role::whereIn('id', $userData['role_id'])->get(); // Ganti dengan peran yang sesuai
-            $user->role()->sync($roles);
+            $user->roles()->attach($roles);
         }
 
         $member = [

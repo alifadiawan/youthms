@@ -24,6 +24,8 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required']
         ]);
+
+        // return $data;
         
         // jika user telah mengisi data
         if (Auth::attempt($data)) {
@@ -31,16 +33,19 @@ class LoginController extends Controller
             notify()->success('Berhasil Login !!');
             
             // cek role suatu user
-            $user = auth()->user()->role->role;
+            $user = auth()->user()->roles->pluck('role')->toArray();
+            // return $user;
             $company = ['admin','owner'];
             
-            if (in_array($user,$company)) {
+            if (count(array_intersect_assoc($user,$company))>0) {
                 // return true;
                 return redirect()->intended('dashboard');
-            } elseif ($user == 'client') {
-                // return redirect('/');
-                return redirect()->intended('/');
-            }else{
+            } 
+            // elseif ($user == ["client"]) {
+            //     // return redirect('/');
+            //     return redirect()->intended('/');
+            // }
+            else{
                 // return redirect('dashboard');
                 return redirect()->intended('/');
             }
