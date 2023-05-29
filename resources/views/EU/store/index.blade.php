@@ -81,7 +81,7 @@
                                                 {{-- <form action="{{ route('cart.delete', $p->id) }}" method="post">
                                                     @csrf
                                                     @method('delete') --}}
-                                                    <button type="submit" class="btn btn-outline-danger">
+                                                    <button type="submit" class="btn btn-outline-danger w-100">
                                                         {{-- <i class="fas fa-trash"></i> --}}
                                                         ongoing
                                                     </button>
