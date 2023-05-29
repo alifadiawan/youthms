@@ -15,7 +15,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($transaksi as $t)
+                @foreach ($trx as $t)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $t->member->name }}</td>
@@ -31,6 +31,16 @@
                                 <button disabled="disabled" class="btn btn-sm btn-warning"></button><span
                                     class="badge">Kredit</span>
                             </td>
+                        @elseif(in_array($t->id, $up))
+                            <td>
+                                <button disabled="disabled" class="btn btn-sm btn-info"></button><span
+                                    class="badge">pending</span>
+                            </td>
+                        @elseif(in_array($t->id, $ud))
+                            <td>
+                                <button disabled="disabled" class="btn btn-sm btn-dark"></button><span
+                                    class="badge">declined</span>
+                            </td>
                         @elseif(in_array($t->id, $ul))
                             <td>
                                 <button disabled="disabled" class="btn btn-sm btn-success"></button><span
@@ -43,7 +53,7 @@
                     </tr>
                 @endforeach
             </tbody>
-            {{ $transaksi->links() }}
+            {{ $trx->links() }}
         </table>
     </div>
 </div>

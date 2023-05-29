@@ -52,13 +52,16 @@ class ProdukController extends Controller
         
         // pengkondisian jika admin maka masuk view admin, jika selain admin / owner maka dilempar ke view EU store
         if (auth()->check()) {
-            $u = auth()->user()->roles->pluck('role')->toArray();
+            $role = auth()->user()->roles->pluck('role')->toArray();
             $user = auth()->user()->id;
-            $member = member::where('user_id', $user)->pluck('id')->first();
+            // $member = member::where('user_id', $user)->pluck('id')->first();
+            $member = member::where('user_id', $user)->get();
+            // return $member;
             $cart = cart::where('member_id', $member)->get();
             $admin = ['admin', 'owner'];
 
-            if (count(array_intersect_assoc($u, $admin))>0) {
+            if (count(array_intersect_assoc($role, $admin))>0) {
+                // if (in_array($role, $admin)) {
                 return view('Admin.store.index', compact('product', 'services'));
             } else {
                 $user = auth()->user()->id;
@@ -155,7 +158,7 @@ class ProdukController extends Controller
         if (auth()->check()) {
             // cek user & member
             $user = auth()->user()->id;
-            $member = member::where('user_id', $user)->pluck('id')->first();
+            $member = member::where('user_id', $user)->get();
 
             // mengecek keranjang 
             $cart = cart::where('member_id', $member)->get();

@@ -70,6 +70,18 @@
                                                         class="btn btn-sm btn-warning"></button><span
                                                         class="badge text-dark">Kredit</span>
                                                 </td>
+                                            @elseif(in_array($a->id, $up))
+                                                <td>
+                                                    <button disabled="disabled"
+                                                        class="btn btn-sm btn-info"></button><span
+                                                        class="badge text-dark">pending</span>
+                                                </td>
+                                            @elseif(in_array($a->id, $ud))
+                                                <td>
+                                                    <button disabled="disabled"
+                                                        class="btn btn-sm btn-dark"></button><span
+                                                        class="badge text-dark">declined</span>
+                                                </td>
                                             @elseif(in_array($a->id, $ul))
                                                 <td>
                                                     <button disabled="disabled"

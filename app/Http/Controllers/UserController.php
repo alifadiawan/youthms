@@ -20,8 +20,8 @@ class UserController extends Controller
         $user = User::paginate(5);
         $role = Role::all();
 
-        $u = auth()->user()->roles->pluck('role')->toArray();
-        // return $u;
+        $u = auth()->user()->roless->pluck('role')->toArray();
+        // return $u
         $uid = auth()->user()->id;
         $users = User::where('id', $uid)->get();
         // return $email;

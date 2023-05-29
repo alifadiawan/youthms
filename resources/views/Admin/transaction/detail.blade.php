@@ -20,7 +20,10 @@
                                 <h5 class="mb-0 me-auto text-danger font-weight-bold">belum bayar</h5>
                             @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
                                 <h5 class="mb-0 me-auto text-warning font-weight-bold">KREDIT</h5>
-                                <p class="h6 text-danger">1 Hari Lagi</p>
+                            @elseif(in_array($detail[0]->transaksi_id, $adm_pending))
+                                <h5 class="mb-0 me-auto text-info font-weight-bold">PENDING</h5>
+                            @elseif(in_array($detail[0]->transaksi_id, $adm_declined))
+                                <h5 class="mb-0 me-auto text-dark font-weight-bold">DECLINED</h5>
                             @else
                                 <h5 class="mb-0 me-auto text-success font-weight-bold">LUNAS</h5>
                             @endif
