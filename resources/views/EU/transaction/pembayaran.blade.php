@@ -75,7 +75,7 @@
                                     <div class="accordion-body">
                                         <div class="row">
                                             <div class="col">
-                                                <a href="">
+                                                <a href="/cara">
                                                     <img class="img-thumbnail border-0" src="{{ asset('mandiri.png') }}"
                                                         style="width: 15rem" alt="">
                                                 </a>
@@ -84,7 +84,7 @@
                                                         style="width: 15rem" alt="">
                                                 </a>
                                                 <a href="">
-                                                    <img class="img-thumbnail border-0" src="{{ asset('btpn .png') }}"
+                                                    <img class="img-thumbnail border-0" src="{{ asset('btpn.png') }}"
                                                         style="width: 15rem" alt="">
                                                 </a>
                                             </div>
