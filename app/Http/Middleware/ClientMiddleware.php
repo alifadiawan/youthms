@@ -18,12 +18,12 @@ class ClientMiddleware
     {
 
         if (Auth::check()) {
-            $role = auth()->user()->roles->pluck('role')->toArray();
+            $user_role = auth()->user()->roles->pluck('role')->toArray();
             $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
             // cek apakah pengguna terdaftar sebagai klien
-            if (in_array($role, $staff)) {
+            if (count(array_intersect_assoc($user_role, $staff)) > 0) {
                 return $next($request);
-            } elseif (in_array('client',$role )) {
+            } elseif (in_array('client', $user_role)) {
                 return $next($request);
             } else {
                 return redirect()->back();
@@ -32,8 +32,8 @@ class ClientMiddleware
             // jika pengguna tidak terotentikasi, lewati middleware dan izinkan akses ke rute
             return $next($request);
         }
-        
-        
+
+
         $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
         return redirect('/returnan')->with('message', 'Kamu dilemparkan ke /returnan dikarenakan tidak cocok dengan role' . $staff);
     }

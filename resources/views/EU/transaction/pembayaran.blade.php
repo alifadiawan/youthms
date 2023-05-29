@@ -123,34 +123,35 @@
                                 <div id="flush-collapseFour" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                        <form action="">
-                                            <div class="form">
-
-                                                <div class="form-gorup">
-                                                    <label for="">Nama Pemesan / Instansi</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="form-gorup">
-                                                    <label for="">Jangka Waktu</label>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label for="">tanggal mulai</label>
-                                                            <input type="date" class="form-control">
-                                                        </div>
-                                                        <div class="col">
-                                                            <label for="">tanggal akhir</label>
-                                                            <input type="date" class="form-control">
+                                            <form action="{{ route('transaksi.kredit',$tid) }}">
+                                                <div class="form">
+                                                    <div class="form-gorup">
+                                                        <label for="">Nama Pemesan / Instansi</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="form-gorup">
+                                                        <label for="">Jangka Waktu</label>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label for="">tanggal mulai</label>
+                                                                <input type="date" class="form-control">
+                                                            </div>
+                                                            <div class="col">
+                                                                <label for="">tanggal akhir</label>
+                                                                <input type="date" class="form-control">
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <div class="form-gorup">
+                                                        <label for="">Deskipsi (opsional)</label>
+                                                        {{-- <input type="" class="form-control"> --}}
+                                                        <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                                                    </div>
+                                                    <div class="form-group"><button class="btn btn-primary"
+                                                            type="submit">kirim request</button>
+                                                    </div>
                                                 </div>
-                                                <div class="form-gorup">
-                                                    <label for="">Deskirpsi (opsional)</label>
-                                                    {{-- <input type="" class="form-control"> --}}
-                                                    <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
-                                                </div>
-                                            </div>
-                                            <button class="btn btn-primary" type="submit">kirim request</button>
-                                        </form>
+                                            </form>
                                     </div>
                                 </div>
                             </div>
@@ -166,6 +167,26 @@
                                 </h2>
                                 <div id="flush-collapseThree" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionFlushExample">
+                                </div>
+                            </div>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <form action="">
+                                        <div class="form">
+                                            <div class="form-gorup">
+                                                <label for="">Nama Pemesan / Instansi</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="form-gorup">
+                                                <label for="">bayar </label>
+                                                <input type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-success" type="submit">Bayar</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

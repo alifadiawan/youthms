@@ -15,20 +15,18 @@ class EmployeeMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {   
+    {
 
         if (Auth::check()) {
-            // $u = auth()->user()->role->role;
-            $role = auth()->user()->roles->pluck('role')->toArray();
+            // $u = auth()->user()->roles->pluck('role')->toArray();
+            $user_role = auth()->user()->roles->pluck('role')->toArray();
             $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
             // cek apakah pengguna terdaftar sebagai klien
-            if (in_array($role, $staff)) {
+            if (count(array_intersect_assoc($user_role, $staff)) > 0) {
                 return $next($request);
-            }
-            elseif (in_array('client',$role)) {
+            } elseif (in_array('client', $user_role)) {
                 return $next($request);
-            }
-            else {
+            } else {
                 return redirect()->back();
             }
         } else {
