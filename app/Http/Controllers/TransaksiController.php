@@ -42,10 +42,7 @@ class TransaksiController extends Controller
         $user_role = $auth->roles->pluck('role')->toarray();
 
         // mencari status transaksi
-        // $transaksi = Transaksi::all();
-        // $cek_termin = request_user::where()->get();
         $trx = Transaksi::paginate(5);
-        // $trx = transaksi::all();
         $Q_utang = transaksi::where('total_bayar', 0);
         $Q_kredit = transaksi::whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0');
         $Q_lunas = transaksi::where(function ($lunas) {
@@ -74,13 +71,13 @@ class TransaksiController extends Controller
             foreach ($all as $t) {
                 $request = $requestUser->where('transaksi_id', $t->id)->first();
 
-                if ($t->total > $t->total_bayar && $request && $request->status == 'accept') {
+                if ($t->total > $t->total_bayar && $request && $request->status == "accept") {
                     $kredit[] = $t;
-                } elseif ($t->total_bayar == 0 && $request && $request->status == 'accept') {
+                } elseif ($t->total_bayar == 0 && $request && $request->status == "accept") {
                     $kredit[] = $t;
                 } elseif ($t->total_bayar == 0 && $request && $request->status == null) {
                     $pending[] = $t;
-                } elseif ($t->total_bayar == 0 && $request && $request->status == 'declined') {
+                } elseif ($t->total_bayar == 0 && $request && $request->status == "declined") {
                     $declined[] = $t;
                 }
             }
@@ -98,12 +95,19 @@ class TransaksiController extends Controller
             $kredit = $Q_kredit->where('member_id',$member)->get();
             $uk = $Q_kredit->get()->pluck('id')->toarray();
             // kredit pending
+            $up = $pending;
 
             // kredit decline
+            $ud = $declined;
 
             // lunas
             $lunas = $Q_lunas->where('member_id', $member)->get();
             $ul = $Q_lunas->get()->pluck('id')->toarray();
+
+            
+            // return $requestUser;
+            // return $requestUser;
+
 
             $status = ['utang', 'kredit', 'lunas', 'all'];
             $stts = ['uu', 'uk', 'ul'];

@@ -110,6 +110,36 @@ class TransaksiDetailSeeder extends Seeder
                 'produk_id' => 10,
                 'quantity' => 1,
             ],
+            [
+                'subtotal' => 239999,
+                'transaksi_id' => 7,
+                'produk_id' => 4,
+                'quantity' => 1,
+            ],
+            [
+                'subtotal' => 218000,
+                'transaksi_id' => 7,
+                'produk_id' => 5,
+                'quantity' => 1,
+            ],
+            [
+                'subtotal' => 69000,
+                'transaksi_id' => 7,
+                'produk_id' => 8,
+                'quantity' => 1,
+            ],
+            [
+                'subtotal' => 69000,
+                'transaksi_id' => 7,
+                'produk_id' => 7,
+                'quantity' => 1,
+            ],
+            [
+                'subtotal' => 69000,
+                'transaksi_id' => 7,
+                'produk_id' => 10,
+                'quantity' => 1,
+            ],
         ];
 
         TransaksiDetail::insert($trxd);
