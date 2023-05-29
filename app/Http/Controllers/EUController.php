@@ -22,6 +22,8 @@ class EUController extends Controller
      */
     public function index(Request $request)
     {
+        $user = auth()->user();
+        // return $user;
         $ip = $request->ip();
         $visitor = visitor::firstOrCreate(['ip_address' => $ip]);
         $visitor->increment('visits');

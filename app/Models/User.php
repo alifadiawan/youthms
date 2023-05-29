@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->belongsToMany(Role::class, 'role_user');
+        return $this->belongsToMany(Role::class, 'role_user','user_id','role_id');
     }
 
     public function testimoni()
@@ -72,4 +72,5 @@ class User extends Authenticatable
     {
         return $this->member !== null;
     }
+
 }

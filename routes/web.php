@@ -76,6 +76,7 @@ route::get('/transaksi/acc/detail', function () {
 //landing page
 Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 
+
 //history transaksi
 Route::get('/history-transaction', function () {
     return view('EU.history.index');
