@@ -44,7 +44,8 @@ class TransaksiController extends Controller
         // mencari status transaksi
         // $transaksi = Transaksi::all();
         // $cek_termin = request_user::where()->get();
-        $transaksi = Transaksi::paginate(5);
+        $trx = Transaksi::paginate(5);
+        // $trx = transaksi::all();
         $Q_utang = transaksi::where('total_bayar', 0);
         $Q_kredit = transaksi::whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0');
         $Q_lunas = transaksi::where(function ($lunas) {
@@ -63,7 +64,7 @@ class TransaksiController extends Controller
         $stts = ['uu', 'uk', 'ul'];
         $staff_super = ['admin', 'owner'];
         $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
-        $compact = ['staff_super', 'staff', $stts, 'transaksi'];
+        $compact = ['staff_super', 'staff', $stts, 'trx'];
 
         // pengkondisian jika role user = client, akan terlempar ke history index
         if (in_array('client', $user_role)) {
@@ -129,7 +130,6 @@ class TransaksiController extends Controller
             $uk = $kredit;
             $up = $pending;
             $ud = $declined;
-            $compact = [];
             return view('Admin.transaction.index', compact($compact));
         }
 
