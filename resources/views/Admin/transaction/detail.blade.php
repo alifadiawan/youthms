@@ -2,7 +2,126 @@
 @section('content')
 @section('judul', 'Transaction')
 
-<div class="container">
+<div class="container w-50">
+    <a href="" class="my-5">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    <div class="row">
+        <div class="col">
+            <div class="card rounded-lg shadow">
+                <div class="card-header yms-blue">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <img src="{{asset('youth-logo.svg')}}" width="150px" alt="">
+                        </div>
+                        <div class="col text-right">
+                            <p>akwdnada</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="konten">
+                        <div class="row">
+                            <div class="col text-center">
+                                @if (in_array($detail[0]->transaksi_id, $adm_utang))
+                                <h5 class="h3 mb-0 me-auto text-danger font-weight-bold">belum bayar</h5>
+                            @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
+                                <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">KREDIT</h5>
+                            @elseif(in_array($detail[0]->transaksi_id, $adm_pending))
+                                <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">PENDING</h5>
+                            @elseif(in_array($detail[0]->transaksi_id, $adm_declined))
+                                <h5 class="h3 mb-0 me-auto text-dark font-weight-bold">DECLINED</h5>
+                            @else
+                                <h5 class="mb-0 me-auto text-success font-weight-bold">LUNAS</h5>
+                            @endif
+                                <p class="text-muted">10 Mei 2023 08:33:12 WIB</p>
+                            </div>
+                        </div>
+
+                        <div class="row my-3">
+                            <div class="col text-center">
+                                <p class="h3">Rp.100.000</p>
+                            </div>
+                        </div>
+
+                        <div class="penerima">
+                            <div class="row mt-3">
+                                <div class="col">
+                                    Penerima
+                                </div>
+                                <div class="col text-right">
+                                    Ilham Bintang
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Penerima
+                                </div>
+                                <div class="col text-right">
+                                    Ilham Bintang
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Penerima
+                                </div>
+                                <div class="col text-right">
+                                    Ilham Bintang
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Penerima
+                                </div>
+                                <div class="col text-right">
+                                    Ilham Bintang
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pengirim">
+                            <hr class="my-3">
+                            <div class="row">
+                                <div class="col">
+                                    Penerima
+                                </div>
+                                <div class="col text-right">
+                                    Ilham Bintang
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Penerima
+                                </div>
+                                <div class="col text-right">
+                                    Ilham Bintang
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="footer mt-3">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="" class="btn btn-block btn-outline-info rounded-pill">
+                                        Download
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a href="" class="btn btn-block btn-outline-info rounded-pill">
+                                        Share
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{-- <div class="container">
 
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -22,7 +141,7 @@
                             @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
                                 <h5 class="mb-0 me-auto text-warning font-weight-bold">KREDIT</h5>
                             @elseif(in_array($detail[0]->transaksi_id, $adm_pending))
-                                <h5 class="mb-0 me-auto text-info font-weight-bold">PENDING</h5>
+                                <h5 class="mb-0 me-auto text-warning font-weight-bold">PENDING</h5>
                             @elseif(in_array($detail[0]->transaksi_id, $adm_declined))
                                 <h5 class="mb-0 me-auto text-dark font-weight-bold">DECLINED</h5>
                             @else
@@ -34,22 +153,22 @@
 
                     <!-- detail belum bayar jika ada -->
                     @if (in_array($detail[0]->transaksi_id, $adm_utang))
-                    <div class="row border-top mt-3">
-                        <div class="col">
-                            Total yang harus dibayar
+                        <div class="row border-top mt-3">
+                            <div class="col">
+                                Total yang harus dibayar
+                            </div>
+                            <div class="col text-right">
+                                Rp.300.000
+                            </div>
                         </div>
-                        <div class="col text-right">
-                            Rp.300.000
+                        <div class="row">
+                            <div class="col">
+                                Bayar sebelum
+                            </div>
+                            <div class="col text-right">
+                                12 Mei 2023
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            Bayar sebelum
-                        </div>
-                        <div class="col text-right">
-                            12 Mei 2023
-                        </div>
-                    </div>
                     @endif
 
                     <!-- detail kredit jika ada -->
@@ -95,7 +214,32 @@
                             </div>
                         </div>
                     @endif
+
+
+                    <!-- detail pending bila ada -->
+                    @if (in_array($detail[0]->transaksi_id, $adm_pending))
+                        <div class="row border-top mt-3">
+                            <div class="col">
+                                Transaksi Dibuat Pada
+                            </div>
+                            <div class="col text-right">
+                                10 Mei 2023
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                Nama Pemesan
+                            </div>
+                            <div class="col text-right">
+                                Ilham Bintang
+                            </div>
+                        </div>
+                        @endif
+
+
                 </div>
+
+
 
 
 
@@ -143,41 +287,10 @@
                 <div class="card-header">
                     <h4>Metode Pembayaran</h4>
                 </div>
-                {{-- <div class="card-body">
-                    <a href="" class="btn card-hover">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title"> <i class="fa-solid fa-building-columns"></i> Virtual Account
-                                </h5>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title"> <i class="fa-solid fa-money-bill-transfer"></i> Transfer Bank
-                                </h5>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title"> <i class="fa-solid fa-credit-card"></i> kredit </h5>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title"> <i class="fa-solid fa-money-bill"></i> cash</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div> --}}
+
             </div>
         </div>
 
     </div>
-</div>
+</div> --}}
 @endsection

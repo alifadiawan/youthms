@@ -19,9 +19,9 @@
     <!-- tombol kategori jasa -->
     <div class="container mb-5 mt-3">
         <div class="d-flex flex-row text-center gap-3">
-            <a href="" class="btn btn-outline-info rounded-5 {{ (request()->is('store')) ? 'active' : '' }}">All</a>
+            <a href="" class="btn yms-outline-blue rounded-5">All</a>
             @foreach ($layanan as $l)
-            <a href="{{ route('store.showtype', $l->layanan) }}" class="btn btn-outline-info rounded-5">{{ $l->layanan }}</a>
+            <a href="{{ route('store.showtype', $l->layanan) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
             @endforeach
             {{-- <a href="{{ route('store.index') }}" class="text-capitalize my-3 active">All</a>
             @foreach ($layanan as $l)
