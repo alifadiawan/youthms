@@ -181,6 +181,7 @@ route::middleware(['client', 'employee'])->group(function () {
     // Route::post('/transaksi/hapus/{id}', [TransaksiController::class,'hapus'])->name('transaksi.hapus');
     // Route::get('/cart', [TransaksiController::class, 'cart'])->name('transaksi.cart');
     Route::resource('/cart', CartController::class);
+    Route::post('/produk_cart/{$id}', [CartController::class,'delete'])->name('cart.delete');
 });
 
 

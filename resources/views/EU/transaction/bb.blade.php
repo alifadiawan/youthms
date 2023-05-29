@@ -5,7 +5,7 @@
 
     {{-- lunas --}}
     <div id="container" class="container mt-5">
-        <a href="{{ url()->previous() }}" class="btn btn-lg mb-3">
+        <a href="{{ route('transaksi.history') }}" class="btn btn-lg mb-3">
             <i class="fas fa-arrow-left"></i>
         </a>
 
@@ -57,7 +57,7 @@
                     @if (in_array($t->id, $EU_kredit))
                         <a href="">
                             <div class="alert alert-warning" role="alert">
-                               Klik disini untuk bayar
+                                Klik disini untuk bayar
                             </div>
 
                         </a>
@@ -131,11 +131,11 @@
                     @foreach ($trx as $t)
                         {{-- VIEW UTANG --}}
                         @if (in_array($t->id, $EU_utang))
-                        <a href="">
-                            <div class="alert alert-danger" role="alert">
-                               Bayar sebelum ....  Klik disini untuk bayar
-                            </div>
-                        </a>
+                            <a href="">
+                                <div class="alert alert-danger" role="alert">
+                                    Bayar sebelum .... Klik disini untuk bayar
+                                </div>
+                            </a>
                             <div class="row mb-5">
                                 <div class="col">
                                     {{-- Transaction Created {{ $t->created_at }} --}}
@@ -157,7 +157,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col text-muted">
                                     Segera bayar sebelum
                                 </div>
@@ -172,7 +172,7 @@
                                 <div class="col text-end">
                                     -
                                 </div>
-                            </div>
+                            </div> --}}
                         @endif
                     @endforeach
 

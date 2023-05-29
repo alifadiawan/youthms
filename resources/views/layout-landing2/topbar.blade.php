@@ -33,14 +33,15 @@
                 </li>
 
 
-                <li class="dropdown"><a href="#"><span>{{ auth()->user()->username }}</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a href="#"><span>{{ auth()->user()->username }}</span> <i
+                            class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('transaksi.history', auth()->user()->id) }}">Histori
                                 Transaksi</a>
                         <li>
-                            @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'admin')
+                            @if (auth()->user()->roles->pluck('role')->contains('role','admin'))
                         <li>
                             <a class="dropdown-item" href="{{ route('dashboard.index') }}">Ke Dashboard Admin</a>
                         </li>
@@ -58,7 +59,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {{-- <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li> --}}
-                {{-- <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
+                    {{-- <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                 </li>
                 <li>
                     <hr class="dropdown-divider">
@@ -81,7 +82,7 @@
             </ul>
 
             </li> --}}
-        @endauth
+                @endauth
 
 
         </ul>

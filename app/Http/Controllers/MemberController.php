@@ -16,7 +16,7 @@ class MemberController extends Controller
      */
     public function index()
     {   
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->where('role', 'client');
         })->pluck('id');
         $member = Member::whereIn("user_id", $user)->paginate(5);

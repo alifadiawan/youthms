@@ -123,24 +123,34 @@
                                 <div id="flush-collapseFour" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                        <div class="form">
-                                            <div class="form-gorup">
-                                                <label for="">Nama Pemesan / Instansi</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="form-gorup">
-                                                <label for="">Jangka Waktu</label>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <input type="date" class="form-control">
+                                        <form action="">
+                                            <div class="form">
+
+                                                <div class="form-gorup">
+                                                    <label for="">Nama Pemesan / Instansi</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div class="form-gorup">
+                                                    <label for="">Jangka Waktu</label>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <label for="">tanggal mulai</label>
+                                                            <input type="date" class="form-control">
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="">tanggal akhir</label>
+                                                            <input type="date" class="form-control">
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div class="form-gorup">
+                                                    <label for="">Deskirpsi (opsional)</label>
+                                                    {{-- <input type="" class="form-control"> --}}
+                                                    <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                                                </div>
                                             </div>
-                                            <div class="form-gorup">
-                                                <label for="">Deskirpsi</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
+                                            <button class="btn btn-primary" type="submit">kirim request</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -156,11 +166,6 @@
                                 </h2>
                                 <div id="flush-collapseThree" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is intended
-                                        to demonstrate the <code>.accordion-flush</code> class. This is the third item's
-                                        accordion body. Nothing more exciting happening here in terms of content, but just
-                                        filling up the space to make it look, at least at first glance, a bit more
-                                        representative of how this would look in a real-world application.</div>
                                 </div>
                             </div>
                         </div>

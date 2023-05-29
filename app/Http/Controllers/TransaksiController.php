@@ -27,16 +27,17 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-    
     }
 
     public function history()
     {
         // mencari data user & member
         $auth = auth()->user();
-        $user_role = $auth->role->role;
         $user = $auth->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
+
+        // mencari role
+        $user_role = $auth->roles->pluck('role')->toarray();
 
         // mencari status transaksi
         // $transaksi = Transaksi::all();
@@ -58,7 +59,7 @@ class TransaksiController extends Controller
         $compact = ['staff_super', 'staff', $stts, 'transaksi'];
 
         // pengkondisian jika role user = client, akan terlempar ke history index
-        if ($user_role == 'client') {
+        if (in_array('client', $user_role)) {
             $all = transaksi::where('member_id', $member)->get();
             $utang = $Q_utang->where('member_id', $member)->get();
             $kredit = $Q_kredit->where('member_id', $member)->get();
@@ -92,17 +93,23 @@ class TransaksiController extends Controller
 
 
         // mencari data user & member
-        $user = auth()->user()->id;54/
-        $member = member::where('user_id', $user)->pluck('id')->first();
+        $user = auth()->user()->id;
+        54 /
+            $member = member::where('user_id', $user)->pluck('id')->first();
 
         // mencari harga total & admin
         $harga = $request->total;
         $admin = $harga * 0.11;
         $grandtotal = $harga + $admin;
 
+        $pre = 'YMS';
+        $unik = mt_rand(1000000, 9999999);
+        $kode = $pre . $unik;
+
         // membuat sebuah struk transaksi
         $trx = transaksi::create([
             // 'tanggal' => $today,
+            'unique_code' => $kode,
             'member_id' => $request->member_id,
             'total_bayar' => 0,
             'total' => $grandtotal,
@@ -141,7 +148,7 @@ class TransaksiController extends Controller
         $compact = ['detail', 'total', 'transaksi'];
 
         // melempar ke fungsi pembayaran
-        return redirect()->route('transaksi.pembayaran')->with($compact);
+        return redirect()->route('transaksi.pembayaran',$trxid)->with($compact);
     }
 
 
@@ -191,9 +198,9 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
-
-        $user = auth()->user()->id;
-        $user_role = auth()->user()->role->role;
+        $auth  = auth()->user();
+        $user = $auth->id;
+        $user_role = $auth->roles->pluck('role')->toarray();
         $member = member::where('user_id', $user)->pluck('id')->first();
 
         // mencari status transaksi
@@ -232,7 +239,7 @@ class TransaksiController extends Controller
 
 
         // bayar 
-        if ($user_role == 'client') {
+        if (in_array('client',$user_role)) {
             $EU_utang = $utang->where('member_id', $member)->pluck('id')->toArray();
             $EU_kredit = $kredit->where('member_id', $member)->pluck('id')->toArray();
             $EU_lunas = $lunas->where('member_id', $member)->pluck('id')->toArray();
@@ -261,7 +268,6 @@ class TransaksiController extends Controller
      */
     public function edit(Transaksi $transaksi)
     {
-
     }
 
     /**

@@ -19,24 +19,28 @@ class TransaksiSeeder extends Seeder
         $transaksi = [
             [
                 // 'tanggal' =>   Carbon::parse('2023-04-20'),
+                'unique_code' =>'YMS0000001',
                 'total' => 293039,
                 'total_bayar' => 400000,
                 'member_id' => 2,
             ],
             [
                 // 'tanggal' =>   Carbon::parse('2023-05-20'),
+                'unique_code' =>'YMS0000002',
                 'total' => 2847146,
                 'total_bayar' => 2847146,
                 'member_id' => 2,
             ],
             [
                 // 'tanggal' =>   Carbon::parse('2023-06-20'),
+                'unique_code' =>'YMS0000003',
                 'total' => 1645020,
                 'total_bayar' => 100000,
                 'member_id' => 2,
             ],
             [
                 // 'tanggal' =>   Carbon::parse('2023-06-21'),
+                'unique_code' =>'YMS0000004',
                 'total' => 382950,
                 'total_bayar' => 0,
                 'member_id' => 2,

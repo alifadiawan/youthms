@@ -52,13 +52,13 @@ class ProdukController extends Controller
         
         // pengkondisian jika admin maka masuk view admin, jika selain admin / owner maka dilempar ke view EU store
         if (auth()->check()) {
-            $u = auth()->user()->role->role;
+            $role = auth()->user()->roles->pluck('role')->toArray();
             $user = auth()->user()->id;
             $member = member::where('user_id', $user)->pluck('id')->first();
             $cart = cart::where('member_id', $member)->get();
             $admin = ['admin', 'owner'];
 
-            if (in_array($u, $admin)) {
+            if (in_array($role, $admin)) {
                 return view('Admin.store.index', compact('product', 'services'));
             } else {
                 $user = auth()->user()->id;

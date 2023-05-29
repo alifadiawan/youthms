@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Models\visitor;
+use Illuminate\Support\Str;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
@@ -40,13 +41,12 @@ class DashboardController extends Controller
             'chart_color' =>  "51, 133, 255"
         ];
         $chart2 = new LaravelChart($penjualan);
+ 
+        $role = auth()->user()->roles->pluck('role')->toArray();
+        // return $role;
 
-        
-        $user = auth()->user()->role->role;
-        
         $uid = auth()->user()->id;
         // return $uid;
-        // return $user;
         return view('Admin.dashboard', compact('chart1', 'chart2'));
     }
 
