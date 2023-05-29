@@ -13,13 +13,13 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="mb-0 me-auto">Status</h5>
-                            <p class="h6 text-danger">Jatuh Tempo : </p>
                         </div>
                         <div class="col text-right">
                             @if (in_array($detail[0]->transaksi_id, $adm_utang))
                                 <h5 class="mb-0 me-auto text-danger font-weight-bold">belum bayar</h5>
                             @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
                                 <h5 class="mb-0 me-auto text-warning font-weight-bold">KREDIT</h5>
+                                <p class="h6 text-danger">Jatuh Tempo : 1 Hari Lagi</p>
                             @elseif(in_array($detail[0]->transaksi_id, $adm_pending))
                                 <h5 class="mb-0 me-auto text-info font-weight-bold">PENDING</h5>
                             @elseif(in_array($detail[0]->transaksi_id, $adm_declined))
