@@ -76,6 +76,7 @@ route::get('/transaksi/acc/detail', function () {
 //landing page
 Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 
+
 //history transaksi
 Route::get('/history-transaction', function () {
     return view('EU.history.index');
@@ -147,6 +148,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/transaksi', TransaksiController::class);
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
     Route::get('/transaksi_pembayaran/{id}', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
+    Route::get('/transaksi_kredit/{id}', [TransaksiController::class, 'kredit'])->name('transaksi.kredit');
 
     route::get('/lunas', function () {
         return view('EU.transaction.lunas');
@@ -183,6 +185,7 @@ route::middleware(['client', 'employee'])->group(function () {
     // Route::post('/transaksi/hapus/{id}', [TransaksiController::class,'hapus'])->name('transaksi.hapus');
     // Route::get('/cart', [TransaksiController::class, 'cart'])->name('transaksi.cart');
     Route::resource('/cart', CartController::class);
+    // Route::post('/produk_cart/{$id}', [CartController::class,'delete'])->name('cart.delete');
 });
 
 

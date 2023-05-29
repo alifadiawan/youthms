@@ -82,16 +82,29 @@ h6 {
 }
 
 #caption {
-    position: absolute;
-    top: 45%;
-    left: 1%;
-    width: 30%;
+
+  position: absolute;
+  top: 35%;
+  left: 5%;
+  width: 30%;
+
 }
 
 #store {
     margin-top: 72px;
     width: fit-content;
 }
+
+@media (max-width: 991px) {
+  #caption{
+    position: absolute;
+    top: 13%;
+    left: 5%;
+    width: 30%;
+    font-size: 2px;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -314,26 +327,34 @@ h6 {
     color: #fff;
 }
 
+
 @media (max-width: 991px) {
     .mobile-nav-toggle {
         display: block;
     }
 
-    .navbar ul {
-        display: none;
-    }
+
+  .logo{
+    width: 100px !important;
+  }
+
+  .navbar ul {
+    display: none;
+  }
 }
 
 .navbar-mobile {
-    position: fixed;
-    overflow: hidden;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: rgba(40, 58, 90, 0.9);
-    transition: 0.3s;
-    z-index: 999;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(40, 58, 90, 0.9);
+  transition: 0.4s;
+  z-index: 999;
+
+
 }
 
 .navbar-mobile .mobile-nav-toggle {
@@ -343,24 +364,28 @@ h6 {
 }
 
 .navbar-mobile ul {
-    display: block;
-    position: absolute;
-    top: 55px;
-    right: 15px;
-    bottom: 15px;
-    left: 15px;
-    padding: 10px 0;
-    border-radius: 10px;
-    background-color: #fff;
-    overflow-y: auto;
-    transition: 0.3s;
+
+  display: inline;
+  position: absolute;
+  text-align: center;
+  top: 70px;
+  left: 10px;
+  right: 10px;
+  padding: 10px 0;
+  border-radius: 10px;
+  background-color: #fff;
+  overflow-y: auto;
+  transition: 0.3s;
 }
 
 .navbar-mobile a,
 .navbar-mobile a:focus {
-    padding: 10px 20px;
-    font-size: 15px;
-    color: #37517e;
+
+  padding: 10px 20px;
+  font-size: 20px;
+  text-align: center;
+  color: #37517e;
+
 }
 
 .navbar-mobile a:hover,
@@ -821,9 +846,11 @@ section {
     margin-bottom: 50px;
 }
 
-.card-hover:hover {
-    transform: translateY(-10px);
-    transition: all ease-in-out 0.3s;
+
+.card-hover:hover{
+  transform: translateY(-10px);
+  transition: all ease-in-out 0.4s; 
+
 }
 
 /*--------------------------------------------------------------

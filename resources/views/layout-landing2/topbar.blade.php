@@ -20,7 +20,7 @@
                 <li><a class="getstarted" href="/login">Login</a></li>
             @endguest
             @auth
-                <li class="nav-item"><a class="nav-link" href="/group-chat">Chats</a></li>
+                <li class="nav-item"><a class="nav-link" href="/groupchat">Chats</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('cart.index') }}">
                         @if ($badge->isEmpty())
@@ -33,7 +33,8 @@
                 </li>
 
 
-                <li class="dropdown"><a href="#"><span>{{ auth()->user()->username }}</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a href="#"><span>{{ auth()->user()->username }}</span> <i
+                            class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                         </li>
@@ -58,7 +59,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {{-- <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li> --}}
-                {{-- <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
+                    {{-- <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                 </li>
                 <li>
                     <hr class="dropdown-divider">
@@ -68,7 +69,7 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                @if (auth()->user()->roles->contains('role', 'admin') || auth()->user()->role->role == 'admin')
+                @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'admin')
                     <li>
                         <a class="dropdown-item" href="{{ route('dashboard.index') }}">Ke Dashboard Admin</a>
                     </li>
@@ -81,7 +82,7 @@
             </ul>
 
             </li> --}}
-        @endauth
+                @endauth
 
 
         </ul>

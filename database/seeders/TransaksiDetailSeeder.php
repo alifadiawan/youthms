@@ -13,7 +13,7 @@ class TransaksiDetailSeeder extends Seeder
      */
     public function run(): void
     {
-        
+
         $trxd = [
             [
                 'subtotal' => '24000',
@@ -86,6 +86,29 @@ class TransaksiDetailSeeder extends Seeder
                 'transaksi_id' => '4',
                 'produk_id' => '7',
                 'quantity' => '2',
+            ], [
+                'subtotal' => 69000,
+                'transaksi_id' => 5,
+                'produk_id' => 7,
+                'quantity' => 1,
+            ],
+            [
+                'subtotal' => 218000,
+                'transaksi_id' => 5,
+                'produk_id' => 5,
+                'quantity' => 1,
+            ],
+            [
+                'subtotal' => 239999,
+                'transaksi_id' => 6,
+                'produk_id' => 4,
+                'quantity' => 1,
+            ],
+            [
+                'subtotal' => 69000,
+                'transaksi_id' => 6,
+                'produk_id' => 10,
+                'quantity' => 1,
             ],
         ];
 
