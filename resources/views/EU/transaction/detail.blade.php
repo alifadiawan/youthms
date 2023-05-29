@@ -176,6 +176,104 @@
                         @endif
                     @endforeach
 
+                    <!-- pending -->
+                    @foreach ($trx as $t)
+                        {{-- VIEW PENDING --}}
+                        @if (in_array($t->id, $EU_pending))
+                            <a href="{{ route('transaksi.pembayaran',$t->id) }}">
+                                <div class="alert alert-danger" role="alert">
+                                    Bayar sebelum .... Klik disini untuk bayar
+                                </div>
+                            </a>
+                            <div class="row mb-5">
+                                <div class="col">
+                                    {{-- Transaction Created {{ $t->created_at }} --}}
+                                    Transaction Created <p class="text-muted">12 Mei 2023</p>
+                                </div>
+                                <div class="col text-end">
+                                    alif_adiawan
+                                </div>
+                            </div>
+
+
+                            <!-- Detail -->
+                            <div class="row">
+                                <div class="col fw-bold">
+                                    Status
+                                </div>
+                                <div class="col text-end text-info fw-bold">
+                                    PENDING
+                                </div>
+                            </div>
+                            <hr>
+                            {{-- <div class="row">
+                                <div class="col text-muted">
+                                    Segera bayar sebelum
+                                </div>
+                                <div class="col text-end">
+                                    countdown / timer ?
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-muted">
+                                    Tanggal Bayar
+                                </div>
+                                <div class="col text-end">
+                                    -
+                                </div>
+                            </div> --}}
+                        @endif
+                    @endforeach
+
+                    <!-- declined -->
+                    @foreach ($trx as $t)
+                        {{-- VIEW DECLINED --}}
+                        @if (in_array($t->id, $EU_declined))
+                            {{-- <a href="{{ route('transaksi.pembayaran',$t->id) }}">
+                                <div class="alert alert-danger" role="alert">
+                                    Bayar sebelum .... Klik disini untuk bayar
+                                </div>
+                            </a> --}}
+                            <div class="row mb-5">
+                                <div class="col">
+                                    {{-- Transaction Created {{ $t->created_at }} --}}
+                                    Transaction Created <p class="text-muted">12 Mei 2023</p>
+                                </div>
+                                <div class="col text-end">
+                                    alif_adiawan
+                                </div>
+                            </div>
+
+
+                            <!-- Detail -->
+                            <div class="row">
+                                <div class="col fw-bold">
+                                    Status
+                                </div>
+                                <div class="col text-end text-dark fw-bold">
+                                    DECLINED
+                                </div>
+                            </div>
+                            <hr>
+                            {{-- <div class="row">
+                                <div class="col text-muted">
+                                    Segera bayar sebelum
+                                </div>
+                                <div class="col text-end">
+                                    countdown / timer ?
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-muted">
+                                    Tanggal Bayar
+                                </div>
+                                <div class="col text-end">
+                                    -
+                                </div>
+                            </div> --}}
+                        @endif
+                    @endforeach
+
                     <!-- list items -->
                     <table class="table table-bordered table-responsive mt-5">
                         <thead>
