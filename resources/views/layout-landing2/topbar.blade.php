@@ -5,6 +5,16 @@
     <a href="/" class="logo me-auto"><img src="{{ asset('youth-logo.png') }}" alt="" class="img-fluid"></a>
 
     <nav id="navbar" class="navbar navbar-expand">
+        <ul id="navbar-mobile" class="navbar-nav">
+            <li class="nav-link">
+                @guest
+                <li class="nav-item"><a class="nav-link" href="{{ route('authcheck') }}"><i
+                            class="fa-solid fa-cart-shopping"></i></a></li>
+
+                <li><a class="getstarted" href="/login">Login</a></li>
+            @endguest
+            </li>
+        </ul>
         <ul class="navbar-nav">
 
             <li class="nav-item"><a class="nav-link" href="{{ route('blog.index') }}">Blog</a></li>

@@ -326,9 +326,21 @@ h6 {
   color: #fff;
 }
 
+#navbar-mobile{
+  display: none;
+}
+
 @media (max-width: 991px) {
   .mobile-nav-toggle {
     display: block;
+  }
+
+  .logo{
+    width: 100px !important;
+  }
+
+  #navbar-mobile {
+    /* display: inline; */
   }
 
   .navbar ul {
@@ -344,7 +356,7 @@ h6 {
   left: 0;
   bottom: 0;
   background: rgba(40, 58, 90, 0.9);
-  transition: 0.3s;
+  transition: 0.4s;
   z-index: 999;
 }
 
@@ -355,12 +367,12 @@ h6 {
 }
 
 .navbar-mobile ul {
-  display: block;
+  display: inline;
   position: absolute;
-  top: 55px;
-  right: 15px;
-  bottom: 15px;
-  left: 15px;
+  text-align: center;
+  top: 70px;
+  left: 10px;
+  right: 10px;
   padding: 10px 0;
   border-radius: 10px;
   background-color: #fff;
@@ -371,7 +383,8 @@ h6 {
 .navbar-mobile a,
 .navbar-mobile a:focus {
   padding: 10px 20px;
-  font-size: 15px;
+  font-size: 20px;
+  text-align: center;
   color: #37517e;
 }
 

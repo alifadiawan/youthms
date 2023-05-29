@@ -7,7 +7,7 @@
         <div id="thumbnail" class="text-start">
             <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
             <div id="caption">
-                <h3 class="text-white text-wrap">aowkaokwa</h3>
+                <h3 class="text-white text-wrap">wawasdwa</h3>
                 <p class="text-white text-wrap">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus fugit
                     pariatur, magnam aliquam et qui hic corporis odio neque nobis doloribus quidem delectus saepe commodi
                     illum minima blanditiis nostrum quod.</p>
@@ -28,8 +28,8 @@
     </div>
 
     <div class="container">
-        <div class="d-flex row mb-2 justify-content-start">
-            <p class="h2 fw-bold">
+        <div class="d-flex row mb-2">
+            <p class="h2 fw-bold text-sm-center">
                 Paling Diminati
             </p>
         </div>
