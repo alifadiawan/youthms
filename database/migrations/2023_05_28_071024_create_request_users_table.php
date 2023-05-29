@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_pemesan');
             $table->string('deskripsi')->nullable();
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->date('tanggal_mulai');
             $table->date('jatuh_tempo');
             $table->unsignedBigInteger('transaksi_id');

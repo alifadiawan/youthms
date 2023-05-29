@@ -76,6 +76,18 @@
                                                         class="btn btn-sm btn-success"></button><span
                                                         class="badge text-dark">Lunas</span>
                                                 </td>
+                                            @elseif(in_array($a->id, $ul))
+                                                <td>
+                                                    <button disabled="disabled"
+                                                        class="btn btn-sm btn-success"></button><span
+                                                        class="badge text-dark">Lunas</span>
+                                                </td>
+                                            @elseif(in_array($a->id, $ul))
+                                                <td>
+                                                    <button disabled="disabled"
+                                                        class="btn btn-sm btn-success"></button><span
+                                                        class="badge text-dark">Lunas</span>
+                                                </td>
                                             @endif
                                             <td>
                                                 <form action="{{ route('transaksi.show', $a->id) }}">
