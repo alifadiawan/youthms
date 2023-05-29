@@ -40,7 +40,7 @@
                         <li><a class="dropdown-item" href="{{ route('transaksi.history', auth()->user()->id) }}">Histori
                                 Transaksi</a>
                         <li>
-                            @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'admin')
+                            @if (auth()->user()->roles->contains('role', 'admin') || auth()->user()->roles->contains('role', 'owner'))
                         <li>
                             <a class="dropdown-item" href="{{ route('dashboard.index') }}">Ke Dashboard Admin</a>
                         </li>
@@ -68,7 +68,7 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'admin')
+                @if (auth()->user()->roles->contains('role', 'admin') || auth()->user()->role->role == 'admin')
                     <li>
                         <a class="dropdown-item" href="{{ route('dashboard.index') }}">Ke Dashboard Admin</a>
                     </li>
