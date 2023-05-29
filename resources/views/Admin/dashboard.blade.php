@@ -7,7 +7,7 @@
     
         <div class="alert alert-warning">
             Anda harus segera melengkapi biodata Anda. 
-            @if(auth()->user()->role->role == 'client') 
+            @if(auth()->user()->roles->contains('role', 'client')) 
             <a href="{{route('member.create')}}" class="text-primary">Klik ini.</a> 
             @else 
             <a href="{{route('employee.create')}}" class="text-primary">Klik ini.</a> 
