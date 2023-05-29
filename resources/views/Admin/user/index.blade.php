@@ -35,7 +35,7 @@
                 <div class="collapse" id="collapseExample">
                     <div class="my-3">
                         <form action="{{ route('user.filter') }}" class="form-inline" id="filterForm">
-                            <select name="role_id" id="role_id" class="form-control text-capitalize mr-2">
+                            <select name="role_id[]" id="role_id[]" class="form-control form-select text-capitalize mr-2" multiple>
                                 <option value="">Semua</option>
                                 @foreach ($role as $item)
                                     <option value="{{ $item->id }}">{{ $item->role }}</option>
@@ -223,10 +223,18 @@
                         var detailUrl =
                             '{{ route('user.show', ['user' => '__id__']) }}';
                         detailUrl = detailUrl.replace('__id__', user.id);
+
+                        // Mendapatkan array dari nama-nama role yang dimiliki oleh user
+                        var roles = user.roles.map(function(role) {
+                            return role.role;
+                        });
+
+                        var roleNames = roles.join(', '); // Menggabungkan nama-nama role dengan koma
+
                         var newRow = '<tr>' +
                             '<td>' + counter + '</td>' +
                             '<td>' + user.username + '</td>' +
-                            '<td>' + user.role.role + '</td>' +
+                            '<td>' + roleNames + '</td>' +
                             '<td><a href="' + detailUrl +
                             '" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a></td>' +
                             // Tambahkan kolom tambahan sesuai kebutuhan
