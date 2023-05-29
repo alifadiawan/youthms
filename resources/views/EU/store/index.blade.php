@@ -71,10 +71,22 @@
                                                     Item Added
                                                 </button>
                                             </div>
+<<<<<<< HEAD
                                             <div class="col-lg-4 col-12">
                                                 <a href="" class="btn btn-outline-danger w-100" disabled>
                                                     <i class="fas fa-trash"></i>
                                                 </a>
+=======
+                                            <div class="col-lg-4">
+                                                {{-- <form action="{{ route('cart.delete', $p->id) }}" method="post">
+                                                    @csrf
+                                                    @method('delete') --}}
+                                                    <button type="submit" class="btn btn-outline-danger">
+                                                        {{-- <i class="fas fa-trash"></i> --}}
+                                                        ongoing
+                                                    </button>
+                                                {{-- </form> --}}
+>>>>>>> f2c0ef699e895771e1e28b1302e290bcfe466d94
                                             </div>
                                         </div>
                                     @else

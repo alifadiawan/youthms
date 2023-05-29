@@ -115,7 +115,7 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cart $cart)
+    public function destroy(Cart $cart,$p)
     {
         // mencari data user & member
         $user = auth()->user()->id;
@@ -123,7 +123,17 @@ class CartController extends Controller
 
         // mencari produk di tabel cart menggunakkan id member lalu dihapus
         $item = cart::where('member_id', $member)->where('id', $cart->id)->first();
-        $item->delete();
+        if ($item) {
+            $item->delete();
+        }else{
+            return $p;
+        }
         return redirect()->back();
+    }
+
+    public function delete($request,$id)
+    {
+        return $id;
+        return redirect()->back();   
     }
 }

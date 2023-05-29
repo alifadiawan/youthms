@@ -9,6 +9,8 @@
             <a href="{{ route('transaksi.history') }}" class="btn my-3">
                 <i class="fas fa-arrow-left"></i></a>
             <div class="card mb-4">
+
+                <!-- status -->
                 <div class="card-header py-3">
                     <div class="row">
                         <div class="col">
@@ -24,41 +26,113 @@
                             @endif
                         </div>
                     </div>
-                </div>
-                <div class="card-body ">
-                    <ul class="list-group list-group-flush">
-                        @foreach ($detail as $d)
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center px-0 pb-0">
-                                    {{ $d->produk->nama_produk }}
-                                    {{-- <span>Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</span> --}}
-                                    <span>Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</span>
-                                </li>
-                            </ul>
-                        @endforeach
 
-                        <ul class="list-group list-group-flush mt-5">
-                            <hr>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                <div>
-                                    Total
-                                </div>
-                                <span>Rp. {{ number_format($total, 0, ',', '.') }}</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                <div>
-                                    biaya admin
-                                </div>
-                                <span>Rp. {{ number_format($admin, 0, ',', '.') }}</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 mt-4 h4">
-                                <div>
-                                    <strong>Grand Total</strong>
-                                </div>
-                                <span><strong>Rp. {{ number_format($grandtotal, 0, ',', '.') }}</strong></span>
-                            </li>
-                        </ul>
-                    </ul>
+
+                    <!-- detail belum bayar jika ada -->
+                    @if (in_array($detail[0]->transaksi_id, $adm_utang))
+                    <div class="row border-top mt-3">
+                        <div class="col">
+                            Total yang harus dibayar
+                        </div>
+                        <div class="col text-right">
+                            Rp.300.000
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Bayar sebelum
+                        </div>
+                        <div class="col text-right">
+                            12 Mei 2023
+                        </div>
+                    </div>
+                    @endif
+
+                    <!-- detail kredit jika ada -->
+                    @if (in_array($detail[0]->transaksi_id, $adm_kredit))
+                        <div class="row border-top mt-3">
+                            <div class="col">
+                                Total yang harus dibayar
+                            </div>
+                            <div class="col text-right">
+                                Rp.300.000
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                Sisa yang harus dibayar
+                            </div>
+                            <div class="col text-right">
+                                Rp.300.000
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                Bayar kredit sebelum
+                            </div>
+                            <div class="col text-right">
+                                12 Mei 2023
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                Tanggal Jatuh Tempo
+                            </div>
+                            <div class="col text-right">
+                                20 Mei 2023
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                Sisa Hari
+                            </div>
+                            <div class="col text-right text-danger">
+                                8 hari
+                            </div>
+                        </div>
+                    @endif
+                </div>
+
+
+
+                <!-- list barang -->
+                <div class="card-body">
+
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nama Item</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($detail as $d)
+                                <tr>
+                                    <td>{{ $d->produk->nama_produk }}</td>
+                                    <td></td>
+                                    <td>Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        <thead>
+                            <td colspan="2" class="text-right">Total</td>
+                            <td colspan="1" class="text-left">Rp. {{ number_format($total, 0, ',', '.') }}</td>
+                        </thead>
+                        <thead>
+                            <td colspan="2" class="text-right">Biaya Admin</td>
+                            <td colspan="1" class="text-left">Rp. {{ number_format($admin, 0, ',', '.') }}</td>
+                        </thead>
+                        <thead>
+                            <th colspan="2" class="text-right h4  font-weight-bold">Grand Total</th>
+                            <th colspan="1" class="text-left h4 font-weight-bold">Rp.
+                                {{ number_format($grandtotal, 0, ',', '.') }}</th>
+                        </thead>
+                    </table>
+
+
+
                 </div>
             </div>
             <div class="card ">
