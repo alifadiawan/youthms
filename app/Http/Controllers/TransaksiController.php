@@ -34,7 +34,7 @@ class TransaksiController extends Controller
     {
         // mencari data user & member
         $auth = auth()->user();
-        $user_role = $auth->role->role;
+        $user_role = $auth->roles->pluck('role')->toArray();
         $user = $auth->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
 
@@ -58,7 +58,7 @@ class TransaksiController extends Controller
         $compact = ['staff_super', 'staff', $stts, 'transaksi'];
 
         // pengkondisian jika role user = client, akan terlempar ke history index
-        if ($user_role == 'client') {
+        if (in_array('client', $user_role)) {
             $all = transaksi::where('member_id', $member)->get();
             $utang = $Q_utang->where('member_id', $member)->get();
             $kredit = $Q_kredit->where('member_id', $member)->get();
@@ -193,7 +193,7 @@ class TransaksiController extends Controller
     {
 
         $user = auth()->user()->id;
-        $user_role = auth()->user()->role->role;
+        $user_role = auth()->user()->roles->pluck('role')->toArray();
         $member = member::where('user_id', $user)->pluck('id')->first();
 
         // mencari status transaksi
@@ -232,7 +232,7 @@ class TransaksiController extends Controller
 
 
         // bayar 
-        if ($user_role == 'client') {
+        if (in_array('client', $user_role)) {
             $EU_utang = $utang->where('member_id', $member)->pluck('id')->toArray();
             $EU_kredit = $kredit->where('member_id', $member)->pluck('id')->toArray();
             $EU_lunas = $lunas->where('member_id', $member)->pluck('id')->toArray();

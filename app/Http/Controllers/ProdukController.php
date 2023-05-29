@@ -52,13 +52,13 @@ class ProdukController extends Controller
         
         // pengkondisian jika admin maka masuk view admin, jika selain admin / owner maka dilempar ke view EU store
         if (auth()->check()) {
-            $u = auth()->user()->role->role;
+            $u = auth()->user()->roles->pluck('role')->toArray();
             $user = auth()->user()->id;
             $member = member::where('user_id', $user)->pluck('id')->first();
             $cart = cart::where('member_id', $member)->get();
             $admin = ['admin', 'owner'];
 
-            if (in_array($u, $admin)) {
+            if (count(array_intersect_assoc($u, $admin))>0) {
                 return view('Admin.store.index', compact('product', 'services'));
             } else {
                 $user = auth()->user()->id;
@@ -105,7 +105,7 @@ class ProdukController extends Controller
 
         notify()->success('Berhasil Ditambahkan !!', $request->nama_produk,);
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = $request->nama_produk . " Berhasil Ditambahkan !!";
@@ -207,7 +207,7 @@ class ProdukController extends Controller
 
         notify()->success($request->nama_produk . ' Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = $request->nama_produk . " Berhasil Diupdate !!";
@@ -233,7 +233,7 @@ class ProdukController extends Controller
 
         notify()->success('Produk berhasil dihapus');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Produk Berhasil dihapus";

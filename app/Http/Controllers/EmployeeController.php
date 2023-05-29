@@ -48,7 +48,7 @@ class EmployeeController extends Controller
         ]);
         notify()->success('Data Diri Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Data Diri Berhasil Ditambahkan !!";
@@ -87,7 +87,7 @@ class EmployeeController extends Controller
         $Member->update($input);
         notify()->success('Profile Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Profile Berhasil Diupdate !!";
@@ -116,7 +116,7 @@ class EmployeeController extends Controller
 
         notify()->success('Profile Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Profile Berhasil Dihapus !!";
