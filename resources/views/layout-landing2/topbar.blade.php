@@ -20,7 +20,7 @@
                 <li><a class="getstarted" href="/login">Login</a></li>
             @endguest
             @auth
-                <li class="nav-item"><a class="nav-link" href="/groupchat">Chats</a></li>
+                <li class="nav-item"><a class="nav-link" href="/group-chat">Chats</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('cart.index') }}">
                         @if ($badge->isEmpty())

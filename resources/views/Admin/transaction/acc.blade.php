@@ -5,7 +5,7 @@
 <div class="container">
 
     <div class="row">
-        
+
         <!-- table status -->
         <div class="col">
             <div class="card">
@@ -20,39 +20,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>12 Mei 2023</td>
-                            <td>Ilham</td>
-                            <td>
-                                <p class="text-uppercase text-warning">Pending</p>
-                            </td>
-                            <td>
-                                <a href="/transaksi/acc/detail" class="btn yms-blue">detail</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>12 Mei 2023</td>
-                            <td>Ilham</td>
-                            <td>
-                                <p class="text-uppercase text-warning">Pending</p>
-                            </td>
-                            <td>
-                                <a href="/transaksi/acc/detail" class="btn yms-blue">detail</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>12 Mei 2023</td>
-                            <td>Ilham</td>
-                            <td>
-                                <p class="text-uppercase text-warning">Pending</p>
-                            </td>
-                            <td>
-                                <a href="" class="btn yms-blue">detail</a>
-                            </td>
-                        </tr>
+                        @foreach ($request_user as $r)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $r->tanggal_mulai }}</td>
+                                <td>{{ $r->nama_pemesan }}</td>
+                                <td>
+                                    <p class="text-uppercase text-warning">{{ $r->status }}</p>
+                                </td>
+                                <td>
+                                    <a href="{{ route('requestuser.show',$r->id) }}" class="btn yms-blue">detail</a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
