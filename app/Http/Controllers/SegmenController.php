@@ -31,6 +31,14 @@ class SegmenController extends Controller
         $input = $request->all();
         Segmen::create($input);
         notify()->success('Segmen Berhasil Ditambahkan !!');
+        // mengirim notifikasi
+        $user = User::whereHas('roles', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Segmen Berhasil Ditambahkan !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('blog.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('blog');
     }
 
@@ -71,7 +79,15 @@ class SegmenController extends Controller
         $segmen = Segmen::find($id);
         $segmen->delete();
         
-        notify()->success('Segmen Telah Dihapus !!');
+        notify()->success('Segmen Berhasil Dihapus !!');
+        // mengirim notifikasi
+        $user = User::whereHas('roles', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Segmen Berhasil Dihapus !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('blog.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect()->back();
     }
 }

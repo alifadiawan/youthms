@@ -20,7 +20,7 @@ class UserController extends Controller
         $user = User::paginate(5);
         $role = Role::all();
 
-        $u = auth()->user()->role->pluck('role')->toArray();
+        $u = auth()->user()->roles->pluck('role')->toArray();
         // return $u;
         $uid = auth()->user()->id;
         $users = User::where('id', $uid)->get();
@@ -64,11 +64,11 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
-        $user->role()->sync($request->input('role_id'));
+        $user->roles()->attach($request->input('role_id'));
 
         notify()->success('Akun Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $users = User::whereHas('role', function ($query) {
+        $users = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Akun Berhasil Ditambahkan !!";
@@ -89,9 +89,9 @@ class UserController extends Controller
         $member = member::where('user_id', $uid)->get();
         $Member = member::where('user_id', $user->id)->get();
 
-        $u = auth()->user()->role->role;
+        $u = auth()->user()->roles->pluck('role')->toArray();
         $staff = ['admin', 'owner'];
-        if (in_array($u, $staff)) {
+        if (count(array_intersect_assoc($u, $staff))>0) {
 
             return view('Admin.user.user-detail', compact('user', 'Member'));
         } else {
@@ -109,7 +109,7 @@ class UserController extends Controller
         $user = User::find($id);
         $role = Role::all();
 
-        $u = auth()->user()->role->role;
+        $u = auth()->user()->roles->pluck('role')->toArray();
         $staff = ['admin', 'owner'];
         $uid = auth()->user()->id;
 
@@ -122,7 +122,7 @@ class UserController extends Controller
         $currentNumber = $m;
         $nextNumber = str_pad(++$currentNumber, 5, '0', STR_PAD_LEFT); // "00002"
 
-        if (in_array($u, $staff)) {
+        if (count(array_intersect_assoc($u, $staff))>0) {
 
             return view('Admin.user.edit-user', compact('user', 'role'));
         } else {
@@ -137,27 +137,29 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $user = User::find($id);
-        $u = auth()->user()->role->role;
+        $u = auth()->user()->roles->pluck('role')->toArray();
         $staff = ['admin', 'owner'];
 
-        if (in_array($u, $staff)) {
+        if (count(array_intersect_assoc($u, $staff))>0) {
             if ($request->password == null) {
+                $roles = Role::whereIn('id', $request->role_id)->get();
                 $user->update([
                     'username' => $request->username,
-                    'role_id' => $request->role_id,
                     'email' => $request->email,
                 ]);
+                $user->roles()->sync($roles);
             } else {
+                $roles = Role::whereIn('id', $request->role_id)->get();
                 $user->update([
                     'username' => $request->username,
-                    'role_id' => $request->role_id,
                     'password' => bcrypt($request->password),
                     'email' => $request->email,
                 ]);
+                $user->roles()->sync($roles);
             }
             notify()->success('Akun Berhasil Diupdate !!');
             // mengirim notifikasi
-            $users = User::whereHas('role', function ($query) {
+            $users = User::whereHas('roles', function ($query) {
                 $query->whereIn('role', ['admin', 'owner']);
             })->get();
             $message = "Akun Berhasil Diupdate !!";
@@ -234,13 +236,13 @@ class UserController extends Controller
         notify()->success('Akun Berhasil Dihapus !!');
 
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $users = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Akun Berhasil Dihapus !!";
         $notification = new NewMessageNotification($message);
         $notification->setUrl(route('user.index')); // Ganti dengan rute yang sesuai
-        Notification::send($user, $notification);
+        Notification::send($users, $notification);
         return redirect('user');
     }
 
@@ -249,7 +251,7 @@ class UserController extends Controller
         // return $roles;
 
         if ($request->role_id == null) {
-            $user = User::whereHas('role')->with('role')->get();
+            $user = User::whereHas('roles')->with('role')->get();
             $activeRoleName = ''; // Tidak ada filter aktif, roleName kosong
         }
         else {

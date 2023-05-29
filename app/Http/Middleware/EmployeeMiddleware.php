@@ -18,13 +18,13 @@ class EmployeeMiddleware
     {   
 
         if (Auth::check()) {
-            $u = auth()->user()->role->role;
+            $u = auth()->user()->roles->pluck('role')->toArray();
             $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
             // cek apakah pengguna terdaftar sebagai klien
-            if (in_array($u, $staff)) {
+            if (count(array_intersect_assoc($u, $staff))>0) {
                 return $next($request);
             }
-            elseif (Auth::user()->role->role =='client') {
+            elseif (in_array('client', $u)) {
                 return $next($request);
             }
             else {
