@@ -33,7 +33,8 @@
                 </li>
 
 
-                <li class="dropdown"><a href="#"><span>{{ auth()->user()->username }}</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a href="#"><span>{{ auth()->user()->username }}</span> <i
+                            class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                         </li>
@@ -58,7 +59,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {{-- <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li> --}}
-                {{-- <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
+                    {{-- <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                 </li>
                 <li>
                     <hr class="dropdown-divider">
@@ -81,7 +82,7 @@
             </ul>
 
             </li> --}}
-        @endauth
+                @endauth
 
 
         </ul>
