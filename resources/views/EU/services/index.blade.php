@@ -79,9 +79,7 @@
                             <h4 class="title mb-4">
                                 Aplikasi
                             </h4>
-                            <p class="text-muted mb-0">Untuk para pedagang online maupun offline, desain merupakan salah
-                                satu hal penting untuk menarik pembeli. Di youthMS kami memiliki beberapa layanan yang dapat
-                                digunakan untuk membantu meningkatkan upaya penjualan</p>
+                            <p class="text-muted mb-0">Aplikasi merupakan salah satu tempat untuk memasrkan produk/jasa anda secara online. YouthMS memiliki 2 layanan dalam bidang aplikasi</p>
 
                             <div class="row">
                                 <div class="col-lg-6 mt-4 pt-2">
@@ -117,8 +115,8 @@
                                 </div>
                             </div>
                             <div class="d-grid gap-2" style="margin-top: 20px">
-                                <button class="btn btn text-white" href="/portofolio" type="button">Portofolio
-                                    Kami</button>
+                                <a href="/portfolio" class="btn-porto btn btn text-white" href="/portofolio" type="button">Portofolio
+                                    Kami</a>
                             </div>
                         </div>
                     </div>
@@ -267,7 +265,7 @@
                                 </div>
                             </div>
                             <div class="d-grid gap-2" style="margin-top: 20px">
-                                <button class="btn btn text-white" type="button">Portofolio Kami</button>
+                                <a href="/portfolio" class="btn-porto btn btn text-white" type="button">Portofolio Kami</a>
                             </div>
                         </div>
                     </div>
@@ -278,6 +276,7 @@
         </div>
     </section>
     <hr>
+
     <section class="layanan" id="layanan">
         <div class="konten">
             {{-- <h1 data-aos="fade-up" data-aos-duration="1000">Layanan Yang Kami Tawarkan</h1> --}}
@@ -405,7 +404,7 @@
                                 </div>
                             </div>
                             <div class="d-grid gap-2" style="margin-top: 20px">
-                                <button class="btn btn text-white" type="button">Portofolio Kami</button>
+                                <a href="/portfolio" class="btn-porto btn btn text-white" type="button">Portofolio Kami</a>
                             </div>
                         </div>
                     </div>

@@ -113,6 +113,9 @@ Route::get('/profile', function () {
     return view('EU.user.index');
 });
 
+Route::get('/cara', function () {
+    return view('EU.transaction.cara');
+});
 //logout
 Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
