@@ -71,9 +71,14 @@
                                                 </button>
                                             </div>
                                             <div class="col-lg-4">
-                                                <a href="" class="btn btn-outline-danger w-100" disabled>
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
+                                                {{-- <form action="{{ route('cart.delete', $p->id) }}" method="post">
+                                                    @csrf
+                                                    @method('delete') --}}
+                                                    <button type="submit" class="btn btn-outline-danger">
+                                                        {{-- <i class="fas fa-trash"></i> --}}
+                                                        ongoing
+                                                    </button>
+                                                {{-- </form> --}}
                                             </div>
                                         </div>
                                     @else
