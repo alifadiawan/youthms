@@ -32,11 +32,15 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         Role::create($request->all());
-        notify()->success('Role Berhasil Ditambahkan!!', $request->role);
+        notify()->success('Role Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = Auth::user();
-        $message = "Role Berhasil ditambahkan";
-        Notification::send($user, new NewMessageNotification($message));
+        $user = User::whereHas('roles', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Role Berhasil Ditambahkan !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('user.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('user');
     }
 
@@ -78,9 +82,13 @@ class RoleController extends Controller
         $Role->delete();
         notify()->success('Role Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = Auth::user();
+        $user = User::whereHas('roles', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
         $message = "Role Berhasil Dihapus !!";
-        Notification::send($user, new NewMessageNotification($message));
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('user.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('user');
     }
 

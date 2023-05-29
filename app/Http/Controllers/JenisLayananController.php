@@ -30,6 +30,15 @@ class JenisLayananController extends Controller
     {
         $input = $request->all();
         JenisLayanan::create($input);
+        notify()->success('Jenis Layanan Berhasil Ditambahkan !!');
+        // mengirim notifikasi
+        $user = User::whereHas('roles', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Jenis Layanan Berhasil Ditambahkan !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('user.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
 
         return redirect('/services');
     }
@@ -70,7 +79,15 @@ class JenisLayananController extends Controller
     {
         $jenis_layanan = JenisLayanan::find($id);
         $jenis_layanan->delete();
-        
+        notify()->success('Jenis Layanan Berhasil Dihapus !!');
+        // mengirim notifikasi
+        $user = User::whereHas('roles', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Jenis Layanan Berhasil Dihapus !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('user.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect()->back();
     }
 }

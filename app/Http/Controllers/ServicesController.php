@@ -123,7 +123,7 @@ class ServicesController extends Controller
 
         notify()->success('Ilustrasi Service Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Ilustrasi Service Berhasil Diupdate !!";
@@ -168,7 +168,7 @@ class ServicesController extends Controller
 
         notify()->success('Berhasil ditambahkan',$request->judul);
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Service Berhasil Ditambahkan !!";
@@ -233,7 +233,7 @@ class ServicesController extends Controller
 
             notify()->success('Service '.$request->judul.' Berhasil Diupdate !!');
             // mengirim notifikasi
-            $user = User::whereHas('role', function ($query) {
+            $user = User::whereHas('roles', function ($query) {
                 $query->whereIn('role', ['admin', 'owner']);
             })->get();
             $message = "Servis ".$request->judul." Berhasil Diupdate !!";
@@ -252,7 +252,7 @@ class ServicesController extends Controller
 
             notify()->success('Service '.$request->judul.' Berhasil Diupdate !!');
             // mengirim notifikasi
-            $user = User::whereHas('role', function ($query) {
+            $user = User::whereHas('roles', function ($query) {
                 $query->whereIn('role', ['admin', 'owner']);
             })->get();
             $message = "Servis ".$request->judul." Berhasil Diupdate !!";
@@ -283,7 +283,7 @@ class ServicesController extends Controller
 
         notify()->success('Layanan telah dihapus');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Service Berhasil Dihapus !!";
