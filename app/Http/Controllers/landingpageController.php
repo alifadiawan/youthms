@@ -57,7 +57,7 @@ class landingpageController extends Controller
         $illustration->save();
         notify()->success('Illustration Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Illustration Berhasil Diupdate !!";
@@ -91,7 +91,7 @@ class landingpageController extends Controller
 
         notify()->success('Partner Berhasil Ditambah !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Partner Berhasil Ditambah !!";
@@ -131,7 +131,7 @@ class landingpageController extends Controller
         $partner->save();
         notify()->success('Partner Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Partner Berhasil Diupdate !!";
@@ -148,7 +148,7 @@ class landingpageController extends Controller
         $partner->delete();
         notify()->success('Partner Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Partner Berhasil Dihapus !!";
@@ -192,7 +192,7 @@ class landingpageController extends Controller
 
         notify()->success('Testimonial Berhasil Ditambah !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Testimonial Berhasil Ditambah !!";
@@ -236,7 +236,7 @@ class landingpageController extends Controller
             $data->save();
             notify()->success('Testimonial Berhasil Diupdate !!');
             // mengirim notifikasi
-            $user = User::whereHas('role', function ($query) {
+            $user = User::whereHas('roles', function ($query) {
                 $query->whereIn('role', ['admin', 'owner']);
             })->get();
             $message = "Testimonial Berhasil Diupdate !!";
@@ -253,7 +253,7 @@ class landingpageController extends Controller
             $data->save();
             notify()->success('Testimonial Berhasil Diupdate !!');
             // mengirim notifikasi
-            $user = User::whereHas('role', function ($query) {
+            $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
             $message = "Testimonial Berhasil Diupdate !!";
@@ -272,7 +272,7 @@ class landingpageController extends Controller
         $data->delete();
         notify()->success('Testimonial Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Testimonial Berhasil Dihapus !!";
@@ -304,7 +304,7 @@ class landingpageController extends Controller
         $text->update($input);
         notify()->success('Text Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = User::whereHas('role', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Text Berhasil Diupdate !!";

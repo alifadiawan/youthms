@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -28,12 +29,13 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        User::create([
+        $roles = Role::whereIn('id', $request->role_id);
+        $user = User::create([
             'username' => $request->username,
-            'role_id' => $request->role_id,
             'password' => bcrypt($request->password),
             'email' => $request->email,
         ]);
+        $user->roles()->attach($roles);
         return redirect('login');
     }
 
