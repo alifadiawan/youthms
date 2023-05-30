@@ -42,14 +42,14 @@
                                             </div>
                                             <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
                                                 <div class="row">
-                                                    <div class="col-6 col-lg col-md-6 my-0 my-lg-0 text-start text-lg-end">
+                                                    <div class="col-6 col-lg-10 col-md-6 my-0 my-lg-0 text-start text-lg-end">
                                                         Status</div>
                                                     <div class="col text-end text-lg text-success">
                                                         LUNAS
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Transaksi Dibuat
+                                                    <div class="col-6 col-lg-10 col-md-6 my-0 my-lg-0">Transaksi Dibuat
                                                     </div>
                                                     <div class="col text-end text-lg">
                                                         {{ $t->tanggal_transaksi }}
@@ -94,22 +94,22 @@
                                     <tbody>
                                         <tr>
                                             <td colspan="3" class="text-end">Total</td>
-                                            <td colspan="1" class="text-end fw-bold">Rp
+                                            <td colspan="1" class="">Rp
                                                 {{ number_format($total, 0, ',', '.') }}</td>
                                         </tr>
                                     </tbody>
                                     <tbody>
                                         <tr>
                                             <td colspan="3" class="text-end">Biaya admin</td>
-                                            <td colspan="1" class="text-end fw-bold">Rp
+                                            <td colspan="1" class="">Rp
                                                 {{ number_format($admin, 0, ',', '.') }}</td>
                                         </tr>
                                     </tbody>
                                     <tbody>
                                         @foreach ($trx as $t)
-                                            <tr>
+                                            <tr class="h5">
                                                 <td class="text-end fw-bold" colspan="3">Grand Total</td>
-                                                <td class=" fw-bold text-end"><span id="total-transaksi-b">Rp
+                                                <td class=" fw-bold"><span id="total-transaksi-b">Rp
                                                         {{ number_format($t->total, 0, ',', '.') }}</span></td>
                                             </tr>
                                         @endforeach
@@ -151,27 +151,27 @@
                                     {{ $t->member->user->email }}
                                 </div>
                             </div>
-                            <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
+                            <div class="col-12 col-lg-9 my-5 my-lg-0 text-lg-end text-start">
                                 <div class="row">
-                                    <div class="col-6 col-lg col-md-6 my-0 my-lg-0 text-start text-lg-end">Status</div>
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0 text-start text-lg-end">Status</div>
                                     <div class="col text-end text-lg text-danger">
                                         BELUM BAYAR
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
                                     <div class="col text-end text-lg">
                                         {{ $t->tanggal_transaksi }}
                                     </div>
                                 </div>
                                 {{-- <div class="row">
-                                <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
+                                <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
                                 <div class="col text-end text-lg">
                                     31 Mei 2023
                                 </div>
                             </div> --}}
                                 <div class="row">
-                                    <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Jatuh Tempo</div>
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Jatuh Tempo</div>
                                     <div class="col text-end text-lg text-danger">
                                         {{-- 10 Hari lagi --}}
                                         ongoing fiture
@@ -207,22 +207,22 @@
                             <tbody>
                                 <tr>
                                     <td colspan="3" class="text-end">Total</td>
-                                    <td colspan="1" class="text-end fw-bold">Rp
+                                    <td colspan="1" class="">Rp
                                         {{ number_format($total, 0, ',', '.') }}</td>
                                 </tr>
                             </tbody>
                             <tbody>
                                 <tr>
                                     <td colspan="3" class="text-end">Biaya admin</td>
-                                    <td colspan="1" class="text-end fw-bold">Rp
+                                    <td colspan="1" class="">Rp
                                         {{ number_format($admin, 0, ',', '.') }}</td>
                                 </tr>
                             </tbody>
                             <tbody>
                                 @foreach ($trx as $t)
-                                    <tr>
+                                    <tr class="h5">
                                         <td class="text-end fw-bold" colspan="3">Grand Total</td>
-                                        <td class=" fw-bold text-end"><span id="total-transaksi-b">Rp
+                                        <td class=" fw-bold"><span id="total-transaksi-b">Rp
                                                 {{ number_format($t->total, 0, ',', '.') }}</span></td>
                                     </tr>
                                 @endforeach
@@ -276,31 +276,31 @@
                             @foreach ($requser as $r)
                                 <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
                                     <div class="row">
-                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0 text-start text-lg-end">Status</div>
+                                        <div class="col-12 col-lg-9 col-md-6 my-0 my-lg-0 fw-bold text-start text-lg-end">Status</div>
                                         <div class="col text-end text-lg text-warning">
                                             KREDIT
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
+                                        <div class="col-12 col-lg-9 col-md-6 my-0 my-lg-0 fw-bold">Transaksi Dibuat</div>
                                         <div class="col text-end text-lg">
                                             {{ $t->tanggal_transaksi }}
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
+                                        <div class="col-12 col-lg-9 col-md-6 my-0 my-lg-0 fw-bold">Tanggal Mulai</div>
                                         <div class="col text-end text-lg">
                                             {{ $r->tanggal_mulai }}
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Jatuh tempo</div>
+                                        <div class="col-12 col-lg-9 col-md-6 my-0 my-lg-0 fw-bold">Tanggal Jatuh tempo</div>
                                         <div class="col text-end text-lg">
                                             {{ $r->jatuh_tempo }}
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Jatuh Tempo</div>
+                                        <div class="col-12 col-lg-9 col-md-6 my-0 my-lg-0 fw-bold">Jatuh Tempo</div>
                                         <div class="col text-end text-lg text-danger">
                                             {{ $selisih }} Hari lagi
                                         </div>
@@ -336,22 +336,22 @@
                         <tbody>
                             <tr>
                                 <td colspan="3" class="text-end">Total</td>
-                                <td colspan="1" class="text-end fw-bold">Rp
+                                <td colspan="1" class="">Rp
                                     {{ number_format($total, 0, ',', '.') }}</td>
                             </tr>
                         </tbody>
                         <tbody>
                             <tr>
                                 <td colspan="3" class="text-end">Biaya admin</td>
-                                <td colspan="1" class="text-end fw-bold">Rp
+                                <td colspan="1" class="">Rp
                                     {{ number_format($admin, 0, ',', '.') }}</td>
                             </tr>
                         </tbody>
                         <tbody>
                             @foreach ($trx as $t)
-                                <tr>
+                                <tr class="h5">
                                     <td class="text-end fw-bold" colspan="3">Grand Total</td>
-                                    <td class=" fw-bold text-end"><span id="total-transaksi-b">Rp
+                                    <td class="fw-bold"><span id="total-transaksi-b">Rp
                                             {{ number_format($t->total, 0, ',', '.') }}</span></td>
                                 </tr>
                             @endforeach
@@ -394,13 +394,13 @@
                             </div>
                             <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
                                 <div class="row">
-                                    <div class="col-6 col-lg col-md-6 my-0 my-lg-0 text-start text-lg-end">Status</div>
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0 text-start text-lg-end">Status</div>
                                     <div class="col text-end text-lg text-info">
                                         PENDING
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
                                     <div class="col text-end text-lg">
                                         {{ $t->tanggal_transaksi }}
                                     </div>
@@ -447,22 +447,22 @@
                             <tbody>
                                 <tr>
                                     <td colspan="3" class="text-end">Total</td>
-                                    <td colspan="1" class="text-end fw-bold">Rp
+                                    <td colspan="1" class="">Rp
                                         {{ number_format($total, 0, ',', '.') }}</td>
                                 </tr>
                             </tbody>
                             <tbody>
                                 <tr>
                                     <td colspan="3" class="text-end">Biaya admin</td>
-                                    <td colspan="1" class="text-end fw-bold">Rp
+                                    <td colspan="1" class="">Rp
                                         {{ number_format($admin, 0, ',', '.') }}</td>
                                 </tr>
                             </tbody>
                             <tbody>
                                 @foreach ($trx as $t)
-                                    <tr>
+                                    <tr class="h5">
                                         <td class="text-end fw-bold" colspan="3">Grand Total</td>
-                                        <td class=" fw-bold text-end"><span id="total-transaksi-b">Rp
+                                        <td class=" fw-bold"><span id="total-transaksi-b">Rp
                                                 {{ number_format($t->total, 0, ',', '.') }}</span></td>
                                     </tr>
                                 @endforeach
@@ -515,26 +515,26 @@
                                 <div class="row">
                                     Invoice To
                                 </div>
-                                <div class="row text-muted"> {{ $t->member->user->email }}
-
+                                <div class="row text-muted"> 
+                                    {{ $t->member->user->email }}
                                 </div>
                             </div>
                             @foreach ($requser as $r)
                                 <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
                                     <div class="row">
-                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0 text-start text-lg-end">Status</div>
-                                        <div class="col text-end text-lg text-dark">
+                                        <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0 text-start text-lg-end">Status</div>
+                                        <div class="col text-end text-lg text-danger fw-bold">
                                             DECLINED
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
+                                        <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
                                         <div class="col text-end text-lg">
                                             {{ $t->tanggal_transaksi }}
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
+                                        <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
                                         <div class="col text-end text-lg">
                                             {{ $r->jatuh_tempo }}
                                         </div>
@@ -576,22 +576,22 @@
                             <tbody>
                                 <tr>
                                     <td colspan="3" class="text-end">Total</td>
-                                    <td colspan="1" class="text-end fw-bold">Rp
+                                    <td colspan="1" class="">Rp
                                         {{ number_format($total, 0, ',', '.') }}</td>
                                 </tr>
                             </tbody>
                             <tbody>
                                 <tr>
                                     <td colspan="3" class="text-end">Biaya admin</td>
-                                    <td colspan="1" class="text-end fw-bold">Rp
+                                    <td colspan="1" class="">Rp
                                         {{ number_format($admin, 0, ',', '.') }}</td>
                                 </tr>
                             </tbody>
                             <tbody>
                                 @foreach ($trx as $t)
-                                    <tr>
+                                    <tr class="h5">
                                         <td class="text-end fw-bold" colspan="3">Grand Total</td>
-                                        <td class=" fw-bold text-end"><span id="total-transaksi-b">Rp
+                                        <td class=" fw-bold "><span id="total-transaksi-b">Rp
                                                 {{ number_format($t->total, 0, ',', '.') }}</span></td>
                                     </tr>
                                 @endforeach
