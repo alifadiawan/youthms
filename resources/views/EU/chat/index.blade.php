@@ -34,7 +34,7 @@
                                                 aria-labelledby="Open-tab">
                                                 <!-- chat-list -->
                                                 <div class="chat-list">
-                                                    <a href="#" type="button" id="showMessage"
+                                                    <!-- <a href="#" type="button" id="showMessage"
                                                         class="d-flex align-items-center" onclick="showMessage()">
                                                         <div class="flex-shrink-0">
                                                             <img class="img-fluid"
@@ -44,8 +44,8 @@
                                                         <div class="flex-grow-1 ms-3 group" data-id="1">
                                                             <h3>Programmer</h3>
                                                         </div>
-                                                    </a>
-                                                    {{-- @if ($group->isEmpty())
+                                                    </a> -->
+                                                    @if ($group->isEmpty())
                                                         
                                                         <h3 class="text-center my-5">Belum Ada Chat </h3>
                                                         
@@ -65,7 +65,7 @@
                                                                 </div>
                                                             </a>
                                                         @endforeach
-                                                    @endif --}}
+                                                    @endif
                                                 </div>
                                                 <!-- chat-list -->
                                             </div>
@@ -96,22 +96,12 @@
                     <!-- chatlist -->
 
                     <!-- chatbox -->
-                    <div class="chatbox">
+                    <div class="chatbox" id="chatbox">
                         <div class="modal-dialog-scrollable">
                             <div class="modal-content">
-                                @include('EU.chat.topbar')
-
-
                                 <div class="modal-body">
-                                    <div class="msg-body" id="messsageArea">
-                                        @include('EU.chat.messageArea')
-                                    </div>
+                                    <h6 class="text-center btn btn-rounded btn-outline-secondary">Silahkan Pilih Pesan Untuk Memulai</h6>
                                 </div>
-
-
-                                <!-- sendbox -->
-                                @include('EU.chat.sendbox')
-                                
                             </div>
                         </div>
                     </div>

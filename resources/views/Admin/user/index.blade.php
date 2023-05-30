@@ -239,7 +239,7 @@
                         var newRow = '<tr>' +
                             '<td>' + counter + '</td>' +
                             '<td>' + user.username + '</td>' +
-                            '<td>' + roleNames + '</td>' +
+                            '<td class="text-capitalize">' + roleNames + '</td>' +
                             '<td><a href="' + detailUrl +
                             '" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a></td>' +
                             // Tambahkan kolom tambahan sesuai kebutuhan
