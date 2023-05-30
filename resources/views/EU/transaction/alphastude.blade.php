@@ -5,9 +5,9 @@
     <div id="container" class="container my-5">
 
         <div class="card shadow rounded-3">
-            <div class="row my-3 mx-0 mx-lg-4">
+            <div class="row my-3 mx-3 mx-lg-4">
                 <div class="col-6 col-lg text-start">
-                    <strong>INVOCE</strong> <span class="badge bg-danger">New</span>
+                    <strong>INVOCE</strong>
                 </div>
                 <div class="col-6 col-lg text-end text-lg-end">
                     <p class="text-muted">D6759869</p>
@@ -24,28 +24,28 @@
                             alifadiawan2005@gmail.com
                         </div>
                     </div>
-                    <div class="col text-lg-end text-start">
+                    <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
                         <div class="row">
-                            <div class="col">Status</div>
-                            <div class="col text-warning">
+                            <div class="col-6 col-lg col-md-6 my-0 my-lg-0 text-start text-lg-end">Status</div>
+                            <div class="col text-end text-lg text-warning">
                                 KREDIT
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">Transaksi Dibuat</div>
-                            <div class="col">
+                            <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
+                            <div class="col text-end text-lg">
                                 29 Mei 2023
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">Tanggal Mulai</div>
-                            <div class="col">
+                            <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
+                            <div class="col text-end text-lg">
                                 31 Mei 2023
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">Jatuh Tempo</div>
-                            <div class="col text-danger">
+                            <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Jatuh Tempo</div>
+                            <div class="col text-end text-lg text-danger">
                                 10 Hari lagi
                             </div>
                         </div>

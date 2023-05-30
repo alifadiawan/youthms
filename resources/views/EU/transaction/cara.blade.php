@@ -1,7 +1,7 @@
 @extends('layout-landing2.body')
 @section('content')
     <section class="cara-bayar" id="cara-bayar">
-        <div class="container d-md-flex align-items-center">
+        <div class="container d-md-flex align-items-center" data-aos="fade-up" data-aos-duration="2000">
             <div class="card box1 shadow-sm p-md-7 p-md-5 p-4" style="border-radius: 25px">
                 <div class="d-flex flex-column">
                     {{-- <div class="d-flex align-items-center justify-content-between text"> <span
@@ -54,7 +54,7 @@
                     </div> --}}
                 </div>
             </div>
-            <div class="card box2 shadow-sm">
+            <div class="card box2 shadow-lg">
                 <div class="d-flex align-items-center justify-content-center p-md-5 p-4"> <span
                         class="h5 fw-bold m-0">Metode Pembayaran</span>
                     {{-- <div class="btn btn-primary bar"><span class="fas fa-bars"></span></div> --}}
