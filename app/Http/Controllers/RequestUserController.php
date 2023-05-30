@@ -22,8 +22,8 @@ class RequestUserController extends Controller
         $user_role = $auth->roles->pluck('role')->toarray();
 
         $requestUser = request_user::all();
-        $all = transaksi::where('member_id', $member)->get();  
-        $pending = request_user::where('transaksi_id',$trxid)->get();
+        $all = transaksi::where('member_id', $member)->get();
+        $pending = request_user::where('transaksi_id', $trxid)->get();
         // return $pending;
 
         if (in_array('client', $user_role)) {
@@ -49,7 +49,7 @@ class RequestUserController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        // return $request;
     }
 
     /**
@@ -57,20 +57,27 @@ class RequestUserController extends Controller
      */
     public function show(request_user $request_user, $request)
     {
-        // return $request_user;
-        // return $request;
-        $trxid = $request;
-        $request_user = request_user::where('transaksi_id', $trxid)->get();
-        $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
-        $transaksi = Transaksi::where('id', $trxid)->get();
-        foreach ($transaksi as $t) {
-            $total = $t->total;
+        $reqid = $request;
+        
+        $request_user = request_user::where('id', $reqid)->get();
+        
+        foreach($request_user as $r){
+            $trxid = $r->transaksi_id;
         }
-        // return $total;
-        $asli = $total;
+        // return $trxid;
+        $transaksi = Transaksi::where('id', $trxid)->get();
+        $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
+
+        $total = 0;
+        foreach ($detail as $d) {
+            $total += $d->produk->harga * $d->quantity;
+        }
+
+        $admin = $total * 0.11;
+        $grandtotal = $total + $admin;
 
         // $admin = 
-        $compact = ['request_user', 'detail', 'transaksi'];
+        $compact = ['request_user', 'detail', 'transaksi','total','grandtotal','admin'];
         return view('Admin.transaction.YesNo', compact($compact));
     }
 
