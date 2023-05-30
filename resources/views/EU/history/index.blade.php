@@ -56,7 +56,7 @@
                                 <tbody>
                                     @foreach ($all as $a)
                                         <tr>
-                                            <td scope="row">{{ $a->tanggal }}</td>
+                                            <td scope="row">{{ $a->tanggal_transaksi }}</td>
                                             <td>Rp. {{ number_format($a->total, 0, ',', '.') }}</td>
                                             <td>Rp. {{ number_format($a->total_bayar, 0, ',', '.') }}</td>
                                             @if (in_array($a->id, $uu))
@@ -104,7 +104,7 @@
 
 
                     <!-- transaksi sedang berlangsung -->
-                    <div class="tab-pane fade" id="lunas" role="tabpanel" aria-labelledby="lunas-tab" tabindex="0">
+                    {{-- <div class="tab-pane fade" id="lunas" role="tabpanel" aria-labelledby="lunas-tab" tabindex="0">
                         <div class="accordion-body">
                             <table class="table table-borderless table-responsive table-hover">
                                 <thead>
@@ -135,10 +135,10 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
 
 
-                    <div class="tab-pane fade" id="kredit" role="tabpanel" aria-labelledby="kredit-tab" tabindex="0">
+                    {{-- <div class="tab-pane fade" id="kredit" role="tabpanel" aria-labelledby="kredit-tab" tabindex="0">
                         <div class="accordion-body">
                             <table class="table table-borderless table-responsive table-hover">
                                 <thead>
@@ -169,10 +169,10 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
 
 
-                    <div class="tab-pane fade" id="belum-bayar" role="tabpanel" aria-labelledby="belum-bayar-tab"
+                    {{-- <div class="tab-pane fade" id="belum-bayar" role="tabpanel" aria-labelledby="belum-bayar-tab"
                         tabindex="0">
                         <div class="accordion-body">
                             <table class="table table-borderless table-responsive table-hover">
@@ -204,7 +204,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- transaksi success -->
                 </div>
             </div>
