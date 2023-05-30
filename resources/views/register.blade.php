@@ -50,7 +50,7 @@
                             <label for="username">Username</label>
                             <input type="text" class="form-control form-control-user" name="username" placeholder="username" value="{{old('username')}}">
                         </div>
-                        <input type="hidden" name="role_id" value="2">
+                        <input type="hidden" name="role_id[]" value="2">
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control form-control-user" id="exampleInputEmail"

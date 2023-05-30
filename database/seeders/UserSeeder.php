@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
                 'username' => 'client',
                 'password' => '123', 
                 'email' => 'client@gmail.com',
-                'role_id' => [1],
+                'role_id' => [2],
             ],
             [
                 'username' => 'clientacumalaka', 

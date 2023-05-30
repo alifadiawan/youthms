@@ -20,7 +20,7 @@ class UserController extends Controller
         $user = User::paginate(5);
         $role = Role::all();
 
-        $u = auth()->user()->roless->pluck('role')->toArray();
+        $u = auth()->user()->roles->pluck('role')->toArray();
         // return $u
         $uid = auth()->user()->id;
         $users = User::where('id', $uid)->get();
@@ -256,11 +256,11 @@ class UserController extends Controller
         }
         else {
             $roles = $request->role_id;
-            $user = User::where('role_id','=', $roles)->with('role')->get();
-            $r = Role::where('id','=',$roles)->first();
-            // return $r;
-            $activeRoleName = $r ? $r->role : ''; // Mengambil roleName jika role_id valid
-            // return $activeRoleName;
+            $user = User::whereHas('roles', function ($query) use ($roles) {
+                $query->whereIn('role_id', $roles);
+            })->with('roles')->get();
+            $activeRoleNames = Role::whereIn('id', $roles)->pluck('role')->toArray();
+            $activeRoleName = implode(', ', $activeRoleNames); // Menggabungkan nama role jika role_id valid
         }
 
         // Menggunakan array asosiatif untuk mengirim data ke AJAX

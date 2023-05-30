@@ -29,12 +29,12 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        $roles = Role::whereIn('id', $request->role_id);
         $user = User::create([
             'username' => $request->username,
             'password' => bcrypt($request->password),
             'email' => $request->email,
         ]);
+        $roles = Role::find(2);
         $user->roles()->attach($roles);
         return redirect('login');
     }

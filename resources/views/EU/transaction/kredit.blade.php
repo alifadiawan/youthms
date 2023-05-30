@@ -14,8 +14,6 @@
                     <div class="h5">Order Detail</div>
                 </div>
                 <div class="card-body">
-
-
                     <div class="details">
                         <div class="row">
 
@@ -100,6 +98,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {{-- @foreach ($ as $item)
+                                    
+                                @endforeach --}}
                                 <tr>
                                     <td class="text-start">Laravel</td>
                                     <td class="text-end">2</td>

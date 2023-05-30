@@ -37,7 +37,8 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer(['layout-landing2.topbar', 'EU.*'], function ($view) {
             $badge = [];
-            if (auth()->check()) {
+            $badge = collect($badge);
+            if (auth()->check() && auth()->user()->hasProfile()) {
                 $member = Member::where('id', '=', auth()->user()->member->id)->first();
                 $badge = Cart::where('member_id', '=', $member->id)->get();
             }

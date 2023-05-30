@@ -10,7 +10,7 @@
         <div class="col">
             <div class="card">
                 <table class="table table-borderless">
-                    <thead class="bg-primary">
+                    <thead class="yms-blue">
                         <tr>
                             <th>No</th>
                             <th>Tanggal Dibuat</th>

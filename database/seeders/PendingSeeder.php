@@ -16,32 +16,39 @@ class PendingSeeder extends Seeder
     {
         $pending = [
             [
-            'nama_pemesan' =>'ilham',  
-            'deskripsi' =>null,  
-            'status' =>null,  
-            'tanggal_mulai' =>Carbon::parse('2023-06-21'),  
-            'jatuh_tempo' =>Carbon::parse('2023-06-30'),  
-            'transaksi_id' =>5,  
-        ],
+                'nama_pemesan' => 'ilham',
+                'deskripsi' => null,
+                'status' => 'accept',
+                'tanggal_mulai' => Carbon::parse('2023-06-21'),
+                'jatuh_tempo' => Carbon::parse('2023-06-30'),
+                'transaksi_id' => 3,
+            ],
             [
-            'nama_pemesan' =>'ilham',  
-            'deskripsi' =>null,  
-            'status' =>'accept',  
-            'tanggal_mulai' =>Carbon::parse('2023-06-21'),  
-            'jatuh_tempo' =>Carbon::parse('2023-06-30'),  
-            'transaksi_id' =>6,  
-        ],
+                'nama_pemesan' => 'ilham',
+                'deskripsi' => null,
+                'status' => null,
+                'tanggal_mulai' => Carbon::parse('2023-06-21'),
+                'jatuh_tempo' => Carbon::parse('2023-06-30'),
+                'transaksi_id' => 5,
+            ],
             [
-            'nama_pemesan' =>'ilham',  
-            'deskripsi' =>null,  
-            'status' =>'decline',  
-            'tanggal_mulai' =>Carbon::parse('2023-06-21'),  
-            'jatuh_tempo' =>Carbon::parse('2023-06-30'),  
-            'transaksi_id' =>7,  
-        ],
+                'nama_pemesan' => 'ilham',
+                'deskripsi' => null,
+                'status' => 'accept',
+                'tanggal_mulai' => Carbon::parse('2023-06-21'),
+                'jatuh_tempo' => Carbon::parse('2023-06-30'),
+                'transaksi_id' => 6,
+            ],
+            [
+                'nama_pemesan' => 'ilham',
+                'deskripsi' => null,
+                'status' => 'declined',
+                'tanggal_mulai' => Carbon::parse('2023-06-21'),
+                'jatuh_tempo' => Carbon::parse('2023-06-30'),
+                'transaksi_id' => 7,
+            ],
         ];
 
         request_user::insert($pending);
-
     }
 }
