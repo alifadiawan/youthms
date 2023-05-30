@@ -16,9 +16,9 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if(auth()->check()){
-            $user_role = auth()->user()->roles->pluck('role')->toArray();
+            $user_role = auth()->user()->role->role;
             $staff = ['admin', 'owner'];
-            if (auth()->check() && count(array_intersect_assoc($user_role, $staff)) > 0) {
+            if (auth()->check() && in_array($user_role, $staff)) {
                 return $next($request);
             }
             else {

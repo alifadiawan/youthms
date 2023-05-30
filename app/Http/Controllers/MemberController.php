@@ -16,7 +16,7 @@ class MemberController extends Controller
      */
     public function index()
     {   
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->where('role', 'client');
         })->pluck('id');
         $member = Member::whereIn("user_id", $user)->paginate(5);
@@ -50,7 +50,7 @@ class MemberController extends Controller
         ]);
         notify()->success('Member Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Member Berhasil Ditambahkan !!";
@@ -89,7 +89,7 @@ class MemberController extends Controller
         $Member->update($input);
         notify()->success('Member Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Member Berhasil Diupdate !!";
@@ -123,7 +123,7 @@ class MemberController extends Controller
 
         notify()->success('Member Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Member Berhasil Dihapus !!";

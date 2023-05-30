@@ -33,9 +33,18 @@ class RegisterController extends Controller
             'username' => $request->username,
             'password' => bcrypt($request->password),
             'email' => $request->email,
+            'role_id' => $request->role_id,
         ]);
-        $roles = Role::find(2);
-        $user->roles()->attach($roles);
+        
+        notify()->success('Akun Berhasil Dibuat !!');
+        // mengirim notifikasi
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = $request->username." Baru Saja Bergabung !";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('user.show', ['user' => $user->id])); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect('login');
     }
 

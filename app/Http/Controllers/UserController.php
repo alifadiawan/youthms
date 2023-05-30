@@ -20,14 +20,14 @@ class UserController extends Controller
         $user = User::paginate(5);
         $role = Role::all();
 
-        $u = auth()->user()->roles->pluck('role')->toArray();
+        $u = auth()->user()->role->role;
         // return $u
         $uid = auth()->user()->id;
         $users = User::where('id', $uid)->get();
         // return $email;
 
         $staff = ["admin", "owner"];
-        if (count(array_intersect($u, $staff))>0) {
+        if (in_array($u, $staff)) {
 
             return view('Admin.user.index', compact('user', 'role'));
             // return view('Admin.user.user-detail', compact('user'));
@@ -63,12 +63,12 @@ class UserController extends Controller
         $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
+        $user->role_id = $request->input('role_id');
         $user->save();
-        $user->roles()->attach($request->input('role_id'));
 
         notify()->success('Akun Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $users = User::whereHas('roles', function ($query) {
+        $users = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Akun Berhasil Ditambahkan !!";
@@ -89,9 +89,9 @@ class UserController extends Controller
         $member = member::where('user_id', $uid)->get();
         $Member = member::where('user_id', $user->id)->get();
 
-        $u = auth()->user()->roles->pluck('role')->toArray();
+        $u = auth()->user()->role->role;
         $staff = ['admin', 'owner'];
-        if (count(array_intersect_assoc($u, $staff))>0) {
+        if (in_array($u, $staff)) {
 
             return view('Admin.user.user-detail', compact('user', 'Member'));
         } else {
@@ -109,7 +109,7 @@ class UserController extends Controller
         $user = User::find($id);
         $role = Role::all();
 
-        $u = auth()->user()->roles->pluck('role')->toArray();
+        $u = auth()->user()->role->role;
         $staff = ['admin', 'owner'];
         $uid = auth()->user()->id;
 
@@ -122,7 +122,7 @@ class UserController extends Controller
         $currentNumber = $m;
         $nextNumber = str_pad(++$currentNumber, 5, '0', STR_PAD_LEFT); // "00002"
 
-        if (count(array_intersect_assoc($u, $staff))>0) {
+        if (in_array($u, $staff)) {
 
             return view('Admin.user.edit-user', compact('user', 'role'));
         } else {
@@ -137,29 +137,31 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $user = User::find($id);
-        $u = auth()->user()->roles->pluck('role')->toArray();
+        $u = auth()->user()->role->role;
         $staff = ['admin', 'owner'];
 
-        if (count(array_intersect_assoc($u, $staff))>0) {
+        if (in_array($u, $staff)) {
             if ($request->password == null) {
-                $roles = Role::whereIn('id', $request->role_id)->get();
+                // $roles = Role::whereIn('id', $request->role_id)->get();
                 $user->update([
                     'username' => $request->username,
                     'email' => $request->email,
+                    'role_id' => $request->role_id,
                 ]);
-                $user->roles()->sync($roles);
+                // $user->roles()->sync($roles);
             } else {
-                $roles = Role::whereIn('id', $request->role_id)->get();
+                // $roles = Role::whereIn('id', $request->role_id)->get();
                 $user->update([
                     'username' => $request->username,
                     'password' => bcrypt($request->password),
                     'email' => $request->email,
+                    'role_id' => $request->role_id,
                 ]);
-                $user->roles()->sync($roles);
+                // $user->roles()->sync($roles);
             }
             notify()->success('Akun Berhasil Diupdate !!');
             // mengirim notifikasi
-            $users = User::whereHas('roles', function ($query) {
+            $users = User::whereHas('role', function ($query) {
                 $query->whereIn('role', ['admin', 'owner']);
             })->get();
             $message = "Akun Berhasil Diupdate !!";
@@ -236,7 +238,7 @@ class UserController extends Controller
         notify()->success('Akun Berhasil Dihapus !!');
 
         // mengirim notifikasi
-        $users = User::whereHas('roles', function ($query) {
+        $users = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Akun Berhasil Dihapus !!";
@@ -251,16 +253,18 @@ class UserController extends Controller
         // return $roles;
 
         if ($request->role_id == null) {
-            $user = User::whereHas('roles')->with('role')->get();
+            $user = User::whereHas('role')->with('role')->get();
             $activeRoleName = ''; // Tidak ada filter aktif, roleName kosong
         }
         else {
             $roles = $request->role_id;
-            $user = User::whereHas('roles', function ($query) use ($roles) {
+            $user = User::whereHas('role', function ($query) use ($roles) {
                 $query->whereIn('role_id', $roles);
-            })->with('roles')->get();
-            $activeRoleNames = Role::whereIn('id', $roles)->pluck('role')->toArray();
-            $activeRoleName = implode(', ', $activeRoleNames); // Menggabungkan nama role jika role_id valid
+            })->with('role')->get();
+            $r = Role::where('id','=',$roles)->first();
+            // return $r;
+            $activeRoleName = $r ? $r->role : ''; // Mengambil roleName jika role_id valid
+            // return $activeRoleName;
         }
 
         // Menggunakan array asosiatif untuk mengirim data ke AJAX
