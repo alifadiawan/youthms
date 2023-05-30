@@ -128,7 +128,7 @@
                                             <div class="form">
                                                 <div class="form-gorup">
                                                     <label for="">Nama Pemesan / Instansi</label>
-                                                    <input type="text" class="form-control" name="nama_pemesan" value="ealah" required> 
+                                                    <input type="text" class="form-control" name="nama_pemesan" value="{{ old('nama_pemesan') }}" required> 
                                                 </div>
                                                 <div class="form-gorup">
                                                     <label for="">Jangka Waktu</label>
@@ -149,7 +149,7 @@
                                                         <textarea class="form-control" name="deskripsi" cols="30" rows="10" >{{ old('deskripsi') }}</textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="hidden" name="status" value="null">
+                                                    <input type="hidden" name="status" value="">
                                                     <input type="hidden" name="transaksi_id" value="{{ $tid }}">
                                                     <button class="btn btn-primary" type="submit">kirim request</button>
                                                 </div>

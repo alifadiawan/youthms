@@ -10,13 +10,22 @@
         </a>
 
         <div class="card my-3">
+            @foreach ($trx as $t)
+                <div class="card-header yms-blue">
+                    <div class="row">
+                        <div class="col">
+                            <img src="{{ asset('youth-logo.svg') }}" width="150px" alt="">
+                        </div>
+                        <div class="col text-end">
+                            <p>#{{ $t->unique_code }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
             <div class="card-body">
-
-
-
                 <!-- Lunas -->
                 @foreach ($trx as $t)
-                    {{-- @if ($EU_lunas->contains($t->id)) --}}
                     @if (in_array($t->id, $EU_lunas))
                         <!-- Date -->
                         <div class="row mb-5">
@@ -55,7 +64,7 @@
                 <!-- Kredit -->
                 @foreach ($trx as $t)
                     @if (in_array($t->id, $EU_kredit))
-                        <a href="{{ route('transaksi.pembayaran',$t->id) }}">
+                        <a href="{{ route('transaksi.pembayaran', $t->id) }}">
                             <div class="alert alert-warning" role="alert">
                                 Klik disini untuk bayar
                             </div>
@@ -84,6 +93,7 @@
                             </div>
                         </div>
                         <hr>
+
                         <div class="row">
                             <div class="col text-muted">
                                 Total yang harus dibayar
@@ -131,7 +141,7 @@
                     @foreach ($trx as $t)
                         {{-- VIEW UTANG --}}
                         @if (in_array($t->id, $EU_utang))
-                            <a href="{{ route('transaksi.pembayaran',$t->id) }}">
+                            <a href="{{ route('transaksi.pembayaran', $t->id) }}">
                                 <div class="alert alert-danger" role="alert">
                                     Bayar sebelum .... Klik disini untuk bayar
                                 </div>
@@ -180,11 +190,11 @@
                     @foreach ($trx as $t)
                         {{-- VIEW PENDING --}}
                         @if (in_array($t->id, $EU_pending))
-                            <a href="{{ route('transaksi.pembayaran',$t->id) }}">
+                            {{-- <a href="{{ route('transaksi.pembayaran',$t->id) }}">
                                 <div class="alert alert-danger" role="alert">
                                     Bayar sebelum .... Klik disini untuk bayar
                                 </div>
-                            </a>
+                            </a> --}}
                             <div class="row mb-5">
                                 <div class="col">
                                     {{-- Transaction Created {{ $t->created_at }} --}}
@@ -228,23 +238,46 @@
                     <!-- declined -->
                     @foreach ($trx as $t)
                         {{-- VIEW DECLINED --}}
+
                         @if (in_array($t->id, $EU_declined))
-                            {{-- <a href="{{ route('transaksi.pembayaran',$t->id) }}">
-                                <div class="alert alert-danger" role="alert">
-                                    Bayar sebelum .... Klik disini untuk bayar
-                                </div>
-                            </a> --}}
                             <div class="row mb-5">
                                 <div class="col">
-                                    {{-- Transaction Created {{ $t->created_at }} --}}
-                                    Transaction Created <p class="text-muted">12 Mei 2023</p>
+                                    Transaction Created <p class="text-muted">{{ $t->tanggal_transaksi }}</p>
                                 </div>
                                 <div class="col text-end">
                                     alif_adiawan
                                 </div>
+                                <div class="alert alert-danger" role="alert">
+                                    mohon hubungi admin
+                                </div>
+                                {{-- <div class="row">
+                                    <div class="alert alert-success" role="alert">
+                                        mohon hubungi admin
+                                    </div>
+                                    <div class="alert alert-primary" role="alert">
+                                        mohon hubungi admin
+                                    </div>
+                                </div> --}}
                             </div>
 
-
+                            @foreach ($requser as $r)
+                                <div class="row">
+                                    <div class="col text-muted">
+                                        tanggal mulai
+                                    </div>
+                                    <div class="col text-end">
+                                        {{ $r->tanggal_mulai }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col text-muted">
+                                        Tanggal jatuh tempo
+                                    </div>
+                                    <div class="col text-end">
+                                        {{ $r->jatuh_tempo }}
+                                    </div>
+                                </div>
+                            @endforeach
                             <!-- Detail -->
                             <div class="row">
                                 <div class="col fw-bold">
@@ -295,13 +328,21 @@
                                             {{ number_format($d->quantity * $d->produk->harga, 0, ',', '.') }}</span></td>
                                 </tr>
                             @endforeach
-                        </tbody>
-                        <tbody>
-                            @foreach ($trx as $t)
+                            <tr>
+                                <td class="text-end fw-bold" colspan="3"> Total</td>
+                                <td class=" fw-bold"><span id="total-transaksi-b">Rp
+                                        {{ number_format($total, 0, ',', '.') }}</span></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end fw-bold" colspan="3">Biaya Admin</td>
+                                <td class=" fw-bold"><span id="total-transaksi-b">Rp
+                                        {{ number_format($admin, 0, ',', '.') }}</span></td>
+                            </tr>
+                            <tr>
                                 <td class="text-end fw-bold" colspan="3">Grand Total</td>
                                 <td class=" fw-bold"><span id="total-transaksi-b">Rp
-                                        {{ number_format($t->total, 0, ',', '.') }}</span></td>
-                            @endforeach
+                                        {{ number_format($grandtotal, 0, ',', '.') }}</span></td>
+                            </tr>
                         </tbody>
                     </table>
                 @endforeach
