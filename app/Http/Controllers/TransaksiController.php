@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\Models\visitor;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Carbon;
 
 class TransaksiController extends Controller
 {
@@ -273,6 +274,15 @@ class TransaksiController extends Controller
         // mencari request user, jika melakukan kredit
         $requser = request_user::where('transaksi_id', $trxid)->get();
 
+        $selisih = 0;
+        if ($requser->isNotEmpty()) {
+            foreach ($requser as $r) {
+                $tglmulai = carbon::parse($r->tanggal_mulai);
+                $tglselesai = carbon::parse($r->jatuh_tempo);
+            }
+            $selisih = $tglmulai->diffInDays($tglselesai);
+        }
+
         // mencari detail transaksi id dengan $trxid
         $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
 
@@ -281,7 +291,6 @@ class TransaksiController extends Controller
         foreach ($detail as $d) {
             $total += $d->produk->harga * $d->quantity;
         }
-
         // mencari biaya admin serta harga setelah admin
         $admin = $total * 0.11;
         $grandtotal = $total + $admin;
@@ -323,8 +332,8 @@ class TransaksiController extends Controller
             $EU_pending = collect($pending)->pluck('id')->toArray();
             $EU_declined = collect($declined)->pluck('id')->toArray();
 
-            // return $EU_lunas;
-            $status_EU = ['EU_utang', 'EU_kredit', 'EU_lunas', 'EU_declined', 'EU_pending'];
+
+            $status_EU = ['EU_utang', 'EU_kredit', 'EU_lunas', 'EU_declined', 'EU_pending','selisih'];
             return view('EU.transaction.detail', compact($compact, $status_EU));
             //     return view('EU.transaction.cash', compact($compact));
         } else {
