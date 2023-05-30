@@ -69,12 +69,12 @@ Route::get('/group-chat', [GroupChatController::class, 'index'])->name('gc.index
 Route::post('group-chat/send-message', [GroupChatController::class, 'sendMessage']);
 
 
-route::get('/transaksi/acc', function () {
-    return view('Admin.transaction.acc');
-});
-route::get('/transaksi/acc/detail', function () {
-    return view('Admin.transaction.YesNo');
-});
+// route::get('/transaksi/acc', function () {
+//     return view('Admin.transaction.acc');
+// });
+// route::get('/transaksi/acc/detail', function () {
+//     return view('Admin.transaction.YesNo');
+// });
 
 
 
