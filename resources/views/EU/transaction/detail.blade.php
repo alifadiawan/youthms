@@ -52,7 +52,7 @@
                                                     <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Transaksi Dibuat
                                                     </div>
                                                     <div class="col text-end text-lg">
-                                                        {{ $t->tanggal_transaksi }}
+                                                        {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
                                                     </div>
                                                 </div>
                                                 {{-- <div class="row">
@@ -161,7 +161,7 @@
                                 <div class="row">
                                     <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
                                     <div class="col text-end text-lg">
-                                        {{ $t->tanggal_transaksi }}
+                                        {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
                                     </div>
                                 </div>
                                 {{-- <div class="row">
@@ -284,19 +284,19 @@
                                     <div class="row">
                                         <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
                                         <div class="col text-end text-lg">
-                                            {{ $t->tanggal_transaksi }}
+                                            {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
                                         <div class="col text-end text-lg">
-                                            {{ $r->tanggal_mulai }}
+                                            {{date('d F Y', strtotime( $r->tanggal_mulai)) }}
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Jatuh tempo</div>
                                         <div class="col text-end text-lg">
-                                            {{ $r->jatuh_tempo }}
+                                            {{ date('d F Y', strtotime($r->jatuh_tempo)) }}
                                         </div>
                                     </div>
                                     <div class="row">
@@ -402,7 +402,7 @@
                                 <div class="row">
                                     <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
                                     <div class="col text-end text-lg">
-                                        {{ $t->tanggal_transaksi }}
+                                        {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
                                     </div>
                                 </div>
                                 {{-- <div class="row">
@@ -530,13 +530,19 @@
                                     <div class="row">
                                         <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
                                         <div class="col text-end text-lg">
-                                            {{ $t->tanggal_transaksi }}
+                                            {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
                                         <div class="col text-end text-lg">
-                                            {{ $r->jatuh_tempo }}
+                                            {{ date('d F Y', strtotime($r->tanggal_mulai)) }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
+                                        <div class="col text-end text-lg">
+                                            {{ date('d F Y', strtotime($r->jatuh_tempo)) }}
                                         </div>
                                     </div>
                                     {{-- <div class="row">

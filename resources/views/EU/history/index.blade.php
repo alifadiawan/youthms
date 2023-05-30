@@ -56,7 +56,7 @@
                                 <tbody>
                                     @foreach ($all as $a)
                                         <tr>
-                                            <td scope="row">{{ $a->tanggal }}</td>
+                                            <td scope="row">{{ $a->tanggal_transaksi }}</td>
                                             <td>Rp. {{ number_format($a->total, 0, ',', '.') }}</td>
                                             <td>Rp. {{ number_format($a->total_bayar, 0, ',', '.') }}</td>
                                             @if (in_array($a->id, $uu))
