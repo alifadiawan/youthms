@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col text-center">
                                 @if (in_array($detail[0]->transaksi_id, $adm_utang))
-                                <h5 class="h3 mb-0 me-auto text-danger font-weight-bold">belum bayar</h5>
+                                <h5 class="h3 mb-0 me-auto text-danger font-weight-bold">BELUM BAYAR</h5>
                             @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
                                 <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">KREDIT</h5>
                             @elseif(in_array($detail[0]->transaksi_id, $adm_pending))
