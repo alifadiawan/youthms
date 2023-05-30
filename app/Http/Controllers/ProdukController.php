@@ -54,8 +54,8 @@ class ProdukController extends Controller
         if (auth()->check()) {
             $role = auth()->user()->roles->pluck('role')->toArray();
             $user = auth()->user()->id;
-            // $member = member::where('user_id', $user)->pluck('id')->first();
-            $member = member::where('user_id', $user)->get();
+            $member = member::where('user_id', $user)->get()->pluck('id')->first();
+            // $member = member::where('user_id', $user)->get();
             // return $member;
             $cart = cart::where('member_id', $member)->get();
             $admin = ['admin', 'owner'];
@@ -158,7 +158,8 @@ class ProdukController extends Controller
         if (auth()->check()) {
             // cek user & member
             $user = auth()->user()->id;
-            $member = member::where('user_id', $user)->get();
+            // $member = member::where('user_id', $user)->get();
+            $member = member::where('user_id', $user)->get()->pluck('id')->first();
 
             // mengecek keranjang 
             $cart = cart::where('member_id', $member)->get();

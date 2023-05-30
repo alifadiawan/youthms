@@ -154,7 +154,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/transaksi', TransaksiController::class);
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
     Route::get('/transaksi_pembayaran/{id}', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
-    Route::get('/transaksi_kredit/{id}', [TransaksiController::class, 'kredit'])->name('transaksi.kredit');
+    Route::post('/transaksi_kredit', [TransaksiController::class, 'kredit'])->name('transaksi.kredit');
 
     route::get('/lunas', function () {
         return view('EU.transaction.lunas');
@@ -165,6 +165,8 @@ Route::middleware(['auth'])->group(function () {
     route::get('/belumbayar', function () {
         return view('EU.transaction.bb');
     });
+
+    Route::resource('requestuser', requestuserController::class);
 });
 
 //  client
@@ -268,6 +270,4 @@ Route::middleware('admin')->group(function () {
     Route::post('/read', [NotificationController::class, 'read'])->name('read');
     Route::get('/read_chat/{notifId}', [NotificationController::class, 'read_chat'])->name('read.chat');
 
-    // request user
-    Route::resource('requestuser', requestuserController::class );
 });
