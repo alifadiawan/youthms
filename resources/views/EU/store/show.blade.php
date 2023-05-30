@@ -15,13 +15,12 @@
         </div>
     </div>
 
-    <div class="container mb-5">
+    <div class="container mb-5 mt-3">
         {{-- navbar kategori --}}
         <div class="d-flex flex-row text-center gap-3">
-            <a href="{{ route('store.index') }}" class="text-capitalize my-3 active">All</a>
+            <a href="/store" class="btn yms-outline-blue rounded-5 active">All</a>
             @foreach ($layanan as $l)
-                {{-- //branch main2 --}}
-                <a href="{{ route('store.showtype', $l->layanan) }}" class=" my-3 text-capitalize">{{ $l->layanan }}</a>
+            <a href="{{ route('store.showtype', $l->layanan) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
             @endforeach
 
         </div>
@@ -35,23 +34,23 @@
 
 
         <!-- promo content -->
-        <p class="h2 fw-bold text-capitalize">{{ $jenis_layanan->layanan }}</p>
-        <div class="d-flex row mb-5 justify-content-start" data-aos="fade-down" data-aos-duration="1000">
+        <p class="h2 fw-bold text-capitalize mt-3">{{ $jenis_layanan->layanan }}</p>
+        <div class="row rows-cols-lg-4 justify-content-center justify-content-md-start gx-3 my-3" data-aos="fade-down" data-aos-duration="1000">
             {{-- @foreach ($produk as $item) --}}
             @foreach ($produk as $p)
-                <div class="my-3 col-lg-4 col-md-6 col-sm-12">
-                    <div class="card">
+                <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
+                    <div class="card card-hover border-0 shadow">
                         <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h4 class="card-title text-capitalize">{{ $p->nama_produk }}</h4>
+                            <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                             <p class="card-title text-secondary">{{ $p->services->judul }}</p>
-                            <h3 class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</h3>
+                            <p class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
                             {{-- <h5>{{ $p->id }}</h5> --}}
 
                             @guest
-                                <a href="{{ route('authcheck') }}" class="btn btn-primary">
-                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                </a>
+                            <a href="{{ route('authcheck') }}" class="btn yms-blue w-100 rounded-5 px-2 px-lg-3">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </a>
                             @endguest
 
                             @auth
@@ -65,10 +64,19 @@
                                         class="btn btn-primary" disabled>
                                         <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                     </a>
-                                @elseif ($cart->contains('produk_id', $p->id))
-                                    <button type="submit" class="btn btn-danger" disabled>
-                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                    </button>
+                                    @elseif ($cart->contains('produk_id', $p->id))
+                                    <div class="row rows-cols-2 gx-2 gy-2">
+                                        <div class="col-lg-8 col-12">
+                                            <button href="" class="btn btn-outline-secondary w-100 rounded-5" disabled>
+                                                Item Added
+                                            </button>
+                                        </div>
+                                        <div class="col-lg-4 col-12">
+                                            <a href="" class="btn btn-outline-danger w-100 rounded-5" disabled>
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 @else
                                     <form action="{{ route('cart.store') }}" method="POST">
                                         @csrf
@@ -77,9 +85,11 @@
                                         @endforeach
                                         <input type="hidden" class="form-control" name="quantity" value="1">
                                         <input type="hidden" value="{{ $p->id }}" name="produk_id">
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                        </button>
+                                        <div class="row  px-2 px-lg-3">
+                                            <button type="submit" class="btn yms-blue w-100 rounded-5">
+                                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                            </button>
+                                        </div>
                                     </form>
                                 @endif
                             @endauth

@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div id="container" class="container my-5 ">
+<div id="container" class="container my-5" style="max-width: 500px">
     <a href="" class="my-5">
         <i class="fas fa-arrow-left"></i>
     </a>
@@ -11,12 +11,12 @@
         <div class="col">
             <div class="card shadow">
                 <div class="card-header yms-blue">
-                    <div class="row">
+                    <div class="row align-items-center">
                         <div class="col">
-                            <img src="{{asset('youth-logo.svg')}}" width="150px" alt="">
+                            <img src="{{asset('youth-logo.svg')}}" style="max-width: 100px" alt="">
                         </div>
                         <div class="col text-end">
-                            <p>akwdnada</p>
+                            akwdnada
                         </div>
                     </div>
                 </div>
@@ -104,12 +104,12 @@
                         <div class="footer mt-3">
                             <div class="row">
                                 <div class="col">
-                                    <a href="" class="btn w-100 btn-outline-info rounded-pill">
+                                    <a href="" class="btn w-100 yms-outline-blue rounded-pill">
                                         Download
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a href="" class="btn w-100 btn-outline-info rounded-pill">
+                                    <a href="" class="btn w-100 yms-outline-blue rounded-pill">
                                         Share
                                     </a>
                                 </div>
