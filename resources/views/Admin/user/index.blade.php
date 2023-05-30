@@ -223,7 +223,6 @@
                         var detailUrl =
                             '{{ route('user.show', ['user' => '__id__']) }}';
                         detailUrl = detailUrl.replace('__id__', user.id);
-
                         var newRow = '<tr>' +
                             '<td>' + counter + '</td>' +
                             '<td>' + user.username + '</td>' +
