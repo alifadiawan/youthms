@@ -20,8 +20,8 @@
 <div class="row">
     @if (auth()->user()->roles->contains('role', 'admin'))
         <div class="col-lg-9">
-    @else
-        <div class="col-lg-12">
+        @else
+            <div class="col-lg-12">
     @endif
     <div class="card p-3">
         <div class="row align-items-end">
@@ -30,12 +30,14 @@
                     aria-expanded="false" aria-controls="collapseExample">
                     Filter <i class="fas fa-chevron-down"></i>
                 </a>
+
+                <!-- filter -->
                 <a href="" class="btn btn-outline-primary text-capitalize ml-3" id="activeRoleButton"
-                    style="border-radius: 20px">Active role</a>
+                    style="border-radius: 20px">Semua</a>
                 <div class="collapse" id="collapseExample">
                     <div class="my-3">
-                        <form action="{{ route('user.filter') }}" class="form-inline" id="filterForm">
-                            <select name="role_id[]" id="role_id[]" class="form-control form-select text-capitalize mr-2" multiple>
+                        <form action="{{ route('user.filter') }}" id="filterForm">
+                            <select name="role_id[]" id="role_id[]" class="form-control text-capitalize mr-2" multiple>
                                 <option value="">Semua</option>
                                 @foreach ($role as $item)
                                     <option value="{{ $item->id }}">{{ $item->role }}</option>
@@ -47,6 +49,8 @@
                         </form>
                     </div>
                 </div>
+
+
             </div>
             @if (auth()->user()->roles->contains('role', 'admin'))
                 <div class="col-5 text-right">
@@ -75,9 +79,9 @@
                             <td scope="row">{{ $loop->iteration }}</td>
                             <td>{{ $u->username }}</td>
                             <td class="text-capitalize">
-                            @foreach($u->roles as $roles)
-                                {{ $roles->role }} <br>
-                            @endforeach
+                                @foreach ($u->roles as $roles)
+                                    {{ $roles->role }} <br>
+                                @endforeach
                             </td>
                             <td>
                                 <a href="{{ route('user.show', $u->id) }}"
@@ -229,7 +233,8 @@
                             return r_u.role;
                         });
 
-                        var roleNames = roles.join(', '); // Menggabungkan nama-nama role dengan koma
+                        var roleNames = roles.join(
+                        ', '); // Menggabungkan nama-nama role dengan koma
 
                         var newRow = '<tr>' +
                             '<td>' + counter + '</td>' +

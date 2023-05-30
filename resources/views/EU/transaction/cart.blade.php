@@ -29,6 +29,67 @@
 
                     <div class="card-body">
                         @foreach ($cart as $c)
+                            <!-- Single item -->
+                            <div class="row my-3">
+                                <div class="col-lg-3 col-md-12 col-4 mb-4 mb-lg-0">
+                                    <!-- Image -->
+                                    <div class="bg-image hover-overlay hover-zoom ripple rounded"
+                                        data-mdb-ripple-color="light">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
+                                            class="w-100" alt="Blue Jeans Jacket" />
+                                        <a href="#!">
+                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                                        </a>
+                                    </div>
+                                    <!-- Image -->
+                                </div>
+
+                                <div class="col-lg-5 col-md-6 col-8 mb-4 mb-lg-0">
+                                    <!-- Data -->
+                                    <p class="text-capitalize"><strong>{{ $c->produk->nama_produk }}</strong></p>
+                                    <form action="{{ route('cart.destroy', $c->id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger me-2" data-mdb-toggle="tooltip"
+                                            title="Remove item">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                    <!-- Data -->
+                                    <!-- Quantity -->
+                                    <div class="d-flex mb-4 my-lg-5 my-3" style="max-width: 150px">
+                                        <button class="btn btn-outline-primary me-2" onclick="decreaseQuantity(this);">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+    
+                                        <div class="form-outline">
+                                            <input id="quantity_{{ $c->id }}" min="1" name="quantity"
+                                                value="{{ $c->quantity }}" type="number" class="form-control"
+                                                onchange="updateQuantity(this)" readonly />
+                                        </div>
+    
+                                        <button class="btn btn-outline-primary ms-2" id="plus"
+                                            onclick="increaseQuantity(this)">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <!-- Quantity -->
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+
+                                    <!-- Price -->
+                                    <p class="text-end text-lg-end">
+                                        <strong>Rp. {{ number_format($c->produk->harga, 0, ',', '.') }} </strong>
+                                    </p>
+                                    <!-- Price -->
+                                </div>
+                            </div>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                            <!-- Single item -->
+                            <hr>
+                        @endforeach
+                        {{-- @foreach ($cart as $c)
                             <div class="row align-items-center">
                                 <div class="col-lg-8 col-md-6 mb-4 mb-lg-0">
                                     <p class="text-capitalize"><strong>{{ $c->produk->nama_produk }}</strong></p>
@@ -66,7 +127,7 @@
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                             </div>
                             <hr class="my-4" />
-                        @endforeach
+                        @endforeach --}}
                     </div>
                 </div>
             </div><!-- end cart -->
