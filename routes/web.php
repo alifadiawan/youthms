@@ -165,6 +165,8 @@ Route::middleware(['auth'])->group(function () {
     route::get('/belumbayar', function () {
         return view('EU.transaction.bb');
     });
+
+    Route::resource('requestuser', requestuserController::class);
 });
 
 //  client

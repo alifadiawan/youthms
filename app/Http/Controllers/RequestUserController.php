@@ -13,10 +13,23 @@ class RequestUserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(request $request)
     {
-        $user = auth()->user()->id;
+        $trxid = $request->trxid;
+        $auth = auth()->user();
+        $user = $auth->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
+        $user_role = $auth->roles->pluck('role')->toarray();
+
+        $requestUser = request_user::all();
+        $all = transaksi::where('member_id', $member)->get();  
+        $pending = request_user::where('transaksi_id',$trxid)->get();
+        // return $pending;
+
+        if (in_array('client', $user_role)) {
+            $compact = [];
+            return view('EU.transaction.kredit', compact($compact));
+        }
 
         $request_user = request_user::all();
         $compact = ['request_user', 'member', 'user'];
@@ -55,7 +68,7 @@ class RequestUserController extends Controller
         }
         // return $total;
         $asli = $total;
-        
+
         // $admin = 
         $compact = ['request_user', 'detail', 'transaksi'];
         return view('Admin.transaction.YesNo', compact($compact));

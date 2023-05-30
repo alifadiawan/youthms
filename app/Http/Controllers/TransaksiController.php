@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\Models\visitor;
+use Illuminate\Support\Facades\Validator;
 
 class TransaksiController extends Controller
 {
@@ -274,15 +275,10 @@ class TransaksiController extends Controller
         $user_role = $auth->roles->pluck('role')->toArray();
         $member = member::where('user_id', $user)->pluck('id')->first();
 
-        // mencari status transaksi
-        // $utang = transaksi::where('total_bayar', 0);
-        // $kredit = transaksi::whereColumn('total', '>', 'total_bayar')->where('total_bayar', '>', '0');
         $lunas = transaksi::where(function ($lunas) {
             $lunas->whereColumn('total', '<', 'total_bayar')->orWhereColumn('total_bayar', 'total');
         });
 
-        // $c_utang = $utang->where('member_id', $member)->get();
-        // $c_kredit = $kredit->where('member_id', $member)->get();
         $c_lunas = $lunas->where('member_id', $member)->get();
 
         $tid = [];
@@ -378,7 +374,20 @@ class TransaksiController extends Controller
 
     public function kredit(request $r)
     {
-        // return $r;
+
+        $validator = validator::make($r->all(), [
+            'nama_pemesan' => 'required',
+            'tanggal_mulai' => 'required',
+            'jatuh_tempo' => 'required',
+            'status' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with('error', 'mohon diisi semua kolom');
+        }
+        // tambahen alert / notif agar semua kolom harus diisi  
+
+        $trxid = $r->transaksi_id;
         $req_user = request_user::create([
             'nama_pemesan' => $r->nama_pemesan,
             'tanggal_mulai' => $r->tanggal_mulai,
@@ -388,8 +397,20 @@ class TransaksiController extends Controller
             'transaksi_id' => $r->transaksi_id
         ]);
 
-        return view('EU.transaction.kredit');
+
+        return redirect()->route('requestuser.index', ['trxid' => $trxid]);
     }
+
+    // public function pending()
+    // {
+    //     $auth = auth()->user();
+    //     $user = $auth->id;
+    //     $member = member::where('user_id', $user)->get();
+
+    //     $trx = transaksi::where('member_id', $member)->where('transaksi_id', $trxid)->get();
+    //     $compact = ['trx'];
+    //     return view('EU.transaction.kredit', compact($compact));
+    // }
 
     /**
      * Show the form for editing the specified resource.

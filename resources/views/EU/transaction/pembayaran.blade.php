@@ -128,7 +128,7 @@
                                             <div class="form">
                                                 <div class="form-gorup">
                                                     <label for="">Nama Pemesan / Instansi</label>
-                                                    <input type="text" class="form-control" name="nama_pemesan">
+                                                    <input type="text" class="form-control" name="nama_pemesan" value="ealah" required> 
                                                 </div>
                                                 <div class="form-gorup">
                                                     <label for="">Jangka Waktu</label>
@@ -136,17 +136,17 @@
                                                         <div class="col">
                                                             <label for="">tanggal mulai</label>
                                                             <input type="date" id="tanggal" name="tanggal_mulai"
-                                                                class="form-control" value="{{ $t }}" min="{{ date('Y-m-d') }}">
+                                                                class="form-control" value="{{ $t }}" min="{{ date('Y-m-d') }}" value="{{ old('tanggal_mulai') }}" required> 
                                                         </div>
                                                         <div class="col">
                                                             <label for="">tanggal akhir</label>
-                                                            <input type="date" name="jatuh_tempo" class="form-control" min="{{ date('Y-m-d') }}">
+                                                            <input type="date" name="jatuh_tempo" class="form-control" min="{{ date('Y-m-d') }}" value="{{ old('jatuh_tempo') }}" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-gorup">
                                                     <label for="">Deskripsi (opsional)</label>
-                                                        <textarea class="form-control" name="deskripsi" cols="30" rows="10"></textarea>
+                                                        <textarea class="form-control" name="deskripsi" cols="30" rows="10" >{{ old('deskripsi') }}</textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="hidden" name="status" value="null">
