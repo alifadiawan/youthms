@@ -13,7 +13,7 @@
                     <div class="border-bottom mb-4"></div> --}}
                     <div class="d-flex flex-column mb-4"> <span class="fas fa-credit-card"><span class="ps-2">Pembayaran
                                 Via ATM
-                                :<br><br></span></span> <span class="ps-3" style="font-size: 14px; line-height:normal">LANGKAH 1 : TEMUKAN ATM
+                                :<br><br></span></span> <span class="ps-3" style="font-size: 16px; line-height:normal">LANGKAH 1 : TEMUKAN ATM
                             TERDEKAT<br>
 
                             1. Masukkan kartu, kemudian pilih bahasa dan masukkan PIN anda<br>
@@ -33,7 +33,7 @@
                         </span> </div>
                     <div class="d-flex flex-column mb-5"> <span class="fas fa-mobile-android-alt"><span
                                 class="ps-2">Pembayaran Via M-Banking :</span></span><br>
-                        <span class="ps-3" style="font-size: 14px">LANGKAH 1 : MASUK KE AKUN ANDA<br>
+                        <span class="ps-3" style="font-size: 16px">LANGKAH 1 : MASUK KE AKUN ANDA<br>
                             1. Buka aplikasi BRI Mobile Banking, masukkan USER ID dan PIN anda<br>
                             2. Pilih "Pembayaran" dan pilih "Briva"<br><br>
 
