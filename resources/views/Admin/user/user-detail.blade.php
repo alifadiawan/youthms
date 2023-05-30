@@ -5,7 +5,7 @@
 
 <div class="container">
     <div class="row">
-        @if (auth()->user()->roles->contains('role', 'admin') || auth()->user()->id == $user->id)
+        @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
             <div class="col-lg-12">
             @else
                 <div class="col-lg-12">
@@ -45,22 +45,11 @@
                         <p class="h5 font-weight-bold mb-0">Role</p>
                     </div>
                     <div class="col-sm-9">
-                        <p class="text mb-0 text-capitalize">
-                            @foreach($user->roles as $index => $r_u)
-                            {{ $r_u->role }}
-                            @if($loop->last)
-                                @if(count($user->roles)>1)
-                                
-                                @endif
-                            @else
-                            , 
-                            @endif
-                            @endforeach
-                        </p>
+                        <p class="text mb-0 text-capitalize">{{$user->role->role}}</p>
                     </div>
                 </div>
                 <hr>
-                @if (auth()->user()->roles->contains('role', 'admin') || auth()->user()->id == $user->id)
+                @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
                     <div class="row my-3">
                         <div class="col">
                             <button class="btn btn-md btn-warning" data-toggle="modal"
@@ -174,7 +163,7 @@
                             </div>
                         </div>
                         <hr>
-                        @if (auth()->user()->roles->contains('role', 'admin') || auth()->user()->id == $user->id)
+                        @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
                             <div class="row my-3">
                                 <div class="col">
                                     <button class="btn btn-md btn-warning" data-toggle="modal"
@@ -189,7 +178,7 @@
     </div>
 </div>
 </div>
-{{-- @if (auth()->user()->roles->contains('role', 'admin') || auth()->user()->id == $user->id)
+{{-- @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
         <div class="row">
             <div class="col">
                 <div class="container">

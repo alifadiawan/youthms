@@ -33,18 +33,18 @@ class LoginController extends Controller
             notify()->success('Berhasil Login !!');
             
             // cek role suatu user
-            $user = auth()->user()->roles->pluck('role')->toArray();
+            $user = auth()->user()->role->role;
             // return $user;
             $company = ['admin','owner'];
             
-            if (count(array_intersect_assoc($user,$company))>0) {
+            if (in_array($user, $company)) {
                 // return true;
                 return redirect()->intended('dashboard');
             } 
-            // elseif ($user == ["client"]) {
-            //     // return redirect('/');
-            //     return redirect()->intended('/');
-            // }
+            elseif ($user == ["client"]) {
+                // return redirect('/');
+                return redirect()->intended('/');
+            }
             else{
                 // return redirect('dashboard');
                 return redirect()->intended('/');
