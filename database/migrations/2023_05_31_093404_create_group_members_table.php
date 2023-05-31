@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('group_messages', function (Blueprint $table) {
+        Schema::create('group_members', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('group_id');
             $table->foreign('group_id')->references('id')->on('groups')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-            $table->text('message');
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('group_messages');
+        Schema::dropIfExists('group_members');
     }
 };

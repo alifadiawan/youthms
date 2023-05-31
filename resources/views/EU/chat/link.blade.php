@@ -13,3 +13,6 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css')}}">
