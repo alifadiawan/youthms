@@ -2,33 +2,39 @@
 <script src="{{ asset('https://kit.fontawesome.com/e4a753eb05.js') }}" crossorigin="anonymous"></script>
 
 <script>
-	function show(id) {
-		$.get('/group-chat/'+id, function(data){
-			$('#group').html(data);
-		})
-	}
+    function show(id) {
+        $.get('/group-chat/' + id, function(data) {
+            $('#group').html(data);
+        })
+    }
 </script>
 
 <!-- Add Group Modal -->
-<div class="modal fade" id="addGroupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambahkan Group</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="{{route('gc.store')}}" method="post">
-	       	@csrf
-	    	<div class="modal-body">
-	        	<label for="group">Nama Group : </label>
-	        	<input type="text" name="group" class="form-control" placeholder="Nama Group">
-	      	</div>
-	      	<div class="modal-footer">
-	            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-	            <button type="submit" class="btn btn-primary">Tambah</button>
-	      	</div>
-      </form>
-    </div>
-  </div>
-</div>
+<div class="modal fade" id="addGroupModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    style="border-radius: 50px">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="{{ route('gc.store') }}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <h4 class="text-center fw-bold">TAMBAH GRUB</h4>
+                    <div class="form-group">
+                        <label for="group">Nama Group : </label>
+                        <input type="text" name="group" class="form-control" placeholder="">
+                    </div>
+                </div>
 
+                <div class="row p-3 justify-content-center">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary w-100">Tambah</button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-outline-secondary w-100" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,37 +1,32 @@
 <ul>
-    @foreach($messages as $message)
-        @if($message->user_id == auth()->user()->id)
-            <li class="repaly">
-                <div class="flex-shrink-0">
-                    <span>{{auth()->user()->username}}</span>
-                    <img class="img-fluid"
-                    src="https://mehedihtml.com/chatbox/assets/img/user.png"
-                    alt="user img">
+    @foreach ($messages as $message)
+        @if ($message->user_id == auth()->user()->id)
+            <div class="row justify-content-end mb-4">
+                <span class="text-end">{{ auth()->user()->username }}</span>
+                <div class="col-4 mt-2">
+                    <div class="p-3 border" style="border-radius: 15px; background-color: #e4e4e4;">
+                        <p class=" mb-0">{{ $message->message }}</p>
+                    </div>
+                    <span class="time text-end text-muted">{{ $message->created_at->format('h:i A') }}</span>
                 </div>
-                <p>{{$message->message}}</p>
-                <span class="time">{{ $message->created_at->format('h:i A') }}</span>
-            </li>
-
-            
-            <div class="d-flex flex-row justify-content-end mb-4">
-                <div class="row"></div>
-                <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
-                  <p class="small mb-0">Thank you, I really like your product.</p>
-                </div>
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                  alt="avatar 1" style="width: 45px; height: 100%;">
-              </div>
+            </div>
         @else
-            <li class="sender">
-                <div class="flex-shrink-0">
-                    <img class="img-fluid"
-                        src="https://mehedihtml.com/chatbox/assets/img/user.png"
-                        alt="user img">
-                    <span>{{$message->user->username}}</span>
+        <div class="row justify-content-start mb-4">
+            <div class="col-4">
+                <div class="p-3 border" style="border-radius: 15px; background-color: #406cab;">
+                    <p class=" mb-0 text-white">{{ $message->message }}</p>
                 </div>
-                <p>{{$message->message}}</p>
+                <span class="time text-start text-muted">{{ $message->created_at->format('h:i A') }}</span>
+            </div>
+        </div>
+            {{-- <li class="sender">
+                <div class="flex-shrink-0">
+                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                    <span>{{ $message->user->username }}</span>
+                </div>
+                <p>{{ $message->message }}</p>
                 <span class="time">{{ $message->created_at->format('h:i A') }}</span>
-            </li>
+            </li> --}}
         @endif
     @endforeach
     <!-- <li class="sender">
