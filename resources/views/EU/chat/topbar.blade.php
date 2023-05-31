@@ -6,7 +6,7 @@
                         src="https://mehedihtml.com/chatbox/assets/img/arroleftt.svg"
                         alt="image title"></span>
                 <div class="flex-grow-1 ms-3">
-                    <h3>Steven Alden</h3>
+                    <h3><i class="nav-icon fa-solid fa-users"> {{$group->group}}</i></h3>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false"><i
                             class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addMember">Tambahkan Member</a>
                         </li>
                         <li><a class="dropdown-item" href="#">Another
                                 action</a>
@@ -32,4 +32,4 @@
             </ul>
         </div>
     </div>
-</div>  
+</div>
