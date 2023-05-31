@@ -13,6 +13,7 @@
     <section class="message-area">
         @yield('content')
     </section>
+    
 </body>
     @include('EU.chat.script')
 </html>
