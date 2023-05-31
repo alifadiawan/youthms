@@ -35,7 +35,7 @@ class RoleController extends Controller
         Role::create($request->all());
         notify()->success('Role Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Role Berhasil Ditambahkan !!";
@@ -83,7 +83,7 @@ class RoleController extends Controller
         $Role->delete();
         notify()->success('Role Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Role Berhasil Dihapus !!";
