@@ -11,6 +11,16 @@
                 <p>{{$message->message}}</p>
                 <span class="time">{{ $message->created_at->format('h:i A') }}</span>
             </li>
+
+            
+            <div class="d-flex flex-row justify-content-end mb-4">
+                <div class="row"></div>
+                <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
+                  <p class="small mb-0">Thank you, I really like your product.</p>
+                </div>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                  alt="avatar 1" style="width: 45px; height: 100%;">
+              </div>
         @else
             <li class="sender">
                 <div class="flex-shrink-0">

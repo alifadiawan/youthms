@@ -1,14 +1,7 @@
 <div class="msg-head">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col-8">
-            <div class="d-flex align-items-center">
-                <span class="chat-icon"><img class="img-fluid"
-                        src="https://mehedihtml.com/chatbox/assets/img/arroleftt.svg"
-                        alt="image title"></span>
-                <div class="flex-grow-1 ms-3">
-                    <h3><i class="nav-icon fa-solid fa-users"> {{$group->group}}</i></h3>
-                </div>
-            </div>
+            <h3>{{$group->group}}</h3>
         </div>
         <div class="col-4">
             <ul class="moreoption">
