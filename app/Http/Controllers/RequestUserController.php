@@ -94,7 +94,8 @@ class RequestUserController extends Controller
      */
     public function update(Request $request, request_user $request_user)
     {
-        //
+        // return $request;
+        
     }
 
     /**

@@ -48,13 +48,18 @@
                         <div class="row mt-5">
                             <div class="col">
                                 <form action="{{ route('requestuser.update', $r->id) }}" method="POST">
+                                    @csrf
+                                    @method('put')
                                     <input type="hidden" value="accept" name="status">
                                     <button type="submit" class="btn btn-success">Yes</button>
                                 </form>
                                 {{-- <a href="" class="btn btn-block btn-success">YES</a> --}}
                             </div>
                             <div class="col">
+                                
                                 <form action="{{ route('requestuser.update', $r->id) }}" method="POST">
+                                    @csrf
+                                    @method('put')
                                     <input type="hidden" value="declined" name="status">
                                     <button type="submit" class="btn btn-danger">No</button>
                                     {{-- <a href="" class="btn btn-block btn-secondary">No</a> --}}
