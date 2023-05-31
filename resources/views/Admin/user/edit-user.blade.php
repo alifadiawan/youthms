@@ -37,20 +37,18 @@
                             </div>
                             <div class="col-sm-9">
                                 @if (auth()->user()->roles->contains('role', 'admin'))
-                                        <select class="form-control form-select" name="role_id[]" id="role_id[]" multiple>
+                                        <select class="form-control form-select" name="role_id" id="role_id">
                                             <option>Pilih Role</option>
                                             @foreach ($role as $r)
-                                                <option value="{{ $r->id }}"
-                                                    {{ $user->roles->pluck('id')->contains($r->id) ? 'selected' : '' }}>
+                                                <option value="{{ $r->id }}" @if($r->id == $user->role_id) selected @endif>
                                                     {{ $r->role }}
                                                 </option>
                                             @endforeach
                                         </select>
                                     @else
-                                        <select disabled class="form-control form-select" name="role_id[]" id="role_id[]" multiple>
+                                        <select disabled class="form-control form-select" name="role_id" id="role_id">
                                             @foreach ($role as $r)
-                                                <option value="{{ $r->id }}"
-                                                    {{ $user->roles->pluck('id')->contains($r->id) ? 'selected' : '' }}>
+                                                <option value="{{ $r->id }}" @if($r->id == $user->role_id) selected @endif>
                                                     {{ $r->role }}
                                                 </option>
                                             @endforeach

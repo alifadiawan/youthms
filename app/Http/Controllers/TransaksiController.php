@@ -36,12 +36,12 @@ class TransaksiController extends Controller
     {
         // mencari data user & member
         $auth = auth()->user();
-        $user_role = $auth->roles->pluck('role')->toArray();
+        $user_role = $auth->role->role;
         $user = $auth->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
 
         // mencari role
-        $user_role = $auth->roles->pluck('role')->toarray();
+        $user_role = $auth->role->role;
 
         // mencari status transaksi
         $trx = Transaksi::paginate(5);
@@ -50,7 +50,7 @@ class TransaksiController extends Controller
 
         // pengkondisian jika role user = client, akan terlempar ke history index
         $requestUser = request_user::all();
-        if (in_array('client', $user_role)) {
+        if ($user_role == 'client') {
 
             $all = transaksi::where('member_id', $member)->get();
 
@@ -262,7 +262,7 @@ class TransaksiController extends Controller
 
         $auth = auth()->user();
         $user = $auth->id;
-        $user_role = $auth->roles->pluck('role')->toArray();
+        $user_role = $auth->role->role;
         $member = member::where('user_id', $user)->pluck('id')->first();
 
 
@@ -298,11 +298,11 @@ class TransaksiController extends Controller
 
         $compact = ['detail', 'total', 'grandtotal', 'admin', 'trx', 'requser'];
 
-        $role = auth()->user()->roles->pluck('role')->toArray();
+        $role = auth()->user()->roles->role;
         $requestUser = request_user::all();
 
         // bayar 
-        if (in_array('client', $user_role)) {
+        if ($user_role == 'client') {
 
             $all = transaksi::where('member_id', $member)->get();
 

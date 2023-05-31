@@ -36,7 +36,7 @@ class JenisLayananController extends Controller
         JenisLayanan::create($input);
         notify()->success('Jenis Layanan Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Jenis Layanan Berhasil Ditambahkan !!";
@@ -85,7 +85,7 @@ class JenisLayananController extends Controller
         $jenis_layanan->delete();
         notify()->success('Jenis Layanan Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Jenis Layanan Berhasil Dihapus !!";

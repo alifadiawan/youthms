@@ -22,10 +22,10 @@ class PortofolioController extends Controller
         $porto = Portofolio::paginate(6);
         $pic = PortofolioPic::all();
         if (auth()->check()) {
-            $u = auth()->user()->roles->pluck('role')->toArray();
+            $u = auth()->user()->role->role;
             $admin = ['admin', 'owner'];
 
-            if (count(array_intersect_assoc($u, $admin))>0){
+            if (in_array($u, $admin)){
                 return view('Admin.portofolio.index', compact('porto', 'pic'));
             }
             else{
@@ -83,7 +83,7 @@ class PortofolioController extends Controller
 
         notify()->success('Ilustrasi Portofolio Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Ilustrasi Portofolio Berhasil Diubah !!";
@@ -130,7 +130,7 @@ class PortofolioController extends Controller
 
         notify()->success('Portofolio Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Portofolio Berhasil Ditambahkan !!";
@@ -148,10 +148,10 @@ class PortofolioController extends Controller
         $porto = Portofolio::find($id);
         $pic = $porto->portofoliopic;
         if (auth()->check()) {
-            $u = auth()->user()->roles->pluck('role')->toArray();
+            $u = auth()->user()->role->role;
             $admin = ['admin', 'owner'];
 
-            if (count(array_intersect_assoc($u, $admin))>0){
+            if (in_array($u, $admin)){
                 return view('Admin.portofolio.show', compact('porto', 'pic'));
             }
             else{
@@ -229,7 +229,7 @@ class PortofolioController extends Controller
 
         notify()->success('Portofolio Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Portofolio Berhasil Diupdate !!";
@@ -265,7 +265,7 @@ class PortofolioController extends Controller
             // Redirect atau berikan respon sesuai kebutuhan Anda
             notify()->success('Portofolio Berhasil Dihapus !!');
             // mengirim notifikasi
-            $user = User::whereHas('roles', function ($query) {
+            $user = User::whereHas('role', function ($query) {
                 $query->whereIn('role', ['admin', 'owner']);
             })->get();
             $message = "Portofolio Berhasil Dihapus !!";

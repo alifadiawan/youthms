@@ -36,7 +36,7 @@ class SegmenController extends Controller
         Segmen::create($input);
         notify()->success('Segmen Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Segmen Berhasil Ditambahkan !!";
@@ -85,7 +85,7 @@ class SegmenController extends Controller
         
         notify()->success('Segmen Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Segmen Berhasil Dihapus !!";

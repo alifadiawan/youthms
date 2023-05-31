@@ -42,7 +42,7 @@ class DashboardController extends Controller
         ];
         $chart2 = new LaravelChart($penjualan);
  
-        $role = auth()->user()->roles->pluck('role')->toArray();
+        $role = auth()->user()->role->role;
         // return $role;
 
         $uid = auth()->user()->id;

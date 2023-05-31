@@ -45,14 +45,21 @@
                                                             <h3>Programmer</h3>
                                                         </div>
                                                     </a> -->
+                                                    <hr>
+                                                    <div class="container">
+                                                        <div class="text-center">
+                                                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addGroupModal">Tambah Grup</button>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
                                                     @if ($group->isEmpty())
                                                         
                                                         <h3 class="text-center my-5">Belum Ada Chat </h3>
                                                         
                                                     @else
                                                         @foreach ($group as $gc)
-                                                            <a href="#"
-                                                                onclick="loadGroupMessages({{ $gc->id }})"
+                                                            <a href="#" 
+                                                                onclick="show({{ $gc->id }})"
                                                                 class="d-flex align-items-center">
                                                                 <div class="flex-shrink-0">
                                                                     <img class="img-fluid"
@@ -96,7 +103,7 @@
                     <!-- chatlist -->
 
                     <!-- chatbox -->
-                    <div class="chatbox" id="chatbox">
+                    <div class="chatbox" id="group">
                         <div class="modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-body">
