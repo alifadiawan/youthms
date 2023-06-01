@@ -1053,6 +1053,7 @@ section {
   border: 0;
   padding: 10px 30px;
   color: #fff;
+  word-spacing: 1px ;
   transition: 0.4s;
   border-radius: 4px;
 }
