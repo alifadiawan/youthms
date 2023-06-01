@@ -72,10 +72,24 @@
                                     @elseif ($cart->contains('produk_id', $p->id))
                                         <div class="row rows-cols-2 gx-2 gy-2">
                                             <div class="col-lg-9 col-12">
-                                                <button href="" class="btn w-100 rounded-5"
-                                                    disabled style="background-color: rgb(188, 188, 188)">
-                                                    <i class="fa-solid fa-cart-shopping"></i> Item Added
-                                                </button>
+                                                <!-- Quantity -->
+                                                <div class="d-flex gap-0">
+                                                    <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                        <i class="fas fa-minus"></i>
+                                                    </button>
+
+                                                    <div class="form-outline">
+                                                        <input id="form1" min="1" name="quantity" value="1"
+                                                            type="number" class="form-control" readonly/>
+                                                    </div>
+
+                                                    <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                        <i class="fas fa-plus"></i>
+                                                    </button>
+                                                </div>
+                                                <!-- Quantity -->
                                             </div>
                                             <div class="col-lg-3 col-12">
                                                 <a href="" class="btn btn-outline-danger w-100 rounded-5" disabled>
@@ -195,14 +209,27 @@
                                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                                 </a>
                                             @elseif ($cart->contains('produk_id', $p->id))
-                                                <div class="row rows-cols-2 gx-2 gy-2">
-                                                    <div class="col-lg-8 col-12">
-                                                        <button href="" class="btn w-100 rounded-5"
-                                                            disabled style="background-color: rgb(188, 188, 188)">
-                                                            <i class="fa-solid fa-cart-shopping"></i> Item Added
-                                                        </button>
+                                                <div class="row rows-cols-2 gx-2 gy-2 bg-light">
+                                                    <div class="col-lg-9 col-12">
+                                                        <div class="d-flex gap-0">
+                                                            <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
+                                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                                <i class="fas fa-minus"></i>
+                                                            </button>
+        
+                                                            <div class="form-outline">
+                                                                <input id="form1" min="1" name="quantity" value="1"
+                                                                    type="number" class="form-control" readonly/>
+                                                            </div>
+        
+                                                            <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
+                                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                                <i class="fas fa-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                        <!-- Quantity -->
                                                     </div>
-                                                    <div class="col-lg-4 col-12">
+                                                    <div class="col-lg-3 col-12">
                                                         <a href="" class="btn btn-outline-danger w-100 rounded-5"
                                                             disabled>
                                                             <i class="fas fa-trash"></i>

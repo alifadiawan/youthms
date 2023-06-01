@@ -20,14 +20,13 @@
                 <li><a class="getstarted" href="/login">Login</a></li>
             @endguest
             @auth
-                <li class="nav-item"><a class="nav-link" href="/groupchat">Chats</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('cart.index') }}">
                         @if ($badge->isEmpty())
                             <i class="fa-solid fa-cart-shopping"></i>
                         @else
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="badge bg-primary ms-3">{{ $badge->count() }}</span>
+                            <span class="badge bg-danger ms-2">{{ $badge->count() }}</span>
                         @endif
                     </a>
                 </li>
@@ -40,6 +39,8 @@
                         </li>
                         <li><a class="dropdown-item" href="{{ route('transaksi.history', auth()->user()->id) }}">Histori
                                 Transaksi</a>
+                        </li>
+                        <li><a class="dropdown-item" href="/group-chat">Chats</a></li>
                         <li>
                             @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
                         <li>
