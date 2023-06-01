@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_pemesan');
             $table->string('deskripsi')->nullable();
+            $table->string('note_admin')->nullable();
             $table->string('status')->nullable();
             $table->date('tanggal_mulai');
             $table->date('jatuh_tempo');

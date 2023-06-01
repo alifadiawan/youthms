@@ -25,7 +25,7 @@ class RequestUserController extends Controller
 
         $requestUser = request_user::all();
         $all = transaksi::where('member_id', $member)->get();
-        $pending = request_user::where('transaksi_id', $trxid)->get();
+        // $pending = request_user::where('transaksi_id', $trxid)->get();
 
         if ($user_role == "client") {
             $compact = [];
@@ -73,8 +73,6 @@ class RequestUserController extends Controller
         foreach ($termin as $t ) {
             $totaltermin +=  $t->harga;
         }   
-        // return $totaltermin;
-        // return $trxid;
 
         // mengambil kolom transaksi 
         $transaksi = Transaksi::where('id', $trxid)->get();
@@ -112,7 +110,17 @@ class RequestUserController extends Controller
      */
     public function update(Request $request, request_user $request_user)
     {
-        // return $request;
+        $reqid = $request->requser_id;
+        $request_user = request_user::find($reqid);
+        $request_user->update([
+            'status' => $request->status,
+            'note_admin' => $request->note,
+        ]);
+
+        notify()->success('status berhasil diperbarui');
+        return redirect()->route('requestuser.index');
+
+
         
     }
 
