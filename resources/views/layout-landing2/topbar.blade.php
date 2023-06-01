@@ -41,7 +41,7 @@
                         <li><a class="dropdown-item" href="{{ route('transaksi.history', auth()->user()->id) }}">Histori
                                 Transaksi</a>
                         <li>
-                            @if (auth()->user()->roles->contains('role', 'admin') || auth()->user()->roles->contains('role', 'owner'))
+                            @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
                         <li>
                             <a class="dropdown-item" href="{{ route('dashboard.index') }}">Ke Dashboard Admin</a>
                         </li>

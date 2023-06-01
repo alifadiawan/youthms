@@ -18,7 +18,7 @@
 									</div>
 									<div class="form-group">
 										<label for="role_id">Role</label>
-										<select class="form-control" name="role_id[]" id="role_id[]" multiple>
+										<select class="form-control" name="role_id" id="role_id">
 											<!-- <option>Pilih Role</option> -->
 											@foreach($role as $r)
 											<option class="text-capitalize" value="{{$r->id}}">{{$r -> role}}</option>

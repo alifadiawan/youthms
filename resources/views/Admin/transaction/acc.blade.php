@@ -26,10 +26,17 @@
                                 <td>{{ $r->tanggal_mulai }}</td>
                                 <td>{{ $r->nama_pemesan }}</td>
                                 <td>
-                                    <p class="text-uppercase text-warning">{{ $r->status }}</p>
+                                    @if ($r->status == 'accept')
+                                        <p class="text-uppercase text-success">{{ $r->status }}</p>
+                                    @elseif($r->status == 'declined')
+                                        <p class="text-uppercase text-danger">{{ $r->status }}</p>
+                                    @else
+                                        <p class="text-uppercase text-warning">PENDING</p>
+                                    @endif
+                                    {{-- <p class="text-uppercase text-warning">{{ $r->status }}</p> --}}
                                 </td>
                                 <td>
-                                    <a href="{{ route('requestuser.show',$r->id) }}" class="btn yms-blue">detail</a>
+                                    <a href="{{ route('requestuser.show', $r->id) }}" class="btn yms-blue">detail</a>
                                 </td>
                             </tr>
                         @endforeach

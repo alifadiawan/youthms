@@ -20,9 +20,9 @@ class BlogController extends Controller
     public function index()
     {
         if (auth()->check()) {
-            $u = auth()->user()->roles->pluck('role')->toArray();
+            $u = auth()->user()->role->role;
             $admin = ['admin', 'owner'];
-            if (count(array_intersect_assoc($u, $admin))>0) {
+            if (in_array($u, $admin)) {
                 $segmen = Segmen::all();
                 $data = Blog::paginate(5);
                 return view('Admin.blog.index', compact('data','segmen'));
@@ -90,7 +90,7 @@ class BlogController extends Controller
 
         notify()->success('Artikel Berhasil Ditambahkan !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Artikel Berhasil Ditambahkan !!";
@@ -165,7 +165,7 @@ class BlogController extends Controller
             ]);
             notify()->success($request->judul.' Berhasil Diubah !!');
             // mengirim notifikasi
-            $user = User::whereHas('roles', function ($query) {
+            $user = User::whereHas('role', function ($query) {
                 $query->whereIn('role', ['admin', 'owner']);
             })->get();
             $message = $request->judul." Berhasil Diubah !!";
@@ -189,7 +189,7 @@ class BlogController extends Controller
         $data->delete();
         notify()->success('Artikel Berhasil Dihapus !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Artikel Berhasil Dihapus !!";

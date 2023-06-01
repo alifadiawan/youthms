@@ -52,7 +52,7 @@ class ProdukController extends Controller
         
         // pengkondisian jika admin maka masuk view admin, jika selain admin / owner maka dilempar ke view EU store
         if (auth()->check()) {
-            $role = auth()->user()->roles->pluck('role')->toArray();
+            $role = auth()->user()->role->role;
             $user = auth()->user()->id;
             $member = member::where('user_id', $user)->get()->pluck('id')->first();
             // $member = member::where('user_id', $user)->get();
@@ -60,7 +60,7 @@ class ProdukController extends Controller
             $cart = cart::where('member_id', $member)->get();
             $admin = ['admin', 'owner'];
 
-            if (count(array_intersect_assoc($role, $admin))>0) {
+            if (in_array($role, $admin)) {
                 // if (in_array($role, $admin)) {
                 return view('Admin.store.index', compact('product', 'services'));
             } else {
@@ -108,7 +108,7 @@ class ProdukController extends Controller
 
         notify()->success('Berhasil Ditambahkan !!', $request->nama_produk,);
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = $request->nama_produk . " Berhasil Ditambahkan !!";
@@ -211,7 +211,7 @@ class ProdukController extends Controller
 
         notify()->success($request->nama_produk . ' Berhasil Diupdate !!');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = $request->nama_produk . " Berhasil Diupdate !!";
@@ -237,7 +237,7 @@ class ProdukController extends Controller
 
         notify()->success('Produk berhasil dihapus');
         // mengirim notifikasi
-        $user = User::whereHas('roles', function ($query) {
+        $user = User::whereHas('role', function ($query) {
             $query->whereIn('role', ['admin', 'owner']);
         })->get();
         $message = "Produk Berhasil dihapus";

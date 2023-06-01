@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->date('tanggal_transaksi');
             $table->string('unique_code');
             $table->integer('total');
             $table->integer('total_bayar');

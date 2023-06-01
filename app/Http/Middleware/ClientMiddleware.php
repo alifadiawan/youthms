@@ -18,12 +18,12 @@ class ClientMiddleware
     {
 
         if (Auth::check()) {
-            $user_role = auth()->user()->roles->pluck('role')->toArray();
+            $user_role = auth()->user()->role->role;
             $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
             // cek apakah pengguna terdaftar sebagai klien
-            if (count(array_intersect_assoc($user_role, $staff)) > 0) {
+            if (in_array($user_role, $staff)) {
                 return $next($request);
-            } elseif (in_array('client', $user_role)) {
+            } elseif ($user_role == 'client') {
                 return $next($request);
             } else {
                 return redirect()->back();

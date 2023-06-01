@@ -8,7 +8,8 @@
             <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
             <div id="caption">
                 <h3 class="text-white text-wrap">wawasdwa</h3>
-                <p class="text-white text-wrap">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus fugit
+                <p class="text-white text-wrap">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus
+                    fugit
                     pariatur, magnam aliquam et qui hic corporis odio neque nobis doloribus quidem delectus saepe commodi
                     illum minima blanditiis nostrum quod.</p>
             </div>
@@ -19,14 +20,15 @@
     <!-- tombol kategori jasa -->
     <div class="container mb-5 mt-3">
         <div class="d-flex flex-row text-center gap-3">
-            <a href="" class="btn yms-outline-blue rounded-5">All</a>
+            {{-- <a href="" class="btn yms-outline-blue rounded-5z">All</a>
             @foreach ($layanan as $l)
             <a href="{{ route('store.showtype', $l->layanan) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
-            @endforeach
-            {{-- <a href="{{ route('store.index') }}" class="text-capitalize my-3 active">All</a>
-            @foreach ($layanan as $l)
-                <a href="{{ route('store.showtype', $l->layanan) }}" class=" my-3 text-capitalize active">{{ $l->layanan }}</a>
             @endforeach --}}
+            <a href="{{ route('store.index') }}" class="text-capitalize my-3 active">All</a>
+            @foreach ($layanan as $l)
+                <a href="{{ route('store.showtype', $l->layanan) }}"
+                    class=" my-3 text-capitalize active">{{ $l->layanan }}</a>
+            @endforeach
         </div>
     </div>
 
@@ -49,7 +51,7 @@
                             {{-- <p class="card-title text-secondary">{{ $p->services->judul }}</p> --}}
                             <p class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
                             @guest
-                                <a href="{{ route('authcheck') }}" class="btn yms-blue w-100 rounded-5 px-5">
+                                <a href="{{ route('authcheck') }}" class="btn yms-blue w-100 rounded-5">
                                     <i class="fa-solid fa-cart-plus"></i> Add to Cart
                                 </a>
                             @endguest
@@ -57,7 +59,7 @@
                             @auth
                                 @if (empty($member))
                                     <div class="row">
-                                        <a href="{{ route('user.show', $user) }}" class="btn yms-blue w-100 rounded-5 px-5">
+                                        <a href="{{ route('user.show', $user) }}" class="btn yms-blue w-100 rounded-5 px-lg-3">
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </a>
                                     </div>
@@ -69,12 +71,13 @@
                                         </a>
                                     @elseif ($cart->contains('produk_id', $p->id))
                                         <div class="row rows-cols-2 gx-2 gy-2">
-                                            <div class="col-lg-8 col-12">
-                                                <button href="" class="btn btn-outline-secondary w-100 rounded-5" disabled>
-                                                    Item Added
+                                            <div class="col-lg-9 col-12">
+                                                <button href="" class="btn w-100 rounded-5"
+                                                    disabled style="background-color: rgb(188, 188, 188)">
+                                                    <i class="fa-solid fa-cart-shopping"></i> Item Added
                                                 </button>
                                             </div>
-                                            <div class="col-lg-4 col-12">
+                                            <div class="col-lg-3 col-12">
                                                 <a href="" class="btn btn-outline-danger w-100 rounded-5" disabled>
                                                     <i class="fas fa-trash"></i>
                                                 </a>
@@ -88,7 +91,7 @@
                                             @endforeach
                                             <input type="hidden" class="form-control" name="quantity" value="1">
                                             <input type="hidden" value="{{ $p->id }}" name="produk_id">
-                                            <div class="row px-2 px-lg-3">
+                                            <div class="row px-0 px-lg-3">
                                                 <button type="submit" class="btn yms-blue w-100 rounded-5">
                                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                                 </button>
@@ -101,7 +104,9 @@
                     </div>
                 </div>
             @endforeach
+
         </div>
+
 
 
 
@@ -170,53 +175,57 @@
                                     <p class="card-title text-secondary">{{ $ls->judul }}</p>
                                     <p class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
                                     @guest
-                                        <a href="{{ route('authcheck') }}" class="btn yms-blue w-100 rounded-5 px-2 px-lg-3">
+                                        <a href="{{ route('authcheck') }}" class="btn yms-blue w-100 rounded-5 px-0 px-lg-3">
                                             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                         </a>
                                     @endguest
 
                                     @auth
-                                    @if (empty($member))
-                                    <div class="row">
-                                        <a href="{{ route('user.show', $user) }}" class="btn yms-blue w-100 rounded-5 px-2 px-lg-3">
-                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                        </a>
-                                    </div>
-                                @else
-                                    @if (auth()->user()->hasIncompleteProfile())
-                                        <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
-                                            class="btn yms-blue w-100 rounded-5 px-2 px-lg-3" disabled>
-                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                        </a>
-                                    @elseif ($cart->contains('produk_id', $p->id))
-                                        <div class="row rows-cols-2 gx-2 gy-2">
-                                            <div class="col-lg-8 col-12">
-                                                <button href="" class="btn btn-outline-secondary w-100 rounded-5" disabled>
-                                                    Item Added
-                                                </button>
-                                            </div>
-                                            <div class="col-lg-4 col-12">
-                                                <a href="" class="btn btn-outline-danger w-100 rounded-5" disabled>
-                                                    <i class="fas fa-trash"></i>
+                                        @if (empty($member))
+                                            <div class="row">
+                                                <a href="{{ route('user.show', $user) }}"
+                                                    class="btn w-100 rounded-5 px-0 px-lg-3">
+                                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                                 </a>
                                             </div>
-                                        </div>
-                                    @else
-                                        <form action="{{ route('cart.store') }}" method="POST">
-                                            @csrf
-                                            @foreach ($member as $m)
-                                                <input type="hidden" name="member_id" value="{{ $m->id }}">
-                                            @endforeach
-                                            <input type="hidden" class="form-control" name="quantity" value="1">
-                                            <input type="hidden" value="{{ $p->id }}" name="produk_id">
-                                            <div class="row  px-2 px-lg-3">
-                                                <button type="submit" class="btn yms-blue w-100 rounded-5">
+                                        @else
+                                            @if (auth()->user()->hasIncompleteProfile())
+                                                <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
+                                                    class="btn yms-blue w-100 rounded-5 px-0 px-lg-3" disabled>
                                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                                </button>
-                                            </div>
-                                        </form>
-                                    @endif
-                                @endif
+                                                </a>
+                                            @elseif ($cart->contains('produk_id', $p->id))
+                                                <div class="row rows-cols-2 gx-2 gy-2">
+                                                    <div class="col-lg-8 col-12">
+                                                        <button href="" class="btn w-100 rounded-5"
+                                                            disabled style="background-color: rgb(188, 188, 188)">
+                                                            <i class="fa-solid fa-cart-shopping"></i> Item Added
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-lg-4 col-12">
+                                                        <a href="" class="btn btn-outline-danger w-100 rounded-5"
+                                                            disabled>
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <form action="{{ route('cart.store') }}" method="POST">
+                                                    @csrf
+                                                    @foreach ($member as $m)
+                                                        <input type="hidden" name="member_id" value="{{ $m->id }}">
+                                                    @endforeach
+                                                    <input type="hidden" class="form-control" name="quantity"
+                                                        value="1">
+                                                    <input type="hidden" value="{{ $p->id }}" name="produk_id">
+                                                    <div class="row px-0 px-lg-3">
+                                                        <button type="submit" class="btn yms-blue rounded-5">
+                                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            @endif
+                                        @endif
                                     @endauth
                                 </div>
                             </div>

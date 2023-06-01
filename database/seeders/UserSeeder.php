@@ -20,84 +20,69 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'username' => 'Stevana1304',
-                'password' => '123',
+                'password' => bcrypt('123'),
                 'email' => 'steven@gmail.com',
-                'role_id' => [1],
+                'role_id' => '1',
             ],
             [
                 'username' => 'alif_adiawan',
-                'password' => '123',
+                'password' => bcrypt('123'),
                 'email' => 'alif@gmail.com',
-                'role_id' => [1],
+                'role_id' => '1',
             ],
             [
                 'username' => 'ilhmstxr',
-                'password' => '123',
+                'password' => bcrypt('123'),
                 'email' => 'ilhxm@gmail.com',
-                'role_id' => [1],
+                'role_id' => '1',
             ],
             [
                 'username' => 'client',
-                'password' => '123', 
+                'password' => bcrypt('123'), 
                 'email' => 'client@gmail.com',
-                'role_id' => [2],
+                'role_id' => '2',
             ],
             [
                 'username' => 'clientacumalaka', 
-                'password' => '123', 
+                'password' => bcrypt('123'), 
                 'email' => 'client2@gmail.com',
-                'role_id' => [2],
+                'role_id' => '2',
             ],
             [
                 'username' => 'owner', 
-                'password' => '123', 
+                'password' => bcrypt('123'), 
                 'email' => 'owner@gmail.com',
-                'role_id' => [3],
+                'role_id' => '3',
             ],
             [
                 'username' => 'programmer',
-                'password' => '123', 
+                'password' => bcrypt('123'), 
                 'email' => 'programmer@gmail.com',
-                'role_id' => [4],
+                'role_id' => '4',
             ],
             [
                 'username' => 'uiux', 
-                'password' => '123', 
+                'password' => bcrypt('123'), 
                 'email' => 'uiux@gmail.com',
-                'role_id' => [5],
+                'role_id' => '5',
             ],
             [
                 'username' => 'sekretariat', 
-                'password' => '123', 
+                'password' => bcrypt('123'), 
                 'email' => 'sekretariat@gmail.com',
-                'role_id' => [6],
+                'role_id' => '6',
             ],
             [
                 'username' => 'reborn',                
-                'password' => '123', 
+                'password' => bcrypt('123'), 
                 'email' => 'reborn@gmail.com',
-                'role_id' => [7],
+                'role_id' => '7',
             ],
         ];
 
         
-        // User::insert($users);
-
-        foreach ($users as $userData) {
-            // Buat pengguna baru
-            // $user = User::create($userData);
-
-            $user = new User();
-            $user->username = $userData['username'];
-            $user->email = $userData['email'];
-            $user->password = bcrypt($userData['password']);
-            $user->save();
-
-            // Atur relasi many-to-many dengan peran
-            $roles = Role::whereIn('id', $userData['role_id'])->get(); // Ganti dengan peran yang sesuai
-            $user->roles()->attach($roles);
-        }
-
+        User::insert($users);
+        
         $member = [
             ['id_member'=>"0004",'name'=>'si paling klien','nik'=>36780413213,'no_hp'=>"08572312",'alamat'=>"indo",'user_id'=>"4",],
             ['id_member'=>"007",'name'=>'si paling bukan klien','nik'=>36783213213,'no_hp'=>"0857232312",'alamat'=>"maag",'user_id'=>"5",]

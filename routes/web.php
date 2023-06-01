@@ -67,14 +67,19 @@ route::get('/invoice', function () {
 
 Route::get('/group-chat', [GroupChatController::class, 'index'])->name('gc.index');
 Route::post('group-chat/send-message', [GroupChatController::class, 'sendMessage']);
+Route::post('/group-chat/store', [GroupChatController::class, 'store'])->name('gc.store');
+Route::get('/group-chat/{group}', [GroupChatController::class, 'showMessage'])->name('gc.show');
+Route::post('/groups/{group}/users/{user}/add', [GroupChatController::class, 'addUser'])->name('gc.users.add');
+Route::post('/groups/{group}/users/{user}/remove', [GroupChatController::class, 'removeUser'])->name('gc.users.remove');
 
 
-route::get('/transaksi/acc', function () {
-    return view('Admin.transaction.acc');
-});
-route::get('/transaksi/acc/detail', function () {
-    return view('Admin.transaction.YesNo');
-});
+
+// route::get('/transaksi/acc', function () {
+//     return view('Admin.transaction.acc');
+// });
+// route::get('/transaksi/acc/detail', function () {
+//     return view('Admin.transaction.YesNo');
+// });
 
 
 

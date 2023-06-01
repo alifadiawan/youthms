@@ -43,9 +43,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
+    public function role()
     {
-        return $this->belongsToMany(Role::class, 'role_user','user_id','role_id');
+        return $this->belongsTo(Role::class);
     }
 
     public function testimoni()
@@ -71,6 +71,16 @@ class User extends Authenticatable
     public function hasProfile()
     {
         return $this->member !== null;
+    }
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_members');
+    }
+
+    public function group_messages()
+    {
+        return $this->hasMany(GroupMessage::class);
     }
 
 }

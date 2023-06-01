@@ -15,13 +15,13 @@
                 <div class="chat-area">
                     <!-- chatlist -->
                     <div class="chatlist">
-                        <div class="modal-dialog-scrollable">
+                        <div class="modal-dialog-scrollable modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="chat-header">
                                     <div class="msg-search">
                                         <input type="text" class="form-control" id="inlineFormInputGroup"
                                             placeholder="Search" aria-label="search">
-                                        <a class="add" href="#"><img class="img-fluid"
+                                        <a class="add" data-bs-toggle="modal" data-bs-target="#addGroupModal" href="#"><img class="img-fluid"
                                                 src="https://mehedihtml.com/chatbox/assets/img/add.svg" alt="add"></a>
                                     </div>
                                 </div>
@@ -34,7 +34,7 @@
                                                 aria-labelledby="Open-tab">
                                                 <!-- chat-list -->
                                                 <div class="chat-list">
-                                                    <a href="#" type="button" id="showMessage"
+                                                    <!-- <a href="#" type="button" id="showMessage"
                                                         class="d-flex align-items-center" onclick="showMessage()">
                                                         <div class="flex-shrink-0">
                                                             <img class="img-fluid"
@@ -44,15 +44,16 @@
                                                         <div class="flex-grow-1 ms-3 group" data-id="1">
                                                             <h3>Programmer</h3>
                                                         </div>
-                                                    </a>
-                                                    {{-- @if ($group->isEmpty())
+                                                    </a> -->
+                                                    <hr>
+                                                    @if ($group->isEmpty())
                                                         
                                                         <h3 class="text-center my-5">Belum Ada Chat </h3>
                                                         
                                                     @else
                                                         @foreach ($group as $gc)
-                                                            <a href="#"
-                                                                onclick="loadGroupMessages({{ $gc->id }})"
+                                                            <a href="#" 
+                                                                onclick="show({{ $gc->id }})"
                                                                 class="d-flex align-items-center">
                                                                 <div class="flex-shrink-0">
                                                                     <img class="img-fluid"
@@ -65,7 +66,7 @@
                                                                 </div>
                                                             </a>
                                                         @endforeach
-                                                    @endif --}}
+                                                    @endif
                                                 </div>
                                                 <!-- chat-list -->
                                             </div>
@@ -96,27 +97,22 @@
                     <!-- chatlist -->
 
                     <!-- chatbox -->
-                    <div class="chatbox">
+                    <div class="chatbox" id="group">
                         <div class="modal-dialog-scrollable">
                             <div class="modal-content">
-                                @include('EU.chat.topbar')
-
-
-                                <div class="modal-body">
-                                    <div class="msg-body" id="messsageArea">
-                                        @include('EU.chat.messageArea')
+                                <div class="modal-body text-center">
+                                    <div class="d-flex flex-row justify-content-center align-items-center" style="margin-top:40vh">
+                                        Silahkan Pilih Pesan Untuk Memulai
                                     </div>
                                 </div>
-
-
-                                <!-- sendbox -->
-                                @include('EU.chat.sendbox')
-                                
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <!-- chatbox -->
+
+
 
 
             </div>
@@ -124,4 +120,6 @@
     </div>
     </div>
 
+
+    
 @endsection

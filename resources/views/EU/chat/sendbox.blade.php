@@ -1,4 +1,4 @@
-<div class="send-box" style="margin-top: 100px;">
+<div class="send-box">
     <form action="">
         <input type="text" class="form-control" aria-label="message…"
             placeholder="Write message…">
@@ -6,7 +6,7 @@
         <button type="button"><i class="fa fa-paper-plane" aria-hidden="true"></i>
             Send</button>
     </form>
-
+{{-- 
     <div class="send-btns">
         <div class="attach">
             <div class="button-wrapper">
@@ -20,6 +20,6 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
 
 </div>

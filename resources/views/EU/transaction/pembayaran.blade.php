@@ -6,7 +6,89 @@
             <div class="col-md-8">
                 <a href="{{ route('cart.index') }}" class="btn my-3">
                     <i class="fas fa-arrow-left"></i></a>
-                <div class="card mb-4">
+                    <div class="card mb-3 shadow rounded-3">
+                        <div class="row my-3 mx-3 mx-lg-4">
+                            <div class="col-6 col-lg text-start">
+                                <strong>INVOCE</strong>
+                            </div>
+                            <div class="col-6 col-lg text-end text-lg-end">
+                                <p class="text-muted">D6759869</p>
+                            </div>
+                        </div>
+            
+                        <div class="konten my-lg-0 mx-5">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row">
+                                        Invoice To
+                                    </div>
+                                    <div class="row text-muted">
+                                        alifadiawan2005@gmail.com
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
+                                    <div class="row">
+                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0 text-start text-lg-end">Status</div>
+                                        <div class="col text-end text-lg text-warning">
+                                            KREDIT
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
+                                        <div class="col text-end text-lg">
+                                            29 Mei 2023
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
+                                        <div class="col text-end text-lg">
+                                            31 Mei 2023
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Jatuh Tempo</div>
+                                        <div class="col text-end text-lg text-danger">
+                                            10 Hari lagi
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="konten mt-3 mx-3">
+                            <table class="table table-bordered">
+                                <thead class="bg-light text-dark">
+                                    <tr>
+                                        <th>Nama Barang</th>
+                                        <th>Qty</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($detail as $d)
+                                    <tr>
+                                        <td>{{ $d->produk->nama_produk }}</td>
+                                        <td>x {{ $d->quantity }}</td>
+                                        <td class="text-end">Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</td>
+                                    </tr>
+                                    @endforeach 
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2" class="text-end">Biaya admin</td>
+                                        <td colspan="1" class="text-end">Rp. {{ number_format($admin, 0, ',', '.') }}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2" class="text-end fw-bold">Grand Total</td>
+                                        <td colspan="1" class="text-end fw-bold">Rp. {{ number_format($grandtotal, 0, ',', '.') }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                {{-- <div class="card mb-4">
                     <div class="card-header py-3">
                         <div class="row">
                             <div class="col">
@@ -52,7 +134,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
 
 
                 <!-- MEtode pembayaran -->
@@ -128,7 +210,7 @@
                                             <div class="form">
                                                 <div class="form-gorup">
                                                     <label for="">Nama Pemesan / Instansi</label>
-                                                    <input type="text" class="form-control" name="nama_pemesan" value="ealah" required> 
+                                                    <input type="text" class="form-control" name="nama_pemesan" value="{{ old('nama_pemesan') }}" required> 
                                                 </div>
                                                 <div class="form-gorup">
                                                     <label for="">Jangka Waktu</label>
@@ -149,7 +231,7 @@
                                                         <textarea class="form-control" name="deskripsi" cols="30" rows="10" >{{ old('deskripsi') }}</textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="hidden" name="status" value="null">
+                                                    <input type="hidden" name="status" value="">
                                                     <input type="hidden" name="transaksi_id" value="{{ $tid }}">
                                                     <button class="btn btn-primary" type="submit">kirim request</button>
                                                 </div>

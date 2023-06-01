@@ -18,10 +18,10 @@
 </div> -->
 
 <div class="row">
-    @if (auth()->user()->roles->contains('role', 'admin'))
+    @if (auth()->user()->role->role == 'admin')
         <div class="col-lg-9">
-    @else
-        <div class="col-lg-12">
+        @else
+            <div class="col-lg-12">
     @endif
     <div class="card p-3">
         <div class="row align-items-end">
@@ -30,12 +30,14 @@
                     aria-expanded="false" aria-controls="collapseExample">
                     Filter <i class="fas fa-chevron-down"></i>
                 </a>
+
+                <!-- filter -->
                 <a href="" class="btn btn-outline-primary text-capitalize ml-3" id="activeRoleButton"
-                    style="border-radius: 20px">Active role</a>
+                    style="border-radius: 20px">Semua</a>
                 <div class="collapse" id="collapseExample">
                     <div class="my-3">
-                        <form action="{{ route('user.filter') }}" class="form-inline" id="filterForm">
-                            <select name="role_id[]" id="role_id[]" class="form-control form-select text-capitalize mr-2" multiple>
+                        <form action="{{ route('user.filter') }}" id="filterForm">
+                            <select name="role_id" id="role_id" class="form-control text-capitalize mr-2">
                                 <option value="">Semua</option>
                                 @foreach ($role as $item)
                                     <option value="{{ $item->id }}">{{ $item->role }}</option>
@@ -47,8 +49,10 @@
                         </form>
                     </div>
                 </div>
+
+
             </div>
-            @if (auth()->user()->roles->contains('role', 'admin'))
+            @if (auth()->user()->role->role == 'admin')
                 <div class="col-5 text-right">
                     <a href="{{ route('user.create') }}" class="btn btn-md text-white rounded"
                         style="background-color: #1864BA;">Tambah User</a>
@@ -74,11 +78,7 @@
                         <tr class="userTableRow">
                             <td scope="row">{{ $loop->iteration }}</td>
                             <td>{{ $u->username }}</td>
-                            <td class="text-capitalize">
-                            @foreach($u->roles as $roles)
-                                {{ $roles->role }} <br>
-                            @endforeach
-                            </td>
+                            <td class="text-capitalize">{{ $u->role->role }}</td>
                             <td>
                                 <a href="{{ route('user.show', $u->id) }}"
                                     class="btn btn-sm btn text-white rounded-pill"
@@ -94,7 +94,7 @@
         </div>
     </div>
 </div>
-@if (auth()->user()->roles->contains('role', 'admin'))
+@if (auth()->user()->role->role == 'admin')
     <div class="col-lg-3">
         <div class="card p-3">
             <button data-toggle="modal" data-target="#addJabatan" class="btn btn-md text-white rounded mb-2 mr-1"
@@ -223,18 +223,10 @@
                         var detailUrl =
                             '{{ route('user.show', ['user' => '__id__']) }}';
                         detailUrl = detailUrl.replace('__id__', user.id);
-
-                        // Mendapatkan array dari nama-nama role yang dimiliki oleh user
-                        var roles = user.roles.map(function(r_u) {
-                            return r_u.role;
-                        });
-
-                        var roleNames = roles.join(', '); // Menggabungkan nama-nama role dengan koma
-
                         var newRow = '<tr>' +
                             '<td>' + counter + '</td>' +
                             '<td>' + user.username + '</td>' +
-                            '<td>' + roleNames + '</td>' +
+                            '<td class="text-capitalize">' + user.role.role + '</td>' +
                             '<td><a href="' + detailUrl +
                             '" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a></td>' +
                             // Tambahkan kolom tambahan sesuai kebutuhan
