@@ -32,7 +32,8 @@ class DatabaseSeeder extends Seeder
             ServicesIllsSeeder::class,
             ProdukSeeder::class,
             TransaksiDetailSeeder::class,
-            PendingSeeder::class,
+            RequestUserSeeder::class,
+            TerminSeeder::class,
 
             //misc
             VisitorSeeder::class,

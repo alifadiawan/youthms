@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\request_user;
 use Illuminate\Support\Carbon;
 
-class PendingSeeder extends Seeder
+class RequestUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.

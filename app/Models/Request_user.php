@@ -15,4 +15,9 @@ class request_user extends Model
         return $this->belongsTo(transaksi::class);
     }
 
+    public function termin()
+    {
+        return $this->hasMany(termin::class);
+    }
+
 }

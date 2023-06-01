@@ -91,7 +91,6 @@ class TransaksiController extends Controller
             $ul = collect($lunas)->pluck('id')->toarray();
 
 
-
             $status = ['utang', 'kredit', 'lunas', 'all'];
             $stts = ['uu', 'uk', 'ul', 'up', 'ud'];
             $compact = [$status, $stts];
@@ -213,20 +212,23 @@ class TransaksiController extends Controller
     public function pembayaran($id)
     {
         date_default_timezone_set('Asia/Jakarta');
-        $today = today();
-        $t = $today->format('Y-m-d');
-        // return $today;
+        $today  = today();
+        $t = date('d-m-Y', strtotime($today));
+        // return $t;
 
         // mencari data user & member
         $user = auth()->user()->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
 
         // mencari transaksi id dengan menggunakkan id member
-        $trxid = transaksi::where('member_id', $member)->latest()->value('id');
+        // ?
+        // $trxid = transaksi::where('member_id', $member)->latest()->value('id');
+
         $tid = $id;
+        $transaksi = transaksi::where('id', $tid)->get();
 
         // mencari detail transaksi id dengan $trxid
-        $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
+        $detail = TransaksiDetail::where('transaksi_id', $tid)->get();
 
         // menghitung total produk serta jumlah total
         $total = 0;
@@ -238,7 +240,7 @@ class TransaksiController extends Controller
         $admin = $total * 0.11;
         $grandtotal = $total + $admin;
 
-        $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid', 't'];
+        $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid', 't', 'transaksi'];
         return view('EU.transaction.pembayaran', compact($compact));
     }
 
@@ -298,7 +300,7 @@ class TransaksiController extends Controller
 
         $compact = ['detail', 'total', 'grandtotal', 'admin', 'trx', 'requser'];
 
-        $role = auth()->user()->roles->role;
+        $role = auth()->user()->role->role;
         $requestUser = request_user::all();
 
         // bayar 
@@ -333,8 +335,8 @@ class TransaksiController extends Controller
             $EU_declined = collect($declined)->pluck('id')->toArray();
 
 
-            $status_EU = ['EU_utang', 'EU_kredit', 'EU_lunas', 'EU_declined', 'EU_pending','selisih'];
-            return view('EU.transaction.detail', compact($compact, $status_EU));
+            $status_EU = ['EU_utang', 'EU_kredit', 'EU_lunas', 'EU_declined', 'EU_pending', 'selisih'];
+            return view('EU.transacftion.detail', compact($compact, $status_EU));
             //     return view('EU.transaction.cash', compact($compact));
         } else {
             $all = transaksi::all();
@@ -434,4 +436,11 @@ class TransaksiController extends Controller
     public function destroy($id)
     {
     }
+
+    // type bank
+    public function bank()
+    {
+        # code...
+    }
+
 }

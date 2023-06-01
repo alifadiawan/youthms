@@ -59,12 +59,11 @@ class ProdukController extends Controller
             // return $member;
             $cart = cart::where('member_id', $member)->get();
             $admin = ['admin', 'owner'];
-
+            
             if (in_array($role, $admin)) {
                 // if (in_array($role, $admin)) {
                 return view('Admin.store.index', compact('product', 'services'));
             } else {
-                $user = auth()->user()->id;
                 $member = member::where('user_id', $user)->get();
                 $compact = array_merge($compact, ['user', 'member', 'cart']);
                 return view('EU.store.index', compact($compact));
