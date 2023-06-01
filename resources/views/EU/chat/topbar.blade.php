@@ -1,7 +1,9 @@
 <div class="msg-head">
     <div class="row align-items-center">
         <div class="col-8">
-            <h3>{{$group->group}}</h3>
+            <h4>{{$group->group}}</h4>
+            <h6>Admin Group : {{$group->admin->username}}</h6>
+            <p>Kode Group : {{$group->kode}}</p>
         </div>
         <div class="col-4">
             <ul class="moreoption">

@@ -44,6 +44,16 @@
             success: function(response) {
                 // Berhasil mengirim pesan, lakukan tindakan yang diperlukan (misalnya hapus isi input)
                 $('#message-input').val('');
+                $.ajax({
+                    url: "{{ route('gc.load', ['group' => $group->id]) }}",
+                    type: "GET",
+                    dataType: "html",
+                    success: function(response) {
+                        // Ganti konten div atau elemen lain yang menampilkan pesan
+                        $("#message-container").html(response);
+                        console.log("Pesan Diperbarui !");
+                    }
+                });
                 console.log("Pesan Terkirim !");
             },
             error: function(error) {
