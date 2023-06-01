@@ -17,7 +17,7 @@
             <form action="{{ route('gc.store') }}" method="post">
                 @csrf
                 <div class="modal-body">
-                    <h4 class="text-center fw-bold">TAMBAH GRUB</h4>
+                    <h4 class="text-center fw-bold">TAMBAH GROUP</h4>
                     <div class="form-group">
                         <label for="group">Nama Group : </label>
                         <input type="text" name="group" class="form-control" placeholder="">

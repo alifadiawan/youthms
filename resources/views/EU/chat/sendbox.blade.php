@@ -1,9 +1,10 @@
 <div class="send-box">
-    <form action="">
-        <input type="text" class="form-control" aria-label="message…"
+    <form action="{{route('gc.send')}}" method="post" id="message-form">
+        @csrf
+        <input type="text" class="form-control" name="message" id="message-input" aria-label="message…"
             placeholder="Write message…">
-
-        <button type="button"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+        <input type="hidden" name="group_id" value="{{$group->id}}">
+        <button type="button" id="send-button"><i class="fa fa-paper-plane" aria-hidden="true"></i>
             Send</button>
     </form>
 {{-- 
@@ -23,3 +24,31 @@
     </div> --}}
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('#send-button').click(function() {
+        var message = $('#message-input').val();
+        var groupId = $('input[name="group_id"]').val();
+        var csrfToken = $('input[name="_token"]').val();
+
+        $.ajax({
+            url: '/group-chat/send-message', // Ubah URL sesuai dengan rute di backend Anda
+            type: 'POST',
+            data: {
+                _token: csrfToken,
+                message: message,
+                group_id: groupId
+            },
+            dataType:"json",
+            success: function(response) {
+                // Berhasil mengirim pesan, lakukan tindakan yang diperlukan (misalnya hapus isi input)
+                $('#message-input').val('');
+                console.log("Pesan Terkirim !");
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+</script>
