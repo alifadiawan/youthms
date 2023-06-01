@@ -465,6 +465,12 @@ h6 {
     border-radius: 0px 0px 200px 0px;
 }
 
+@media (max-width: 576px){
+    .hero {
+        border-radius: 0px 0px 100px 0px;
+    }
+}
+
 .hero .container {
     padding-top: 30px;
 }
@@ -476,6 +482,8 @@ h6 {
     background: #406cab;
     border-radius: 0px 0px 200px 200px;
 }
+
+
 /* 
 #hero .container {
   padding-top: 72px;
@@ -571,29 +579,55 @@ h6 {
 
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 28px;
-        line-height: 36px;
+        font-size: 18px;
+        line-height: 26px;
     }
 
     .hero h2 {
         font-size: 18px;
         line-height: 24px;
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
+    }
+
+    .hero h3 {
+        font-size: 18px;
+        line-height: 24px;
+        /* margin-bottom: 30px; */
     }
 
     .hero .hero-img img {
-        width: 70%;
+        width: 60%;
     }
 }
 
 @media (max-width: 575px) {
+    .hero h1 {
+        /* text-align: start; */
+        font-size: 26px;
+        line-height: 36px;
+    }
+
+    .hero h2 {
+        /* text-align: start; */
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 30px;
+    }
+
+    .hero h3 {
+        /* text-align: start; */
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 30px;
+    }
+    
     .hero .hero-img img {
         width: 80%;
     }
 
     .hero .btn-get-started {
-        font-size: 16px;
-        padding: 10px 24px 11px 24px;
+        /* font-size: 16px;
+        padding: 10px 24px 11px 24px; */
     }
 }
 
