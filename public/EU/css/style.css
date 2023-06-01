@@ -1513,8 +1513,7 @@ section {
 
 .cara-bayar .card.box1 {
     width: 650px;
-
-    height: 935px;
+    height: 650px;
     font-family: "Poppins", sans-serif;
     background-color: #406cab;
     color: #fff;
@@ -1533,32 +1532,9 @@ section {
     font-size: 13px;
 }
 
-/* .cara-bayar .box2 .btn.btn-primary.bar {
-    width: 20px;
-    background-color: transparent;
-    border: none;
-    color: #406cab;
-} */
-
-/* .cara-bayar .box2 .btn.btn-primary.bar:hover {
-    color: #406cab;
+.cara-bayar .collapsed:hover{
+    color: #000;
 }
-
-.cara-bayar .box1 .btn.btn-primary {
-    background-color: #406cab;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ddd;
-}
-
-.cara-bayar .box1 .btn.btn-primary:hover {
-    background-color: #f6f8f7;
-    color: #406cab;
-} */
-
 .cara-bayar .btn.btn-success {
     width: 40px;
     height: 40px;
@@ -1587,6 +1563,23 @@ section {
   box-shadow: 0px 5px 30px #47b2e4;
   color: #fff;
 }
+
+.cara-bayar .accordion-button {
+    background: #37517e;
+    box-shadow: 0px 5px 30px #37517e;
+    border: 0;
+    padding: 10px 30px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 4px;
+  }
+  
+  .cara-bayar .accordion-button:hover{
+    transform: translateY(-3px);
+    background: #47b2e4;
+    box-shadow: 0px 5px 30px #47b2e4;
+    color: #fff;
+  }
 
 .cara-bayar .nav.nav-tabs {
     border: none;

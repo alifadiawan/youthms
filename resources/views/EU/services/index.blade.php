@@ -191,6 +191,10 @@
                                                 Post</a></h6>
                                     </div>
                                 </div>
+                                <div class="d-grid gap-2" style="margin-top: 20px">
+                                    <a href="/portfolio" class="btn-porto btn btn text-white" href="/portofolio" type="button">Portofolio
+                                        Kami</a>
+                                </div>
                                 <h4>
                                     Desain Grafis
                                 </h4>
