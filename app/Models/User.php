@@ -73,4 +73,14 @@ class User extends Authenticatable
         return $this->member !== null;
     }
 
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_members');
+    }
+
+    public function group_messages()
+    {
+        return $this->hasMany(GroupMessage::class);
+    }
+
 }

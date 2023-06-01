@@ -1,14 +1,7 @@
 <div class="msg-head">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col-8">
-            <div class="d-flex align-items-center">
-                <span class="chat-icon"><img class="img-fluid"
-                        src="https://mehedihtml.com/chatbox/assets/img/arroleftt.svg"
-                        alt="image title"></span>
-                <div class="flex-grow-1 ms-3">
-                    <h3>Steven Alden</h3>
-                </div>
-            </div>
+            <h3>{{$group->group}}</h3>
         </div>
         <div class="col-4">
             <ul class="moreoption">
@@ -17,7 +10,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false"><i
                             class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addMember">Tambahkan Member</a>
                         </li>
                         <li><a class="dropdown-item" href="#">Another
                                 action</a>
@@ -32,4 +25,4 @@
             </ul>
         </div>
     </div>
-</div>  
+</div>

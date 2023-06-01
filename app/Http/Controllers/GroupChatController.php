@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Events\GroupMessageSent;
 use App\Models\GroupMessage;
 use App\Models\Group;
+use App\Models\User;
 
 class GroupChatController extends Controller
 {
@@ -29,11 +30,34 @@ class GroupChatController extends Controller
         return view('EU.chat.index', compact('group'));
     }
 
-    public function showMessage($id)
+    public function store(Request $request)
     {
-        $group = Group::find($id);
-        $gm = GroupMessage::where('group_id', $group->id)->get();
+        $group = Group::create([
+            'group' => $request->input('group'),
+            'admin_id' => auth()->user()->id,
+        ]);
+        $group->users()->attach(auth()->user()->id);
+        return redirect()->route('gc.index');
+    }
 
-        return response()->json(['messages' => $gm]);
+    public function addUser(Group $group, User $user)
+    {
+        $group->users()->attach($user->id);
+        return redirect()->route('groups.show', ['group' => $group->id]);
+    }
+
+    public function removeUser(Group $group, User $user)
+    {
+        $group->users()->detach($user->id);
+        return redirect()->route('groups.show', $group->id);
+    }
+
+    public function showMessage(Group $group)
+    {
+        $messages = $group->group_messages;
+        $users = User::whereDoesntHave('groups', function ($query) use ($group) {
+            $query->where('group_id', $group->id);
+        })->get();
+        return view('EU.chat.chat-show', compact('group', 'messages', 'users'));
     }
 }

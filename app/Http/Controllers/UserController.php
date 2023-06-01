@@ -258,9 +258,8 @@ class UserController extends Controller
         }
         else {
             $roles = $request->role_id;
-            $user = User::whereHas('role', function ($query) use ($roles) {
-                $query->whereIn('role_id', $roles);
-            })->with('role')->get();
+            $user = User::where('role_id','=', $roles)->with('role')->get();
+            // return $user;
             $r = Role::where('id','=',$roles)->first();
             // return $r;
             $activeRoleName = $r ? $r->role : ''; // Mengambil roleName jika role_id valid

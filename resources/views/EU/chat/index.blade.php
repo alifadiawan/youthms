@@ -15,13 +15,13 @@
                 <div class="chat-area">
                     <!-- chatlist -->
                     <div class="chatlist">
-                        <div class="modal-dialog-scrollable">
+                        <div class="modal-dialog-scrollable modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="chat-header">
                                     <div class="msg-search">
                                         <input type="text" class="form-control" id="inlineFormInputGroup"
                                             placeholder="Search" aria-label="search">
-                                        <a class="add" href="#"><img class="img-fluid"
+                                        <a class="add" data-bs-toggle="modal" data-bs-target="#addGroupModal" href="#"><img class="img-fluid"
                                                 src="https://mehedihtml.com/chatbox/assets/img/add.svg" alt="add"></a>
                                     </div>
                                 </div>
@@ -45,14 +45,15 @@
                                                             <h3>Programmer</h3>
                                                         </div>
                                                     </a> -->
+                                                    <hr>
                                                     @if ($group->isEmpty())
                                                         
                                                         <h3 class="text-center my-5">Belum Ada Chat </h3>
                                                         
                                                     @else
                                                         @foreach ($group as $gc)
-                                                            <a href="#"
-                                                                onclick="loadGroupMessages({{ $gc->id }})"
+                                                            <a href="#" 
+                                                                onclick="show({{ $gc->id }})"
                                                                 class="d-flex align-items-center">
                                                                 <div class="flex-shrink-0">
                                                                     <img class="img-fluid"
@@ -96,17 +97,22 @@
                     <!-- chatlist -->
 
                     <!-- chatbox -->
-                    <div class="chatbox" id="chatbox">
+                    <div class="chatbox" id="group">
                         <div class="modal-dialog-scrollable">
                             <div class="modal-content">
-                                <div class="modal-body">
-                                    <h6 class="text-center btn btn-rounded btn-outline-secondary">Silahkan Pilih Pesan Untuk Memulai</h6>
+                                <div class="modal-body text-center">
+                                    <div class="d-flex flex-row justify-content-center align-items-center" style="margin-top:40vh">
+                                        Silahkan Pilih Pesan Untuk Memulai
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <!-- chatbox -->
+
+
 
 
             </div>
@@ -114,4 +120,6 @@
     </div>
     </div>
 
+
+    
 @endsection
