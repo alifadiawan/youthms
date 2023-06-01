@@ -8,9 +8,9 @@
         <div class="col-md-8">
             <a href="{{ route('requestuser.index') }}" class="btn my-3">
                 <i class="fas fa-arrow-left"></i></a>
-                @foreach ($transaksi as $t)
-                    {{ $t->unique_code }}
-                @endforeach
+            @foreach ($transaksi as $t)
+                {{ $t->unique_code }}
+            @endforeach
 
             @foreach ($request_user as $r)
                 @if ($r->status == null)
@@ -51,25 +51,62 @@
                                             dalam sebulan</h5>
                                     </div>
                                 </div>
+
                                 <div class="row mt-5">
+                                    {{-- form yes --}}
                                     <div class="col">
                                         <form action="{{ route('requestuser.update', $r->id) }}" method="POST">
                                             @csrf
                                             @method('put')
                                             <input type="hidden" value="accept" name="status">
-                                            <button type="submit" class="btn btn-success">Yes</button>
+                                            @foreach ($request_user as $r)
+                                                <input type="hidden" value="{{ $r->id }}" name="requser_id">
+                                            @endforeach
+                                            <button type="submit" class="btn btn-success">Accept</button>
                                         </form>
                                         {{-- <a href="" class="btn btn-block btn-success">YES</a> --}}
                                     </div>
-                                    <div class="col">
 
+                                    <div class="col">
                                         <form action="{{ route('requestuser.update', $r->id) }}" method="POST">
                                             @csrf
                                             @method('put')
                                             <input type="hidden" value="declined" name="status">
-                                            <button type="submit" class="btn btn-danger">No</button>
-                                            {{-- <a href="" class="btn btn-block btn-secondary">No</a> --}}
+                                            {{-- <button type="submit" class="btn btn-danger">Decline</button> --}}
+                                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                data-target="#declinedModal">
+                                                declined
+                                            </button>
                                         </form>
+                                    </div>
+
+                                    {{-- benekno modal e lip ;-; --}}
+                                    <div class="modal fade" id="declinedModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="declinedModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="declinedModalLabel">Modal title</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="note">Alasan ditolaknya request?</label>
+                                                        <div class="form-control">
+                                                            <textarea name="note" id="note" cols="30" rows="10"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
