@@ -4,54 +4,84 @@
         <div class="container d-md-flex align-items-center" data-aos="fade-up" data-aos-duration="2000">
             <div class="card box1 shadow-sm p-md-7 p-md-5 p-4" style="border-radius: 25px">
                 <div class="d-flex flex-column">
-                    {{-- <div class="d-flex align-items-center justify-content-between text"> <span
-                            class="">Commission</span>
-                        <span class="fas fa-dollar-sign"><span class="ps-1">1.99</span></span>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between text mb-4"> <span>Total</span> <span
-                            class="fas fa-dollar-sign"><span class="ps-1">600.99</span></span> </div>
-                    <div class="border-bottom mb-4"></div> --}}
-                    <div class="d-flex flex-column mb-4"> <span class="fas fa-credit-card"><span class="ps-2">Pembayaran
-                                Via ATM
-                                :<br><br></span></span> <span class="ps-3" style="font-size: 16px; line-height:normal">LANGKAH 1 : TEMUKAN ATM
-                            TERDEKAT<br>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    <i class="fa-solid fa-building-columns me-2"></i> Pembayaran Via ATM
+                                </button>
+                            </div>
+                            <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+                                <div class="card-body">
+                                    <span class="text-dark" style="font-size: 16px; line-height:normal">LANGKAH 1 : TEMUKAN
+                                        ATM
+                                        TERDEKAT<br>
 
-                            1. Masukkan kartu, kemudian pilih bahasa dan masukkan PIN anda<br>
-                            2. Pilih "Transaksi Lain" dan pilih "Pembayaran"<br>
-                            3. Pilih menu "Lainnya" dan pilih "Briva"<br><br>
+                                        1. Masukkan kartu, kemudian pilih bahasa dan masukkan PIN anda<br>
+                                        2. Pilih "Transaksi Lain" dan pilih "Pembayaran"<br>
+                                        3. Pilih menu "Lainnya" dan pilih "Briva"<br><br>
 
-                            LANGKAH 2 : DETAIL PEMBAYARAN<br>
+                                        LANGKAH 2 : DETAIL PEMBAYARAN<br>
 
-                            1. Masukkan Nomor Virtual Account 92001981045887568 dan jumlah yang ingin anda bayarkan<br>
-                            2. Periksa data transaksi dan tekan "YA"<br><br>
+                                        1. Masukkan Nomor Virtual Account 92001981045887568 dan jumlah yang ingin anda
+                                        bayarkan<br>
+                                        2. Periksa data transaksi dan tekan "YA"<br><br>
 
-                            LANGKAH 3 : TRANSAKSI BERHASIL<br>
+                                        LANGKAH 3 : TRANSAKSI BERHASIL<br>
 
-                            1. Setelah transaksi anda selesai, invoice ini akan diupdate secara otomatis. Proses ini mungkin
-                            memakan waktu hingga 5 menit
+                                        1. Setelah transaksi anda selesai, invoice ini akan diupdate secara otomatis. Proses
+                                        ini mungkin
+                                        memakan waktu hingga 5 menit
 
-                        </span> </div>
-                    <div class="d-flex flex-column mb-5"> <span class="fas fa-mobile-android-alt"><span
-                                class="ps-2">Pembayaran Via M-Banking :</span></span><br>
-                        <span class="ps-3" style="font-size: 16px">LANGKAH 1 : MASUK KE AKUN ANDA<br>
-                            1. Buka aplikasi BRI Mobile Banking, masukkan USER ID dan PIN anda<br>
-                            2. Pilih "Pembayaran" dan pilih "Briva"<br><br>
-
-                            LANGKAH 2 : DETAIL PEMBAYARAN<br>
-
-                            1. Masukkan Nomor Virtual Account anda 92001981045887568 dan jumlah yang ingin anda bayarkan<br>
-                            2. Masukkan PIN Mobile Banking BRI<br><br>
-
-                            LANGKAH 3 : TRANSAKSI BERHASIL<br>
-
-                            1. Setelah transaksi anda selesai, invoice ini akan diupdate secara otomatis. Proses ini mungkin
-                            memakan waktu hingga 5 menit</span>
-                    </div>
-                    {{-- <div class="d-flex align-items-center justify-content-between text mt-5">
-                        <div class="d-flex flex-column text"> <span>Customer Support:</span> <span>online chat 24/7</span>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="btn btn-primary rounded-circle"><span class="fas fa-comment-alt"></span></div>
-                    </div> --}}
+
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <i class="fa-solid fa-money-bill-transfer me-2"></i> Pembayaran Via M-Banking
+                                </button>
+                            </div>
+                            <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                                <div class="card-body">
+                                    <span class="text-dark" style="font-size: 16px">
+                                        LANGKAH 1 : MASUK KE AKUN ANDA<br>
+                                        1. Buka aplikasi BRI Mobile Banking, masukkan USER ID dan PIN anda<br>
+                                        2. Pilih "Pembayaran" dan pilih "Briva"<br><br>
+
+                                        LANGKAH 2 : DETAIL PEMBAYARAN<br>
+
+                                        1. Masukkan Nomor Virtual Account anda 92001981045887568 dan jumlah yang ingin anda
+                                        bayarkan<br>
+                                        2. Masukkan PIN Mobile Banking BRI<br><br>
+
+                                        LANGKAH 3 : TRANSAKSI BERHASIL<br>
+
+                                        1. Setelah transaksi anda selesai, invoice ini akan diupdate secara otomatis. Proses
+                                        ini mungkin
+                                        memakan waktu hingga 5 menit</span>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="card text-dark">
+                            <div class="card-header">
+                              <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
+                                Collapsible Group Item #3
+                              </a>
+                            </div>
+                            <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+                              <div class="card-body">
+                                <ol>
+                                    <li>Buka aplikasi BRI Mobile Banking, masukkan USER ID dan PIN anda</li>
+                                </ol>
+                              </div>
+                            </div>
+                          </div> --}}
+                    </div>
                 </div>
             </div>
             <div class="card box2 shadow-lg">
@@ -82,7 +112,8 @@
                                         value="92001981045887568">
                                     <span class=""> <img
                                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp8sk1NR5zI_Y3oPUKd2EovsQDejDMv14as0jINjnIOQVf9jE&s"
-                                            alt="" style="width: 100%"></span> </div>
+                                            alt="" style="width: 100%"></span>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
