@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\request_user;
 use App\Models\Member;
+use App\Models\termin;
 use App\Models\Transaksi;
 use App\Models\TransaksiDetail;
 use Illuminate\Http\Request;
@@ -59,13 +60,20 @@ class RequestUserController extends Controller
     {
         $reqid = $request;
         
-        $request_user = request_user::where('id', $reqid)->get();
+        $request_user = request_user::where('id', $reqid)->get();;
 
         foreach($request_user as $r){
             $trxid = $r->transaksi_id;
             $status = $r->status;
+            
+            $termin = termin::where('requser_id',$reqid)->get();
         }
         
+        $totaltermin = 0;
+        foreach ($termin as $t ) {
+            $totaltermin +=  $t->harga;
+        }   
+        // return $totaltermin;
         // return $trxid;
 
         // mengambil kolom transaksi 
@@ -87,7 +95,7 @@ class RequestUserController extends Controller
         $grandtotal = $total + $admin;
 
         // $admin = 
-        $compact = ['request_user', 'detail', 'transaksi','total','grandtotal','admin','status'];
+        $compact = ['request_user', 'detail', 'transaksi','total','grandtotal','admin','status','termin','totaltermin'];
         return view('Admin.transaction.YesNo', compact($compact));
     }
 

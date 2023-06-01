@@ -14,18 +14,26 @@ class GroupChatController extends Controller
     {
         $message = GroupMessage::create([
             'group_id' => $request->input('group_id'),
-            'user_id' => $request->input('user_id'),
+            'user_id' => auth()->user()->id,
             'message' => $request->input('message')
         ]);
 
-        event(new GroupMessageSent($message));
+        // event(new GroupMessageSent($message));
 
-        return response()->json(['status' => 'Message sent']);
+        return response()->json(['success' => true]);
+    }
+
+    public function loadNewMessage(Group $group)
+    {
+        $messages = $group->group_messages;
+        return view('EU.chat.new-message', compact('messages'));
     }
 
     public function index()
     {
-        $group = Group::all();
+        $group = Group::whereHas('users', function ($query) {
+            $query->where('user_id', auth()->user()->id);
+        })->get();
 
         return view('EU.chat.index', compact('group'));
     }
@@ -40,10 +48,11 @@ class GroupChatController extends Controller
         return redirect()->route('gc.index');
     }
 
-    public function addUser(Group $group, User $user)
+    public function addUser(Group $group, Request $request)
     {
-        $group->users()->attach($user->id);
-        return redirect()->route('groups.show', ['group' => $group->id]);
+        $userid = $request->input('users');
+        $group->users()->attach($userid);
+        return redirect()->route('gc.index');
     }
 
     public function removeUser(Group $group, User $user)

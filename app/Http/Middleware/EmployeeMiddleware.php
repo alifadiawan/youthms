@@ -25,7 +25,11 @@ class EmployeeMiddleware
             // cek apakah pengguna terdaftar sebagai klien
             if (in_array($user_role, $staff)) {
                 return $next($request);
+<<<<<<< HEAD
             } elseif ($user_role == "client") {
+=======
+            } elseif ($user_role == 'client') {
+>>>>>>> 09e1f0325a70c5062fbb85a05e3ce3df22f3c0fd
                 return $next($request);
             } else {
                 return redirect()->back();

@@ -183,8 +183,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <!-- Virtaul Account -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header">

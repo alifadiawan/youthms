@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class termin extends Model
 {
     use HasFactory;
+    protected $guarderd = [];
+
+    public function requser()
+    {
+        return $this->belongsTo(request_user::class);
+    }
 }

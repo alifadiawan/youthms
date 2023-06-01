@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('termins', function (Blueprint $table) {
             $table->id();
-            // $table->string('');
+            $table->date('tanggal');
+            $table->integer('harga');
             $table->unsignedBigInteger('requser_id');
             $table->foreign('requser_id')->references('id')->on('request_users')
                 ->onupdate('cascade')

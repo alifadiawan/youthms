@@ -1,6 +1,7 @@
 @extends('layout-landing2.body')
 {{-- @extends('layout-landing.body') --}}
 @section('content')
+
     <!-- ======= Hero Section ======= -->
     <section class="hero" id="hero" class="d-flex align-items-center">
         <div class="container">
@@ -19,9 +20,10 @@
                 </div>
             </div>
         </div>
-
     </section>
     <!-- End Hero -->
+
+
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
         <div class="container" data-aos="fade-up">

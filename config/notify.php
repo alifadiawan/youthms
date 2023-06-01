@@ -44,6 +44,12 @@ return [
             'model' => 'connect',
             'title' => 'User Updated',
         ],
+        'error' => [
+            'message' => 'ERROR',
+            'type' => 'success',
+            'model' => 'connect',
+            'title' => 'ERROR',
+        ],
     ],
 
 ];
