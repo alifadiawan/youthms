@@ -8,6 +8,9 @@
         <div class="col-md-8">
             <a href="{{ route('requestuser.index') }}" class="btn my-3">
                 <i class="fas fa-arrow-left"></i></a>
+                @foreach ($transaksi as $t)
+                    {{ $t->unique_code }}
+                @endforeach
 
             @foreach ($request_user as $r)
                 @if ($r->status == null)
