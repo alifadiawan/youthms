@@ -72,6 +72,7 @@ Route::get('/group-chat/{group}', [GroupChatController::class, 'showMessage'])->
 Route::post('/group-chat/{group}/add-users', [GroupChatController::class, 'addUser'])->name('gc.users.add');
 Route::post('/group-chat/{group}/remove-users', [GroupChatController::class, 'removeUser'])->name('gc.users.remove');
 Route::get('/group-chat/load/{group}', [GroupChatController::class, 'loadNewMessage'])->name('gc.load');
+Route::post('/group-chat/join', [GroupChatController::class, 'joinGroup'])->name('gc.join');
 
 
 

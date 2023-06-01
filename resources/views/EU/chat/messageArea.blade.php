@@ -73,7 +73,7 @@
     function startPolling() {
         setInterval(function() {
             loadNewMessages();
-        }, 10000); // Ubah angka ini menjadi waktu refresh dalam milidetik (misalnya, 5000 untuk refresh setiap 5 detik)
+        }, 20000); // Ubah angka ini menjadi waktu refresh dalam milidetik (misalnya, 5000 untuk refresh setiap 5 detik)
     }
 
     // Panggil fungsi startPolling saat halaman selesai dimuat
