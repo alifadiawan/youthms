@@ -7,16 +7,19 @@
                 <a href="{{ route('cart.index') }}" class="btn my-3">
                     <i class="fas fa-arrow-left"></i></a>
                     <div class="card mb-3 shadow rounded-3">
+                        @foreach ($transaksi as $t)
+                            
+                        @endforeach
                         <div class="row my-3 mx-3 mx-lg-4">
                             <div class="col-6 col-lg text-start">
                                 <strong>INVOCE</strong>
                             </div>
                             <div class="col-6 col-lg text-end text-lg-end">
-                                <p class="text-muted">D6759869</p>
+                                <p class="text-muted">{{ $t->unique_code }}</p>
                             </div>
                         </div>
             
-                        <div class="konten my-lg-0 mx-5">
+                        {{-- <div class="konten my-lg-0 mx-5">
                             <div class="row">
                                 <div class="col">
                                     <div class="row">
@@ -53,7 +56,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
             
                         <div class="konten mt-3 mx-3">
                             <table class="table table-bordered">
@@ -72,6 +75,12 @@
                                         <td class="text-end">Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</td>
                                     </tr>
                                     @endforeach 
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2" class="text-end">Total</td>
+                                        <td colspan="1" class="text-end">Rp. {{ number_format($total, 0, ',', '.') }}</td>
+                                    </tr>
                                 </tbody>
                                 <tbody>
                                     <tr>
@@ -157,7 +166,7 @@
                                     <div class="accordion-body">
                                         <div class="row">
                                             <div class="col">
-                                                <a href="/cara">
+                                                <a href="">
                                                     <img class="img-thumbnail border-0" src="{{ asset('mandiri.png') }}"
                                                         style="width: 15rem" alt="">
                                                 </a>
@@ -216,9 +225,10 @@
                                                     <label for="">Jangka Waktu</label>
                                                     <div class="row">
                                                         <div class="col">
+                                                            {{-- pending --}}
                                                             <label for="">tanggal mulai</label>
                                                             <input type="date" id="tanggal" name="tanggal_mulai"
-                                                                class="form-control" value="{{ $t }}" min="{{ date('Y-m-d') }}" value="{{ old('tanggal_mulai') }}" required> 
+                                                                class="form-control" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" required> 
                                                         </div>
                                                         <div class="col">
                                                             <label for="">tanggal akhir</label>
@@ -241,13 +251,13 @@
                                 </div>
                             </div>
 
-                            <!-- Cash -->
+                            <!-- E-wallet -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseThree" aria-expanded="false"
                                         aria-controls="flush-collapseThree">
-                                        <i class="fa-solid fa-money-bill me-2"></i> Cash
+                                        <i class="fa-solid fa-money-bill me-2"></i> E-Wallet
                                     </button>
                                 </h2>
                                 <div id="flush-collapseThree" class="accordion-collapse collapse"
@@ -258,18 +268,24 @@
                                 data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
                                     <form action="">
-                                        <div class="form">
-                                            <div class="form-gorup">
-                                                <label for="">Nama Pemesan / Instansi</label>
-                                                <input type="text" class="form-control">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="">
+                                                    {{-- <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt=""> --}}
+                                                        <button>ceritanya gambarnya gopay</button>
+                                                </a>
+                                                <a href="">
+                                                    {{-- <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt=""> --}}
+                                                        <button>ceritanya gambarnya shoppee</button>
+                                                </a>
+                                                <a href="">
+                                                    {{-- <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt=""> --}}
+                                                        <button>ceritanya gambarnya qris</button>
+                                                </a>
                                             </div>
-                                            <div class="form-gorup">
-                                                <label for="">bayar </label>
-                                                <input type="number" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-success" type="submit">Bayar</button>
                                         </div>
                                     </form>
                                 </div>

@@ -19,14 +19,14 @@ class RequestUserController extends Controller
         $auth = auth()->user();
         $user = $auth->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
-        $user_role = $auth->roles->pluck('role')->toarray();
+        $user_role = $auth->role->role;
+        // return $user_role;
 
         $requestUser = request_user::all();
         $all = transaksi::where('member_id', $member)->get();
         $pending = request_user::where('transaksi_id', $trxid)->get();
-        // return $pending;
 
-        if (in_array('client', $user_role)) {
+        if ($user_role == "client") {
             $compact = [];
             return view('EU.transaction.kredit', compact($compact));
         }
@@ -60,24 +60,34 @@ class RequestUserController extends Controller
         $reqid = $request;
         
         $request_user = request_user::where('id', $reqid)->get();
-        
+
         foreach($request_user as $r){
             $trxid = $r->transaksi_id;
+            $status = $r->status;
         }
+        
         // return $trxid;
+
+        // mengambil kolom transaksi 
         $transaksi = Transaksi::where('id', $trxid)->get();
+
+        // mengambil semua kolom detail transaksi yang berforeign sama seperti $trxid
         $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
 
+        // menjabarkan semua kolom, lalu dijumlahkan
         $total = 0;
         foreach ($detail as $d) {
             $total += $d->produk->harga * $d->quantity;
         }
 
+        // mencari harga admin
         $admin = $total * 0.11;
+    
+        // mencari harga total
         $grandtotal = $total + $admin;
 
         // $admin = 
-        $compact = ['request_user', 'detail', 'transaksi','total','grandtotal','admin'];
+        $compact = ['request_user', 'detail', 'transaksi','total','grandtotal','admin','status'];
         return view('Admin.transaction.YesNo', compact($compact));
     }
 
