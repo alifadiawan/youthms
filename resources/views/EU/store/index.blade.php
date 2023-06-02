@@ -45,7 +45,8 @@
             @foreach ($populer as $p)
                 <div class="col-lg col-md-4 col-6 my-2">
                     <div class="card border-0 shadow">
-                        <img src="{{ asset('produk/'.$p->foto) }}" class="card-img-top " alt="..." style="width: 15.3rem; height: 15.3rem">
+                        <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
+                            style="width: 15.3rem; height: 15.3rem">
                         <div class="card-body">
                             <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                             {{-- <p class="card-title text-secondary">{{ $p->services->judul }}</p> --}}
@@ -187,7 +188,8 @@
                     @foreach ($ls->produk as $p)
                         <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="card card-hover border-0 shadow">
-                                <img src="{{ asset('produk/'.$p->foto) }}" class="card-img-top " alt="..." style="width: 19rem; height: 19rem">
+                                <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
+                                    style="width: 19rem; height: 19rem">
                                 <div class="card-body">
                                     <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                                     <p class="card-title text-secondary">{{ $ls->judul }}</p>
@@ -249,19 +251,26 @@
                                                                 <i class="fas fa-plus"></i>
                                                             </button>
                                                         @endforeach --}}
-                                                        <button class="btn btn-outline-primary decrease-quantity-btn"
-                                                            onclick="decreaseQuantity(this)">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
-                                                        @foreach ($cart as $c)
-                                                            <input id="quantity_input_{{ $c->produk_id }}" type="number"
-                                                                value="{{ $c->quantity }}" readonly>
-                                                        @endforeach
-                                                        <button class="btn btn-outline-primary increase-quantity-btn"
-                                                            onclick="increaseQuantity(this)">
-                                                            <i class="fas fa-plus"></i>
-                                                        </button>
+                                                        <div class="form-outline">
+                                                            <button class="btn btn-sm yms-blue rounded-5 px-3 me-2 decrease-quantity-btn"
+                                                                onclick="decreaseQuantity(this)">
+                                                                <i class="fas fa-minus"></i>
+                                                            </button>
+                                                        </div>
 
+                                                        <div class="form-outline">
+                                                                {{-- <input id="quantity_input_{{ $c->produk_id }}" class="form-control" type="number"
+                                                                    value="{{ $c->quantity }}" readonly> --}}
+                                                                {{-- <input id="quantity_input_{{ $p->id }}" class="form-control" type="number"
+                                                                    value="{{ $cart }}" readonly> --}}
+                                                        </div>
+                                                        
+                                                        <div class="form-outline">
+                                                            <button class="btn btn-sm yms-blue rounded-5 px-3 me-2 increase-quantity-btn"
+                                                                onclick="increaseQuantity(this)">
+                                                                <i class="fas fa-plus"></i>
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                     <!-- Quantity -->
                                                 </div>
@@ -303,45 +312,6 @@
 
 
     <script>
-        function decreaseQuantity(button) {
-            const cartId = button.getAttribute('data-cart-id');
-            const input = document.querySelector(`input[data-cart-id="${cartId}"]`);
-
-            if (input.value > 1) {
-                input.value = parseInt(input.value) - 1;
-                updateQuantity(cartId, input.value);
-            }
-        }
-
-        function increaseQuantity(button) {
-            const cartId = button.getAttribute('data-cart-id');
-            const input = document.querySelector(`input[data-cart-id="${cartId}"]`);
-
-            input.value = parseInt(input.value) + 1;
-            updateQuantity(cartId, input.value);
-        }
-
-        function updateCartQuantity(cart_Id, newQuantity) {
-            var cartId = cart_Id.split('_')[2]; // Mengambil id cart dari id input
-
-            // Permintaan AJAX untuk memperbarui quantity produk
-            $.ajax({
-                url: '/update-cart',
-                method: 'POST',
-                data: {
-                    cartId: cartId,
-                    newQuantity: newQuantity
-                },
-                success: function(response) {
-                    // Tanggapan berhasil dari server
-                    console.log(response);
-                },
-                error: function(xhr, status, error) {
-                    // Penanganan kesalahan
-                    console.log(xhr.responseText);
-                }
-            });
-        }
 
         window.onload = function() {
             let scrollPosition = sessionStorage.getItem('scrollPosition');

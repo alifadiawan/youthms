@@ -56,6 +56,7 @@
                                         </button>
                                     </form>
                                     <!-- Data -->
+
                                     <!-- Quantity -->
                                     <div class="d-flex mb-4 my-lg-5 my-3" style="max-width: 150px">
                                         <button class="btn btn-outline-primary me-2" onclick="decreaseQuantity(this);">
