@@ -76,17 +76,19 @@
                                                 <!-- Quantity -->
                                                 <div class="d-flex gap-0">
                                                     <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
-                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                        onclick="decreaseQuantity(this)">
                                                         <i class="fas fa-minus"></i>
                                                     </button>
 
                                                     <div class="form-outline">
-                                                        <input id="form1" min="1" name="quantity" value="1"
+                                                        <input id="form_{{ $p->id }}" {{-- value="{{ $cart[0]->quantity }}"  --}}
+                                                            value="{{ $p->id }}" min="1"name="quantity"
+                                                            onchange="updateQuantity(this)"
                                                             type="number" class="form-control" readonly />
                                                     </div>
 
                                                     <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
-                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                        onclick="increaseQuantity(this)">
                                                         <i class="fas fa-plus"></i>
                                                     </button>
                                                 </div>
@@ -125,10 +127,6 @@
             @endforeach
 
         </div>
-
-
-
-
 
         {{-- @foreach ($populer as $p)
             <div class="row">
@@ -252,24 +250,26 @@
                                                             </button>
                                                         @endforeach --}}
                                                         <div class="form-outline">
-                                                            <button class="btn btn-sm yms-blue rounded-5 px-3 me-2 decrease-quantity-btn"
+                                                            {{-- <button
+                                                                class="btn btn-sm yms-blue rounded-5 px-3 me-2 decrease-quantity-btn"
                                                                 onclick="decreaseQuantity(this)">
                                                                 <i class="fas fa-minus"></i>
-                                                            </button>
+                                                            </button> --}}
                                                         </div>
 
                                                         <div class="form-outline">
-                                                                {{-- <input id="quantity_input_{{ $c->produk_id }}" class="form-control" type="number"
+                                                            {{-- <input id="quantity_input_{{ $c->produk_id }}" class="form-control" type="number"
                                                                     value="{{ $c->quantity }}" readonly> --}}
-                                                                {{-- <input id="quantity_input_{{ $p->id }}" class="form-control" type="number"
+                                                            {{-- <input id="quantity_input_{{ $p->id }}" class="form-control" type="number"
                                                                     value="{{ $cart }}" readonly> --}}
                                                         </div>
-                                                        
+
                                                         <div class="form-outline">
-                                                            <button class="btn btn-sm yms-blue rounded-5 px-3 me-2 increase-quantity-btn"
+                                                            {{-- <button
+                                                                class="btn btn-sm yms-blue rounded-5 px-3 me-2 increase-quantity-btn"
                                                                 onclick="increaseQuantity(this)">
                                                                 <i class="fas fa-plus"></i>
-                                                            </button>
+                                                            </button> --}}
                                                         </div>
                                                     </div>
                                                     <!-- Quantity -->
@@ -312,6 +312,56 @@
 
 
     <script>
+        function getCartQuantity(productId) {
+            $.ajax({
+                url: '{{ route('api.quantity.cart') }}',
+                method: 'GET',
+                success: function(response) {
+                    $('#form_' + productId).val(response.quantity);
+                }
+            });
+        }
+
+        function decreaseQuantity(button) {
+            // var input = document.getelementbyid('form_' + productId);
+            // var quantity = parseInt(input.value);
+            var input = $(button).siblings('.form-outline').find('input');
+            var quantity = parseInt($(input).val());
+            if (quantity > 1) {
+                $(input).val(quantity - 1).trigger('change');
+            }
+
+            // if (quantity > 1) {
+            //     input.value = quantity - 1;
+            //     updateQuantity(productId, quantity - 1);
+            // }
+        }
+
+        function increaseQuantity(button) {
+            // var input = document.getelementbyid('form_' + productId);
+            // var quantity = parseInt(input.value);
+            var input = $(button).siblings('.form-outline').find('input');
+            var quantity = parseInt($(input).val());
+            $(input).val(quantity + 1).trigger('change');
+
+
+            input.value = quantity + 1;
+            updateQuantity(productId, quantity + 1);
+        }
+
+        function updateQuantity(productId) {
+            $.ajax({
+                url: '{{ route('api.update.cart') }}',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    quantity: newQuantity
+                },
+                success: function(response) {
+                    // Tindakan setelah berhasil memperbarui quantity
+                }
+            });
+        }
 
         window.onload = function() {
             let scrollPosition = sessionStorage.getItem('scrollPosition');

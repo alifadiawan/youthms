@@ -35,8 +35,8 @@
                                     <!-- Image -->
                                     <div class="bg-image hover-overlay hover-zoom ripple rounded"
                                         data-mdb-ripple-color="light">
-                                        <img src="{{asset('produk/'.$c->produk->foto)}}"
-                                            class="w-100" alt="Blue Jeans Jacket" />
+                                        <img src="{{ asset('produk/' . $c->produk->foto) }}" class="w-100"
+                                            alt="Blue Jeans Jacket" />
                                         <a href="#!">
                                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
                                         </a>
@@ -47,7 +47,7 @@
                                 <div class="col-lg-5 col-md-6 col-8 mb-4 mb-lg-0">
                                     <!-- Data -->
                                     <p class="text-capitalize text-start"><strong>{{ $c->produk->nama_produk }}</strong></p>
-                                    <form action="{{ route('cart.destroy', $c->id) }}" method="post">
+                                    <form action="{{ route('cart.destroy', $c->produk_id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger me-2" data-mdb-toggle="tooltip"
@@ -62,13 +62,13 @@
                                         <button class="btn btn-outline-primary me-2" onclick="decreaseQuantity(this);">
                                             <i class="fas fa-minus"></i>
                                         </button>
-    
+
                                         <div class="form-outline">
                                             <input id="quantity_{{ $c->id }}" min="1" name="quantity"
                                                 value="{{ $c->quantity }}" type="number" class="form-control"
                                                 onchange="updateQuantity(this)" readonly />
                                         </div>
-    
+
                                         <button class="btn btn-outline-primary ms-2" id="plus"
                                             onclick="increaseQuantity(this)">
                                             <i class="fas fa-plus"></i>
@@ -152,7 +152,7 @@
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
                                 {{ $c->produk->nama_produk }}
-                                <span>{{$c->quantity}}x</span>
+                                <span id="qty{{ $c->id }}">{{ $c->quantity }}x</span>
                                 <span id="total-price_{{ $c->id }}">Rp.
                                     {{ number_format($c->quantity * $c->produk->harga, 0, ',', '.') }}</span>
                             </li>
@@ -167,25 +167,18 @@
                             <span><strong></strong></span>
                         </li>
                     </ul>
-
-                    @if ($cart->isEmpty())
-                        <h2>GABOLE CHECK OUT</h2>
-                        <h5>masi Rp. 0 tuh, kaya dompetku :(</h5>
-                    @else
-                        <form id="checkout-form" action="{{ route('transaksi.create') }}" method="put">
-                            @csrf
-                            @method('put')
-                            <input type="hidden" name="member_id" value="{{ $member }}">
-                            <input type="hidden" name="total" id="total" value="{{ $totalTransaksi }}">
-                            @foreach ($cart as $c)
-                                <input type="hidden" name="produk_id[]" value="{{ $c->produk->id }}">
-                            @endforeach
-                            <button type="submit" id="checkout" class="btn btn-success btn-lg btn-block"
-                                style="display: ">
-                                Go to checkout
-                            </button>
-                        </form>
-                    @endif
+                    <form id="checkout-form" action="{{ route('transaksi.create') }}" method="put">
+                        @csrf
+                        @method('put')
+                        <input type="hidden" name="member_id" value="{{ $member }}">
+                        <input type="hidden" name="total" id="total" value="{{ $totalTransaksi }}">
+                        @foreach ($cart as $c)
+                            <input type="hidden" name="produk_id[]" value="{{ $c->produk->id }}">
+                        @endforeach
+                        <button type="submit" id="checkout" class="btn btn-success btn-lg btn-block" style="display: ">
+                            Go to checkout
+                        </button>
+                    </form>
                     <hr>
                 </div>
             </div>
@@ -213,7 +206,7 @@
                     var formattedPrice = response.item_total_price.toLocaleString('id-ID');
                     formattedPrice = formattedPrice.replace(".", ",");
                     $('#total-price_' + cartId).text("Rp. " + formattedPrice);
-                    
+                    $('#qty' + cartId).text(newQuantity + "x");
                 }
             });
 
