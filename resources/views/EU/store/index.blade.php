@@ -261,6 +261,8 @@
                                                         <div class="form-outline">
                                                                 {{-- <input id="quantity_input_{{ $c->produk_id }}" class="form-control" type="number"
                                                                     value="{{ $c->quantity }}" readonly> --}}
+                                                                {{-- <input id="quantity_input_{{ $p->id }}" class="form-control" type="number"
+                                                                    value="{{ $cart }}" readonly> --}}
                                                         </div>
                                                         
                                                         <div class="form-outline">
