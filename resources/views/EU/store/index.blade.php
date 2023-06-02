@@ -45,7 +45,7 @@
             @foreach ($populer as $p)
                 <div class="col-lg col-md-4 col-6 my-2">
                     <div class="card border-0 shadow">
-                        <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top " alt="...">
+                        <img src="{{ asset('produk/'.$p->foto) }}" class="card-img-top " alt="..." style="width: 15.3rem; height: 15.3rem">
                         <div class="card-body">
                             <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                             {{-- <p class="card-title text-secondary">{{ $p->services->judul }}</p> --}}
@@ -187,7 +187,7 @@
                     @foreach ($ls->produk as $p)
                         <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="card card-hover border-0 shadow">
-                                <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
+                                <img src="{{ asset('produk/'.$p->foto) }}" class="card-img-top " alt="..." style="width: 19rem; height: 19rem">
                                 <div class="card-body">
                                     <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                                     <p class="card-title text-secondary">{{ $ls->judul }}</p>

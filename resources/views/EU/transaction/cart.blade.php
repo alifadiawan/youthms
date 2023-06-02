@@ -35,7 +35,7 @@
                                     <!-- Image -->
                                     <div class="bg-image hover-overlay hover-zoom ripple rounded"
                                         data-mdb-ripple-color="light">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
+                                        <img src="{{asset('produk/'.$c->produk->foto)}}"
                                             class="w-100" alt="Blue Jeans Jacket" />
                                         <a href="#!">
                                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
@@ -46,8 +46,8 @@
 
                                 <div class="col-lg-5 col-md-6 col-8 mb-4 mb-lg-0">
                                     <!-- Data -->
-                                    <p class="text-capitalize"><strong>{{ $c->produk->nama_produk }}</strong></p>
-                                    <form action="{{ route('cart.destroy', $c->produk_id) }}" method="post">
+                                    <p class="text-capitalize text-start"><strong>{{ $c->produk->nama_produk }}</strong></p>
+                                    <form action="{{ route('cart.destroy', $c->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger me-2" data-mdb-toggle="tooltip"
