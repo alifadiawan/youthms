@@ -2780,8 +2780,8 @@ section {
     }
 }
 
-.error {
-    /* justify-content: center; */
+.error .container{
+    align-items: center;
     margin-left: 400px;
     font-family: "Poppins", sans-serif;
     animation: floating 3s ease-out infinite;
