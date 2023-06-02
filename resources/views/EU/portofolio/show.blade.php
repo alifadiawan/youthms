@@ -2,7 +2,7 @@
 @section('title', 'Show Portofolio')
 @section('content')
 
-    <div id="container" class="container mt-5">
+    <div id="container" class="container my-5">
         <div class="card p-5">
 
             <a href="{{ route('portfolio.index') }}">
@@ -42,11 +42,10 @@
     <!-- Show Images modal -->
     @foreach ($pic as $modal)
       <div class="modal fade" id="foto{{$modal->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">

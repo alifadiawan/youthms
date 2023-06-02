@@ -483,6 +483,37 @@ h6 {
     border-radius: 0px 0px 200px 200px;
 }
 
+@media (max-width: 575px) {
+    #hero-portofolio{
+        border-radius: 0px 0px 200px 200px;
+    }
+
+    h1{
+        text-align: center;
+        font-size: 27px
+    }
+    p{
+        text-align: center;
+        font-size: 3px;
+    }
+
+}
+
+@media (max-width: 876px) {
+    #hero-portofolio{
+        border-radius: 0px 0px 100px 100px;
+    }
+
+    h1{
+        text-align: center;
+        font-size:30px
+    }
+    p{
+        text-align: center;
+        font-size: 13px;
+    }
+}
+
 
 /* 
 #hero .container {
