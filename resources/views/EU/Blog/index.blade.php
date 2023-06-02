@@ -13,7 +13,7 @@
                                         height="100%" style="border-radius: 20px">
                                     <div class="trend-top-cap">
                                         {{-- <span>Pemrograman 5</span> --}}
-                                        <h2><a href="/news_lengkap">Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit.</a>
+                                        <h2><a href="/blog-detail">Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit.</a>
                                         </h2>
                                     </div>
                                 </div>
@@ -29,7 +29,7 @@
                                             </div>
                                             <div class="trend-bottom-cap">
                                                 <span class="color1">Design</span>
-                                                <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
+                                                <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -42,7 +42,7 @@
                                             <div class="trend-bottom-cap">
                                                 <span class="color2">Editing</span>
                                                 <h4>
-                                                    <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
+                                                    <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
                                                 </h4>
                                             </div>
                                         </div>
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="trend-bottom-cap">
                                                 <span class="color3">Pemrograman</span>
-                                                <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
+                                                <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -69,7 +69,7 @@
                                             </div>
                                             <div class="trend-bottom-cap">
                                                 <span class="color1">Design</span>
-                                                <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
+                                                <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -82,7 +82,7 @@
                                             <div class="trend-bottom-cap">
                                                 <span class="color2">Editing</span>
                                                 <h4>
-                                                    <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
+                                                    <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
                                                 </h4>
                                             </div>
                                         </div>
@@ -96,7 +96,7 @@
                                             <div class="trend-bottom-cap">
                                                 <span class="color2">Editing</span>
                                                 <h4>
-                                                    <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
+                                                    <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
                                                 </h4>
                                             </div>
                                         </div>
@@ -109,7 +109,7 @@
                                             </div>
                                             <div class="trend-bottom-cap">
                                                 <span class="color3">Pemrograman</span>
-                                                <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
+                                                <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -134,64 +134,64 @@
                                     <div class="col-lg-12">
                                         <div class="trand-right-single d-flex">
                                             <div class="trand-right-img">
-                                                <img src="{{ asset('illustration/il3.jpg') }}" alt="" width="100px"
-                                                    height="100%">
+                                                <img src="{{ asset('illustration/il1.jpg') }}" alt="" width="100px"
+                                                    height="100px">
                                             </div>
                                             <div class="trand-right-cap">
                                                 <span class="color1">Pemrograman 2</span>
-                                                <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                                                <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
                                                 </h4>
                                             </div>
                                         </div>
                                         <div class="trand-right-single d-flex">
                                             <div class="trand-right-img">
-                                                <img src="{{ asset('illustration/il3.jpg') }}" alt="" width="100px"
-                                                    height="100%">
+                                                <img src="{{ asset('illustration/il1.jpg') }}" alt="" width="100px"
+                                                    height="100px">
                                             </div>
                                             <div class="trand-right-cap">
                                                 <span class="color3">Pemrograman 5</span>
-                                                <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                                                <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
                                                 </h4>
                                             </div>
                                         </div>
                                         <div class="trand-right-single d-flex">
                                             <div class="trand-right-img">
-                                                <img src="{{ asset('illustration/il3.jpg') }}" alt="" width="100px"
-                                                    height="100%">
+                                                <img src="{{ asset('illustration/il1.jpg') }}" alt="" width="100px"
+                                                    height="100px">
                                             </div>
                                             <div class="trand-right-cap">
                                                 <span class="color2">Pemrograman 4</span>
-                                                <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                                                <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
                                                 </h4>
                                             </div>
                                         </div>
                                         <div class="trand-right-single d-flex">
                                             <div class="trand-right-img">
-                                                <img src="{{ asset('illustration/il3.jpg') }}" width="100px" height="100%">
+                                                <img src="{{ asset('illustration/il1.jpg') }}" width="100px" height="100%">
                                             </div>
                                             <div class="trand-right-cap">
                                                 <span class="color4">Pemrograman 6</span>
-                                                <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                                                <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
                                                 </h4>
                                             </div>
                                         </div>
                                         <div class="trand-right-single d-flex">
                                             <div class="trand-right-img">
-                                                <img src="{{ asset('illustration/il3.jpg') }}" width="100px" height="100%">
+                                                <img src="{{ asset('illustration/il1.jpg') }}" width="100px" height="100px">
                                             </div>
                                             <div class="trand-right-cap">
                                                 <span class="color4">Pemrograman 6</span>
-                                                <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                                                <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
                                                 </h4>
                                             </div>
                                         </div>
                                         <div class="trand-right-single d-flex">
                                             <div class="trand-right-img">
-                                                <img src="{{ asset('illustration/il3.jpg') }}" width="100px" height="100%">
+                                                <img src="{{ asset('illustration/il1.jpg') }}" width="100px" height="100px">
                                             </div>
                                             <div class="trand-right-cap">
                                                 <span class="color4">Pemrograman 6</span>
-                                                <h4><a href="/news_lengkap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+                                                <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
                                                 </h4>
                                             </div>
                                         </div>

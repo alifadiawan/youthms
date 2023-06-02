@@ -117,7 +117,8 @@ Route::get('/blog/design', function () {
 Route::get('/blog/pemrograman', function () {
     return view('EU.blog.pemrograman');
 });
-Route::get('/qqq', function () {
+
+Route::get('/blog-detail', function () {
     return view('EU.blog.show');
 });
 

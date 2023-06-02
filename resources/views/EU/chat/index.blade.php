@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row my-3">
             <div class="col">
-                <a href="/" class="btn btn-outline-secondary btn-sm">
-                    Back
+                <a href="/" class="">
+                    <i class="fas fa-arrow-left"></i> Back
                 </a>
             </div>
         </div>
