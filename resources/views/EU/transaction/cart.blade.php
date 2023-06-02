@@ -35,8 +35,8 @@
                                     <!-- Image -->
                                     <div class="bg-image hover-overlay hover-zoom ripple rounded"
                                         data-mdb-ripple-color="light">
-                                        <img src="{{asset('produk/'.$c->produk->foto)}}"
-                                            class="w-100" alt="Blue Jeans Jacket" />
+                                        <img src="{{ asset('produk/' . $c->produk->foto) }}" class="w-100"
+                                            alt="Blue Jeans Jacket" />
                                         <a href="#!">
                                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
                                         </a>
@@ -61,13 +61,13 @@
                                         <button class="btn btn-outline-primary me-2" onclick="decreaseQuantity(this);">
                                             <i class="fas fa-minus"></i>
                                         </button>
-    
+
                                         <div class="form-outline">
                                             <input id="quantity_{{ $c->id }}" min="1" name="quantity"
                                                 value="{{ $c->quantity }}" type="number" class="form-control"
                                                 onchange="updateQuantity(this)" readonly />
                                         </div>
-    
+
                                         <button class="btn btn-outline-primary ms-2" id="plus"
                                             onclick="increaseQuantity(this)">
                                             <i class="fas fa-plus"></i>
@@ -151,7 +151,7 @@
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
                                 {{ $c->produk->nama_produk }}
-                                <span>{{$c->quantity}}x</span>
+                                <span id="qty{{$c->id }}">{{ $c->quantity }}x</span>
                                 <span id="total-price_{{ $c->id }}">Rp.
                                     {{ number_format($c->quantity * $c->produk->harga, 0, ',', '.') }}</span>
                             </li>
@@ -213,6 +213,11 @@
                     formattedPrice = formattedPrice.replace(".", ",");
                     $('#total-price_' + cartId).text("Rp. " + formattedPrice);
 
+                    @foreach ($cart as $qty)
+                        var qty{{$qty->id}} = document.getElementById("qty{{$qty->id}}");
+                        // qty{{$qty->id}}.innerHTML = "{{$qty->id}}"+newQuantity;
+                        $('#qty{{$qty->id}}').text("Rp. " + formattedPrice);
+                    @endforeach
                 }
             });
 
@@ -245,6 +250,9 @@
             var input = $(button).siblings('.form-outline').find('input');
             var quantity = parseInt($(input).val());
             $(input).val(quantity + 1).trigger('change');
+
+            // var qty = document.getElementById("qty");
+            // qty.innerHTML = quantity;
         }
 
         function decreaseQuantity(button) {
@@ -252,7 +260,11 @@
             var quantity = parseInt($(input).val());
             if (quantity > 1) {
                 $(input).val(quantity - 1).trigger('change');
+
             }
+            // var qty = document.getElementById("qty");
+            // qty.innerHTML = quantity;
+
         }
     </script>
 @endsection

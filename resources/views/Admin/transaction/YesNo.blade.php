@@ -170,9 +170,7 @@
             </div>
 
             @foreach ($request_user as $r)
-                @if ($r->status == 'declined')
-                    nope
-                @else
+                @if ($r->status == 'accept')
                     <div class="card mb-4">
                         <div class="card-header py-3">
                         </div>
@@ -223,6 +221,8 @@
                             </ul>
                         </div>
                     </div>
+                @elseif ($r->status == "declined")
+                    nope
                 @endif
             @endforeach
 
