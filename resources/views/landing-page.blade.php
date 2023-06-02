@@ -46,7 +46,7 @@
                         <h4>Design</h4>
                         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        <a href="" class="">Lihat lebih lanjut</a>
+                        <a href="/services/all" class="">Lihat lebih lanjut</a>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
@@ -55,7 +55,7 @@
                         <h4>Editing</h4>
                         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        <a href="" class="">Lihat lebih lanjut</a>
+                        <a href="/services/all" class="">Lihat lebih lanjut</a>
                     </div>
                 </div>
                 {{-- <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
