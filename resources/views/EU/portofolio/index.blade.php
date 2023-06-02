@@ -29,7 +29,7 @@
     <div class="container">
         <h1 class="text-center text-uppercase fw-bold mt-5">All of our projects</h1>
         <div class="project">
-            <div class="row justify-content-start">
+            <div class="row justify-content-center justify-content-lg-start">
 
                 @foreach ($porto as $item)
                     <div class="col-lg-3 col-md-6 d-flex mt-4 mb-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">

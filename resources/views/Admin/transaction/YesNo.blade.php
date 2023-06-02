@@ -62,7 +62,7 @@
                                             @foreach ($request_user as $r)
                                                 <input type="hidden" value="{{ $r->id }}" name="requser_id">
                                             @endforeach
-                                            <button type="submit" class="btn btn-success">Accept</button>
+                                            <button class="btn btn-success w-100">Accept</button>
                                         </form>
                                         {{-- <a href="" class="btn btn-block btn-success">YES</a> --}}
                                     </div>
@@ -73,37 +73,28 @@
                                             @method('put')
                                             <input type="hidden" value="declined" name="status">
                                             {{-- <button type="submit" class="btn btn-danger">Decline</button> --}}
-                                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                            <a class="btn btn-danger w-100" data-toggle="modal"
                                                 data-target="#declinedModal">
                                                 declined
-                                            </button>
+                                            </a>
                                         </form>
                                     </div>
 
                                     {{-- benekno modal e lip ;-; --}}
                                     <div class="modal fade" id="declinedModal" tabindex="-1" role="dialog"
                                         aria-labelledby="declinedModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="declinedModalLabel">Modal title</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label for="note">Alasan ditolaknya request?</label>
-                                                        <div class="form-control">
-                                                            <textarea name="note" id="note" cols="30" rows="10"></textarea>
-                                                        </div>
+                                                        <textarea name="note" class="form-control" id="note" cols="30" rows="10"></textarea>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
+                                                <div class="modal-footer text-left">
+                                                    <button class="btn btn-primary">Save changes</button>
+                                                    <button class="btn btn-secondary"
                                                         data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
                                                 </div>
                                             </div>
                                         </div>
