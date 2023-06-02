@@ -4,7 +4,7 @@
 
 
     <!-- Hero section -->
-    <section id="hero-portofolio" class="d-flex align-items-center">
+    <section id="hero-portofolio" class="hero-portofolio d-flex align-items-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 hero-img" data-aos="zoom-in" data-aos-delay="200">
