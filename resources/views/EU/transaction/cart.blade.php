@@ -151,6 +151,7 @@
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
                                 {{ $c->produk->nama_produk }}
+                                <span>{{$c->quantity}}x</span>
                                 <span id="total-price_{{ $c->id }}">Rp.
                                     {{ number_format($c->quantity * $c->produk->harga, 0, ',', '.') }}</span>
                             </li>

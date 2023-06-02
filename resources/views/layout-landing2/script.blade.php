@@ -12,10 +12,26 @@
 <script src="{{ asset('EU/vendor/swiper/swiper-bundle.min.js') }}"></script>
 <script src="{{ asset('EU/vendor/waypoints/noframework.waypoints.js') }}"></script>
 <script src="{{ asset('EU/vendor/php-email-form/validate.js') }}"></script>
-
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 <!-- Template Main JS File -->
 <script src="{{ asset('EU/js/main.js') }}"></script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+    (function() {
+        var s1 = document.createElement("script"),
+            s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/6476f72dad80445890f02086/1h1obb38v';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
+</script>
+<!--End of Tawk.to Script-->
 
 <!-- Logout Modal -->
 <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

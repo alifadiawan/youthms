@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Events\GroupMessageSent;
 use App\Models\GroupMessage;
 use App\Models\Group;
+use Illuminate\Support\Str;
 use App\Models\User;
 
 class GroupChatController extends Controller
@@ -34,14 +35,18 @@ class GroupChatController extends Controller
         $group = Group::whereHas('users', function ($query) {
             $query->where('user_id', auth()->user()->id);
         })->get();
+        // $group = Group::all();
+        // return $group;
 
         return view('EU.chat.index', compact('group'));
     }
 
     public function store(Request $request)
     {
+        $random = Str::random(7);
         $group = Group::create([
             'group' => $request->input('group'),
+            'kode' => $random,
             'admin_id' => auth()->user()->id,
         ]);
         $group->users()->attach(auth()->user()->id);
@@ -68,5 +73,22 @@ class GroupChatController extends Controller
             $query->where('group_id', $group->id);
         })->get();
         return view('EU.chat.chat-show', compact('group', 'messages', 'users'));
+    }
+
+    public function joinGroup(Request $request)
+    {
+        $kode = $request->input('kode');
+        // return $kode;
+        $group = Group::whereHas('users', function ($query) use ($kode) {
+            $query->where('user_id', '!=' ,auth()->user()->id);
+        })->where('kode', $kode)->get();
+        // return $group;
+        if ($group->count() > 0) {
+            $group->first()->users()->attach(auth()->user()->id);
+            return redirect('/group-chat');
+        }
+        else {
+            return redirect()->back()->with('error', 'Kode Yang Anda Masukkan Salah !!');
+        }
     }
 }

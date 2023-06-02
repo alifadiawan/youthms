@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row my-3">
             <div class="col">
-                <a href="/" class="btn btn-outline-secondary btn-sm">
-                    Back
+                <a href="/" class="">
+                    <i class="fas fa-arrow-left"></i> Back
                 </a>
             </div>
         </div>
@@ -21,8 +21,13 @@
                                     <div class="msg-search">
                                         <input type="text" class="form-control" id="inlineFormInputGroup"
                                             placeholder="Search" aria-label="search">
+                                        @if(auth()->user()->role->role == 'admin')
                                         <a class="add" data-bs-toggle="modal" data-bs-target="#addGroupModal" href="#"><img class="img-fluid"
                                                 src="https://mehedihtml.com/chatbox/assets/img/add.svg" alt="add"></a>
+                                        @else
+                                        <a class="add" data-bs-toggle="modal" data-bs-target="#joinGroupModal" href="#"><img class="img-fluid"
+                                                src="https://mehedihtml.com/chatbox/assets/img/add.svg" alt="add"></a>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -101,6 +106,11 @@
                         <div class="modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-body text-center">
+                                    @if(session('error'))
+                                        <div class="alert alert-warning text-dark">
+                                            {{session('error')}}
+                                        </div>
+                                    @endif
                                     <div class="d-flex flex-row justify-content-center align-items-center" style="margin-top:40vh">
                                         Silahkan Pilih Pesan Untuk Memulai
                                     </div>

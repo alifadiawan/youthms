@@ -30,26 +30,26 @@
                             <div class="col-lg-6 col-md-6 col-6">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 mt-4 pt-2">
-                                        <div class="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                                        {{-- <div class="card work-desk rounded border-0 shadow-lg overflow-hidden"> --}}
                                             <img src="{{ asset('illustration/1.jpg') }}" class="img-fluid" alt="Image" />
                                             <div class="img-overlay bg-dark"></div>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-6">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12">
-                                        <div class="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                                        {{-- <div class="card work-desk rounded border-0 shadow-lg overflow-hidden"> --}}
                                             <img src="{{ asset('illustration/2.jpg') }}" class="img-fluid" alt="Image" />
                                             <div class="img-overlay bg-dark"></div>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                     <div class="col-lg-12 col-md-12 mt-4 pt-2">
-                                        <div class="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                                        {{-- <div class="card work-desk rounded border-0 shadow-lg overflow-hidden"> --}}
                                             <img src="{{ asset('illustration/3.jpg') }}" class="img-fluid" alt="Image">
                                             <div class="img-overlay bg-dark"></div>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                     <!--end col-->
                                 </div>
@@ -100,7 +100,7 @@
                                 </div>
                             </div>
                             <div class="d-grid gap-2" style="margin-top: 20px">
-                                <a href="/portfolio" class="btn-porto btn btn text-white" href="/portofolio" type="button">Portofolio
+                                <a href="/portfolio" class="btn-porto btn btn text-white rounded-5" href="/portofolio" type="button">Portofolio
                                     Kami</a>
                             </div>
                         </div>
@@ -125,10 +125,10 @@
                             <div class="col-lg-6 col-md-6 col-6">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 mt-4 pt-2">
-                                        <div class="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                                        {{-- <div class="card work-desk rounded border-0 shadow-lg overflow-hidden"> --}}
                                             <img src="{{ asset('illustration/7.jpg') }}" class="img-fluid" alt="Image" />
                                             <div class="img-overlay bg-dark"></div>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -138,20 +138,20 @@
                             <div class="col-lg-6 col-md-6 col-6">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12">
-                                        <div class="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                                        {{-- <div class="card work-desk rounded border-0 shadow-lg overflow-hidden"> --}}
                                             <img src="{{ asset('illustration/9.jpg') }}" class="img-fluid"
                                                 alt="Image" />
                                             <div class="img-overlay bg-dark"></div>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                     <!--end col-->
 
                                     <div class="col-lg-12 col-md-12 mt-4 pt-2">
-                                        <div class="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                                        {{-- <div class="card work-desk rounded border-0 shadow-lg overflow-hidden"> --}}
                                             <img src="{{ asset('illustration/8.jpg') }}" class="img-fluid"
                                                 alt="Image">
                                             <div class="img-overlay bg-dark"></div>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                     <!--end col-->
                                 </div>
@@ -192,7 +192,7 @@
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2" style="margin-top: 20px">
-                                    <a href="/portfolio" class="btn-porto btn btn text-white" href="/portofolio" type="button">Portofolio
+                                    <a href="/portfolio" class="btn-porto btn btn text-white rounded-5" href="/portofolio" type="button">Portofolio
                                         Kami</a>
                                 </div>
                                 <h4>
@@ -254,7 +254,7 @@
                                 </div>
                             </div>
                             <div class="d-grid gap-2" style="margin-top: 20px">
-                                <a href="/portfolio" class="btn-porto btn btn text-white" type="button">Portofolio Kami</a>
+                                <a href="/portfolio" class="btn-porto btn btn text-white rounded-5" type="button">Portofolio Kami</a>
                             </div>
                         </div>
                     </div>
@@ -278,11 +278,11 @@
                             <div class="col-lg-6 col-md-6 col-6">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 mt-4 pt-2">
-                                        <div class="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                                        {{-- <div class="card work-desk rounded border-0 shadow-lg overflow-hidden"> --}}
                                             <img src="{{ asset('illustration/4.jpg') }}" class="img-fluid"
                                                 alt="Image" />
                                             <div class="img-overlay bg-dark"></div>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                 </div>
                                 <!--end row-->
@@ -292,20 +292,20 @@
                             <div class="col-lg-6 col-md-6 col-6">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12">
-                                        <div class="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                                        {{-- <div class="card work-desk rounded border-0 shadow-lg overflow-hidden"> --}}
                                             <img src="{{ asset('illustration/5.jpg') }}" class="img-fluid"
                                                 alt="Image" />
                                             <div class="img-overlay bg-dark"></div>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                     <!--end col-->
 
                                     <div class="col-lg-12 col-md-12 mt-4 pt-2">
-                                        <div class="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                                        {{-- <div class="card work-desk rounded border-0 shadow-lg overflow-hidden"> --}}
                                             <img src="{{ asset('illustration/6.jpg') }}" class="img-fluid"
                                                 alt="Image">
                                             <div class="img-overlay bg-dark"></div>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                     <!--end col-->
                                 </div>
@@ -393,7 +393,7 @@
                                 </div>
                             </div>
                             <div class="d-grid gap-2" style="margin-top: 20px">
-                                <a href="/portfolio" class="btn-porto btn btn text-white" type="button">Portofolio Kami</a>
+                                <a href="/portfolio" class="btn-porto btn btn text-white rounded-5" type="button">Portofolio Kami</a>
                             </div>
                         </div>
                     </div>

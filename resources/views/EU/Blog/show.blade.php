@@ -1,8 +1,6 @@
 @extends('layout-landing2.body')
 @section('title', '| jdul artikel')
 @section('content')
-
-
     <div id="container" class="container mt-5">
         <div class="row align-items-center">
             <div class="col-lg-8">
