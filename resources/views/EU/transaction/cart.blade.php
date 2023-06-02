@@ -254,6 +254,5 @@
                 $(input).val(quantity - 1).trigger('change');
             }
         }
-        f
     </script>
 @endsection
