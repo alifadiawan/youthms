@@ -20,7 +20,8 @@
         <div class="d-flex flex-row text-center gap-3">
             <a href="/store" class="btn yms-outline-blue rounded-5 active">All</a>
             @foreach ($layanan as $l)
-            <a href="{{ route('store.showtype', $l->layanan) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
+                <a href="{{ route('store.showtype', $l->layanan) }}"
+                    class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
             @endforeach
 
         </div>
@@ -35,8 +36,8 @@
 
         <!-- promo content -->
         <p class="h2 fw-bold text-capitalize mt-3">{{ $jenis_layanan->layanan }}</p>
-        <div class="row rows-cols-lg-4 justify-content-center justify-content-md-start gx-3 my-3" data-aos="fade-down" data-aos-duration="1000">
-            {{-- @foreach ($produk as $item) --}}
+        <div class="row rows-cols-lg-4 justify-content-center justify-content-md-start gx-3 my-3" data-aos="fade-down"
+            data-aos-duration="1000">
             @foreach ($produk as $p)
                 <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
                     <div class="card card-hover border-0 shadow">
@@ -45,12 +46,10 @@
                             <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                             <p class="card-title text-secondary">{{ $p->services->judul }}</p>
                             <p class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
-                            {{-- <h5>{{ $p->id }}</h5> --}}
-
                             @guest
-                            <a href="{{ route('authcheck') }}" class="btn yms-blue w-100 rounded-5 px-2 px-lg-3">
-                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                            </a>
+                                <a href="{{ route('authcheck') }}" class="btn yms-blue w-100 rounded-5 px-2 px-lg-3">
+                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                </a>
                             @endguest
 
                             @auth
@@ -61,20 +60,38 @@
                                 @else --}}
                                 @if (auth()->user()->hasIncompleteProfile())
                                     <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
-                                        class="btn btn-primary" disabled>
+                                        class="btn yms-blue w-100 rounded-5 px-0 px-lg-3" disabled>
                                         <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                     </a>
-                                    @elseif ($cart->contains('produk_id', $p->id))
-                                    <div class="row rows-cols-2 gx-2 gy-2">
-                                        <div class="col-lg-8 col-12">
-                                            <button href="" class="btn btn-outline-secondary w-100 rounded-5" disabled>
-                                                Item Added
-                                            </button>
+                                @elseif ($cart->contains('produk_id', $p->id))
+                                    <div class="row rows-cols-2 gx-2 gy-2 bg-light">
+                                        <div class="col-lg-9 col-12">
+                                            <div class="d-flex gap-0">
+                                                <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+
+                                                <div class="form-outline">
+                                                    <input id="form1" min="1" name="quantity" value="1"
+                                                        type="number" class="form-control" readonly />
+                                                </div>
+
+                                                <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                            <!-- Quantity -->
                                         </div>
-                                        <div class="col-lg-4 col-12">
-                                            <a href="" class="btn btn-outline-danger w-100 rounded-5" disabled>
-                                                <i class="fas fa-trash"></i>
-                                            </a>
+                                        <div class="col-lg-3 col-12">
+                                            <form action="{{ route('cart.destroy', $p->id) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-danger me-2">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 @else
@@ -85,8 +102,8 @@
                                         @endforeach
                                         <input type="hidden" class="form-control" name="quantity" value="1">
                                         <input type="hidden" value="{{ $p->id }}" name="produk_id">
-                                        <div class="row  px-2 px-lg-3">
-                                            <button type="submit" class="btn yms-blue w-100 rounded-5">
+                                        <div class="row px-0 px-lg-3">
+                                            <button type="submit" class="btn yms-blue rounded-5">
                                                 <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                             </button>
                                         </div>

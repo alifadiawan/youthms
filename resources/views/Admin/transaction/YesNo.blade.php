@@ -165,13 +165,13 @@
                                     </div>
                                     <span>Rp {{ number_format($admin, 0, ',', '.') }}</span>
                                 </li>
-                                <li
+                                <lig
                                     class="list-group-item d-flex justify-content-between align-items-center px-0 mt-4 h4">
                                     <div>
                                         <strong>Grand Total</strong>
                                     </div>
                                     <span><strong>Rp {{ number_format($grandtotal, 0, ',', '.') }}</strong></span>
-                                </li>
+                                </lig>
                             </ul>
                         @endforeach
                     </ul>

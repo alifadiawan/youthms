@@ -47,7 +47,7 @@
                                 <div class="col-lg-5 col-md-6 col-8 mb-4 mb-lg-0">
                                     <!-- Data -->
                                     <p class="text-capitalize"><strong>{{ $c->produk->nama_produk }}</strong></p>
-                                    <form action="{{ route('cart.destroy', $c->id) }}" method="post">
+                                    <form action="{{ route('cart.destroy', $c->produk_id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger me-2" data-mdb-toggle="tooltip"
@@ -253,6 +253,5 @@
                 $(input).val(quantity - 1).trigger('change');
             }
         }
-        f
     </script>
 @endsection
