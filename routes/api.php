@@ -26,6 +26,6 @@ Route::post('/cart-update', [CartController::class, 'updateQuantity'])->name('ap
 Route::get('/transaksi/total', [CartController::class, 'getTotalTransaksi'])->name('api.transaksi.total');
 
 
-Route::get('/cart/quantity', [ProdukController::class, 'getQuantity'])->name('api.quantity.cart');
-Route::post('/produk/cart/update/', [ProdukController::class, 'updateQuantity'])->name('api.update.cart');
+Route::get('/cart/quantity', [ProdukController::class, 'getCartQuantity'])->name('api.quantity.cart');
+Route::post('/produk/cart/update', [ProdukController::class, 'updateQuantity'])->name('api.update.cart');
 

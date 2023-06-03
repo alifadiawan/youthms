@@ -70,15 +70,14 @@ class ProdukController extends Controller
         }
     }
 
-    public function getQuantity($productId)
-    {
-        $quantity = Cart::where('produk_id', $productId)->value('quantity');
-        return response()->json(['quantity' => $quantity]);
-    }
+    // public function getCartQuantity($productId)
+    // {
+    //     $quantity = Cart::where('produk_id', $productId)->value('quantity');
+    //     return response()->json(['quantity' => $quantity]);
+    // }
 
     public function updateQuantity(Request $request, $productId)
     {
-
         $validator = Validator::make($request->all(), [
             'quantity' => 'required|integer|min:1'
         ]);
@@ -92,9 +91,7 @@ class ProdukController extends Controller
             return response()->json(['success' => false, 'message' => 'Cart not found'], 404);
         }
 
-        // $cart->quantity = $request->quantity;
         $cart->quantity = $request->input('quantity');
-
         $cart->save();
 
         return response()->json(['success' => true, 'message' => 'Quantity updated successfully']);

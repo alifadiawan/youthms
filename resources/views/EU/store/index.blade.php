@@ -81,16 +81,32 @@
                                                     </button>
 
                                                     <div class="form-outline">
-                                                        <input id="form_{{ $p->id }}" {{-- value="{{ $cart[0]->quantity }}"  --}}
-                                                            value="{{ $p->id }}" min="1"name="quantity"
+                                                        <input id="form_{{ $cart->where('produk_id', $p->id)->value('id') }}"
                                                             onchange="updateQuantity(this)"
-                                                            type="number" class="form-control" readonly />
+                                                            value="{{ $cart->where('produk_id', $p->id)->value('quantity') }}"
+                                                            min="1" name="quantity" type="number" class="form-control"
+                                                            readonly />
                                                     </div>
 
                                                     <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
                                                         onclick="increaseQuantity(this)">
                                                         <i class="fas fa-plus"></i>
                                                     </button>
+
+                                                    {{-- <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                        <i class="fas fa-minus"></i>
+                                                    </button>
+
+                                                    <div class="form-outline">
+                                                        <input id="form_{{ $p->id }}" min="1" name="quantity"
+                                                            value="1" type="number" class="form-control" readonly />
+                                                    </div>
+
+                                                    <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                        <i class="fas fa-plus"></i>
+                                                    </button> --}}
                                                 </div>
                                                 <!-- Quantity -->
                                             </div>
@@ -311,57 +327,60 @@
     </div>
 
 
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
     <script>
-        function getCartQuantity(productId) {
-            $.ajax({
-                url: '{{ route('api.quantity.cart') }}',
-                method: 'GET',
-                success: function(response) {
-                    $('#form_' + productId).val(response.quantity);
-                }
-            });
-        }
-
         function decreaseQuantity(button) {
-            // var input = document.getelementbyid('form_' + productId);
-            // var quantity = parseInt(input.value);
             var input = $(button).siblings('.form-outline').find('input');
-            var quantity = parseInt($(input).val());
-            if (quantity > 1) {
-                $(input).val(quantity - 1).trigger('change');
-            }
+            var quantity = parseInt(input.val());
 
-            // if (quantity > 1) {
-            //     input.value = quantity - 1;
-            //     updateQuantity(productId, quantity - 1);
-            // }
+            if (quantity > 1) {
+                input.val(quantity - 1).trigger('change');
+            }
         }
 
         function increaseQuantity(button) {
-            // var input = document.getelementbyid('form_' + productId);
-            // var quantity = parseInt(input.value);
             var input = $(button).siblings('.form-outline').find('input');
-            var quantity = parseInt($(input).val());
-            $(input).val(quantity + 1).trigger('change');
+            var quantity = parseInt(input.val());
 
-
-            input.value = quantity + 1;
-            updateQuantity(productId, quantity + 1);
+            input.val(quantity + 1).trigger('change');
         }
 
-        function updateQuantity(productId) {
+        function updateQuantity(input) {
+            var productId = $(input).attr('id').split('_')[1];
+
             $.ajax({
                 url: '{{ route('api.update.cart') }}',
                 method: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}',
-                    quantity: newQuantity
+                    quantity: $(input).val(),
+                    productId: productId
                 },
                 success: function(response) {
-                    // Tindakan setelah berhasil memperbarui quantity
+                    
                 }
             });
         }
+
+
+
+        // function updateQuantity(productId, newQuantity) {
+        //     var input = $(input).attr('id').split('_')[1];
+        //     var cartId = input.getAttribute('id').split('_')[1];
+
+        //     $.ajax({
+        //         url: '{{ route('api.update.cart') }}',
+        //         method: 'POST',
+        //         data: {
+        //             _token: '{{ csrf_token() }}',
+        //             quantity: newQuantity  
+        //         },
+        //         success: function(response) {
+        //             // Tindakan setelah berhasil memperbarui quantity
+        //         }
+        //     });
+        // }
 
         window.onload = function() {
             let scrollPosition = sessionStorage.getItem('scrollPosition');
