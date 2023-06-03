@@ -37,7 +37,7 @@
         <div class="project">
             <div class="row justify-content-center justify-content-lg-start">
                 @if($porto->isEmpty())
-                <p class="h1 text-center">Belum Ada Portofolio</p>
+                <p class="h1 text-center text-capitalize">Belum Ada Portofolio {{$type}}</p>
                 @else
                 @foreach ($porto as $item)
                     <div class="col-lg-3 col-md-6 d-flex mt-4 mb-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
