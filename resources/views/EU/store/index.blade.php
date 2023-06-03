@@ -45,8 +45,7 @@
             @foreach ($populer as $p)
                 <div class="col-lg col-md-4 col-6 my-2">
                     <div class="card border-0 shadow">
-                        <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
-                            style="width: 15.3rem; height: 15.3rem">
+                        <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top " alt="...">
                         <div class="card-body">
                             <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                             {{-- <p class="card-title text-secondary">{{ $p->services->judul }}</p> --}}
@@ -82,7 +81,7 @@
 
                                                     <div class="form-outline">
                                                         <input id="form1" min="1" name="quantity" value="1"
-                                                            type="number" class="form-control" readonly />
+                                                            type="number" class="form-control" readonly/>
                                                     </div>
 
                                                     <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
@@ -93,13 +92,9 @@
                                                 <!-- Quantity -->
                                             </div>
                                             <div class="col-lg-3 col-12">
-                                                <form action="{{ route('cart.destroy', $p->id) }}" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="btn btn-danger me-2">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </form>
+                                                <a href="" class="btn btn-outline-danger w-100 rounded-5" disabled>
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     @else
@@ -188,8 +183,7 @@
                     @foreach ($ls->produk as $p)
                         <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="card card-hover border-0 shadow">
-                                <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
-                                    style="width: 19rem; height: 19rem">
+                                <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                                     <p class="card-title text-secondary">{{ $ls->judul }}</p>
@@ -201,105 +195,64 @@
                                     @endguest
 
                                     @auth
-                                        {{-- @if (empty($member))
+                                        @if (empty($member))
                                             <div class="row">
                                                 <a href="{{ route('user.show', $user) }}"
                                                     class="btn w-100 rounded-5 px-0 px-lg-3">
                                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                                 </a>
                                             </div>
-                                        @else --}}
-                                        @if (auth()->user()->hasIncompleteProfile())
-                                            <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
-                                                class="btn yms-blue w-100 rounded-5 px-0 px-lg-3" disabled>
-                                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                            </a>
-                                        @elseif ($cart->contains('produk_id', $p->id))
-                                            <div class="row rows-cols-2 gx-2 gy-2 bg-light">
-                                                <div class="col-lg-9 col-12">
-                                                    <div class="d-flex gap-0">
-                                                        {{-- <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
-
-                                                        <div class="form-outline">
-                                                            <input id="form1" min="1" name="quantity"
-                                                                value="1" type="number" class="form-control"
-                                                                readonly />
-                                                        </div>
-
-                                                        <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                            <i class="fas fa-plus"></i>
-                                                        </button> --}}
-                                                        {{-- @foreach ($cart as $c)
-                                                            <button class="btn btn-outline-primary me-2"
-                                                                onclick="decreaseQuantity(this);">
-                                                                <i class="fas fa-minus"></i>
-                                                            </button>
-
-                                                            <div class="form-outline">
-                                                                <input id="quantity_{{ $c->id }}" min="1"
-                                                                    name="quantity" value="{{ $c->quantity }}"
-                                                                    type="number" class="form-control"
-                                                                    onchange="updateQuantity(this)" readonly />
-                                                            </div>
-
-                                                            <button class="btn btn-outline-primary ms-2" id="plus"
-                                                                onclick="increaseQuantity(this)">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                        @endforeach --}}
-                                                        <div class="form-outline">
-                                                            <button class="btn btn-sm yms-blue rounded-5 px-3 me-2 decrease-quantity-btn"
-                                                                onclick="decreaseQuantity(this)">
-                                                                <i class="fas fa-minus"></i>
-                                                            </button>
-                                                        </div>
-
-                                                        <div class="form-outline">
-                                                                {{-- <input id="quantity_input_{{ $c->produk_id }}" class="form-control" type="number"
-                                                                    value="{{ $c->quantity }}" readonly> --}}
-                                                                {{-- <input id="quantity_input_{{ $p->id }}" class="form-control" type="number"
-                                                                    value="{{ $cart }}" readonly> --}}
-                                                        </div>
-                                                        
-                                                        <div class="form-outline">
-                                                            <button class="btn btn-sm yms-blue rounded-5 px-3 me-2 increase-quantity-btn"
-                                                                onclick="increaseQuantity(this)">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Quantity -->
-                                                </div>
-                                                <div class="col-lg-3 col-12">
-                                                    <form action="{{ route('cart.destroy', $p->id) }}" method="post">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-danger me-2">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
                                         @else
-                                            <form action="{{ route('cart.store') }}" method="POST">
-                                                @csrf
-                                                @foreach ($member as $m)
-                                                    <input type="hidden" name="member_id" value="{{ $m->id }}">
-                                                @endforeach
-                                                <input type="hidden" class="form-control" name="quantity" value="1">
-                                                <input type="hidden" value="{{ $p->id }}" name="produk_id">
-                                                <div class="row px-0 px-lg-3">
-                                                    <button type="submit" class="btn yms-blue rounded-5">
-                                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                                    </button>
+                                            @if (auth()->user()->hasIncompleteProfile())
+                                                <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
+                                                    class="btn yms-blue w-100 rounded-5 px-0 px-lg-3" disabled>
+                                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                                </a>
+                                            @elseif ($cart->contains('produk_id', $p->id))
+                                                <div class="row rows-cols-2 gx-2 gy-2 bg-light">
+                                                    <div class="col-lg-9 col-12">
+                                                        <div class="d-flex gap-0">
+                                                            <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
+                                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                                <i class="fas fa-minus"></i>
+                                                            </button>
+        
+                                                            <div class="form-outline">
+                                                                <input id="form1" min="1" name="quantity" value="1"
+                                                                    type="number" class="form-control" readonly/>
+                                                            </div>
+        
+                                                            <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
+                                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                                <i class="fas fa-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                        <!-- Quantity -->
+                                                    </div>
+                                                    <div class="col-lg-3 col-12">
+                                                        <a href="" class="btn btn-outline-danger w-100 rounded-5"
+                                                            disabled>
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </form>
+                                            @else
+                                                <form action="{{ route('cart.store') }}" method="POST">
+                                                    @csrf
+                                                    @foreach ($member as $m)
+                                                        <input type="hidden" name="member_id" value="{{ $m->id }}">
+                                                    @endforeach
+                                                    <input type="hidden" class="form-control" name="quantity"
+                                                        value="1">
+                                                    <input type="hidden" value="{{ $p->id }}" name="produk_id">
+                                                    <div class="row px-0 px-lg-3">
+                                                        <button type="submit" class="btn yms-blue rounded-5">
+                                                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            @endif
                                         @endif
-                                        {{-- @endif --}}
                                     @endauth
                                 </div>
                             </div>
@@ -312,7 +265,6 @@
 
 
     <script>
-
         window.onload = function() {
             let scrollPosition = sessionStorage.getItem('scrollPosition');
             if (scrollPosition) {

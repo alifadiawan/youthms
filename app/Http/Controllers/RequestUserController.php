@@ -110,13 +110,11 @@ class RequestUserController extends Controller
      */
     public function update(Request $request, request_user $request_user)
     {
-        // return $request;
         $reqid = $request->requser_id;
-        // return $reqid;
         $request_user = request_user::find($reqid);
         $request_user->update([
             'status' => $request->status,
-            'note_admin' => $request->note, 
+            'note_admin' => $request->note,
         ]);
 
         notify()->success('status berhasil diperbarui');

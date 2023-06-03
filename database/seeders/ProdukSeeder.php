@@ -25,28 +25,28 @@ class ProdukSeeder extends Seeder
                 $n => 'mockup website',
                 $h => '78100',
                 $d => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, nemo!',
-                $f => 'produk (1).jpeg'
+                $f => 'produk-example1.png'
             ],
             [
                 $j => 2,
                 $n => 'analisa user',
                 $h => '24000',
                 $d => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero explicabo a culpa molestiae aperiam quisquam.',
-                $f => 'produk (1).jpg'
+                $f => 'produk-example2.png'
             ],
             [
                 $j => 3,
                 $n => 'poster pendidikan',
                 $h => '239999',
                 $d => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quo provident reiciendis eius.',
-                $f => 'produk (1).png'
+                $f => 'produk-example3.png'
             ],
             [
                 $j => 3,
                 $n => 'poster kesehatan',
                 $h => '239999',
                 $d => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quo provident reiciendis eius.',
-                $f => 'produk (2).jpeg'
+                $f => 'produk-example4.png'
             ],
         ];
 
@@ -57,7 +57,7 @@ class ProdukSeeder extends Seeder
                 $n => 'kasir',
                 $h => '218000',
                 $d => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, rerum voluptatibus.',
-                $f => 'produk (2).jpeg'
+                $f => 'produk-example5.png'
             ],
             [
                 $j => 4,
@@ -65,14 +65,14 @@ class ProdukSeeder extends Seeder
                 $h => '420000',
                 $d => '
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum rem voluptates eligendi saepe quibusdam ad odit quod eaque veritatis? Omnis.',
-                $f => 'produk (3).jpg'
+                $f => 'produk-example6.png'
             ],
             [
                 $j => 5,
                 $n => 'absensi',
                 $h => '69000',
                 $d => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae excepturi ipsa quibusdam? Velit perspiciatis aliquid earum! Voluptates, alias, ratione ducimus nemo voluptate sunt explicabo sed recusandae sint consectetur ipsum.',
-                $f => 'produk (5).jpg'
+                $f => 'produk-example7.png'
             ],
             [
                 $j => 5,

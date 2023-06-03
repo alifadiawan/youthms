@@ -68,15 +68,16 @@
                                     </div>
 
                                     <div class="col">
-                                        {{-- <form action="{{ route('requestuser.update', $r->id) }}" method="POST"> --}}
-                                            {{-- @csrf
-                                            @method('put') --}}
-                                            {{-- <input type="hidden" value="declined" name="status"> --}}
+                                        <form action="{{ route('requestuser.update', $r->id) }}" method="POST">
+                                            @csrf
+                                            @method('put')
+                                            <input type="hidden" value="declined" name="status">
+                                            {{-- <button type="submit" class="btn btn-danger">Decline</button> --}}
                                             <a class="btn btn-danger w-100" data-toggle="modal"
                                                 data-target="#declinedModal">
                                                 declined
                                             </a>
-                                        {{-- </form> --}}
+                                        </form>
                                     </div>
 
                                     {{-- benekno modal e lip ;-; --}}
@@ -84,27 +85,17 @@
                                         aria-labelledby="declinedModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
-                                                <form action="{{ route('requestuser.update', $r->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('put')
-                                                    <div class="modal-body">
-                                                        <div class="form-group">
-                                                            <label for="note">Alasan ditolaknya request?</label>
-                                                            <input type="hidden" name="status" value="declined">
-                                                            @foreach ($request_user as $r)
-                                                                <input type="hidden" value="{{ $r->id }}"
-                                                                    name="requser_id">
-                                                            @endforeach
-                                                            <textarea name="note" class="form-control" id="note" cols="30" rows="10"></textarea>
-                                                        </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="note">Alasan ditolaknya request?</label>
+                                                        <textarea name="note" class="form-control" id="note" cols="30" rows="10"></textarea>
                                                     </div>
-                                                    <div class="modal-footer text-left">
-                                                        <button class="btn btn-primary" type="submit">Save
-                                                            changes</button>
-                                                        <button class="btn btn-secondary"
-                                                            data-dismiss="modal">Close</button>
-                                                    </div>
-                                                </form>
+                                                </div>
+                                                <div class="modal-footer text-left">
+                                                    <button class="btn btn-primary">Save changes</button>
+                                                    <button class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

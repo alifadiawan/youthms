@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TransaksiController;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
@@ -24,9 +23,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/cart-update', [CartController::class, 'updateQuantity'])->name('api.cart.update');
 Route::get('/transaksi/total', [CartController::class, 'getTotalTransaksi'])->name('api.transaksi.total');
-
-Route::put('/update-cart/{cartId}', [ProdukController::class, 'updateCartQuantity'])->name('api.cartproduk.update');
-// Route::post('/cart-products', [ProdukController::class, 'updateQuantity'])->name('api.cartproduk.update');
-
-// Route::post('/cart_store-update', [CartController::class, 'updateQuantity'])->name('api.cart.update');
-// Route::get('/transaksi/total', [CartController::class, 'getTotalTransaksi'])->name('api.transaksi.total');

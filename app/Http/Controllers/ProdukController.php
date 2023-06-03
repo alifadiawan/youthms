@@ -31,54 +31,46 @@ class ProdukController extends Controller
 
         // cek user & member
         // $user = auth()->user()->id;
-
+        
         // cek jika di sebuah keranjang member apakah ada produk?
-
+        
         // produk populer di limit maximal 5
         $product = Produk::paginate(5);
-
+        
         // mencari produk yang palign banyak diminati di tabel transaksi detail
         $produkpopuler = TransaksiDetail::select('produk_id', DB::raw('SUM(quantity) as total_quantity'))
-            ->groupBy('produk_id')
-            ->orderByDesc('total_quantity')
-            ->limit(5)
-            ->pluck('produk_id');
-
+        ->groupBy('produk_id')
+        ->orderByDesc('total_quantity')
+        ->limit(5)
+        ->pluck('produk_id');
+        
         // mencari id produk yang banyak di minati di tabel produk 
         $populer = produk::whereIn('id', $produkpopuler)->with(['services', 'services.jenis_layanan'])->get();
-
+        
         // inisialisasi $layanan & $populer
         $compact = ['layanan', 'populer'];
-
+        
         // pengkondisian jika admin maka masuk view admin, jika selain admin / owner maka dilempar ke view EU store
         if (auth()->check()) {
             $role = auth()->user()->role->role;
             $user = auth()->user()->id;
-            $m = member::where('user_id', $user);
-            $mid = $m->pluck('id')->first();
-            $member = $m->get();
-            $cart = cart::where('member_id', $mid)->get();
+            $member = member::where('user_id', $user)->get()->pluck('id')->first();
+            // $member = member::where('user_id', $user)->get();
+            // return $member;
+            $cart = cart::where('member_id', $member)->get();
             $admin = ['admin', 'owner'];
-
+            
             if (in_array($role, $admin)) {
                 // if (in_array($role, $admin)) {
                 return view('Admin.store.index', compact('product', 'services'));
             } else {
+                $member = member::where('user_id', $user)->get();
                 $compact = array_merge($compact, ['user', 'member', 'cart']);
                 return view('EU.store.index', compact($compact));
             }
         } else {
             return view('EU.store.index', compact($compact));
         }
-    }
-
-    public function updateCartQuantity($cartId, Request $request)
-    {
-        $cart = Cart::find($cartId);
-        $cart->quantity = $request->input('quantity');
-        $cart->save();
-    
-        return response()->json(['message' => 'Quantity updated successfully']);
     }
 
     /**
@@ -166,11 +158,10 @@ class ProdukController extends Controller
             // cek user & member
             $user = auth()->user()->id;
             // $member = member::where('user_id', $user)->get();
-            $m = member::where('user_id', $user);
-            $mid = $m->pluck('id')->first();
-            $member = $m->get();
+            $member = member::where('user_id', $user)->get()->pluck('id')->first();
+
             // mengecek keranjang 
-            $cart = cart::where('member_id', $mid)->get();
+            $cart = cart::where('member_id', $member)->get();
             $compact = array_merge($compact, ['user', 'member']);
         }
 
