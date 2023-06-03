@@ -11,7 +11,8 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex flex-row text-center">
+                    <div class="container mb-3 mt-3">
+                        <div class="d-flex flex-row text-center">
                             <a href="{{ route('portfolio.index') }}" class="text-capitalize my-3 active btn yms-blue w-20 rounded-5" style="margin-right: 6px;">All</a>
                             @foreach ($layanan as $l)
                                 <a href="{{ route('portfolio.showtype', $l->layanan) }}"
@@ -23,7 +24,7 @@
                     <div class="row justify-content-start">
                         @if ($porto->isEmpty())
                             <div class="col-lg-12">
-                                <h3 class="h3 text-center">Belum Ada Porto !!</h3>
+                                <h3 class="h3 text-center text-capitalize">Belum Ada Porto {{$type}} !!</h3>
                             </div>
                         @else
                             @foreach ($porto as $p)
@@ -135,9 +136,4 @@
         object-fit: cover;
     }
 </style>
-
-
-
-
-
 @endsection
