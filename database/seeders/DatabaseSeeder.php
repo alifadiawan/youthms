@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\JenisLayanan;
+use App\Models\Segmen;
 use App\Models\Services;
 use Illuminate\Database\Seeder;
 
@@ -40,6 +41,8 @@ class DatabaseSeeder extends Seeder
 
             //portofolio
             PortoIllsSeeder::class,
+            SegmenSeeder::class,
+            BlogSeeder::class
 
         ]);
     }

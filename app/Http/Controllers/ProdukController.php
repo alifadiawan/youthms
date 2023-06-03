@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Models\TransaksiDetail;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cart;
+use Illuminate\Support\Facades\Validator;
 
 class ProdukController extends Controller
 {
@@ -28,11 +29,6 @@ class ProdukController extends Controller
 
         // mencari services
         $services = Services::all();
-
-        // cek user & member
-        // $user = auth()->user()->id;
-
-        // cek jika di sebuah keranjang member apakah ada produk?
 
         // produk populer di limit maximal 5
         $product = Produk::paginate(5);
@@ -53,18 +49,20 @@ class ProdukController extends Controller
         // pengkondisian jika admin maka masuk view admin, jika selain admin / owner maka dilempar ke view EU store
         if (auth()->check()) {
             $role = auth()->user()->role->role;
-            $user = auth()->user()->id;
-            $m = member::where('user_id', $user);
+            $uid = auth()->user()->id;
+
+            $m = member::where('user_id', $uid);
             $mid = $m->pluck('id')->first();
             $member = $m->get();
+
             $cart = cart::where('member_id', $mid)->get();
             $admin = ['admin', 'owner'];
 
             if (in_array($role, $admin)) {
-                // if (in_array($role, $admin)) {
                 return view('Admin.store.index', compact('product', 'services'));
             } else {
-                $compact = array_merge($compact, ['user', 'member', 'cart']);
+                $compact = array_merge($compact, ['uid', 'member', 'cart']);
+                // $produk = cart::where('produk_id',$productId)->get();
                 return view('EU.store.index', compact($compact));
             }
         } else {
@@ -72,13 +70,31 @@ class ProdukController extends Controller
         }
     }
 
-    public function updateCartQuantity($cartId, Request $request)
+    // public function getCartQuantity($productId)
+    // {
+    //     $quantity = Cart::where('produk_id', $productId)->value('quantity');
+    //     return response()->json(['quantity' => $quantity]);
+    // }
+
+    public function updateQuantity(Request $request, $productId)
     {
-        $cart = Cart::find($cartId);
+        $validator = Validator::make($request->all(), [
+            'quantity' => 'required|integer|min:1'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['success' => false, 'message' => $validator->errors()], 400);
+        }
+
+        $cart = Cart::where('produk_id', $productId)->first();
+        if (!$cart) {
+            return response()->json(['success' => false, 'message' => 'Cart not found'], 404);
+        }
+
         $cart->quantity = $request->input('quantity');
         $cart->save();
-    
-        return response()->json(['message' => 'Quantity updated successfully']);
+
+        return response()->json(['success' => true, 'message' => 'Quantity updated successfully']);
     }
 
     /**
