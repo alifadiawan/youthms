@@ -22,12 +22,12 @@ class BlogController extends Controller
         if (auth()->check()) {
             $u = auth()->user()->role->role;
             $admin = ['admin', 'owner'];
+            $segmen = Segmen::all();
+            $blog = Blog::paginate(5);
             if (in_array($u, $admin)) {
-                $segmen = Segmen::all();
-                $data = Blog::paginate(5);
-                return view('Admin.blog.index', compact('data','segmen'));
+                return view('Admin.blog.index', compact('blog','segmen'));
             } else {
-                return view('EU.blog.index');
+                return view('EU.blog.index', compact('blog','segmen'));
             }
         }
         else {

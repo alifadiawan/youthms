@@ -106,7 +106,7 @@ Route::get('/store/{id}/showid', [ProdukController::class, 'showid'])->name('sto
 Route::get('/store/{type}/show', [ProdukController::class, 'showtype'])->name('store.showtype');
 
 //blog
-Route::resource('blog', BlogController::class);
+Route::resource('blogs', BlogController::class);
 Route::get('/blog/editing', function () {
     return view('EU.blog.editing');
 });
