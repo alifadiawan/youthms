@@ -11,15 +11,6 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="container mb-3 mt-3">
-                        <div class="d-flex flex-row text-center">
-                            <a href="{{ route('portfolio.index') }}" class="text-capitalize my-3 active btn yms-blue w-20 rounded-5" style="margin-right: 6px;">All</a>
-                            @foreach ($layanan as $l)
-                                <a href="{{ route('portfolio.showtype', $l->layanan) }}"
-                                    class=" my-3 text-capitalize active btn yms-blue w-20 rounded-5" style="margin-right: 6px;">{{ $l->layanan }}</a>
-                            @endforeach
-                        </div>
-                    </div>
                     <a href="{{ route('portfolio.create') }}" class="btn btn-success mb-2">Tambah</a>
                     <div class="row justify-content-start">
                         @if ($porto->isEmpty())
@@ -35,7 +26,6 @@
                                         <div class="card-body text-center">
                                             <p class="h3 card-text text-capitalize font-weight-bold">{{ $p->project }}
                                             </p>
-                                            <p class="h4 text-capitalize">{{$p->services->jenis_layanan->layanan}} : {{$p->services->judul}}</p>
                                             <div class="row text-center">
                                                 <div class="col">
                                                     <a href="{{route('portfolio.show', $p->id)}}" class="btn text-primary">

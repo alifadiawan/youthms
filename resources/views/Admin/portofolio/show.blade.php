@@ -18,7 +18,6 @@
                 </a>
                 <p class="h2 font-weight-bold">{{$porto->project}}</p>
             </div>
-                <p class="h3 text-capitalize">Services : {{$porto->services->judul}}</p>
                 <p>
                     {{$porto->deskripsi}}
                 </p>
