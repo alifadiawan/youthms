@@ -1,7 +1,8 @@
+<section id="topbar-chat" class="topbar-chat">
 <div class="msg-head">
     <div class="row align-items-center">
         <div class="col-8">
-            <h4>{{$group->group}}</h4>
+            <h4 style="font-family: Poppins, sans-serif; font-weight:bold">{{$group->group}}</h4>
             <h6>Admin Group : {{$group->admin->username}}</h6>
             <p>Kode Group : {{$group->kode}}</p>
         </div>
@@ -68,4 +69,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>   
+</section>

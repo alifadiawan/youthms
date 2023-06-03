@@ -99,6 +99,7 @@ Route::get('/history-transaction', function () {
 
 //portfolio
 Route::resource('portfolio', PortofolioController::class);
+Route::get('/portfolio/{type}/show', [PortofolioController::class, 'showtype'])->name('portfolio.showtype');
 
 //store
 Route::resource('store', ProdukController::class);
