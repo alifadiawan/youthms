@@ -25,19 +25,20 @@ class PortofolioController extends Controller
         $layanan = JenisLayanan::all();
         $porto = Portofolio::paginate(6);
         $pic = PortofolioPic::all();
+        $ills = PortoIlls::all();
         if (auth()->check()) {
             $u = auth()->user()->role->role;
             $admin = ['admin', 'owner'];
 
             if (in_array($u, $admin)){
-                return view('Admin.portofolio.index', compact('porto', 'pic', 'services', 'layanan'));
+                return view('Admin.portofolio.index', compact('porto', 'pic', 'services', 'layanan', 'ills'));
             }
             else{
-                return view('EU.portofolio.index', compact('porto', 'pic', 'services', 'layanan'));
+                return view('EU.portofolio.index', compact('porto', 'pic', 'services', 'layanan', 'ills'));
             }
         } 
         else {
-            return view('EU.portofolio.index', compact('porto', 'pic', 'services', 'layanan'));
+            return view('EU.portofolio.index', compact('porto', 'pic', 'services', 'layanan', 'ills'));
         }
     }
 
@@ -187,9 +188,24 @@ class PortofolioController extends Controller
             return redirect()->route('portfolio.index');
         }
 
-            $pic = PortofolioPic::all();
-        // Kirim data jenis layanan dan portofolio ke view
-        return view('Admin.portofolio.showtype', compact('layanan', 'type', 'porto', 'pic'));
+        $pic = PortofolioPic::all();
+        $ills = PortoIlls::all();
+
+        if (auth()->check()) {
+            $u = auth()->user()->role->role;
+            $staff = ['admin', 'owner'];
+
+            if(in_array($u, $staff)){
+                // Kirim data jenis layanan dan portofolio ke view
+                return view('Admin.portofolio.showtype', compact('layanan', 'type', 'porto', 'pic', 'ills'));
+            }
+            else {
+                return view('EU.portofolio.showtype', compact('layanan', 'type', 'porto', 'pic', 'ills'));   
+            }
+        } 
+        else {
+            return view('EU.portofolio.showtype', compact('layanan', 'type', 'porto', 'pic', 'ills'));
+        }
     }
 
     /**
