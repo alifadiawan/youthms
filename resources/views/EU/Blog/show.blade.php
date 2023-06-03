@@ -9,10 +9,11 @@
                 </a>
                 <div class="title mt-2">
                     <h1 class="fw-bold">8 Teknologi Terbaru yang akan Merubah Bisnis di 2022
-                    </h1><span class="text-muted">12 Oktober</span>
+                    </h1><span class="text-muted"><i class="fa-solid fa-calendar-days"></i> Uploaded : 12 Oktober</span>
+                    <span class="text-muted" style="text-indent: 1.2cm"><i class="fa-solid fa-pen-to-square"></i></i> By : Admin 2</span>
                 </div>
                 <div class="blog mt-3">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tellus augue, maximus sit amet luctus
+                    <p style="text-indent: 2cm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tellus augue, maximus sit amet luctus
                         sed,
                         convallis nec tortor. Aenean aliquet lacus et porttitor congue. Morbi aliquet quis dui ac lobortis.
                         Nunc eu
@@ -20,9 +21,9 @@
                         dignissim.
                         Suspendisse diam mauris, pharetra nec risus nec, hendrerit viverra sapien. Donec orci risus,
                         venenatis et diam
-                        a, suscipit sollicitudin magna.
+                        a, suscipit sollicitudin magna.</p>
 
-                        Ut vulputate in massa a rutrum. Nunc nec libero vitae eros convallis consectetur. Aenean dapibus
+                        <p style="text-indent: 2cm">Ut vulputate in massa a rutrum. Nunc nec libero vitae eros convallis consectetur. Aenean dapibus
                         enim efficitur
                         tempus convallis. In hac habitasse platea dictumst. Aenean dapibus hendrerit sodales. Sed egestas
                         urna nec elit
@@ -36,9 +37,9 @@
                         venenatis. In
                         porta massa laoreet erat laoreet, ac vulputate quam pulvinar. Maecenas id sollicitudin lectus, nec
                         rhoncus
-                        lectus. Vivamus vitae bibendum metus.
+                        lectus. Vivamus vitae bibendum metus.</p>
 
-                        Nam sed blandit purus, vel tincidunt lectus. Aenean non pellentesque urna. Quisque sollicitudin at
+                        <p style="text-indent: 2cm">Nam sed blandit purus, vel tincidunt lectus. Aenean non pellentesque urna. Quisque sollicitudin at
                         magna et
                         facilisis. Etiam gravida non sem at hendrerit. Vivamus vitae lacinia urna. Maecenas non magna
                         molestie,
@@ -67,7 +68,7 @@
                         sollicitudin mi eget purus mattis, et luctus nulla ullamcorper.</p>
                     <img src="{{ asset('illustration/bmw.jpg') }}" class="float-start me-3" alt=""
                         style="max-width: 25rem">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tellus augue, maximus sit amet luctus
+                    <p style="text-indent: 2cm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tellus augue, maximus sit amet luctus
                         sed,
                         convallis nec tortor. Aenean aliquet lacus et porttitor congue. Morbi aliquet quis dui ac lobortis.
                         Nunc eu
@@ -77,7 +78,7 @@
                         venenatis et diam
                         a, suscipit sollicitudin magna.
 
-                        Ut vulputate in massa a rutrum. Nunc nec libero vitae eros convallis consectetur. Aenean dapibus
+                        <p style="text-indent: 2cm">Ut vulputate in massa a rutrum. Nunc nec libero vitae eros convallis consectetur. Aenean dapibus
                         enim efficitur
                         tempus convallis. In hac habitasse platea dictumst. Aenean dapibus hendrerit sodales. Sed egestas
                         urna nec elit
@@ -97,9 +98,9 @@
                         magna et
                         facilisis. Etiam gravida non sem at hendrerit. Vivamus vitae lacinia urna. Maecenas non magna
                         molestie,
-                        venenatis est sed, placerat massa. Mauris auctor sollicitudin condimentum.
+                        venenatis est sed, placerat massa. Mauris auctor sollicitudin condimentum.</p>
 
-                        Ut id nunc dolor. Maecenas porttitor consectetur nisl ut dictum. Nulla facilisi. Duis eget varius
+                        <p style="text-indent: 2cm">Ut id nunc dolor. Maecenas porttitor consectetur nisl ut dictum. Nulla facilisi. Duis eget varius
                         ante. Nunc
                         bibendum, massa eget pretium gravida, nisi leo semper est, vel luctus mauris leo vitae lacus. Proin
                         iaculis

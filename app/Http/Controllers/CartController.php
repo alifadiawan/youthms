@@ -85,6 +85,8 @@ class CartController extends Controller
     {
         // return $request;
         cart::create($request->all());
+        notify()->success('item berhasil ditambahkan');
+
         return redirect()->back();
     }
 
@@ -115,19 +117,16 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cart $cart,$p)
+    public function destroy($id)
     {
         // mencari data user & member
         $user = auth()->user()->id;
         $member = member::where('user_id', $user)->pluck('id')->first();
 
+
         // mencari produk di tabel cart menggunakkan id member lalu dihapus
-        $item = cart::where('member_id', $member)->where('id', $cart->id)->first();
-        if ($item) {
-            $item->delete();
-        }else{
-            return $p;
-        }
+        $item = cart::where('member_id', $member)->where('produk_id', $id)->first();
+        $item->delete();
         return redirect()->back();
     }
 
