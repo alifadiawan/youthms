@@ -112,11 +112,11 @@
                                 <div class="inputWithIcon">
                                     <input class="form-control" type="text" value="92001981045887568">
                                     <span class="">
-                                        <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        <a class="btn" type="button">
                                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp8sk1NR5zI_Y3oPUKd2EovsQDejDMv14as0jINjnIOQVf9jE&s"
                                                 alt="" style="width: 100%">
                                         </a>
-                                        <div class="dropdown">
+                                        {{-- <div class="dropdown">
                                             <ul class="dropdown-menu">
                                                 <li>
                                                     <button class="dropdown-item active" type="button">
@@ -137,7 +137,7 @@
                                                     </button>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                     </span>
                                 </div>
                             </div>
@@ -155,10 +155,11 @@
                             </div>
                         </div>
                         <div class="col-12 px-md-5 px-4 mt-3">
-                            <button class="btn btn-primary w-100">Konfirmasi Pembayaran</button>
+                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalKonfirmasi">Konfirmasi Pembayaran</button>
                         </div>
                     </div>
                 </form>
+                
             </div>
         </div>
     </section>
