@@ -17,13 +17,6 @@
                         <input type="text" class="form-control" name="project" id="project" value="{{$porto->project}}">
                         <p>Deskripsi</p>
                         <textarea name="deskripsi" class="form-control" id="" cols="30" rows="5">{{$porto->deskripsi}}</textarea>
-                        <p>Services : </p>
-                        <select class="form-control form-select text-capitalize" name="services_id">
-                            <option value="">Pilih Services</option>
-                            @foreach($services as $s)
-                            <option value="{{$s->id}}" @if($s->id == $porto->services_id) selected @endif>{{$s->judul}}</option>
-                            @endforeach
-                        </select>
                     </div>
                     <div class="col">
                     </div>
@@ -61,7 +54,7 @@
                         </div>
                     @endforeach
                 </div>
-                <button type="button" class="btn btn-sm btn-success" id="add-screenshot" style="background-color: green;">Tambah Screenshot</button>
+                <button type="button" class="btn btn-sm btn-success" id="add-screenshot">Tambah Screenshot</button>
             </div>
             <br><br>
             <div class="row">
@@ -112,12 +105,8 @@
     document.addEventListener('DOMContentLoaded', function () {
             const container = document.getElementById('screenshots-container');
             const addButton = document.getElementById('add-screenshot');
-            let counter = {{count($pic) + 1}};
-            const maxScreenshots = 5;
-
-            if (counter >= maxScreenshots) {
-                addButton.style.display = 'none'; // Jika jumlah screenshot sudah mencapai batas maksimum, sembunyikan tombol
-            }
+            let counter = 2;
+            const maxScreenshots = 6;
 
             addButton.addEventListener('click', function () {
                 if (counter <= maxScreenshots) {

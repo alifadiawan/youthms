@@ -15,13 +15,6 @@
                         <input type="text" placeholder="Eagle Eye" class="form-control" name="project" id="project" required>
                         <p>Deskripsi</p>
                         <textarea name="deskripsi" class="form-control" id="deskripsi" cols="30" rows="5"></textarea>
-                        <p>Services : </p>
-                        <select class="form-control form-select text-capitalize" name="services_id">
-                            <option value="">Pilih Services</option>
-                            @foreach($services as $s)
-                            <option value="{{$s->id}}">{{$s->judul}}</option>
-                            @endforeach
-                        </select>
                     </div>
                     <div class="col">
                     </div>
@@ -43,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-success btn-sm" id="add-screenshot" style="background-color: green;">Tambah Screenshot</button>
+                <button type="button" class="btn btn-success btn-sm" id="add-screenshot">Tambah Screenshot</button>
             </div>
             <br><br>
             <div class="row">

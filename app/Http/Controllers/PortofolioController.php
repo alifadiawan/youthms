@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Portofolio;
-use App\Models\Services;
-use App\Models\JenisLayanan;
 use App\Models\PortofolioPic;
 use Illuminate\Http\Request;
 use App\Notifications\NewMessageNotification;
@@ -21,8 +19,6 @@ class PortofolioController extends Controller
      */
     public function index()
     {
-        $services = Services::all();
-        $layanan = JenisLayanan::all();
         $porto = Portofolio::paginate(6);
         $pic = PortofolioPic::all();
         if (auth()->check()) {
@@ -30,14 +26,14 @@ class PortofolioController extends Controller
             $admin = ['admin', 'owner'];
 
             if (in_array($u, $admin)){
-                return view('Admin.portofolio.index', compact('porto', 'pic', 'services', 'layanan'));
+                return view('Admin.portofolio.index', compact('porto', 'pic'));
             }
             else{
-                return view('EU.portofolio.index', compact('porto', 'pic', 'services', 'layanan'));
+                return view('EU.portofolio.index', compact('porto', 'pic'));
             }
         } 
         else {
-            return view('EU.portofolio.index', compact('porto', 'pic', 'services', 'layanan'));
+            return view('EU.portofolio.index', compact('porto', 'pic'));
         }
     }
 
@@ -46,8 +42,7 @@ class PortofolioController extends Controller
      */
     public function create()
     {
-        $services = Services::all();
-        return view('Admin.portofolio.create-portofolio', compact('services'));
+        return view('Admin.portofolio.create-portofolio');
     }
 
     public function ilustrasi_index()
@@ -116,7 +111,6 @@ class PortofolioController extends Controller
             'project' => $request->project,
             'deskripsi' => $request->deskripsi,
             'cover' => $nama_file,
-            'services_id' => $request->services_id,
         ]);
 
         if ($request->hasFile('foto')) {
@@ -170,33 +164,6 @@ class PortofolioController extends Controller
 
     }
 
-    public function showid($id)
-    {
-        // code...
-    }
-
-    public function showtype($type)
-    {
-        // Ambil jenis layanan berdasarkan nama
-        $jenis_layanan = JenisLayanan::where('layanan', $type)->first();
-        $layanan = JenisLayanan::all();
-
-        // Jika jenis layanan ditemukan
-        if ($jenis_layanan) {
-            // Ambil portofolio yang memiliki layanan terkait
-            $porto = Portofolio::whereHas('services', function ($query) use ($jenis_layanan) {
-                $query->where('jenis_layanan_id', $jenis_layanan->id);
-            })->paginate(5);
-        } else {
-            // Jenis layanan tidak ditemukan, kembalikan ke halaman portofolio utama atau tampilkan pesan kesalahan
-            return redirect()->route('portfolio.index');
-        }
-
-            $pic = PortofolioPic::all();
-        // Kirim data jenis layanan dan portofolio ke view
-        return view('Admin.portofolio.showtype', compact('layanan', 'type', 'porto', 'pic'));
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -204,8 +171,7 @@ class PortofolioController extends Controller
     {
         $porto = Portofolio::find($id);
         $pic = $porto->portofoliopic;
-        $services = Services::all();
-        return view('Admin.portofolio.edit-portofolio', compact('porto', 'pic', 'services'));
+        return view('Admin.portofolio.edit-portofolio', compact('porto', 'pic'));
     }
 
     /**
@@ -217,7 +183,6 @@ class PortofolioController extends Controller
 
         $portofolio->project = $request->project;
         $portofolio->deskripsi = $request->deskripsi;
-        $portofolio->services_id = $request->services_id;
 
         if ($request->hasFile('cover')) {
             //hapus foto lama
