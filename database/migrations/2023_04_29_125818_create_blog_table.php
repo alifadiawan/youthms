@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('blog', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('id_artikel');
+            $table->string('foto')->nullable();
             $table->string('judul');
             $table->date('tanggal');
             $table->text('isi');
+            $table->integer('visitor')->nullable();
             $table->unsignedBigInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users')
                 ->onUpdate('cascade')
