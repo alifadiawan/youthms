@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
             VisitorSeeder::class,
 
             //portofolio
+            PortofolioSeeder::class,
             PortoIllsSeeder::class,
 
         ]);

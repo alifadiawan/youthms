@@ -24,7 +24,7 @@
                     <div class="row justify-content-start">
                         @if ($porto->isEmpty())
                             <div class="col-lg-12">
-                                <h3 class="h3 text-center">Belum Ada Porto !!</h3>
+                                <h3 class="h3 text-center text-capitalize">Belum Ada Porto {{$type}} !!</h3>
                             </div>
                         @else
                             @foreach ($porto as $p)
@@ -136,9 +136,4 @@
         object-fit: cover;
     }
 </style>
-
-
-
-
-
 @endsection
