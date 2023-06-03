@@ -134,12 +134,6 @@
                                 <div class="card-body" style="">
                                     <!-- tombol kategori jasa -->
                                     <div class="header container mb-2 mt-3">
-<<<<<<< HEAD
-                                        <div class="d-flex flex-row text-center gap-3">
-                                            <a href="" class="btn-populer rounded-5" style="width:70px; height:100%"><i class="fa-solid fa-star" style="justify-content: center"></i></a>
-                                            <a href="" class="btn-terkini rounded-5" style="width:70px; height:100%"><i class="fa-solid fa-chart-simple"></i></a>
-                                            <a href="" class="btn-terpilih rounded-5" style="width:70px; height:100%"><i class="fa-regular fa-hand-pointer"></i></a>
-=======
                                         <div class="d-flex flex-row text-center gap-3" style="justify-content: center">
                                             <a href="" class="btn yms-outline-blue rounded-5"
                                                 style="width:70px; height:100%"><i class="fa-solid fa-star"></i></a>
@@ -149,7 +143,6 @@
                                             <a href="" class="btn yms-outline-blue rounded-5"
                                                 style="width:70px; height:100%"><i
                                                     class="fa-regular fa-hand-pointer"></i></a>
->>>>>>> ilhmstxr-ilhm
 
                                         </div>
                                     </div>

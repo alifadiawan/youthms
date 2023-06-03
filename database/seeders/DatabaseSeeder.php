@@ -41,6 +41,8 @@ class DatabaseSeeder extends Seeder
 
             //portofolio
             PortoIllsSeeder::class,
+            PortoSeeder::class,
+            //blog
             SegmenSeeder::class,
             BlogSeeder::class
 
