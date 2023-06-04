@@ -99,6 +99,7 @@ Route::get('/history-transaction', function () {
 
 //portfolio
 Route::resource('portfolio', PortofolioController::class);
+Route::get('/portfolio/{type}/show', [PortofolioController::class, 'showtype'])->name('portfolio.showtype');
 
 //store
 Route::resource('store', ProdukController::class);
@@ -106,7 +107,7 @@ Route::get('/store/{id}/showid', [ProdukController::class, 'showid'])->name('sto
 Route::get('/store/{type}/show', [ProdukController::class, 'showtype'])->name('store.showtype');
 
 //blog
-Route::resource('blog', BlogController::class);
+Route::resource('blogs', BlogController::class);
 Route::get('/blog/editing', function () {
     return view('EU.blog.editing');
 });

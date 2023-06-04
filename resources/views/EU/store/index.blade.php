@@ -76,19 +76,37 @@
                                                 <!-- Quantity -->
                                                 <div class="d-flex gap-0">
                                                     <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
+                                                        onclick="decreaseQuantity(this)">
+                                                        <i class="fas fa-minus"></i>
+                                                    </button>
+
+                                                    <div class="form-outline">
+                                                        <input id="form_{{ $cart->where('produk_id', $p->id)->value('id') }}"
+                                                            onchange="updateQuantity(this)"
+                                                            value="{{ $cart->where('produk_id', $p->id)->value('quantity') }}"
+                                                            min="1" name="quantity" type="number" class="form-control"
+                                                            readonly />
+                                                    </div>
+
+                                                    <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
+                                                        onclick="increaseQuantity(this)">
+                                                        <i class="fas fa-plus"></i>
+                                                    </button>
+
+                                                    {{-- <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
                                                         onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                                         <i class="fas fa-minus"></i>
                                                     </button>
 
                                                     <div class="form-outline">
-                                                        <input id="form1" min="1" name="quantity" value="1"
-                                                            type="number" class="form-control" readonly />
+                                                        <input id="form_{{ $p->id }}" min="1" name="quantity"
+                                                            value="1" type="number" class="form-control" readonly />
                                                     </div>
 
                                                     <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
                                                         onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                                         <i class="fas fa-plus"></i>
-                                                    </button>
+                                                    </button> --}}
                                                 </div>
                                                 <!-- Quantity -->
                                             </div>
@@ -125,10 +143,6 @@
             @endforeach
 
         </div>
-
-
-
-
 
         {{-- @foreach ($populer as $p)
             <div class="row">
@@ -252,24 +266,26 @@
                                                             </button>
                                                         @endforeach --}}
                                                         <div class="form-outline">
-                                                            <button class="btn btn-sm yms-blue rounded-5 px-3 me-2 decrease-quantity-btn"
+                                                            {{-- <button
+                                                                class="btn btn-sm yms-blue rounded-5 px-3 me-2 decrease-quantity-btn"
                                                                 onclick="decreaseQuantity(this)">
                                                                 <i class="fas fa-minus"></i>
-                                                            </button>
+                                                            </button> --}}
                                                         </div>
 
                                                         <div class="form-outline">
-                                                                {{-- <input id="quantity_input_{{ $c->produk_id }}" class="form-control" type="number"
+                                                            {{-- <input id="quantity_input_{{ $c->produk_id }}" class="form-control" type="number"
                                                                     value="{{ $c->quantity }}" readonly> --}}
-                                                                {{-- <input id="quantity_input_{{ $p->id }}" class="form-control" type="number"
+                                                            {{-- <input id="quantity_input_{{ $p->id }}" class="form-control" type="number"
                                                                     value="{{ $cart }}" readonly> --}}
                                                         </div>
-                                                        
+
                                                         <div class="form-outline">
-                                                            <button class="btn btn-sm yms-blue rounded-5 px-3 me-2 increase-quantity-btn"
+                                                            {{-- <button
+                                                                class="btn btn-sm yms-blue rounded-5 px-3 me-2 increase-quantity-btn"
                                                                 onclick="increaseQuantity(this)">
                                                                 <i class="fas fa-plus"></i>
-                                                            </button>
+                                                            </button> --}}
                                                         </div>
                                                     </div>
                                                     <!-- Quantity -->
@@ -311,7 +327,60 @@
     </div>
 
 
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
     <script>
+        function decreaseQuantity(button) {
+            var input = $(button).siblings('.form-outline').find('input');
+            var quantity = parseInt(input.val());
+
+            if (quantity > 1) {
+                input.val(quantity - 1).trigger('change');
+            }
+        }
+
+        function increaseQuantity(button) {
+            var input = $(button).siblings('.form-outline').find('input');
+            var quantity = parseInt(input.val());
+
+            input.val(quantity + 1).trigger('change');
+        }
+
+        function updateQuantity(input) {
+            var productId = $(input).attr('id').split('_')[1];
+
+            $.ajax({
+                url: '{{ route('api.update.cart') }}',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    quantity: $(input).val(),
+                    productId: productId
+                },
+                success: function(response) {
+                    
+                }
+            });
+        }
+
+
+
+        // function updateQuantity(productId, newQuantity) {
+        //     var input = $(input).attr('id').split('_')[1];
+        //     var cartId = input.getAttribute('id').split('_')[1];
+
+        //     $.ajax({
+        //         url: '{{ route('api.update.cart') }}',
+        //         method: 'POST',
+        //         data: {
+        //             _token: '{{ csrf_token() }}',
+        //             quantity: newQuantity  
+        //         },
+        //         success: function(response) {
+        //             // Tindakan setelah berhasil memperbarui quantity
+        //         }
+        //     });
+        // }
 
         window.onload = function() {
             let scrollPosition = sessionStorage.getItem('scrollPosition');

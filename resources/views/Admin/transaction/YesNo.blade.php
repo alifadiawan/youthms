@@ -69,13 +69,13 @@
 
                                     <div class="col">
                                         {{-- <form action="{{ route('requestuser.update', $r->id) }}" method="POST"> --}}
-                                            {{-- @csrf
+                                        {{-- @csrf
                                             @method('put') --}}
-                                            {{-- <input type="hidden" value="declined" name="status"> --}}
-                                            <a class="btn btn-danger w-100" data-toggle="modal"
-                                                data-target="#declinedModal">
-                                                declined
-                                            </a>
+                                        {{-- <input type="hidden" value="declined" name="status"> --}}
+                                        <a class="btn btn-danger w-100" data-toggle="modal"
+                                            data-target="#declinedModal">
+                                            declined
+                                        </a>
                                         {{-- </form> --}}
                                     </div>
 
@@ -127,18 +127,26 @@
                     @foreach ($request_user as $r)
                         <div class="col text-right">
                             @if ($r->status == 'declined')
-                                <h5 class="mb-0 me-auto text-dark font-weight-bold">DECLINED</h5>
+                                <h5 class="mb-0 me-auto text-danger font-weight-bold">DECLINED</h5>
                             @elseif($r->status == 'accept')
                                 <h5 class="mb-0 me-auto text-success font-weight-bold">ACCEPTED</h5>
                             @else
                                 <h5 class="mb-0 me-auto text-warning font-weight-bold">PENDING</h5>`
                             @endif
                         </div>
-                        <div class="col text-right">
-                        </div>
                     @endforeach
+                    <div class="col text-right">
+                    </div>
                 </div>
                 <div class="card-body ">
+                    <span>alasan ditolak</span>
+                    @foreach ($request_user as $r)
+                        <div class="">
+                            <div class="bg-dark">
+                                {{ $r->note_admin }}
+                            </div>
+                        </div>
+                    @endforeach
                     <ul class="list-group list-group-flush">
                         @foreach ($detail as $d)
                             <ul class="list-group list-group-flush">
@@ -179,7 +187,8 @@
             </div>
 
             @foreach ($request_user as $r)
-                @if ($r->status == 'accept')
+                @if ($r->status == 'declined')
+                @else
                     <div class="card mb-4">
                         <div class="card-header py-3">
                         </div>

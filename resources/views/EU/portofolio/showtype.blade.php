@@ -8,8 +8,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 align-items-center" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="{{ asset('illustration/porto.gif') }}" class="img-fluid" alt="">
-                    {{-- <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_d9wImAFTrS.json" data-aos="fade-down" id="porto-animation" background="transparent" speed="1" style="width: 100%" loop  autoplay></lottie-player> --}}
+                    {{-- <img src="{{ asset('illustration/group-390.png') }}" class="img-fluid" alt=""> --}}
+                    <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_d9wImAFTrS.json" data-aos="fade-down" id="porto-animation" background="transparent" speed="1" style="width: 100%" loop  autoplay></lottie-player>
                 </div>
                 <div class="col-lg-7 d-flex flex-column justify-content-center pt-4 pt-lg-0" data-aos="fade-up"
                     data-aos-delay="200">
@@ -37,7 +37,7 @@
         <div class="project">
             <div class="row justify-content-center justify-content-lg-start">
                 @if($porto->isEmpty())
-                <p class="h1 text-center">Belum Ada Portofolio</p>
+                <p class="h1 text-center text-capitalize">Belum Ada Portofolio {{$type}}</p>
                 @else
                 @foreach ($porto as $item)
                     <div class="col-lg-3 col-md-6 d-flex mt-4 mb-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">

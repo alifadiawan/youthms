@@ -19,4 +19,9 @@ class Services extends Model
     {
         return $this->belongsTo(JenisLayanan::class);
     }
+
+    public function portofolio()
+    {
+        return $this->hasMany(Portofolio::class);
+    }
 }

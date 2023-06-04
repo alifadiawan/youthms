@@ -14,4 +14,9 @@ class Portofolio extends Model
     {
         return $this->hasMany(PortofolioPic::class);
     }
+
+    public function services()
+    {
+        return $this->belongsTo(Services::class);
+    }
 }

@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('project');
             $table->text('deskripsi');
             $table->string('cover');
+            $table->unsignedBigInteger('services_id');
+            $table->foreign('services_id')->references('id')->on('services')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }
