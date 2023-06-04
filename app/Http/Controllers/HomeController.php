@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\visitor;
+use App\Models\LandingData;
+use App\Models\LandingPartner;
+use App\Models\LandingIllustration;
+use App\Models\LandingText;
 
 class HomeController extends Controller
 {

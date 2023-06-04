@@ -239,6 +239,8 @@
                             </ul>
                         </div>
                     </div>
+                @elseif ($r->status == "declined")
+                    nope
                 @endif
             @endforeach
 

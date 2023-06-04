@@ -13,7 +13,11 @@ use App\Models\JenisLayanan;
 use App\Models\User;
 use App\Models\Member;
 use App\Models\Cart;
+use App\Models\LandingData;
+use App\Models\LandingIllustration;
+use App\Models\LandingPartner;
 use Mckenziearts\Notify\LaravelNotify;
+use App\Models\LandingText;
 
 class EUController extends Controller
 {
@@ -27,8 +31,23 @@ class EUController extends Controller
         $visitor->increment('visits');
         $visitor->save();
 
+        //tagline
+        $text = LandingText::all();
 
-        return view('landing-page');
+        //illustration
+        $illustration = LandingIllustration::all();
+
+        //partners
+        $partner = LandingPartner::all();
+
+        //testi
+        $testi = LandingData::all();
+
+        //jenis layanan
+        $jenis_layanan = JenisLayanan::all();
+        
+
+        return view('landing-page' , compact('text','illustration', 'partner', 'testi', 'jenis_layanan'));
     }
 
     /**

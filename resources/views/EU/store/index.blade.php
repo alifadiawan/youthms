@@ -8,7 +8,7 @@
             <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
             <div id="caption">
                 <h3 class="text-white text-wrap">wawasdwa</h3>
-                <p class="text-white text-wrap">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus
+                <p id="text" class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus
                     fugit
                     pariatur, magnam aliquam et qui hic corporis odio neque nobis doloribus quidem delectus saepe commodi
                     illum minima blanditiis nostrum quod.</p>
@@ -19,7 +19,7 @@
 
     <!-- tombol kategori jasa -->
     <div class="container mb-5 mt-3">
-        <div class="d-flex flex-row text-center gap-3">
+        <div class="d-flex flex-row justify-content-center justify-content-lg-start gap-3">
             {{-- <a href="" class="btn yms-outline-blue rounded-5z">All</a>
             @foreach ($layanan as $l)
             <a href="{{ route('store.showtype', $l->layanan) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
@@ -46,7 +46,7 @@
                 <div class="col-lg col-md-4 col-6 my-2">
                     <div class="card border-0 shadow">
                         <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
-                            style="width: 15.3rem; height: 15.3rem">
+                            style="max-width: 15.3rem; height: 15.3rem; object-fit:cover;">
                         <div class="card-body">
                             <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                             {{-- <p class="card-title text-secondary">{{ $p->services->judul }}</p> --}}
@@ -188,7 +188,7 @@
                         <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="card card-hover border-0 shadow">
                                 <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
-                                    style="width: 19rem; height: 19rem">
+                                    style="max-width: 19rem; height: 19rem">
                                 <div class="card-body">
                                     <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                                     <p class="card-title text-secondary">{{ $ls->judul }}</p>

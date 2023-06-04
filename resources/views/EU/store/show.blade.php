@@ -18,12 +18,15 @@
     <div class="container mb-5 mt-3">
         {{-- navbar kategori --}}
         <div class="d-flex flex-row text-center gap-3">
-            <a href="/store" class="btn yms-outline-blue rounded-5 active">All</a>
+            {{-- <a href="" class="btn yms-outline-blue rounded-5z">All</a>
+            @foreach ($layanan as $l)
+            <a href="{{ route('store.showtype', $l->layanan) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
+            @endforeach --}}
+            <a href="{{ route('store.index') }}" class="text-capitalize my-3 active">All</a>
             @foreach ($layanan as $l)
                 <a href="{{ route('store.showtype', $l->layanan) }}"
-                    class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
+                    class=" my-3 text-capitalize active">{{ $l->layanan }}</a>
             @endforeach
-
         </div>
         @if (count($errors) > 0)
             <div class="alert alert-success" role="alert">
