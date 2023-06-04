@@ -1098,7 +1098,7 @@ section {
     float: left;
     /* margin: 40px -58px 0 0; */
     justify-content: start;
-    animation: floating 6s ease-out infinite;
+    animation: floating 4s ease-out infinite;
 }
 
 @keyframes floating {
@@ -1110,6 +1110,30 @@ section {
     }
     100% {
         transform: translate(0, -0px);
+    }
+}
+
+@media (max-width: 576px) {
+    .main-banner img{
+        padding-left: 40px;
+        margin-bottom: 55px;
+    }
+
+    .main-banner p{
+        font-size: 30px;
+        padding: 3px;
+    }
+
+    #layanan h1{
+        font-size: 25px;
+        line-height: normal;
+        margin-bottom: -40px;
+        margin-top: 10px;
+    }
+
+    #layanan h4{
+        font-size: 20px;
+        margin-bottom: -300px;
     }
 }
 
@@ -1570,6 +1594,19 @@ section {
         font-size: 15px;
     }
 }
+
+@media screen and (min-width: 576px){
+    .trending .card-right {
+        
+    }
+}
+
+.trending .card-right{
+    width: 300px;
+    max-height: 1200px;
+    border-radius: 20px;
+}
+
 .trending-area .trending-main .trand-right-single .trand-right-cap h4 a {
     font-weight: 500;
     line-height: 1.4;

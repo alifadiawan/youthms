@@ -129,100 +129,101 @@
                             </div>
                         </div>
                         <!-- Right content -->
-                        <div class="col-lg-3">
-                            <div class="card" style="width: 300px; border-radius:20px; max-height:1200px;">
-                                <div class="card-body" style="">
-                                    <!-- tombol kategori jasa -->
-                                    <div class="header container mb-2 mt-3">
-                                        <div class="d-flex flex-row text-center gap-3" style="justify-content: center">
-                                            <a href="" class="btn yms-outline-blue rounded-5"
-                                                style="width:70px; height:100%"><i class="fa-solid fa-star"></i></a>
-                                            <a href="" class="btn yms-outline-blue rounded-5"
-                                                style="width:70px; height:100%"><i
-                                                    class="fa-solid fa-chart-simple"></i></a>
-                                            <a href="" class="btn yms-outline-blue rounded-5"
-                                                style="width:70px; height:100%"><i
-                                                    class="fa-regular fa-hand-pointer"></i></a>
+                            <div class="col-lg-3">
+                                <div class="card card-right">
+                                    <div class="card-body">
+                                        <!-- tombol kategori jasa -->
+                                        <div class="header container mb-2 mt-3">
+                                            <div class="d-flex flex-row text-center gap-3"
+                                                style="justify-content: center">
+                                                <a href="" class="btn-populer rounded-5"
+                                                    style="width:70px; height:100%"><i class="fa-solid fa-star"></i></a>
+                                                <a href="" class="btn-terkini rounded-5"
+                                                    style="width:70px; height:100%"><i
+                                                        class="fa-solid fa-chart-simple"></i></a>
+                                                <a href="" class="btn-terpilih rounded-5"
+                                                    style="width:70px; height:100%"><i
+                                                        class="fa-regular fa-hand-pointer"></i></a>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <div class="overflow-auto" style="max-width: 100%; max-height: 575px;">
-                                        <div class="col-lg-12">
-                                            <div class="trand-right-single d-flex">
-                                                <div class="trand-right-img">
-                                                    <img src="{{ asset('illustration/il1.jpg') }}" alt=""
-                                                        width="100px" height="100px">
+                                        <hr>
+                                        <div class="overflow-auto" style="max-width: 100%; max-height: 575px;">
+                                            <div class="col-lg-12">
+                                                <div class="trand-right-single d-flex">
+                                                    <div class="trand-right-img">
+                                                        <img src="{{ asset('illustration/il1.jpg') }}" alt=""
+                                                            width="100px" height="100px">
+                                                    </div>
+                                                    <div class="trand-right-cap">
+                                                        <span class="color1">Pemrograman 2</span>
+                                                        <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
+                                                                adipiscing elit. </a>
+                                                        </h4>
+                                                    </div>
                                                 </div>
-                                                <div class="trand-right-cap">
-                                                    <span class="color1">Pemrograman 2</span>
-                                                    <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </a>
-                                                    </h4>
+                                                <div class="trand-right-single d-flex">
+                                                    <div class="trand-right-img">
+                                                        <img src="{{ asset('illustration/il1.jpg') }}" alt=""
+                                                            width="100px" height="100px">
+                                                    </div>
+                                                    <div class="trand-right-cap">
+                                                        <span class="color3">Pemrograman 5</span>
+                                                        <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
+                                                                adipiscing elit. </a>
+                                                        </h4>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="trand-right-single d-flex">
-                                                <div class="trand-right-img">
-                                                    <img src="{{ asset('illustration/il1.jpg') }}" alt=""
-                                                        width="100px" height="100px">
+                                                <div class="trand-right-single d-flex">
+                                                    <div class="trand-right-img">
+                                                        <img src="{{ asset('illustration/il1.jpg') }}" alt=""
+                                                            width="100px" height="100px">
+                                                    </div>
+                                                    <div class="trand-right-cap">
+                                                        <span class="color2">Pemrograman 4</span>
+                                                        <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
+                                                                adipiscing elit. </a>
+                                                        </h4>
+                                                    </div>
                                                 </div>
-                                                <div class="trand-right-cap">
-                                                    <span class="color3">Pemrograman 5</span>
-                                                    <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </a>
-                                                    </h4>
+                                                <div class="trand-right-single d-flex">
+                                                    <div class="trand-right-img">
+                                                        <img src="{{ asset('illustration/il1.jpg') }}" width="100px"
+                                                            height="100%">
+                                                    </div>
+                                                    <div class="trand-right-cap">
+                                                        <span class="color4">Pemrograman 6</span>
+                                                        <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
+                                                                adipiscing elit. </a>
+                                                        </h4>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="trand-right-single d-flex">
-                                                <div class="trand-right-img">
-                                                    <img src="{{ asset('illustration/il1.jpg') }}" alt=""
-                                                        width="100px" height="100px">
+                                                <div class="trand-right-single d-flex">
+                                                    <div class="trand-right-img">
+                                                        <img src="{{ asset('illustration/il1.jpg') }}" width="100px"
+                                                            height="100px">
+                                                    </div>
+                                                    <div class="trand-right-cap">
+                                                        <span class="color4">Pemrograman 6</span>
+                                                        <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
+                                                                adipiscing elit. </a>
+                                                        </h4>
+                                                    </div>
                                                 </div>
-                                                <div class="trand-right-cap">
-                                                    <span class="color2">Pemrograman 4</span>
-                                                    <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </a>
-                                                    </h4>
+                                                <div class="trand-right-single d-flex">
+                                                    <div class="trand-right-img">
+                                                        <img src="{{ asset('illustration/il1.jpg') }}" width="100px"
+                                                            height="100px">
+                                                    </div>
+                                                    <div class="trand-right-cap">
+                                                        <span class="color4">Pemrograman 6</span>
+                                                        <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
+                                                                adipiscing elit. </a>
+                                                        </h4>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="trand-right-single d-flex">
-                                                <div class="trand-right-img">
-                                                    <img src="{{ asset('illustration/il1.jpg') }}" width="100px"
-                                                        height="100%">
-                                                </div>
-                                                <div class="trand-right-cap">
-                                                    <span class="color4">Pemrograman 6</span>
-                                                    <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </a>
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div class="trand-right-single d-flex">
-                                                <div class="trand-right-img">
-                                                    <img src="{{ asset('illustration/il1.jpg') }}" width="100px"
-                                                        height="100px">
-                                                </div>
-                                                <div class="trand-right-cap">
-                                                    <span class="color4">Pemrograman 6</span>
-                                                    <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </a>
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div class="trand-right-single d-flex">
-                                                <div class="trand-right-img">
-                                                    <img src="{{ asset('illustration/il1.jpg') }}" width="100px"
-                                                        height="100px">
-                                                </div>
-                                                <div class="trand-right-cap">
-                                                    <span class="color4">Pemrograman 6</span>
-                                                    <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </a>
-                                                    </h4>
-                                                </div>
-                                            </div>
 
-                                            {{-- <div class="trand-right-single d-flex">
+                                                {{-- <div class="trand-right-single d-flex">
                                                 <div class="trand-right-img">
                                                     <img src="assets/img/images/course-11.jpg" alt="" width="100%" height="100%">
                                                 </div>
@@ -231,12 +232,13 @@
                                                     <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
                                                 </div>
                                             </div> --}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                        </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>

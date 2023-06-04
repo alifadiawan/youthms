@@ -14,6 +14,7 @@
 <script src="{{ asset('EU/vendor/php-email-form/validate.js') }}"></script>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
+
 <!-- Template Main JS File -->
 <script src="{{ asset('EU/js/main.js') }}"></script>
 
