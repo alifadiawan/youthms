@@ -20,7 +20,6 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 1,
                 'foto' => 'blog (1).jpeg',
                 'judul' => 'how to not to how',
-                'tanggal' => carbon::parse('2023-06-03'),
                 'isi' => '
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -30,12 +29,13 @@ class BlogSeeder extends Seeder
                 'visitor' => null,
                 'users_id' => 1,
                 'segmen_id' => 3,
+                'created_at' =>null,
+                'updated_at' =>null,
             ],
             [
                 'id_artikel' => 2,
                 'foto' => 'blog (1).jpg',
                 'judul' => 'how to not to be a1',
-                'tanggal' => carbon::parse('2023-06-03'),
                 'isi' => '
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam sit asperiores ut, voluptatem dicta quaerat quo magnam repellat iste mollitia 
                 possimus a corporis. Soluta, nemo vel vitae laborum nulla explicabo reiciendis harum, obcaecati labore quos accusamus, maxime doloribus in
@@ -43,16 +43,63 @@ class BlogSeeder extends Seeder
                 'visitor' => null,
                 'users_id' => 1,
                 'segmen_id' => 2,
+                'created_at' =>null,
+                'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'tanggal' => carbon::parse('2023-06-03'),
                 'isi' => 'dont be wrong :D',
                 'visitor' => null,
                 'users_id' => 1,
                 'segmen_id' => 3,
+                'created_at' =>null,
+                'updated_at' =>null,
+            ],
+            [
+                'id_artikel' => 3,
+                'foto' => 'blog (4).jpg',
+                'judul' => 'how to not to make a war with girl',
+                'isi' => 'dont be wrong :D',
+                'visitor' => null,
+                'users_id' => 1,
+                'segmen_id' => 3,
+                'created_at' =>null,
+                'updated_at' =>null,
+            ],
+            [
+                'id_artikel' => 3,
+                'foto' => 'blog (4).jpg',
+                'judul' => 'how to not to make a war with girl',
+                'isi' => 'dont be wrong :D',
+                'visitor' => null,
+                'users_id' => 1,
+                'segmen_id' => 3,
+                'created_at' =>null,
+                'updated_at' =>null,
+            ],
+            [
+                'id_artikel' => 3,
+                'foto' => 'blog (4).jpg',
+                'judul' => 'how to not to make a war with girl',
+                'isi' => 'dont be wrong :D',
+                'visitor' => null,
+                'users_id' => 1,
+                'segmen_id' => 3,
+                'created_at' =>null,
+                'updated_at' =>null,
+            ],
+            [
+                'id_artikel' => 3,
+                'foto' => 'blog (4).jpg',
+                'judul' => 'how to not to make a war with girl',
+                'isi' => 'dont be wrong :D',
+                'visitor' => null,
+                'users_id' => 1,
+                'segmen_id' => 3,
+                'created_at' =>null,
+                'updated_at' =>null,
             ],
         ];
 

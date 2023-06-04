@@ -86,7 +86,6 @@
                                     <!-- Price -->
                                 </div>
                             </div>
-                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                             <!-- Single item -->
                             <hr>
                         @endforeach
@@ -188,6 +187,8 @@
     </section>
 
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function updateQuantity(input) {
             var cartId = $(input).attr('id').split('_')[1];

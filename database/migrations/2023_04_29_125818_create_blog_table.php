@@ -16,7 +16,6 @@ return new class extends Migration
             $table->integer('id_artikel');
             $table->string('foto')->nullable();
             $table->string('judul');
-            $table->date('tanggal');
             $table->text('isi');
             $table->integer('visitor')->nullable();
             $table->unsignedBigInteger('users_id');
