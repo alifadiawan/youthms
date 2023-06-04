@@ -757,6 +757,12 @@ section {
     border-radius: 150px 150px 150px 150px;
 }
 
+@media (max-width: 576px){
+    #testimonial {
+        border-radius: 90px 90px 90px 90px;
+    }
+}
+
 #testimonial.row {
     padding: 30px;
 }
