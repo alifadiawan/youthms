@@ -114,12 +114,20 @@ h6 {
     width: fit-content;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 576px) {
     #caption {
         position: absolute;
         top: 13%;
         left: 5%;
         width: 30%;
+    }
+    h3{
+        text-align: left;
+        font-size: 20px;
+    }
+
+    #text{
+        text-align: left;
         font-size: 7px;
     }
 }
@@ -480,6 +488,7 @@ h6 {
 @media (max-width: 576px) {
     .hero {
         border-radius: 0px 0px 100px 0px;
+        padding-bottom: 700px;
     }
 }
 
@@ -496,30 +505,16 @@ h6 {
     border-radius: 0px 0px 200px 200px;
 }
 
+
 @media (max-width: 575px) {
     #hero-portofolio{
-        border-radius: 0px 0px 200px 200px;
+        border-radius: 0px 0px 90px 90px;
+        padding-bottom: 200px;
     }
 
     h1{
         text-align: center;
-        font-size: 27px
-    }
-    p{
-        text-align: center;
-        font-size: 3px;
-    }
-
-}
-
-@media (max-width: 876px) {
-    #hero-portofolio{
-        border-radius: 0px 0px 100px 100px;
-    }
-
-    h1{
-        text-align: center;
-        font-size:30px
+        font-size: 25px;
     }
     p{
         text-align: center;

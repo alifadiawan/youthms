@@ -10,13 +10,11 @@
                     @foreach ($text as $item)
                         <h1>{{ $item->mainline }}</h1>
                         <h2>{{ $item->secondline }}</h2>
-                        <h3>
-                            3rb blum connect
-                        </h3>
+                        <h3 class="text-lg-start text-center">3rb blum connect</h3>
                     @endforeach
                 </div>
                 @foreach ($illustration as $i)
-                    <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="col-lg-6 order-1 order-lg-2 hero-img align-items-center" data-aos="zoom-in" data-aos-delay="200">
                         <img src="{{ asset('./illustration/' . $i->illustration) }}" class="img-fluid" alt="">
                     </div>
                 @endforeach
@@ -36,10 +34,9 @@
                 @foreach ($jenis_layanan as $item)
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch my-4 mt-md-0" data-aos="zoom-in"
                         data-aos-delay="200">
-                        <div class="icon-box">
-                            <h4>{{$item->layanan}}</h4>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                        <div class="icon-box text-start">
+                            <h4 class="text-center text-lg-start">{{$item->layanan}}</h4>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                             <a href="" class="">Lihat lebih lanjut</a>
                         </div>
                     </div>
@@ -120,7 +117,7 @@
 
                 @foreach ($partner as $item)
                     <div class="col-lg-3 col-md-4 col-sm-7 d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('./partner/' . $item->partner) }}" class="img-fluid" alt="">
+                        <img src="{{ asset('./partner/'.$item->partner) }}" class="img-fluid" alt="">
                     </div>
                 @endforeach
 
@@ -138,7 +135,7 @@
             <div class="carousel-inner">
                 @foreach ($testi as $item)
                     <div class="carousel-item active">
-                        <img class="rounded-circle shadow-1-strong mb-4" src="{{ asset('./testimonial/' . $item->foto) }}"
+                        <img class="rounded-circle shadow-1-strong mb-4" src="{{ asset('./testimonial/'.$item->foto) }}"
                             alt="avatar" style="width: 150px;" />
                         <div class="row d-flex justify-content-center">
                             <div class="col-lg-8">
