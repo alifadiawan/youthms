@@ -4,27 +4,27 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\JenisLayanan;
+use App\Models\Segmen;
 
-class Jenis_LayananSeeder extends Seeder
+class SegmenSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $jenis = [
+        //
+        $segmen = [
             [
-                'layanan' => 'desain'
+                'segmen' => 'DESIGN'
             ],
             [
-                'layanan' => 'aplikasi'
+                'segmen' => 'EDITIN'
             ],
             [
-                'layanan' => 'editing'
-            ]
+                'segmen' => 'PEMROGRAMMAN'
+            ],
         ];
-
-        JenisLayanan::insert($jenis);
+        segmen::insert($segmen);
     }
 }

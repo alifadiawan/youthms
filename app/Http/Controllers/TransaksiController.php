@@ -47,6 +47,11 @@ class TransaksiController extends Controller
         $trx = Transaksi::paginate(5);
         // nyoba termin sedang berlangsung & termin yang di decline
 
+        $kredit = [];
+        $pending = [];
+        $utang = [];
+        $lunas = [];
+        $declined = [];
 
         // pengkondisian jika role user = client, akan terlempar ke history index
         $requestUser = request_user::all();
@@ -302,6 +307,13 @@ class TransaksiController extends Controller
 
         $role = auth()->user()->role->role;
         $requestUser = request_user::all();
+
+        
+        $kredit = [];
+        $pending = [];
+        $utang = [];
+        $lunas = [];
+        $declined = [];
 
         // bayar 
         if ($user_role == 'client') {
