@@ -7,22 +7,24 @@
                     <div class="row mt-40">
                         <div class="col-lg-9">
                             <!-- Trending Top -->
-                            @auth
-                                @foreach ($blog as $b)
-                                    <div class="trending-top mb-30">
-                                        <div class="trend-top-img">
-                                            <img src="{{ asset('blog/' . $b->foto) }}" alt="" width="100%"
-                                                height="100%" style="border-radius: 20px">
-                                            <div class="trend-top-cap">
-                                                {{-- <span>Pemrograman 5</span> --}}
-                                                <h2><a href="/blog-detail">Lorem ipsum dolor sit amet, <br> consectetur
-                                                        adipiscing elit.</a>
-                                                </h2>
-                                            </div>
-                                        </div>
+
+                            {{-- @foreach ($blog as $b) --}}
+                            <div class="trending-top mb-30">
+                                <div class="trend-top-img">
+                                    {{-- <img src="{{ asset('blog/' . $b->foto) }}" alt="" width="100%"
+                                                height="100%" style="border-radius: 20px"> --}}
+                                    <img src="{{ asset('illustration/il1.jpg') }}" alt="" width="100%"
+                                        height="100%">
+
+                                    <div class="trend-top-cap">
+                                        {{-- <span>Pemrograman 5</span> --}}
+                                        <h2><a href="/blog-detail">ealah <br> consectetur
+                                                adipiscing elit.</a>
+                                        </h2>
                                     </div>
-                                @endforeach
-                            @endauth
+                                </div>
+                            </div>
+                            {{-- @endforeach --}}
                             <!-- Trending Bottom -->
                             <div class="trending-bottom">
                                 <div class="row">
