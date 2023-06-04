@@ -3,6 +3,8 @@
 @section('content')
 
     <div id="container" class="container my-5">
+        <div class="row">
+
         <div class="card p-5">
 
             <a href="{{ route('portfolio.index') }}">
@@ -19,16 +21,16 @@
             <!-- Cover -->
             <div class="row justify-content-center">
                 <div class="col">
-                    <img src="{{ asset('./portofolio/' . $porto->cover) }}" alt="Cover" style="width: 75rem;">
+                    <img src="{{ asset('./portofolio/' . $porto->cover) }}" class="img-fluid" alt="Cover" >
                 </div>
             </div>
 
             <!-- images -->
-            <div class="row mt-3 justify-content-around">
+            <div class="row mt-3 justify-content-center justify-content-lg-around">
                 @foreach ($pic as $p)
-                    <div class="col mt-3">
+                    <div class="col-lg col-12 mt-3">
                         <a class="pop{{ $p->id }}" data-bs-toggle="modal" data-bs-target="#foto{{ $p->id }}">
-                            <img src="{{ asset('./portofolio/' . $p->foto) }}" style="width: 13rem;">
+                            <img src="{{ asset('./portofolio/' . $p->foto) }}" class="img-fluid">
                         </a>
                     </div>
                 @endforeach
@@ -37,6 +39,8 @@
 
         </div>
     </div>
+</div>
+
 
 
     <!-- Show Images modal -->
