@@ -290,7 +290,7 @@
                                                         {{-- <img class="img-thumbnail border-0"
                                                             style="width: 15rem" alt=""> --}}
                                                         <img class="img-thumbnail border-0"
-                                                        src="{{ asset('illustration/gopay.webp') }}"
+                                                        src="{{ asset('illustration/gopay.png') }}"
                                                             style="width: 100px; margin-right:1px"alt="">
                                                             <span style="text-align: end" class="fw-bold">Go-Pay</span>
                                                     </a>
@@ -299,7 +299,7 @@
                                                 <div class="row">
                                                     <a href="/cara-wallet" class="btn" type="button">
                                                         <img class="img-thumbnail border-0"
-                                                        src="{{ asset('illustration/sopipay.webp') }}"
+                                                        src="{{ asset('illustration/sopipay.png') }}"
                                                             style="width: 100px" alt=""><span style="text-align: end" class="fw-bold">Shopee-Pay</span>
                                                     </a>
                                                 </div>
@@ -316,6 +316,7 @@
                                     </form>
                                 </div>
                             </div>
+                            <!--End E-wallet -->
                         </div>
 
 
