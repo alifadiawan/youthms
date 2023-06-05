@@ -15,58 +15,53 @@
             {{-- @if ($EU_lunas->contains($t->id)) --}}
             @if (in_array($t->id, $EU_lunas))
                 <div class="card shadow rounded-3">
-                    @foreach ($trx as $t)
-                        <div class="row my-3 mx-3 mx-lg-4">
-                            <div class="col-6 col-lg text-start">
-                                <strong>INVOCE</strong>
-                            </div>
-                            <div class="col-6 col-lg text-end text-lg-end">
-                                <p class="text-muted">{{ $t->unique_code }}</p>
-                            </div>
+                    <div class="row my-3 mx-3 mx-lg-4">
+                        <div class="col-6 col-lg text-start">
+                            <strong>INVOCE</strong>
                         </div>
-                    @endforeach
+                        <div class="col-6 col-lg text-end text-lg-end">
+                            <p class="text-muted">{{ $t->unique_code }}</p>
+                        </div>
+                    </div>
 
                     <div class="konten my-lg-0 mx-5">
                         <div class="row">
                             <div class="card-body">
                                 <!-- Lunas -->
-                                @foreach ($trx as $t)
-                                    @if (in_array($t->id, $EU_lunas))
-                                        <!-- Date -->
+                                @if (in_array($t->id, $EU_lunas))
+                                    <!-- Date -->
+                                    <div class="row">
                                         <div class="row">
+                                            Invoice To
+                                            <div class="row text-muted">
+                                                {{ $t->member->user->email }}
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
                                             <div class="row">
-                                                Invoice To
-                                                <div class="row text-muted">
-                                                    {{ $t->member->user->email }}
+                                                <div class="col-6 col-lg-10 col-md-6 my-0 my-lg-0 text-start text-lg-end">
+                                                    Status</div>
+                                                <div class="col text-end text-lg text-success">
+                                                    LUNAS
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
-                                                <div class="row">
-                                                    <div
-                                                        class="col-6 col-lg-10 col-md-6 my-0 my-lg-0 text-start text-lg-end">
-                                                        Status</div>
-                                                    <div class="col text-end text-lg text-success">
-                                                        LUNAS
-                                                    </div>
+                                            <div class="row">
+                                                <div class="col-6 col-lg-10 col-md-6 my-0 my-lg-0">Transaksi Dibuat
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-6 col-lg-10 col-md-6 my-0 my-lg-0">Transaksi Dibuat
-                                                    </div>
-                                                    <div class="col text-end text-lg">
-                                                        {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
-                                                    </div>
+                                                <div class="col text-end text-lg">
+                                                    {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
                                                 </div>
-                                                {{-- <div class="row">
+                                            </div>
+                                            {{-- <div class="row">
                                                     <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai
                                                     </div>
                                                     <div class="col text-end text-lg">
                                                         31 Mei 2023
                                                     </div>
                                                 </div> --}}
-                                            </div>
                                         </div>
-                                    @endif
-                                @endforeach
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="konten mt-3 mx-3">
@@ -107,13 +102,12 @@
                                         </tr>
                                     </tbody>
                                     <tbody>
-                                        @foreach ($trx as $t)
-                                            <tr class="h5">
-                                                <td class="text-end fw-bold" colspan="3">Grand Total</td>
-                                                <td class=" fw-bold"><span id="total-transaksi-b">Rp
-                                                        {{ number_format($t->total, 0, ',', '.') }}</span></td>
-                                            </tr>
-                                        @endforeach
+
+                                        <tr class="h5">
+                                            <td class="text-end fw-bold" colspan="3">Grand Total</td>
+                                            <td class=" fw-bold"><span id="total-transaksi-b">Rp
+                                                    {{ number_format($t->total, 0, ',', '.') }}</span></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -126,7 +120,9 @@
         <!-- belum bayar -->
         @foreach ($trx as $t)
             {{-- VIEW UTANG --}}
-            @if (in_array($t->id, $EU_utang))
+            @if ($pembayaran->isempty())
+            <hr><span>mancing mania mantab</span>
+            @elseif (in_array($t->id, $EU_utang))
                 <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
                     <div class="alert alert-danger" role="alert">
                         Bayar sebelum .... Klik disini untuk bayar
@@ -220,13 +216,12 @@
                                 </tr>
                             </tbody>
                             <tbody>
-                                @foreach ($trx as $t)
-                                    <tr class="h5">
-                                        <td class="text-end fw-bold" colspan="3">Grand Total</td>
-                                        <td class=" fw-bold"><span id="total-transaksi-b">Rp
-                                                {{ number_format($t->total, 0, ',', '.') }}</span></td>
-                                    </tr>
-                                @endforeach
+                                <tr class="h5">
+                                    <td class="text-end fw-bold" colspan="3">Grand Total</td>
+                                    <td class=" fw-bold"><span id="total-transaksi-b">Rp
+                                            {{ number_format($t->total, 0, ',', '.') }}</span></td>
+                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -360,7 +355,9 @@
                     </div>
                 </div>
                 <hr>
-                {{-- <div class="row">
+            @endif
+        @endforeach
+        {{-- <div class="row">
                                 <div class="col text-muted">
                                     Segera bayar sebelum
                                 </div>
@@ -376,8 +373,7 @@
                                     -
                                 </div>
                             </div> --}}
-            @endif
-        @endforeach
+
 
         <!-- declined -->
         @foreach ($trx as $t)
@@ -484,13 +480,11 @@
                                 </tr>
                             </tbody>
                             <tbody>
-                                @foreach ($trx as $t)
-                                    <tr class="h5">
-                                        <td class="text-end fw-bold" colspan="3">Grand Total</td>
-                                        <td class=" fw-bold "><span id="total-transaksi-b">Rp
-                                                {{ number_format($t->total, 0, ',', '.') }}</span></td>
-                                    </tr>
-                                @endforeach
+                                <tr class="h5">
+                                    <td class="text-end fw-bold" colspan="3">Grand Total</td>
+                                    <td class=" fw-bold "><span id="total-transaksi-b">Rp
+                                            {{ number_format($t->total, 0, ',', '.') }}</span></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -606,13 +600,11 @@
                             </tr>
                         </tbody>
                         <tbody>
-                            @foreach ($trx as $t)
-                                <tr class="h5">
-                                    <td class="text-end fw-bold" colspan="3">Grand Total</td>
-                                    <td class="fw-bold"><span id="total-transaksi-b">Rp
-                                            {{ number_format($t->total, 0, ',', '.') }}</span></td>
-                                </tr>
-                            @endforeach
+                            <tr class="h5">
+                                <td class="text-end fw-bold" colspan="3">Grand Total</td>
+                                <td class="fw-bold"><span id="total-transaksi-b">Rp
+                                        {{ number_format($t->total, 0, ',', '.') }}</span></td>
+                            </tr>
                         </tbody>
                     </table>
                     <hr>
@@ -644,13 +636,11 @@
                             </tr>
                         </tbody>
                         <tbody>
-                            @foreach ($trx as $t)
-                                <tr class="h5">
-                                    <td class="text-end fw-bold" colspan="3">Grand Total</td>
-                                    <td class="fw-bold"><span id="total-transaksi-b">Rp
-                                            {{ number_format($t->total, 0, ',', '.') }}</span></td>
-                                </tr>
-                            @endforeach
+                            <tr class="h5">
+                                <td class="text-end fw-bold" colspan="3">Grand Total</td>
+                                <td class="fw-bold"><span id="total-transaksi-b">Rp
+                                        {{ number_format($t->total, 0, ',', '.') }}</span></td>
+                            </tr>
                         </tbody>
                         <tbody>
                             <tr>

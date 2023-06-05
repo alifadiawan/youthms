@@ -138,9 +138,6 @@ class TransaksiController extends Controller
         $trxid = $tid;
         $trx = transaksi::where('id', $transaksi->id)->get();
         $pembayaran = pembayaran::where('transaksi_id',$tid)->get();
-        if ($transaksi->isempty()) {
-            
-        }
         // return $tid;
 
         // mencari request user, jika melakukan kredit
@@ -168,7 +165,7 @@ class TransaksiController extends Controller
         $grandtotal = $total + $admin;
 
 
-        $compact = ['detail', 'total', 'grandtotal', 'admin', 'trx', 'requser'];
+        $compact = ['detail', 'total', 'grandtotal', 'admin', 'trx', 'requser','pembayaran'];
 
         $role = auth()->user()->role->role;
         $requestUser = request_user::all();
