@@ -2010,6 +2010,12 @@ section {
     border-radius: 100px 100px 100px 100px;
 }
 
+@media (max-width: 576px) {
+    #paket{
+        border-radius : 90px 90px 90px 90px;
+    }
+}
+
 #paket.section-title {
     color: white;
 }

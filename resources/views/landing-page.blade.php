@@ -65,37 +65,41 @@
                 <h2 class="text-center">Choose what you need now</h2>
             </div>
 
-            <div class="row justify-content-center">
+            <div class="row justify-content-between">
 
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="icon-box text-center">
+                    data-aos-delay="200" >
+                    <div class="icon-box text-center" style="width: 20rem">
                         <h4><a href="">Paket A</a></h4>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                        <p>Full Marketing Web</p>
+                        <p>Logo for business web</p>
                         <a href="" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-                    data-aos-delay="300">
-                    <div class="icon-box text-center">
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                    data-aos-delay="200">
+                    <div class="icon-box text-center" style="width: 20rem">
                         <h4><a href="">Paket B</a></h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                        <p>Full Marketing Web</p>
+                        <p>Logo for business web</p>
                         <a href="" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-                    data-aos-delay="300">
-                    <div class="icon-box text-center">
-                        <h4><a href="">Paket B</a></h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                    data-aos-delay="200">
+                    <div class="icon-box text-center" style="width: 20rem">
+                        <h4><a href="">Paket C</a></h4>
+                        <p>Full Marketing Web</p>
+                        <p>Logo for business web</p>
                         <a href="" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-                    data-aos-delay="300">
-                    <div class="icon-box text-center">
-                        <h4><a href="">Paket B</a></h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                    data-aos-delay="200">
+                    <div class="icon-box text-center" style="width: 20rem">
+                        <h4><a href="">Paket D</a></h4>
+                        <p>Full Marketing Web</p>
+                        <p>Logo for business web</p>
                         <a href="" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>

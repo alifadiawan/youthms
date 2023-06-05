@@ -121,12 +121,12 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="d-flex flex-column px-md-5 px-4 mb-4">
-                                <span>Virtual Account BRI</span>
+                                <span>Transfer Bank BRI</span>
                                 <div class="inputWithIcon">
                                     <input class="form-control" type="text" value="92001981045887568">
                                     <span class="">
                                         <a class="btn" type="button">
-                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp8sk1NR5zI_Y3oPUKd2EovsQDejDMv14as0jINjnIOQVf9jE&s"
+                                            <img src="{{ asset('illustration/mandiri.webp') }}"
                                                 alt="" style="width: 100%">
                                         </a>
                                         {{-- <div class="dropdown">
