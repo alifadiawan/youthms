@@ -29,7 +29,8 @@ class RequestUserController extends Controller
 
         if ($user_role == "client") {
             $compact = [];
-            return view('EU.transaction.kredit', compact($compact));
+            // return view('EU.transaction.kredit', compact($compact));
+            return redirect()->route('transaksi.history');
         }
 
         $request_user = request_user::all();

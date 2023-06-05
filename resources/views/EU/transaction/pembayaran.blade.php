@@ -266,7 +266,7 @@
                                                     <textarea class="form-control" name="deskripsi" cols="30" rows="10">{{ old('deskripsi') }}</textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="hidden" name="status" value="">
+                                                    <input type="hidden" name="status" value="pending">
                                                     <input type="hidden" name="transaksi_id"
                                                         value="{{ $tid }}">
                                                     <button class="btn btn-primary" type="submit">kirim request</button>

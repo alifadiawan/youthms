@@ -26,7 +26,7 @@ class RequestUserSeeder extends Seeder
             [
                 'nama_pemesan' => 'ilham',
                 'deskripsi' => null,
-                'status' => null,
+                'status' => 'pending',
                 'tanggal_mulai' => Carbon::parse('2023-06-21'),
                 'jatuh_tempo' => Carbon::parse('2023-06-30'),
                 'transaksi_id' => 5,
