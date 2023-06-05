@@ -93,7 +93,7 @@ class PembayaranController extends Controller
             'bukti_tf' => $nama_file,
             'note_admin' => null,
         ]);
-
+        notify()->success('Pembayaran Anda Akan Kami Proses !');
         return redirect()->route('transaksi.show',$tid);
     }
 
