@@ -66,7 +66,7 @@
                         </div>
                         <!-- Right content -->
                         <div class="col-lg-3">
-                            <div class="card card-right">
+                            <div class="card">
                                 <div class="card-body">
                                     <!-- tombol kategori jasa -->
                                     <div class="header container mb-2 mt-3">
