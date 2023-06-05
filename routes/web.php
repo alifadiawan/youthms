@@ -140,6 +140,10 @@ Route::get('/profile', function () {
 Route::get('/cara', function () {
     return view('EU.transaction.cara');
 });
+
+Route::get('/cara-wallet', function () {
+    return view('EU.transaction.cara-wallet');
+});
 //logout
 Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 

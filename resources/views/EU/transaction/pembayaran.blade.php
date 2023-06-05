@@ -6,18 +6,18 @@
             <div class="col-md-8">
                 <a href="{{ route('cart.index') }}" class="btn my-3">
                     <i class="fas fa-arrow-left"></i></a>
-                    <div class="card mb-3 shadow rounded-3">
-                        @foreach ($transaksi as $t)
-                            
-                        @endforeach
-                        <div class="row my-3 mx-3 mx-lg-4">
-                            <div class="col-6 col-lg text-start">
-                                <strong>INVOCE</strong>
-                            </div>
-                            <div class="col-6 col-lg text-end text-lg-end">
-                                <p class="text-muted">{{ $t->unique_code }}</p>
-                            </div>
+                <div class="card mb-3 shadow rounded-3">
+                    @foreach ($transaksi as $t)
+                    @endforeach
+                    <div class="row my-3 mx-3 mx-lg-4">
+                        <div class="col-6 col-lg text-start">
+                            <strong>INVOCE</strong>
                         </div>
+                        <div class="col-6 col-lg text-end text-lg-end">
+                            <p class="text-muted">{{ $t->unique_code }}</p>
+                        </div>
+                    </div>
+
                         <div class="row mx-3 mx-lg-4">
                             <div class="col-12 col-lg-12 text-start text-lg-end">
                                 <div class="row">
@@ -29,6 +29,7 @@
                         </div>
             
                         {{-- <div class="konten my-lg-0 mx-5">
+
                             <div class="row">
                                 <div class="col">
                                     <div class="row">
@@ -66,46 +67,48 @@
                                 </div>
                             </div>
                         </div> --}}
-            
-                        <div class="konten mt-3 mx-3">
-                            <table class="table table-bordered">
-                                <thead class="bg-light text-dark">
-                                    <tr>
-                                        <th>Nama Barang</th>
-                                        <th>Qty</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($detail as $d)
+
+                    <div class="konten mt-3 mx-3">
+                        <table class="table table-bordered">
+                            <thead class="bg-light text-dark">
+                                <tr>
+                                    <th>Nama Barang</th>
+                                    <th>Qty</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($detail as $d)
                                     <tr>
                                         <td>{{ $d->produk->nama_produk }}</td>
                                         <td>x {{ $d->quantity }}</td>
-                                        <td class="text-end">Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</td>
+                                        <td class="text-end">Rp.
+                                            {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</td>
                                     </tr>
-                                    @endforeach 
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="2" class="text-end">Total</td>
-                                        <td colspan="1" class="text-end">Rp. {{ number_format($total, 0, ',', '.') }}</td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="2" class="text-end">Biaya admin</td>
-                                        <td colspan="1" class="text-end">Rp. {{ number_format($admin, 0, ',', '.') }}</td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="2" class="text-end fw-bold">Grand Total</td>
-                                        <td colspan="1" class="text-end fw-bold">Rp. {{ number_format($grandtotal, 0, ',', '.') }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-end">Total</td>
+                                    <td colspan="1" class="text-end">Rp. {{ number_format($total, 0, ',', '.') }}</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-end">Biaya admin</td>
+                                    <td colspan="1" class="text-end">Rp. {{ number_format($admin, 0, ',', '.') }}</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-end fw-bold">Grand Total</td>
+                                    <td colspan="1" class="text-end fw-bold">Rp.
+                                        {{ number_format($grandtotal, 0, ',', '.') }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
                 {{-- <div class="card mb-4">
                     <div class="card-header py-3">
                         <div class="row">
@@ -226,7 +229,8 @@
                                             <div class="form">
                                                 <div class="form-gorup">
                                                     <label for="">Nama Pemesan / Instansi</label>
-                                                    <input type="text" class="form-control" name="nama_pemesan" value="{{ old('nama_pemesan') }}" required> 
+                                                    <input type="text" class="form-control" name="nama_pemesan"
+                                                        value="{{ old('nama_pemesan') }}" required>
                                                 </div>
                                                 <div class="form-gorup">
                                                     <label for="">Jangka Waktu</label>
@@ -235,21 +239,25 @@
                                                             {{-- pending --}}
                                                             <label for="">tanggal mulai</label>
                                                             <input type="date" id="tanggal" name="tanggal_mulai"
-                                                                class="form-control" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" required> 
+                                                                class="form-control" value="{{ date('Y-m-d') }}"
+                                                                min="{{ date('Y-m-d') }}" required>
                                                         </div>
                                                         <div class="col">
                                                             <label for="">tanggal akhir</label>
-                                                            <input type="date" name="jatuh_tempo" class="form-control" min="{{ date('Y-m-d') }}" value="{{ old('jatuh_tempo') }}" required>
+                                                            <input type="date" name="jatuh_tempo" class="form-control"
+                                                                min="{{ date('Y-m-d') }}"
+                                                                value="{{ old('jatuh_tempo') }}" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-gorup">
                                                     <label for="">Deskripsi (opsional)</label>
-                                                        <textarea class="form-control" name="deskripsi" cols="30" rows="10" >{{ old('deskripsi') }}</textarea>
+                                                    <textarea class="form-control" name="deskripsi" cols="30" rows="10">{{ old('deskripsi') }}</textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="hidden" name="status" value="">
-                                                    <input type="hidden" name="transaksi_id" value="{{ $tid }}">
+                                                    <input type="hidden" name="transaksi_id"
+                                                        value="{{ $tid }}">
                                                     <button class="btn btn-primary" type="submit">kirim request</button>
                                                 </div>
                                             </div>
@@ -277,21 +285,32 @@
                                     <form action="">
                                         <div class="row">
                                             <div class="col">
-                                                <a href="">
-                                                    {{-- <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt=""> --}}
-                                                        <button>ceritanya gambarnya gopay</button>
-                                                </a>
-                                                <a href="">
-                                                    {{-- <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt=""> --}}
-                                                        <button>ceritanya gambarnya shoppee</button>
-                                                </a>
-                                                <a href="">
-                                                    {{-- <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt=""> --}}
-                                                        <button>ceritanya gambarnya qris</button>
-                                                </a>
+                                                <div class="row">
+                                                    <a href="/cara-wallet" style="justify-content: start" class="btn" type="button">
+                                                        {{-- <img class="img-thumbnail border-0"
+                                                            style="width: 15rem" alt=""> --}}
+                                                        <img class="img-thumbnail border-0"
+                                                        src="{{ asset('illustration/gopay.webp') }}"
+                                                            style="width: 100px; margin-right:1px"alt="">
+                                                            <span style="text-align: end" class="fw-bold">Go-Pay</span>
+                                                    </a>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <a href="/cara-wallet" class="btn" type="button">
+                                                        <img class="img-thumbnail border-0"
+                                                        src="{{ asset('illustration/sopipay.webp') }}"
+                                                            style="width: 100px" alt=""><span style="text-align: end" class="fw-bold">Shopee-Pay</span>
+                                                    </a>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <a href="/cara" class="btn" type="button">
+                                                        <img class="img-thumbnail border-0"
+                                                        src="{{ asset('illustration/qris.png') }}"
+                                                            style="width: 100px" alt=""><span style="text-align: end" class="fw-bold">Christiano</span>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>

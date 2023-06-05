@@ -129,7 +129,7 @@
                                         {{-- <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             Pesanan Anda</div> --}}
                                         <div class="h5 mt-3 font-weight-bold text-gray-800">2 Produk <span
-                                                class="qty posisition-absolute badge bg-success position-absolute top-0 translate-middle badge">Pembayaran Lunas</span>
+                                                class="qty posisition-absolute badge bg-success position-absolute top-0 translate-middle badge">Transaksi Berjalan</span>
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -176,8 +176,7 @@
                                         {{-- <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Riwayat Transaksi</div> --}}
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">129 Produk<span
-                                                class="qty posisition-absolute badge bg-warning position-absolute top-0 translate-middle badge">Transaksi
-                                                Pending</span></div>
+                                                class="qty posisition-absolute badge bg-warning position-absolute top-0 translate-middle badge">Kredit</span></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-solid fa-user-gear fa-2xl"></i>

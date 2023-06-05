@@ -9,7 +9,7 @@
                             <div class="card-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    <i class="fa-solid fa-building-columns me-2"></i> Pembayaran Via ATM
+                                    <i class="fa-solid fa-building-columns me-2"></i> Pembayaran Via Aplikasi Gopay
                                 </button>
                             </div>
                             <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
@@ -44,11 +44,11 @@
                             </div>
                         </div>
 
-                        <div class="card">
+                        {{-- <div class="card">
                             <div class="card-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <i class="fa-solid fa-money-bill-transfer me-2"></i> Pembayaran Via M-Banking
+                                    <i class="fa-solid fa-money-bill-transfer me-2"></i> Pembayaran Via Indomaret
                                 </button>
                             </div>
                             <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
@@ -79,7 +79,7 @@
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         {{-- <div class="card text-dark">
                             <div class="card-header">
                               <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
@@ -103,8 +103,7 @@
                     {{-- <div class="btn btn-primary bar"><span class="fas fa-bars"></span></div> --}}
                 </div>
                 <ul class="nav nav-tabs mb-3 px-md-4 px-2">
-                    <li class="nav-item"> <a class="nav-link px-2 active" aria-current="page" href="#">Virtual
-                            Account</a>
+                    <li class="nav-item"> <a class="nav-link px-2 active" aria-current="page" href="#">E-Wallet Gopay</a>
                     </li>
                     {{-- <li class="nav-item ms-auto"> <a class="nav-link px-2" href="#">+ More</a> </li> --}}
                 </ul>
@@ -121,12 +120,12 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="d-flex flex-column px-md-5 px-4 mb-4">
-                                <span>Transfer Bank BRI</span>
+                                <span>Nomor Gopay</span>
                                 <div class="inputWithIcon">
-                                    <input class="form-control" type="text" value="92001981045887568">
+                                    <input class="form-control" type="text" value="088936274892">
                                     <span class="">
                                         <a class="btn" type="button">
-                                            <img src="{{ asset('illustration/mandiri.webp') }}"
+                                            <img src="{{ asset('illustration/qris.png') }}"
                                                 alt="" style="width: 100%">
                                         </a>
                                         {{-- <div class="dropdown">
@@ -156,7 +155,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nama Virtual Account</span>
+                            <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nama Akun Gopay</span>
                                 <div class="inputWithIcon"> <input class="form-control text-uppercase" type="text"
                                         value="YOUTHMS.ID"> <span class="far fa-user"></span> </div>
                             </div>
