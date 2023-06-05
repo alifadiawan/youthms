@@ -30,7 +30,7 @@
                         </td>
                         <td>{{ $p->gateaways->nama_gateaway }}</td>
                         <td>
-                            <a href="{{ route('transaksidetail.show',$p->id) }}" class="btn-sm btn-success">Detail</a>
+                            <a href="{{ route('pembayaran.show',$p->id) }}" class="btn-sm btn-success">Detail</a>
                         </td>
                     </tr>
                 @endforeach

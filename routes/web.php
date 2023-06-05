@@ -183,6 +183,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/transaksi_pembayaran/{id}', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
 
     Route::resource('pembayaran', pembayaranController::class);
+    Route::get('/list_pembayaran', [pembayaranController::class,'listpembayaran'])->name('pembayaran.list');
     Route::get('/transaksi_pembayaran/{id}', [pembayaranController::class, 'pembayaran'])->name('pembayaran.pembayaran');
     Route::get('/cara/{id}', [pembayaranController::class, 'cara'])->name('pembayaran.cara');
 
