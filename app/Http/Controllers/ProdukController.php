@@ -195,10 +195,13 @@ class ProdukController extends Controller
             $member = $m->get();
             // mengecek keranjang 
             $cart = cart::where('member_id', $mid)->get();
-            $compact = array_merge($compact, ['user', 'member']);
+            $compact = array_merge($compact, ['user', 'member', 'cart']);
+            return view('EU.store.show', compact($compact));
+        }
+        else {
+            return view('EU.store.show', compact($compact));
         }
 
-        return view('EU.store.show', compact($compact));
     }
 
     /**

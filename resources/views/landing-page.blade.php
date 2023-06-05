@@ -36,8 +36,8 @@
                         data-aos-delay="200">
                         <div class="icon-box text-center text-lg-start">
                             <h4 class="text-center text-uppercase text-lg-start">{{$item->layanan}}</h4>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                            <a href="" class="">Lihat lebih lanjut</a>
+                            <p>{{$item->deskripsi}}</p>
+                            <a href="{{route('services.index')}}" class="">Lihat lebih lanjut</a>
                         </div>
                     </div>
                 @endforeach
@@ -73,7 +73,7 @@
                         <h4><a href="">Paket A</a></h4>
                         <p>Full Marketing Web</p>
                         <p>Logo for business web</p>
-                        <a href="" class="btn yms-blue mt-4">Detail</a>
+                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
@@ -82,7 +82,7 @@
                         <h4><a href="">Paket B</a></h4>
                         <p>Full Marketing Web</p>
                         <p>Logo for business web</p>
-                        <a href="" class="btn yms-blue mt-4">Detail</a>
+                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
@@ -91,7 +91,7 @@
                         <h4><a href="">Paket C</a></h4>
                         <p>Full Marketing Web</p>
                         <p>Logo for business web</p>
-                        <a href="" class="btn yms-blue mt-4">Detail</a>
+                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
@@ -100,7 +100,7 @@
                         <h4><a href="">Paket D</a></h4>
                         <p>Full Marketing Web</p>
                         <p>Logo for business web</p>
-                        <a href="" class="btn yms-blue mt-4">Detail</a>
+                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
 
@@ -143,11 +143,12 @@
                             alt="avatar" style="width: 150px;" />
                         <div class="row d-flex justify-content-center">
                             <div class="col-lg-8">
-                                <h5 class="mb-3">Maria Kate</h5>
+                                <h5 class="mb-3">{{$item->nama}}</h5>
                                 <p>{{ $item->jabatan }}</p>
                                 <p class="">
                                     <i class="fas fa-quote-left pe-2"></i>
                                     {{ $item->review }}
+                                    <i class="fas fa-quote-right ps-2"></i>
                                 </p>
                             </div>
                         </div>
