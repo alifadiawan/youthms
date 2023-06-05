@@ -340,7 +340,7 @@ class TransaksiController extends Controller
             $adm_declined = collect($declined)->pluck('id')->toArray();
 
             $status = ['adm_utang', 'adm_kredit', 'adm_lunas', 'adm_pending', 'adm_declined'];
-            $compact = ['detail', 'total', 'grandtotal', 'admin', $status];
+            $compact = ['detail', 'total', 'grandtotal', 'admin', $status,'trx','detail','pembayaran'];
 
             return view('Admin.transaction.detail', compact($compact));
         }

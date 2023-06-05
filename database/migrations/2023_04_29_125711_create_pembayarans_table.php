@@ -17,9 +17,12 @@ return new class extends Migration
             $table->foreign('transaksi_id')->references('id')->on('transaksi')
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->unsignedBigInteger('gateaways_id');
+            $table->foreign('gateaways_id')->references('id')->on('gateaways')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->string('status');
             $table->string('bukti_tf');
-            $table->string('note_admin')->nullable();
             $table->timestamps();
         });
     }
