@@ -8,15 +8,18 @@
                     <i class="fas fa-arrow-left"></i></a>
                 <div class="card mb-3 shadow rounded-3">
                     @foreach ($transaksi as $t)
-                    @endforeach
-                    <div class="row my-3 mx-3 mx-lg-4">
-                        <div class="col-6 col-lg text-start">
-                            <strong>INVOCE</strong>
+                        <div class="row my-3 mx-3 mx-lg-4">
+                            <div class="col-6 col-lg text-start">
+                                <strong>INVOCE</strong>
+                            </div>
+                            <div class="col-6 col-lg text-end text-lg-end">
+                                <p class="text-muted">{{ $t->unique_code }}</p>
+                            </div>
+
                         </div>
-                        <div class="col-6 col-lg text-end text-lg-end">
-                            <p class="text-muted">{{ $t->unique_code }}</p>
-                        </div>
-                    </div>
+
+
+                        {{-- </div> --}}
 
                         <div class="row mx-3 mx-lg-4">
                             <div class="col-12 col-lg-12 text-start text-lg-end">
@@ -25,11 +28,14 @@
                                     <div class="col-6 col-lg-3 text-muted">{{ $t->created_at }}</div>
                                 </div>
                             </div>
+                        </div>
+                        {{-- </div> --}}
+                    @endforeach
+                    {{-- <div class="konten my-lg-0 mx-5">
+
                             
                         </div>
             
-                        {{-- <div class="konten my-lg-0 mx-5">
-
                             <div class="row">
                                 <div class="col">
                                     <div class="row">
@@ -109,6 +115,8 @@
                         </table>
                     </div>
                 </div>
+                {{-- <div class="card mb-4"> --}}
+
                 {{-- <div class="card mb-4">
                     <div class="card-header py-3">
                         <div class="row">
@@ -178,25 +186,27 @@
                                     <div class="accordion-body">
                                         <div class="row">
                                             <div class="col">
-                                                <a href="/cara">
-                                                    <img class="img-thumbnail border-0" src="{{ asset('mandiri.png') }}"
-                                                        style="width: 15rem" alt="">
-                                                </a>
-                                                <a href="/cara">
-                                                    <img class="img-thumbnail border-0" src="{{ asset('bri.png') }}"
-                                                        style="width: 15rem" alt="">
-                                                </a>
-                                                <a href="">
-                                                    <img class="img-thumbnail border-0" src="{{ asset('btpn.png') }}"
-                                                        style="width: 15rem" alt="">
-                                                </a>
+                                                @foreach ($gateaway as $g)
+                                                    <form action="{{ route('pembayaran.cara', $g->id) }}" method="GET">
+                                                        @csrf
+                                                        <button type="submit">
+                                                            @foreach ($transaksi as $t)
+                                                                <input type="hidden" name="transaksi_id"
+                                                                    value="{{ $t->id }}">
+                                                            @endforeach
+                                                            <img class="img-thumbnail border-0"
+                                                                src="{{ asset('mandiri.png') }}" style="width: 15rem"
+                                                                alt="">
+                                                        </button>
+                                                @endforeach
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- Virtaul Account -->
-                            <div class="accordion-item">
+                            {{-- <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseTwo" aria-expanded="false"
@@ -210,7 +220,7 @@
                                         demonstrate the <code>.accordion-flush</code> class. This is the second item's
                                         accordion body. Let's imagine this being filled with some actual content.</div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <!-- Virtaul Account -->
                             <div class="accordion-item">
@@ -248,6 +258,7 @@
                                                                 min="{{ date('Y-m-d') }}"
                                                                 value="{{ old('jatuh_tempo') }}" required>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                                 <div class="form-gorup">
@@ -265,6 +276,46 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- E-wallet -->
+                            {{-- <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                        aria-controls="flush-collapseThree">
+                                        <i class="fa-solid fa-money-bill me-2"></i> E-Wallet
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                </div>
+                            </div>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <form action="">
+                                        <div class="row">
+                                            <div class="col">
+
+                                                <a href="">
+                                                    <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt="">
+                                                        <button>ceritanya gambarnya gopay</button>
+                                                </a>
+                                                <a href="">
+                                                    <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt="">
+                                                        <button>ceritanya gambarnya shoppee</button>
+                                                </a>
+                                                <a href="">
+                                                    <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt="">
+                                                        <button>ceritanya gambarnya qris</button>
+                                                </a>
+                                                <div class="row">
+                                                    <a href="/cara-wallet" style="justify-content: start" class="btn" type="button">
+                                                        {{-- <img class="img-thumbnail border-0"
+                                                            style="width: 15rem" alt=""> --}}
 
                             <!-- E-wallet -->
                             <div class="accordion-item">
@@ -286,29 +337,32 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="row">
-                                                    <a href="/cara-wallet" style="justify-content: start" class="btn" type="button">
+                                                    <a href="/cara-wallet" style="justify-content: start" class="btn"
+                                                        type="button">
                                                         {{-- <img class="img-thumbnail border-0"
-                                                            style="width: 15rem" alt=""> --}}
+                                                        style="width: 15rem" alt=""> --}}
                                                         <img class="img-thumbnail border-0"
-                                                        src="{{ asset('illustration/gopay.png') }}"
+                                                            src="{{ asset('illustration/gopay.png') }}"
                                                             style="width: 100px; margin-right:1px"alt="">
-                                                            <span style="text-align: end" class="fw-bold">Go-Pay</span>
+                                                        <span style="text-align: end" class="fw-bold">Go-Pay</span>
                                                     </a>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <a href="/cara-wallet" class="btn" type="button">
                                                         <img class="img-thumbnail border-0"
-                                                        src="{{ asset('illustration/sopipay.png') }}"
-                                                            style="width: 100px" alt=""><span style="text-align: end" class="fw-bold">Shopee-Pay</span>
+                                                            src="{{ asset('illustration/sopipay.png') }}"
+                                                            style="width: 100px" alt=""><span
+                                                            style="text-align: end" class="fw-bold">Shopee-Pay</span>
                                                     </a>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <a href="/cara" class="btn" type="button">
                                                         <img class="img-thumbnail border-0"
-                                                        src="{{ asset('illustration/qris.png') }}"
-                                                            style="width: 100px" alt=""><span style="text-align: end" class="fw-bold">Christiano</span>
+                                                            src="{{ asset('illustration/qris.png') }}"
+                                                            style="width: 100px" alt=""><span
+                                                            style="text-align: end" class="fw-bold">Christiano</span>
                                                     </a>
                                                 </div>
                                             </div>

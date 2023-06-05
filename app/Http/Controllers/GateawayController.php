@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Member;
-use App\Models\Transaksi;
-use App\Models\request_user;
-use App\Models\TransaksiDetail;
+use App\Models\gateaway;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 
-class TransaksiDetailController extends Controller
+class GateawayController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-      
+        //
     }
 
     /**
@@ -38,14 +34,15 @@ class TransaksiDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(transaksi $transaksi)
+    public function show(gateaway $gateaway)
     {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TransaksiDetail $transaksiDetail)
+    public function edit(gateaway $gateaway)
     {
         //
     }
@@ -53,7 +50,7 @@ class TransaksiDetailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TransaksiDetail $transaksiDetail)
+    public function update(Request $request, gateaway $gateaway)
     {
         //
     }
@@ -61,7 +58,7 @@ class TransaksiDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TransaksiDetail $transaksiDetail)
+    public function destroy(gateaway $gateaway)
     {
         //
     }

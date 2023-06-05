@@ -7,6 +7,7 @@ use App\Models\Transaksi;
 use App\Models\Produk;
 use App\Models\Services;
 use App\Models\TransaksiDetail;
+use App\Models\Pembayaran;
 use App\Models\Member;
 //untuk notif
 use App\Models\User;
@@ -31,6 +32,94 @@ class TransaksiController extends Controller
     public function index()
     {
     }
+
+
+
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create(Request $request)
+    {
+        // return 'create coyh';
+        // timezone di asia/jakarta
+        date_default_timezone_set('Asia/Jakarta');
+
+        $today = today();
+        $today = date("Y-m-d H:i:s");
+
+
+        // mencari data user & member
+        $user = auth()->user()->id;
+        $member = member::where('user_id', $user)->pluck('id')->first();
+
+        // mencari harga total & admin
+        $harga = $request->total;
+        $admin = $harga * 0.11;
+        $grandtotal = $harga + $admin;
+
+        // kode unik
+        $pre = 'YMS';
+        $unik = mt_rand(1000000, 9999999);
+        $kode = $pre . $unik;
+
+        // membuat sebuah struk transaksi
+        $trx = transaksi::create([
+            'tanggal_transaksi' => $today,
+            'unique_code' => $kode,
+            'member_id' => $request->member_id,
+            'total_bayar' => 0,
+            'total' => $grandtotal,
+        ]);
+
+
+        // mencari id transaksi yang telah dibuat
+        $trxid = $trx->id;
+        $transaksi = transaksi::where('id', $trxid)->first();
+
+        //mencari sebuah keranjang di user
+        $cart = cart::where('member_id', $member)->get();
+
+        // looping semua produk yang telah dibeli lalu dimasukkan ke tabel transaksi detail
+        foreach ($cart as $c) {
+            $trxdetail[] = [
+                'transaksi_id' => $trxid,
+                'produk_id' => $c->produk_id,
+                'quantity' => $c->quantity,
+                'subtotal' => $c->quantity * $c->produk->harga,
+            ];
+        }
+        TransaksiDetail::insert($trxdetail);
+
+        // setelah produk / looping habis maka suatu keranjang di bersihkan 
+        cart::where('member_id', $member)->delete();
+
+        // mencari produk di transaksi detail, serta menghitung harganya
+        $total = 0;
+        $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
+        foreach ($detail as $d) {
+            $total += $d->produk->harga * $d->quantity;
+        }
+
+        // compact suatu variabel
+        $compact = ['detail', 'total', 'transaksi'];
+
+        // melempar ke fungsi pembayaran
+        return redirect()->route('pembayaran.pembayaran', $trxid)->with($compact);
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        // return $request;
+    }
+
+    /**
+     * Display the specified resource.
+     */
 
     public function history()
     {
@@ -134,139 +223,10 @@ class TransaksiController extends Controller
 
             return view('Admin.transaction.index', compact($compact));
         }
-
-
-        // // jenis role
     }
 
-
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(Request $request)
-    {
-        // return 'create coyh';
-        // timezone di asia/jakarta
-        date_default_timezone_set('Asia/Jakarta');
-
-        $today = today();
-        $today = date("Y-m-d H:i:s");
-
-
-        // mencari data user & member
-        $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->pluck('id')->first();
-
-        // mencari harga total & admin
-        $harga = $request->total;
-        $admin = $harga * 0.11;
-        $grandtotal = $harga + $admin;
-
-        // kode unik
-        $pre = 'YMS';
-        $unik = mt_rand(1000000, 9999999);
-        $kode = $pre . $unik;
-
-        // membuat sebuah struk transaksi
-        $trx = transaksi::create([
-            'tanggal_transaksi' => $today,
-            'unique_code' => $kode,
-            'member_id' => $request->member_id,
-            'total_bayar' => 0,
-            'total' => $grandtotal,
-        ]);
-
-
-        // mencari id transaksi yang telah dibuat
-        $trxid = $trx->id;
-        $transaksi = transaksi::where('id', $trxid)->first();
-
-        //mencari sebuah keranjang di user
-        $cart = cart::where('member_id', $member)->get();
-
-        // looping semua produk yang telah dibeli lalu dimasukkan ke tabel transaksi detail
-        foreach ($cart as $c) {
-            $trxdetail[] = [
-                'transaksi_id' => $trxid,
-                'produk_id' => $c->produk_id,
-                'quantity' => $c->quantity,
-                'subtotal' => $c->quantity * $c->produk->harga,
-            ];
-        }
-        TransaksiDetail::insert($trxdetail);
-
-        // setelah produk / looping habis maka suatu keranjang di bersihkan 
-        cart::where('member_id', $member)->delete();
-
-        // mencari produk di transaksi detail, serta menghitung harganya
-        $total = 0;
-        $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
-        foreach ($detail as $d) {
-            $total += $d->produk->harga * $d->quantity;
-        }
-
-        // compact suatu variabel
-        $compact = ['detail', 'total', 'transaksi'];
-
-        // melempar ke fungsi pembayaran
-        return redirect()->route('transaksi.pembayaran', $trxid)->with($compact);
-    }
-
-
-    public function pembayaran($id)
-    {
-        date_default_timezone_set('Asia/Jakarta');
-        $today  = today();
-        $t = date('d-m-Y', strtotime($today));
-        // return $t;
-
-        // mencari data user & member
-        $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->pluck('id')->first();
-
-        // mencari transaksi id dengan menggunakkan id member
-        // ?
-        // $trxid = transaksi::where('member_id', $member)->latest()->value('id');
-
-        $tid = $id;
-        $transaksi = transaksi::where('id', $tid)->get();
-
-        // mencari detail transaksi id dengan $trxid
-        $detail = TransaksiDetail::where('transaksi_id', $tid)->get();
-
-        // menghitung total produk serta jumlah total
-        $total = 0;
-        foreach ($detail as $d) {
-            $total += $d->produk->harga * $d->quantity;
-        }
-
-        // mencari biaya admin serta harga setelah admin
-        $admin = $total * 0.11;
-        $grandtotal = $total + $admin;
-
-        $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid', 't', 'transaksi'];
-        return view('EU.transaction.pembayaran', compact($compact));
-    }
-
-    public function bayar()
-    {
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        // return $request;
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Transaksi $transaksi)
     {
-
         $auth = auth()->user();
         $user = $auth->id;
         $user_role = $auth->role->role;
@@ -277,6 +237,7 @@ class TransaksiController extends Controller
         $tid = $transaksi->id;
         $trxid = $tid;
         $trx = transaksi::where('id', $transaksi->id)->get();
+        $pembayaran = pembayaran::where('transaksi_id', $tid)->where('status', 'pending')->get();
 
         // mencari request user, jika melakukan kredit
         $requser = request_user::where('transaksi_id', $trxid)->get();
@@ -303,12 +264,12 @@ class TransaksiController extends Controller
         $grandtotal = $total + $admin;
 
 
-        $compact = ['detail', 'total', 'grandtotal', 'admin', 'trx', 'requser'];
+        $compact = ['detail', 'total', 'grandtotal', 'admin', 'trx', 'requser', 'pembayaran'];
 
         $role = auth()->user()->role->role;
         $requestUser = request_user::all();
 
-        
+
         $kredit = [];
         $pending = [];
         $utang = [];
@@ -454,5 +415,4 @@ class TransaksiController extends Controller
     {
         # code...
     }
-
 }

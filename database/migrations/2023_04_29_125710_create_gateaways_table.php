@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('segmen', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('segmen');
-            $table->string('warna_latarbelakang')->nullable();
+        Schema::create('gateaways', function (Blueprint $table) {
+            $table->id();
+            $table->string('image')->nullable();
+            $table->string('nama_gateaway');
+            $table->string('nomor_rekening')->nullable();
+            $table->string('nomor_va')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('segmen');
+        Schema::dropIfExists('gateaways');
     }
 };
