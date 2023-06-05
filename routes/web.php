@@ -23,7 +23,9 @@ use App\Http\Middleware\StaffMiddleware;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\RequestUserController;
 use App\Http\Controllers\GroupChatController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\TransaksiDetailController;
 use App\Models\Services;
 
 /*
@@ -109,7 +111,7 @@ Route::get('/store/{type}/show', [ProdukController::class, 'showtype'])->name('s
 
 //blog
 Route::resource('blogs', BlogController::class);
-Route::get('blogs/type/{type}', [BlogController::class,'type'])->name('blogs.type');
+Route::get('blogs/type/{type}', [BlogController::class, 'type'])->name('blogs.type');
 Route::get('blogs/weeklytrend', [BlogController::class, 'partials']);
 Route::get('/blog/editing', function () {
     return view('EU.blog.editing');
@@ -156,6 +158,12 @@ Route::middleware('guest')->group(function () {
 
     //register
     Route::resource('register', RegisterController::class);
+
+    //forgot
+    Route::get('/forgot-password', [PasswordController::class, 'forgotIndex'])->name('password.index');
+    Route::post('/forgot-password', [PasswordController::class, 'forgotPassword'])->name('password.forgot');
+    Route::get('/reset-password', [PasswordController::class, 'resetIndex'])->name('password.reset');
+    Route::post('/reset-password', [PasswordController::class, 'resetPassword'])->name('password.update');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -165,13 +173,15 @@ Route::middleware(['auth'])->group(function () {
 
     // transaction
     Route::resource('/transaksi', TransaksiController::class);
-    Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
-    // Route::get('/transaksi_pembayaran/{id}', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
     Route::post('/transaksi_kredit', [TransaksiController::class, 'kredit'])->name('transaksi.kredit');
 
+    Route::resource('transaksidetail', transaksidetailController::class);
+    // Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
+    // Route::get('/transaksi_pembayaran/{id}', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
+
     Route::resource('pembayaran', pembayaranController::class);
-    Route::get('/transaksi_pembayaran/{id}', [pembayaranController::class,'pembayaran'])->name('pembayaran.pembayaran');
-    Route::get('/cara/{id}', [pembayaranController::class,'cara'])->name('pembayaran.cara');
+    Route::get('/transaksi_pembayaran/{id}', [pembayaranController::class, 'pembayaran'])->name('pembayaran.pembayaran');
+    Route::get('/cara/{id}', [pembayaranController::class, 'cara'])->name('pembayaran.cara');
 
     // route::get('/lunas', function () {
     //     return view('EU.transaction.lunas');

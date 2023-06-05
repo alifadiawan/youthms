@@ -18,7 +18,8 @@ return new class extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->string('status');
-            $table->string('note_admin');
+            $table->string('bukti_tf');
+            $table->string('note_admin')->nullable();
             $table->timestamps();
         });
     }

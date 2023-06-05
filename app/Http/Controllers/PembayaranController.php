@@ -7,8 +7,8 @@ use App\Models\Pembayaran;
 use App\Models\Member;
 use App\Models\Transaksi;
 use App\Models\TransaksiDetail;
-use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PembayaranController extends Controller
 {
@@ -49,7 +49,7 @@ class PembayaranController extends Controller
         $admin = $total * 0.11;
         $grandtotal = $total + $admin;
 
-        $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid', 't', 'transaksi','gateaway'];
+        $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid', 't', 'transaksi', 'gateaway'];
         return view('EU.transaction.pembayaran', compact($compact));
     }
 
@@ -57,15 +57,16 @@ class PembayaranController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function cara(request $request,$id)
+    public function cara(request $request, $id)
     {
         // return $id;
-        // return $request;
-        $gateaway = gateaway::where('id',$id)->get();
+        $tid = $request->transaksi_id;
+        $transaksi = Transaksi::where('id', $tid)->get();
+        $gateaway = gateaway::where('id', $id)->get();
         // return $gateaway;
 
-        $compact = ['gateaway'];
-        return view('EU.transaction.cara',compact($compact));
+        $compact = ['gateaway', 'transaksi'];
+        return view('EU.transaction.cara', compact($compact));
     }
 
     public function create()
@@ -78,7 +79,22 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        $file = $request->file('bukti');
+        $nama_file = time() . "_" . $file->getClientOriginalName();
+        $tujuan_upload = './bukti_transfer/';
+        $file->move($tujuan_upload, $nama_file);
+
+        $tid = $request->transaksi_id;
+
+        pembayaran::create([
+            'transaksi_id' => $tid,
+            'status' => $request->status,
+            'bukti_tf' => $nama_file,
+            'note_admin' => null,
+        ]);
+
+        return redirect()->route('transaksi.show',$tid);
     }
 
     /**

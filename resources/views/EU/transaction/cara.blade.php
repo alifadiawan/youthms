@@ -187,26 +187,32 @@
                         Konfirmasi Pembayaran</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('pembayaran.store') }}" method="POST">
+                <form action="{{ route('pembayaran.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-
-                        <div>
-                            <label for="">Tanggal Checkout</label>
-                            <input type="date" class="form-control mt-2" name="date" id="date" value="{{ date('Y-m-d') }}" required >
-                        </div>
-                        <div>
-                            <label for="" class="mt-3">Kode Pesanan</label>
-                            <input type="text" class="form-control mt-2" name="kode" id="kode">
-                        </div>
-                        <div>
-                            <label for="" class="mt-3">Bukti Pembayaran (Struk / Screenshoot Transfer)</label>
-                            <input type="file" class="form-control mt-2" name="kode" id="kode">
-                        </div>
+                        @foreach ($transaksi as $t)
+                            <div>
+                                <label for="">Tanggal Checkout</label>
+                                <input type="date" class="form-control mt-2" name="date" id="date"
+                                    value="{{ date('Y-m-d') }}" required>
+                            </div>
+                            <div>
+                                <label for="" class="mt-3">Kode Pesanan</label>
+                                <input type="text" class="form-control mt-2" name="kode" id="kode"
+                                    value="{{ $t->unique_code }}" readonly>
+                            </div>
+                            <div>
+                                <label for="" class="mt-3">Bukti Pembayaran (Struk / Screenshoot
+                                    Transfer)</label>
+                                <input type="file" class="form-control mt-2" name="bukti" id="bukti">
+                            </div>
+                            <input type="hidden" name="status" value="pending">
+                            <input type="hidden" name="transaksi_id" value="{{ $t->id }}">
+                        @endforeach
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                        <button type="button" class="btn btn-primary">Kirim Bukti</button>
+                        <button type="submit" class="btn btn-primary">Kirim Bukti</button>
                     </div>
                 </form>
             </div>

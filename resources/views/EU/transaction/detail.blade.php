@@ -5,7 +5,7 @@
 
     {{-- lunas --}}
     <div id="container" class="container mt-5">
-        <a href="{{ route('transaksi.history') }}" class="btn btn-lg mb-3">
+        <a href="{{ route('transaksidetail.index') }}" class="btn btn-lg mb-3">
             <i class="fas fa-arrow-left"></i>
         </a>
 
