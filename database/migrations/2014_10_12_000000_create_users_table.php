@@ -24,6 +24,8 @@ return new class extends Migration
             $table->foreign('role_id')->references('id')->on('roles')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->string('social_id')->nullable();
+            $table->string('social_type')->nullable();
             $table->timestamps();
         });
     }
