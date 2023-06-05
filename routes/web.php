@@ -23,6 +23,7 @@ use App\Http\Middleware\StaffMiddleware;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\RequestUserController;
 use App\Http\Controllers\GroupChatController;
+use App\Http\Controllers\PasswordController;
 use App\Models\Services;
 
 /*
@@ -153,6 +154,12 @@ Route::middleware('guest')->group(function () {
 
     //register
     Route::resource('register', RegisterController::class);
+
+    //forgot
+    Route::get('/forgot-password', [PasswordController::class, 'forgotIndex'])->name('password.index');
+    Route::post('/forgot-password', [PasswordController::class, 'forgotPassword'])->name('password.forgot');
+    Route::get('/reset-password', [PasswordController::class, 'resetIndex'])->name('password.reset');
+    Route::post('/reset-password', [PasswordController::class, 'resetPassword'])->name('password.update');
 });
 
 Route::middleware(['auth'])->group(function () {

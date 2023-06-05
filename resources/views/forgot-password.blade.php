@@ -51,27 +51,18 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <form action="login" method="post" class="user">
+                    <h3 class="text-center text-bold">Forgot Password</h3>
+                    <form method="POST" action="{{ route('password.forgot') }}">
                         @csrf
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                aria-describedby="emailHelp" name="email" placeholder="Enter Email Address...">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control form-control-user" id="exampleInputPassword"
-                                name="password" placeholder="Password">
+                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Your Email..." required autofocus>
                         </div>
                         <div class="form-group text-center ">
                             <button class="btn yms-blue w-100">Submit</button>
                             <hr>
                             <p>Don't have an account ?
                                 <a href="/register">Sign up here</a>
-                            </p>
-                            <p>Forgot Your Password ?
-                                <a href="/forgot-password">click here</a>
                             </p>
                         </div>
                     </form>
@@ -85,3 +76,4 @@
 </body>
 
 </html>
+''
