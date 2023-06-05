@@ -7,6 +7,7 @@ use App\Models\Transaksi;
 use App\Models\Produk;
 use App\Models\Services;
 use App\Models\TransaksiDetail;
+use App\Models\Pembayaran;
 use App\Models\Member;
 //untuk notif
 use App\Models\User;
@@ -126,17 +127,18 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
-        
         $auth = auth()->user();
         $user = $auth->id;
         $user_role = $auth->role->role;
         $member = member::where('user_id', $user)->pluck('id')->first();
-
-
+        
+        
         $tid = [];
         $tid = $transaksi->id;
         $trxid = $tid;
         $trx = transaksi::where('id', $transaksi->id)->get();
+        $pembayaran = pembayaran::where('transaksi_id',$tid)->get();
+        // return $tid;
 
         // mencari request user, jika melakukan kredit
         $requser = request_user::where('transaksi_id', $trxid)->get();
@@ -163,7 +165,7 @@ class TransaksiController extends Controller
         $grandtotal = $total + $admin;
 
 
-        $compact = ['detail', 'total', 'grandtotal', 'admin', 'trx', 'requser'];
+        $compact = ['detail', 'total', 'grandtotal', 'admin', 'trx', 'requser','pembayaran'];
 
         $role = auth()->user()->role->role;
         $requestUser = request_user::all();

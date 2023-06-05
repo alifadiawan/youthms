@@ -15,11 +15,11 @@
                             <div class="col-6 col-lg text-end text-lg-end">
                                 <p class="text-muted">{{ $t->unique_code }}</p>
                             </div>
-                    
-                        </div>
-             
 
-                    </div>
+                        </div>
+
+
+                        {{-- </div> --}}
 
                         <div class="row mx-3 mx-lg-4">
                             <div class="col-12 col-lg-12 text-start text-lg-end">
@@ -28,10 +28,10 @@
                                     <div class="col-6 col-lg-3 text-muted">{{ $t->created_at }}</div>
                                 </div>
                             </div>
-                </div>
-
+                        </div>
+                        {{-- </div> --}}
                     @endforeach
-                {{-- <div class="konten my-lg-0 mx-5">
+                    {{-- <div class="konten my-lg-0 mx-5">
 
                             
                         </div>
@@ -74,49 +74,6 @@
                             </div>
                         </div> --}}
 
-                <div class="konten mt-3 mx-3">
-                    <table class="table table-bordered">
-                        <thead class="bg-light text-dark">
-                            <tr>
-                                <th>Nama Barang</th>
-                                <th>Qty</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($detail as $d)
-                                <tr>
-                                    <td>{{ $d->produk->nama_produk }}</td>
-                                    <td>x {{ $d->quantity }}</td>
-                                    <td class="text-end">Rp.
-                                        {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td colspan="2" class="text-end">Total</td>
-                                <td colspan="1" class="text-end">Rp. {{ number_format($total, 0, ',', '.') }}</td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td colspan="2" class="text-end">Biaya admin</td>
-                                <td colspan="1" class="text-end">Rp. {{ number_format($admin, 0, ',', '.') }}</td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td colspan="2" class="text-end fw-bold">Grand Total</td>
-                                <td colspan="1" class="text-end fw-bold">Rp.
-                                    {{ number_format($grandtotal, 0, ',', '.') }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            {{-- <div class="card mb-4">--}}
-
                     <div class="konten mt-3 mx-3">
                         <table class="table table-bordered">
                             <thead class="bg-light text-dark">
@@ -158,6 +115,8 @@
                         </table>
                     </div>
                 </div>
+                {{-- <div class="card mb-4"> --}}
+
                 {{-- <div class="card mb-4">
                     <div class="card-header py-3">
                         <div class="row">
@@ -207,47 +166,47 @@
                 </div> --}}
 
 
-            <!-- MEtode pembayaran -->
-            <div class="card mb-4 mb-lg-0 p-0">
-                <div class="card-header">
-                    <h5 class="mb-0 me-auto">Metode Pembayaran</h5>
-                </div>
-                <div class="card-body">
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                    aria-controls="flush-collapseOne">
-                                    <i class="fa-solid fa-money-bill-transfer me-2"></i>Transfer Bank
-                                </button>
-                            </h2>
-                            <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            @foreach ($gateaway as $g)
-                                                <form action="{{ route('pembayaran.cara', $g->id) }}" method="GET">
-                                                    @csrf
-                                                    <button type="submit">
-                                                        @foreach ($transaksi as $t)
-                                                            <input type="hidden" name="transaksi_id"
-                                                                value="{{ $t->id }}">
-                                                        @endforeach
-                                                        <img class="img-thumbnail border-0"
-                                                            src="{{ asset('mandiri.png') }}" style="width: 15rem"
-                                                            alt="">
-                                                    </button>
-                                            @endforeach
-                                            </form>
+                <!-- MEtode pembayaran -->
+                <div class="card mb-4 mb-lg-0 p-0">
+                    <div class="card-header">
+                        <h5 class="mb-0 me-auto">Metode Pembayaran</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                        <i class="fa-solid fa-money-bill-transfer me-2"></i>Transfer Bank
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                @foreach ($gateaway as $g)
+                                                    <form action="{{ route('pembayaran.cara', $g->id) }}" method="GET">
+                                                        @csrf
+                                                        <button type="submit">
+                                                            @foreach ($transaksi as $t)
+                                                                <input type="hidden" name="transaksi_id"
+                                                                    value="{{ $t->id }}">
+                                                            @endforeach
+                                                            <img class="img-thumbnail border-0"
+                                                                src="{{ asset('mandiri.png') }}" style="width: 15rem"
+                                                                alt="">
+                                                        </button>
+                                                @endforeach
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Virtaul Account -->
-                        {{-- <div class="accordion-item">
+                            <!-- Virtaul Account -->
+                            {{-- <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseTwo" aria-expanded="false"
@@ -263,62 +222,63 @@
                                 </div>
                             </div> --}}
 
-                        <!-- Virtaul Account -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseFour" aria-expanded="false"
-                                    aria-controls="flush-collapseFour">
-                                    <i class="fa-solid fa-credit-card me-2"></i> Kredit
-                                </button>
-                            </h2>
-                            <div id="flush-collapseFour" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <form action="{{ route('transaksi.kredit') }}" method="post">
-                                        @csrf
-                                        <div class="form">
-                                            <div class="form-gorup">
-                                                <label for="">Nama Pemesan / Instansi</label>
-                                                <input type="text" class="form-control" name="nama_pemesan"
-                                                    value="{{ old('nama_pemesan') }}" required>
-                                            </div>
-                                            <div class="form-gorup">
-                                                <label for="">Jangka Waktu</label>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        {{-- pending --}}
-                                                        <label for="">tanggal mulai</label>
-                                                        <input type="date" id="tanggal" name="tanggal_mulai"
-                                                            class="form-control" value="{{ date('Y-m-d') }}"
-                                                            min="{{ date('Y-m-d') }}" required>
-                                                    </div>
-                                                    <div class="col">
-                                                        <label for="">tanggal akhir</label>
-                                                        <input type="date" name="jatuh_tempo" class="form-control"
-                                                            min="{{ date('Y-m-d') }}" value="{{ old('jatuh_tempo') }}"
-                                                            required>
-                                                    </div>
+                            <!-- Virtaul Account -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                        aria-controls="flush-collapseFour">
+                                        <i class="fa-solid fa-credit-card me-2"></i> Kredit
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <form action="{{ route('transaksi.kredit') }}" method="post">
+                                            @csrf
+                                            <div class="form">
+                                                <div class="form-gorup">
+                                                    <label for="">Nama Pemesan / Instansi</label>
+                                                    <input type="text" class="form-control" name="nama_pemesan"
+                                                        value="{{ old('nama_pemesan') }}" required>
+                                                </div>
+                                                <div class="form-gorup">
+                                                    <label for="">Jangka Waktu</label>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            {{-- pending --}}
+                                                            <label for="">tanggal mulai</label>
+                                                            <input type="date" id="tanggal" name="tanggal_mulai"
+                                                                class="form-control" value="{{ date('Y-m-d') }}"
+                                                                min="{{ date('Y-m-d') }}" required>
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="">tanggal akhir</label>
+                                                            <input type="date" name="jatuh_tempo" class="form-control"
+                                                                min="{{ date('Y-m-d') }}"
+                                                                value="{{ old('jatuh_tempo') }}" required>
+                                                        </div>
 
+                                                    </div>
+                                                </div>
+                                                <div class="form-gorup">
+                                                    <label for="">Deskripsi (opsional)</label>
+                                                    <textarea class="form-control" name="deskripsi" cols="30" rows="10">{{ old('deskripsi') }}</textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="hidden" name="status" value="">
+                                                    <input type="hidden" name="transaksi_id"
+                                                        value="{{ $tid }}">
+                                                    <button class="btn btn-primary" type="submit">kirim request</button>
                                                 </div>
                                             </div>
-                                            <div class="form-gorup">
-                                                <label for="">Deskripsi (opsional)</label>
-                                                <textarea class="form-control" name="deskripsi" cols="30" rows="10">{{ old('deskripsi') }}</textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="hidden" name="status" value="">
-                                                <input type="hidden" name="transaksi_id" value="{{ $tid }}">
-                                                <button class="btn btn-primary" type="submit">kirim request</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- E-wallet -->
-                        {{-- <div class="accordion-item">
+                            <!-- E-wallet -->
+                            {{-- <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseThree" aria-expanded="false"
@@ -356,38 +316,64 @@
                                                     <a href="/cara-wallet" style="justify-content: start" class="btn" type="button">
                                                         {{-- <img class="img-thumbnail border-0"
                                                             style="width: 15rem" alt=""> --}}
+
+                            <!-- E-wallet -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                        aria-controls="flush-collapseThree">
+                                        <i class="fa-solid fa-money-bill me-2"></i> E-Wallet
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                </div>
+                            </div>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <form action="">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="row">
+                                                    <a href="/cara-wallet" style="justify-content: start" class="btn"
+                                                        type="button">
+                                                        {{-- <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt=""> --}}
                                                         <img class="img-thumbnail border-0"
-                                                        src="{{ asset('illustration/gopay.webp') }}"
+                                                            src="{{ asset('illustration/gopay.png') }}"
                                                             style="width: 100px; margin-right:1px"alt="">
-                                                            <span style="text-align: end" class="fw-bold">Go-Pay</span>
+                                                        <span style="text-align: end" class="fw-bold">Go-Pay</span>
                                                     </a>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <a href="/cara-wallet" class="btn" type="button">
                                                         <img class="img-thumbnail border-0"
-                                                        src="{{ asset('illustration/sopipay.webp') }}"
-                                                            style="width: 100px" alt=""><span style="text-align: end" class="fw-bold">Shopee-Pay</span>
+                                                            src="{{ asset('illustration/sopipay.png') }}"
+                                                            style="width: 100px" alt=""><span
+                                                            style="text-align: end" class="fw-bold">Shopee-Pay</span>
                                                     </a>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <a href="/cara" class="btn" type="button">
                                                         <img class="img-thumbnail border-0"
-                                                        src="{{ asset('illustration/qris.png') }}"
-                                                            style="width: 100px" alt=""><span style="text-align: end" class="fw-bold">Christiano</span>
+                                                            src="{{ asset('illustration/qris.png') }}"
+                                                            style="width: 100px" alt=""><span
+                                                            style="text-align: end" class="fw-bold">Christiano</span>
                                                     </a>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                            </div> --}}
-                    </div>
+                            </div>
+                        </div>
 
 
-                    {{-- <div class="row justify-content-center">
+                        {{-- <div class="row justify-content-center">
                             <div class="col">
                                 <a href="" class="btn card-hover">
                                     <div class="card" style="width: 23rem;">
@@ -426,11 +412,11 @@
                                 </a>
                             </div>
                         </div> --}}
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
     </div>
 
     <script>
