@@ -21,13 +21,12 @@ class BlogController extends Controller
     public function index()
     {
 
-        $segmen = Segmen::all();
-        $pag = Blog::paginate(5);
         $today = date('Y-m-d');
         // $action = 'get-populer';
-        
+
         $Sweek = carbon::now()->subweek();
         $Eweek = carbon::now();
+        $get = 'populer';
 
         $populer = Blog::orderBy('visitor', 'desc')->get();
         $weekly = Blog::whereBetween('created_at', [$Sweek, $Eweek])->orwhereBetween('updated_at', [$Sweek, $Eweek])->get();
@@ -38,23 +37,50 @@ class BlogController extends Controller
         $recently_uploaded = Blog::orderBy('created_at', 'desc')->take(3)->get('created_at');
         $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(4)->get('created_at');
 
-        $compact = ['populer', 'weekly', 'recently_uploaded', 'recently_lastweek'];
+        $compact = ['populer', 'weekly', 'recently_uploaded', 'recently_lastweek','get'];
 
+        $segmen = Segmen::all();
+        $pag = Blog::paginate(5);
         if (auth()->check()) {
             $u = auth()->user()->role->role;
             $admin = ['admin', 'owner'];
             if (in_array($u, $admin)) {
-                return view('Admin.blog.index', compact($compact));
-            } else {
+                return view('Admin.blog.index', compact($segmen));
+            }else{
                 return view('EU.blog.index', compact($compact));
             }
         } else {
+            // return redirect()->route('blogs.type');
             return view('EU.blog.index', compact($compact));
         }
     }
 
-    public function partials()
+    public function type(request $request,$type)
     {
+        // return $request;
+        $get = $request->get;
+        // return $get; 
+        $today = date('Y-m-d');
+        // $action = 'get-populer';
+
+        $Sweek = carbon::now()->subweek();
+        $Eweek = carbon::now();
+
+        // $blog = blog::all();
+        
+        $populer = Blog::orderBy('visitor', 'desc')->get();
+        $weekly = Blog::whereBetween('created_at', [$Sweek, $Eweek])->orwhereBetween('updated_at', [$Sweek, $Eweek])->get();
+        // $terpilih = blog::where()->get();        //pending
+
+        
+        $sekarang = carbon::now();
+        $lastweek = carbon::now()->subweek();
+        $recently_uploaded = Blog::orderBy('created_at', 'desc')->take(3)->get('created_at');
+        $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(4)->get('created_at');
+
+        $compact = ['populer', 'weekly', 'recently_uploaded', 'recently_lastweek','get'];
+
+        return view('EU.blog.index', compact($compact));
     }
 
     public function show(Blog $blog)

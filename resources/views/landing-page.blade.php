@@ -5,17 +5,17 @@
     <section class="hero" id="hero" class="d-flex align-items-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 d-flex flex-column justify-content-center order-2 order-lg-1" data-aos="fade-up"
+                <div class="col-lg-6 d-flex flex-column justify-content-center order-2 mt-5 mt-lg-0 order-lg-1" data-aos="fade-up"
                     data-aos-delay="200">
                     @foreach ($text as $item)
                         <h1>{{ $item->mainline }}</h1>
                         <h2>{{ $item->secondline }}</h2>
-                        <h3 class="text-lg-start text-center">3rb blum connect</h3>
+                        <h3 class="text-lg-start text-center">{{ $item->thirdline }}</h3>
                     @endforeach
                 </div>
                 @foreach ($illustration as $i)
                     <div class="col-lg-6 order-1 order-lg-2 hero-img align-items-center" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="{{ asset('./illustration/' . $i->illustration) }}" class="img-fluid" alt="">
+                        <img src="{{ asset('./illustration/' . $i->illustration) }}" class="img-fluid">
                     </div>
                 @endforeach
             </div>
@@ -34,8 +34,8 @@
                 @foreach ($jenis_layanan as $item)
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch my-4 mt-md-0" data-aos="zoom-in"
                         data-aos-delay="200">
-                        <div class="icon-box text-start">
-                            <h4 class="text-center text-lg-start">{{$item->layanan}}</h4>
+                        <div class="icon-box text-center text-lg-start">
+                            <h4 class="text-center text-uppercase text-lg-start">{{$item->layanan}}</h4>
                             <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                             <a href="" class="">Lihat lebih lanjut</a>
                         </div>

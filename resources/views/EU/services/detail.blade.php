@@ -11,7 +11,7 @@
                         <img src="{{ asset('illustration/social-media.png') }}" alt="">
                     </div>
                     <div class="col-lg-6" data-aos="fade-left" data-aos-duration="2000">
-                        <h2>
+                        <h2 class="text-center">
                             Social Media Post
                         </h2>
                         <p>

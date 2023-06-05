@@ -66,6 +66,4 @@
         </div>
     </div>
     <!-- Grid container -->
-
-
 </footer>

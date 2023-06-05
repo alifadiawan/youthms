@@ -127,7 +127,7 @@
         @foreach ($trx as $t)
             {{-- VIEW UTANG --}}
             @if (in_array($t->id, $EU_utang))
-                <a href="{{ route('transaksi.pembayaran', $t->id) }}">
+                <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
                     <div class="alert alert-danger" role="alert">
                         Bayar sebelum .... Klik disini untuk bayar
                     </div>

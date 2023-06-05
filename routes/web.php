@@ -23,6 +23,7 @@ use App\Http\Middleware\StaffMiddleware;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\RequestUserController;
 use App\Http\Controllers\GroupChatController;
+use App\Http\Controllers\PembayaranController;
 use App\Models\Services;
 
 /*
@@ -108,6 +109,7 @@ Route::get('/store/{type}/show', [ProdukController::class, 'showtype'])->name('s
 
 //blog
 Route::resource('blogs', BlogController::class);
+Route::get('blogs/type/{type}', [BlogController::class,'type'])->name('blogs.type');
 Route::get('blogs/weeklytrend', [BlogController::class, 'partials']);
 Route::get('/blog/editing', function () {
     return view('EU.blog.editing');
@@ -164,10 +166,12 @@ Route::middleware(['auth'])->group(function () {
     // transaction
     Route::resource('/transaksi', TransaksiController::class);
     Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
-    Route::get('/transaksi_pembayaran/{id}', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
+    // Route::get('/transaksi_pembayaran/{id}', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
     Route::post('/transaksi_kredit', [TransaksiController::class, 'kredit'])->name('transaksi.kredit');
 
     Route::resource('pembayaran', pembayaranController::class);
+    Route::get('/transaksi_pembayaran/{id}', [pembayaranController::class,'pembayaran'])->name('pembayaran.pembayaran');
+    Route::get('/cara/{id}', [pembayaranController::class,'cara'])->name('pembayaran.cara');
 
     // route::get('/lunas', function () {
     //     return view('EU.transaction.lunas');

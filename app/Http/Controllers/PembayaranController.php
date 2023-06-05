@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\gateaway;
+use App\Models\Pembayaran;
+use App\Models\Member;
+use App\Models\Transaksi;
+use App\Models\TransaksiDetail;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 
 class PembayaranController extends Controller
@@ -9,14 +15,59 @@ class PembayaranController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        //
     }
+
+    public function pembayaran($id)
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $today  = today();
+        $t = date('d-m-Y', strtotime($today));
+        // return $t;
+
+        // mencari data user & member
+        $user = auth()->user()->id;
+        $member = member::where('user_id', $user)->pluck('id')->first();
+
+        // mencari transaksi id dengan menggunakkan id member
+        $gateaway = gateaway::all();
+
+        $tid = $id;
+        $transaksi = transaksi::where('id', $tid)->get();
+
+        // mencari detail transaksi id dengan $trxid
+        $detail = TransaksiDetail::where('transaksi_id', $tid)->get();
+
+        // menghitung total produk serta jumlah total
+        $total = 0;
+        foreach ($detail as $d) {
+            $total += $d->produk->harga * $d->quantity;
+        }
+
+        // mencari biaya admin serta harga setelah admin
+        $admin = $total * 0.11;
+        $grandtotal = $total + $admin;
+
+        $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid', 't', 'transaksi','gateaway'];
+        return view('EU.transaction.pembayaran', compact($compact));
+    }
+
 
     /**
      * Show the form for creating a new resource.
      */
+    public function cara(request $request,$id)
+    {
+        // return $id;
+        // return $request;
+        $gateaway = gateaway::where('id',$id)->get();
+        // return $gateaway;
+
+        $compact = ['gateaway'];
+        return view('EU.transaction.cara',compact($compact));
+    }
+
     public function create()
     {
         //
@@ -33,7 +84,7 @@ class PembayaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Pembayaran $pembayaran)
     {
         //
     }
@@ -41,7 +92,7 @@ class PembayaranController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Pembayaran $pembayaran)
     {
         //
     }
@@ -49,7 +100,7 @@ class PembayaranController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Pembayaran $pembayaran)
     {
         //
     }
@@ -57,7 +108,7 @@ class PembayaranController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Pembayaran $pembayaran)
     {
         //
     }

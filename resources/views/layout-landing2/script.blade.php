@@ -14,8 +14,11 @@
 <script src="{{ asset('EU/vendor/php-email-form/validate.js') }}"></script>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
+
 <!-- Template Main JS File -->
 <script src="{{ asset('EU/js/main.js') }}"></script>
+
+
 
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
@@ -55,34 +58,3 @@
     </div>
 </div>
 
-<!-- Konfirmasi Bayar Modal -->
-<section id="modal-konfirmasi" class="modal-konfirmasi">
-<div class="modal fade" id="modalKonfirmasi" tabindex="-1" aria-labelledby="modalKonfirmasi" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title fw-bold" id="exampleModalLabel" style="font-family: Poppins, sans-serif;">Konfirmasi Pembayaran</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div>
-            <label for="">Tanggal Checkout</label>
-            <input type="date" class="form-control mt-2" name="date" id="date">
-          </div>
-          <div>
-            <label for="" class="mt-3">Kode Pesanan</label>
-            <input type="text" class="form-control mt-2" name="kode" id="kode">
-          </div>
-          <div>
-            <label for="" class="mt-3">Bukti Pembayaran (Struk / Screenshoot Transfer)</label>
-            <input type="file" class="form-control mt-2" name="kode" id="kode">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-          <button type="button" class="btn btn-primary">Kirim Bukti</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>

@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gateaways', function (Blueprint $table) {
+        Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->string('nama_gateaway');
-            $table->string('nomor_rekening')->nullable();
-            $table->string('nomor_va')->nullable();
+            $table->unsignedBigInteger('transaksi_id');
+            $table->foreign('transaksi_id')->references('id')->on('transaksi')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->string('status');
+            $table->string('note_admin');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gateaways');
+        Schema::dropIfExists('pembayarans');
     }
 };
