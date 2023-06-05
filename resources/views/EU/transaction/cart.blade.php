@@ -151,7 +151,7 @@
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
                                 {{ $c->produk->nama_produk }}
-                                <span>{{$c->quantity}}x</span>
+                                <span id="qty_{{ $c->id }}">{{ $c->quantity }}x</span>
                                 <span id="total-price_{{ $c->id }}">Rp.
                                     {{ number_format($c->quantity * $c->produk->harga, 0, ',', '.') }}</span>
                             </li>
@@ -207,7 +207,7 @@
                     var formattedPrice = response.item_total_price.toLocaleString('id-ID');
                     formattedPrice = formattedPrice.replace(".", ",");
                     $('#total-price_' + cartId).text("Rp. " + formattedPrice);
-                    
+                    $('#qty_' + cartId).text(newQuantity + "x");
                 }
             });
 

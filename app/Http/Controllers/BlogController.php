@@ -20,33 +20,47 @@ class BlogController extends Controller
      */
     public function index()
     {
+
         $segmen = Segmen::all();
         $pag = Blog::paginate(5);
         $today = date('Y-m-d');
-        $Sweek = date('Y-m-d', strtotime('last Monday'));
-        $Eweek = date('Y-m-d', strtotime('next Sunday'));
+        // $action = 'get-populer';
+        
+        $Sweek = carbon::now()->subweek();
+        $Eweek = carbon::now();
 
-        $populer = blog::orderby('visitor', 'desc')->get();
-        $weekly = blog::wherebetween('created_at', [$Sweek, $Eweek])->orwherebetween('updated_at', [$Sweek, $Eweek])->orderby('visitor', 'desc')->get();
+        $populer = Blog::orderBy('visitor', 'desc')->get();
+        $weekly = Blog::whereBetween('created_at', [$Sweek, $Eweek])->orwhereBetween('updated_at', [$Sweek, $Eweek])->get();
         // $terpilih = blog::where()->get();        //pending
 
-        $seminggu = Carbon::now()->subWeek();
-        // $orderedbyadmin = ;          //pending
-        $recently_uploaded = blog::orderby('created_at', 'desc')->get();
-        $recently_lastweek = blog::where('created_at', '>', $seminggu)->get();
+        $sekarang = carbon::now();
+        $lastweek = carbon::now()->subweek();
+        $recently_uploaded = Blog::orderBy('created_at', 'desc')->take(3)->get('created_at');
+        $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(4)->get('created_at');
 
+        $compact = ['populer', 'weekly', 'recently_uploaded', 'recently_lastweek'];
 
         if (auth()->check()) {
             $u = auth()->user()->role->role;
             $admin = ['admin', 'owner'];
             if (in_array($u, $admin)) {
-                return view('Admin.blog.index', compact('blog', 'segmen'));
+                return view('Admin.blog.index', compact($compact));
             } else {
-                return view('EU.blog.index', compact('blog', 'segmen'));
+                return view('EU.blog.index', compact($compact));
             }
         } else {
-            return view('EU.blog.index', compact('blog', 'segmen'));
+            return view('EU.blog.index', compact($compact));
         }
+    }
+
+    public function partials()
+    {
+    }
+
+    public function show(Blog $blog)
+    {
+        $data = Blog::find($blog->id);
+        return view('Admin.blog.detail', compact('data'));
     }
 
     /**
@@ -117,11 +131,6 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Blog $blog)
-    {
-        $data = Blog::find($blog->id);
-        return view('Admin.blog.detail', compact('data'));
-    }
 
     /**
      * Show the form for editing the specified resource.

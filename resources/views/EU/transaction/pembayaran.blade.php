@@ -184,7 +184,7 @@
                                 </div>
                             </div>
                             <!-- Virtaul Account -->
-                            <div class="accordion-item">
+                            {{-- <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseTwo" aria-expanded="false"
@@ -198,7 +198,7 @@
                                         demonstrate the <code>.accordion-flush</code> class. This is the second item's
                                         accordion body. Let's imagine this being filled with some actual content.</div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <!-- Virtaul Account -->
                             <div class="accordion-item">
@@ -250,7 +250,7 @@
                             </div>
 
                             <!-- E-wallet -->
-                            <div class="accordion-item">
+                            {{-- <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseThree" aria-expanded="false"
@@ -269,25 +269,25 @@
                                         <div class="row">
                                             <div class="col">
                                                 <a href="">
-                                                    {{-- <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt=""> --}}
+                                                    <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt="">
                                                         <button>ceritanya gambarnya gopay</button>
                                                 </a>
                                                 <a href="">
-                                                    {{-- <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt=""> --}}
+                                                    <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt="">
                                                         <button>ceritanya gambarnya shoppee</button>
                                                 </a>
                                                 <a href="">
-                                                    {{-- <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt=""> --}}
+                                                    <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt="">
                                                         <button>ceritanya gambarnya qris</button>
                                                 </a>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
 
