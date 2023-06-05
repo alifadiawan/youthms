@@ -14,26 +14,31 @@
                             </div>
                             <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
                                 <div class="card-body">
-                                    <span class="text-dark" style="font-size: 16px; line-height:normal">LANGKAH 1 : TEMUKAN
-                                        ATM
-                                        TERDEKAT<br>
+                                    <span class="text-dark" style="font-size: 16px; line-height:normal">
+                                        <p class="fw-bold">LANGKAH 1 : TEMUKAN ATM TERDEKAT</p>
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item"> Masukkan kartu, kemudian pilih bahasa dan masukkan
+                                                PIN anda</li>
+                                            <li class="list-group-item">Pilih "Transaksi Lain" dan pilih "Pembayaran"</li>
+                                            <li class="list-group-item">Pilih menu "Lainnya" dan pilih "Briva"</li>
+                                        </ol>
+                                        <br>
+                                        <p class="fw-bold">LANGKAH 2 : DETAIL PEMBAYARAN</p>
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item"> Masukkan Nomor Virtual Account 92001981045887568
+                                                dan jumlah yang ingin anda
+                                                bayarkan</li>
+                                            <li class="list-group-item">Periksa data transaksi dan tekan "YA"</li>
+                                        </ol>
 
-                                        1. Masukkan kartu, kemudian pilih bahasa dan masukkan PIN anda<br>
-                                        2. Pilih "Transaksi Lain" dan pilih "Pembayaran"<br>
-                                        3. Pilih menu "Lainnya" dan pilih "Briva"<br><br>
-
-                                        LANGKAH 2 : DETAIL PEMBAYARAN<br>
-
-                                        1. Masukkan Nomor Virtual Account 92001981045887568 dan jumlah yang ingin anda
-                                        bayarkan<br>
-                                        2. Periksa data transaksi dan tekan "YA"<br><br>
-
-                                        LANGKAH 3 : TRANSAKSI BERHASIL<br>
-
-                                        1. Setelah transaksi anda selesai, invoice ini akan diupdate secara otomatis. Proses
-                                        ini mungkin
-                                        memakan waktu hingga 5 menit
-
+                                        <br>
+                                        <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item">Setelah transaksi anda selesai, invoice ini akan
+                                                diupdate secara otomatis. Proses
+                                                ini mungkin
+                                                memakan waktu hingga 5 menit</li>
+                                        </ol>
                                     </span>
                                 </div>
                             </div>
@@ -49,21 +54,29 @@
                             <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
                                 <div class="card-body">
                                     <span class="text-dark" style="font-size: 16px">
-                                        LANGKAH 1 : MASUK KE AKUN ANDA<br>
-                                        1. Buka aplikasi BRI Mobile Banking, masukkan USER ID dan PIN anda<br>
-                                        2. Pilih "Pembayaran" dan pilih "Briva"<br><br>
-
-                                        LANGKAH 2 : DETAIL PEMBAYARAN<br>
-
-                                        1. Masukkan Nomor Virtual Account anda 92001981045887568 dan jumlah yang ingin anda
-                                        bayarkan<br>
-                                        2. Masukkan PIN Mobile Banking BRI<br><br>
-
-                                        LANGKAH 3 : TRANSAKSI BERHASIL<br>
-
-                                        1. Setelah transaksi anda selesai, invoice ini akan diupdate secara otomatis. Proses
-                                        ini mungkin
-                                        memakan waktu hingga 5 menit</span>
+                                        <p class="fw-bold">LANGKAH 1 : MASUK KE AKUN ANDA</p>
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item">Buka aplikasi BRI Mobile Banking, masukkan USER ID
+                                                dan PIN anda</li>
+                                            <li class="list-group-item">Pilih "Pembayaran" dan pilih "Briva"</li>
+                                        </ol>
+                                        <br>
+                                        <p class="fw-bold">LANGKAH 2 : DETAIL PEMBAYARAN</p>
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item">Masukkan Nomor Virtual Account anda
+                                                92001981045887568 dan jumlah yang ingin anda
+                                                bayarkan</li>
+                                            <li class="list-group-item">Masukkan PIN Mobile Banking BRI</li>
+                                        </ol>
+                                        <br>
+                                        <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item">Setelah transaksi anda selesai, invoice ini akan
+                                                diupdate secara otomatis. Proses
+                                                ini mungkin
+                                                memakan waktu hingga 5 menit</li>
+                                        </ol>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -155,12 +168,46 @@
                             </div>
                         </div>
                         <div class="col-12 px-md-5 px-4 mt-3">
-                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalKonfirmasi">Konfirmasi Pembayaran</button>
+                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                data-bs-target="#modalKonfirmasi">Konfirmasi Pembayaran</button>
                         </div>
                     </div>
                 </form>
-                
+
             </div>
         </div>
     </section>
+    <!-- Konfirmasi Bayar Modal -->
+    {{-- <section id="modal-konfirmasi" class="modal-konfirmasi"> --}}
+        <div class="modal fade" id="modalKonfirmasi" tabindex="-1" aria-labelledby="modalKonfirmasi"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="exampleModalLabel" style="font-family: Poppins, sans-serif;">
+                            Konfirmasi Pembayaran</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <label for="">Tanggal Checkout</label>
+                            <input type="date" class="form-control mt-2" name="date" id="date">
+                        </div>
+                        <div>
+                            <label for="" class="mt-3">Kode Pesanan</label>
+                            <input type="text" class="form-control mt-2" name="kode" id="kode">
+                        </div>
+                        <div>
+                            <label for="" class="mt-3">Bukti Pembayaran (Struk / Screenshoot Transfer)</label>
+                            <input type="file" class="form-control mt-2" name="kode" id="kode">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary">Kirim Bukti</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{-- </section> --}}
 @endsection
