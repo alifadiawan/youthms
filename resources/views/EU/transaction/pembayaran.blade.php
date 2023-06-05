@@ -18,7 +18,18 @@
                         </div>
                     </div>
 
-                    {{-- <div class="konten my-lg-0 mx-5">
+                        <div class="row mx-3 mx-lg-4">
+                            <div class="col-12 col-lg-12 text-start text-lg-end">
+                                <div class="row">
+                                    <div class="col-6 col-lg-9 fw-bold">Tanggal Terbit</div>
+                                    <div class="col-6 col-lg-3 text-muted">{{ $t->created_at }}</div>
+                                </div>
+                            </div>
+                            
+                        </div>
+            
+                        {{-- <div class="konten my-lg-0 mx-5">
+
                             <div class="row">
                                 <div class="col">
                                     <div class="row">

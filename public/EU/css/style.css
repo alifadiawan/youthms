@@ -491,7 +491,8 @@ h6 {
 @media (max-width: 576px) {
     .hero {
         border-radius: 0px 0px 100px 0px;
-        padding-bottom: 700px;
+        padding-bottom: 400px;
+        
     }
 }
 

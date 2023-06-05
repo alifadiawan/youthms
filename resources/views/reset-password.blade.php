@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Youthms | Login</title>
+    <title>Youthms | Reset</title>
     @notifyCss
     @include('layout.style')
     <x-notify::notify />
@@ -50,29 +50,24 @@
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
-                    @endif
-
-                    <form action="login" method="post" class="user">
+                    @endif 
+                    <h3 class="text-center text-bold">Reset Password</h3>
+                    <form method="POST" action="{{ route('password.update') }}">
                         @csrf
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                aria-describedby="emailHelp" name="email" placeholder="Enter Email Address...">
+                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control form-control-user" id="exampleInputPassword"
-                                name="password" placeholder="Password">
+                            <input id="password" type="password" class="form-control" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password-confirm">Confirm Password</label>
+                            <input id="password-confirm" type="password" class="form-control" name="password-confirm" required>
                         </div>
                         <div class="form-group text-center ">
                             <button class="btn yms-blue w-100">Submit</button>
-                            <hr>
-                            <p>Don't have an account ?
-                                <a href="/register">Sign up here</a>
-                            </p>
-                            <p>Forgot Your Password ?
-                                <a href="/forgot-password">click here</a>
-                            </p>
                         </div>
                     </form>
                 </div>
