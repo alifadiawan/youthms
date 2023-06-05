@@ -1,4 +1,5 @@
 @extends('layout-landing2.body')
+@section('title', '| Services')
 @section('content')
     <!-- hero / illustration -->
     <section class="main-banner mt-5" id="main-banner">
