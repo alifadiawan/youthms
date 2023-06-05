@@ -22,15 +22,15 @@
         <div class="col-lg-4 col-md-5 col-sm-7">
             <div class="card shadow-lg" style="border-radius: 10px">
                 <div class="card-body">
-                    <div class="row">
+                    {{-- <div class="row">
                         <a href="/login" class="btn yms-blue">
-                            <i class="fas fa-chevron-left"></i>
+                            <i class="fas fa-arrow-left mr-1"></i>
                             <span>Login</span>
                         </a>
-                    </div>
+                    </div> --}}
                     <div class="row justify-content-center">
                         <img src="{{ asset('yms-logo-notext.png') }}" alt="" class="my-3"
-                            style="width: 100px">
+                            style="width: 200px">
                     </div>
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
@@ -63,10 +63,9 @@
                         </div>
                         <div class="form-group text-center ">
                             <button class="btn yms-blue w-100">Register</button>
-                            <hr>
-                            <p>Already have an account ?
-                                <a href="/login">Log in</a>
-                            </p>
+                        </div>
+                        <div class="form-group text-center">
+                            <a href="/login">Back to login</a>
                         </div>
                     </form>
                 </div>

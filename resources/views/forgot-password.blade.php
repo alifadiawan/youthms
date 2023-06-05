@@ -26,15 +26,10 @@
         <div class="col-lg-4 col-md-5 col-sm-7">
             <div class="card shadow-lg" style="border-radius: 10px">
                 <div class="card-body">
-                    <div class="row">
-                        <a href="/" class="btn yms-blue">
-                            <i class="fas fa-arrow-left"></i>
-                        </a>
-                    </div>
-                    <div class="row justify-content-center">
+                    {{-- <div class="row justify-content-center">
                         <img src="{{ asset('yms-logo-notext.png') }}" alt="" class="my-3"
                             style="width: 250px">
-                    </div>
+                    </div> --}}
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
@@ -51,19 +46,17 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h3 class="text-center text-bold">Forgot Password</h3>
                     <form method="POST" action="{{ route('password.forgot') }}">
                         @csrf
-                        <div class="form-group">
-                            <label for="email">Email</label>
+                        <div class="form-group my-4">
+                            <label for="email">Please enter your registered email address</label>
                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Your Email..." required autofocus>
                         </div>
                         <div class="form-group text-center ">
-                            <button class="btn yms-blue w-100">Submit</button>
-                            <hr>
-                            <p>Don't have an account ?
-                                <a href="/register">Sign up here</a>
-                            </p>
+                            <button class="btn yms-blue w-100">Change Password</button>
+                        </div>
+                        <div class="form-group text-center">
+                            <a href="/login">Back to login</a>
                         </div>
                     </form>
                 </div>
@@ -76,4 +69,3 @@
 </body>
 
 </html>
-''

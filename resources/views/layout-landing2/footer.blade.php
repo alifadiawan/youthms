@@ -23,16 +23,16 @@
 
                 <div class="mt-4">
                     <!-- Facebook -->
-                    <a type="button" class="btn btn-floating btn-light btn-lg">
-                        <i class="fa-brands fa-android"></i>
+                    <a type="button" class="btn btn-floating text-white btn-lg">
+                        <i class="fa-brands fa-xl fa-android"></i>
                     </a>
                     <!-- Dribbble -->
-                    <a type="button" class="btn btn-floating btn-light btn-lg">
-                        <i class="fa-solid fa-brush"></i>
+                    <a type="button" class="btn btn-floating text-white btn-lg">
+                        <i class="fa-solid fa-xl fa-brush"></i>
                     </a>
                     <!-- Twitter -->
-                    <a type="button" class="btn btn-floating btn-light btn-lg"><i
-                            class="fa-solid fa-file"></i></a>
+                    <a type="button" class="btn btn-floating text-white btn-lg"><i
+                            class="fa-solid fa-xl fa-file"></i></a>
                 </div>
             </div>
             <!--Grid column-->
@@ -41,22 +41,22 @@
             <div class="col-lg-4 col-md-4 mb-4">
                 <h5 class="text-uppercase mb-4 fw-bold" style="font-family: Poppins, sans-serif">Social Media</h5>
 
-                <div class="mt-4">
+                <div class="mt-4 text-center">
                     <!-- Facebook -->
-                    <a type="button" class="btn btn-floating btn-light btn-lg">
-                        <i class="fab fa-facebook-f"></i>
+                    <a type="button" class="btn btn-floating text-white btn-lg">
+                        <i class="fa-brands fa-xl fa-instagram"></i>
                     </a>
-                    <a type="button" class="btn btn-floating btn-light btn-lg">
-                        <i class="fa-brands fa-facebook"></i>
+                    <a type="button" class="btn btn-floating text-white btn-lg">
+                        <i class="fa-brands fa-xl fa-facebook"></i>
                     </a>
-                    <a type="button" class="btn btn-floating btn-light btn-lg">
-                        <i class="fa-brands fa-linkedin"></i>
+                    <a type="button" class="btn btn-floating text-white btn-lg">
+                        <i class="fa-brands fa-xl fa-linkedin"></i>
                     </a>
-                    <a type="button" class="btn btn-floating btn-light btn-lg">
-                        <i class="fa-solid fa-envelope"></i>
+                    <a type="button" class="btn btn-floating text-white btn-lg">
+                        <i class="fa-solid fa-xl fa-envelope"></i>
                     </a>
-                    <a type="button" class="btn btn-floating btn-light btn-lg">
-                        <i class="fa-brands fa-whatsapp"></i>
+                    <a type="button" class="btn btn-floating text-white btn-lg">
+                        <i class="fa-brands fa-xl fa-whatsapp"></i>
                     </a>
 
 

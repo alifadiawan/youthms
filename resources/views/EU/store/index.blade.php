@@ -182,7 +182,7 @@
 
         <div class="row">
             @foreach ($layanan as $l)
-                <p class="h2 fw-bold mt-5">{{ $l->layanan }}</p>
+                <p class="h2 fw-bold mt-5 text-capitalize">{{ $l->layanan }}</p>
                 @foreach ($l->services as $ls)
                     @foreach ($ls->produk as $p)
                         <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
