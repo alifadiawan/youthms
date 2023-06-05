@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('jenis_layanan', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('layanan');
+            $table->string('deskripsi');
+            $table->string('link_illus');
             $table->timestamps();
         });
     }

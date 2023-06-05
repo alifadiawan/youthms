@@ -31,7 +31,11 @@
         <div class="d-flex flex-row text-center gap-2">
             <a href="{{ route('portfolio.index') }}" class="text-capitalize my-3 active btn yms-blue w-20 rounded-5">All</a>
             @foreach ($layanan as $l)
-            <a href="{{ route('portfolio.showtype', $l->layanan) }}" class=" my-3 text-capitalize active btn yms-blue w-20 rounded-5">{{ $l->layanan }}</a>
+            @php
+                $link = str_replace(' ', '_', $l->layanan);
+                $type = str_replace('_', ' ', $type);
+            @endphp
+            <a href="{{ route('portfolio.showtype', $link) }}" class=" my-3 text-capitalize active btn yms-blue w-20 rounded-5">{{ $l->layanan }}</a>
             @endforeach
         </div>
         <div class="project">
