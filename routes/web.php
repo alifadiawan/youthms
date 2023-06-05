@@ -26,6 +26,7 @@ use App\Http\Controllers\GroupChatController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\TransaksiDetailController;
+use App\Http\Controllers\SocialiteController;
 use App\Models\Services;
 
 /*
@@ -168,6 +169,9 @@ Route::middleware('guest')->group(function () {
     Route::post('/forgot-password', [PasswordController::class, 'forgotPassword'])->name('password.forgot');
     Route::get('/reset-password', [PasswordController::class, 'resetIndex'])->name('password.reset');
     Route::post('/reset-password', [PasswordController::class, 'resetPassword'])->name('password.update');
+
+    Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle']);
+    Route::get('callback/google', [SocialiteController::class, 'handleCallback']);
 });
 
 Route::middleware(['auth'])->group(function () {

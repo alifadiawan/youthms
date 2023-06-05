@@ -74,6 +74,8 @@
                         <div class="form-group">
                             <a href="/register" class="btn btn-outline-primary btn-block">Sign up here</a>
                         </div>
+                        <a class="btn btn-block btn-danger" href="{{ url('auth/google') }}" type="submit"><i class="fab fa-google me-2"></i> Sign in with Google
+                        </a>
                 </div>
                 </form>
             </div>
