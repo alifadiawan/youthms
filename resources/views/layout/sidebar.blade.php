@@ -129,7 +129,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('requestuser.index') }}" class="nav-link">
+                            <a href="{{ route('transaksidetail.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Detail Bayar

@@ -186,7 +186,7 @@
                                     <div class="accordion-body">
                                         <div class="row">
                                             <div class="col">
-                                                @foreach ($gateaway as $g)
+                                                @foreach ($gateaway->take(2) as $g)
                                                     <form action="{{ route('pembayaran.cara', $g->id) }}" method="GET">
                                                         @csrf
                                                         <button type="submit">
@@ -195,11 +195,11 @@
                                                                     value="{{ $t->id }}">
                                                             @endforeach
                                                             <img class="img-thumbnail border-0"
-                                                                src="{{ asset('mandiri.png') }}" style="width: 15rem"
-                                                                alt="">
+                                                                src="{{ asset('illustration/' . $g->image) }}"
+                                                                style="width: 15rem" alt="">
                                                         </button>
+                                                    </form>
                                                 @endforeach
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -336,35 +336,29 @@
                                     <form action="">
                                         <div class="row">
                                             <div class="col">
-                                                <div class="row">
-                                                    <a href="/cara-wallet" style="justify-content: start" class="btn"
-                                                        type="button">
-                                                        {{-- <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt=""> --}}
-                                                        <img class="img-thumbnail border-0"
-                                                            src="{{ asset('illustration/gopay.png') }}"
-                                                            style="width: 100px; margin-right:1px"alt="">
-                                                        <span style="text-align: end" class="fw-bold">Go-Pay</span>
-                                                    </a>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <a href="/cara-wallet" class="btn" type="button">
-                                                        <img class="img-thumbnail border-0"
-                                                            src="{{ asset('illustration/sopipay.png') }}"
-                                                            style="width: 100px" alt=""><span
-                                                            style="text-align: end" class="fw-bold">Shopee-Pay</span>
-                                                    </a>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <a href="/cara" class="btn" type="button">
-                                                        <img class="img-thumbnail border-0"
-                                                            src="{{ asset('illustration/qris.png') }}"
-                                                            style="width: 100px" alt=""><span
-                                                            style="text-align: end" class="fw-bold">Christiano</span>
-                                                    </a>
-                                                </div>
+                                                @foreach ($gateaway as $g => $item)
+                                                    @if ($g > 1)
+                                                        <div class="row">
+                                                            <form action="{{ route('pembayaran.cara', $item->id) }}"
+                                                                method="GET">
+                                                                @csrf
+                                                                @foreach ($transaksi as $t)
+                                                                    <input type="hidden" name="transaksi_id"
+                                                                        value="{{ $t->id }}">
+                                                                @endforeach
+                                                                <button type="submit" style="justify-content: start"
+                                                                    class="btn">
+                                                                    <img class="img-thumbnail border-0"
+                                                                        src="{{ asset('illustration/' . $item->image) }}"
+                                                                        style="width: 100px; margin-right:1px" >
+                                                                    <span style="text-align: end"
+                                                                        class="fw-bold">{{ $item->nama_gateaway }}</span>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                        <hr>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                         </div>
                                     </form>

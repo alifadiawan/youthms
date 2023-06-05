@@ -14,4 +14,9 @@ class Pembayaran extends Model
     {
         return $this->belongsTo(transaksi::class);
     }
+
+    public function gateaways()
+    {
+        return $this->belongsTo(gateaway::class);
+    }
 }

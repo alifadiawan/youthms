@@ -8,6 +8,7 @@ use App\Models\request_user;
 use App\Models\TransaksiDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Models\Pembayaran;
 
 class TransaksiDetailController extends Controller
 {
@@ -16,7 +17,10 @@ class TransaksiDetailController extends Controller
      */
     public function index()
     {
-      
+    //   return 'oke';
+    $pembayaran = pembayaran::all();
+    $compact = ['pembayaran'];
+    return view('Admin.transaction.bukti',compact($compact));
     }
 
     /**
