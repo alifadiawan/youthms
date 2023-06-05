@@ -65,7 +65,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/blog" class="nav-link">
+                    <a href="{{route('blogs.index')}}" class="nav-link">
                         <i class=" nav-icon fa-brands fa-readme"></i>
                         <p>
                             Blog

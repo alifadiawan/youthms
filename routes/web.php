@@ -114,6 +114,8 @@ Route::get('/store/{type}/show', [ProdukController::class, 'showtype'])->name('s
 Route::resource('blogs', BlogController::class);
 Route::get('blogs/type/{type}', [BlogController::class, 'type'])->name('blogs.type');
 Route::get('blogs/weeklytrend', [BlogController::class, 'partials']);
+Route::get('/blogs/detail/{blog}', [BlogController::class, 'detail'])->name('blogs.detail');
+
 Route::get('/blog/editing', function () {
     return view('EU.blog.editing');
 });
@@ -125,9 +127,6 @@ Route::get('/blog/pemrograman', function () {
     return view('EU.blog.pemrograman');
 });
 
-Route::get('/blog-detail', function () {
-    return view('EU.blog.show');
-});
 
 //services
 Route::resource('services', ServicesController::class);
@@ -242,7 +241,7 @@ Route::middleware('admin')->group(function () {
     Route::put('/service-ilustrasi/{id}/update', [ServicesController::class, 'ilustrasi_update'])->name('services.ilustrasi_update');
 
     //blog
-    // Route::get('blog/{id}/hapus', [BlogController::class, 'hapus'])->name('blog.hapus');
+    Route::get('blogs/{id}/hapus', [BlogController::class, 'hapus'])->name('blogs.hapus');
     Route::post('segmen', [SegmenController::class, 'store'])->name('segmen.store');
     Route::get('segmen/{id}/hapus', [SegmenController::class, 'hapus'])->name('segmen.hapus');
 
