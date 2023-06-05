@@ -8,7 +8,7 @@
     <div class="container p-4">
         <div class="row mt-4">
             <div class="col-lg-4 col-md-4 mb-4 mb-md-0">
-                <h5 class="text-uppercase mb-4">Address</h5>
+                <h5 class="text-uppercase mb-4 fw-bold" style="font-family: Poppins, sans-serif">Address</h5>
                 <p>
                     Perum Bluru Permai<br>
                     Blok V 25, Sidoarjo
@@ -19,7 +19,7 @@
 
             <!--Grid column-->
             <div class="col-lg-4 col-md-4 mb-4">
-                <h5 class="text-uppercase mb-4 pb-1">Services</h5>
+                <h5 class="text-uppercase mb-4 pb-1 fw-bold" style="font-family: Poppins, sans-serif">Services</h5>
 
                 <div class="mt-4">
                     <!-- Facebook -->
@@ -39,7 +39,7 @@
 
             <!--Grid column-->
             <div class="col-lg-4 col-md-4 mb-4">
-                <h5 class="text-uppercase mb-4">Social Media</h5>
+                <h5 class="text-uppercase mb-4 fw-bold" style="font-family: Poppins, sans-serif">Social Media</h5>
 
                 <div class="mt-4">
                     <!-- Facebook -->
