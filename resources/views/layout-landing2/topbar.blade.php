@@ -39,7 +39,7 @@
                     <ul>
                         <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                         </li>
-                        <li><a class="dropdown-item" href="{{ route('transaksidetail.index', auth()->user()->id) }}">Histori
+                        <li><a class="dropdown-item" href="{{ route('transaksi.history', auth()->user()->id) }}">Histori
                                 Transaksi</a>
                         </li>
                         <li><a class="dropdown-item" href="/group-chat">Chats</a></li>
