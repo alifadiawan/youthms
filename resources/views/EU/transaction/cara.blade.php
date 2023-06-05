@@ -157,7 +157,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nama Virtual Account</span>
+                                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nomor Rekening</span>
                                     <div class="inputWithIcon"> <input class="form-control text-uppercase" type="text"
                                             value="{{ $g->atas_nama }}"> <span class="far fa-user"></span> </div>
                                 </div>
