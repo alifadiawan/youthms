@@ -53,7 +53,7 @@
                             <p class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
                             @guest
                                 <a href="{{ route('authcheck') }}" class="btn yms-blue w-100 rounded-5">
-                                    <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                                    <i class="fa-solid fa-cart-plus"></i> Buy
                                 </a>
                             @endguest
 

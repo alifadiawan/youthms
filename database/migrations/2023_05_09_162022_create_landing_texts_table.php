@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('mainline');
             $table->string('secondline');
+            $table->string('thirdline');
             $table->timestamps();
         });
     }
