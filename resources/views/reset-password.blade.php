@@ -26,15 +26,10 @@
         <div class="col-lg-4 col-md-5 col-sm-7">
             <div class="card shadow-lg" style="border-radius: 10px">
                 <div class="card-body">
-                    <div class="row">
-                        <a href="/" class="btn yms-blue">
-                            <i class="fas fa-arrow-left"></i>
-                        </a>
-                    </div>
-                    <div class="row justify-content-center">
+                    {{-- <div class="row justify-content-center">
                         <img src="{{ asset('yms-logo-notext.png') }}" alt="" class="my-3"
                             style="width: 250px">
-                    </div>
+                    </div> --}}
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
@@ -67,7 +62,7 @@
                             <input id="password-confirm" type="password" class="form-control" name="password-confirm" required>
                         </div>
                         <div class="form-group text-center ">
-                            <button class="btn yms-blue w-100">Submit</button>
+                            <button class="btn yms-blue w-100">RESET PASSWORD</button>
                         </div>
                     </form>
                 </div>

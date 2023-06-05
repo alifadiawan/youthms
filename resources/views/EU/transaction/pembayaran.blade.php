@@ -15,7 +15,12 @@
                             <div class="col-6 col-lg text-end text-lg-end">
                                 <p class="text-muted">{{ $t->unique_code }}</p>
                             </div>
+                    
                         </div>
+             
+
+                    </div>
+
                         <div class="row mx-3 mx-lg-4">
                             <div class="col-12 col-lg-12 text-start text-lg-end">
                                 <div class="row">
@@ -23,10 +28,14 @@
                                     <div class="col-6 col-lg-3 text-muted">{{ $t->created_at }}</div>
                                 </div>
                             </div>
-                    @endforeach
                 </div>
 
+                    @endforeach
                 {{-- <div class="konten my-lg-0 mx-5">
+
+                            
+                        </div>
+            
                             <div class="row">
                                 <div class="col">
                                     <div class="row">
@@ -106,7 +115,50 @@
                     </table>
                 </div>
             </div>
-            {{-- <div class="card mb-4">
+            {{-- <div class="card mb-4">--}}
+
+                    <div class="konten mt-3 mx-3">
+                        <table class="table table-bordered">
+                            <thead class="bg-light text-dark">
+                                <tr>
+                                    <th>Nama Barang</th>
+                                    <th>Qty</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($detail as $d)
+                                    <tr>
+                                        <td>{{ $d->produk->nama_produk }}</td>
+                                        <td>x {{ $d->quantity }}</td>
+                                        <td class="text-end">Rp.
+                                            {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-end">Total</td>
+                                    <td colspan="1" class="text-end">Rp. {{ number_format($total, 0, ',', '.') }}</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-end">Biaya admin</td>
+                                    <td colspan="1" class="text-end">Rp. {{ number_format($admin, 0, ',', '.') }}</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-end fw-bold">Grand Total</td>
+                                    <td colspan="1" class="text-end fw-bold">Rp.
+                                        {{ number_format($grandtotal, 0, ',', '.') }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {{-- <div class="card mb-4">
                     <div class="card-header py-3">
                         <div class="row">
                             <div class="col">
@@ -247,6 +299,7 @@
                                                             min="{{ date('Y-m-d') }}" value="{{ old('jatuh_tempo') }}"
                                                             required>
                                                     </div>
+
                                                 </div>
                                             </div>
                                             <div class="form-gorup">
@@ -283,6 +336,7 @@
                                     <form action="">
                                         <div class="row">
                                             <div class="col">
+
                                                 <a href="">
                                                     <img class="img-thumbnail border-0"
                                                         style="width: 15rem" alt="">
@@ -298,6 +352,33 @@
                                                         style="width: 15rem" alt="">
                                                         <button>ceritanya gambarnya qris</button>
                                                 </a>
+                                                <div class="row">
+                                                    <a href="/cara-wallet" style="justify-content: start" class="btn" type="button">
+                                                        {{-- <img class="img-thumbnail border-0"
+                                                            style="width: 15rem" alt=""> --}}
+                                                        <img class="img-thumbnail border-0"
+                                                        src="{{ asset('illustration/gopay.webp') }}"
+                                                            style="width: 100px; margin-right:1px"alt="">
+                                                            <span style="text-align: end" class="fw-bold">Go-Pay</span>
+                                                    </a>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <a href="/cara-wallet" class="btn" type="button">
+                                                        <img class="img-thumbnail border-0"
+                                                        src="{{ asset('illustration/sopipay.webp') }}"
+                                                            style="width: 100px" alt=""><span style="text-align: end" class="fw-bold">Shopee-Pay</span>
+                                                    </a>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <a href="/cara" class="btn" type="button">
+                                                        <img class="img-thumbnail border-0"
+                                                        src="{{ asset('illustration/qris.png') }}"
+                                                            style="width: 100px" alt=""><span style="text-align: end" class="fw-bold">Christiano</span>
+                                                    </a>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </form>
