@@ -18,6 +18,10 @@ return new class extends Migration
             $table->foreign('transaksi_id')->references('id')->on('transaksi')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->unsignedBigInteger('gateaways_id')->nullable();
+            $table->foreign('gateaways_id')->references('id')->on('gateaways')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->unsignedBigInteger('produk_id');
             $table->foreign('produk_id')->references('id')->on('produk')
                 ->onUpdate('cascade')

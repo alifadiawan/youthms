@@ -5,7 +5,7 @@
 
     {{-- lunas --}}
     <div id="container" class="container mt-5">
-        <a href="{{ route('transaksi.history') }}" class="btn btn-lg mb-3">
+        <a href="{{ route('transaksidetail.index') }}" class="btn btn-lg mb-3">
             <i class="fas fa-arrow-left"></i>
         </a>
 
@@ -127,7 +127,7 @@
         @foreach ($trx as $t)
             {{-- VIEW UTANG --}}
             @if (in_array($t->id, $EU_utang))
-                <a href="{{ route('transaksi.pembayaran', $t->id) }}">
+                <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
                     <div class="alert alert-danger" role="alert">
                         Bayar sebelum .... Klik disini untuk bayar
                     </div>

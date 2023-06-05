@@ -19,7 +19,7 @@ class SegmenSeeder extends Seeder
                 'segmen' => 'DESIGN'
             ],
             [
-                'segmen' => 'EDITIN'
+                'segmen' => 'MARKETING'
             ],
             [
                 'segmen' => 'PEMROGRAMMAN'

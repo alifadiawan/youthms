@@ -7,7 +7,9 @@
     <nav id="navbar" class="navbar navbar-expand">
         <ul class="navbar-nav">
 
+
             <li class="nav-item"><a class="nav-link" href="{{ route('blogs.index') }}">Blog</a></li>
+
             {{-- <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.index') }}">Store</a></li> --}}
             <li class="nav-item"><a class="nav-link" href="{{ route('store.index') }}">Store</a></li>
             <li class="nav-item"><a class="nav-link" href="/services/all">Service</a></li>
@@ -25,7 +27,8 @@
                         @if ($badge->isEmpty())
                             <i class="fa-solid fa-cart-shopping"></i>
                         @else
-                        <i class="fa-solid fa-cart-shopping fa-"><span class="qty posisition-absolute badge bg-danger position-absolute top-0 translate-middle badge rounded-pill">{{ $badge->count() }}</span></i>
+                            <i class="fa-solid fa-cart-shopping fa-"><span
+                                    class="qty posisition-absolute badge bg-danger position-absolute top-0 translate-middle badge rounded-pill">{{ $badge->count() }}</span></i>
                         @endif
                     </a>
                 </li>
@@ -36,7 +39,7 @@
                     <ul>
                         <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                         </li>
-                        <li><a class="dropdown-item" href="{{ route('transaksi.history', auth()->user()->id) }}">Histori
+                        <li><a class="dropdown-item" href="{{ route('transaksidetail.index', auth()->user()->id) }}">Histori
                                 Transaksi</a>
                         </li>
                         <li><a class="dropdown-item" href="/group-chat">Chats</a></li>
