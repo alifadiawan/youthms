@@ -35,7 +35,7 @@
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch my-4 mt-md-0" data-aos="zoom-in"
                         data-aos-delay="200">
                         <div class="icon-box text-center text-lg-start">
-                            <h4 class="text-center text-lg-start">{{$item->layanan}}</h4>
+                            <h4 class="text-center text-uppercase text-lg-start">{{$item->layanan}}</h4>
                             <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                             <a href="" class="">Lihat lebih lanjut</a>
                         </div>
