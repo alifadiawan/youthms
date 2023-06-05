@@ -127,7 +127,7 @@ h6 {
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
-.back-to-top {
+/* .back-to-top {
     position: fixed;
     visibility: hidden;
     opacity: 0;
@@ -155,7 +155,7 @@ h6 {
 .back-to-top.active {
     visibility: visible;
     opacity: 1;
-}
+} */
 
 /*--------------------------------------------------------------
 # Header
@@ -279,7 +279,7 @@ h6 {
 }
 
 .navbar .dropdown ul li {
-    min-width: 98px;
+    min-width: 1000px;
 }
 
 .navbar .dropdown ul a {
@@ -327,7 +327,14 @@ h6 {
     .navbar .dropdown .dropdown:hover > ul {
         left: -100%;
     }
+
+    .navbar #qty{
+        position: absolute;
+    }
+
+    
 }
+
 
 /**
 * Mobile Navigation 
@@ -1120,7 +1127,7 @@ section {
     }
 
     .main-banner p{
-        font-size: 30px;
+        font-size: 25px;
         padding: 3px;
     }
 
@@ -1135,7 +1142,9 @@ section {
         font-size: 20px;
         margin-bottom: -300px;
     }
+    
 }
+
 
 .layanan h1 {
     font-family: "Poppins", sans-serif;
@@ -1333,14 +1342,36 @@ section {
 }
 
 .detail-service p {
-    margin-top: 70px;
-    font-family: "Roboto", sans-serif;
+    margin-top: 30px;
+    font-family: "Poppins", sans-serif;
     color: #000;
     font-size: 25px;
     font-weight: normal;
     line-height: normal;
     /* font-weight: bold; */
     /* margin: 30px 20px 30px 30px; */
+}
+
+@media (max-width: 576px){
+    .detail-service img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .detail-service h1{
+        font-size: 40px;
+    }
+
+    .detail-service h2{
+        font-size: 25px;
+        justify-content: center;
+    }
+
+    .detail-service p{
+        font-size: 20px;
+        line-height: 27px;
+        /* margin-top: 10px; */
+    }
 }
 /*--------------------------------------------------------------
 # Tending 24
@@ -1702,7 +1733,7 @@ section {
 
 .cara-bayar .card.box1 {
     width: 650px;
-    height: 650px;
+    height: 800px;
     font-family: "Poppins", sans-serif;
     background-color: #406cab;
     color: #fff;
@@ -1898,6 +1929,7 @@ section {
         border-radius: 25px;
         margin-top: 25px;
         height: 475px;
+        margin-bottom: -75;
     }
 
     .cara-bayar .card.box1 {
@@ -2922,125 +2954,3 @@ section {
     width: 500px;
     margin-top: -80px;
 }
-
-.topbar-chat h4{
-    font-family: "Poppins", sans-serif;
-    font-size: 300px;
-}
-
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
-@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
-/*http://codepen.io/drehimself/pen/KdXwxR?utm_source=bypeople
-http://nicolasgallagher.com/pure-css-speech-bubbles/demo/*/
-
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-.chat .chat-history {
-  padding: 30px 30px 20px;
-  border-bottom: 2px solid white;
-}
-.chat .chat-history .message-data {
-  margin-bottom: 15px;
-}
-.chat .chat-history .message-data-time {
-  color: #a8aab1;
-  padding-left: 6px;
-}
-.chat .chat-history .message {
-  color: white;
-  padding: 18px 20px;
-  line-height: 26px;
-  font-size: 16px;
-  border-radius: 5px;
-  margin-bottom: 30px;
-  width: 90%;
-  position: relative;
-}
-.chat .chat-history .message:after {
-content: "";
-    position: absolute;
-    top: -15px;
-    left: 20px;
-    border-width: 0 15px 15px;
-    border-style: solid;
-    border-color: #CCDBDC transparent;
-    display: block;
-    width: 0;
-}
-.chat .chat-history .you-message {
-  background: #CCDBDC;
-  color:#003366;
-}
-.chat .chat-history .me-message {
-  background: #E9724C;
-}
-.chat .chat-history .me-message:after {
-  border-color: #E9724C transparent;
-    right: 20px;
-    top: -15px;
-    left: auto;
-    bottom:auto;
-}
-.chat .chat-message {
-  padding: 30px;
-}
-.chat .chat-message .fa-file-o, .chat .chat-message .fa-file-image-o {
-  font-size: 16px;
-  color: gray;
-  cursor: pointer;
-}
-
-.chat-ul li{
-    list-style-type: none;
-}
-
-.align-left {
-  text-align: left;
-}
-
-.align-right {
-  text-align: right;
-}
-
-.float-right {
-  float: right;
-}
-
-.clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: " ";
-  clear: both;
-  height: 0;
-}
-.you-message {
-  color: #CCDBDC;
-}
-
-.me {
-  color: #E9724C;
-}
-
-/* h1, h2, h3, h4, h5, h6 {
-    font-family: "Raleway",sans-serif;
-    color: #f3f5fa;
-} */
-
-/* .modal-konfirmasi #modal-footer button {
-    background: #37517e;
-    box-shadow: 0px 5px 30px #37517e;
-    border: 0;
-    padding: 10px 30px;
-    color: #fff;
-    transition: 0.4s;
-    border-radius: 4px;
-}
-
-.modal-konfirmasi #modal-footer button:hover {
-    transform: translateY(-7px);
-    background: #47b2e4;
-    box-shadow: 0px 5px 30px #47b2e4;
-    color: #fff;
-} */
