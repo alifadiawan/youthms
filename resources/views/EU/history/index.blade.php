@@ -3,18 +3,14 @@
 @section('content')
 
     <div id="container" class="container my-5">
-
         <!-- tombol -->
         <div class="row gap-2 mb-3">
             <div class="col">
-                <h2 class="fw-bold">History Transaksi</h2>
+                <h2 class="fw-bold text-dark" style="font-family: Poppins, sans-serif">History Transaksi</h2>
             </div>
         </div>
-
         <!-- content -->
         <div class="konten">
-
-
             <!-- filter -->
             <div class="row my-3">
                 <div class="col">
@@ -30,16 +26,14 @@
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="kredit-tab" data-bs-toggle="pill" data-bs-target="#kredit"
-                                type="button" role="tab" aria-controls="kredit" aria-selected="false">kredit</button>
+                                type="button" role="tab" aria-controls="kredit" aria-selected="false">Kredit</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="belum-bayar-tab" data-bs-toggle="pill"
                                 data-bs-target="#belum-bayar" type="button" role="tab" aria-controls="belum-bayar"
-                                aria-selected="false">belum bayar</button>
+                                aria-selected="false">Belum Bayar</button>
                         </li>
                     </ul>
-
-
                     <div class="tab-content" id="pills-tabContent">
                         <!-- transaksi berhasil -->
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
@@ -62,7 +56,7 @@
                                             @if (in_array($a->id, $uu))
                                                 <td>
                                                     <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
-                                                        class="badge text-dark">belum bayar</span>
+                                                        class="badge text-dark">Belum Bayar</span>
                                                 </td>
                                             @elseif(in_array($a->id, $uk))
                                                 <td>
@@ -74,13 +68,13 @@
                                                 <td>
                                                     <button disabled="disabled"
                                                         class="btn btn-sm btn-info"></button><span
-                                                        class="badge text-dark">pending</span>
+                                                        class="badge text-dark">Pending</span>
                                                 </td>
                                             @elseif(in_array($a->id, $ud))
                                                 <td>
                                                     <button disabled="disabled"
                                                         class="btn btn-sm btn-dark"></button><span
-                                                        class="badge text-dark">declined</span>
+                                                        class="badge text-dark">Declined</span>
                                                 </td>
                                             @elseif(in_array($a->id, $ul))
                                                 <td>
@@ -91,7 +85,7 @@
                                             @endif
                                             <td>
                                                 <form action="{{ route('transaksi.show', $a->id) }}">
-                                                    <button type="submit" class="btn btn-success">detail</button>
+                                                    <button type="submit" class="btn btn-success">Detail</button>
                                                 </form>
                                             </td>
                                         </tr>

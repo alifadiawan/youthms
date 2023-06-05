@@ -25,7 +25,7 @@
                         @if ($badge->isEmpty())
                             <i class="fa-solid fa-cart-shopping"></i>
                         @else
-                        <i class="fa-solid fa-cart-shopping fa-lg"><span class="posisition-absolute badge bg-danger position-absolute top-0 start-100 translate-middle badge rounded-pill">{{ $badge->count() }}</span></i>
+                        <i class="fa-solid fa-cart-shopping fa-"><span class="qty posisition-absolute badge bg-danger position-absolute top-0 translate-middle badge rounded-pill">{{ $badge->count() }}</span></i>
                         @endif
                     </a>
                 </li>
