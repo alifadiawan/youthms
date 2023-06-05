@@ -2,7 +2,7 @@
 @section('content')
 @section('judul', 'Tambah Artikel Baru')
 
-<form action="{{route('blog.store')}}" method="post" id="upload-image-form" enctype="multipart/form-data">
+<form action="{{route('blogs.store')}}" method="post" id="upload-image-form" enctype="multipart/form-data">
     @csrf
     <div class="row p-2">
         <div class="col-md-3">
@@ -12,6 +12,10 @@
                         <div class="form-group">
                             <label for="judul">Judul Artikel</label>
                             <input type="text" class="form-control" name="judul" id="judul" aria-describedby="helpId">
+                        </div>
+                        <div class="form-group">
+                            <label for="foto">Cover</label>
+                            <input type="file" name="foto" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="segmen_id">Segmen</label>

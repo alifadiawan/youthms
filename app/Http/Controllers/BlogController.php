@@ -34,18 +34,22 @@ class BlogController extends Controller
 
         $sekarang = carbon::now();
         $lastweek = carbon::now()->subweek();
-        $recently_uploaded = Blog::orderBy('created_at', 'desc')->take(3)->get('created_at');
-        $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(4)->get('created_at');
+        $atas = Blog::where('id', '=', 1)->get();
+        // return $atas;
+        $recently_uploaded = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        // return $recently_uploaded;
+        $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(4)->get();
 
-        $compact = ['populer', 'weekly', 'recently_uploaded', 'recently_lastweek','get'];
+        $compact = ['populer', 'weekly', 'recently_uploaded', 'recently_lastweek','get', 'atas'];
 
         $segmen = Segmen::all();
+        $data = Blog::paginate(5);
         $pag = Blog::paginate(5);
         if (auth()->check()) {
             $u = auth()->user()->role->role;
             $admin = ['admin', 'owner'];
             if (in_array($u, $admin)) {
-                return view('Admin.blog.index', compact($segmen));
+                return view('Admin.blog.index', compact('segmen', 'data'));
             }else{
                 return view('EU.blog.index', compact($compact));
             }
@@ -87,6 +91,11 @@ class BlogController extends Controller
     {
         $data = Blog::find($blog->id);
         return view('Admin.blog.detail', compact('data'));
+    }
+
+    public function detail(Blog $blog)
+    {
+        return view('EU.blog.show');
     }
 
     /**
@@ -132,13 +141,21 @@ class BlogController extends Controller
 
         $content = $dom->saveHTML();
 
+        //ambil info file
+        $file = $request->file('foto');
+        //rename
+        $nama_file = time()."_".$file->getClientOriginalName();
+
+        $tujuan_upload = './blog/';
+        $file->move($tujuan_upload,$nama_file);
+
         //simpan ke db
         $blog = Blog::create([
             'id_artikel' => $nextNumber,
             'judul' =>  $request->judul,
-            'tanggal' =>  $tanggal,
             'segmen_id' =>  $request->segmen_id,
             'users_id' => auth()->user()->id,
+            'foto' => $nama_file,
             'isi' => $content,
         ]);
 
@@ -149,9 +166,9 @@ class BlogController extends Controller
         })->get();
         $message = "Artikel Berhasil Ditambahkan !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('blog.show', ['blog' => $blog->id])); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('blogs.show', ['blog' => $blog->id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
-        return redirect('blog');
+        return redirect('blogs');
     }
 
     /**
@@ -202,16 +219,37 @@ class BlogController extends Controller
 
         $content = $dom->saveHTML();
 
+        if ($request->foto != '') {
+            //hapus foto lama
+            File::delete('./blog/'.$blog->foto);
 
-        //simpan ke db
-        $blog->update([
-            'id_artikel' => $request->id_artikel,
-            'judul' =>  $request->judul,
-            'tanggal' =>  $tanggal,
-            'segmen_id' =>  $request->segmen_id,
-            'users_id' => $request->users_id,
-            'isi' => $content,
-        ]);
+            //ambil info file
+            $file = $request->file('foto');
+            //rename
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            $tujuan_upload = './blog/';
+            $file->move($tujuan_upload,$nama_file);
+
+            //simpan ke db
+            $blog->update([
+                'id_artikel' => $nextNumber,
+                'judul' =>  $request->judul,
+                'segmen_id' =>  $request->segmen_id,
+                'users_id' => auth()->user()->id,
+                'foto' => $nama_file,
+                'isi' => $content,
+            ]);
+        } else {
+            //simpan ke db
+            $blog->update([
+                'id_artikel' => $request->id_artikel,
+                'judul' =>  $request->judul,
+                'segmen_id' =>  $request->segmen_id,
+                'users_id' => $request->users_id,
+                'isi' => $content,
+            ]);
+        }
         notify()->success($request->judul . ' Berhasil Diubah !!');
         // mengirim notifikasi
         $user = User::whereHas('role', function ($query) {
@@ -219,9 +257,9 @@ class BlogController extends Controller
         })->get();
         $message = $request->judul . " Berhasil Diubah !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('blog.show', ['blog' => $blog->id])); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('blogs.show', ['blog' => $blog->id])); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
-        return redirect('blog/' . $id);
+        return redirect('blogs/' . $id);
     }
 
     /**
@@ -243,8 +281,8 @@ class BlogController extends Controller
         })->get();
         $message = "Artikel Berhasil Dihapus !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('blog.index')); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('blogs.index')); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
-        return redirect('blog')->with('hapus', 'Artikel Berhasil Dihapus!!');
+        return redirect('blogs')->with('hapus', 'Artikel Berhasil Dihapus!!');
     }
 }

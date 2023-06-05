@@ -2,7 +2,7 @@
 @section('content')
 @section('judul', 'Edit Artikel')
 
-<form action="{{route('blog.update', $data->id)}}" method="post" id="upload-image-form" enctype="multipart/form-data">
+<form action="{{route('blogs.update', $data->id)}}" method="post" id="upload-image-form" enctype="multipart/form-data">
     @method('PUT')
     @csrf
     <div class="row p-2">
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-md-12 text-center">
-                <a href="{{route('blog.show', $data->id)}}" class="btn btn btn-secondary text-white text-end">Kembali</a>
+                <a href="{{route('blogs.show', $data->id)}}" class="btn btn btn-secondary text-white text-end">Kembali</a>
             </div>
         </div>
 

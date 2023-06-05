@@ -39,7 +39,7 @@
             <button class="btn btn btn-warning text-white text-end" data-toggle="modal"
                 data-target="#editmodal">Edit</button>
             <button class="btn btn btn-danger text-white" data-toggle="modal" data-target="#hapusmodal">Hapus</button>
-            <a href="{{ route('blog.index') }}" class="btn btn btn-secondary text-white text-end">Kembali</a>
+            <a href="{{ route('blogs.index') }}" class="btn btn btn-secondary text-white text-end">Kembali</a>
         </div>
     </div>
     {{-- compose --}}
@@ -75,7 +75,7 @@
 
             <div class="modal-footer">
                 <button class="btn btn btn-outline-secondary text-white" data-dismiss="modal">Tidak</button>
-                <a href="{{ route('blog.edit', $data->id) }}" class="btn btn btn-danger text-white">Iya</a>
+                <a href="{{ route('blogs.edit', $data->id) }}" class="btn btn btn-danger text-white">Iya</a>
             </div>
         </div>
     </div>
@@ -95,7 +95,7 @@
             </div>
 
             <div class="modal-footer">
-              <a href="{{ route('blog.hapus', $data->id) }}" class="btn btn btn-danger text-white">Iya</a>
+              <a href="{{ route('blogs.hapus', $data->id) }}" class="btn btn btn-danger text-white">Iya</a>
                 <button class="btn btn btn-outline-secondary text-white" data-dismiss="modal">Tidak</button>
             </div>
         </div>
