@@ -8,7 +8,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 align-items-center" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="{{ asset('illustration/porto.gif') }}" class="img-fluid" alt="">
+                    @foreach ($ills as $i)
+                        <img src="{{ asset('illustration/'.$i->foto) }}" class="img-fluid" alt="">
+                    @endforeach
                     {{-- <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_d9wImAFTrS.json" data-aos="fade-down" id="porto-animation" background="transparent" speed="1" style="width: 100%" loop  autoplay></lottie-player> --}}
                 </div>
                 <div class="col-lg-7 d-flex flex-column justify-content-center pt-4 pt-lg-0" data-aos="fade-up"
