@@ -20,11 +20,14 @@
         <div class="d-flex flex-row text-center gap-3">
             {{-- <a href="" class="btn yms-outline-blue rounded-5z">All</a>
             @foreach ($layanan as $l)
-            <a href="{{ route('store.showtype', $l->layanan) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
+            <a href="{{ route('store.showtype', $link) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
             @endforeach --}}
             <a href="{{ route('store.index') }}" class="text-capitalize my-3 active">All</a>
             @foreach ($layanan as $l)
-                <a href="{{ route('store.showtype', $l->layanan) }}"
+            @php
+                $link = str_replace(' ', '_', $l->layanan)
+            @endphp
+                <a href="{{ route('store.showtype', $link) }}"
                     class=" my-3 text-capitalize active">{{ $l->layanan }}</a>
             @endforeach
         </div>
@@ -44,7 +47,7 @@
             @foreach ($produk as $p)
                 <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
                     <div class="card card-hover border-0 shadow">
-                        <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('produk/'.$p->foto) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                             <p class="card-title text-secondary">{{ $p->services->judul }}</p>

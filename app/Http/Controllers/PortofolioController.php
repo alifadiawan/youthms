@@ -174,7 +174,8 @@ class PortofolioController extends Controller
     public function showtype($type)
     {
         // Ambil jenis layanan berdasarkan nama
-        $jenis_layanan = JenisLayanan::where('layanan', $type)->first();
+        $link = str_replace('_', ' ', $type);
+        $jenis_layanan = JenisLayanan::where('layanan', $link)->first();
         $layanan = JenisLayanan::all();
 
         // Jika jenis layanan ditemukan

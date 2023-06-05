@@ -130,14 +130,10 @@ Route::get('/blog-detail', function () {
 });
 
 //services
-Route::get('/services/all', function () {
-    return view('EU.services.index');
-});
+Route::resource('services', ServicesController::class);
+Route::get('/services/detail/{services}', [ServicesController::class, 'show'])->name('services.show');
 
-Route::get('/services/detail', function () {
-    return view('EU.services.detail');
-});
-
+//profile
 Route::get('/profile', function () {
     return view('EU.user.index');
 });
@@ -237,7 +233,6 @@ Route::middleware('admin')->group(function () {
     Route::resource('/dashboard', DashboardController::class);
 
     //services
-    Route::resource('services', ServicesController::class);
     Route::POST('jenislayanan', [JenisLayananController::class, 'store'])->name('jenislayanan.store');
     Route::GET('jenislayanan/{id}/hapus', [JenisLayananController::class, 'hapus'])->name('jenislayanan.hapus');
     Route::GET('services/{id}/hapus', [ServicesController::class, 'hapus'])->name('services.hapus');

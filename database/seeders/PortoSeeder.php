@@ -20,7 +20,7 @@ class PortoSeeder extends Seeder
                 'project' => 'Muslim Football Sidoarjo',
                 'deskripsi' => 'lorem ipsum dolor sit amet',
                 'cover' => '1684503801_jason-goodman-zSpGWzwRFas-unsplash.jpg',
-                'services_id' => '4'
+                'services_id' => '1'
             ],
         ];
 
