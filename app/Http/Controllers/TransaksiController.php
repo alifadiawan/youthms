@@ -137,8 +137,7 @@ class TransaksiController extends Controller
         $tid = $transaksi->id;
         $trxid = $tid;
         $trx = transaksi::where('id', $transaksi->id)->get();
-        $pembayaran = pembayaran::where('transaksi_id',$tid)->get();
-        // return $tid;
+        $pembayaran = pembayaran::where('transaksi_id',$tid)->where('status','pending')->get();
 
         // mencari request user, jika melakukan kredit
         $requser = request_user::where('transaksi_id', $trxid)->get();

@@ -120,7 +120,7 @@
         <!-- belum bayar -->
         @foreach ($trx as $t)
             {{-- VIEW UTANG --}}
-            @if ($pembayaran->isempty())
+            @if (!$pembayaran->isempty())
             <hr><span>mancing mania mantab</span>
             @elseif (in_array($t->id, $EU_utang))
                 <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
