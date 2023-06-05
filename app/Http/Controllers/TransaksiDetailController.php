@@ -18,10 +18,7 @@ class TransaksiDetailController extends Controller
     public function index()
     {
     //   return 'oke';
-    $pembayaran = pembayaran::all();
-    $compact = ['pembayaran'];
-    return view('Admin.transaction.bukti',compact($compact));
-    }
+     }
 
     /**
      * Show the form for creating a new resource.

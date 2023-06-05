@@ -3,7 +3,7 @@
 @section('judul', 'Transaction')
 
 <div class="container w-50">
-    <a href="" class="my-5">
+    <a href="{{ route('transaksi.history') }}" class="my-5">
         <i class="fas fa-arrow-left"></i>
     </a>
     <div class="row">
@@ -29,11 +29,13 @@
                                     @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
                                         <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">KREDIT</h5>
                                     @elseif(in_array($detail[0]->transaksi_id, $adm_pending))
-                                        <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">PENDING</h5>
+                                        <h5 class="h3 mb-0 me-auto text-info font-weight-bold">PENDING</h5>
                                     @elseif(in_array($detail[0]->transaksi_id, $adm_declined))
                                         <h5 class="h3 mb-0 me-auto text-dark font-weight-bold">DECLINED</h5>
-                                    @else
+                                    @elseif(in_array($detail[0]->transaksi_id, $adm_lunas))
                                         <h5 class="mb-0 me-auto text-success font-weight-bold">LUNAS</h5>
+                                    @elseif(in_array($detail[0]->transaksi_id, $adm_checking))
+                                        <h5 class="mb-0 me-auto text-primary font-weight-bold">CHECKING</h5>
                                     @endif
                                     <p class="text-muted">{{ $t->tanggal_transaksi }}</p>
                                 </div>
@@ -96,7 +98,24 @@
                             <div class="row">
                                 @foreach ($pembayaran as $p)
                                     <div class="col">
-                                        {{ $p }}
+                                        metode pembayaran
+                                    </div>
+                                    <div class="col text-right">
+                                        {{ $p->gateaways->nama_gateaway }}
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <div class="row">
+                                @foreach ($pembayaran as $p)
+                                    <div class="col">
+                                        Bukti transfer
+                                    </div>
+                                    <div class="col text-right">
+                                        <img src="{{ asset('./bukti_transfer/' . $p->bukti_tf) }}"
+                                            class="card-img-top " alt="..."
+                                            style="max-width: 15.3rem; height: 15.3rem; object-fit:cover;">
+
                                     </div>
                                 @endforeach
                             </div>

@@ -97,17 +97,38 @@ class PembayaranController extends Controller
             'bukti_tf' => $nama_file,
             'gateaways_id' => $gateaway,
         ]);
-        
+
         notify()->success('Pembayaran Anda Akan Kami Proses !');
-        return redirect()->route('transaksi.show',$tid);
+        return redirect()->route('transaksi.show', $tid);
     }
+
+    public function listpembayaran()
+    {
+        $pembayaran = pembayaran::all();
+        $compact = ['pembayaran'];
+        return view('Admin.transaction.bukti', compact($compact));
+    }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Pembayaran $pembayaran)
     {
-        //
+        // $pembayaran = pembayaran::where()->get();
+        $tid = $pembayaran->transaksi_id;
+        $transaksi = transaksi::where('id', $tid)->get();
+        $detail = transaksidetail::where('transaksi_id', $tid)->get();
+        $total = 0;
+        foreach ($detail as $d) {
+            $total += $d->produk->harga * $d->quantity;
+        }
+        // mencari biaya admin serta harga setelah admin
+        $admin = $total * 0.11;
+        $grandtotal = $total + $admin;
+
+        $compact = ['pembayaran', 'transaksi', 'detail','total','admin','grandtotal'];
+        return view('Admin.transaction.detailbukti', compact($compact));
     }
 
     /**
