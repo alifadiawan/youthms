@@ -1,5 +1,4 @@
 @extends('layout-landing2.body')
-@section('title', '| Lunas')
 @section('content')
 
 
@@ -14,6 +13,7 @@
         @foreach ($trx as $t)
             {{-- @if ($EU_lunas->contains($t->id)) --}}
             @if (in_array($t->id, $EU_lunas))
+                @section('title', '| Lunas')
                 <div class="card shadow rounded-3">
                     <div class="row my-3 mx-3 mx-lg-4">
                         <div class="col-6 col-lg text-start">
@@ -121,8 +121,10 @@
         @foreach ($trx as $t)
             {{-- VIEW UTANG --}}
             @if (!$pembayaran->isempty())
-            <hr><span>mancing mania mantab</span>
+            @section('title', '| Pending')
+                <hr><span>mancing mania mantab</span>
             @elseif (in_array($t->id, $EU_utang))
+            @section('title', '| Lunas')
                 <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
                     <div class="alert alert-danger" role="alert">
                         Bayar sebelum .... Klik disini untuk bayar
@@ -251,7 +253,8 @@
         @foreach ($trx as $t)
             {{-- VIEW PENDING --}}
             @if (in_array($t->id, $EU_pending))
-                <a href="{{ route('transaksi.pembayaran', $t->id) }}">
+            @section('title', '| Pending')
+                <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
                     <div class="alert alert-info" role="alert">
                         <i class="fas fa-message"></i> Hubungi Admin
                     </div>
@@ -379,6 +382,7 @@
         @foreach ($trx as $t)
             {{-- VIEW DECLINED --}}
             @if (in_array($t->id, $EU_declined))
+            @section('title', '| Declined')
                 {{-- <a href="{{ route('transaksi.pembayaran',$t->id) }}">
                         <div class="alert alert-danger" role="alert">
                             Bayar sebelum .... Klik disini untuk bayar
@@ -496,7 +500,8 @@
         <!-- Kredit -->
         @foreach ($trx as $t)
             @if (in_array($t->id, $EU_kredit))
-                <a href="{{ route('transaksi.pembayaran', $t->id) }}">
+            @section('title', '| Kredit')
+                <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
                     <div class="alert alert-danger" role="alert">
                         Klik disini untuk bayar
                     </div>
