@@ -11,6 +11,7 @@ use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 use App\Models\JenisLayanan;
 use App\Models\User;
+use App\Models\Paket;
 use App\Models\Member;
 use App\Models\Cart;
 use App\Models\LandingData;
@@ -45,9 +46,12 @@ class EUController extends Controller
 
         //jenis layanan
         $jenis_layanan = JenisLayanan::all();
+
+        //paket
+        $paket = Paket::with('produk')->get();
         
 
-        return view('landing-page' , compact('text','illustration', 'partner', 'testi', 'jenis_layanan'));
+        return view('landing-page' , compact('text','illustration', 'partner',  'paket', 'testi', 'jenis_layanan'));
     }
 
     /**
