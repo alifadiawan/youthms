@@ -170,7 +170,7 @@
                 <!-- MEtode pembayaran -->
                 <div class="card mb-4 mb-lg-0 p-0">
                     <div class="card-header">
-                        <h5 class="mb-0 me-auto">Metode Pembayaran</h5>
+                        <h5 class="mb-0 me-auto fw-bold" style="font-family: Poppins, sans-serif;">Metode Pembayaran</h5>
                     </div>
                     <div class="card-body">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -190,14 +190,29 @@
                                                 @foreach ($gateaway->take(2) as $g)
                                                     <form action="{{ route('pembayaran.cara', $g->id) }}" method="GET">
                                                         @csrf
-                                                        <button type="submit">
+                                                        <button type="submit" class="form-control">
                                                             @foreach ($transaksi as $t)
                                                                 <input type="hidden" name="transaksi_id"
                                                                     value="{{ $t->id }}">
                                                             @endforeach
-                                                            <img class="img-thumbnail border-0"
-                                                                src="{{ asset('illustration/' . $g->image) }}"
-                                                                style="width: 15rem" alt="">
+                                                            {{-- <ul class="list-group"> --}}
+                                                            {{-- <li class="list-group-item"> --}}
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <a href="/cara" style="justify-content: start"
+                                                                        class="btn" type="button">
+                                                                        <img class="img-thumbnail border-0"
+                                                                            src="{{ asset('illustration/' . $g->image) }}"
+                                                                            style="width:   175px; margin-right:-5px"alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p style="text-align: end; margin-top:30px"
+                                                                        class="fw-bold">Mandiri</p>
+                                                                </div>
+                                                            </div>
+                                                            </li>
+                                                            </ul>
                                                         </button>
                                                     </form>
                                                 @endforeach
@@ -365,6 +380,7 @@
                                     </form>
                                 </div>
                             </div>
+                            <!--End E-wallet -->
                         </div>
 
 
