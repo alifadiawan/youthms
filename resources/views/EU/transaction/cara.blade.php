@@ -210,7 +210,7 @@
                             <div>
                                 <label for="" class="mt-3">Bukti Pembayaran (Struk / Screenshoot
                                     Transfer)</label>
-                                <input type="file" class="form-control mt-2" name="bukti" id="bukti">
+                                <input type="file" class="form-control mt-2" name="bukti" id="bukti" required>
                             </div>
                             <input type="hidden" name="status" value="pending">
                             <input type="hidden" name="transaksi_id" value="{{ $t->id }}">

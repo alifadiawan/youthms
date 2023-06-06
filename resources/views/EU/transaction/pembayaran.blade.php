@@ -339,22 +339,22 @@
                                                 @foreach ($gateaway as $g => $item)
                                                     @if ($g > 1)
                                                         <div class="row">
-                                                            <form action="{{ route('pembayaran.cara', $item->id) }}"
+                                                            {{-- <form action="{{ route('pembayaran.cara', $item->id) }}"
                                                                 method="GET">
-                                                                @csrf
-                                                                @foreach ($transaksi as $t)
-                                                                    <input type="hidden" name="transaksi_id"
-                                                                        value="{{ $t->id }}">
-                                                                @endforeach
-                                                                <button type="submit" style="justify-content: start"
-                                                                    class="btn">
+                                                                @csrf --}}
+                                                            @foreach ($transaksi as $t)
+                                                                <a href="{{ route('pembayaran.cara', ['id' => $item->id, 'transaksi_id' =>$t->id]) }}"
+                                                                    style="justify-content: start" class="btn">
                                                                     <img class="img-thumbnail border-0"
                                                                         src="{{ asset('illustration/' . $item->image) }}"
-                                                                        style="width: 100px; margin-right:1px" >
+                                                                        style="width: 100px; margin-right:1px">
                                                                     <span style="text-align: end"
                                                                         class="fw-bold">{{ $item->nama_gateaway }}</span>
-                                                                </button>
-                                                            </form>
+                                                                    {{-- <input type="hidden" name="transaksi_id"
+                                                                        value="{{ $t->id }}"> --}}
+                                                                </a>
+                                                            @endforeach
+                                                            {{-- </form> --}}
                                                         </div>
                                                         <hr>
                                                     @endif
