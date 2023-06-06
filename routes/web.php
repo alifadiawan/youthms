@@ -27,6 +27,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\TransaksiDetailController;
 use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\PaketController;
 use App\Models\Services;
 
 /*
@@ -132,6 +133,10 @@ Route::get('/blogs/{type}/show', [BlogController::class, 'showtype'])->name('blo
 //services
 Route::resource('services', ServicesController::class);
 Route::get('/services/detail/{services}', [ServicesController::class, 'show'])->name('services.show');
+
+//paket
+Route::resource('paket', PaketController::class);
+Route::get('/paket/{paket}/hapus', [PaketController::class, 'hapus'])->name('paket.hapus');
 
 //profile
 Route::get('/profile', function () {

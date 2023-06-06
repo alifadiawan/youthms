@@ -18,29 +18,20 @@ class BlogSeeder extends Seeder
         $blog = [
             [
                 'id_artikel' => 1,
-                'foto' => 'bmw.jpg',
-                'judul' => 'how to not to how',
-                'isi' => '
-                 <p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054185_belajar-coding-23171530-1024x538.jpg',
+                'judul' => 'Belajar Coding di HP dengan 9 Aplikasi Terbaik',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="belajar-coding-23171530-1024x538.jpg" src="/upload/16860541850.png"><br><p style="text-indent: 2cm">Belajar coding telah menjadi suatu kebutuhan yang tidak bisa diabaikan di era digital yang terus berkembang. Dulu, untuk mempelajari coding, orang harus mengambil jurusan IT di perguruan tinggi.</p><p style="text-indent: 2cm">Namun, sekarang semuanya berubah. Kamu bisa mengembangkan keterampilan coding langsung dari genggamanmu. Dalam artikel ini, kami akan merekomendasikan 9 aplikasi terbaik yang akan membantumu belajar coding secara mudah dan praktis hanya dengan menggunakan HP.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">selengkapnya di :&nbsp;https://techarea.co.id/belajar-coding/</p></p>',
                 'visitor' => 569,
                 'users_id' => 1,
-                'segmen_id' => 1,
+                'segmen_id' => 3,
                 'created_at' =>carbon::parse('2023-06-01'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 2,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to be a1',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054827_segmentasi-pelanggan-24105034-1024x538.jpg',
+                'judul' => 'Cara Melakukan Segmentasi Pelanggan (4 Langkah Mudah)',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="segmentasi-pelanggan-24105034-1024x538.jpg" src="/upload/16860548260.png"><p style="text-indent: 2cm">Setiap orang memiliki karakteristik yang berbeda dan perlu perlakuan yang sesuai. Mengetahui apa yang diinginkan oleh pelanggan dapat membantu Anda menawarkan produk yang tepat atau meningkatkan layanan yang Anda tawarkan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tidak mengenal pelanggan secara mendalam dapat berdampak pada kesulitan memberikan pelayanan yang sesuai, promosi yang tidak tepat sasaran, serta tidak dapat menyediakan produk atau layanan yang benar-benar diinginkan. Oleh karena itu, segmentasi pelanggan perlu dilakukan dengan tepat untuk mengantisipasi berbagai masalah tersebut.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Dalam artikel ini, akan dijelaskan tentang segmentasi pelanggan, termasuk model dan cara melakukan segmentasi yang benar. Simak artikelnya sampai akhir.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/segmentasi-pelanggan/</p></p>',
                 'visitor' => 245,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -49,43 +40,31 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (2).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054945_situs-download-foto-gratis-1024x538.jpg',
+                'judul' => '30 Website Download Foto Gratis (Tanpa Hak Cipta)',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="situs-download-foto-gratis-1024x538.jpg" src="/upload/16860549450.png"><p style="text-indent: 2cm">Banyaknya website download foto gratis sangat membantu para pekerja kreatif seperti designer, content writer, atau content creator untuk mendapatkan gambar gratis tanpa perlu mengeluarkan biaya tambahan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Mendapatkan foto gratis bukanlah sebuah kendala saat ini. Sudah banyak website yang menyediakan foto secara gratis yang bisa Anda gunakan sesuai dengan kebutuhan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tinggal buka websitenya, ketik kata kunci gambar yang Anda inginkan, pilih gambar, download dan selesai. Semudah dan sesederhana itu.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Bayangkan saja jika ketika membutuhkan foto, Anda harus mengambil foto sendiri dengan kamera Anda atau mengeluarkan uang untuk membeli sebuah foto. Pasti akan sangat memakan waktu dan juga biaya.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Namun, perlu Anda perhatikan juga bahwa tidak semua gambar bisa Anda gunakan secara bebas. Terkadang ada juga yang mewajibkan Anda untuk menyertakan lisensi atau sumber gambar tersebut ketika digunakan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Agar Anda punya banyak alternatif dan pilihan memilih gambar gratis. Berikut ini Techarea berikan daftar website download foto gratis dengan resolusi tinggi.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/website-download-foto-gratis/</p></p>',
                 'visitor' => 764,
                 'users_id' => 1,
-                'segmen_id' => 3,
+                'segmen_id' => 1,
                 'created_at' =>carbon::parse('2023-06-03'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054185_belajar-coding-23171530-1024x538.jpg',
+                'judul' => 'Belajar Coding di HP dengan 9 Aplikasi Terbaik',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="belajar-coding-23171530-1024x538.jpg" src="/upload/16860541850.png"><br><p style="text-indent: 2cm">Belajar coding telah menjadi suatu kebutuhan yang tidak bisa diabaikan di era digital yang terus berkembang. Dulu, untuk mempelajari coding, orang harus mengambil jurusan IT di perguruan tinggi.</p><p style="text-indent: 2cm">Namun, sekarang semuanya berubah. Kamu bisa mengembangkan keterampilan coding langsung dari genggamanmu. Dalam artikel ini, kami akan merekomendasikan 9 aplikasi terbaik yang akan membantumu belajar coding secara mudah dan praktis hanya dengan menggunakan HP.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">selengkapnya di :&nbsp;https://techarea.co.id/belajar-coding/</p></p>',
                 'visitor' => 353,
                 'users_id' => 1,
-                'segmen_id' => 1,
+                'segmen_id' => 3,
                 'created_at' =>carbon::parse('2023-06-04'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054827_segmentasi-pelanggan-24105034-1024x538.jpg',
+                'judul' => 'Cara Melakukan Segmentasi Pelanggan (4 Langkah Mudah)a war with girl',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="segmentasi-pelanggan-24105034-1024x538.jpg" src="/upload/16860548260.png"><p style="text-indent: 2cm">Setiap orang memiliki karakteristik yang berbeda dan perlu perlakuan yang sesuai. Mengetahui apa yang diinginkan oleh pelanggan dapat membantu Anda menawarkan produk yang tepat atau meningkatkan layanan yang Anda tawarkan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tidak mengenal pelanggan secara mendalam dapat berdampak pada kesulitan memberikan pelayanan yang sesuai, promosi yang tidak tepat sasaran, serta tidak dapat menyediakan produk atau layanan yang benar-benar diinginkan. Oleh karena itu, segmentasi pelanggan perlu dilakukan dengan tepat untuk mengantisipasi berbagai masalah tersebut.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Dalam artikel ini, akan dijelaskan tentang segmentasi pelanggan, termasuk model dan cara melakukan segmentasi yang benar. Simak artikelnya sampai akhir.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/segmentasi-pelanggan/</p></p>',
                 'visitor' => 556,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -94,43 +73,31 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054945_situs-download-foto-gratis-1024x538.jpg',
+                'judul' => '30 Website Download Foto Gratis (Tanpa Hak Cipta)',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="situs-download-foto-gratis-1024x538.jpg" src="/upload/16860549450.png"><p style="text-indent: 2cm">Banyaknya website download foto gratis sangat membantu para pekerja kreatif seperti designer, content writer, atau content creator untuk mendapatkan gambar gratis tanpa perlu mengeluarkan biaya tambahan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Mendapatkan foto gratis bukanlah sebuah kendala saat ini. Sudah banyak website yang menyediakan foto secara gratis yang bisa Anda gunakan sesuai dengan kebutuhan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tinggal buka websitenya, ketik kata kunci gambar yang Anda inginkan, pilih gambar, download dan selesai. Semudah dan sesederhana itu.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Bayangkan saja jika ketika membutuhkan foto, Anda harus mengambil foto sendiri dengan kamera Anda atau mengeluarkan uang untuk membeli sebuah foto. Pasti akan sangat memakan waktu dan juga biaya.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Namun, perlu Anda perhatikan juga bahwa tidak semua gambar bisa Anda gunakan secara bebas. Terkadang ada juga yang mewajibkan Anda untuk menyertakan lisensi atau sumber gambar tersebut ketika digunakan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Agar Anda punya banyak alternatif dan pilihan memilih gambar gratis. Berikut ini Techarea berikan daftar website download foto gratis dengan resolusi tinggi.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/website-download-foto-gratis/</p></p>',
                 'visitor' => 345,
                 'users_id' => 1,
-                'segmen_id' => 3,
+                'segmen_id' => 1,
                   'created_at' =>carbon::parse('2023-06-06'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054185_belajar-coding-23171530-1024x538.jpg',
+                'judul' => 'Belajar Coding di HP dengan 9 Aplikasi Terbaik',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="belajar-coding-23171530-1024x538.jpg" src="/upload/16860541850.png"><br><p style="text-indent: 2cm">Belajar coding telah menjadi suatu kebutuhan yang tidak bisa diabaikan di era digital yang terus berkembang. Dulu, untuk mempelajari coding, orang harus mengambil jurusan IT di perguruan tinggi.</p><p style="text-indent: 2cm">Namun, sekarang semuanya berubah. Kamu bisa mengembangkan keterampilan coding langsung dari genggamanmu. Dalam artikel ini, kami akan merekomendasikan 9 aplikasi terbaik yang akan membantumu belajar coding secara mudah dan praktis hanya dengan menggunakan HP.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">selengkapnya di :&nbsp;https://techarea.co.id/belajar-coding/</p></p>',
                 'visitor' => 635,
                 'users_id' => 1,
-                'segmen_id' => 1,
+                'segmen_id' => 3,
                   'created_at' =>carbon::parse('2023-06-07'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054827_segmentasi-pelanggan-24105034-1024x538.jpg',
+                'judul' => 'Cara Melakukan Segmentasi Pelanggan (4 Langkah Mudah)a war with girl',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="segmentasi-pelanggan-24105034-1024x538.jpg" src="/upload/16860548260.png"><p style="text-indent: 2cm">Setiap orang memiliki karakteristik yang berbeda dan perlu perlakuan yang sesuai. Mengetahui apa yang diinginkan oleh pelanggan dapat membantu Anda menawarkan produk yang tepat atau meningkatkan layanan yang Anda tawarkan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tidak mengenal pelanggan secara mendalam dapat berdampak pada kesulitan memberikan pelayanan yang sesuai, promosi yang tidak tepat sasaran, serta tidak dapat menyediakan produk atau layanan yang benar-benar diinginkan. Oleh karena itu, segmentasi pelanggan perlu dilakukan dengan tepat untuk mengantisipasi berbagai masalah tersebut.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Dalam artikel ini, akan dijelaskan tentang segmentasi pelanggan, termasuk model dan cara melakukan segmentasi yang benar. Simak artikelnya sampai akhir.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/segmentasi-pelanggan/</p></p>',
                 'visitor' => 933,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -139,43 +106,31 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054945_situs-download-foto-gratis-1024x538.jpg',
+                'judul' => '30 Website Download Foto Gratis (Tanpa Hak Cipta)',
+                'isi' => '<<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="situs-download-foto-gratis-1024x538.jpg" src="/upload/16860549450.png"><p style="text-indent: 2cm">Banyaknya website download foto gratis sangat membantu para pekerja kreatif seperti designer, content writer, atau content creator untuk mendapatkan gambar gratis tanpa perlu mengeluarkan biaya tambahan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Mendapatkan foto gratis bukanlah sebuah kendala saat ini. Sudah banyak website yang menyediakan foto secara gratis yang bisa Anda gunakan sesuai dengan kebutuhan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tinggal buka websitenya, ketik kata kunci gambar yang Anda inginkan, pilih gambar, download dan selesai. Semudah dan sesederhana itu.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Bayangkan saja jika ketika membutuhkan foto, Anda harus mengambil foto sendiri dengan kamera Anda atau mengeluarkan uang untuk membeli sebuah foto. Pasti akan sangat memakan waktu dan juga biaya.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Namun, perlu Anda perhatikan juga bahwa tidak semua gambar bisa Anda gunakan secara bebas. Terkadang ada juga yang mewajibkan Anda untuk menyertakan lisensi atau sumber gambar tersebut ketika digunakan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Agar Anda punya banyak alternatif dan pilihan memilih gambar gratis. Berikut ini Techarea berikan daftar website download foto gratis dengan resolusi tinggi.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/website-download-foto-gratis/</p></p>',
                 'visitor' => 3213,
                 'users_id' => 1,
-                'segmen_id' => 3,
+                'segmen_id' => 1,
                   'created_at' =>carbon::parse('2023-06-09'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054185_belajar-coding-23171530-1024x538.jpg',
+                'judul' => 'Belajar Coding di HP dengan 9 Aplikasi Terbaik',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="belajar-coding-23171530-1024x538.jpg" src="/upload/16860541850.png"><br><p style="text-indent: 2cm">Belajar coding telah menjadi suatu kebutuhan yang tidak bisa diabaikan di era digital yang terus berkembang. Dulu, untuk mempelajari coding, orang harus mengambil jurusan IT di perguruan tinggi.</p><p style="text-indent: 2cm">Namun, sekarang semuanya berubah. Kamu bisa mengembangkan keterampilan coding langsung dari genggamanmu. Dalam artikel ini, kami akan merekomendasikan 9 aplikasi terbaik yang akan membantumu belajar coding secara mudah dan praktis hanya dengan menggunakan HP.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">selengkapnya di :&nbsp;https://techarea.co.id/belajar-coding/</p></p>',
                 'visitor' => 32,
                 'users_id' => 1,
-                'segmen_id' => 1,
+                'segmen_id' => 3,
                   'created_at' =>carbon::parse('2023-06-10'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054827_segmentasi-pelanggan-24105034-1024x538.jpg',
+                'judul' => 'Cara Melakukan Segmentasi Pelanggan (4 Langkah Mudah)a war with girl',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="segmentasi-pelanggan-24105034-1024x538.jpg" src="/upload/16860548260.png"><p style="text-indent: 2cm">Setiap orang memiliki karakteristik yang berbeda dan perlu perlakuan yang sesuai. Mengetahui apa yang diinginkan oleh pelanggan dapat membantu Anda menawarkan produk yang tepat atau meningkatkan layanan yang Anda tawarkan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tidak mengenal pelanggan secara mendalam dapat berdampak pada kesulitan memberikan pelayanan yang sesuai, promosi yang tidak tepat sasaran, serta tidak dapat menyediakan produk atau layanan yang benar-benar diinginkan. Oleh karena itu, segmentasi pelanggan perlu dilakukan dengan tepat untuk mengantisipasi berbagai masalah tersebut.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Dalam artikel ini, akan dijelaskan tentang segmentasi pelanggan, termasuk model dan cara melakukan segmentasi yang benar. Simak artikelnya sampai akhir.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/segmentasi-pelanggan/</p></p>',
                 'visitor' => 200,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -184,43 +139,31 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054945_situs-download-foto-gratis-1024x538.jpg',
+                'judul' => '30 Website Download Foto Gratis (Tanpa Hak Cipta)',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="situs-download-foto-gratis-1024x538.jpg" src="/upload/16860549450.png"><p style="text-indent: 2cm">Banyaknya website download foto gratis sangat membantu para pekerja kreatif seperti designer, content writer, atau content creator untuk mendapatkan gambar gratis tanpa perlu mengeluarkan biaya tambahan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Mendapatkan foto gratis bukanlah sebuah kendala saat ini. Sudah banyak website yang menyediakan foto secara gratis yang bisa Anda gunakan sesuai dengan kebutuhan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tinggal buka websitenya, ketik kata kunci gambar yang Anda inginkan, pilih gambar, download dan selesai. Semudah dan sesederhana itu.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Bayangkan saja jika ketika membutuhkan foto, Anda harus mengambil foto sendiri dengan kamera Anda atau mengeluarkan uang untuk membeli sebuah foto. Pasti akan sangat memakan waktu dan juga biaya.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Namun, perlu Anda perhatikan juga bahwa tidak semua gambar bisa Anda gunakan secara bebas. Terkadang ada juga yang mewajibkan Anda untuk menyertakan lisensi atau sumber gambar tersebut ketika digunakan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Agar Anda punya banyak alternatif dan pilihan memilih gambar gratis. Berikut ini Techarea berikan daftar website download foto gratis dengan resolusi tinggi.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/website-download-foto-gratis/</p></p>',
                 'visitor' => 500,
                 'users_id' => 1,
-                'segmen_id' => 3,
+                'segmen_id' => 1,
                   'created_at' =>carbon::parse('2023-06-12'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054185_belajar-coding-23171530-1024x538.jpg',
+                'judul' => 'Belajar Coding di HP dengan 9 Aplikasi Terbaik',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="belajar-coding-23171530-1024x538.jpg" src="/upload/16860541850.png"><br><p style="text-indent: 2cm">Belajar coding telah menjadi suatu kebutuhan yang tidak bisa diabaikan di era digital yang terus berkembang. Dulu, untuk mempelajari coding, orang harus mengambil jurusan IT di perguruan tinggi.</p><p style="text-indent: 2cm">Namun, sekarang semuanya berubah. Kamu bisa mengembangkan keterampilan coding langsung dari genggamanmu. Dalam artikel ini, kami akan merekomendasikan 9 aplikasi terbaik yang akan membantumu belajar coding secara mudah dan praktis hanya dengan menggunakan HP.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">selengkapnya di :&nbsp;https://techarea.co.id/belajar-coding/</p></p>',
                 'visitor' => 236,
                 'users_id' => 1,
-                'segmen_id' => 1,
+                'segmen_id' => 3,
                   'created_at' =>carbon::parse('2023-06-13'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054827_segmentasi-pelanggan-24105034-1024x538.jpg',
+                'judul' => 'Cara Melakukan Segmentasi Pelanggan (4 Langkah Mudah)a war with girl',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="segmentasi-pelanggan-24105034-1024x538.jpg" src="/upload/16860548260.png"><p style="text-indent: 2cm">Setiap orang memiliki karakteristik yang berbeda dan perlu perlakuan yang sesuai. Mengetahui apa yang diinginkan oleh pelanggan dapat membantu Anda menawarkan produk yang tepat atau meningkatkan layanan yang Anda tawarkan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tidak mengenal pelanggan secara mendalam dapat berdampak pada kesulitan memberikan pelayanan yang sesuai, promosi yang tidak tepat sasaran, serta tidak dapat menyediakan produk atau layanan yang benar-benar diinginkan. Oleh karena itu, segmentasi pelanggan perlu dilakukan dengan tepat untuk mengantisipasi berbagai masalah tersebut.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Dalam artikel ini, akan dijelaskan tentang segmentasi pelanggan, termasuk model dan cara melakukan segmentasi yang benar. Simak artikelnya sampai akhir.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/segmentasi-pelanggan/</p></p>',
                 'visitor' => 653,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -229,43 +172,31 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054945_situs-download-foto-gratis-1024x538.jpg',
+                'judul' => '30 Website Download Foto Gratis (Tanpa Hak Cipta)',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="situs-download-foto-gratis-1024x538.jpg" src="/upload/16860549450.png"><p style="text-indent: 2cm">Banyaknya website download foto gratis sangat membantu para pekerja kreatif seperti designer, content writer, atau content creator untuk mendapatkan gambar gratis tanpa perlu mengeluarkan biaya tambahan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Mendapatkan foto gratis bukanlah sebuah kendala saat ini. Sudah banyak website yang menyediakan foto secara gratis yang bisa Anda gunakan sesuai dengan kebutuhan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tinggal buka websitenya, ketik kata kunci gambar yang Anda inginkan, pilih gambar, download dan selesai. Semudah dan sesederhana itu.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Bayangkan saja jika ketika membutuhkan foto, Anda harus mengambil foto sendiri dengan kamera Anda atau mengeluarkan uang untuk membeli sebuah foto. Pasti akan sangat memakan waktu dan juga biaya.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Namun, perlu Anda perhatikan juga bahwa tidak semua gambar bisa Anda gunakan secara bebas. Terkadang ada juga yang mewajibkan Anda untuk menyertakan lisensi atau sumber gambar tersebut ketika digunakan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Agar Anda punya banyak alternatif dan pilihan memilih gambar gratis. Berikut ini Techarea berikan daftar website download foto gratis dengan resolusi tinggi.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/website-download-foto-gratis/</p></p>',
                 'visitor' => 997,
                 'users_id' => 1,
-                'segmen_id' => 3,
+                'segmen_id' => 1,
                   'created_at' =>carbon::parse('2023-06-14'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054185_belajar-coding-23171530-1024x538.jpg',
+                'judul' => 'Belajar Coding di HP dengan 9 Aplikasi Terbaik',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="belajar-coding-23171530-1024x538.jpg" src="/upload/16860541850.png"><br><p style="text-indent: 2cm">Belajar coding telah menjadi suatu kebutuhan yang tidak bisa diabaikan di era digital yang terus berkembang. Dulu, untuk mempelajari coding, orang harus mengambil jurusan IT di perguruan tinggi.</p><p style="text-indent: 2cm">Namun, sekarang semuanya berubah. Kamu bisa mengembangkan keterampilan coding langsung dari genggamanmu. Dalam artikel ini, kami akan merekomendasikan 9 aplikasi terbaik yang akan membantumu belajar coding secara mudah dan praktis hanya dengan menggunakan HP.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">selengkapnya di :&nbsp;https://techarea.co.id/belajar-coding/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
-                'segmen_id' => 1,
+                'segmen_id' => 3,
                   'created_at' =>carbon::parse('2023-06-15'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054827_segmentasi-pelanggan-24105034-1024x538.jpg',
+                'judul' => 'Cara Melakukan Segmentasi Pelanggan (4 Langkah Mudah)a war with girl',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="segmentasi-pelanggan-24105034-1024x538.jpg" src="/upload/16860548260.png"><p style="text-indent: 2cm">Setiap orang memiliki karakteristik yang berbeda dan perlu perlakuan yang sesuai. Mengetahui apa yang diinginkan oleh pelanggan dapat membantu Anda menawarkan produk yang tepat atau meningkatkan layanan yang Anda tawarkan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tidak mengenal pelanggan secara mendalam dapat berdampak pada kesulitan memberikan pelayanan yang sesuai, promosi yang tidak tepat sasaran, serta tidak dapat menyediakan produk atau layanan yang benar-benar diinginkan. Oleh karena itu, segmentasi pelanggan perlu dilakukan dengan tepat untuk mengantisipasi berbagai masalah tersebut.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Dalam artikel ini, akan dijelaskan tentang segmentasi pelanggan, termasuk model dan cara melakukan segmentasi yang benar. Simak artikelnya sampai akhir.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/segmentasi-pelanggan/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -274,43 +205,31 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054945_situs-download-foto-gratis-1024x538.jpg',
+                'judul' => '30 Website Download Foto Gratis (Tanpa Hak Cipta)',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="situs-download-foto-gratis-1024x538.jpg" src="/upload/16860549450.png"><p style="text-indent: 2cm">Banyaknya website download foto gratis sangat membantu para pekerja kreatif seperti designer, content writer, atau content creator untuk mendapatkan gambar gratis tanpa perlu mengeluarkan biaya tambahan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Mendapatkan foto gratis bukanlah sebuah kendala saat ini. Sudah banyak website yang menyediakan foto secara gratis yang bisa Anda gunakan sesuai dengan kebutuhan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tinggal buka websitenya, ketik kata kunci gambar yang Anda inginkan, pilih gambar, download dan selesai. Semudah dan sesederhana itu.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Bayangkan saja jika ketika membutuhkan foto, Anda harus mengambil foto sendiri dengan kamera Anda atau mengeluarkan uang untuk membeli sebuah foto. Pasti akan sangat memakan waktu dan juga biaya.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Namun, perlu Anda perhatikan juga bahwa tidak semua gambar bisa Anda gunakan secara bebas. Terkadang ada juga yang mewajibkan Anda untuk menyertakan lisensi atau sumber gambar tersebut ketika digunakan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Agar Anda punya banyak alternatif dan pilihan memilih gambar gratis. Berikut ini Techarea berikan daftar website download foto gratis dengan resolusi tinggi.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/website-download-foto-gratis/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
-                'segmen_id' => 3,
+                'segmen_id' => 1,
                   'created_at' =>carbon::parse('2023-04-21'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054185_belajar-coding-23171530-1024x538.jpg',
+                'judul' => 'Belajar Coding di HP dengan 9 Aplikasi Terbaik',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="belajar-coding-23171530-1024x538.jpg" src="/upload/16860541850.png"><br><p style="text-indent: 2cm">Belajar coding telah menjadi suatu kebutuhan yang tidak bisa diabaikan di era digital yang terus berkembang. Dulu, untuk mempelajari coding, orang harus mengambil jurusan IT di perguruan tinggi.</p><p style="text-indent: 2cm">Namun, sekarang semuanya berubah. Kamu bisa mengembangkan keterampilan coding langsung dari genggamanmu. Dalam artikel ini, kami akan merekomendasikan 9 aplikasi terbaik yang akan membantumu belajar coding secara mudah dan praktis hanya dengan menggunakan HP.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">selengkapnya di :&nbsp;https://techarea.co.id/belajar-coding/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
-                'segmen_id' => 1,
+                'segmen_id' => 3,
                   'created_at' =>carbon::parse('2023-04-22'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054827_segmentasi-pelanggan-24105034-1024x538.jpg',
+                'judul' => 'Cara Melakukan Segmentasi Pelanggan (4 Langkah Mudah)a war with girl',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="segmentasi-pelanggan-24105034-1024x538.jpg" src="/upload/16860548260.png"><p style="text-indent: 2cm">Setiap orang memiliki karakteristik yang berbeda dan perlu perlakuan yang sesuai. Mengetahui apa yang diinginkan oleh pelanggan dapat membantu Anda menawarkan produk yang tepat atau meningkatkan layanan yang Anda tawarkan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tidak mengenal pelanggan secara mendalam dapat berdampak pada kesulitan memberikan pelayanan yang sesuai, promosi yang tidak tepat sasaran, serta tidak dapat menyediakan produk atau layanan yang benar-benar diinginkan. Oleh karena itu, segmentasi pelanggan perlu dilakukan dengan tepat untuk mengantisipasi berbagai masalah tersebut.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Dalam artikel ini, akan dijelaskan tentang segmentasi pelanggan, termasuk model dan cara melakukan segmentasi yang benar. Simak artikelnya sampai akhir.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/segmentasi-pelanggan/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -319,43 +238,31 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054945_situs-download-foto-gratis-1024x538.jpg',
+                'judul' => '30 Website Download Foto Gratis (Tanpa Hak Cipta)',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="situs-download-foto-gratis-1024x538.jpg" src="/upload/16860549450.png"><p style="text-indent: 2cm">Banyaknya website download foto gratis sangat membantu para pekerja kreatif seperti designer, content writer, atau content creator untuk mendapatkan gambar gratis tanpa perlu mengeluarkan biaya tambahan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Mendapatkan foto gratis bukanlah sebuah kendala saat ini. Sudah banyak website yang menyediakan foto secara gratis yang bisa Anda gunakan sesuai dengan kebutuhan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tinggal buka websitenya, ketik kata kunci gambar yang Anda inginkan, pilih gambar, download dan selesai. Semudah dan sesederhana itu.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Bayangkan saja jika ketika membutuhkan foto, Anda harus mengambil foto sendiri dengan kamera Anda atau mengeluarkan uang untuk membeli sebuah foto. Pasti akan sangat memakan waktu dan juga biaya.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Namun, perlu Anda perhatikan juga bahwa tidak semua gambar bisa Anda gunakan secara bebas. Terkadang ada juga yang mewajibkan Anda untuk menyertakan lisensi atau sumber gambar tersebut ketika digunakan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Agar Anda punya banyak alternatif dan pilihan memilih gambar gratis. Berikut ini Techarea berikan daftar website download foto gratis dengan resolusi tinggi.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/website-download-foto-gratis/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
-                'segmen_id' => 3,
+                'segmen_id' => 1,
                   'created_at' =>carbon::parse('2023-04-24'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054185_belajar-coding-23171530-1024x538.jpg',
+                'judul' => 'Belajar Coding di HP dengan 9 Aplikasi Terbaik',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="belajar-coding-23171530-1024x538.jpg" src="/upload/16860541850.png"><br><p style="text-indent: 2cm">Belajar coding telah menjadi suatu kebutuhan yang tidak bisa diabaikan di era digital yang terus berkembang. Dulu, untuk mempelajari coding, orang harus mengambil jurusan IT di perguruan tinggi.</p><p style="text-indent: 2cm">Namun, sekarang semuanya berubah. Kamu bisa mengembangkan keterampilan coding langsung dari genggamanmu. Dalam artikel ini, kami akan merekomendasikan 9 aplikasi terbaik yang akan membantumu belajar coding secara mudah dan praktis hanya dengan menggunakan HP.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">selengkapnya di :&nbsp;https://techarea.co.id/belajar-coding/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
-                'segmen_id' => 1,
+                'segmen_id' => 3,
                   'created_at' =>carbon::parse('2023-04-25'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054827_segmentasi-pelanggan-24105034-1024x538.jpg',
+                'judul' => 'Cara Melakukan Segmentasi Pelanggan (4 Langkah Mudah)a war with girl',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="segmentasi-pelanggan-24105034-1024x538.jpg" src="/upload/16860548260.png"><p style="text-indent: 2cm">Setiap orang memiliki karakteristik yang berbeda dan perlu perlakuan yang sesuai. Mengetahui apa yang diinginkan oleh pelanggan dapat membantu Anda menawarkan produk yang tepat atau meningkatkan layanan yang Anda tawarkan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tidak mengenal pelanggan secara mendalam dapat berdampak pada kesulitan memberikan pelayanan yang sesuai, promosi yang tidak tepat sasaran, serta tidak dapat menyediakan produk atau layanan yang benar-benar diinginkan. Oleh karena itu, segmentasi pelanggan perlu dilakukan dengan tepat untuk mengantisipasi berbagai masalah tersebut.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Dalam artikel ini, akan dijelaskan tentang segmentasi pelanggan, termasuk model dan cara melakukan segmentasi yang benar. Simak artikelnya sampai akhir.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/segmentasi-pelanggan/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -364,43 +271,31 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054945_situs-download-foto-gratis-1024x538.jpg',
+                'judul' => '30 Website Download Foto Gratis (Tanpa Hak Cipta)',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="situs-download-foto-gratis-1024x538.jpg" src="/upload/16860549450.png"><p style="text-indent: 2cm">Banyaknya website download foto gratis sangat membantu para pekerja kreatif seperti designer, content writer, atau content creator untuk mendapatkan gambar gratis tanpa perlu mengeluarkan biaya tambahan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Mendapatkan foto gratis bukanlah sebuah kendala saat ini. Sudah banyak website yang menyediakan foto secara gratis yang bisa Anda gunakan sesuai dengan kebutuhan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tinggal buka websitenya, ketik kata kunci gambar yang Anda inginkan, pilih gambar, download dan selesai. Semudah dan sesederhana itu.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Bayangkan saja jika ketika membutuhkan foto, Anda harus mengambil foto sendiri dengan kamera Anda atau mengeluarkan uang untuk membeli sebuah foto. Pasti akan sangat memakan waktu dan juga biaya.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Namun, perlu Anda perhatikan juga bahwa tidak semua gambar bisa Anda gunakan secara bebas. Terkadang ada juga yang mewajibkan Anda untuk menyertakan lisensi atau sumber gambar tersebut ketika digunakan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Agar Anda punya banyak alternatif dan pilihan memilih gambar gratis. Berikut ini Techarea berikan daftar website download foto gratis dengan resolusi tinggi.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/website-download-foto-gratis/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
-                'segmen_id' => 3,
+                'segmen_id' => 1,
                   'created_at' =>carbon::parse('2023-04-27'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054185_belajar-coding-23171530-1024x538.jpg',
+                'judul' => 'Belajar Coding di HP dengan 9 Aplikasi Terbaik',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="belajar-coding-23171530-1024x538.jpg" src="/upload/16860541850.png"><br><p style="text-indent: 2cm">Belajar coding telah menjadi suatu kebutuhan yang tidak bisa diabaikan di era digital yang terus berkembang. Dulu, untuk mempelajari coding, orang harus mengambil jurusan IT di perguruan tinggi.</p><p style="text-indent: 2cm">Namun, sekarang semuanya berubah. Kamu bisa mengembangkan keterampilan coding langsung dari genggamanmu. Dalam artikel ini, kami akan merekomendasikan 9 aplikasi terbaik yang akan membantumu belajar coding secara mudah dan praktis hanya dengan menggunakan HP.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">selengkapnya di :&nbsp;https://techarea.co.id/belajar-coding/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
-                'segmen_id' => 1,
+                'segmen_id' => 3,
                   'created_at' =>carbon::parse('2023-04-28'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054827_segmentasi-pelanggan-24105034-1024x538.jpg',
+                'judul' => 'Cara Melakukan Segmentasi Pelanggan (4 Langkah Mudah)a war with girl',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="segmentasi-pelanggan-24105034-1024x538.jpg" src="/upload/16860548260.png"><p style="text-indent: 2cm">Setiap orang memiliki karakteristik yang berbeda dan perlu perlakuan yang sesuai. Mengetahui apa yang diinginkan oleh pelanggan dapat membantu Anda menawarkan produk yang tepat atau meningkatkan layanan yang Anda tawarkan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tidak mengenal pelanggan secara mendalam dapat berdampak pada kesulitan memberikan pelayanan yang sesuai, promosi yang tidak tepat sasaran, serta tidak dapat menyediakan produk atau layanan yang benar-benar diinginkan. Oleh karena itu, segmentasi pelanggan perlu dilakukan dengan tepat untuk mengantisipasi berbagai masalah tersebut.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Dalam artikel ini, akan dijelaskan tentang segmentasi pelanggan, termasuk model dan cara melakukan segmentasi yang benar. Simak artikelnya sampai akhir.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/segmentasi-pelanggan/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -409,31 +304,23 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054945_situs-download-foto-gratis-1024x538.jpg',
+                'judul' => '30 Website Download Foto Gratis (Tanpa Hak Cipta)',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="situs-download-foto-gratis-1024x538.jpg" src="/upload/16860549450.png"><p style="text-indent: 2cm">Banyaknya website download foto gratis sangat membantu para pekerja kreatif seperti designer, content writer, atau content creator untuk mendapatkan gambar gratis tanpa perlu mengeluarkan biaya tambahan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Mendapatkan foto gratis bukanlah sebuah kendala saat ini. Sudah banyak website yang menyediakan foto secara gratis yang bisa Anda gunakan sesuai dengan kebutuhan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Tinggal buka websitenya, ketik kata kunci gambar yang Anda inginkan, pilih gambar, download dan selesai. Semudah dan sesederhana itu.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Bayangkan saja jika ketika membutuhkan foto, Anda harus mengambil foto sendiri dengan kamera Anda atau mengeluarkan uang untuk membeli sebuah foto. Pasti akan sangat memakan waktu dan juga biaya.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Namun, perlu Anda perhatikan juga bahwa tidak semua gambar bisa Anda gunakan secara bebas. Terkadang ada juga yang mewajibkan Anda untuk menyertakan lisensi atau sumber gambar tersebut ketika digunakan.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Agar Anda punya banyak alternatif dan pilihan memilih gambar gratis. Berikut ini Techarea berikan daftar website download foto gratis dengan resolusi tinggi.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">Selengkapnya di :&nbsp;https://techarea.co.id/website-download-foto-gratis/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
-                'segmen_id' => 3,
+                'segmen_id' => 1,
                   'created_at' =>carbon::parse('2023-04-30'),
                 'updated_at' =>null,
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'bmw - Copy (1).jpg',
-                'judul' => 'how to not to make a war with girl',
-                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
-                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
-                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
-                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
+                'foto' => '1686054185_belajar-coding-23171530-1024x538.jpg',
+                'judul' => 'Belajar Coding di HP dengan 9 Aplikasi Terbaik',
+                'isi' => '<p style="text-indent: 2cm"><img style="width: 705.25px;" data-filename="belajar-coding-23171530-1024x538.jpg" src="/upload/16860541850.png"><br><p style="text-indent: 2cm">Belajar coding telah menjadi suatu kebutuhan yang tidak bisa diabaikan di era digital yang terus berkembang. Dulu, untuk mempelajari coding, orang harus mengambil jurusan IT di perguruan tinggi.</p><p style="text-indent: 2cm">Namun, sekarang semuanya berubah. Kamu bisa mengembangkan keterampilan coding langsung dari genggamanmu. Dalam artikel ini, kami akan merekomendasikan 9 aplikasi terbaik yang akan membantumu belajar coding secara mudah dan praktis hanya dengan menggunakan HP.</p><p style="text-indent: 2cm"><br></p><p style="text-indent: 2cm">selengkapnya di :&nbsp;https://techarea.co.id/belajar-coding/</p></p>',
                 'visitor' => 242,
                 'users_id' => 1,
-                'segmen_id' => 1,
+                'segmen_id' => 3,
                   'created_at' =>carbon::parse('2023-04-31'),
                 'updated_at' =>null,
             ],

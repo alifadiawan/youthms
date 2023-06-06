@@ -18,7 +18,7 @@
 </div> -->
 
 <div class="row">
-    @if (auth()->user()->role->role == 'admin')
+    @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
         <div class="col-lg-9">
         @else
             <div class="col-lg-12">
@@ -52,7 +52,7 @@
 
 
             </div>
-            @if (auth()->user()->role->role == 'admin')
+            @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
                 <div class="col-5 text-right">
                     <a href="{{ route('user.create') }}" class="btn btn-md text-white rounded"
                         style="background-color: #1864BA;">Tambah User</a>
@@ -94,7 +94,7 @@
         </div>
     </div>
 </div>
-@if (auth()->user()->role->role == 'admin')
+@if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
     <div class="col-lg-3">
         <div class="card p-3">
             <button data-toggle="modal" data-target="#addJabatan" class="btn btn-md text-white rounded mb-2 mr-1"

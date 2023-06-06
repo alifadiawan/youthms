@@ -5,7 +5,7 @@
 
 <div class="container">
     <div class="row">
-        @if (auth()->user()->role->role == 'admin')
+        @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
             <div class="col-lg-12">
             @else
                 <div class="col-lg-12">
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <hr>
-                @if (auth()->user()->role->role == 'admin')
+                @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
                     <div class="row my-3">
                         <div class="col">
                             <button class="btn btn-md btn-warning" data-toggle="modal"
@@ -87,7 +87,7 @@
                     </div>
                 @endif
             </div>
-            {{-- @if (auth()->user()->role->role == 'admin')
+            {{-- @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
             <div class="col-lg-10">
             @else
                 <div class="col-lg-12">
@@ -129,7 +129,7 @@
             </div>
         </div>
     </div> --}}
-            {{-- @if (auth()->user()->role->role == 'admin')
+            {{-- @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
         <div class="col-lg-2">
             <div class="container">
                 <button class="btn btn-md btn-warning" data-toggle="modal" data-target="#editmodal"

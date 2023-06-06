@@ -5,7 +5,7 @@
 
 <div class="container">
     <div class="row">
-        @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
+        @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner' || auth()->user()->id == $user->id)
             <div class="col-lg-12">
             @else
                 <div class="col-lg-12">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <hr>
-                @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
+                @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner' || auth()->user()->id == $user->id)
                     <div class="row my-3">
                         <div class="col">
                             <button class="btn btn-md btn-warning" data-toggle="modal"
@@ -163,7 +163,7 @@
                             </div>
                         </div>
                         <hr>
-                        @if (auth()->user()->role->role == 'admin' || auth()->user()->id == $user->id)
+                        @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner' || auth()->user()->id == $user->id)
                             <div class="row my-3">
                                 <div class="col">
                                     <button class="btn btn-md btn-warning" data-toggle="modal"
