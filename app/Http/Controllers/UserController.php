@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Notification;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Role;
+use App\Models\Cart;
+use App\Models\Transaksi;
 use App\Models\Member;
+use App\Models\Pembayaran;
+use App\Models\request_user;
+use App\Models\TransaksiDetail;
 
 class UserController extends Controller
 {
@@ -87,16 +92,56 @@ class UserController extends Controller
         $uid = auth()->user()->id;
         $users = user::where('id', $uid)->get();
         $member = member::where('user_id', $uid)->get();
-        $Member = member::where('user_id', $user->id)->get();
+        $mid = $member->value('id');
+        $cart = cart::where('member_id', $mid)->get();
+        $transaksi = transaksi::where('member_id', $mid)->get();
+        $checking = [];
+        $pending = [];
+        $kredit = [];
+        $declined = [];
+        $lunas = [];
+        $utang = [];
+
+        foreach ($transaksi as $t) {
+            $acum[] =  $t->id;
+            $pemb = pembayaran::where('transaksi_id', $t->id)->first();
+            $req = request_user::where('transaksi_id', $t->id)->first();
+            if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
+                $checking[] = $t;
+            } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
+                $kredit[] = $t;
+            } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
+                $kredit[] = $t;
+            } elseif ($t->total_bayar == 0 && $req && $req->status == "pending") {
+                $pending[] = $t;
+            } elseif ($t->total_bayar == 0 && $req && $req->status == "declined") {
+                $declined[] = $t;
+            } elseif ($t->total_bayar == 0 && !$req) {
+                $utang[] = $t;
+            } elseif ($t->total_bayar >= $t->total && $req && $req->status == "accept") {
+                $lunas[] = $t;
+            } elseif ($t->total_bayar >= $t->total && $pemb && $pemb->status == "checked") {
+                $lunas[] = $t;
+            }
+        }
+
+        $cc = count($checking);
+        $cu = count($utang);
+        $ck = count($kredit);
+        $cp = count($pending);
+        $cl = count($lunas);
+        $trx_berjalan = $cc + $cu + $ck + $cp;
+        $trx_kredit = $ck;
+        $trx_riwayat = $cl;
 
         $u = auth()->user()->role->role;
         $staff = ['admin', 'owner'];
         if (in_array($u, $staff)) {
 
-            return view('Admin.user.user-detail', compact('user', 'Member'));
+            return view('Admin.user.user-detail', compact('user', 'member'));
         } else {
 
-            return view('EU.user.index', compact('uid', 'users', 'member','users'));
+            return view('EU.user.index', compact('uid', 'users', 'member', 'users','trx_berjalan','trx_kredit','trx_riwayat'));
         }
     }
 
@@ -212,7 +257,7 @@ class UserController extends Controller
                 'nik' => $request->nik,
                 'alamat' => $request->alamat
             ]);
-            return redirect()->route('user.show',$id);
+            return redirect()->route('user.show', $id);
         }
     }
 
@@ -255,12 +300,11 @@ class UserController extends Controller
         if ($request->role_id == null) {
             $user = User::whereHas('role')->with('role')->get();
             $activeRoleName = ''; // Tidak ada filter aktif, roleName kosong
-        }
-        else {
+        } else {
             $roles = $request->role_id;
-            $user = User::where('role_id','=', $roles)->with('role')->get();
+            $user = User::where('role_id', '=', $roles)->with('role')->get();
             // return $user;
-            $r = Role::where('id','=',$roles)->first();
+            $r = Role::where('id', '=', $roles)->first();
             // return $r;
             $activeRoleName = $r ? $r->role : ''; // Mengambil roleName jika role_id valid
             // return $activeRoleName;

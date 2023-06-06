@@ -130,7 +130,7 @@
                                     <div class="col mr-2">
                                         {{-- <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             Pesanan Anda</div> --}}
-                                        <div class="h5 mt-3 font-weight-bold text-gray-800">2 Produk <span
+                                        <div class="h5 mt-3 font-weight-bold text-gray-800">{{ $trx_berjalan }} Transaksi <span
                                                 class="qty posisition-absolute badge bg-success position-absolute top-0 translate-middle badge">Transaksi Berjalan</span>
                                         </div>
                                     </div>
@@ -152,7 +152,7 @@
                                     <div class="col mr-2">
                                         {{-- <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Riwayat Transaksi</div> --}}
-                                        <div class="h5 mt-3 font-weight-bold text-gray-800">123 Produk<span
+                                        <div class="h5 mt-3 font-weight-bold text-gray-800">{{ $trx_kredit }} Transaksi<span
                                                 class="qty posisition-absolute badge bg-secondary position-absolute top-0 translate-middle badge">Riwayat
                                                 Transaksi</span></div>
                                     </div>
@@ -177,7 +177,7 @@
                                     <div class="col mt-3">
                                         {{-- <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Riwayat Transaksi</div> --}}
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">129 Produk<span
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $trx_kredit }} Transaksi<span
                                                 class="qty posisition-absolute badge bg-warning position-absolute top-0 translate-middle badge">Kredit</span></div>
                                     </div>
                                     <div class="col-auto">

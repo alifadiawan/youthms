@@ -13,7 +13,7 @@
             @endforeach
 
             @foreach ($request_user as $r)
-                @if ($r->status == null)
+                @if ($r->status == "pending")
                     <div class="card">
                         <div class="card-header">
                             @foreach ($request_user as $r)

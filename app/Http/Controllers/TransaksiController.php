@@ -155,7 +155,7 @@ class TransaksiController extends Controller
                 $pemb = $pembayaran->where('transaksi_id', $t->id)->first();
                 // $pemb = $pembayaran->where('transaksi_id', $t->id)->first();
                 // return 'oke';
-                if ($t->total_bayar == 0  && $pemb && $pemb->status == "pending") {
+                if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                     $checking[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $kredit[] = $t;
@@ -205,7 +205,7 @@ class TransaksiController extends Controller
                 $req = $requestUser->where('transaksi_id', $t->id)->first();
                 $pemb = $pembayaran->where('transaksi_id', $t->id)->first();
                 // return 'oke';
-                if ($t->total_bayar == 0  && $pemb && $pemb->status == "pending") {
+                if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                     $checking[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $kredit[] = $t;
@@ -303,7 +303,7 @@ class TransaksiController extends Controller
                 $pemb = $pembayaran_loop->where('transaksi_id', $t->id)->first();
 
                 // return 'oke';
-                if ($t->total_bayar == 0  && $pemb && $pemb->status == "pending") {
+                if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                     $checking[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $kredit[] = $t;
@@ -340,7 +340,7 @@ class TransaksiController extends Controller
                 $pemb = $pembayaran_loop->where('transaksi_id', $t->id)->first();
 
                 // return 'oke';
-                if ($t->total_bayar == 0  && $pemb && $pemb->status == "pending") {
+                if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                     $checking[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $kredit[] = $t;
