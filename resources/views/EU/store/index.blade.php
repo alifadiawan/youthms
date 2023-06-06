@@ -51,9 +51,9 @@
                         <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
                             style="max-width: 15.3rem; height: 15.3rem; object-fit:cover;">
                         <div class="card-body">
-                            <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
+                            <p class="card-title text-capitalize fw-bold text-truncate" >{{ $p->nama_produk }} </p>
                             {{-- <p class="card-title text-secondary">{{ $p->services->judul }}</p> --}}
-                            <p class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
+                            <p class="card-text" >Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
                             @guest
                                 <a href="{{ route('authcheck') }}" class="btn yms-blue w-100 rounded-5">
                                     <i class="fa-solid fa-cart-plus"></i> Buy
@@ -193,7 +193,7 @@
                                 <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
                                     style="max-width: 19rem; height: 19rem">
                                 <div class="card-body">
-                                    <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
+                                    <p class="card-title text-capitalize fw-bold text-truncate" >{{ $p->nama_produk }}</p>
                                     <p class="card-title text-secondary">{{ $ls->judul }}</p>
                                     <p class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
                                     @guest
