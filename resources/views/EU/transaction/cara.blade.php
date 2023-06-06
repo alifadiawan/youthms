@@ -221,11 +221,34 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Kirim Bukti</button>
+                        <button type="submit" class="btn btn-primary" data-bs-target="#myModal"
+                            data-bs-toggle="modal">Kirim Bukti</button>
                     </div>
                 </form>
             </div>
         </div>
+
     </div>
     {{-- </section> --}}
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <div class="icon-box">
+                    <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_atippmse.json"
+                                data-aos="fade-down" id="porto-animation" background="transparent" speed="1"
+                                style="width: 100%" loop autoplay></lottie-player>
+                </div>
+                {{-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> --}}
+            </div>
+            <div class="modal-body text-center">
+                <h4>Success!</h4>
+                <p>Konfirmasi pembayaran anda sudah kami terima, berkas sedang kami proses.</p>
+                {{--   --}}
+            </div>
+        </div>
+    </div>
+</div>
+   
 @endsection
