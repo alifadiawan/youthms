@@ -16,25 +16,26 @@
                                 <div class="card-body">
                                     <span class="text-dark" style="font-size: 16px; line-height:normal">
                                         <p class="fw-bold">LANGKAH 1 : TEMUKAN ATM TERDEKAT</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item"> Masukkan kartu, kemudian pilih bahasa dan masukkan
+                                        <ol>
+                                            <li>Masukkan kartu, kemudian pilih bahasa dan
+                                                masukkan
                                                 PIN anda</li>
-                                            <li class="list-group-item">Pilih "Transaksi Lain" dan pilih "Pembayaran"</li>
-                                            <li class="list-group-item">Pilih menu "Lainnya" dan pilih "Briva"</li>
+                                            <li>Pilih "Transaksi Lain" dan pilih "Pembayaran"</li>
+                                            <li>Pilih menu "Lainnya" dan pilih "Briva"</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 2 : DETAIL PEMBAYARAN</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item"> Masukkan Nomor Virtual Account 92001981045887568
+                                        <ol>
+                                            <li> Masukkan Nomor Virtual Account 92001981045887568
                                                 dan jumlah yang ingin anda
                                                 bayarkan</li>
-                                            <li class="list-group-item">Periksa data transaksi dan tekan "YA"</li>
+                                            <li>Periksa data transaksi dan tekan "YA"</li>
                                         </ol>
 
                                         <br>
                                         <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Setelah transaksi anda selesai, invoice ini akan
+                                        <ol>
+                                            <li>Setelah transaksi anda selesai, invoice ini akan
                                                 diupdate secara otomatis. Proses
                                                 ini mungkin
                                                 memakan waktu hingga 5 menit</li>
@@ -55,23 +56,23 @@
                                 <div class="card-body">
                                     <span class="text-dark" style="font-size: 16px">
                                         <p class="fw-bold">LANGKAH 1 : MASUK KE AKUN ANDA</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Buka aplikasi BRI Mobile Banking, masukkan USER ID
+                                        <ol>
+                                            <li>Buka aplikasi BRI Mobile Banking, masukkan USER ID
                                                 dan PIN anda</li>
-                                            <li class="list-group-item">Pilih "Pembayaran" dan pilih "Briva"</li>
+                                            <li>Pilih "Pembayaran" dan pilih "Briva"</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 2 : DETAIL PEMBAYARAN</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Masukkan Nomor Virtual Account anda
+                                        <ol>
+                                            <li>Masukkan Nomor Virtual Account anda
                                                 92001981045887568 dan jumlah yang ingin anda
                                                 bayarkan</li>
-                                            <li class="list-group-item">Masukkan PIN Mobile Banking BRI</li>
+                                            <li>Masukkan PIN Mobile Banking BRI</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Setelah transaksi anda selesai, invoice ini akan
+                                        <ol>
+                                            <li>Setelah transaksi anda selesai, invoice ini akan
                                                 diupdate secara otomatis. Proses
                                                 ini mungkin
                                                 memakan waktu hingga 5 menit</li>
@@ -80,6 +81,7 @@
                                 </div>
                             </div>
                         </div>
+
                         {{-- <div class="card text-dark">
                             <div class="card-header">
                               <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
@@ -123,7 +125,7 @@
                         @foreach ($bank as $b)
                             <div class="col-12">
                                 <div class="d-flex flex-column px-md-5 px-4 mb-4">
-                                    <span>Nomer Rekening  {{ $b->nama }}</span>
+                                    <span>Nomer Rekening {{ $b->nama }}</span>
                                     <div class="inputWithIcon">
                                         <input class="form-control" type="text" value="{{ $b->nomor_rekening }}">
                                         <span class="">
@@ -163,7 +165,7 @@
                         @foreach ($ewallet as $w)
                             <div class="col-12">
                                 <div class="d-flex flex-column px-md-5 px-4 mb-4">
-                                    <span>Transfer Lewat {{ $w->nama }}</span>
+                                    <span>Pembayaran Via {{ $w->nama }}</span>
                                     <div class="inputWithIcon">
                                         <input class="form-control" type="text" value="{{ $w->nomor_hp }}">
                                         <span class="">
@@ -244,7 +246,7 @@
                             <div>
                                 <label for="">Tanggal Checkout</label>
                                 <input type="date" class="form-control mt-2" name="date" id="date"
-                                    value="{{ date('Y-m-d') }}" required>
+                                    value="{{ date('Y-m-d') }}" readonly>
                             </div>
                             <div>
                                 <label for="" class="mt-3">Kode Pesanan</label>
@@ -300,4 +302,9 @@
             </div>
         </div>
     </div>
+    <style>
+        ol li {
+            list-style-type: decimal !important;
+        }
+    </style>
 @endsection
