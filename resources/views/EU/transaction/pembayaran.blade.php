@@ -203,11 +203,11 @@
                                                                         class="btn" type="button">
                                                                         <img class="img-thumbnail border-0"
                                                                             src="{{ asset('illustration/' . $g->image) }}"
-                                                                            style="width:   175px; margin-right:-5px"alt="">
+                                                                            style="width:   120px; margin-right:-5px"alt="">
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-lg-7">
-                                                                    <p style="text-align: end; margin-top:30px"
+                                                                    <p style="text-align: end; margin-top:20px"
                                                                         class="fw-bold">Mandiri</p>
                                                                 </div>
                                                             </div>
@@ -351,7 +351,7 @@
                                 <div class="accordion-body">
                                     <form action="">
                                         <div class="row">
-                                            <div class="col">
+                                            <div class="col-lg-12">
                                                 @foreach ($gateaway as $g => $item)
                                                     @if ($g > 1)
                                                         <div class="row">
@@ -359,16 +359,28 @@
                                                                 method="GET">
                                                                 @csrf --}}
                                                             @foreach ($transaksi as $t)
-                                                                <a href="{{ route('pembayaran.cara', ['id' => $item->id, 'transaksi_id' =>$t->id]) }}"
-                                                                    style="justify-content: start" class="btn">
-                                                                    <img class="img-thumbnail border-0"
-                                                                        src="{{ asset('illustration/' . $item->image) }}"
-                                                                        style="width: 100px; margin-right:1px">
-                                                                    <span style="text-align: end"
-                                                                        class="fw-bold">{{ $item->nama_gateaway }}</span>
-                                                                    {{-- <input type="hidden" name="transaksi_id"
-                                                                        value="{{ $t->id }}"> --}}
-                                                                </a>
+                                                                <div class="row">
+                                                                    <ul class="list-group list-group-flush">
+                                                                        <li class="list-group-item">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-5">
+                                                                                    <a href="{{ route('pembayaran.cara', ['id' => $item->id, 'transaksi_id' => $t->id]) }}"
+                                                                                        style="justify-content: start"
+                                                                                        class="btn">
+                                                                                        <img class="img-thumbnail border-0"
+                                                                                        src="{{ asset('illustration/' . $item->image) }}"
+                                                                                            style="width: 80px"
+                                                                                            alt="">
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-lg-7">
+                                                                                    <p style="text-align: end; margin-top:18px" class="fw-bold">
+                                                                                    {{ $item->nama_gateaway }}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
                                                             @endforeach
                                                             {{-- </form> --}}
                                                         </div>
