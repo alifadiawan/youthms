@@ -43,14 +43,14 @@ class GateawaySeeder extends Seeder
 
         $bank = [
             [
-                'image' => '',
-                'nama' => 'jenius',
+                'image' => 'jenius.png',
+                'nama' => 'Jenius',
                 'penerima' => 'Hafiyyan Faza Santoso',
                 'nomor_rekening' => '90130151561',
             ],
             [
-                'image' => '',
-                'nama' => 'bsi',
+                'image' => 'bsi.png',
+                'nama' => 'Bank BSI',
                 'penerima' => 'Hafiyyan Faza Santoso',
                 'nomor_rekening' => '7206472841',
             ]
@@ -59,20 +59,20 @@ class GateawaySeeder extends Seeder
         $ewallet = [
 
             [
-                'image' => '',
-                'nama' => 'link aja',
+                'image' => 'link.png',
+                'nama' => 'Link Aja',
                 'penerima' => 'Hafiyyan Faza Santoso',
                 'nomor_hp' => '081933596386',
             ],
             [
                 'image' => 'sopipay.png',
-                'nama' => 'shoppee pay',
+                'nama' => 'ShoppeePay',
                 'penerima' => 'Hafiyyan Faza Santoso',
                 'nomor_hp' => '081933596386',
             ],
             [
                 'image' => 'gopay.png',
-                'nama' => 'gopay',
+                'nama' => 'GoPay',
                 'penerima' => 'Hafiyyan Faza Santoso',
                 'nomor_hp' => '081933596386',
             ],
