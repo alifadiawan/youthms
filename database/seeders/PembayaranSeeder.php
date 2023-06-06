@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Pembayaran;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 
 class PembayaranSeeder extends Seeder
 {

@@ -94,6 +94,17 @@ Route::post('/group-chat/join', [GroupChatController::class, 'joinGroup'])->name
 //landing page
 Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 
+Route::get('/paket', function () {
+    return view('Admin.paket.index');
+});
+
+// Route::get('/tambah-paket', function () {
+//     return view('Admin.paket.add');
+// });
+Route::get('/detail-paket', function () {
+    return view('Admin.paket.detail');
+});
+
 
 //history transaksi
 Route::get('/history-transaction', function () {
