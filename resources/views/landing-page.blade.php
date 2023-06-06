@@ -66,44 +66,28 @@
             </div>
 
             <div class="row justify-content-between">
-
+                @foreach($paket as $p)
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
                     data-aos-delay="200" >
                     <div class="icon-box text-center" style="width: 20rem">
-                        <h4><a href="">Paket A</a></h4>
-                        <p>Full Marketing Web</p>
-                        <p>Logo for business web</p>
+                        <h4><a href="">{{$p->nama_paket}}</a></h4>
+                        @foreach($p->produk as $pp)
+                        <p>{{$pp->nama_produk}}</p>
+                        @endforeach
+                        <br>
+                        @php
+                            $total = 0;
+                        @endphp
+                        @foreach($p->produk as $harga)
+                        @php
+                            $total += $harga->harga;
+                        @endphp
+                        @endforeach
+                        <p>Rp {{ number_format($total, 0, ',', '.') }}</p>
                         <a href="/store" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="icon-box text-center" style="width: 20rem">
-                        <h4><a href="">Paket B</a></h4>
-                        <p>Full Marketing Web</p>
-                        <p>Logo for business web</p>
-                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="icon-box text-center" style="width: 20rem">
-                        <h4><a href="">Paket C</a></h4>
-                        <p>Full Marketing Web</p>
-                        <p>Logo for business web</p>
-                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="icon-box text-center" style="width: 20rem">
-                        <h4><a href="">Paket D</a></h4>
-                        <p>Full Marketing Web</p>
-                        <p>Logo for business web</p>
-                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
 
         </div>
