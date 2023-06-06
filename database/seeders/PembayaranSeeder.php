@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Carbon;
 use App\Models\Pembayaran;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
@@ -43,7 +44,7 @@ class PembayaranSeeder extends Seeder
                 'transaksi_id'=>8,
                 'bank_id'=>null,
                 'ewallet_id'=>3,
-                'status'=>'pending',
+                'status'=>'checking',
                 'bukti_tf'=>'kulbet.jpeg',
                 'created_at' => Carbon::parse('2023-06-6'),
             ],
@@ -51,7 +52,7 @@ class PembayaranSeeder extends Seeder
                 'transaksi_id'=>9,
                 'bank_id'=>2,
                 'ewallet_id'=>null,
-                'status'=>'pending',
+                'status'=>'checking',
                 'bukti_tf'=>'kulbet.jpeg',
                 'created_at' => Carbon::parse('2023-06-6'),
             ],

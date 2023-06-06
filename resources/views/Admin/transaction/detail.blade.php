@@ -100,9 +100,9 @@
                                     <div class="col">
                                         metode pembayaran
                                     </div>
-                                    <div class="col text-right">
+                                    {{-- <div class="col text-right">
                                         {{ $p->gateaways->nama_gateaway }}
-                                    </div>
+                                    </div> --}}
                                 @endforeach
                             </div>
 
