@@ -99,7 +99,8 @@ class PembayaranController extends Controller
         ]);
 
         notify()->success('Pembayaran Anda Akan Kami Proses !');
-        return redirect()->route('transaksi.show', $tid);
+        return redirect()->back();
+        // return redirect()->route('transaksi.show', $tid);
     }
 
     public function listpembayaran()
