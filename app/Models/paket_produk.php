@@ -17,6 +17,6 @@ class paket_produk extends Model
 
     public function produk()
     {
-return $this->belongsToMany(produk::class);
+        return $this->belongsTo(produk::class);
     }
 }

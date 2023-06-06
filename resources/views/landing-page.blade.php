@@ -72,19 +72,21 @@
                         data-aos-delay="200">
                         <div class="icon-box text-center" style="width: 20rem; height: 30rem;">
                             <h4>{{ $p->nama_paket }}</h4>
-                            @foreach ($p->produk as $pp)
+                            @foreach ($produk->where('paket_id', $p->id) as $pp)
                                 <ul class="m-0">
-                                    <li class="paket text-start">{{ $pp->nama_produk }}</li>
+                                    <li class="paket text-start">{{ $pp->produk->nama_produk }}</li>
                                 </ul>
                             @endforeach
-                            
+
                             @php
+                                
                                 $total = 0;
                             @endphp
-                            @foreach ($p->produk as $harga)
+                            @foreach ($produk->where('paket_id', $p->id) as $p)
                                 @php
-                                    $total += $harga->harga;
+                                    $total += $p->produk->harga;
                                 @endphp
+                                {{-- {{ $p->produk->harga }j} --}}
                             @endforeach
                             <div class="footer" style="position: absolute; bottom:20px; right:50px; left: 50px">
                                 <p class="fw-bold">Rp {{ number_format($total, 0, ',', '.') }}</p>
@@ -541,7 +543,7 @@
     </div> --}}
 
     <style>
-        .paket{
+        .paket {
             list-style-type: disc;
         }
     </style>
