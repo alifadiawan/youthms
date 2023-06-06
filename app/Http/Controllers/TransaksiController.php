@@ -332,7 +332,6 @@ class TransaksiController extends Controller
 
             $status_EU = ['EU_utang', 'EU_kredit', 'EU_lunas', 'EU_declined', 'EU_pending', 'EU_checking', 'selisih'];
             return view('EU.transaction.detail', compact($compact, $status_EU));
-            //     return view('EU.transaction.cash', compact($compact));
         } else {
             $all = transaksi::all();
 

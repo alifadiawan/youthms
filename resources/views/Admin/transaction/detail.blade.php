@@ -41,12 +41,6 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="row my-3">
-                                <div class="col text-center">
-                                    <p class="h3">Rp.100.000</p>
-                                </div>
-                            </div> --}}
-
                             <div class="penerima">
 
                                 @foreach ($detail as $d)
@@ -72,7 +66,7 @@
                                         total
                                     </div>
                                     <div class="col text-right">
-                                        {{ number_format($total, 0, ',', '.') }}
+                                        Rp. {{ number_format($total, 0, ',', '.') }}
                                     </div>
                                 </div>
                                 <div class="row">
@@ -80,7 +74,7 @@
                                         biaya admin
                                     </div>
                                     <div class="col text-right">
-                                        {{ number_format($admin, 0, ',', '.') }}
+                                        Rp. {{ number_format($admin, 0, ',', '.') }}
                                     </div>
                                 </div>
                                 <div class="row">
@@ -88,21 +82,29 @@
                                         grandtotal
                                     </div>
                                     <div class="col text-right">
-                                        {{ number_format($grandtotal, 0, ',', '.') }}
+                                        Rp. {{ number_format($grandtotal, 0, ',', '.') }}
                                     </div>
                                 </div>
                             </div>
 
                             <hr class="my-3">
-
                             <div class="row">
                                 @foreach ($pembayaran as $p)
                                     <div class="col">
                                         metode pembayaran
                                     </div>
-                                    {{-- <div class="col text-right">
-                                        {{ $p->gateaways->nama_gateaway }}
-                                    </div> --}}
+                                    <div class="col text-right">
+                                        @if ($p->bank_id == !null)
+                                            <img class="img-thumbnail border-0"
+                                                src="{{ asset('illustration/' . $p->bank->image) }}"
+                                                style="width: 80px" alt="">
+                                        @elseif ($p->ewallet_id == !null)
+                                            <img class="img-thumbnail border-0"
+                                                src="{{ asset('illustration/' . $p->ewallet->image) }}"
+                                                style="width: 80px" alt="">
+                                        @endif
+
+                                    </div>
                                 @endforeach
                             </div>
 
