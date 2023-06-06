@@ -21,7 +21,7 @@
                                     {{-- <img src="{{ asset('blog/'.$b->foto) }}" alt="" width="100%"
                                                 height="100%" style="border-radius: 20px"> --}}
                                     <img src="{{ asset('blog/'.$b->foto) }}" alt="" width="100%"
-                                        height="100%">
+                                        height="100%" style="border-radius:25px">
 
                                     <div class="trend-top-cap">
                                         {{-- <span>Pemrograman 5</span> --}}
@@ -31,6 +31,7 @@
                                 </div>
                             </div>
                             @endforeach
+                            
                             <!-- Trending Bottom -->
 
                             <div class="trending-bottom">
