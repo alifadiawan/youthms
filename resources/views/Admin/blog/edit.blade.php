@@ -26,6 +26,14 @@
                                 @endforeach
                             </select><br>
                         </div>
+                        <div class="form-group">
+                            <label for="lama">Cover Lama</label>
+                            <img src="{{asset('blog/'.$data->foto)}}" style="width: 10rem;">
+                        </div>
+                        <div class="form-group">
+                            <label for="baru">Cover Baru (Optional)</label>
+                            <input type="file" name="foto" class="form-control">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,7 +58,7 @@
                 <div class="card-footer">
                     <div class="float-right">
                         <div class="form-group">
-                            <input type="submit" class="btn btn-sm btn-success" value="Simpan">
+                            <input type="submit" class="btn btn-sm btn-success" value="Simpan" style="background-color: green;">
                         </div>
                     </div>
                     
@@ -63,12 +71,24 @@
     </div>
 </form>
 
+<style>
+    /* For summernote override unordered and order list */
+    .note-editable ul{
+      list-style: disc !important;
+      list-style-position: inside !important;
+    }
+
+    .note-editable ol {
+      list-style: decimal !important;
+      list-style-position: inside !important;
+    }
+</style>
 
 <script>
     $(document).ready(function() {
         @if (Session::has('berhasil'))
             $('#messageModal').modal('show');
         @endif
-    });
+    });   
 </script>
 @endsection

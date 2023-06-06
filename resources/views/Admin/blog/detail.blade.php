@@ -10,27 +10,31 @@
                     <div class="form-group">
                         <label for="id_artikel">ID Artikel</label>
                         <input type="number" class="form-control" name="id_artikel" id="id_artikel"
-                            aria-describedby="helpId" value="{{ $data->id_artikel }}" disabled>
+                            aria-describedby="helpId" value="{{ $blog->id_artikel }}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="judul">Judul</label>
                         <input type="text" class="form-control" name="judul" id="judul"
-                            aria-describedby="helpId" value="{{ $data->judul }}" disabled>
+                            aria-describedby="helpId" value="{{ $blog->judul }}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="author">Author</label>
                         <input type="text" class="form-control" name="author" id="author"
-                            aria-describedby="helpId" value="{{ $data->users->username }}" disabled>
+                            aria-describedby="helpId" value="{{ $blog->users->username }}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="Tanggal">Tanggal</label>
-                        <input type="date" class="form-control" name="tanggal" id="tanggal"
-                            aria-describedby="helpId" value="{{ $data->tanggal }}" disabled>
+                        <input type="text" class="form-control" name="tanggal" id="tanggal"
+                            aria-describedby="helpId" value="{{ date('d F', strtotime($blog->created_at)) }}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="Segmen">Segmen</label>
                         <input type="text" class="form-control" name="segmen" id="segmen"
-                            aria-describedby="helpId" value="{{ $data->segmen->segmen }}" disabled>
+                            aria-describedby="helpId" value="{{ $blog->segmen->segmen }}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="cover">Cover</label>
+                        <img src="{{asset('./blog/'.$blog->foto)}}" style="width: 10rem;">
                     </div>
                 </div>
             </div>
@@ -49,7 +53,7 @@
                 <label for="compose">Detail Artikel</label>
             </div>
             <div class="card-body">
-                <textarea id="isi" name="isi" style="display: none;">{{ $data->isi }}</textarea>
+                <textarea id="isi" name="isi" style="display: none;">{{ $blog->isi }}</textarea>
 
                 <div id="tampilan_isi">
 
@@ -75,7 +79,7 @@
 
             <div class="modal-footer">
                 <button class="btn btn btn-outline-secondary text-white" data-dismiss="modal">Tidak</button>
-                <a href="{{ route('blogs.edit', $data->id) }}" class="btn btn btn-danger text-white">Iya</a>
+                <a href="{{ route('blogs.edit', $blog->id) }}" class="btn btn btn-danger text-white">Iya</a>
             </div>
         </div>
     </div>
@@ -95,7 +99,7 @@
             </div>
 
             <div class="modal-footer">
-              <a href="{{ route('blogs.hapus', $data->id) }}" class="btn btn btn-danger text-white">Iya</a>
+              <a href="{{ route('blogs.hapus', $blog->id) }}" class="btn btn btn-danger text-white">Iya</a>
                 <button class="btn btn btn-outline-secondary text-white" data-dismiss="modal">Tidak</button>
             </div>
         </div>
@@ -127,4 +131,16 @@
         });
     </script>
 @endif
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var isi = $('#isi').val();
+        $('#tampilan_isi').html(isi);
+        $('#summernote').summernote();
+    });
+</script>
 @endsection
