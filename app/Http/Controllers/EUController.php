@@ -19,6 +19,7 @@ use App\Models\LandingIllustration;
 use App\Models\LandingPartner;
 use Mckenziearts\Notify\LaravelNotify;
 use App\Models\LandingText;
+use App\Models\paket_produk;
 
 class EUController extends Controller
 {
@@ -48,7 +49,9 @@ class EUController extends Controller
         $jenis_layanan = JenisLayanan::all();
 
         //paket
-        $paket = Paket::with('produk')->get();
+        $paket = Paket::all();
+        $produk = paket_produk::all();
+        return $produk;
         
 
         return view('landing-page' , compact('text','illustration', 'partner',  'paket', 'testi', 'jenis_layanan'));

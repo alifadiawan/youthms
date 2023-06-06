@@ -93,6 +93,9 @@ class RequestUserController extends Controller
         // mencari harga total
         $grandtotal = $total + $admin;
 
+        
+        // $trx = transaksi::where)
+
         // $admin = 
         $compact = ['request_user', 'detail', 'transaksi','total','grandtotal','admin','status','termin','totaltermin'];
         return view('Admin.transaction.YesNo', compact($compact));
@@ -119,8 +122,8 @@ class RequestUserController extends Controller
             'status' => $request->status,
             'note_admin' => $request->note, 
         ]);
-
-        notify()->success('status berhasil diperbarui');
+        
+        // notify()->success('status berhasil diperbarui');
         return redirect()->route('requestuser.index');
 
 
