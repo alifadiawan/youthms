@@ -15,4 +15,14 @@ class TransaksiDetail extends Model
     {
         return $this->belongsTo(produk::class);
     }
+
+    public function bank()
+    {
+        return $this->belongsTo(bank::class);
+    }
+
+    public function ewallet()
+    {
+        return $this->belongsTo(ewallet::class);
+    }
 }
