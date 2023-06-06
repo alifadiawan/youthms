@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        View::composer(['layout.topbar', 'Admin.*'], function ($view) {
+        View::composer(['layout.topbar', 'Admin.*', 'layout-landing2.topbar', 'EU.*'], function ($view) {
             $notifications = [];
             if (Auth::check()) {
                 $notifications = Auth::user()->unreadNotifications;

@@ -18,7 +18,7 @@ class Transaksi extends Model
 
     public function transaksi_detail()
     {
-        return $this->hasMany(transaksi_detail::class);
+        return $this->hasMany(TransaksiDetail::class);
     }
 
     public function reuqestuser()

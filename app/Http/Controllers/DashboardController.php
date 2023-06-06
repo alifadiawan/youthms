@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
@@ -47,7 +48,9 @@ class DashboardController extends Controller
 
         $uid = auth()->user()->id;
         // return $uid;
-        return view('Admin.dashboard', compact('chart1', 'chart2'));
+
+        $transaksi = Transaksi::orderBy('tanggal_transaksi', 'desc')->take(4)->get();
+        return view('Admin.dashboard', compact('chart1', 'chart2', 'transaksi'));
     }
 
     /**
