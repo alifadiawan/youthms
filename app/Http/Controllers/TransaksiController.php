@@ -397,6 +397,14 @@ class TransaksiController extends Controller
             'transaksi_id' => $r->transaksi_id
         ]);
 
+        // mengirim notifikasi
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Ajuan Kredit Baru !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('requestuser.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
 
         return redirect()->route('requestuser.index', ['trxid' => $trxid]);
     }
