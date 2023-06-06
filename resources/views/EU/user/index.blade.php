@@ -6,7 +6,9 @@
         <!-- Content Row -->
 
         <!-- Content Row -->
-        <h1 style="text-indent: 3cm">Informasi Pribadi</h1>
+        <div class="row">
+            <div class="col-12 col-lg-6 text-center"><h1>Informasi Pribadi</h1></div>
+        </div>
         @if (auth()->user()->hasIncompleteProfile())
             <div class="alert alert-warning" role="alert">
                 Lengkapi data diri dulu. <a href="/edit-profile">Edit</a>
@@ -19,19 +21,19 @@
                     <div class="card-body">
                         @foreach ($users as $u)
                             <div class="row">
-                                <div class="col-sm-5">
+                                <div class="col-sm-5 col-6">
                                     <p class="header mb-0 fw-bold"><i class="fa-solid fa-user fa-xl fa-fw"></i> Username</p>
                                 </div>
-                                <div class="col-sm-7">
+                                <div class="col-sm-7 col-6">
                                     <p class="text mb-0">{{ $u->username }}</p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-sm-5 gap-3">
+                                <div class="col-sm-5 col-6 gap-3">
                                     <p class="mb-0 fw-bold"><i class="fa-solid fa-envelope fa-xl fa-fw"></i> Email</p>
                                 </div>
-                                <div class="col-sm-7">
+                                <div class="col-sm-7 col-6">
                                     <p class="text mb-0">{{ $u->email }}</p>
                                 </div>
                             </div>
@@ -77,37 +79,37 @@
                         @endif
                         @foreach ($member as $m)
                             <div class="row">
-                                <div class="col-sm-5">
+                                <div class="col-sm-5 col-6">
                                     <p class="mb-0 fw-bold"><i class="fas fa-id-card fa-xl fa-fw"></i> Nama Lengkap</p>
                                 </div>
-                                <div class="col-sm-7">
+                                <div class="col-sm-7 col-6">
                                     <p class="text mb-0">{{ $m->name }}</p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-sm-5">
+                                <div class="col-sm-5 col-6">
                                     <p class="mb-0 fw-bold"><i class="fa-solid fa-phone-volume fa-xl fa-fw"></i> Nomor Telp</p>
                                 </div>
-                                <div class="col-sm-7">
+                                <div class="col-sm-7 col-6">
                                     <p class="text mb-0">{{ $m->no_hp }}</p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-sm-5">
+                                <div class="col-sm-5 col-6">
                                     <p class="mb-0 fw-bold"><i class="fa-solid fa-passport fa-xl fa-fw"></i> NIK</span></p>
                                 </div>
-                                <div class="col-sm-7">
+                                <div class="col-sm-7 col-6">
                                     <p class="text mb-0">{{ $m->nik }}</p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-sm-5">
+                                <div class="col-sm-5 col-6">
                                     <p class="mb-0 fw-bold"><i class="fa-solid fa-map-location-dot fa-xl fa-fw"></i> Alamat</p>
                                 </div>
-                                <div class="col-sm-7">
+                                <div class="col-sm-7 col-6">
                                     <p class="text mb-0">{{ $m->alamat }}</p>
                                 </div>
                             </div>

@@ -8,23 +8,22 @@
                         <div class="col-lg-9">
                             <!-- Trending Top -->
 
-                            {{-- @foreach ($blog as $b) --}}
+                            @foreach ($atas as $b)
                             <div class="trending-top mb-30">
                                 <div class="trend-top-img">
                                     {{-- <img src="{{ asset('blog/' . $b->foto) }}" alt="" width="100%"
                                                 height="100%" style="border-radius: 20px"> --}}
-                                    <img src="{{ asset('illustration/il1.jpg') }}" alt="" width="100%"
+                                    <img src="{{ asset('blog/'.$b->foto) }}" alt="" width="100%"
                                         height="100%">
 
                                     <div class="trend-top-cap">
                                         {{-- <span>Pemrograman 5</span> --}}
-                                        <h2><a href="/blog-detail">ealah <br> consectetur
-                                                adipiscing elit.</a>
+                                        <h2><a href="{{route('blogs.detail', $b->id)}}">{{$b->judul}}</a>
                                         </h2>
                                     </div>
                                 </div>
                             </div>
-                            {{-- @endforeach --}}
+                            @endforeach
                             <!-- Trending Bottom -->
 
                             <div class="trending-bottom">
@@ -33,13 +32,12 @@
                                         <div class="col-lg-4" style="margin-top: 50px">
                                             <div class="single-bottom mb-35">
                                                 <div class="trend-bottom-img mb-30">
-                                                    <img src="{{ asset('illustration/il1.jpg') }}" alt=""
-                                                        width="100%" height="100%">
+                                                    <img src="{{ asset('blog/'.$ru->foto) }}" alt=""
+                                                        height="190px">
                                                 </div>
                                                 <div class="trend-bottom-cap">
-                                                    <span class="color1">Design</span>
-                                                    <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </a></h4>
+                                                    <span class="color1">{{$ru->segmen->segmen}}</span>
+                                                    <h4><a href="{{route('blogs.detail', $ru->id)}}">{{$ru->judul}}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -50,13 +48,12 @@
                                         <div class="col-lg-3" style="margin-top: 50px">
                                             <div class="single-bottom mb-35">
                                                 <div class="trend-bottom-img mb-30">
-                                                    <img src="{{ asset('illustration/il1.jpg') }}" alt=""
-                                                        width="100%" height="100%">
+                                                    <img src="{{ asset('blog/'.$rl->foto) }}" alt=""
+                                                        width="100%" height="190px">
                                                 </div>
                                                 <div class="trend-bottom-cap">
-                                                    <span class="color1">Design</span>
-                                                    <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
-                                                            adipiscing elit. </a></h4>
+                                                    <span class="color1">{{$rl->segmen->segmen}}</span>
+                                                    <h4><a href="{{route('blogs.detail',$rl->id)}}">{{$rl->judul}}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,7 +63,7 @@
                         </div>
                         <!-- Right content -->
                         <div class="col-lg-3">
-                            <div class="card card-right">
+                            <div class="card">
                                 <div class="card-body">
                                     <!-- tombol kategori jasa -->
                                     <div class="header container mb-2 mt-3">

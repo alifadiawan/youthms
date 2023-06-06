@@ -70,10 +70,12 @@
                         <div class="form-group text-center m-0">
                             <button class="btn yms-blue w-100">LOGIN</button>
                         </div>
+                        <a class="btn btn-block btn-danger mt-3" href="{{ url('auth/google') }}" type="submit"> <i class="fa-brands fa-google mx-2"></i> Log in with Google</a>
                         <p class="text-center text-muted my-2 ">Or</p>
                         <div class="form-group">
                             <a href="/register" class="btn btn-outline-primary btn-block">Sign up here</a>
                         </div>
+                        </a>
                 </div>
                 </form>
             </div>

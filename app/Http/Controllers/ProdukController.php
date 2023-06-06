@@ -165,9 +165,10 @@ class ProdukController extends Controller
 
     public function showtype($type)
     {
+        $link = str_replace('_',  ' ', $type);
         // mencari id jenis layanan melalui $type
         $layanan = JenisLayanan::all();
-        $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
+        $jenis_layanan =  JenisLayanan::where('layanan', $link)->first();
 
         // mencari services di suatu jenis layanan
         $services = $jenis_layanan->services;
@@ -182,7 +183,7 @@ class ProdukController extends Controller
         $produk = produk::wherein('id', $pr)->get();
 
         // inisialiasi compact
-        $compact = ['layanan', 'produk', 'jenis_layanan', 'cart'];
+        $compact = ['layanan', 'produk', 'jenis_layanan'];
 
         // mengecek apakah user telah login
         if (auth()->check()) {
@@ -194,10 +195,13 @@ class ProdukController extends Controller
             $member = $m->get();
             // mengecek keranjang 
             $cart = cart::where('member_id', $mid)->get();
-            $compact = array_merge($compact, ['user', 'member']);
+            $compact = array_merge($compact, ['user', 'member', 'cart']);
+            return view('EU.store.show', compact($compact));
+        }
+        else {
+            return view('EU.store.show', compact($compact));
         }
 
-        return view('EU.store.show', compact($compact));
     }
 
     /**

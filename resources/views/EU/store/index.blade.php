@@ -1,5 +1,5 @@
 @extends('layout-landing2.body')
-@section('title', 'Store')
+@section('title', ' | Store')
 @section('content')
 
     <!-- hero section -->
@@ -22,12 +22,15 @@
         <div class="d-flex flex-row justify-content-center justify-content-lg-start gap-3">
             {{-- <a href="" class="btn yms-outline-blue rounded-5z">All</a>
             @foreach ($layanan as $l)
-            <a href="{{ route('store.showtype', $l->layanan) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
+            <a href="{{ route('store.showtype', $link) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
             @endforeach --}}
-            <a href="{{ route('store.index') }}" class="text-capitalize my-3 active">All</a>
+            <a href="{{ route('store.index') }}" class="text-capitalize my-3 btn yms-outline rounded-5 active">All</a>
             @foreach ($layanan as $l)
-                <a href="{{ route('store.showtype', $l->layanan) }}"
-                    class=" my-3 text-capitalize active">{{ $l->layanan }}</a>
+            @php
+                $link = str_replace(' ', '_', $l->layanan)
+            @endphp
+                <a href="{{ route('store.showtype', $link) }}"
+                    class=" my-3 text-capitalize btn yms-outline rounded-5 active">{{ $l->layanan }}</a>
             @endforeach
         </div>
     </div>

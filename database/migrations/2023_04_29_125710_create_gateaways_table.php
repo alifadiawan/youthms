@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->string('nama_gateaway');
-            $table->string('nomor_rekening')->nullable();
-            $table->string('nomor_va')->nullable();
+            $table->string('atas_nama');
+            $table->string('nomor_rekening');
+            // $table->string('nomor_va')->nullable();
             $table->timestamps();
         });
     }

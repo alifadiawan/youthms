@@ -119,17 +119,18 @@
                 </div> --}}
                 <form action="">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="d-flex flex-column px-md-5 px-4 mb-4">
-                                <span>Transfer Bank BRI</span>
-                                <div class="inputWithIcon">
-                                    <input class="form-control" type="text" value="92001981045887568">
-                                    <span class="">
-                                        <a class="btn" type="button">
-                                            <img src="{{ asset('illustration/mandiri.webp') }}" alt=""
-                                                style="width: 100%">
-                                        </a>
-                                        {{-- <div class="dropdown">
+                        @foreach ($gateaway as $g)
+                            <div class="col-12">
+                                <div class="d-flex flex-column px-md-5 px-4 mb-4">
+                                    <span>Transfer Lewat {{ $g->nama_gateaway }}</span>
+                                    <div class="inputWithIcon">
+                                        <input class="form-control" type="text" value="{{ $g->nomor_rekening }}">
+                                        <span class="">
+                                            <a class="btn" type="button">
+                                                <img src="{{ asset('illustration/' . $g->image) }}" alt=""
+                                                    style="width: 100%">
+                                            </a>
+                                            {{-- <div class="dropdown">
                                             <ul class="dropdown-menu">
                                                 <li>
                                                     <button class="dropdown-item active" type="button">
@@ -151,26 +152,31 @@
                                                 </li>
                                             </ul>
                                         </div> --}}
-                                    </span>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nama Virtual Account</span>
-                                <div class="inputWithIcon"> <input class="form-control text-uppercase" type="text"
-                                        value="YOUTHMS.ID"> <span class="far fa-user"></span> </div>
+                            <div class="col-12">
+                                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nomor Rekening</span>
+                                    <div class="inputWithIcon"> <input class="form-control text-uppercase" type="text"
+                                            value="{{ $g->atas_nama }}"> <span class="far fa-user"></span> </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nominal Yang Harus Dibayarkan</span>
-                                <div class="inputWithIcon"> <input class="form-control text-uppercase" type="text"
-                                        value="IDR 108.900"> <span class="fas fa-money-bill-wave-alt"></span> </div>
+                            <div class="col-12">
+                                @foreach ($transaksi as $t)
+                                    <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nominal Yang Harus
+                                            Dibayarkan</span>
+                                        <div class="inputWithIcon"> <input class="form-control text-uppercase"
+                                                type="text" value="IDR. {{ number_format($t->total, 0, ',', '.') }}">
+                                            <span class="fas fa-money-bill-wave-alt"></span> </div>
+                                    </div>
+                                @endforeach
                             </div>
-                        </div>
-                        <div class="col-12 px-md-5 px-4 mt-3">
-                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
-                                data-bs-target="#modalKonfirmasi">Konfirmasi Pembayaran</button>
-                        </div>
+                            <div class="col-12 px-md-5 px-4 mt-3">
+                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                    data-bs-target="#modalKonfirmasi">Konfirmasi Pembayaran</button>
+                            </div>
+                        @endforeach
                     </div>
                 </form>
 
@@ -208,6 +214,9 @@
                             </div>
                             <input type="hidden" name="status" value="pending">
                             <input type="hidden" name="transaksi_id" value="{{ $t->id }}">
+                            @foreach ($gateaway as $g)
+                                <input type="hidden" name="gid" value="{{ $g->id }}">
+                            @endforeach
                         @endforeach
                     </div>
                     <div class="modal-footer">
@@ -227,7 +236,7 @@
         <div class="modal-content">
             <div class="modal-header justify-content-center">
                 <div class="icon-box">
-                    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_3GBGBXE9Bv.json"
+                    <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_atippmse.json"
                                 data-aos="fade-down" id="porto-animation" background="transparent" speed="1"
                                 style="width: 100%" loop autoplay></lottie-player>
                 </div>

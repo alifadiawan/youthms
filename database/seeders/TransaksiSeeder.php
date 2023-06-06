@@ -21,7 +21,7 @@ class TransaksiSeeder extends Seeder
                 'tanggal_transaksi' =>   Carbon::parse('2023-04-20'),
                 'unique_code' => 'YMS0000001',
                 'total' => 293039,
-                'total_bayar' => 400000,
+                'total_bayar' => 293039,
                 'member_id' => 2,
             ],
             [
