@@ -16,25 +16,25 @@
                                 <div class="card-body">
                                     <span class="text-dark" style="font-size: 16px; line-height:normal">
                                         <p class="fw-bold">LANGKAH 1 : TEMUKAN ATM TERDEKAT</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item"> Masukkan kartu, kemudian pilih bahasa dan masukkan
+                                        <ol>
+                                            <li> Masukkan kartu, kemudian pilih bahasa dan masukkan
                                                 PIN anda</li>
-                                            <li class="list-group-item">Pilih "Transaksi Lain" dan pilih "Pembayaran"</li>
-                                            <li class="list-group-item">Pilih menu "Lainnya" dan pilih "Briva"</li>
+                                            <li>Pilih "Transaksi Lain" dan pilih "Pembayaran"</li>
+                                            <li>Pilih menu "Lainnya" dan pilih "Briva"</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 2 : DETAIL PEMBAYARAN</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item"> Masukkan Nomor Virtual Account 92001981045887568
+                                        <ol>
+                                            <li> Masukkan Nomor Virtual Account 92001981045887568
                                                 dan jumlah yang ingin anda
                                                 bayarkan</li>
-                                            <li class="list-group-item">Periksa data transaksi dan tekan "YA"</li>
+                                            <li>Periksa data transaksi dan tekan "YA"</li>
                                         </ol>
 
                                         <br>
                                         <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Setelah transaksi anda selesai, Silahkan kirimkan
+                                        <ol>
+                                            <li>Setelah transaksi anda selesai, Silahkan kirimkan
                                                 bukti transfer ke form yang sudah tersedia invoice ini akan
                                                 diupdate secara otomatis. Proses
                                                 ini mungkin
@@ -47,25 +47,25 @@
                                 <div class="card-body">
                                     <span class="text-dark" style="font-size: 16px; line-height:normal">
                                         <p class="fw-bold">LANGKAH 1 : TEMUKAN ATM TERDEKAT</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item"> Masukkan kartu, kemudian pilih bahasa dan masukkan
+                                        <ol>
+                                            <li> Masukkan kartu, kemudian pilih bahasa dan masukkan
                                                 PIN anda</li>
-                                            <li class="list-group-item">Pilih "Transaksi Lain" dan pilih "Pembayaran"</li>
-                                            <li class="list-group-item">Pilih menu "Lainnya" dan pilih "Briva"</li>
+                                            <li>Pilih "Transaksi Lain" dan pilih "Pembayaran"</li>
+                                            <li>Pilih menu "Lainnya" dan pilih "Briva"</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 2 : DETAIL PEMBAYARAN</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item"> Masukkan Nomor Virtual Account 92001981045887568
+                                        <ol>
+                                            <li> Masukkan Nomor Virtual Account 92001981045887568
                                                 dan jumlah yang ingin anda
                                                 bayarkan</li>
-                                            <li class="list-group-item">Periksa data transaksi dan tekan "YA"</li>
+                                            <li>Periksa data transaksi dan tekan "YA"</li>
                                         </ol>
 
                                         <br>
                                         <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Setelah transaksi anda selesai, Silahkan kirimkan
+                                        <ol>
+                                            <li>Setelah transaksi anda selesai, Silahkan kirimkan
                                                 bukti transfer ke form yang sudah tersedia invoice ini akan
                                                 diupdate secara otomatis. Proses
                                                 ini mungkin
@@ -87,23 +87,23 @@
                                 <div class="card-body">
                                     <span class="text-dark" style="font-size: 16px; line-height:normal">
                                         <p class="fw-bold">LANGKAH 1 : BUKA APLIKASI GOJEK</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item"> Klik menu GoPay, lalu klik Pay.</li>
-                                            <li class="list-group-item">Masukkan atau pilih nama yang akan menerima uang di
+                                        <ol>
+                                            <li> Klik menu GoPay, lalu klik Pay.</li>
+                                            <li>Masukkan atau pilih nama yang akan menerima uang di
                                                 Halaman Pay and Send.</li>
-                                            <li class="list-group-item">Tentukan jumlah yang akan dikirim.</li>
+                                            <li>Tentukan jumlah yang akan dikirim.</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 2 : KONFIRMASI PENGIRIMAN SALDO / PEMBAYARAN</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Tentukan jumlah yang akan dikirim.</li>
-                                            <li class="list-group-item">Tekan Confirm & Pay untuk melanjutkan.</li>
-                                            <li class="list-group-item">Masukkan PIN GoPay kamu.</li>
+                                        <ol>
+                                            <li>Tentukan jumlah yang akan dikirim.</li>
+                                            <li>Tekan Confirm & Pay untuk melanjutkan.</li>
+                                            <li>Masukkan PIN GoPay kamu.</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Setelah transaksi anda selesai, Silahkan kirimkan
+                                        <ol>
+                                            <li>Setelah transaksi anda selesai, Silahkan kirimkan
                                                 bukti transfer ke form yang sudah tersedia invoice ini akan
                                                 diupdate secara otomatis. Proses
                                                 ini mungkin
@@ -125,35 +125,35 @@
                                 <div class="card-body">
                                     <span class="text-dark" style="font-size: 16px; line-height:normal">
                                         <p class="fw-bold">LANGKAH 1 : BUKA APLIKASI LINK AJA</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Pada halaman utama aplikasi linkaja, klik menu
+                                        <ol>
+                                            <li>Pada halaman utama aplikasi linkaja, klik menu
                                                 kirim
                                                 uang.</li>
-                                            <li class="list-group-item">Sekarang pilih metode nomor telepon, sebagai
+                                            <li>Sekarang pilih metode nomor telepon, sebagai
                                                 tujuan
                                                 kirim saldo linkaja.</li>
-                                            <li class="list-group-item">Silahkan, masukan nomor handphone linkaja
+                                            <li>Silahkan, masukan nomor handphone linkaja
                                                 tujuan yang
                                                 akan kita transfer.</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 2 : MENGISI NOMINAL TRANSFER</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Pastikan inisial nama pemilik akun linkaja
+                                        <ol>
+                                            <li>Pastikan inisial nama pemilik akun linkaja
                                                 sebagai
                                                 penerima transfer sudah benar, lalu isi nominal transfer. Untuk kolom
                                                 catatan,
                                                 tidak di isi pun gak masalah. Jadi klik saja lanjut.</li>
-                                            <li class="list-group-item">Silahkan perikasa kembali semua rincian
+                                            <li>Silahkan perikasa kembali semua rincian
                                                 transaksi
                                                 transfer sesama linkaja. Jika sesuai semuanya, klik konfirmasi.</li>
-                                            <li class="list-group-item">Sekarang tinggal masukan 6 digit angka pin
+                                            <li>Sekarang tinggal masukan 6 digit angka pin
                                                 linkaja.</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Setelah transaksi anda selesai, Silahkan kirimkan
+                                        <ol>
+                                            <li>Setelah transaksi anda selesai, Silahkan kirimkan
                                                 bukti transfer ke form yang sudah tersedia invoice ini
                                                 akan
                                                 diupdate secara otomatis. Proses
@@ -177,30 +177,30 @@
                                 <div class="card-body">
                                     <span class="text-dark" style="font-size: 16px; line-height:normal">
                                         <p class="fw-bold">LANGKAH 1 : BUKA APLIKASI SHOPEE</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Masuk ke menu ShopeePay yang terletak di
+                                        <ol>
+                                            <li>Masuk ke menu ShopeePay yang terletak di
                                                 halaman utama.</li>
-                                            <li class="list-group-item">Pilih menu “Transfer”.</li>
-                                            <li class="list-group-item">Pilih Transfer ke Kontak</li>
+                                            <li>Pilih menu “Transfer”.</li>
+                                            <li>Pilih Transfer ke Kontak</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 2 : MENGISI IDENTITAS PENERIMA (NO TELEPON)</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Masukkan no. handphone</li>
-                                            <li class="list-group-item">Cari nama kontak atau username Shopee</li>
+                                        <ol>
+                                            <li>Masukkan no. handphone</li>
+                                            <li>Cari nama kontak atau username Shopee</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 3 : MENGISI NOMINAL TRANSFER</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Masukkan nominal yang ingin ditransfer</li>
-                                            <li class="list-group-item">Pilih Lanjutkan</li>
-                                            <li class="list-group-item">Pilih Transfer Sekarang</li>
-                                            <li class="list-group-item">Masukkan PIN ShopeePay.</li>
+                                        <ol>
+                                            <li>Masukkan nominal yang ingin ditransfer</li>
+                                            <li>Pilih Lanjutkan</li>
+                                            <li>Pilih Transfer Sekarang</li>
+                                            <li>Masukkan PIN ShopeePay.</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Setelah transaksi anda selesai, Silahkan kirimkan
+                                        <ol>
+                                            <li>Setelah transaksi anda selesai, Silahkan kirimkan
                                                 bukti transfer ke form yang sudah tersedia invoice ini
                                                 akan
                                                 diupdate secara otomatis. Proses
@@ -223,29 +223,29 @@
                                 <div class="card-body">
                                     <span class="text-dark" style="font-size: 16px; line-height:normal">
                                         <p class="fw-bold">LANGKAH 1 : TEMUKAN ATM TERDEKAT</p>
-                                        <ol>
-                                            <li class="list-group-item">Masukkan kartu, kemudian pilih bahasa dan
+                                        <ol>>
+                                            <li>Masukkan kartu, kemudian pilih bahasa dan
                                                 masukkan
                                                 PIN anda</li>
-                                            <li class="list-group-item">Pilih "Transaksi" dan pilih "Transfer"</li>
-                                            <li class="list-group-item">Pilih menu transfer antar-bank atau transfer ke
+                                            <li>Pilih "Transaksi" dan pilih "Transfer"</li>
+                                            <li>Pilih menu transfer antar-bank atau transfer ke
                                                 bank lain.</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 2 : DETAIL PEMBAYARAN</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Masukkan kode Bank BSI dan nomor rekening.(no rek
+                                        <ol>
+                                            <li>Masukkan kode Bank BSI dan nomor rekening.(no rek
                                                 mas faz)</li>
-                                            <li class="list-group-item">Masukkan nominal transfer ke BSI.</li>
-                                            <li class="list-group-item">Periksa data transaksi dan tekan "YA" / "BENAR"
+                                            <li>Masukkan nominal transfer ke BSI.</li>
+                                            <li>Periksa data transaksi dan tekan "YA" / "BENAR"
                                             </li>
-                                            <li class="list-group-item">Tunggu bukti transfer BSI muncul.</li>
+                                            <li>Tunggu bukti transfer BSI muncul.</li>
                                         </ol>
 
                                         <br>
                                         <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Setelah transaksi anda selesai, Silahkan kirimkan
+                                        <ol>
+                                            <li>Setelah transaksi anda selesai, Silahkan kirimkan
                                                 bukti transfer ke form yang sudah tersedia, invoice ini akan
                                                 diupdate secara otomatis. Proses
                                                 ini mungkin
@@ -267,27 +267,27 @@
                                 <div class="card-body">
                                     <span class="text-dark" style="font-size: 16px; line-height:normal">
                                         <p class="fw-bold">LANGKAH 1 : BUKA APLIKASI BSI MOBILE.</p>
-                                        <ol>
-                                            <li class="list-group-item">Masuk dengan menggunakan akun BSI Mobile Anda.</li>
-                                            <li class="list-group-item">Pada halaman utama, klik menu Transfer.</li>
-                                            <li class="list-group-item">Masukkan kata sandi BSI Mobile Anda.</li>
-                                            <li class="list-group-item">Lalu, klik pada menu Transfer antar Rekening BSI.</li>
+                                        <ol>>
+                                            <li>Masuk dengan menggunakan akun BSI Mobile Anda.</li>
+                                            <li>Pada halaman utama, klik menu Transfer.</li>
+                                            <li>Masukkan kata sandi BSI Mobile Anda.</li>
+                                            <li>Lalu, klik pada menu Transfer antar Rekening BSI.</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 2 : DETAIL TRANSFER</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Tentukan rekening sumber dana.</li>
-                                            <li class="list-group-item">Tentukan tujuan transfer.</li>                                         
-                                            <li class="list-group-item">Masukkan nomor rekening BSI tujuan (no rek mas faza)</li>
-                                            <li class="list-group-item">Masukkan keterangan (opsional), lalu klik Selanjutnya.</li>
-                                            <li class="list-group-item">Periksa kembali informasi mengenai transaksi Anda. pastikan nomor rekening dan nama penerima sudah sesuai. Lalu, klik Transfer.</li>
-                                            <li class="list-group-item">Masukkan PIN BSI Mobile Anda.</li>
+                                        <ol>
+                                            <li>Tentukan rekening sumber dana.</li>
+                                            <li>Tentukan tujuan transfer.</li>                                         
+                                            <li>Masukkan nomor rekening BSI tujuan (no rek mas faza)</li>
+                                            <li>Masukkan keterangan (opsional), lalu klik Selanjutnya.</li>
+                                            <li>Periksa kembali informasi mengenai transaksi Anda. pastikan nomor rekening dan nama penerima sudah sesuai. Lalu, klik Transfer.</li>
+                                            <li>Masukkan PIN BSI Mobile Anda.</li>
                                         </ol>
 
                                         <br>
                                         <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Setelah transaksi anda selesai, Silahkan kirimkan
+                                        <ol>
+                                            <li>Setelah transaksi anda selesai, Silahkan kirimkan
                                                 bukti transfer ke form yang sudah tersedia, invoice ini akan
                                                 diupdate secara otomatis. Proses
                                                 ini mungkin
@@ -309,22 +309,22 @@
                                 <div class="card-body">
                                     <span class="text-dark" style="font-size: 16px; line-height:normal">
                                         <p class="fw-bold">LANGKAH 1 : TEMUKAN ATM TERDEKAT</p>
-                                        <ol>
-                                            <li class="list-group-item">Pilih Transfer antar Bank</li>
-                                            <li class="list-group-item"> Pada Bank Penerima, pilih BTPN atau masukkan kode bank BTPN (213).</li>
-                                            <li class="list-group-item">Lanjutkan dengan masukan nomor rekening Jenius. (no mas faza)</li>
+                                        <ol>>
+                                            <li>Pilih Transfer antar Bank</li>
+                                            <li> Pada Bank Penerima, pilih BTPN atau masukkan kode bank BTPN (213).</li>
+                                            <li>Lanjutkan dengan masukan nomor rekening Jenius. (no mas faza)</li>
                                         </ol>
                                         <br>
                                         <p class="fw-bold">LANGKAH 2 : DETAIL PEMBAYARAN</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Masukkan nominal yang akan ditransfer.</li>
-                                            <li class="list-group-item">Pastikan informasi rekening tujuan sudah sesuai, lalu pilih Benar.</li>
+                                        <ol>
+                                            <li>Masukkan nominal yang akan ditransfer.</li>
+                                            <li>Pastikan informasi rekening tujuan sudah sesuai, lalu pilih Benar.</li>
                                         </ol>
 
                                         <br>
                                         <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item">Setelah transaksi anda selesai, Silahkan kirimkan
+                                        <ol>
+                                            <li>Setelah transaksi anda selesai, Silahkan kirimkan
                                                 bukti transfer ke form yang sudah tersedia, invoice ini akan
                                                 diupdate secara otomatis. Proses
                                                 ini mungkin
@@ -452,4 +452,9 @@
         </div>
     </div>
     {{-- </section> --}}
+    <style>
+        ol li {
+            list-style-type: decimal !important;
+        }
+    </style>
 @endsection
