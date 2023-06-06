@@ -97,6 +97,7 @@ class RequestUserController extends Controller
         // mencari harga total
         $grandtotal = $total + $admin;
 
+
         $req = request_user::where('id', $reqid)->value('transaksi_id');
         $trx = transaksi::where('id', $req)->value('member_id');
         $mid = member::where('id', $trx)->value('user_id');
@@ -131,6 +132,7 @@ class RequestUserController extends Controller
             'note_admin' => $request->note, 
         ]);
 
+
         notify()->success('Status Berhasil Diperbarui !!');
         // mengirim notifikasi
         $uid = $request->user_id;
@@ -143,6 +145,7 @@ class RequestUserController extends Controller
         $notification = new TransaksiNotification($message);
         $notification->setUrl(route('transaksi.history')); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
+
         return redirect()->route('requestuser.index');
 
 
