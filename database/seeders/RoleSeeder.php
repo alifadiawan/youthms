@@ -36,6 +36,15 @@ class RoleSeeder extends Seeder
             [
                 'role' => 'reborn'
             ],
+            [
+                'role' => 'keluarga_besar'
+            ],
+            [
+                'role' => 'tim_kreatif'
+            ],
+            [
+                'role' => 'desainer'
+            ],
         ];
 
         role::insert($role);

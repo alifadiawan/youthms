@@ -3,11 +3,10 @@
 
 
     {{-- lunas --}}
-    <div id="container" class="container mt-5">
+    <div id="container" class="container my-5">
         <a href="{{ route('transaksi.history') }}" class="btn btn-lg mb-3">
             <i class="fas fa-arrow-left"></i>
         </a>
-
 
         <!-- Lunas -->
         @foreach ($trx as $t)
@@ -122,7 +121,109 @@
             {{-- VIEW UTANG --}}
             @if ($pembayaran->isnotempty())
                 @section('title', '| Pending')
-                <hr><span>mancing mania mantab</span>
+                <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
+                    <div class="alert alert-info" role="alert">
+                        <i class="fas fa-message me-2"></i> Hubungi Admin
+                    </div>
+                </a>
+                <div class="card shadow rounded-3">
+                    <div class="row my-3 mx-3 mx-lg-4">
+                        <div class="col-6 col-lg text-start">
+                            <strong>INVOCE</strong>
+                        </div>
+                        <div class="col-6 col-lg text-end text-lg-end">
+                            <p class="text-muted">{{ $t->unique_code }}</p>
+                        </div>
+                    </div>
+
+                    <div class="konten my-lg-0 mx-5">
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    Invoice To
+                                </div>
+                                <div class="row text-muted">
+                                    {{ $t->member->user->email }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
+                                <div class="row">
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0 text-start text-lg-end">Status</div>
+                                    <div class="col text-end text-lg text-primary">
+                                        CHECKING
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
+                                    <div class="col text-end text-lg">
+                                        {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
+                                    </div>
+                                </div>
+                                {{-- <div class="row">
+                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
+                                        <div class="col text-end text-lg">
+                                            31 Mei 2023
+                                        </div>
+                                    </div> --}}
+                                {{-- <div class="row">
+                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Jatuh Tempo</div>
+                                        <div class="col text-end text-lg text-danger">
+                                            10 Hari lagi
+                                        </div>
+                                    </div> --}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="konten mt-3 mx-3">
+                        <table class="table table-bordered">
+                            <thead class="bg-light text-dark">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Barang</th>
+                                    <th>Qty</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($detail as $d)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $d->produk->nama_produk }}</td>
+                                        <td><span id="total-price_">
+                                                {{ number_format($d->quantity) }}</span></td>
+                                        <td> <span id="total-price_">Rp
+                                                {{ number_format($d->quantity * $d->produk->harga, 0, ',', '.') }}</span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" class="text-end">Total</td>
+                                    <td colspan="1" class="">Rp
+                                        {{ number_format($total, 0, ',', '.') }}</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" class="text-end">Biaya admin</td>
+                                    <td colspan="1" class="">Rp
+                                        {{ number_format($admin, 0, ',', '.') }}</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                @foreach ($trx as $t)
+                                    <tr class="h5">
+                                        <td class="text-end fw-bold" colspan="3">Grand Total</td>
+                                        <td class=" fw-bold"><span id="total-transaksi-b">Rp
+                                                {{ number_format($t->total, 0, ',', '.') }}</span></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             @elseif (in_array($t->id, $EU_utang))
             @section('title', '| Lunas')
             <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
@@ -430,7 +531,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
                                     <div class="col text-end text-lg">
                                         {{ date('d F Y', strtotime($r->jatuh_tempo)) }}
                                     </div>
@@ -443,6 +544,12 @@
                                 </div> --}}
                             </div>
                         @endforeach
+                    </div>
+                    <div class="row">
+                        Alasan Ditolak
+                    </div>
+                    <div class="row text-muted">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui facere voluptatum, sunt ut eaque mollitia quibusdam, voluptas consequatur ipsa id fugiat. Iure inventore sit, totam placeat atque fugit temporibus vel?
                     </div>
                 </div>
 
@@ -732,14 +839,7 @@
                 </tbody>
             </table> --}}
 </div>
+
 {{-- </div> --}}
-
-<div class="card my-3">
-    <div class="card-body">
-        <table class="table table-borderless tab"></table>
-    </div>
-</div>
-
-</div>
 
 @endsection

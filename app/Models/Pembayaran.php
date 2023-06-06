@@ -15,8 +15,18 @@ class Pembayaran extends Model
         return $this->belongsTo(transaksi::class);
     }
 
-    public function gateaways()
+    // public function gateaways()
+    // {
+    //     return $this->belongsTo(gateaway::class);
+    // }
+    
+    public function bank()
     {
-        return $this->belongsTo(gateaway::class);
+        return $this->belongsTo(bank::class);
+    }
+
+    public function ewallet()
+    {
+        return $this->belongsTo(ewallet::class);
     }
 }

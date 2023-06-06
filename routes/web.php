@@ -94,6 +94,17 @@ Route::post('/group-chat/join', [GroupChatController::class, 'joinGroup'])->name
 //landing page
 Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 
+Route::get('/paket', function () {
+    return view('Admin.paket.index');
+});
+
+// Route::get('/tambah-paket', function () {
+//     return view('Admin.paket.add');
+// });
+Route::get('/detail-paket', function () {
+    return view('Admin.paket.detail');
+});
+
 
 //history transaksi
 Route::get('/history-transaction', function () {
@@ -115,17 +126,7 @@ Route::resource('blogs', BlogController::class);
 Route::get('blogs/type/{type}', [BlogController::class, 'type'])->name('blogs.type');
 Route::get('blogs/weeklytrend', [BlogController::class, 'partials']);
 Route::get('/blogs/detail/{blog}', [BlogController::class, 'detail'])->name('blogs.detail');
-
-Route::get('/blog/editing', function () {
-    return view('EU.blog.editing');
-});
-Route::get('/blog/design', function () {
-    return view('EU.blog.design');
-});
-
-Route::get('/blog/pemrograman', function () {
-    return view('EU.blog.pemrograman');
-});
+Route::get('/blogs/{type}/show', [BlogController::class, 'showtype'])->name('blogs.showtype');
 
 
 //services

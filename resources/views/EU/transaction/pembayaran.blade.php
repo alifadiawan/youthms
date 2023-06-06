@@ -187,34 +187,33 @@
                                     <div class="accordion-body">
                                         <div class="row">
                                             <div class="col">
-                                                @foreach ($gateaway->take(2) as $g)
-                                                    <form action="{{ route('pembayaran.cara', $g->id) }}" method="GET">
-                                                        @csrf
-                                                        <button type="submit" class="form-control">
-                                                            @foreach ($transaksi as $t)
-                                                                <input type="hidden" name="transaksi_id"
-                                                                    value="{{ $t->id }}">
-                                                            @endforeach
-                                                            {{-- <ul class="list-group"> --}}
-                                                            {{-- <li class="list-group-item"> --}}
+                                                @foreach ($bank as $b)
+                                                    <div class="row">
+                                                        @foreach ($transaksi as $t)
                                                             <div class="row">
-                                                                <div class="col-lg-5">
-                                                                    <a href="/cara" style="justify-content: start"
-                                                                        class="btn" type="button">
-                                                                        <img class="img-thumbnail border-0"
-                                                                            src="{{ asset('illustration/' . $g->image) }}"
-                                                                            style="width:   120px; margin-right:-5px"alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p style="text-align: end; margin-top:20px"
-                                                                        class="fw-bold">Mandiri</p>
-                                                                </div>
+                                                                <ul class="list-group list-group-flush">
+                                                                    <li class="list-group-item">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-5">
+                                                                                <a href="{{ route('pembayaran.cara', ['id' => $b->nama, 'transaksi_id' => $t->id]) }}"
+                                                                                    style="justify-content: start"
+                                                                                    class="btn">
+                                                                                    <img class="img-thumbnail border-0"
+                                                                                        src="{{ asset('illustration/' . $b->image) }}"
+                                                                                        style="width: 80px" alt="">
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="col-lg-7">
+                                                                                <p style="text-align: end; margin-top:18px"
+                                                                                    class="fw-bold">
+                                                                                    {{ $b->nama }}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
-                                                            </li>
-                                                            </ul>
-                                                        </button>
-                                                    </form>
+                                                        @endforeach
+                                                    </div>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -352,41 +351,36 @@
                                     <form action="">
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                @foreach ($gateaway as $g => $item)
-                                                    @if ($g > 1)
-                                                        <div class="row">
-                                                            {{-- <form action="{{ route('pembayaran.cara', $item->id) }}"
-                                                                method="GET">
-                                                                @csrf --}}
-                                                            @foreach ($transaksi as $t)
-                                                                <div class="row">
-                                                                    <ul class="list-group list-group-flush">
-                                                                        <li class="list-group-item">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-5">
-                                                                                    <a href="{{ route('pembayaran.cara', ['id' => $item->id, 'transaksi_id' => $t->id]) }}"
-                                                                                        style="justify-content: start"
-                                                                                        class="btn">
-                                                                                        <img class="img-thumbnail border-0"
-                                                                                        src="{{ asset('illustration/' . $item->image) }}"
-                                                                                            style="width: 80px"
-                                                                                            alt="">
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="col-lg-7">
-                                                                                    <p style="text-align: end; margin-top:18px" class="fw-bold">
-                                                                                    {{ $item->nama_gateaway }}</p>
-                                                                                </div>
+                                                @foreach ($ewallet as $w)
+                                                    <div class="row">
+                                                        @foreach ($transaksi as $t)
+                                                            <div class="row">
+                                                                <ul class="list-group list-group-flush">
+                                                                    <li class="list-group-item">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-5">
+                                                                                <a href="{{ route('pembayaran.cara', ['id' => $w->nama, 'transaksi_id' => $t->id]) }}"
+                                                                                    style="justify-content: start"
+                                                                                    class="btn">
+                                                                                    <img class="img-thumbnail border-0"
+                                                                                        src="{{ asset('illustration/' . $w->image) }}"
+                                                                                        style="width: 80px"
+                                                                                        alt="">
+                                                                                </a>
                                                                             </div>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            @endforeach
-                                                            {{-- </form> --}}
-                                                        </div>
-                                                        <hr>
-                                                    @endif
+                                                                            <div class="col-lg-7">
+                                                                                <p style="text-align: end; margin-top:18px"
+                                                                                    class="fw-bold">
+                                                                                    {{ $w->nama }}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
                                                 @endforeach
+                                                <hr>
                                             </div>
                                         </div>
                                     </form>

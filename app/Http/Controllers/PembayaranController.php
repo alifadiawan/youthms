@@ -8,6 +8,8 @@ use App\Models\Member;
 use App\Models\Transaksi;
 use App\Models\TransaksiDetail;
 use Illuminate\Http\Request;
+use App\Models\bank;
+use App\Models\ewallet;
 use Illuminate\Support\Facades\File;
 
 class PembayaranController extends Controller
@@ -31,7 +33,10 @@ class PembayaranController extends Controller
         $member = member::where('user_id', $user)->pluck('id')->first();
 
         // mencari transaksi id dengan menggunakkan id member
-        $gateaway = gateaway::all();
+        // $gateaway = gateaway::all();
+        $bank = bank::all();
+        $ewallet = ewallet::all();
+
 
         $tid = $id;
         $transaksi = transaksi::where('id', $tid)->get();
@@ -49,7 +54,7 @@ class PembayaranController extends Controller
         $admin = $total * 0.11;
         $grandtotal = $total + $admin;
 
-        $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid', 't', 'transaksi', 'gateaway'];
+        $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid', 't', 'transaksi', 'bank', 'ewallet'];
         return view('EU.transaction.pembayaran', compact($compact));
     }
 
@@ -57,16 +62,20 @@ class PembayaranController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function cara(request $request, $id)
+    public function cara(request $request, $nama)
     {
         // return $id;
+        // return $nama;
         $tid = $request->transaksi_id;
         $transaksi = Transaksi::where('id', $tid)->get();
-        $gateaway = gateaway::where('id', $id)->get();
+        $bank = bank::where('nama', $nama)->get();
+        $ewallet = ewallet::where('nama', $nama)->get();
+        // return $ewallet;
+        // return $gateaway;
         // return $tid;
         // return $transaksi;
 
-        $compact = ['gateaway', 'transaksi'];
+        $compact = ['bank', 'ewallet', 'transaksi'];
         return view('EU.transaction.cara', compact($compact));
     }
 
@@ -88,15 +97,24 @@ class PembayaranController extends Controller
 
         $tid = $request->transaksi_id;
         $transaksi = Transaksi::where('id', $tid)->get();
-        $gateaway = $request->gid;
+        $bank = bank::where('nama', $request->bank)->first();
+        $wallet = ewallet::where('nama', $request->wallet)->first();
         // return $gateaway;
 
-        pembayaran::create([
+        $pembayaran_data = [
             'transaksi_id' => $tid,
             'status' => $request->status,
             'bukti_tf' => $nama_file,
-            'gateaways_id' => $gateaway,
-        ]);
+        ];
+
+        if ($bank) {
+            $pembayaran_data['bank_id'] = $bank->id;
+        } elseif ($wallet) {
+            $pembayaran_data['wallet_id'] = $wallet->id;
+        }
+
+
+        pembayaran::create($pembayaran_data);
 
         notify()->success('Pembayaran Anda Akan Kami Proses !');
         // return view('EU.history.index', $tid);
@@ -119,6 +137,8 @@ class PembayaranController extends Controller
     {
         // $pembayaran = pembayaran::where()->get();
         $tid = $pembayaran->transaksi_id;
+        // return $pembayaran; 
+        $pembayaran = $pembayaran->where('transaksi_id',$tid)->get();
         $transaksi = transaksi::where('id', $tid)->get();
         $detail = transaksidetail::where('transaksi_id', $tid)->get();
         $total = 0;
@@ -129,7 +149,7 @@ class PembayaranController extends Controller
         $admin = $total * 0.11;
         $grandtotal = $total + $admin;
 
-        $compact = ['pembayaran', 'transaksi', 'detail','total','admin','grandtotal'];
+        $compact = ['pembayaran', 'transaksi', 'detail', 'total', 'admin', 'grandtotal'];
         return view('Admin.transaction.detailbukti', compact($compact));
     }
 
