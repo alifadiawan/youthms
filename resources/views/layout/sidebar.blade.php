@@ -101,7 +101,22 @@
                         <p>
                             Store
                         </p>
+                        <i class="right fas fa-angle-left"></i>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('store.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('paket.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Paket</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="/transaksi" class="nav-link">

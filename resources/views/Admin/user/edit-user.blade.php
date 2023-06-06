@@ -36,7 +36,7 @@
                                 <p class="h5 font-weight-bold mb-0">Role</p>
                             </div>
                             <div class="col-sm-9">
-                                @if (auth()->user()->roles->contains('role', 'admin'))
+                                @if (auth()->user()->role->role == 'owner' || auth()->user()->role->role == 'admin')
                                         <select class="form-control form-select" name="role_id" id="role_id">
                                             <option>Pilih Role</option>
                                             @foreach ($role as $r)
@@ -77,7 +77,7 @@
                                 </div>      
                                 <div class="form-group">
                                     <label for="role_id">Role</label>
-                                    @if (auth()->user()->role->role == 'admin')
+                                    @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
                                         <select class="form-control form-select" name="role_id" id="role_id">
                                             <option>Pilih Role</option>
                                             @foreach ($role as $r)

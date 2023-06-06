@@ -26,4 +26,9 @@ class Produk extends Model
     {
         return !$this->cart;
     }
+
+    public function paket()
+    {
+        return $this->belongsToMany(Paket::class, 'paket_produk', 'produk_id', 'paket_id');
+    }
 }

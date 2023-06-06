@@ -5,8 +5,8 @@
 
 
 <div class="container">
-    <a href="/tambah-paket" class="btn yms-blue my-3" data-toggle="modal" data-target="#tambah-paket">Tambah Paket</a>
-    <p class="h1">Maks 4 paket ae g seh ?</p>
+    <a href="#" class="btn yms-blue my-3" data-toggle="modal" data-target="#tambah-paket">Tambah Paket</a>
+    <p class="h1">Paket</p>
     <div class="card shadow">
         <div class="card-body">
             <table class="table">
@@ -19,14 +19,23 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($paket as $p)
                     <tr>
-                        <td>1</td>
-                        <td>Paket A</td>
-                        <td>Web, Poster</td>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$p->nama_paket}}</td>
                         <td>
-                            <a href="" class="btn btn-danger">Hapus</a>
+                        @foreach($p->produk as $pp)
+                            {{$pp->nama_produk}}<br>
+                            {{-- @if(!$loop->last)
+                                ,
+                            @endif --}}
+                        @endforeach
+                        </td>
+                        <td>
+                            <a href="{{route('paket.hapus', $p->id)}}" class="btn btn-danger">Hapus</a>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -41,115 +50,38 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Paket</h5>
             </div>
-            <div class="modal-body">
-
-                <div class="form-group">
-                    <label for="">Nama Paket</label>
-                    <input type="text" class="form-control" name="" id="">
-                </div>
-
-                <!-- checklist -->
-                <div class="form-group m-0">
-                    <label for="">Isi paket</label>
-                    <div class="row row-cols-3 m-0">
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Default checkbox
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Default checkbox
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Default checkbox
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Default checkbox
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Default checkbox
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Default checkbox
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Default checkbox
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Default checkbox
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Default checkbox
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Default checkbox
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Default checkbox
-                                </label>
-                            </div>
-                        </div>
-    
-    
+            <form action="{{route('paket.store')}}" method="post">
+                @csrf
+                <div class="modal-body">
+                    
+                    <div class="form-group">
+                        <label for="nama_paket">Nama Paket</label>
+                        <input type="text" class="form-control" name="nama_paket" id="nama_paket" required>
                     </div>
+
+                    <!-- checklist -->
+                    <div class="form-group m-0">
+                        <label for="isi_paket">Isi paket</label>
+                        <div class="row row-cols-3 m-0">
+                            @foreach($produk as $pr)
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="{{$pr->id}}" id="produk{{ $pr->id }}" name="isi_paket[]">
+                                    <label class="form-check-label" for="produk{{ $pr->id }}">
+                                        {{$pr->nama_produk}}
+                                    </label>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    
                 </div>
-                
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary">Tambah</button>
-                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Tambah</button>
+                    <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
