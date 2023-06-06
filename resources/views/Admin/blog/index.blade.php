@@ -6,10 +6,10 @@
     <div class="col-lg-9">
         <div class="card p-3">
             @if (count($segmen) > 0)
-                <a href="{{ route('blog.create') }}" class="btn btn-md text-white rounded mb-2 mr-1"
+                <a href="{{ route('blogs.create') }}" class="btn btn-md text-white rounded mb-2 mr-1"
                     style="background-color: #1864BA; width: 17%;">Tambah Artikel</a>
             @else
-                <a href="{{ route('blog.create') }}" class="btn btn-md text-white rounded mb-2 mr-1 disabled"
+                <a href="{{ route('blogs.create') }}" class="btn btn-md text-white rounded mb-2 mr-1 disabled"
                     style="background-color: #1864BA; width: 17%;">Tambah Artikel</a>
             @endif
             <table class="table table-striped table-hover mt-2">
@@ -37,7 +37,7 @@
                                 <td>{{ $i->users->username}}</td>
                                 <td>{{ $i->segmen->segmen }}</td>
                                 <td>
-                                    <a href="{{ route('blog.show', $i->id) }}"
+                                    <a href="{{ route('blogs.show', $i->id) }}"
                                         class="btn btn-sm btn text-white rounded-pill"
                                         style="background-color: #0EA1E2">Detail</a>
                                 </td>

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('segmen', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('segmen');
+            $table->string('warna_latarbelakang')->nullable();
             $table->timestamps();
         });
     }

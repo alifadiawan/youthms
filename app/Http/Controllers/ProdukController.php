@@ -43,6 +43,8 @@ class ProdukController extends Controller
         // mencari id produk yang banyak di minati di tabel produk 
         $populer = produk::whereIn('id', $produkpopuler)->with(['services', 'services.jenis_layanan'])->get();
 
+        // return $populer;
+
         // inisialisasi $layanan & $populer
         $compact = ['layanan', 'populer'];
 
@@ -76,9 +78,10 @@ class ProdukController extends Controller
     //     return response()->json(['quantity' => $quantity]);
     // }
 
-    public function updateQuantity(Request $request, $productId)
+    public function updateQuantity(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'productId' => 'required',
             'quantity' => 'required|integer|min:1'
         ]);
 
@@ -86,12 +89,16 @@ class ProdukController extends Controller
             return response()->json(['success' => false, 'message' => $validator->errors()], 400);
         }
 
+        $productId = $request->input('productId');
+        $newQuantity = $request->input('quantity');
+
         $cart = Cart::where('produk_id', $productId)->first();
         if (!$cart) {
             return response()->json(['success' => false, 'message' => 'Cart not found'], 404);
         }
 
-        $cart->quantity = $request->input('quantity');
+        // $cart->quantity = $request->input('quantity');
+        $cart->quantity = $newQuantity;
         $cart->save();
 
         return response()->json(['success' => true, 'message' => 'Quantity updated successfully']);
@@ -158,9 +165,10 @@ class ProdukController extends Controller
 
     public function showtype($type)
     {
+        $link = str_replace('_',  ' ', $type);
         // mencari id jenis layanan melalui $type
         $layanan = JenisLayanan::all();
-        $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
+        $jenis_layanan =  JenisLayanan::where('layanan', $link)->first();
 
         // mencari services di suatu jenis layanan
         $services = $jenis_layanan->services;
@@ -175,7 +183,7 @@ class ProdukController extends Controller
         $produk = produk::wherein('id', $pr)->get();
 
         // inisialiasi compact
-        $compact = ['layanan', 'produk', 'jenis_layanan', 'cart'];
+        $compact = ['layanan', 'produk', 'jenis_layanan'];
 
         // mengecek apakah user telah login
         if (auth()->check()) {
@@ -187,10 +195,13 @@ class ProdukController extends Controller
             $member = $m->get();
             // mengecek keranjang 
             $cart = cart::where('member_id', $mid)->get();
-            $compact = array_merge($compact, ['user', 'member']);
+            $compact = array_merge($compact, ['user', 'member', 'cart']);
+            return view('EU.store.show', compact($compact));
+        }
+        else {
+            return view('EU.store.show', compact($compact));
         }
 
-        return view('EU.store.show', compact($compact));
     }
 
     /**

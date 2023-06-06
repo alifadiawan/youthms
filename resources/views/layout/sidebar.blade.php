@@ -65,7 +65,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/blog" class="nav-link">
+                    <a href="{{route('blogs.index')}}" class="nav-link">
                         <i class=" nav-icon fa-brands fa-readme"></i>
                         <p>
                             Blog
@@ -125,6 +125,15 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Status Kredit
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('pembayaran.list') }}" class="nav-link">
+
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Detail Bayar
                                 </p>
                             </a>
                         </li>

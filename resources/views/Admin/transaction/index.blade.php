@@ -34,17 +34,22 @@
                         @elseif(in_array($t->id, $up))
                             <td>
                                 <button disabled="disabled" class="btn btn-sm btn-info"></button><span
-                                    class="badge">pending</span>
+                                    class="badge">Pending</span>
                             </td>
                         @elseif(in_array($t->id, $ud))
                             <td>
                                 <button disabled="disabled" class="btn btn-sm btn-dark"></button><span
-                                    class="badge">declined</span>
+                                    class="badge">Declined</span>
                             </td>
                         @elseif(in_array($t->id, $ul))
                             <td>
                                 <button disabled="disabled" class="btn btn-sm btn-success"></button><span
                                     class="badge">Lunas</span>
+                            </td>
+                        @elseif(in_array($t->id, $uc))
+                            <td>
+                                <button disabled="disabled" class="btn btn-sm btn-primary"></button><span
+                                    class="badge">Checking</span>
                             </td>
                         @endif
                         <td>

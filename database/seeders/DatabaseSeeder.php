@@ -24,16 +24,20 @@ class DatabaseSeeder extends Seeder
 
             // end user
             MemberSeeder::class,
-            TransaksiSeeder::class,
-            DetailTransaksiSeeder::class,
-
+            
             // produk
             Jenis_LayananSeeder::class,
             ServicesSeeder::class,
             ServicesIllsSeeder::class,
             ProdukSeeder::class,
+            
+            
+            // transaksi
+            TransaksiSeeder::class,
+            GateawaySeeder::class,
             TransaksiDetailSeeder::class,
             RequestUserSeeder::class,
+            PembayaranSeeder::class,
             TerminSeeder::class,
 
             //misc

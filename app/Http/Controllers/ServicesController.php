@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JenisLayanan;
 use App\Models\Services;
+use App\Models\Produk;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
@@ -20,10 +21,50 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $services = Services::paginate(5);
         $jenis_layanan = JenisLayanan::all();
+        $ills = ServicesIlls::all();
+        $aplikasi = Produk::whereHas('services', function ($query) {
+            $query->whereHas('jenis_layanan', function ($query) {
+                $query->where('layanan', 'aplikasi');
+            });
+        })->get();
+
+        $digital_marketing = Produk::whereHas('services', function ($query) {
+            $query->whereHas('jenis_layanan', function ($query) {
+                $query->where('layanan', 'digital marketing');
+            });
+        })->get();
+
+        $desain_grafis = Produk::whereHas('services', function ($query) {
+            $query->whereHas('jenis_layanan', function ($query) {
+                $query->where('layanan', 'desain grafis');
+            });
+        })->get();
+
+        $editing = Produk::whereHas('services', function ($query) {
+            $query->whereHas('jenis_layanan', function ($query) {
+                $query->where('layanan', 'editing');
+            });
+        })->get();
+        // return $aplikasi;
         
-        return view('Admin.services.index', compact('services', 'jenis_layanan'));
+        if (auth()->check()) {
+            $u = auth()->user()->role->role;
+            $admin = ['admin', 'owner'];
+            if (in_array($u, $admin)) {
+                $services = Services::paginate(5);
+                return view('Admin.services.index', compact('services', 'jenis_layanan'));
+            }
+            else {
+                $services = Services::all();
+                return view('EU.services.index', compact('services', 'jenis_layanan', 'aplikasi', 'digital_marketing', 'desain_grafis', 'editing', 'ills'));
+            }
+        }
+        else {
+            $services = Services::all();
+            return view('EU.services.index', compact('services', 'jenis_layanan', 'aplikasi', 'digital_marketing', 'desain_grafis', 'editing', 'ills'));
+        }
+
     }
 
     /**
@@ -185,9 +226,22 @@ class ServicesController extends Controller
     public function show($id)
     {
         $services = Services::find($id);
+        $produk = Produk::find($id);
         $jenis_layanan = JenisLayanan::find($id);
         
-        return view('Admin.services.detail', compact('services', 'jenis_layanan'));
+        if (auth()->check()) {
+            $u = auth()->user()->role->role;
+            $admin = ['admin', 'owner'];
+
+            if (in_array($u, $admin)) {
+                return view('Admin.services.detail', compact('services', 'jenis_layanan'));
+            } else {
+                return view('EU.services.detail', compact('produk', 'jenis_layanan'));
+            }
+        }
+        else {
+            return view('EU.services.detail', compact('produk', 'jenis_layanan'));
+        }
     }
 
     /**

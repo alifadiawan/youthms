@@ -1,5 +1,5 @@
 @extends('layout-landing2.body')
-@section('title', 'Store')
+@section('title', ' | Store')
 @section('content')
 
     <!-- hero section -->
@@ -8,7 +8,7 @@
             <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
             <div id="caption">
                 <h3 class="text-white text-wrap">wawasdwa</h3>
-                <p class="text-white text-wrap">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus
+                <p id="text" class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus
                     fugit
                     pariatur, magnam aliquam et qui hic corporis odio neque nobis doloribus quidem delectus saepe commodi
                     illum minima blanditiis nostrum quod.</p>
@@ -19,15 +19,18 @@
 
     <!-- tombol kategori jasa -->
     <div class="container mb-5 mt-3">
-        <div class="d-flex flex-row text-center gap-3">
+        <div class="d-flex flex-row justify-content-center justify-content-lg-start gap-3">
             {{-- <a href="" class="btn yms-outline-blue rounded-5z">All</a>
             @foreach ($layanan as $l)
-            <a href="{{ route('store.showtype', $l->layanan) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
+            <a href="{{ route('store.showtype', $link) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
             @endforeach --}}
-            <a href="{{ route('store.index') }}" class="text-capitalize my-3 active">All</a>
+            <a href="{{ route('store.index') }}" class="text-capitalize my-3 btn yms-outline rounded-5 active">All</a>
             @foreach ($layanan as $l)
-                <a href="{{ route('store.showtype', $l->layanan) }}"
-                    class=" my-3 text-capitalize active">{{ $l->layanan }}</a>
+            @php
+                $link = str_replace(' ', '_', $l->layanan)
+            @endphp
+                <a href="{{ route('store.showtype', $link) }}"
+                    class=" my-3 text-capitalize btn yms-outline rounded-5 active">{{ $l->layanan }}</a>
             @endforeach
         </div>
     </div>
@@ -46,14 +49,14 @@
                 <div class="col-lg col-md-4 col-6 my-2">
                     <div class="card border-0 shadow">
                         <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
-                            style="width: 15.3rem; height: 15.3rem">
+                            style="max-width: 15.3rem; height: 15.3rem; object-fit:cover;">
                         <div class="card-body">
                             <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                             {{-- <p class="card-title text-secondary">{{ $p->services->judul }}</p> --}}
                             <p class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
                             @guest
                                 <a href="{{ route('authcheck') }}" class="btn yms-blue w-100 rounded-5">
-                                    <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                                    <i class="fa-solid fa-cart-plus"></i> Buy
                                 </a>
                             @endguest
 
@@ -81,11 +84,10 @@
                                                     </button>
 
                                                     <div class="form-outline">
-                                                        <input id="form_{{ $cart->where('produk_id', $p->id)->value('id') }}"
+                                                        <input id="form_{{ $p->id }}" min="1" name="quantity"
                                                             onchange="updateQuantity(this)"
                                                             value="{{ $cart->where('produk_id', $p->id)->value('quantity') }}"
-                                                            min="1" name="quantity" type="number" class="form-control"
-                                                            readonly />
+                                                            type="number" class="form-control" readonly />
                                                     </div>
 
                                                     <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
@@ -93,20 +95,6 @@
                                                         <i class="fas fa-plus"></i>
                                                     </button>
 
-                                                    {{-- <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
-                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                        <i class="fas fa-minus"></i>
-                                                    </button>
-
-                                                    <div class="form-outline">
-                                                        <input id="form_{{ $p->id }}" min="1" name="quantity"
-                                                            value="1" type="number" class="form-control" readonly />
-                                                    </div>
-
-                                                    <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
-                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                        <i class="fas fa-plus"></i>
-                                                    </button> --}}
                                                 </div>
                                                 <!-- Quantity -->
                                             </div>
@@ -197,13 +185,13 @@
 
         <div class="row">
             @foreach ($layanan as $l)
-                <p class="h2 fw-bold mt-5">{{ $l->layanan }}</p>
+                <p class="h2 fw-bold mt-5 text-capitalize">{{ $l->layanan }}</p>
                 @foreach ($l->services as $ls)
                     @foreach ($ls->produk as $p)
                         <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="card card-hover border-0 shadow">
                                 <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
-                                    style="width: 19rem; height: 19rem">
+                                    style="max-width: 19rem; height: 19rem">
                                 <div class="card-body">
                                     <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                                     <p class="card-title text-secondary">{{ $ls->judul }}</p>
@@ -215,14 +203,6 @@
                                     @endguest
 
                                     @auth
-                                        {{-- @if (empty($member))
-                                            <div class="row">
-                                                <a href="{{ route('user.show', $user) }}"
-                                                    class="btn w-100 rounded-5 px-0 px-lg-3">
-                                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                                </a>
-                                            </div>
-                                        @else --}}
                                         @if (auth()->user()->hasIncompleteProfile())
                                             <a type="submit" href="{{ route('user.show', auth()->user()->id) }}"
                                                 class="btn yms-blue w-100 rounded-5 px-0 px-lg-3" disabled>
@@ -232,61 +212,23 @@
                                             <div class="row rows-cols-2 gx-2 gy-2 bg-light">
                                                 <div class="col-lg-9 col-12">
                                                     <div class="d-flex gap-0">
-                                                        {{-- <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                        <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
+                                                            onclick="decreaseQuantity(this)">
                                                             <i class="fas fa-minus"></i>
                                                         </button>
 
                                                         <div class="form-outline">
-                                                            <input id="form1" min="1" name="quantity"
-                                                                value="1" type="number" class="form-control"
-                                                                readonly />
+                                                            <input id="form_{{ $p->id }}" min="1"
+                                                                name="quantity" onchange="updateQuantity(this)"
+                                                                value="{{ $cart->where('produk_id', $p->id)->value('quantity') }}"
+                                                                type="number" class="form-control" readonly />
                                                         </div>
 
                                                         <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                            onclick="increaseQuantity(this)">
                                                             <i class="fas fa-plus"></i>
-                                                        </button> --}}
-                                                        {{-- @foreach ($cart as $c)
-                                                            <button class="btn btn-outline-primary me-2"
-                                                                onclick="decreaseQuantity(this);">
-                                                                <i class="fas fa-minus"></i>
-                                                            </button>
+                                                        </button>
 
-                                                            <div class="form-outline">
-                                                                <input id="quantity_{{ $c->id }}" min="1"
-                                                                    name="quantity" value="{{ $c->quantity }}"
-                                                                    type="number" class="form-control"
-                                                                    onchange="updateQuantity(this)" readonly />
-                                                            </div>
-
-                                                            <button class="btn btn-outline-primary ms-2" id="plus"
-                                                                onclick="increaseQuantity(this)">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                        @endforeach --}}
-                                                        <div class="form-outline">
-                                                            {{-- <button
-                                                                class="btn btn-sm yms-blue rounded-5 px-3 me-2 decrease-quantity-btn"
-                                                                onclick="decreaseQuantity(this)">
-                                                                <i class="fas fa-minus"></i>
-                                                            </button> --}}
-                                                        </div>
-
-                                                        <div class="form-outline">
-                                                            {{-- <input id="quantity_input_{{ $c->produk_id }}" class="form-control" type="number"
-                                                                    value="{{ $c->quantity }}" readonly> --}}
-                                                            {{-- <input id="quantity_input_{{ $p->id }}" class="form-control" type="number"
-                                                                    value="{{ $cart }}" readonly> --}}
-                                                        </div>
-
-                                                        <div class="form-outline">
-                                                            {{-- <button
-                                                                class="btn btn-sm yms-blue rounded-5 px-3 me-2 increase-quantity-btn"
-                                                                onclick="increaseQuantity(this)">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button> --}}
-                                                        </div>
                                                     </div>
                                                     <!-- Quantity -->
                                                 </div>
@@ -327,7 +269,7 @@
     </div>
 
 
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
         function decreaseQuantity(button) {
@@ -348,39 +290,26 @@
 
         function updateQuantity(input) {
             var productId = $(input).attr('id').split('_')[1];
+            var newQuantity = $(input).val();
 
             $.ajax({
                 url: '{{ route('api.update.cart') }}',
                 method: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}',
-                    quantity: $(input).val(),
+                    quantity: newQuantity,
                     productId: productId
                 },
                 success: function(response) {
-                    
+                    // Tindakan setelah berhasil memperbarui quantity
+                    console.log('Quantity berhasil diperbarui');
+                },
+                error: function(xhr, status, error) {
+                    // Tindakan jika terjadi kesalahan
+                    console.log('Error updating quantity:', error);
                 }
             });
         }
-
-
-
-        // function updateQuantity(productId, newQuantity) {
-        //     var input = $(input).attr('id').split('_')[1];
-        //     var cartId = input.getAttribute('id').split('_')[1];
-
-        //     $.ajax({
-        //         url: '{{ route('api.update.cart') }}',
-        //         method: 'POST',
-        //         data: {
-        //             _token: '{{ csrf_token() }}',
-        //             quantity: newQuantity  
-        //         },
-        //         success: function(response) {
-        //             // Tindakan setelah berhasil memperbarui quantity
-        //         }
-        //     });
-        // }
 
         window.onload = function() {
             let scrollPosition = sessionStorage.getItem('scrollPosition');

@@ -1,23 +1,23 @@
 @extends('layout-landing2.body')
 {{-- @extends('layout-landing.body') --}}
 @section('content')
-
     <!-- ======= Hero Section ======= -->
     <section class="hero" id="hero" class="d-flex align-items-center">
         <div class="container">
-            <div class="row" >
-                <div class="col-lg-6 d-flex flex-column justify-content-center order-2 order-lg-1"
-                    data-aos="fade-up" data-aos-delay="200">
-                    <h1>Gather more customers in your business area</h1>
-                    <h2>YouthMS.id is a start up company that focus on creating
-                        website, design, and editing correspondence.</h2>
-                    <h3>
-                        We Will Help You to Expand Your Busniess
-                    </h3>
+            <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center order-2 mt-5 mt-lg-0 order-lg-1" data-aos="fade-up"
+                    data-aos-delay="200">
+                    @foreach ($text as $item)
+                        <h1>{{ $item->mainline }}</h1>
+                        <h2>{{ $item->secondline }}</h2>
+                        <h3 class="text-lg-start text-center">{{ $item->thirdline }}</h3>
+                    @endforeach
                 </div>
-                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="{{ asset('illustration/group-390.png') }}" class="img-fluid" alt="">
-                </div>
+                @foreach ($illustration as $i)
+                    <div class="col-lg-6 order-1 order-lg-2 hero-img align-items-center" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="{{ asset('./illustration/' . $i->illustration) }}" class="img-fluid">
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -31,33 +31,16 @@
                 <h2 class="text-dark">Our Services</h2>
             </div>
             <div class="row justify-content-around">
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="icon-box">
-                        <h4>Aplikasi</h4>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        <a href="" class="">Lihat lebih lanjut</a>
+                @foreach ($jenis_layanan as $item)
+                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch my-4 mt-md-0" data-aos="zoom-in"
+                        data-aos-delay="200">
+                        <div class="icon-box text-center text-lg-start">
+                            <h4 class="text-center text-uppercase text-lg-start">{{$item->layanan}}</h4>
+                            <p>{{$item->deskripsi}}</p>
+                            <a href="{{route('services.index')}}" class="">Lihat lebih lanjut</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="icon-box">
-                        <h4>Design</h4>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        <a href="/services/all" class="">Lihat lebih lanjut</a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="icon-box">
-                        <h4>Editing</h4>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        <a href="/services/all" class="">Lihat lebih lanjut</a>
-                    </div>
-                </div>
+                @endforeach
                 {{-- <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
                     data-aos-delay="200">
                     <div class="icon-box">
@@ -82,38 +65,42 @@
                 <h2 class="text-center">Choose what you need now</h2>
             </div>
 
-            <div class="row justify-content-center">
+            <div class="row justify-content-between">
 
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="icon-box text-center">
+                    data-aos-delay="200" >
+                    <div class="icon-box text-center" style="width: 20rem">
                         <h4><a href="">Paket A</a></h4>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        <a href="" class="btn yms-blue mt-4">Detail</a>
+                        <p>Full Marketing Web</p>
+                        <p>Logo for business web</p>
+                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-                    data-aos-delay="300">
-                    <div class="icon-box text-center">
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                    data-aos-delay="200">
+                    <div class="icon-box text-center" style="width: 20rem">
                         <h4><a href="">Paket B</a></h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                        <a href="" class="btn yms-blue mt-4">Detail</a>
+                        <p>Full Marketing Web</p>
+                        <p>Logo for business web</p>
+                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-                    data-aos-delay="300">
-                    <div class="icon-box text-center">
-                        <h4><a href="">Paket B</a></h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                        <a href="" class="btn yms-blue mt-4">Detail</a>
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                    data-aos-delay="200">
+                    <div class="icon-box text-center" style="width: 20rem">
+                        <h4><a href="">Paket C</a></h4>
+                        <p>Full Marketing Web</p>
+                        <p>Logo for business web</p>
+                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-                    data-aos-delay="300">
-                    <div class="icon-box text-center">
-                        <h4><a href="">Paket B</a></h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                        <a href="" class="btn yms-blue mt-4">Detail</a>
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                    data-aos-delay="200">
+                    <div class="icon-box text-center" style="width: 20rem">
+                        <h4><a href="">Paket D</a></h4>
+                        <p>Full Marketing Web</p>
+                        <p>Logo for business web</p>
+                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
                     </div>
                 </div>
 
@@ -132,29 +119,11 @@
 
             <div class="row justify-content-center" data-aos="zoom-in">
 
-                <div class="col-lg-3 col-md-4 col-sm-7 d-flex align-items-center justify-content-center">
-                    <img src="EU/img/clients/client-1.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-7 d-flex align-items-center justify-content-center">
-                    <img src="EU/img/clients/client-2.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-7 d-flex align-items-center justify-content-center">
-                    <img src="EU/img/clients/client-3.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-7 d-flex align-items-center justify-content-center">
-                    <img src="EU/img/clients/client-4.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-7 d-flex align-items-center justify-content-center">
-                    <img src="EU/img/clients/client-5.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-7 d-flex align-items-center justify-content-center">
-                    <img src="EU/img/clients/client-6.png" class="img-fluid" alt="">
-                </div>
+                @foreach ($partner as $item)
+                    <div class="col-lg-3 col-md-4 col-sm-7 d-flex align-items-center justify-content-center">
+                        <img src="{{ asset('./partner/'.$item->partner) }}" class="img-fluid" alt="">
+                    </div>
+                @endforeach
 
             </div>
 
@@ -168,79 +137,30 @@
         <!-- Carousel wrapper -->
         <div id="carouselExampleControls" class="carousel slide text-center text-white" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="rounded-circle shadow-1-strong mb-4"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar"
-                        style="width: 150px;" />
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-lg-8">
-                            <h5 class="mb-3">Maria Kate</h5>
-                            <p>Photographer</p>
-                            <p class="">
-                                <i class="fas fa-quote-left pe-2"></i>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
-                                nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia
-                                fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit
-                                doloremque.
-                            </p>
+                @foreach ($testi as $item)
+                    <div class="carousel-item active">
+                        <img class="rounded-circle shadow-1-strong mb-4" src="{{ asset('./testimonial/'.$item->foto) }}"
+                            alt="avatar" style="width: 150px;" />
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-8">
+                                <h5 class="mb-3">{{$item->nama}}</h5>
+                                <p>{{ $item->jabatan }}</p>
+                                <p class="">
+                                    <i class="fas fa-quote-left pe-2"></i>
+                                    {{ $item->review }}
+                                    <i class="fas fa-quote-right ps-2"></i>
+                                </p>
+                            </div>
                         </div>
+                        {{-- <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                            <li><i class="fas fa-star fa-sm"></i></li>
+                            <li><i class="fas fa-star fa-sm"></i></li>
+                            <li><i class="fas fa-star fa-sm"></i></li>
+                            <li><i class="fas fa-star fa-sm"></i></li>
+                            <li><i class="far fa-star fa-sm"></i></li>
+                        </ul> --}}
                     </div>
-                    <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
-                        <li><i class="fas fa-star fa-sm"></i></li>
-                        <li><i class="fas fa-star fa-sm"></i></li>
-                        <li><i class="fas fa-star fa-sm"></i></li>
-                        <li><i class="fas fa-star fa-sm"></i></li>
-                        <li><i class="far fa-star fa-sm"></i></li>
-                    </ul>
-                </div>
-                <div class="carousel-item">
-                    <img class="rounded-circle shadow-1-strong mb-4"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar"
-                        style="width: 150px;" />
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-lg-8">
-                            <h5 class="mb-3">John Doe</h5>
-                            <p>Web Developer</p>
-                            <p class="">
-                                <i class="fas fa-quote-left pe-2"></i>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
-                                nesciunt sint eligendi reprehenderit reiciendis.
-                            </p>
-                        </div>
-                    </div>
-                    <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
-                        <li><i class="fas fa-star fa-sm"></i></li>
-                        <li><i class="fas fa-star fa-sm"></i></li>
-                        <li><i class="fas fa-star fa-sm"></i></li>
-                        <li><i class="fas fa-star fa-sm"></i></li>
-                        <li><i class="far fa-star fa-sm"></i></li>
-                    </ul>
-                </div>
-                <div class="carousel-item">
-                    <img class="rounded-circle shadow-1-strong mb-4"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp" alt="avatar"
-                        style="width: 150px;" />
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-lg-8">
-                            <h5 class="mb-3">Anna Deynah</h5>
-                            <p>UX Designer</p>
-                            <p class="">
-                                <i class="fas fa-quote-left pe-2"></i>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
-                                nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia
-                                fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit
-                                doloremque.
-                            </p>
-                        </div>
-                    </div>
-                    <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
-                        <li><i class="fas fa-star fa-sm"></i></li>
-                        <li><i class="fas fa-star fa-sm"></i></li>
-                        <li><i class="fas fa-star fa-sm"></i></li>
-                        <li><i class="fas fa-star fa-sm"></i></li>
-                        <li><i class="far fa-star fa-sm"></i></li>
-                    </ul>
-                </div>
+                @endforeach
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
                 data-bs-slide="prev">

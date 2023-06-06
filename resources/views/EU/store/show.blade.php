@@ -1,5 +1,5 @@
 @extends('layout-landing2.body')
-@section('title', 'Editing')
+@section('title', ' | Store')
 @section('content')
 
 
@@ -18,12 +18,18 @@
     <div class="container mb-5 mt-3">
         {{-- navbar kategori --}}
         <div class="d-flex flex-row text-center gap-3">
-            <a href="/store" class="btn yms-outline-blue rounded-5 active">All</a>
+            {{-- <a href="" class="btn yms-outline-blue rounded-5z">All</a>
             @foreach ($layanan as $l)
-                <a href="{{ route('store.showtype', $l->layanan) }}"
-                    class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
+            <a href="{{ route('store.showtype', $link) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
+            @endforeach --}}
+            <a href="{{ route('store.index') }}" class="text-capitalize my-3 btn yms-outline rounded-5 active">All</a>
+            @foreach ($layanan as $l)
+            @php
+                $link = str_replace(' ', '_', $l->layanan)
+            @endphp
+                <a href="{{ route('store.showtype', $link) }}"
+                    class=" my-3 text-capitalize btn yms-outline rounded-5 active">{{ $l->layanan }}</a>
             @endforeach
-
         </div>
         @if (count($errors) > 0)
             <div class="alert alert-success" role="alert">
@@ -41,7 +47,7 @@
             @foreach ($produk as $p)
                 <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
                     <div class="card card-hover border-0 shadow">
-                        <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('produk/'.$p->foto) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                             <p class="card-title text-secondary">{{ $p->services->judul }}</p>
@@ -68,17 +74,19 @@
                                         <div class="col-lg-9 col-12">
                                             <div class="d-flex gap-0">
                                                 <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                    onclick="decreaseQuantity(this)">
                                                     <i class="fas fa-minus"></i>
                                                 </button>
 
                                                 <div class="form-outline">
-                                                    <input id="form1" min="1" name="quantity" value="1"
+                                                    <input id="form_{{ $p->id }}" min="1" name="quantity"
+                                                        onchange="updateQuantity(this)"
+                                                        value="{{ $cart->where('produk_id', $p->id)->value('quantity') }}"
                                                         type="number" class="form-control" readonly />
                                                 </div>
 
                                                 <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                    onclick="increaseQuantity(this)">
                                                     <i class="fas fa-plus"></i>
                                                 </button>
                                             </div>
@@ -232,4 +240,59 @@
         </div> --}}
 
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function decreaseQuantity(button) {
+            var input = $(button).siblings('.form-outline').find('input');
+            var quantity = parseInt(input.val());
+
+            if (quantity > 1) {
+                input.val(quantity - 1).trigger('change');
+            }
+        }
+
+        function increaseQuantity(button) {
+            var input = $(button).siblings('.form-outline').find('input');
+            var quantity = parseInt(input.val());
+
+            input.val(quantity + 1).trigger('change');
+        }
+
+        function updateQuantity(input) {
+            var productId = $(input).attr('id').split('_')[1];
+            var newQuantity = $(input).val();
+
+            $.ajax({
+                url: '{{ route('api.update.cart') }}',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    quantity: newQuantity,
+                    productId: productId
+                },
+                success: function(response) {
+                    // Tindakan setelah berhasil memperbarui quantity
+                    console.log('Quantity berhasil diperbarui');
+                },
+                error: function(xhr, status, error) {
+                    // Tindakan jika terjadi kesalahan
+                    console.log('Error updating quantity:', error);
+                }
+            });
+        }
+
+        window.onload = function() {
+            let scrollPosition = sessionStorage.getItem('scrollPosition');
+            if (scrollPosition) {
+                window.scrollTo(0, scrollPosition);
+                sessionStorage.removeItem('scrollPosition');
+            }
+        };
+
+        window.onbeforeunload = function() {
+            sessionStorage.setItem('scrollPosition', window.pageYOffset);
+        };
+    </script>
+
 @endsection

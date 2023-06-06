@@ -86,7 +86,6 @@
                                     <!-- Price -->
                                 </div>
                             </div>
-                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                             <!-- Single item -->
                             <hr>
                         @endforeach
@@ -152,7 +151,7 @@
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
                                 {{ $c->produk->nama_produk }}
-                                <span id="qty{{ $c->id }}">{{ $c->quantity }}x</span>
+                                <span id="qty_{{ $c->id }}">{{ $c->quantity }}x</span>
                                 <span id="total-price_{{ $c->id }}">Rp.
                                     {{ number_format($c->quantity * $c->produk->harga, 0, ',', '.') }}</span>
                             </li>
@@ -188,6 +187,8 @@
     </section>
 
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function updateQuantity(input) {
             var cartId = $(input).attr('id').split('_')[1];
@@ -206,7 +207,7 @@
                     var formattedPrice = response.item_total_price.toLocaleString('id-ID');
                     formattedPrice = formattedPrice.replace(".", ",");
                     $('#total-price_' + cartId).text("Rp. " + formattedPrice);
-                    $('#qty' + cartId).text(newQuantity + "x");
+                    $('#qty_' + cartId).text(newQuantity + "x");
                 }
             });
 
@@ -239,6 +240,9 @@
             var input = $(button).siblings('.form-outline').find('input');
             var quantity = parseInt($(input).val());
             $(input).val(quantity + 1).trigger('change');
+
+            // var qty = document.getElementById("qty");
+            // qty.innerHTML = quantity;
         }
 
         function decreaseQuantity(button) {
@@ -246,7 +250,11 @@
             var quantity = parseInt($(input).val());
             if (quantity > 1) {
                 $(input).val(quantity - 1).trigger('change');
+
             }
+            // var qty = document.getElementById("qty");
+            // qty.innerHTML = quantity;
+
         }
     </script>
 @endsection

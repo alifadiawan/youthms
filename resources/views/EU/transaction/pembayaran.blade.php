@@ -6,10 +6,8 @@
             <div class="col-md-8">
                 <a href="{{ route('cart.index') }}" class="btn my-3">
                     <i class="fas fa-arrow-left"></i></a>
-                    <div class="card mb-3 shadow rounded-3">
-                        @foreach ($transaksi as $t)
-                            
-                        @endforeach
+                <div class="card mb-3 shadow rounded-3">
+                    @foreach ($transaksi as $t)
                         <div class="row my-3 mx-3 mx-lg-4">
                             <div class="col-6 col-lg text-start">
                                 <strong>INVOCE</strong>
@@ -17,9 +15,27 @@
                             <div class="col-6 col-lg text-end text-lg-end">
                                 <p class="text-muted">{{ $t->unique_code }}</p>
                             </div>
+
+                        </div>
+
+
+                        {{-- </div> --}}
+
+                        <div class="row mx-3 mx-lg-4">
+                            <div class="col-12 col-lg-12 text-start text-lg-end">
+                                <div class="row">
+                                    <div class="col-6 col-lg-9 fw-bold">Tanggal Terbit</div>
+                                    <div class="col-6 col-lg-3 text-muted">{{ $t->created_at }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- </div> --}}
+                    @endforeach
+                    {{-- <div class="konten my-lg-0 mx-5">
+
+                            
                         </div>
             
-                        {{-- <div class="konten my-lg-0 mx-5">
                             <div class="row">
                                 <div class="col">
                                     <div class="row">
@@ -57,46 +73,50 @@
                                 </div>
                             </div>
                         </div> --}}
-            
-                        <div class="konten mt-3 mx-3">
-                            <table class="table table-bordered">
-                                <thead class="bg-light text-dark">
-                                    <tr>
-                                        <th>Nama Barang</th>
-                                        <th>Qty</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($detail as $d)
+
+                    <div class="konten mt-3 mx-3">
+                        <table class="table table-bordered">
+                            <thead class="bg-light text-dark">
+                                <tr>
+                                    <th>Nama Barang</th>
+                                    <th>Qty</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($detail as $d)
                                     <tr>
                                         <td>{{ $d->produk->nama_produk }}</td>
                                         <td>x {{ $d->quantity }}</td>
-                                        <td class="text-end">Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</td>
+                                        <td class="text-end">Rp.
+                                            {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</td>
                                     </tr>
-                                    @endforeach 
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="2" class="text-end">Total</td>
-                                        <td colspan="1" class="text-end">Rp. {{ number_format($total, 0, ',', '.') }}</td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="2" class="text-end">Biaya admin</td>
-                                        <td colspan="1" class="text-end">Rp. {{ number_format($admin, 0, ',', '.') }}</td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="2" class="text-end fw-bold">Grand Total</td>
-                                        <td colspan="1" class="text-end fw-bold">Rp. {{ number_format($grandtotal, 0, ',', '.') }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-end">Total</td>
+                                    <td colspan="1" class="text-end">Rp. {{ number_format($total, 0, ',', '.') }}</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-end">Biaya admin</td>
+                                    <td colspan="1" class="text-end">Rp. {{ number_format($admin, 0, ',', '.') }}</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-end fw-bold">Grand Total</td>
+                                    <td colspan="1" class="text-end fw-bold">Rp.
+                                        {{ number_format($grandtotal, 0, ',', '.') }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
+                {{-- <div class="card mb-4"> --}}
+
                 {{-- <div class="card mb-4">
                     <div class="card-header py-3">
                         <div class="row">
@@ -149,7 +169,7 @@
                 <!-- MEtode pembayaran -->
                 <div class="card mb-4 mb-lg-0 p-0">
                     <div class="card-header">
-                        <h5 class="mb-0 me-auto">Metode Pembayaran</h5>
+                        <h5 class="mb-0 me-auto fw-bold" style="font-family: Poppins, sans-serif;">Metode Pembayaran</h5>
                     </div>
                     <div class="card-body">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -166,25 +186,42 @@
                                     <div class="accordion-body">
                                         <div class="row">
                                             <div class="col">
-                                                <a href="/cara">
-                                                    <img class="img-thumbnail border-0" src="{{ asset('mandiri.png') }}"
-                                                        style="width: 15rem" alt="">
-                                                </a>
-                                                <a href="/cara">
-                                                    <img class="img-thumbnail border-0" src="{{ asset('bri.png') }}"
-                                                        style="width: 15rem" alt="">
-                                                </a>
-                                                <a href="">
-                                                    <img class="img-thumbnail border-0" src="{{ asset('btpn.png') }}"
-                                                        style="width: 15rem" alt="">
-                                                </a>
+                                                @foreach ($gateaway->take(2) as $g)
+                                                    <form action="{{ route('pembayaran.cara', $g->id) }}" method="GET">
+                                                        @csrf
+                                                        <button type="submit" class="form-control">
+                                                            @foreach ($transaksi as $t)
+                                                                <input type="hidden" name="transaksi_id"
+                                                                    value="{{ $t->id }}">
+                                                            @endforeach
+                                                            {{-- <ul class="list-group"> --}}
+                                                            {{-- <li class="list-group-item"> --}}
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <a href="/cara" style="justify-content: start"
+                                                                        class="btn" type="button">
+                                                                        <img class="img-thumbnail border-0"
+                                                                            src="{{ asset('illustration/' . $g->image) }}"
+                                                                            style="width:   175px; margin-right:-5px"alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p style="text-align: end; margin-top:30px"
+                                                                        class="fw-bold">Mandiri</p>
+                                                                </div>
+                                                            </div>
+                                                            </li>
+                                                            </ul>
+                                                        </button>
+                                                    </form>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- Virtaul Account -->
-                            <div class="accordion-item">
+                            {{-- <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseTwo" aria-expanded="false"
@@ -198,7 +235,7 @@
                                         demonstrate the <code>.accordion-flush</code> class. This is the second item's
                                         accordion body. Let's imagine this being filled with some actual content.</div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <!-- Virtaul Account -->
                             <div class="accordion-item">
@@ -217,7 +254,8 @@
                                             <div class="form">
                                                 <div class="form-gorup">
                                                     <label for="">Nama Pemesan / Instansi</label>
-                                                    <input type="text" class="form-control" name="nama_pemesan" value="{{ old('nama_pemesan') }}" required> 
+                                                    <input type="text" class="form-control" name="nama_pemesan"
+                                                        value="{{ old('nama_pemesan') }}" required>
                                                 </div>
                                                 <div class="form-gorup">
                                                     <label for="">Jangka Waktu</label>
@@ -226,21 +264,26 @@
                                                             {{-- pending --}}
                                                             <label for="">tanggal mulai</label>
                                                             <input type="date" id="tanggal" name="tanggal_mulai"
-                                                                class="form-control" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" required> 
+                                                                class="form-control" value="{{ date('Y-m-d') }}"
+                                                                min="{{ date('Y-m-d') }}" required>
                                                         </div>
                                                         <div class="col">
                                                             <label for="">tanggal akhir</label>
-                                                            <input type="date" name="jatuh_tempo" class="form-control" min="{{ date('Y-m-d') }}" value="{{ old('jatuh_tempo') }}" required>
+                                                            <input type="date" name="jatuh_tempo" class="form-control"
+                                                                min="{{ date('Y-m-d') }}"
+                                                                value="{{ old('jatuh_tempo') }}" required>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                                 <div class="form-gorup">
                                                     <label for="">Deskripsi (opsional)</label>
-                                                        <textarea class="form-control" name="deskripsi" cols="30" rows="10" >{{ old('deskripsi') }}</textarea>
+                                                    <textarea class="form-control" name="deskripsi" cols="30" rows="10">{{ old('deskripsi') }}</textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="hidden" name="status" value="">
-                                                    <input type="hidden" name="transaksi_id" value="{{ $tid }}">
+                                                    <input type="hidden" name="status" value="pending">
+                                                    <input type="hidden" name="transaksi_id"
+                                                        value="{{ $tid }}">
                                                     <button class="btn btn-primary" type="submit">kirim request</button>
                                                 </div>
                                             </div>
@@ -248,6 +291,46 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- E-wallet -->
+                            {{-- <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                        aria-controls="flush-collapseThree">
+                                        <i class="fa-solid fa-money-bill me-2"></i> E-Wallet
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                </div>
+                            </div>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <form action="">
+                                        <div class="row">
+                                            <div class="col">
+
+                                                <a href="">
+                                                    <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt="">
+                                                        <button>ceritanya gambarnya gopay</button>
+                                                </a>
+                                                <a href="">
+                                                    <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt="">
+                                                        <button>ceritanya gambarnya shoppee</button>
+                                                </a>
+                                                <a href="">
+                                                    <img class="img-thumbnail border-0"
+                                                        style="width: 15rem" alt="">
+                                                        <button>ceritanya gambarnya qris</button>
+                                                </a>
+                                                <div class="row">
+                                                    <a href="/cara-wallet" style="justify-content: start" class="btn" type="button">
+                                                        {{-- <img class="img-thumbnail border-0"
+                                                            style="width: 15rem" alt=""> --}}
 
                             <!-- E-wallet -->
                             <div class="accordion-item">
@@ -268,26 +351,47 @@
                                     <form action="">
                                         <div class="row">
                                             <div class="col">
-                                                <a href="">
-                                                    {{-- <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt=""> --}}
-                                                        <button>ceritanya gambarnya gopay</button>
-                                                </a>
-                                                <a href="">
-                                                    {{-- <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt=""> --}}
-                                                        <button>ceritanya gambarnya shoppee</button>
-                                                </a>
-                                                <a href="">
-                                                    {{-- <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt=""> --}}
-                                                        <button>ceritanya gambarnya qris</button>
-                                                </a>
+                                                @foreach ($gateaway as $g => $item)
+                                                    @if ($g > 1)
+                                                        <div class="row">
+                                                            <form action="{{ route('pembayaran.cara', $item->id) }}"
+                                                                method="GET">
+                                                                @csrf
+                                                                @foreach ($transaksi as $t)
+                                                                    <input type="hidden" name="transaksi_id"
+                                                                        value="{{ $t->id }}">
+                                                                @endforeach
+                                                                <button type="submit" style="justify-content-between"
+                                                                    class="btn">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-5 ">
+                                                                                    {{-- <a href="/cara-wallet" type="submit" style="justify-content: start"
+                                                                                    class="btn" type="button"> --}}
+                                                                                    <img class="img-thumbnail border-0"
+                                                                                        src="{{ asset('illustration/' . $item->image) }}"
+                                                                                        style="width: 100px; margin-right:px"alt="">
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-lg-7">
+                                                                                    <p style="text-align: end; margin-top:10px; margin-right:100px"
+                                                                                        class="fw-bold">
+                                                                                        {{ $item->nama_gateaway }}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                        <hr>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
+                            <!--End E-wallet -->
                         </div>
 
 

@@ -23,6 +23,10 @@ use App\Http\Middleware\StaffMiddleware;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\RequestUserController;
 use App\Http\Controllers\GroupChatController;
+use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\TransaksiDetailController;
+use App\Http\Controllers\SocialiteController;
 use App\Models\Services;
 
 /*
@@ -108,6 +112,10 @@ Route::get('/store/{type}/show', [ProdukController::class, 'showtype'])->name('s
 
 //blog
 Route::resource('blogs', BlogController::class);
+Route::get('blogs/type/{type}', [BlogController::class, 'type'])->name('blogs.type');
+Route::get('blogs/weeklytrend', [BlogController::class, 'partials']);
+Route::get('/blogs/detail/{blog}', [BlogController::class, 'detail'])->name('blogs.detail');
+
 Route::get('/blog/editing', function () {
     return view('EU.blog.editing');
 });
@@ -119,25 +127,22 @@ Route::get('/blog/pemrograman', function () {
     return view('EU.blog.pemrograman');
 });
 
-Route::get('/blog-detail', function () {
-    return view('EU.blog.show');
-});
 
 //services
-Route::get('/services/all', function () {
-    return view('EU.services.index');
-});
+Route::resource('services', ServicesController::class);
+Route::get('/services/detail/{services}', [ServicesController::class, 'show'])->name('services.show');
 
-Route::get('/services/detail', function () {
-    return view('EU.services.detail');
-});
-
+//profile
 Route::get('/profile', function () {
     return view('EU.user.index');
 });
 
 Route::get('/cara', function () {
     return view('EU.transaction.cara');
+});
+
+Route::get('/cara-wallet', function () {
+    return view('EU.transaction.cara-wallet');
 });
 //logout
 Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
@@ -153,6 +158,15 @@ Route::middleware('guest')->group(function () {
 
     //register
     Route::resource('register', RegisterController::class);
+
+    //forgot
+    Route::get('/forgot-password', [PasswordController::class, 'forgotIndex'])->name('password.index');
+    Route::post('/forgot-password', [PasswordController::class, 'forgotPassword'])->name('password.forgot');
+    Route::get('/reset-password', [PasswordController::class, 'resetIndex'])->name('password.reset');
+    Route::post('/reset-password', [PasswordController::class, 'resetPassword'])->name('password.update');
+
+    Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle']);
+    Route::get('callback/google', [SocialiteController::class, 'handleCallback']);
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -162,19 +176,26 @@ Route::middleware(['auth'])->group(function () {
 
     // transaction
     Route::resource('/transaksi', TransaksiController::class);
-    Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
-    Route::get('/transaksi_pembayaran/{id}', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
     Route::post('/transaksi_kredit', [TransaksiController::class, 'kredit'])->name('transaksi.kredit');
 
-    route::get('/lunas', function () {
-        return view('EU.transaction.lunas');
-    });
-    route::get('/kredit', function () {
-        return view('EU.transaction.kredit');
-    });
-    route::get('/belumbayar', function () {
-        return view('EU.transaction.bb');
-    });
+    Route::resource('transaksidetail', transaksidetailController::class);
+    Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
+    // Route::get('/transaksi_pembayaran/{id}', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
+
+    Route::resource('pembayaran', pembayaranController::class);
+    Route::get('/list_pembayaran', [pembayaranController::class,'listpembayaran'])->name('pembayaran.list');
+    Route::get('/transaksi_pembayaran/{id}', [pembayaranController::class, 'pembayaran'])->name('pembayaran.pembayaran');
+    Route::get('/cara/{id}', [pembayaranController::class, 'cara'])->name('pembayaran.cara');
+
+    // route::get('/lunas', function () {
+    //     return view('EU.transaction.lunas');
+    // });
+    // route::get('/kredit', function () {
+    //     return view('EU.transaction.kredit');
+    // });
+    // route::get('/belumbayar', function () {
+    //     return view('EU.transaction.bb');
+    // });
 
     Route::resource('requestuser', requestuserController::class);
 });
@@ -192,9 +213,9 @@ route::middleware(['client', 'employee'])->group(function () {
     Route::get('/hapus_profile', [EUController::class, 'hapusprofile'])->name('storeEU.hapus_profile');
 
     // transaction
-    Route::get('/pembayaran', function () {
-        return view('EU.transaction.pembayaran');
-    });
+    // Route::get('/pembayaran', function () {
+    //     return view('EU.transaction.pembayaran');
+    // });
 
     // transaction
     Route::get('/cart', [TransaksiController::class])->name('cart.index');
@@ -212,7 +233,6 @@ Route::middleware('admin')->group(function () {
     Route::resource('/dashboard', DashboardController::class);
 
     //services
-    Route::resource('services', ServicesController::class);
     Route::POST('jenislayanan', [JenisLayananController::class, 'store'])->name('jenislayanan.store');
     Route::GET('jenislayanan/{id}/hapus', [JenisLayananController::class, 'hapus'])->name('jenislayanan.hapus');
     Route::GET('services/{id}/hapus', [ServicesController::class, 'hapus'])->name('services.hapus');
@@ -222,7 +242,7 @@ Route::middleware('admin')->group(function () {
     Route::put('/service-ilustrasi/{id}/update', [ServicesController::class, 'ilustrasi_update'])->name('services.ilustrasi_update');
 
     //blog
-    Route::get('blog/{id}/hapus', [BlogController::class, 'hapus'])->name('blog.hapus');
+    Route::get('blogs/{id}/hapus', [BlogController::class, 'hapus'])->name('blogs.hapus');
     Route::post('segmen', [SegmenController::class, 'store'])->name('segmen.store');
     Route::get('segmen/{id}/hapus', [SegmenController::class, 'hapus'])->name('segmen.hapus');
 
@@ -279,5 +299,4 @@ Route::middleware('admin')->group(function () {
     //notif
     Route::post('/read', [NotificationController::class, 'read'])->name('read');
     Route::get('/read_chat/{notifId}', [NotificationController::class, 'read_chat'])->name('read.chat');
-
 });

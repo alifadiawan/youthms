@@ -14,26 +14,31 @@
                             </div>
                             <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
                                 <div class="card-body">
-                                    <span class="text-dark" style="font-size: 16px; line-height:normal">LANGKAH 1 : TEMUKAN
-                                        ATM
-                                        TERDEKAT<br>
+                                    <span class="text-dark" style="font-size: 16px; line-height:normal">
+                                        <p class="fw-bold">LANGKAH 1 : TEMUKAN ATM TERDEKAT</p>
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item"> Masukkan kartu, kemudian pilih bahasa dan masukkan
+                                                PIN anda</li>
+                                            <li class="list-group-item">Pilih "Transaksi Lain" dan pilih "Pembayaran"</li>
+                                            <li class="list-group-item">Pilih menu "Lainnya" dan pilih "Briva"</li>
+                                        </ol>
+                                        <br>
+                                        <p class="fw-bold">LANGKAH 2 : DETAIL PEMBAYARAN</p>
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item"> Masukkan Nomor Virtual Account 92001981045887568
+                                                dan jumlah yang ingin anda
+                                                bayarkan</li>
+                                            <li class="list-group-item">Periksa data transaksi dan tekan "YA"</li>
+                                        </ol>
 
-                                        1. Masukkan kartu, kemudian pilih bahasa dan masukkan PIN anda<br>
-                                        2. Pilih "Transaksi Lain" dan pilih "Pembayaran"<br>
-                                        3. Pilih menu "Lainnya" dan pilih "Briva"<br><br>
-
-                                        LANGKAH 2 : DETAIL PEMBAYARAN<br>
-
-                                        1. Masukkan Nomor Virtual Account 92001981045887568 dan jumlah yang ingin anda
-                                        bayarkan<br>
-                                        2. Periksa data transaksi dan tekan "YA"<br><br>
-
-                                        LANGKAH 3 : TRANSAKSI BERHASIL<br>
-
-                                        1. Setelah transaksi anda selesai, invoice ini akan diupdate secara otomatis. Proses
-                                        ini mungkin
-                                        memakan waktu hingga 5 menit
-
+                                        <br>
+                                        <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item">Setelah transaksi anda selesai, invoice ini akan
+                                                diupdate secara otomatis. Proses
+                                                ini mungkin
+                                                memakan waktu hingga 5 menit</li>
+                                        </ol>
                                     </span>
                                 </div>
                             </div>
@@ -49,21 +54,29 @@
                             <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
                                 <div class="card-body">
                                     <span class="text-dark" style="font-size: 16px">
-                                        LANGKAH 1 : MASUK KE AKUN ANDA<br>
-                                        1. Buka aplikasi BRI Mobile Banking, masukkan USER ID dan PIN anda<br>
-                                        2. Pilih "Pembayaran" dan pilih "Briva"<br><br>
-
-                                        LANGKAH 2 : DETAIL PEMBAYARAN<br>
-
-                                        1. Masukkan Nomor Virtual Account anda 92001981045887568 dan jumlah yang ingin anda
-                                        bayarkan<br>
-                                        2. Masukkan PIN Mobile Banking BRI<br><br>
-
-                                        LANGKAH 3 : TRANSAKSI BERHASIL<br>
-
-                                        1. Setelah transaksi anda selesai, invoice ini akan diupdate secara otomatis. Proses
-                                        ini mungkin
-                                        memakan waktu hingga 5 menit</span>
+                                        <p class="fw-bold">LANGKAH 1 : MASUK KE AKUN ANDA</p>
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item">Buka aplikasi BRI Mobile Banking, masukkan USER ID
+                                                dan PIN anda</li>
+                                            <li class="list-group-item">Pilih "Pembayaran" dan pilih "Briva"</li>
+                                        </ol>
+                                        <br>
+                                        <p class="fw-bold">LANGKAH 2 : DETAIL PEMBAYARAN</p>
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item">Masukkan Nomor Virtual Account anda
+                                                92001981045887568 dan jumlah yang ingin anda
+                                                bayarkan</li>
+                                            <li class="list-group-item">Masukkan PIN Mobile Banking BRI</li>
+                                        </ol>
+                                        <br>
+                                        <p class="fw-bold">LANGKAH 3 : TRANSAKSI BERHASIL</p>
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item">Setelah transaksi anda selesai, invoice ini akan
+                                                diupdate secara otomatis. Proses
+                                                ini mungkin
+                                                memakan waktu hingga 5 menit</li>
+                                        </ol>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -106,17 +119,18 @@
                 </div> --}}
                 <form action="">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="d-flex flex-column px-md-5 px-4 mb-4">
-                                <span>Virtual Account BRI</span>
-                                <div class="inputWithIcon">
-                                    <input class="form-control" type="text" value="92001981045887568">
-                                    <span class="">
-                                        <a class="btn" type="button">
-                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp8sk1NR5zI_Y3oPUKd2EovsQDejDMv14as0jINjnIOQVf9jE&s"
-                                                alt="" style="width: 100%">
-                                        </a>
-                                        {{-- <div class="dropdown">
+                        @foreach ($gateaway as $g)
+                            <div class="col-12">
+                                <div class="d-flex flex-column px-md-5 px-4 mb-4">
+                                    <span>Transfer Lewat {{ $g->nama_gateaway }}</span>
+                                    <div class="inputWithIcon">
+                                        <input class="form-control" type="text" value="{{ $g->nomor_rekening }}">
+                                        <span class="">
+                                            <a class="btn" type="button">
+                                                <img src="{{ asset('illustration/' . $g->image) }}" alt=""
+                                                    style="width: 100%">
+                                            </a>
+                                            {{-- <div class="dropdown">
                                             <ul class="dropdown-menu">
                                                 <li>
                                                     <button class="dropdown-item active" type="button">
@@ -138,29 +152,103 @@
                                                 </li>
                                             </ul>
                                         </div> --}}
-                                    </span>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nama Virtual Account</span>
-                                <div class="inputWithIcon"> <input class="form-control text-uppercase" type="text"
-                                        value="YOUTHMS.ID"> <span class="far fa-user"></span> </div>
+                            <div class="col-12">
+                                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nomor Rekening</span>
+                                    <div class="inputWithIcon"> <input class="form-control text-uppercase" type="text"
+                                            value="{{ $g->atas_nama }}"> <span class="far fa-user"></span> </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nominal Yang Harus Dibayarkan</span>
-                                <div class="inputWithIcon"> <input class="form-control text-uppercase" type="text"
-                                        value="IDR 108.900"> <span class="fas fa-money-bill-wave-alt"></span> </div>
+                            <div class="col-12">
+                                @foreach ($transaksi as $t)
+                                    <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nominal Yang Harus
+                                            Dibayarkan</span>
+                                        <div class="inputWithIcon"> <input class="form-control text-uppercase"
+                                                type="text" value="IDR. {{ number_format($t->total, 0, ',', '.') }}">
+                                            <span class="fas fa-money-bill-wave-alt"></span> </div>
+                                    </div>
+                                @endforeach
                             </div>
-                        </div>
-                        <div class="col-12 px-md-5 px-4 mt-3">
-                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalKonfirmasi">Konfirmasi Pembayaran</button>
-                        </div>
+                            <div class="col-12 px-md-5 px-4 mt-3">
+                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                    data-bs-target="#modalKonfirmasi">Konfirmasi Pembayaran</button>
+                            </div>
+                        @endforeach
                     </div>
                 </form>
-                
+
             </div>
         </div>
     </section>
+    <!-- Konfirmasi Bayar Modal -->
+    {{-- <section id="modal-konfirmasi" class="modal-konfirmasi"> --}}
+    <div class="modal fade" id="modalKonfirmasi" tabindex="-1" aria-labelledby="modalKonfirmasi" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="exampleModalLabel" style="font-family: Poppins, sans-serif;">
+                        Konfirmasi Pembayaran</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('pembayaran.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        @foreach ($transaksi as $t)
+                            <div>
+                                <label for="">Tanggal Checkout</label>
+                                <input type="date" class="form-control mt-2" name="date" id="date"
+                                    value="{{ date('Y-m-d') }}" required>
+                            </div>
+                            <div>
+                                <label for="" class="mt-3">Kode Pesanan</label>
+                                <input type="text" class="form-control mt-2" name="kode" id="kode"
+                                    value="{{ $t->unique_code }}" readonly>
+                            </div>
+                            <div>
+                                <label for="" class="mt-3">Bukti Pembayaran (Struk / Screenshoot
+                                    Transfer)</label>
+                                <input type="file" class="form-control mt-2" name="bukti" id="bukti">
+                            </div>
+                            <input type="hidden" name="status" value="pending">
+                            <input type="hidden" name="transaksi_id" value="{{ $t->id }}">
+                            @foreach ($gateaway as $g)
+                                <input type="hidden" name="gid" value="{{ $g->id }}">
+                            @endforeach
+                        @endforeach
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary" data-bs-target="#myModal"
+                            data-bs-toggle="modal">Kirim Bukti</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    {{-- </section> --}}
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <div class="icon-box">
+                    <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_atippmse.json"
+                                data-aos="fade-down" id="porto-animation" background="transparent" speed="1"
+                                style="width: 100%" loop autoplay></lottie-player>
+                </div>
+                {{-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> --}}
+            </div>
+            <div class="modal-body text-center">
+                <h4>Success!</h4>
+                <p>Konfirmasi pembayaran anda sudah kami terima, berkas sedang kami proses.</p>
+                {{--   --}}
+            </div>
+        </div>
+    </div>
+</div>
+   
 @endsection

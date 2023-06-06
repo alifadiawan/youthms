@@ -3,18 +3,14 @@
 @section('content')
 
     <div id="container" class="container my-5">
-
         <!-- tombol -->
         <div class="row gap-2 mb-3">
             <div class="col">
-                <h2 class="fw-bold">History Transaksi</h2>
+                <h2 class="fw-bold text-dark" style="font-family: Poppins, sans-serif">History Transaksi</h2>
             </div>
         </div>
-
         <!-- content -->
         <div class="konten">
-
-
             <!-- filter -->
             <div class="row my-3">
                 <div class="col">
@@ -30,16 +26,23 @@
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="kredit-tab" data-bs-toggle="pill" data-bs-target="#kredit"
-                                type="button" role="tab" aria-controls="kredit" aria-selected="false">kredit</button>
+                                type="button" role="tab" aria-controls="kredit" aria-selected="false">Kredit</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="belum-bayar-tab" data-bs-toggle="pill"
                                 data-bs-target="#belum-bayar" type="button" role="tab" aria-controls="belum-bayar"
-                                aria-selected="false">belum bayar</button>
+                                aria-selected="false">Belum Bayar</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pending-tab" data-bs-toggle="pill" data-bs-target="#pending"
+                                type="button" role="tab" aria-controls="pending" aria-selected="false">Pending</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="declined-tab" data-bs-toggle="pill" data-bs-target="#declined"
+                                type="button" role="tab" aria-controls="declined"
+                                aria-selected="false">Declined</button>
                         </li>
                     </ul>
-
-
                     <div class="tab-content" id="pills-tabContent">
                         <!-- transaksi berhasil -->
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
@@ -50,6 +53,7 @@
                                         <th>Tanggal</th>
                                         <th>Total</th>
                                         <th>Total Bayar</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -62,7 +66,7 @@
                                             @if (in_array($a->id, $uu))
                                                 <td>
                                                     <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
-                                                        class="badge text-dark">belum bayar</span>
+                                                        class="badge text-dark">Belum Bayar</span>
                                                 </td>
                                             @elseif(in_array($a->id, $uk))
                                                 <td>
@@ -72,15 +76,13 @@
                                                 </td>
                                             @elseif(in_array($a->id, $up))
                                                 <td>
-                                                    <button disabled="disabled"
-                                                        class="btn btn-sm btn-info"></button><span
-                                                        class="badge text-dark">pending</span>
+                                                    <button disabled="disabled" class="btn btn-sm btn-info"></button><span
+                                                        class="badge text-dark">Pending</span>
                                                 </td>
                                             @elseif(in_array($a->id, $ud))
                                                 <td>
-                                                    <button disabled="disabled"
-                                                        class="btn btn-sm btn-dark"></button><span
-                                                        class="badge text-dark">declined</span>
+                                                    <button disabled="disabled" class="btn btn-sm btn-dark"></button><span
+                                                        class="badge text-dark">Declined</span>
                                                 </td>
                                             @elseif(in_array($a->id, $ul))
                                                 <td>
@@ -88,10 +90,16 @@
                                                         class="btn btn-sm btn-success"></button><span
                                                         class="badge text-dark">Lunas</span>
                                                 </td>
+                                            @elseif(in_array($a->id, $uc))
+                                                <td>
+                                                    <button disabled="disabled"
+                                                        class="btn btn-sm btn-primary"></button><span
+                                                        class="badge text-dark">Checking</span>
+                                                </td>
                                             @endif
                                             <td>
                                                 <form action="{{ route('transaksi.show', $a->id) }}">
-                                                    <button type="submit" class="btn btn-success">detail</button>
+                                                    <button type="submit" class="btn btn-success">Detail</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -104,7 +112,8 @@
 
 
                     <!-- transaksi sedang berlangsung -->
-                    {{-- <div class="tab-pane fade" id="lunas" role="tabpanel" aria-labelledby="lunas-tab" tabindex="0">
+                    <div class="tab-pane fade" id="lunas" role="tabpanel" aria-labelledby="lunas-tab"
+                        tabindex="0">
                         <div class="accordion-body">
                             <table class="table table-borderless table-responsive table-hover">
                                 <thead>
@@ -118,9 +127,9 @@
                                 <tbody>
                                     @foreach ($lunas as $l)
                                         <tr>
-                                            <td scope="row">{{ $l->tanggal }}</td>
-                                            <td>Rp. {{ number_format($l->total) }}</td>
-                                            <td>Rp. {{ number_format($l->total_bayar) }}</td>
+                                            <td scope="row">{{ $l->tanggal_transaksi }}</td>
+                                            <td>Rp. {{ number_format($l->total, 0, ',', '.') }}</td>
+                                            <td>Rp. {{ number_format($l->total_bayar, 0, ',', '.') }}</td>
                                             <td>
                                                 <button disabled="disabled" class="btn btn-sm btn-success"></button><span
                                                     class="badge text-dark">Lunas</span>
@@ -135,10 +144,11 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div> --}}
+                    </div>
 
 
-                    {{-- <div class="tab-pane fade" id="kredit" role="tabpanel" aria-labelledby="kredit-tab" tabindex="0">
+                    <div class="tab-pane fade" id="kredit" role="tabpanel" aria-labelledby="kredit-tab"
+                        tabindex="0">
                         <div class="accordion-body">
                             <table class="table table-borderless table-responsive table-hover">
                                 <thead>
@@ -153,8 +163,8 @@
                                     @foreach ($kredit as $k)
                                         <tr>
                                             <td scope="row">{{ $k->tanggal }}</td>
-                                            <td>Rp. {{ number_format($k->total) }}</td>
-                                            <td>Rp. {{ number_format($k->total_bayar) }}</td>
+                                            <td>Rp. {{ number_format($k->total, 0, ',', '.') }}</td>
+                                            <td>Rp. {{ number_format($k->total_bayar, 0, ',', '.') }}</td>
                                             <td>
                                                 <button disabled="disabled" class="btn btn-sm btn-warning"></button><span
                                                     class="badge text-dark">Kredit</span>
@@ -169,10 +179,10 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div> --}}
+                    </div>
 
 
-                    {{-- <div class="tab-pane fade" id="belum-bayar" role="tabpanel" aria-labelledby="belum-bayar-tab"
+                    <div class="tab-pane fade" id="belum-bayar" role="tabpanel" aria-labelledby="belum-bayar-tab"
                         tabindex="0">
                         <div class="accordion-body">
                             <table class="table table-borderless table-responsive table-hover">
@@ -188,8 +198,8 @@
                                     @foreach ($utang as $u)
                                         <tr>
                                             <td scope="row">{{ $u->tanggal }}</td>
-                                            <td>Rp. {{ number_format($u->total) }}</td>
-                                            <td>Rp. {{ number_format($u->total_bayar) }}</td>
+                                            <td>Rp. {{ number_format($u->total, 0, ',', '.') }}</td>
+                                            <td>Rp. {{ number_format($u->total_bayar, 0, ',', '.') }}</td>
                                             <td>
                                                 <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
                                                     class="badge text-dark">Belum Bayar</span>
@@ -204,7 +214,77 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div> --}}
+                    </div>
+
+
+                    <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab"
+                        tabindex="0">
+                        <div class="accordion-body">
+                            <table class="table table-borderless table-responsive table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>total</th>
+                                        <th>total bayar</th>
+                                        <th>action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($pending as $p)
+                                        <tr>
+                                            <td scope="row">{{ $p->tanggal }}</td>
+                                            <td>Rp. {{ number_format($p->total, 0, ',', '.') }}</td>
+                                            <td>Rp. {{ number_format($p->total_bayar, 0, ',', '.') }}</td>
+                                            <td>
+                                                <button disabled="disabled" class="btn btn-sm btn-info"></button><span
+                                                    class="badge text-dark">Pending</span>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('transaksi.show', $p->id) }}">
+                                                    <button type="submit" class="btn btn-success">detail</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="declined" role="tabpanel" aria-labelledby="declined-tab"
+                        tabindex="0">
+                        <div class="accordion-body">
+                            <table class="table table-borderless table-responsive table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>total</th>
+                                        <th>total bayar</th>
+                                        <th>action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($declined as $d)
+                                        <tr>
+                                            <td scope="row">{{ $d->tanggal }}</td>
+                                            <td>Rp. {{ number_format($d->total, 0, ',', '.') }}</td>
+                                            <td>Rp. {{ number_format($d->total_bayar, 0, ',', '.') }}</td>
+                                            <td>
+                                                <button disabled="disabled" class="btn btn-sm btn-dark"></button><span
+                                                    class="badge text-dark">Declined</span>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('transaksi.show', $d->id) }}">
+                                                    <button type="submit" class="btn btn-success">detail</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     <!-- transaksi success -->
                 </div>
             </div>
