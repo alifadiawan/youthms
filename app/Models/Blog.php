@@ -9,7 +9,7 @@ class Blog extends Model
 {
     use HasFactory;
     protected $table = 'blog';
-    protected $fillable = ['id_artikel', 'judul', 'tanggal', 'segmen_id', 'isi','users_id'];
+    protected $fillable = ['id_artikel', 'judul', 'foto', 'visitor', 'segmen_id', 'isi','users_id'];
 
     public function segmen()
     {

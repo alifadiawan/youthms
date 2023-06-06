@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\File;
 use Session;
 use Illuminate\Support\Carbon;
 
@@ -30,8 +31,12 @@ class BlogController extends Controller
 
         $populer = Blog::orderBy('visitor', 'desc')->get();
         $weekly = Blog::whereBetween('created_at', [$Sweek, $Eweek])->orwhereBetween('updated_at', [$Sweek, $Eweek])->get();
+        $terpilih = Blog::whereHas('segmen', function ($query){
+            $query->where('id', 3);
+        })->get();
         // $terpilih = blog::where()->get();        //pending
 
+        $segmen = Segmen::all();
         $sekarang = carbon::now();
         $lastweek = carbon::now()->subweek();
         $atas = Blog::where('id', '=', 1)->get();
@@ -39,8 +44,9 @@ class BlogController extends Controller
         $recently_uploaded = Blog::orderBy('created_at', 'desc')->take(3)->get();
         // return $recently_uploaded;
         $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(4)->get();
+        // return $terpilih;
 
-        $compact = ['populer', 'weekly', 'recently_uploaded', 'recently_lastweek','get', 'atas'];
+        $compact = ['populer', 'weekly',  'terpilih', 'segmen', 'recently_uploaded', 'recently_lastweek','get', 'atas'];
 
         $segmen = Segmen::all();
         $data = Blog::paginate(5);
@@ -59,10 +65,10 @@ class BlogController extends Controller
         }
     }
 
-    public function type(request $request,$type)
+    public function type($type)
     {
         // return $request;
-        $get = $request->get;
+        // $get = $request->get;
         // return $get; 
         $today = date('Y-m-d');
         // $action = 'get-populer';
@@ -71,31 +77,58 @@ class BlogController extends Controller
         $Eweek = carbon::now();
 
         // $blog = blog::all();
+        if ($type == 'populer') {
+            // code...
+            $populer = Blog::orderBy('visitor', 'desc')->get();
+            $blog = $populer;
+        } 
+        elseif ($type == 'weekly') {
+            // code...
+            $weekly = Blog::whereBetween('created_at', [$Sweek, $Eweek])->orwhereBetween('updated_at', [$Sweek, $Eweek])->get();
+            $blog = $weekly;
+        } 
+        elseif ($type == 'terpilih') {
+            // code...
+            $terpilih = Blog::whereHas('segmen', function ($query){
+                $query->where('segmen', 'PEMROGRAMMAN');
+            })->get();
+            $blog = $terpilih;
+        }
         
-        $populer = Blog::orderBy('visitor', 'desc')->get();
-        $weekly = Blog::whereBetween('created_at', [$Sweek, $Eweek])->orwhereBetween('updated_at', [$Sweek, $Eweek])->get();
+
+        // return $terpilih;
         // $terpilih = blog::where()->get();        //pending
 
-        
-        $sekarang = carbon::now();
-        $lastweek = carbon::now()->subweek();
-        $recently_uploaded = Blog::orderBy('created_at', 'desc')->take(3)->get('created_at');
-        $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(4)->get('created_at');
+        // $compact = ['populer', 'weekly', 'terpilih'];
 
-        $compact = ['populer', 'weekly', 'recently_uploaded', 'recently_lastweek','get'];
-
-        return view('EU.blog.index', compact($compact));
+        return view('EU.Blog.type', compact('blog', 'type'))->render();
     }
 
     public function show(Blog $blog)
     {
-        $data = Blog::find($blog->id);
-        return view('Admin.blog.detail', compact('data'));
+        // return $blog;
+        return view('Admin.blog.detail', compact('blog'));
     }
 
-    public function detail(Blog $blog)
+    public function showtype($type)
     {
-        return view('EU.blog.show');
+        $type = strtolower(str_replace('_', ' ', $type));
+        // return $type;
+        $blog = Blog::whereHas('segmen', function ($query) use ($type) {
+            $query->where('segmen', $type);
+        })->get();
+        // return $blog;
+        return view('EU.blog.', compact('blog'));
+    }
+
+    public function detail(Request $request, Blog $blog)
+    {
+        $ip = $request->ip();
+        $visitor = Blog::find($blog->id);
+        $visitor->increment('visitor');
+        $visitor->save();
+        $rekom = Blog::where('segmen_id' , $blog->segmen_id)->take(4)->get();
+        return view('EU.blog.show', compact('blog', 'visitor', 'rekom'));
     }
 
     /**
@@ -230,23 +263,24 @@ class BlogController extends Controller
 
             $tujuan_upload = './blog/';
             $file->move($tujuan_upload,$nama_file);
+            // return $nama_file;
 
             //simpan ke db
             $blog->update([
-                'id_artikel' => $nextNumber,
                 'judul' =>  $request->judul,
                 'segmen_id' =>  $request->segmen_id,
                 'users_id' => auth()->user()->id,
                 'foto' => $nama_file,
                 'isi' => $content,
             ]);
+            // return $blog;
         } else {
             //simpan ke db
             $blog->update([
-                'id_artikel' => $request->id_artikel,
                 'judul' =>  $request->judul,
                 'segmen_id' =>  $request->segmen_id,
                 'users_id' => $request->users_id,
+                'foto' => $blog->foto,
                 'isi' => $content,
             ]);
         }
