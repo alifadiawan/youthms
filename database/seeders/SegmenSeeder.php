@@ -22,7 +22,7 @@ class SegmenSeeder extends Seeder
                 'segmen' => 'MARKETING'
             ],
             [
-                'segmen' => 'PEMROGRAMMAN'
+                'segmen' => 'PEMROGRAMAN'
             ],
         ];
         segmen::insert($segmen);

@@ -21,11 +21,11 @@ class BlogSeeder extends Seeder
                 'foto' => 'blog (1).jpeg',
                 'judul' => 'how to not to how',
                 'isi' => '
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 <p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
                  eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
                  earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
-                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.',
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 569,
                 'users_id' => 1,
                 'segmen_id' => 1,
@@ -36,10 +36,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 2,
                 'foto' => 'blog (1).jpg',
                 'judul' => 'how to not to be a1',
-                'isi' => '
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam sit asperiores ut, voluptatem dicta quaerat quo magnam repellat iste mollitia 
-                possimus a corporis. Soluta, nemo vel vitae laborum nulla explicabo reiciendis harum, obcaecati labore quos accusamus, maxime doloribus in
-                 suscipit porro exercitationem aut consequatur similique alias dignissimos adipisci corrupti neque!',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 245,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -50,7 +51,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 764,
                 'users_id' => 1,
                 'segmen_id' => 3,
@@ -61,7 +66,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 353,
                 'users_id' => 1,
                 'segmen_id' => 1,
@@ -72,7 +81,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 556,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -83,7 +96,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 345,
                 'users_id' => 1,
                 'segmen_id' => 3,
@@ -94,7 +111,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 635,
                 'users_id' => 1,
                 'segmen_id' => 1,
@@ -105,7 +126,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 933,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -116,7 +141,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 3213,
                 'users_id' => 1,
                 'segmen_id' => 3,
@@ -127,7 +156,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 32,
                 'users_id' => 1,
                 'segmen_id' => 1,
@@ -138,7 +171,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 200,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -149,7 +186,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 500,
                 'users_id' => 1,
                 'segmen_id' => 3,
@@ -160,7 +201,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 236,
                 'users_id' => 1,
                 'segmen_id' => 1,
@@ -171,7 +216,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 653,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -182,7 +231,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 997,
                 'users_id' => 1,
                 'segmen_id' => 3,
@@ -193,7 +246,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 1,
@@ -204,7 +261,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -215,7 +276,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 3,
@@ -226,7 +291,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 1,
@@ -237,7 +306,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -248,7 +321,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 3,
@@ -259,7 +336,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 1,
@@ -270,7 +351,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -281,7 +366,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 3,
@@ -292,7 +381,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 1,
@@ -303,7 +396,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 2,
@@ -314,7 +411,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 3,
@@ -325,7 +426,11 @@ class BlogSeeder extends Seeder
                 'id_artikel' => 3,
                 'foto' => 'blog (4).jpg',
                 'judul' => 'how to not to make a war with girl',
-                'isi' => 'dont be wrong :D',
+                'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
+                 quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
+                 eligendi, similique vero delectus explicabo maxime amet obcaecati facilis ad! Nihil obcaecati vero fugiat qui eaque rem optio perferendis 
+                 earum tempora aut! Beatae ut nostrum at aliquam, necessitatibus suscipit deleniti corrupti fugit quaerat error vero provident sed quae? Illo 
+                 nisi saepe, adipisci, sequi ad laborum a sed nihil excepturi iste dolorem deserunt non velit error? Assumenda eveniet iste at quidem magni.</p>',
                 'visitor' => 242,
                 'users_id' => 1,
                 'segmen_id' => 1,
