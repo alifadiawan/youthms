@@ -31,8 +31,8 @@
                         <td>
                             @if ($p->bank_id)
                             <div class="row">
-                                {{ $p->bank->nama }}
-                                <img src="{{ asset('illustration/' . $p->bank->image) }}" alt="" style="width: 100px">
+                                {{-- {{ $p->bank->nama }} --}}
+                                <img src="{{ asset('illustration/' . $p->bank->image) }}" alt="" style="width: 75px">
                             </div>
                             @elseif($p->ewallet_id)
                             {{-- <div class="row" style="justify-content: space-between"> --}}
