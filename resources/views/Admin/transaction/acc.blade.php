@@ -27,11 +27,16 @@
                                 <td>{{ $r->nama_pemesan }}</td>
                                 <td>
                                     @if ($r->status == 'accept')
-                                        <p class="text-uppercase text-success">{{ $r->status }}</p>
+                                        {{-- <p class="text-uppercase text-success">{{ $r->status }}</p> --}}
+                                        <button disabled="disabled" class="btn btn-sm btn-success"></button><span
+                                            class="badge">Accepted</span>
                                     @elseif($r->status == 'declined')
-                                        <p class="text-uppercase text-danger">{{ $r->status }}</p>
+                                        {{-- <p class="text-uppercase text-danger">{{ $r->status }}</p> --}}
+                                        <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
+                                            class="badge">Declined</span>
                                     @else
-                                        <p class="text-uppercase text-warning">PENDING</p>
+                                        <button disabled="disabled" class="btn btn-sm btn-warning"></button><span
+                                            class="badge">Pending</span>
                                     @endif
                                     {{-- <p class="text-uppercase text-warning">{{ $r->status }}</p> --}}
                                 </td>
