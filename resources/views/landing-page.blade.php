@@ -5,8 +5,8 @@
     <section class="hero" id="hero" class="d-flex align-items-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 d-flex flex-column justify-content-center order-2 mt-5 mt-lg-0 order-lg-1" data-aos="fade-up"
-                    data-aos-delay="200">
+                <div class="col-lg-6 d-flex flex-column justify-content-center order-2 mt-5 mt-lg-0 order-lg-1"
+                    data-aos="fade-up" data-aos-delay="200">
                     @foreach ($text as $item)
                         <h1>{{ $item->mainline }}</h1>
                         <h2>{{ $item->secondline }}</h2>
@@ -14,7 +14,8 @@
                     @endforeach
                 </div>
                 @foreach ($illustration as $i)
-                    <div class="col-lg-6 order-1 order-lg-2 hero-img align-items-center" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="col-lg-6 order-1 order-lg-2 hero-img align-items-center" data-aos="zoom-in"
+                        data-aos-delay="200">
                         <img src="{{ asset('./illustration/' . $i->illustration) }}" class="img-fluid">
                     </div>
                 @endforeach
@@ -35,9 +36,9 @@
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch my-4 mt-md-0" data-aos="zoom-in"
                         data-aos-delay="200">
                         <div class="icon-box text-center text-lg-start">
-                            <h4 class="text-center text-uppercase text-lg-start">{{$item->layanan}}</h4>
-                            <p>{{$item->deskripsi}}</p>
-                            <a href="{{route('services.index')}}" class="">Lihat lebih lanjut</a>
+                            <h4 class="text-center text-uppercase text-lg-start">{{ $item->layanan }}</h4>
+                            <p>{{ $item->deskripsi }}</p>
+                            <a href="{{ route('services.index') }}" class="">Lihat lebih lanjut</a>
                         </div>
                     </div>
                 @endforeach
@@ -66,27 +67,31 @@
             </div>
 
             <div class="row justify-content-between">
-                @foreach($paket as $p)
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200" >
-                    <div class="icon-box text-center" style="width: 20rem">
-                        <h4><a href="">{{$p->nama_paket}}</a></h4>
-                        @foreach($p->produk as $pp)
-                        <p>{{$pp->nama_produk}}</p>
-                        @endforeach
-                        <br>
-                        @php
-                            $total = 0;
-                        @endphp
-                        @foreach($p->produk as $harga)
-                        @php
-                            $total += $harga->harga;
-                        @endphp
-                        @endforeach
-                        <p>Rp {{ number_format($total, 0, ',', '.') }}</p>
-                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
+                @foreach ($paket as $p)
+                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                        data-aos-delay="200">
+                        <div class="icon-box text-center" style="width: 20rem; height: 30rem;">
+                            <h4>{{ $p->nama_paket }}</h4>
+                            @foreach ($p->produk as $pp)
+                                <ul class="m-0">
+                                    <li class="paket text-start">{{ $pp->nama_produk }}</li>
+                                </ul>
+                            @endforeach
+                            
+                            @php
+                                $total = 0;
+                            @endphp
+                            @foreach ($p->produk as $harga)
+                                @php
+                                    $total += $harga->harga;
+                                @endphp
+                            @endforeach
+                            <div class="footer" style="position: absolute; bottom:20px; right:50px; left: 50px">
+                                <p class="fw-bold">Rp {{ number_format($total, 0, ',', '.') }}</p>
+                                <a href="/store" class="btn yms-blue mt-4">Detail</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
                 @endforeach
             </div>
 
@@ -105,7 +110,7 @@
 
                 @foreach ($partner as $item)
                     <div class="col-lg-3 col-md-4 col-sm-7 d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('./partner/'.$item->partner) }}" class="img-fluid" alt="">
+                        <img src="{{ asset('./partner/' . $item->partner) }}" class="img-fluid" alt="">
                     </div>
                 @endforeach
 
@@ -123,11 +128,11 @@
             <div class="carousel-inner">
                 @foreach ($testi as $item)
                     <div class="carousel-item active">
-                        <img class="rounded-circle shadow-1-strong mb-4" src="{{ asset('./testimonial/'.$item->foto) }}"
+                        <img class="rounded-circle shadow-1-strong mb-4" src="{{ asset('./testimonial/' . $item->foto) }}"
                             alt="avatar" style="width: 150px;" />
                         <div class="row d-flex justify-content-center">
                             <div class="col-lg-8">
-                                <h5 class="mb-3">{{$item->nama}}</h5>
+                                <h5 class="mb-3">{{ $item->nama }}</h5>
                                 <p>{{ $item->jabatan }}</p>
                                 <p class="">
                                     <i class="fas fa-quote-left pe-2"></i>
@@ -534,4 +539,10 @@
         </div>
 
     </div> --}}
+
+    <style>
+        .paket{
+            list-style-type: disc;
+        }
+    </style>
 @endsection
