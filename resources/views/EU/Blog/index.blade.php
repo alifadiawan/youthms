@@ -14,7 +14,7 @@
                             @endforeach
                             @foreach ($atas as $b)
                     <div class="row mt-40">
-                        <div class="col-lg-9">
+                        <div class="col-lg-12">
                             <!-- Trending Top -->
                             <div class="trending-top mb-30">
                                 <div class="trend-top-img">
@@ -31,7 +31,50 @@
                                 </div>
                             </div>
                             @endforeach
-                            
+
+                            <div class="col-lg-12 align-items-center border border-secondary p-3" style="margin-top: 25px; border-radius:25px">
+                                <h3 class="fw-bold">Request Mas Steven (Header)</h3>
+
+                                <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="{{ asset('illustration/il1.jpg') }}" alt="" style="max-width: 11rem;">
+                                        </div>
+                                        <div class="col">
+                                            <span class="color2">Pemrograman</span><br>
+                                            <p class="fw-bold"><a href="#"></a>10 Prediksi Tren Teknologi 2020 Versi Alibaba 10 Prediksi Tren Teknologi 2020 Versi Alibaba </p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- berita 2 -->
+                                <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="{{ asset('illustration/il1.jpg') }}" alt="" style="max-width: 11rem;">
+                                        </div>
+                                        <div class="col">
+                                            <span class="color2">Pemrograman</span><br>
+                                            <p class="fw-bold"><a href="#"></a>Tren Teknologi 2023 Versi Amazon </p>
+                                        </div>
+                                    </div>
+                                </a>
+                
+                
+                                <!-- berita 3 -->
+                                <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="{{ asset('illustration/il1.jpg') }}" alt="" style="max-width: 11rem;">
+                                        </div>
+                                        <div class="col">
+                                            <span class="color2">Pemrograman</span><br>
+                                            <p class="fw-bold"><a href="#"></a>Revolusi Edukasi Melalui Teknologi</p>
+                                        </div>
+                                    </div>
+                                </a>
+                
+                            </div>
+
                             <!-- Trending Bottom -->
 
                             <div class="trending-bottom">
@@ -70,10 +113,9 @@
                             </div>
                         </div>
                         <!-- Right content -->
-                        <div class="col-lg-3">
-                            <div class="card">
+                        {{-- <div class="col-lg-3">
+                            <div class="card" style="border-radius: 25px">
                                 <div class="card-body">
-                                    <!-- tombol kategori jasa -->
                                     <div class="header container mb-2 mt-3">
                                         <div class="d-flex flex-row text-center gap-3" style="justify-content: center">
                                                 <a type="submit" href="#" onclick="show('populer')" class="btn-populer rounded-5"
@@ -117,7 +159,9 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div> --}}
+                        <!-- End Of Right Content -->
+
     </section>
     </div>
     </div>
