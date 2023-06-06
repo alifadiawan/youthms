@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gateaways', function (Blueprint $table) {
+        Schema::create('ewallets', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
             $table->string('image')->nullable();
-            $table->string('nama_gateaway');
-            $table->string('atas_nama');
-            $table->string('nomor_rekening');
-            // $table->string('nomor_va')->nullable();
+            $table->string('penerima');
+            $table->string('nomor_hp');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gateaways');
+        Schema::dropIfExists('ewallets');
     }
 };

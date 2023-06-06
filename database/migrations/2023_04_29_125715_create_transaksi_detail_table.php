@@ -18,8 +18,16 @@ return new class extends Migration
             $table->foreign('transaksi_id')->references('id')->on('transaksi')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->unsignedBigInteger('gateaways_id')->nullable();
-            $table->foreign('gateaways_id')->references('id')->on('gateaways')
+            // $table->unsignedBigInteger('gateaways_id')->nullable();
+            // $table->foreign('gateaways_id')->references('id')->on('gateaways')
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade');
+            $table->unsignedBigInteger('banks_id')->nullable();
+            $table->foreign('banks_id')->references('id')->on('banks')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('ewallets_id')->nullable();
+            $table->foreign('ewallets_id')->references('id')->on('ewallets')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->unsignedBigInteger('produk_id');
