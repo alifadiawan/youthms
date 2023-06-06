@@ -94,7 +94,6 @@
                             </div>
 
                             <hr class="my-3">
-
                             <div class="row">
                                 @foreach ($pembayaran as $p)
                                     <div class="col">

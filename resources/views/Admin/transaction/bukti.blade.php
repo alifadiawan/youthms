@@ -8,7 +8,6 @@
                 <tr style="background-color: #0EA1E2">
                     <th class="text-white">No</th>
                     <th class="text-white">Nama</th>
-                    {{-- <th class="text-white">Jasa yang dipesan</th> --}}
                     <th class="text-white">Total harga</th>
                     <th class="text-white">Status</th>
                     <th class="text-white">Metode</th>
@@ -22,26 +21,28 @@
                         <td>{{ $p->transaksi->member->name }}</td>
                         <td>Rp. {{ number_format($p->transaksi->total, 0, ',', '.') }}</td>
                         <td>
-                            @if ($p->status == 'pending')
-                                pending
+                            @if ($p->status == 'checking')
+                                <button disabled="disabled" class="btn btn-sm btn-warning"></button><span
+                                    class="badge">{{ $p->status }}</span>
                             @elseif($p->status == 'checked')
-                                cek
+                                <button disabled="disabled" class="btn btn-sm btn-success"></button><span
+                                    class="badge">{{ $p->status }}</span>
+                            @elseif($p->status == 'declined')
+                                <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
+                                    class="badge">{{ $p->status }}</span>
                             @endif
                         </td>
                         <td>
                             @if ($p->bank_id)
-                            <div class="row">
-                                {{-- {{ $p->bank->nama }} --}}
-                                <img src="{{ asset('illustration/' . $p->bank->image) }}" alt="" style="width: 75px">
-                            </div>
+                                <div class="row">
+                                    <img src="{{ asset('illustration/' . $p->bank->image) }}" alt=""
+                                        style="width: 75px">
+                                </div>
                             @elseif($p->ewallet_id)
-                            {{-- <div class="row" style="justify-content: space-between"> --}}
-                                {{-- {{ $p->ewallet->nama }} --}}
                                 <span>
-                                <img src="{{ asset('illustration/' . $p->ewallet->image) }}" alt="" style="width: 75px"></span>
-                            </div>
+                                    <img src="{{ asset('illustration/' . $p->ewallet->image) }}" alt=""
+                                        style="width: 75px"></span>
                             @endif
-                            {{-- {{ $p }} --}}
                         </td>
                         <td>
                             <a href="{{ route('pembayaran.show', $p->id) }}" class="btn-sm btn-success">Detail</a>

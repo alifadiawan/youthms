@@ -70,11 +70,7 @@ class PembayaranController extends Controller
         $transaksi = Transaksi::where('id', $tid)->get();
         $bank = bank::where('nama', $nama)->get();
         $ewallet = ewallet::where('nama', $nama)->get();
-        // return $ewallet;
-        // return $gateaway;
-        // return $tid;
-        // return $transaksi;
-
+        
         $compact = ['bank', 'ewallet', 'transaksi'];
         return view('EU.transaction.cara', compact($compact));
     }
@@ -103,14 +99,14 @@ class PembayaranController extends Controller
 
         $pembayaran_data = [
             'transaksi_id' => $tid,
-            'status' => $request->status,
+            'status' => "checking",
             'bukti_tf' => $nama_file,
         ];
 
         if ($bank) {
             $pembayaran_data['bank_id'] = $bank->id;
         } elseif ($wallet) {
-            $pembayaran_data['wallet_id'] = $wallet->id;
+            $pembayaran_data['ewallet_id'] = $wallet->id;
         }
 
 
@@ -148,6 +144,7 @@ class PembayaranController extends Controller
         // mencari biaya admin serta harga setelah admin
         $admin = $total * 0.11;
         $grandtotal = $total + $admin;
+        // return $admin;
 
         $compact = ['pembayaran', 'transaksi', 'detail', 'total', 'admin', 'grandtotal'];
         return view('Admin.transaction.detailbukti', compact($compact));
@@ -166,7 +163,11 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
-        //
+        $p =$pembayaran->update([
+            'status' => $request->status
+        ]);
+
+        return redirect()->route('pembayaran.list');
     }
 
     /**

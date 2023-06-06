@@ -256,7 +256,6 @@
                                     Transfer)</label>
                                 <input type="file" class="form-control mt-2" name="bukti" id="bukti" required>
                             </div>
-                            <input type="hidden" name="status" value="pending">
                             <input type="hidden" name="transaksi_id" value="{{ $t->id }}">
                             @if ($bank->isnotempty())
                                 @foreach ($bank as $b)
