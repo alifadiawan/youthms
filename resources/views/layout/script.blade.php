@@ -41,7 +41,20 @@
     $(document).ready(function() {
         var isi = $('#isi').val();
         $('#tampilan_isi').html(isi);
-        $('#summernote').summernote();
+        $('#summernote').summernote({
+            tabsize: 2, // Menentukan ukuran indentasi saat menekan tombol tab
+            toolbar: [
+                ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['picture']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ] // Menyesuaikan toolbar yang ditampilkan
+        });
     });
 </script>
 

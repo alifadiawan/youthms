@@ -4,14 +4,21 @@
         <div class="container" data-aos="fade-up">
             <div class="trending-area fix">
                 <div class="trending-main">
+                            <a href="{{ route('blogs.index') }}" class="text-capitalize my-3 btn yms-outline rounded-5 active">All</a>
+                            @foreach ($segmen as $s)
+                            @php
+                                $link = strtolower(str_replace(' ', '_', $s->segmen));
+                            @endphp
+                                <a href="{{ route('blogs.showtype', $link) }}"
+                                    class=" my-3 text-capitalize btn yms-outline rounded-5 active">{{ $s->segmen }}</a>
+                            @endforeach
+                            @foreach ($atas as $b)
                     <div class="row mt-40">
                         <div class="col-lg-12">
                             <!-- Trending Top -->
-
-                            @foreach ($atas as $b)
                             <div class="trending-top mb-30">
                                 <div class="trend-top-img">
-                                    {{-- <img src="{{ asset('blog/' . $b->foto) }}" alt="" width="100%"
+                                    {{-- <img src="{{ asset('blog/'.$b->foto) }}" alt="" width="100%"
                                                 height="100%" style="border-radius: 20px"> --}}
                                     <img src="{{ asset('blog/'.$b->foto) }}" alt="" width="100%"
                                         height="100%" style="border-radius:25px">
@@ -109,78 +116,42 @@
                                 <div class="card-body">
                                     <div class="header container mb-2 mt-3">
                                         <div class="d-flex flex-row text-center gap-3" style="justify-content: center">
-                                            <form action="{{ route('blogs.type', ['type' => 'populer']) }}" method="get">
-                                                @csrf
-                                                <input type="hidden" name="get" value="populer">
-                                                <button type="submit" href="" class="btn-populer rounded-5"
+                                                <a type="submit" href="#" onclick="show('populer')" class="btn-populer rounded-5"
                                                     style="width:70px; height:100%"><i
-                                                        class="fa-solid fa-star"></i></button>
-                                            </form>
-                                            <form action="{{ route('blogs.type', ['type' => 'weekly']) }}" method="get">
-                                                @csrf
-                                                <input type="hidden" name="get" value="weekly">
-                                                <button type="submit" class="btn-terkini rounded-5"
+                                                        class="fa-solid fa-star"></i></a>
+                                                <a type="submit" href="#" onclick="show('weekly')" class="btn-terkini rounded-5"
                                                     style="width:70px; height:100%"><i
-                                                        class="fa-solid fa-chart-simple"></i></button>
-                                            </form>
-                                            <form action="{{ route('blogs.type', ['type' => 'terpilih']) }}" method="get">
-                                                @csrf
-                                                <input type="hidden" name="get" value="terpilih">
-                                                <button type="submit" class="btn-terpilih rounded-5"
+                                                        class="fa-solid fa-chart-simple"></i></a>
+                                                <a type="submit" href="#" onclick="show('terpilih')" class="btn-terpilih rounded-5"
                                                     style="width:70px; height:100%"><i
-                                                        class="fa-regular fa-hand-pointer"></i></button>
-                                            </form>
+                                                        class="fa-regular fa-hand-pointer"></i></a>
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="overflow-auto" style="max-width: 100%; max-height: 575px;">
-                                        <div class="col-lg-12">
-                                            @if ($get == 'populer')
+                                        <div class="col-lg-12" id="menu">
                                                 @foreach ($populer as $p)
                                                     <div class="trand-right-single d-flex">
                                                         <div class="trand-right-img">
-                                                            <img src="{{ asset('illustration/il1.jpg') }}" alt=""
+                                                            <img src="{{ asset('blog/'.$p->foto) }}" alt=""
                                                                 width="100px" height="100px">
                                                         </div>
                                                         <div class="trand-right-cap">
-                                                            <span class="color1">populer</span>
-                                                            <h4><a href="/blog-detail">Lorem ipsum dolor sit amet,
-                                                                    consectetur
-                                                                    adipiscing elit. </a>
+                                                            <span class="color1">POPULER</span>
+                                                            <h4><a href="/blog-detail">{{$p->judul}}</a>
                                                             </h4>
                                                         </div>
                                                     </div>
                                                 @endforeach
-                                            @elseif($get == 'weekly')
-                                                @foreach ($weekly as $w)
-                                                    <div class="trand-right-single d-flex">
-                                                        <div class="trand-right-img">
-                                                            <img src="{{ asset('illustration/il1.jpg') }}" alt=""
-                                                                width="100px" height="100px">
-                                                            </div>
-                                                        <div class="trand-right-cap">
-                                                            <span class="color3">{{ $w->segmen->segmen }}</span>
-                                                            <h4><a href="/blog-detail">Lorem ipsum dolor sit amet,
-                                                                    consectetur
-                                                                    adipiscing elit. </a>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            @elseif($get == 'terpilih')
-                                                <div class="trand-right-single d-flex">
-                                                    <div class="trand-right-img">
-                                                        <img src="{{ asset('illustration/il1.jpg') }}" alt=""
-                                                            width="100px" height="100px">
-                                                    </div>
-                                                    <div class="trand-right-cap">
-                                                        <span class="color1">Pemrograman 2</span>
-                                                        <h4><a href="/blog-detail">Lorem ipsum dolor sit amet, consectetur
-                                                                adipiscing elit. </a>
-                                                        </h4>
-                                                    </div>
+                                            {{-- <div class="trand-right-single d-flex">
+                                                <div class="trand-right-img">
+                                                    <img src="assets/img/images/course-11.jpg" alt="" width="100%" height="100%">
                                                 </div>
-                                            @endif
+                                                <div class="trand-right-cap">
+                                                    <span class="color1">Skeping</span>
+                                                    <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
+                                                </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -195,4 +166,13 @@
     </div>
     </div>
     </section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function show(type) {
+        $.get('/blogs/type/' + type, function(data) {
+            $('#menu').html(data);
+        })
+    }
+</script>
 @endsection

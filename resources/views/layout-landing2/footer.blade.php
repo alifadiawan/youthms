@@ -43,10 +43,10 @@
 
                 <div class="mt-4 text-center">
                     <!-- Facebook -->
-                    <a type="button" class="btn btn-floating text-white btn-lg">
+                    <a type="button" href="https://www.instagram.com/youthms.id/" class="btn btn-floating text-white btn-lg">
                         <i class="fa-brands fa-xl fa-instagram"></i>
                     </a>
-                    <a type="button" class="btn btn-floating text-white btn-lg">
+                    <a type="button" href="https://web.facebook.com/youthms.id/" class="btn btn-floating text-white btn-lg">
                         <i class="fa-brands fa-xl fa-facebook"></i>
                     </a>
                     <a type="button" class="btn btn-floating text-white btn-lg">
