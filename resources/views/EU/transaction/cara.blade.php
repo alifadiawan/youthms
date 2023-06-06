@@ -117,20 +117,89 @@
                             class="btn btn-outline-primary" for="btnradio2"><span class="lpe-1">+</span>3894</label>
                     </div>
                 </div> --}}
-                <form action="">
+                {{-- <form action=""> --}}
+                @if ($bank->isnotempty())
                     <div class="row">
-                        @foreach ($gateaway as $g)
+                        @foreach ($bank as $b)
                             <div class="col-12">
                                 <div class="d-flex flex-column px-md-5 px-4 mb-4">
-                                    <span>Transfer Lewat {{ $g->nama_gateaway }}</span>
+                                    <span>Nomer Rekening  {{ $b->nama }}</span>
                                     <div class="inputWithIcon">
-                                        <input class="form-control" type="text" value="{{ $g->nomor_rekening }}">
+                                        <input class="form-control" type="text" value="{{ $b->nomor_rekening }}">
                                         <span class="">
                                             <a class="btn" type="button">
-                                                <img src="{{ asset('illustration/' . $g->image) }}" alt=""
+                                                <img src="{{ asset('illustration/' . $b->image) }}" alt=""
                                                     style="width: 100%">
                                             </a>
-                                            {{-- <div class="dropdown">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Atas Nama</span>
+                                    <div class="inputWithIcon"> <input class="form-control text-uppercase" type="text"
+                                            value="{{ $b->penerima }}"> <span class="far fa-user"></span> </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                @foreach ($transaksi as $t)
+                                    <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nominal Yang Harus
+                                            Dibayarkan</span>
+                                        <div class="inputWithIcon"> <input class="form-control text-uppercase"
+                                                type="text" value="IDR. {{ number_format($t->total, 0, ',', '.') }}">
+                                            <span class="fas fa-money-bill-wave-alt"></span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="col-12 px-md-5 px-4 mt-3">
+                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                    data-bs-target="#modalKonfirmasi">Konfirmasi Pembayaran</button>
+                            </div>
+                        @endforeach
+                    </div>
+                @elseif ($ewallet->isnotempty())
+                    <div class="row">
+                        @foreach ($ewallet as $w)
+                            <div class="col-12">
+                                <div class="d-flex flex-column px-md-5 px-4 mb-4">
+                                    <span>Transfer Lewat {{ $w->nama }}</span>
+                                    <div class="inputWithIcon">
+                                        <input class="form-control" type="text" value="{{ $w->nomor_hp }}">
+                                        <span class="">
+                                            <a class="btn" type="button">
+                                                <img src="{{ asset('illustration/' . $w->image) }}" alt=""
+                                                    style="width: 100%">
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Atas Nama</span>
+                                    <div class="inputWithIcon"> <input class="form-control text-uppercase" type="text"
+                                            value="{{ $w->penerima }}"> <span class="far fa-user"></span> </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                @foreach ($transaksi as $t)
+                                    <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nominal Yang Harus
+                                            Dibayarkan</span>
+                                        <div class="inputWithIcon"> <input class="form-control text-uppercase"
+                                                type="text" value="IDR. {{ number_format($t->total, 0, ',', '.') }}">
+                                            <span class="fas fa-money-bill-wave-alt"></span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="col-12 px-md-5 px-4 mt-3">
+                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                    data-bs-target="#modalKonfirmasi">Konfirmasi Pembayaran</button>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+                {{-- <div class="dropdown">
                                             <ul class="dropdown-menu">
                                                 <li>
                                                     <button class="dropdown-item active" type="button">
@@ -152,33 +221,8 @@
                                                 </li>
                                             </ul>
                                         </div> --}}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nomor Rekening</span>
-                                    <div class="inputWithIcon"> <input class="form-control text-uppercase" type="text"
-                                            value="{{ $g->atas_nama }}"> <span class="far fa-user"></span> </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                @foreach ($transaksi as $t)
-                                    <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Nominal Yang Harus
-                                            Dibayarkan</span>
-                                        <div class="inputWithIcon"> <input class="form-control text-uppercase"
-                                                type="text" value="IDR. {{ number_format($t->total, 0, ',', '.') }}">
-                                            <span class="fas fa-money-bill-wave-alt"></span> </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <div class="col-12 px-md-5 px-4 mt-3">
-                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
-                                    data-bs-target="#modalKonfirmasi">Konfirmasi Pembayaran</button>
-                            </div>
-                        @endforeach
-                    </div>
-                </form>
+
+                {{-- </form> --}}
 
             </div>
         </div>
@@ -214,9 +258,15 @@
                             </div>
                             <input type="hidden" name="status" value="pending">
                             <input type="hidden" name="transaksi_id" value="{{ $t->id }}">
-                            @foreach ($gateaway as $g)
-                                <input type="hidden" name="gid" value="{{ $g->id }}">
-                            @endforeach
+                            @if ($bank->isnotempty())
+                                @foreach ($bank as $b)
+                                    <input type="hidden" name="bank" value="{{ $b->nama }}">
+                                @endforeach
+                            @elseif($ewallet->isnotempty())
+                                @foreach ($ewallet as $w)
+                                    <input type="hidden" name="wallet" value="{{ $w->nama }}">
+                                @endforeach
+                            @endif
                         @endforeach
                     </div>
                     <div class="modal-footer">
@@ -230,25 +280,24 @@
 
     </div>
     {{-- </section> --}}
-<!-- Modal HTML -->
-<div id="myModal" class="modal fade">
-    <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-            <div class="modal-header justify-content-center">
-                <div class="icon-box">
-                    <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_atippmse.json"
-                                data-aos="fade-down" id="porto-animation" background="transparent" speed="1"
-                                style="width: 100%" loop autoplay></lottie-player>
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <div class="icon-box">
+                        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_atippmse.json"
+                            data-aos="fade-down" id="porto-animation" background="transparent" speed="1"
+                            style="width: 100%" loop autoplay></lottie-player>
+                    </div>
+                    {{-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> --}}
                 </div>
-                {{-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> --}}
-            </div>
-            <div class="modal-body text-center">
-                <h4>Success!</h4>
-                <p>Konfirmasi pembayaran anda sudah kami terima, berkas sedang kami proses.</p>
-                {{--   --}}
+                <div class="modal-body text-center">
+                    <h4>Success!</h4>
+                    <p>Konfirmasi pembayaran anda sudah kami terima, berkas sedang kami proses.</p>
+                    {{--   --}}
+                </div>
             </div>
         </div>
     </div>
-</div>
-   
 @endsection
