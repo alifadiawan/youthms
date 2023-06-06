@@ -26,7 +26,7 @@ class Transaksi extends Model
         return $this->hasMany(reuqestuser::class);
     }
 
-    public function pembayaran(Type $var = null)
+    public function pembayaran()
     {
         return $this->hasOne(pembayaran::class);
     }
