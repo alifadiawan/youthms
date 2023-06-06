@@ -12,9 +12,11 @@
                     </h1><span class="text-muted"><i class="fa-solid fa-calendar-days"></i> Uploaded : {{date('d F', strtotime($blog->created_at))}}</span>
                     <span class="text-muted" style="text-indent: 1.2cm"><i class="fa-solid fa-pen-to-square"></i></i> By : {{$blog->users->username}}</span>
                 </div>
+                
                 <textarea id="isi" name="isi" style="display: none;">{{ $blog->isi }}</textarea>
                 <div class="blog mt-3" id="tampilan_isi">
                     
+
                 </div>
 
             </div>

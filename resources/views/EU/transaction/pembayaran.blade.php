@@ -111,6 +111,7 @@
                                     <td colspan="1" class="text-end fw-bold">Rp.
                                         {{ number_format($grandtotal, 0, ',', '.') }}</td>
                                 </tr>
+                                {{-- test --}}
                             </tbody>
                         </table>
                     </div>
@@ -169,7 +170,7 @@
                 <!-- MEtode pembayaran -->
                 <div class="card mb-4 mb-lg-0 p-0">
                     <div class="card-header">
-                        <h5 class="mb-0 me-auto">Metode Pembayaran</h5>
+                        <h5 class="mb-0 me-auto fw-bold" style="font-family: Poppins, sans-serif;">Metode Pembayaran</h5>
                     </div>
                     <div class="card-body">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -186,19 +187,33 @@
                                     <div class="accordion-body">
                                         <div class="row">
                                             <div class="col">
-                                                @foreach ($gateaway->take(2) as $g)
-                                                    <form action="{{ route('pembayaran.cara', $g->id) }}" method="GET">
-                                                        @csrf
-                                                        <button type="submit">
-                                                            @foreach ($transaksi as $t)
-                                                                <input type="hidden" name="transaksi_id"
-                                                                    value="{{ $t->id }}">
-                                                            @endforeach
-                                                            <img class="img-thumbnail border-0"
-                                                                src="{{ asset('illustration/' . $g->image) }}"
-                                                                style="width: 15rem" alt="">
-                                                        </button>
-                                                    </form>
+                                                @foreach ($bank as $b)
+                                                    <div class="row">
+                                                        @foreach ($transaksi as $t)
+                                                            <div class="row">
+                                                                <ul class="list-group list-group-flush">
+                                                                    <li class="list-group-item">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-5">
+                                                                                <a href="{{ route('pembayaran.cara', ['id' => $b->nama, 'transaksi_id' => $t->id]) }}"
+                                                                                    style="justify-content: start"
+                                                                                    class="btn">
+                                                                                    <img class="img-thumbnail border-0"
+                                                                                        src="{{ asset('illustration/' . $b->image) }}"
+                                                                                        style="width: 80px" alt="">
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="col-lg-7">
+                                                                                <p style="text-align: end; margin-top:18px"
+                                                                                    class="fw-bold">
+                                                                                    {{ $b->nama }}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -335,35 +350,43 @@
                                 <div class="accordion-body">
                                     <form action="">
                                         <div class="row">
-                                            <div class="col">
-                                                @foreach ($gateaway as $g => $item)
-                                                    @if ($g > 1)
-                                                        <div class="row">
-                                                            <form action="{{ route('pembayaran.cara', $item->id) }}"
-                                                                method="GET">
-                                                                @csrf
-                                                                @foreach ($transaksi as $t)
-                                                                    <input type="hidden" name="transaksi_id"
-                                                                        value="{{ $t->id }}">
-                                                                @endforeach
-                                                                <button type="submit" style="justify-content: start"
-                                                                    class="btn">
-                                                                    <img class="img-thumbnail border-0"
-                                                                        src="{{ asset('illustration/' . $item->image) }}"
-                                                                        style="width: 100px; margin-right:1px" >
-                                                                    <span style="text-align: end"
-                                                                        class="fw-bold">{{ $item->nama_gateaway }}</span>
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                        <hr>
-                                                    @endif
+                                            <div class="col-lg-12">
+                                                @foreach ($ewallet as $w)
+                                                    <div class="row">
+                                                        @foreach ($transaksi as $t)
+                                                            <div class="row">
+                                                                <ul class="list-group list-group-flush">
+                                                                    <li class="list-group-item">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-5">
+                                                                                <a href="{{ route('pembayaran.cara', ['id' => $w->nama, 'transaksi_id' => $t->id]) }}"
+                                                                                    style="justify-content: start"
+                                                                                    class="btn">
+                                                                                    <img class="img-thumbnail border-0"
+                                                                                        src="{{ asset('illustration/' . $w->image) }}"
+                                                                                        style="width: 80px"
+                                                                                        alt="">
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="col-lg-7">
+                                                                                <p style="text-align: end; margin-top:18px"
+                                                                                    class="fw-bold">
+                                                                                    {{ $w->nama }}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
                                                 @endforeach
+                                                <hr>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
+                            <!--End E-wallet -->
                         </div>
 
 
