@@ -20,6 +20,7 @@ class PembayaranSeeder extends Seeder
                 'ewallet_id'=>1,
                 'status'=>'checked',
                 'bukti_tf'=>'kulbet.jpeg',
+                'created_at' => Carbon::parse('2023-06-6'),
             ],
             [
                 'transaksi_id'=>2,
@@ -27,6 +28,7 @@ class PembayaranSeeder extends Seeder
                 'ewallet_id'=>2,
                 'status'=>'checked',
                 'bukti_tf'=>'kulbet.jpeg',
+                'created_at' => Carbon::parse('2023-06-6'),
             ],
             [
                 'transaksi_id'=>3,
@@ -34,6 +36,23 @@ class PembayaranSeeder extends Seeder
                 'ewallet_id'=>3,
                 'status'=>'checked',
                 'bukti_tf'=>'kulbet.jpeg',
+                'created_at' => Carbon::parse('2023-06-6'),
+            ],
+            [
+                'transaksi_id'=>8,
+                'bank_id'=>null,
+                'ewallet_id'=>3,
+                'status'=>'pending',
+                'bukti_tf'=>'kulbet.jpeg',
+                'created_at' => Carbon::parse('2023-06-6'),
+            ],
+            [
+                'transaksi_id'=>9,
+                'bank_id'=>2,
+                'ewallet_id'=>null,
+                'status'=>'pending',
+                'bukti_tf'=>'kulbet.jpeg',
+                'created_at' => Carbon::parse('2023-06-6'),
             ],
             ];
             pembayaran::insert($pembayaran);
