@@ -6,5 +6,11 @@
       <span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
     </a>
     @endif
+    @if($notification->type === 'App\Notifications\TransaksiNotification')
+    <a href="#" data-url="{{ $notification->data['url'] }}" class="dropdown-item notification-item">
+      <i class="fa-solid fa-circle-info"></i> {{ $notification->data['message'] }}
+      <span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+    </a>
+    @endif
   @endforeach
 @endif
