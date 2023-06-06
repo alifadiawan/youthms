@@ -31,6 +31,7 @@
                                 </div>
                             </div>
                             @endforeach
+
                             <div class="col-lg-12 align-items-center border border-secondary p-3" style="margin-top: 25px; border-radius:25px">
                                 <h3 class="fw-bold">Request Mas Steven (Header)</h3>
 
@@ -73,6 +74,7 @@
                                 </a>
                 
                             </div>
+
                             <!-- Trending Bottom -->
 
                             <div class="trending-bottom">

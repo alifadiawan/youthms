@@ -531,7 +531,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
                                     <div class="col text-end text-lg">
                                         {{ date('d F Y', strtotime($r->jatuh_tempo)) }}
                                     </div>
@@ -544,6 +544,12 @@
                                 </div> --}}
                             </div>
                         @endforeach
+                    </div>
+                    <div class="row">
+                        Alasan Ditolak
+                    </div>
+                    <div class="row text-muted">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui facere voluptatum, sunt ut eaque mollitia quibusdam, voluptas consequatur ipsa id fugiat. Iure inventore sit, totam placeat atque fugit temporibus vel?
                     </div>
                 </div>
 

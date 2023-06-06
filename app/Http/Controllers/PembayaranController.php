@@ -137,6 +137,8 @@ class PembayaranController extends Controller
     {
         // $pembayaran = pembayaran::where()->get();
         $tid = $pembayaran->transaksi_id;
+        // return $pembayaran; 
+        $pembayaran = $pembayaran->where('transaksi_id',$tid)->get();
         $transaksi = transaksi::where('id', $tid)->get();
         $detail = transaksidetail::where('transaksi_id', $tid)->get();
         $total = 0;
