@@ -17,7 +17,8 @@
                                     <span class="text-dark" style="font-size: 16px; line-height:normal">
                                         <p class="fw-bold">LANGKAH 1 : TEMUKAN ATM TERDEKAT</p>
                                         <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item"> Masukkan kartu, kemudian pilih bahasa dan masukkan
+                                            <li class="list-group-item">Masukkan kartu, kemudian pilih bahasa dan
+                                                masukkan
                                                 PIN anda</li>
                                             <li class="list-group-item">Pilih "Transaksi Lain" dan pilih "Pembayaran"</li>
                                             <li class="list-group-item">Pilih menu "Lainnya" dan pilih "Briva"</li>
@@ -80,6 +81,7 @@
                                 </div>
                             </div>
                         </div>
+
                         {{-- <div class="card text-dark">
                             <div class="card-header">
                               <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
@@ -123,7 +125,7 @@
                         @foreach ($bank as $b)
                             <div class="col-12">
                                 <div class="d-flex flex-column px-md-5 px-4 mb-4">
-                                    <span>Nomer Rekening  {{ $b->nama }}</span>
+                                    <span>Nomer Rekening {{ $b->nama }}</span>
                                     <div class="inputWithIcon">
                                         <input class="form-control" type="text" value="{{ $b->nomor_rekening }}">
                                         <span class="">
@@ -163,7 +165,7 @@
                         @foreach ($ewallet as $w)
                             <div class="col-12">
                                 <div class="d-flex flex-column px-md-5 px-4 mb-4">
-                                    <span>Transfer Lewat {{ $w->nama }}</span>
+                                    <span>Pembayaran Via {{ $w->nama }}</span>
                                     <div class="inputWithIcon">
                                         <input class="form-control" type="text" value="{{ $w->nomor_hp }}">
                                         <span class="">
@@ -244,7 +246,7 @@
                             <div>
                                 <label for="">Tanggal Checkout</label>
                                 <input type="date" class="form-control mt-2" name="date" id="date"
-                                    value="{{ date('Y-m-d') }}" required>
+                                    value="{{ date('Y-m-d') }}" readonly>
                             </div>
                             <div>
                                 <label for="" class="mt-3">Kode Pesanan</label>
