@@ -70,7 +70,7 @@ class PembayaranController extends Controller
         $transaksi = Transaksi::where('id', $tid)->get();
         $bank = bank::where('nama', $nama)->get();
         $ewallet = ewallet::where('nama', $nama)->get();
-        
+
         $compact = ['bank', 'ewallet', 'transaksi'];
         return view('EU.transaction.cara', compact($compact));
     }
@@ -134,7 +134,7 @@ class PembayaranController extends Controller
         // $pembayaran = pembayaran::where()->get();
         $tid = $pembayaran->transaksi_id;
         // return $pembayaran; 
-        $pembayaran = $pembayaran->where('transaksi_id',$tid)->get();
+        $pembayaran = $pembayaran->where('transaksi_id', $tid)->get();
         $transaksi = transaksi::where('id', $tid)->get();
         $detail = transaksidetail::where('transaksi_id', $tid)->get();
         $total = 0;
@@ -163,8 +163,15 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
-        $p =$pembayaran->update([
+        $p = $pembayaran->update([
             'status' => $request->status
+        ]);
+
+        $tid = $pembayaran->transaksi_id;
+        $transaksi = transaksi::where('id', $tid)->first();
+        $total = $transaksi->total;
+        $transaksi->update([
+            'total_bayar' => $total
         ]);
 
         return redirect()->route('pembayaran.list');
