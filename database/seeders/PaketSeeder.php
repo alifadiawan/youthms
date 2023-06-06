@@ -49,7 +49,7 @@ class PaketSeeder extends Seeder
                 // Attach produk ke paket menggunakan metode attach()
                 $paket1->produk()->attach([$produk1->id, $produk2->id, $produk3->id]);
                 $paket2->produk()->attach([$produk4->id, $produk5->id, $produk6->id]);
-                $paket2->produk()->attach([$produk7->id, $produk8->id, $produk9->id, $produk10->id, $produk11->id]);
-                $paket2->produk()->attach([$produk12->id, $produk13->id, $produk14->id, $produk15->id, $produk16->id, $produk17->id, $produk18->id,]);
+                $paket3->produk()->attach([$produk7->id, $produk8->id, $produk9->id, $produk10->id, $produk11->id]);
+                $paket4->produk()->attach([$produk12->id, $produk13->id, $produk14->id, $produk15->id, $produk16->id, $produk17->id, $produk18->id,]);
     }
 }
