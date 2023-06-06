@@ -111,6 +111,7 @@
                                     <td colspan="1" class="text-end fw-bold">Rp.
                                         {{ number_format($grandtotal, 0, ',', '.') }}</td>
                                 </tr>
+                                {{-- test --}}
                             </tbody>
                         </table>
                     </div>
@@ -202,11 +203,11 @@
                                                                         class="btn" type="button">
                                                                         <img class="img-thumbnail border-0"
                                                                             src="{{ asset('illustration/' . $g->image) }}"
-                                                                            style="width:   175px; margin-right:-5px"alt="">
+                                                                            style="width:   120px; margin-right:-5px"alt="">
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-lg-7">
-                                                                    <p style="text-align: end; margin-top:30px"
+                                                                    <p style="text-align: end; margin-top:20px"
                                                                         class="fw-bold">Mandiri</p>
                                                                 </div>
                                                             </div>
@@ -350,38 +351,38 @@
                                 <div class="accordion-body">
                                     <form action="">
                                         <div class="row">
-                                            <div class="col">
+                                            <div class="col-lg-12">
                                                 @foreach ($gateaway as $g => $item)
                                                     @if ($g > 1)
                                                         <div class="row">
-                                                            <form action="{{ route('pembayaran.cara', $item->id) }}"
+                                                            {{-- <form action="{{ route('pembayaran.cara', $item->id) }}"
                                                                 method="GET">
-                                                                @csrf
-                                                                @foreach ($transaksi as $t)
-                                                                    <input type="hidden" name="transaksi_id"
-                                                                        value="{{ $t->id }}">
-                                                                @endforeach
-                                                                <button type="submit" style="justify-content-between"
-                                                                    class="btn">
+                                                                @csrf --}}
+                                                            @foreach ($transaksi as $t)
+                                                                <div class="row">
+                                                                    <ul class="list-group list-group-flush">
+                                                                        <li class="list-group-item">
                                                                             <div class="row">
-                                                                                <div class="col-lg-5 ">
-                                                                                    {{-- <a href="/cara-wallet" type="submit" style="justify-content: start"
-                                                                                    class="btn" type="button"> --}}
-                                                                                    <img class="img-thumbnail border-0"
+                                                                                <div class="col-lg-5">
+                                                                                    <a href="{{ route('pembayaran.cara', ['id' => $item->id, 'transaksi_id' => $t->id]) }}"
+                                                                                        style="justify-content: start"
+                                                                                        class="btn">
+                                                                                        <img class="img-thumbnail border-0"
                                                                                         src="{{ asset('illustration/' . $item->image) }}"
-                                                                                        style="width: 100px; margin-right:px"alt="">
+                                                                                            style="width: 80px"
+                                                                                            alt="">
                                                                                     </a>
                                                                                 </div>
                                                                                 <div class="col-lg-7">
-                                                                                    <p style="text-align: end; margin-top:10px; margin-right:100px"
-                                                                                        class="fw-bold">
-                                                                                        {{ $item->nama_gateaway }}</p>
+                                                                                    <p style="text-align: end; margin-top:18px" class="fw-bold">
+                                                                                    {{ $item->nama_gateaway }}</p>
                                                                                 </div>
                                                                             </div>
                                                                         </li>
                                                                     </ul>
-                                                                </button>
-                                                            </form>
+                                                                </div>
+                                                            @endforeach
+                                                            {{-- </form> --}}
                                                         </div>
                                                         <hr>
                                                     @endif
