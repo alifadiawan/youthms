@@ -18,7 +18,7 @@ class BlogSeeder extends Seeder
         $blog = [
             [
                 'id_artikel' => 1,
-                'foto' => 'blog (1).jpeg',
+                'foto' => 'bmw.jpg',
                 'judul' => 'how to not to how',
                 'isi' => '
                  <p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
@@ -34,7 +34,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 2,
-                'foto' => 'blog (1).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to be a1',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -49,7 +49,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (2).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -64,7 +64,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -79,7 +79,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -94,7 +94,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -109,7 +109,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -124,7 +124,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -139,7 +139,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -154,7 +154,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -169,7 +169,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -184,7 +184,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -199,7 +199,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -214,7 +214,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -229,7 +229,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -244,7 +244,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -259,7 +259,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -274,7 +274,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -289,7 +289,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -304,7 +304,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -319,7 +319,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -334,7 +334,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -349,7 +349,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -364,7 +364,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -379,7 +379,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -394,7 +394,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -409,7 +409,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 
@@ -424,7 +424,7 @@ class BlogSeeder extends Seeder
             ],
             [
                 'id_artikel' => 3,
-                'foto' => 'blog (4).jpg',
+                'foto' => 'bmw - Copy (1).jpg',
                 'judul' => 'how to not to make a war with girl',
                 'isi' => '<p style="text-indent: 2cm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita earum mollitia deleniti nostrum tempora excepturi corrupti ducimus aut
                  quod enim commodi minus hic, ea ipsa iusto quidem, totam nihil quae? Natus quibusdam harum nulla voluptates nemo fugiat dignissimos dicta 

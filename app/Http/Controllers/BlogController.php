@@ -118,7 +118,7 @@ class BlogController extends Controller
             $query->where('segmen', $type);
         })->get();
         // return $blog;
-        return view('EU.blog.', compact('blog'));
+        return view('EU.blog.segmen', compact('blog', 'type'));
     }
 
     public function detail(Request $request, Blog $blog)
