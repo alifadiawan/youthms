@@ -20,7 +20,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $p->transaksi->member->name }}</td>
-                        <td>Rp. {{ number_format($p->transaksi->total,0,',','.') }}</td>
+                        <td>Rp. {{ number_format($p->transaksi->total, 0, ',', '.') }}</td>
                         <td>
                             @if ($p->status == 'pending')
                                 pending
@@ -28,9 +28,18 @@
                                 cek
                             @endif
                         </td>
-                        <td>{{ $p->gateaways->nama_gateaway }}</td>
                         <td>
-                            <a href="{{ route('pembayaran.show',$p->id) }}" class="btn-sm btn-success">Detail</a>
+                            @if ($p->bank_id)
+                                {{ $p->bank->nama }}
+                                <img src="{{ asset('illustration/' . $p->bank->image) }}" alt="" style="width: 100%">
+                            @elseif($p->ewallet_id)
+                                {{ $p->ewallet->nama }}
+                                <img src="{{ asset('illustration/' . $p->ewallet->image) }}" alt="" style="width: 100%">
+                            @endif
+                            {{-- {{ $p }} --}}
+                        </td>
+                        <td>
+                            <a href="{{ route('pembayaran.show', $p->id) }}" class="btn-sm btn-success">Detail</a>
                         </td>
                     </tr>
                 @endforeach
