@@ -144,14 +144,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/paket" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Paket
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{ route('pembayaran.list') }}" class="nav-link">
 
                                 <i class="far fa-circle nav-icon"></i>
