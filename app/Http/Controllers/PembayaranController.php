@@ -94,7 +94,7 @@ class PembayaranController extends Controller
             'note_admin' => null,
         ]);
         notify()->success('Pembayaran Anda Akan Kami Proses !');
-        return redirect()->route('transaksi.show',$tid);
+        return redirect()->back();
     }
 
     /**

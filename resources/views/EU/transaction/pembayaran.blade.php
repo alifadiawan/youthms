@@ -169,7 +169,7 @@
                 <!-- MEtode pembayaran -->
                 <div class="card mb-4 mb-lg-0 p-0">
                     <div class="card-header">
-                        <h5 class="mb-0 me-auto">Metode Pembayaran</h5>
+                        <h5 class="mb-0 me-auto fw-bold" style="font-family: Poppins, sans-serif;">Metode Pembayaran</h5>
                     </div>
                     <div class="card-body">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -189,14 +189,29 @@
                                                 @foreach ($gateaway as $g)
                                                     <form action="{{ route('pembayaran.cara', $g->id) }}" method="GET">
                                                         @csrf
-                                                        <button type="submit">
+                                                        <button type="submit" class="form-control">
                                                             @foreach ($transaksi as $t)
                                                                 <input type="hidden" name="transaksi_id"
                                                                     value="{{ $t->id }}">
                                                             @endforeach
-                                                            <img class="img-thumbnail border-0"
-                                                                src="{{ asset('mandiri.png') }}" style="width: 15rem"
-                                                                alt="">
+                                                            {{-- <ul class="list-group"> --}}
+                                                                {{-- <li class="list-group-item"> --}}
+                                                                    <div class="row">
+                                                                        <div class="col-lg-5">
+                                                                            <a href="/cara" style="justify-content: start"
+                                                                                class="btn" type="button">
+                                                                                <img class="img-thumbnail border-0"
+                                                                                    src="{{ asset('illustration/mandiri.png') }}"
+                                                                                    style="width: 175px; margin-right:-5px"alt="">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="col-lg-7">
+                                                                            <p style="text-align: end; margin-top:30px"
+                                                                                class="fw-bold">Mandiri</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
                                                         </button>
                                                 @endforeach
                                                 </form>
@@ -335,35 +350,86 @@
                                 <div class="accordion-body">
                                     <form action="">
                                         <div class="row">
-                                            <div class="col">
+                                            <div class="col-lg-12">
                                                 <div class="row">
-                                                    <a href="/cara-wallet" style="justify-content: start" class="btn"
-                                                        type="button">
-                                                        {{-- <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt=""> --}}
-                                                        <img class="img-thumbnail border-0"
-                                                            src="{{ asset('illustration/gopay.png') }}"
-                                                            style="width: 100px; margin-right:1px"alt="">
-                                                        <span style="text-align: end" class="fw-bold">Go-Pay</span>
-                                                    </a>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <a href="/cara-wallet" class="btn" type="button">
-                                                        <img class="img-thumbnail border-0"
-                                                            src="{{ asset('illustration/sopipay.png') }}"
-                                                            style="width: 100px" alt=""><span
-                                                            style="text-align: end" class="fw-bold">Shopee-Pay</span>
-                                                    </a>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <a href="/cara" class="btn" type="button">
-                                                        <img class="img-thumbnail border-0"
-                                                            src="{{ asset('illustration/qris.png') }}"
-                                                            style="width: 100px" alt=""><span
-                                                            style="text-align: end" class="fw-bold">Christiano</span>
-                                                    </a>
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <a href="/cara-wallet" style="justify-content: start"
+                                                                        class="btn" type="button">
+                                                                        <img class="img-thumbnail border-0"
+                                                                            src="{{ asset('illustration/gopay.png') }}"
+                                                                            style="width: 100px; margin-right:1px"alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p style="text-align: end; margin-top:10px"
+                                                                        class="fw-bold">Go-Pay</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <a href="/cara-wallet" class="btn" type="button">
+                                                                        <img class="img-thumbnail border-0"
+                                                                            src="{{ asset('illustration/sopipay.png') }}"
+                                                                            style="width: 80px" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p style="text-align: end; margin-top:18px"
+                                                                        class="fw-bold">Shopee-Pay</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <a href="/cara" class="btn" type="button">
+                                                                        <img class="img-thumbnail border-0"
+                                                                            src="{{ asset('illustration/qris.png') }}"
+                                                                            style="width: 70px" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p style="text-align: end; margin-top:10px" class="fw-bold">Christiano
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <a href="/cara" class="btn" type="button">
+                                                                        <img class="img-thumbnail border-0"
+                                                                            src="{{ asset('illustration/jenius.png') }}"
+                                                                            style="width: 100px" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p style="text-align: end; margin-top:10px" class="fw-bold">Jenius
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <a href="/cara" class="btn" type="button">
+                                                                        <img class="img-thumbnail border-0"
+                                                                            src="{{ asset('illustration/link.png') }}"
+                                                                            style="width: 100px" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p style="text-align: end; margin-top:10px" class="fw-bold">Link Aja
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
