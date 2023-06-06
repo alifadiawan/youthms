@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\request_user;
 use App\Models\Member;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\TransaksiNotification;
+use Illuminate\Support\Facades\Notification;
 use App\Models\termin;
 use App\Models\Transaksi;
 use App\Models\TransaksiDetail;
@@ -116,14 +119,27 @@ class RequestUserController extends Controller
     {
         // return $request;
         $reqid = $request->requser_id;
+        return User::where('id', $reqid);
         // return $reqid;
         $request_user = request_user::find($reqid);
         $request_user->update([
             'status' => $request->status,
             'note_admin' => $request->note, 
         ]);
-        
-        // notify()->success('status berhasil diperbarui');
+
+
+        notify()->success('Status Berhasil Diperbarui !!');
+        // mengirim notifikasi
+        $user = auth()->user()->id;
+        if ($request_user->status == 'accept') {
+            $message = "Pengajuan Kreditmu Telah Diterima\nSilahkan Hubungi Admin\nUntuk Info Lebih Lanjut";
+        } else {
+            $message = "Maaf Ajuan Kreditmu Ditolak Karena\n".$request_user->note_admin;
+        }
+        $notification = new TransaksiNotification($message);
+        $notification->setUrl(route('transaksi.history')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+
         return redirect()->route('requestuser.index');
 
 
