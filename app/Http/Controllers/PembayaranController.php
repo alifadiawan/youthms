@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 use App\Models\bank;
 use App\Models\ewallet;
 use Illuminate\Support\Facades\File;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewMessageNotification;
+use App\Notifications\TransaksiNotification;
+use Illuminate\Support\Facades\Notification;
 
 class PembayaranController extends Controller
 {
@@ -113,6 +118,14 @@ class PembayaranController extends Controller
         pembayaran::create($pembayaran_data);
 
         notify()->success('Pembayaran Anda Akan Kami Proses !');
+        // mengirim notifikasi
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Pembayaran Baru Telah Masuk !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('pembayaran.list')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         // return view('EU.history.index', $tid);
         return redirect()->route('transaksi.show', $tid);
         // return redirect()->back();
@@ -146,7 +159,14 @@ class PembayaranController extends Controller
         $grandtotal = $total + $admin;
         // return $admin;
 
-        $compact = ['pembayaran', 'transaksi', 'detail', 'total', 'admin', 'grandtotal'];
+        $mid = $transaksi->value('member_id');
+        $member = Member::where('id', $mid)->value('user_id');
+        $userid = User::where('id', $member)->value('id');
+        // return $userid;
+        $user = User::find($userid);
+        // return $user;
+
+        $compact = ['pembayaran', 'transaksi', 'detail', 'total', 'admin', 'grandtotal', 'user'];
         return view('Admin.transaction.detailbukti', compact($compact));
     }
 
@@ -174,6 +194,17 @@ class PembayaranController extends Controller
             'total_bayar' => $total
         ]);
 
+        // mengirim notifikasi
+        $uid = $request->user_id;
+        $user = user::find($uid);
+        if ($pembayaran->status == 'checked') {
+            $message = "Pembayaranmu Telah Masuk\nSilahkan Hubungi Admin\nUntuk Info Lebih Lanjut";
+        } else {
+            $message = "Pembayaranmu Telah Ditolak, Maaf :(";
+        }
+        $notification = new TransaksiNotification($message);
+        $notification->setUrl(route('transaksi.history')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         return redirect()->route('pembayaran.list');
     }
 

@@ -52,6 +52,7 @@
                                 <form action="{{ route('pembayaran.update', $p->id) }}" method="POST">
                                     @csrf
                                     @method('put')
+                                    <input type="hidden" name="user_id" value="{{$user->id}}">
                                     <input type="hidden" value="checked" name="status">
                                     <button type="submit" class="btn btn-sm btn-success">accept</button>
                                 </form>
@@ -61,6 +62,7 @@
                                 <form action="{{ route('pembayaran.update', $p->id) }}" method="POST">
                                     @csrf
                                     @method('put')
+                                    <input type="hidden" name="user_id" value="{{$user->id}}">
                                     <input type="hidden" value="declined" name="status">
                                     <button type="submit" class="btn btn-sm btn-danger">declined</button>
                                 </form>
