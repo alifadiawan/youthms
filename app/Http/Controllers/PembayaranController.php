@@ -76,7 +76,7 @@ class PembayaranController extends Controller
         $bank = bank::where('nama', $nama)->get();
         $ewallet = ewallet::where('nama', $nama)->get();
 
-        $compact = ['bank', 'ewallet', 'transaksi'];
+        $compact = ['bank', 'ewallet', 'transaksi', 'nama'];
         return view('EU.transaction.cara', compact($compact));
     }
 
