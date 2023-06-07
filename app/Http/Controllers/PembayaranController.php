@@ -118,7 +118,6 @@ class PembayaranController extends Controller
         if($pembayaran->contains('transaksi_id',$tid)){
             $duplicate = $pembayaran->where('transaksi_id',$tid);
             $old = $duplicate->sortByDesc('created_at')->pop();
-
             $old->delete();
         }
 
@@ -193,7 +192,8 @@ class PembayaranController extends Controller
     {
         $status = $request->status;
         $p = $pembayaran->update([
-            'status' => $status
+            'status' => $status,
+            'note_admin'=>$request->note
         ]);
         
         $tid = $pembayaran->transaksi_id;

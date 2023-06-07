@@ -60,7 +60,7 @@
                                     </form>
                                 </div>
 
-                                <div class="col">
+                                {{-- <div class="col">
                                     <form action="{{ route('pembayaran.update', $p->id) }}" method="POST">
                                         @csrf
                                         @method('put')
@@ -68,6 +68,37 @@
                                         <input type="hidden" value="declined" name="status">
                                         <button type="submit" class="btn btn-sm btn-danger">declined</button>
                                     </form>
+                                </div> --}}
+                                <div class="col">
+                                    <a class="btn btn-danger w-100" data-toggle="modal" data-target="#declinedModal">
+                                        declined
+                                    </a>
+                                </div>
+                            </div>
+
+                            {{-- benekno modal e lip ;-; --}}
+                            <div class="modal fade" id="declinedModal" tabindex="-1" role="dialog"
+                                aria-labelledby="declinedModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <form action="{{ route('pembayaran.update', $p->id) }}" method="POST">
+                                            @csrf
+                                            @method('put')
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="note">Alasan ditolaknya request?</label>
+                                                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                                    <input type="hidden" name="status" value="declined">
+                                                    <textarea name="note" class="form-control" id="note" cols="30" rows="10" required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer text-left">
+                                                <button class="btn btn-primary" type="submit">Save
+                                                    changes</button>
+                                                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -121,8 +152,14 @@
                                     <h5 class="mb-0 me-auto text-warning font-weight-bold">PENDING</h5>`
                                 @endif
                             </div>
-                            <div class="col text-right">
-                            </div>
+                            @if ($p->status == 'declined')
+                                <div class="row">
+                                    Alasan Ditolak
+                                </div>
+                                <div class="row text-muted">
+                                    {{ $p->note_admin }}
+                                </div>
+                            @endif
                         </div>
                         <div class="card-body ">
                             {{-- <span>alasan ditolak</span> --}}
