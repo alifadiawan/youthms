@@ -115,7 +115,7 @@ class PembayaranController extends Controller
         }
 
         $pembayaran = pembayaran::all();
-        if($pembayaran->conatins('transaksi_id',$tid)){
+        if($pembayaran->contains('transaksi_id',$tid)){
             $duplicate = $pembayaran->where('transaksi_id',$tid);
             $old = $duplicate->sortByDesc('created_at')->pop();
 
