@@ -87,15 +87,10 @@
                                     </div>
 
                                     <div class="col">
-                                        {{-- <form action="{{ route('requestuser.update', $r->id) }}" method="POST"> --}}
-                                        {{-- @csrf
-                                            @method('put') --}}
-                                        {{-- <input type="hidden" value="declined" name="status"> --}}
                                         <a class="btn btn-danger w-100" data-toggle="modal"
                                             data-target="#declinedModal">
                                             declined
                                         </a>
-                                        {{-- </form> --}}
                                     </div>
 
                                     {{-- benekno modal e lip ;-; --}}

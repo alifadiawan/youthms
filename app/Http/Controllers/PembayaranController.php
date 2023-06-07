@@ -183,16 +183,19 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
+        $status = $request->status;
         $p = $pembayaran->update([
-            'status' => $request->status
+            'status' => $status
         ]);
-
+        
         $tid = $pembayaran->transaksi_id;
         $transaksi = transaksi::where('id', $tid)->first();
         $total = $transaksi->total;
-        $transaksi->update([
-            'total_bayar' => $total
-        ]);
+        if($status == 'checked'){
+            $transaksi->update([
+                'total_bayar' => $total
+            ]);
+        }
 
         // mengirim notifikasi
         $uid = $request->user_id;
