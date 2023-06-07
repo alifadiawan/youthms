@@ -114,6 +114,14 @@ class PembayaranController extends Controller
             $pembayaran_data['ewallet_id'] = $wallet->id;
         }
 
+        $pembayaran = pembayaran::all();
+        if($pembayaran->conatins('transaksi_id',$tid)){
+            $duplicate = $pembayaran->where('transaksi_id',$tid);
+            $old = $duplicate->sortByDesc('created_at')->pop();
+
+            $old->delete();
+        }
+
 
         pembayaran::create($pembayaran_data);
 
