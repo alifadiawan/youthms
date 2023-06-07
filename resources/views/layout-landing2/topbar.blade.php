@@ -34,14 +34,15 @@
                 </li>
 
                 <!-- Notifications Dropdown Menu -->
-                <li class="dropdown"><a href="#"><i class="far fa-bell"></i>
+                <li class="dropdown"><a href="#" class="nav-link"><i class="far fa-bell "></i>
                         @foreach ($notifications as $notification)
                             @if ($notification->type === 'App\Notifications\TransaksiNotification')
                                 <span class="qty posisition-absolute badge bg-danger position-absolute top-0 translate-middle badge rounded-pill">{{ count($notifications) }}</span>
                             @endif
-                        @endforeach</a>
+                        @endforeach
+                    </a>
                     <ul>
-                        <li class="dropdown-item dropdown-header" id="notificationCount">{{ count($notifications) }}
+                        <li class="dropdown-item dropdown-header mx-2" id="notificationCount">{{ count($notifications) }}
                             Notifications</li>
                         <div class="dropdown-divider"></div>
                         <li>
