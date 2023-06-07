@@ -215,7 +215,8 @@
             @if (in_array($t->id, $EU_checking))
                 @section('title', '| Pending')
                 <div class="alert alert-info" role="alert">
-                    <i class="fas fa-message me-2"></i> Hubungi Admin Pada Tombol Di Pojok Kanan Bawah Layar Untuk Konfirmasi
+                    <i class="fas fa-message me-2"></i> Hubungi Admin Pada Tombol Di Pojok Kanan Bawah Layar Untuk
+                    Konfirmasi
                 </div>
                 <div class="card shadow rounded-3">
                     <div class="row my-3 mx-3 mx-lg-4">
@@ -320,11 +321,22 @@
             {{-- view belum bayar --}}
             @if (in_array($t->id, $EU_utang))
                 @section('title', '| Belum Bayar')
-                <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
-                    <div class="alert alert-danger" role="alert">
-                        Bayar sebelum {{date('d F Y', strtotime($t->tanggal_transaksi))}} Klik disini untuk bayar
-                    </div>
-                </a>
+                @if ($pembayaran->isnotempty())
+                    @foreach ($pembayaran as $p)
+                        <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
+                            <div class="alert alert-danger" role="alert">
+                                {{ $p->note_admin }},{{ date('d F Y', strtotime($t->tanggal_transaksi)) }} Klik disini
+                                untuk bayar
+                            </div>
+                        </a>
+                    @endforeach
+                @else
+                    <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
+                        <div class="alert alert-danger" role="alert">
+                            Bayar sebelum {{ date('d F Y', strtotime($t->tanggal_transaksi)) }} Klik disini untuk bayar
+                        </div>
+                    </a>
+                @endif
                 <div class="card shadow rounded-3">
                     <div class="row my-3 mx-3 mx-lg-4">
                         <div class="col-6 col-lg text-start">
@@ -634,13 +646,13 @@
                                 </div>
                             @endforeach
                         </div>
-                        @foreach($requser as $ru)
-                        <div class="row">
-                            Alasan Ditolak
-                        </div>
-                        <div class="row text-muted">
-                            {{$ru->note_admin}}
-                        </div>
+                        @foreach ($requser as $ru)
+                            <div class="row">
+                                Alasan Ditolak
+                            </div>
+                            <div class="row text-muted">
+                                {{ $ru->note_admin }}
+                            </div>
                         @endforeach
                     </div>
 
