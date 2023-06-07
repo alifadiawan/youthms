@@ -11,8 +11,8 @@ use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 use App\Models\JenisLayanan;
 use App\Models\User;
-use App\Models\Paket;
 use App\Models\Member;
+use App\Models\Paket;
 use App\Models\Cart;
 use App\Models\LandingData;
 use App\Models\LandingIllustration;
@@ -53,7 +53,17 @@ class EUController extends Controller
         $produk = paket_produk::all();
         // $produk = paket_produk::where('paket_id',$p->id)->get();
         
+        if (auth()->check()) {
+            $uid = auth()->user()->id;
 
+            $m = member::where('user_id', $uid);
+            $mid = $m->pluck('id')->first();
+            $member = $m->get();
+
+            $cart = cart::where('member_id', $mid)->get();
+
+            return view('landing-page', compact('text', 'illustration', 'partner', 'produk', 'paket', 'testi', 'jenis_layanan', 'member', 'cart'));
+        }
 
         return view('landing-page', compact('text', 'illustration', 'partner', 'produk', 'paket', 'testi', 'jenis_layanan'));
     }

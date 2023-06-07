@@ -23,15 +23,15 @@
 
                 <div class="mt-4">
                     <!-- Facebook -->
-                    <a type="button" class="btn btn-floating text-white btn-lg">
+                    <a type="button" href="/services" class="btn btn-floating text-white btn-lg">
                         <i class="fa-brands fa-xl fa-android"></i>
                     </a>
                     <!-- Dribbble -->
-                    <a type="button" class="btn btn-floating text-white btn-lg">
+                    <a type="button" href="/services" class="btn btn-floating text-white btn-lg">
                         <i class="fa-solid fa-xl fa-brush"></i>
                     </a>
                     <!-- Twitter -->
-                    <a type="button" class="btn btn-floating text-white btn-lg"><i
+                    <a type="button" href="/services" class="btn btn-floating text-white btn-lg"><i
                             class="fa-solid fa-xl fa-file"></i></a>
                 </div>
             </div>

@@ -90,7 +90,13 @@
                             @endforeach
                             <div class="footer" style="position: absolute; bottom:20px; right:50px; left: 50px">
                                 <p class="fw-bold">Rp {{ number_format($total, 0, ',', '.') }}</p>
-                                <a href="/store" class="btn yms-blue mt-4">Detail</a>
+                                @guest
+                                <a href="/login" class="btn yms-blue mt-4">Beli Sekarang</a>
+                                @endguest
+
+                                @auth
+                                <a href="/store" class="btn yms-blue mt-4">Beli Sekarang</a>
+                                @endauth
                             </div>
                         </div>
                     </div>
@@ -179,15 +185,11 @@
             <div class="row content">
                 <div class="col pt-4 pt-lg-0">
                     <h5>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ad ratione consectetur possimus
-                        totam excepturi repellat, minima rem tempora doloremque incidunt officia expedita voluptatem quas
-                        voluptate quaerat voluptatum illum? Nesciunt.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sunt sequi, quibusdam ea consectetur
-                        architecto. Illo, architecto iusto sit provident ducimus ab ad expedita commodi porro, quae eos
-                        inventore quo.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad molestias ab, aliquam praesentium neque
-                        amet obcaecati consequuntur quas delectus maxime natus ipsa quae dolorum temporibus voluptatibus
-                        modi? Ipsam, commodi aspernatur?
+                        Youthms.id merupakan startup yang berkembang di bidang pelayanan jasa teknologi. Kami menyediakan berbagai jenis layanan dan sub layanan, mulai dari bidang desain grafis hingga pembuatan aplikasi. Youthms.id membantu mengembangkan bisnis anda dengan mudah menggunakan kecanggihan teknologi dan jasa yang kami berikan kepada anda.
+                    </h5>
+                    <br>
+                    <h5>
+                        Kami adalah mitra terpercaya yang siap membantu mewujudkan potensi penuh bisnis Anda. Dengan tim ahli yang terdiri dari pengembang aplikasi berpengalaman, desainer kreatif yang menghasilkan karya visual menakjubkan, ahli pemasaran yang menggunakan strategi digital terkini, dan tim pengedit yang menyempurnakan konten, kami memberikan layanan berkualitas tinggi untuk mencapai kesuksesan bersama.
                     </h5>
                 </div>
             </div>

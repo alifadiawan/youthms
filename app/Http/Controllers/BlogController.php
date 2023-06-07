@@ -90,7 +90,7 @@ class BlogController extends Controller
         elseif ($type == 'terpilih') {
             // code...
             $terpilih = Blog::whereHas('segmen', function ($query){
-                $query->where('segmen', 'PEMROGRAMMAN');
+                $query->where('id', 3);
             })->get();
             $blog = $terpilih;
         }
