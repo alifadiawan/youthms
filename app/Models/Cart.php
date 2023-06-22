@@ -13,7 +13,7 @@ class Cart extends Model
 
     public function produk()
     {
-        return $this->belongsTo(produk::class);
+        return $this->belongsTo(Produk::class);
     }
 
     public function member()

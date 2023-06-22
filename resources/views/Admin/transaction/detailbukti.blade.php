@@ -56,7 +56,7 @@
                                         @method('put')
                                         <input type="hidden" name="user_id" value="{{ $user->id }}">
                                         <input type="hidden" value="checked" name="status">
-                                        <button type="submit" class="btn btn-sm btn-success">accept</button>
+                                        <button type="submit" class="btn btn-success w-100">accept</button>
                                     </form>
                                 </div>
 
