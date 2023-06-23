@@ -12,11 +12,11 @@ class paket_produk extends Model
 
     public function paket()
     {
-        return $this->belongsToMany(paket::class);
+        return $this->belongsToMany(Paket::class);
     }
 
     public function produk()
     {
-        return $this->belongsTo(produk::class);
+        return $this->belongsTo(Produk::class);
     }
 }

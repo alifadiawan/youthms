@@ -12,7 +12,7 @@
                 <a href="{{ route('blogs.create') }}" class="btn btn-md text-white rounded mb-2 mr-1 disabled"
                     style="background-color: #1864BA; width: 17%;">Tambah Artikel</a>
             @endif
-            <table class="table table-striped table-hover mt-2">
+            <table class="table table-striped table-hover mt-2" id="blog-container">
                 <thead>
                     <tr style="background-color: #0EA1E2">
                         <th class="text-white">No</th>
@@ -46,8 +46,14 @@
                     @endif
                 </tbody>
             </table>
-            <div class="row">
-                {{$data->links()}}
+            <div class="row" id="blog-pagination">
+                <nav>
+                    <ul class="pagination">
+                        @for ($page = 1; $page <= $data->lastPage(); $page++)
+                        <li class="page-item"><a class="page-link" href="{{ $data->url($page) }}">{{$page}}</a></li>
+                        @endfor
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
@@ -125,5 +131,32 @@
         </div>
     </div>
 @endforeach
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('#blog-pagination').on('click', '.pagination a', function (event) {
+        event.preventDefault();
+
+        //add class active di li pagination
+        $('#blog-pagination .pagination li').removeClass('active');
+        $(this).parent('li').addClass('active');
+
+        //inisialisasi url pagination
+        var url = $(this).attr('href');
+
+        $.ajax({
+            url : url,
+            dataType: 'html',
+            type: 'get',
+            success: function(response) {
+                $('#blog-container').html('');
+                $('#blog-container').html(response);
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+    });
+</script>
 
 @endsection
