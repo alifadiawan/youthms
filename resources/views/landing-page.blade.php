@@ -70,7 +70,7 @@
                 @foreach ($paket as $p)
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
                         data-aos-delay="200">
-                        <div class="icon-box text-center" style="width: 20rem; height: 30rem;">
+                        <div class="icon-box text-center" style="width: 100%; height: 30rem;">
                             <h4>{{ $p->nama_paket }}</h4>
                             @foreach ($produk->where('paket_id', $p->id) as $pp)
                                 <ul class="m-0">
@@ -178,9 +178,7 @@
     <section id="about" class="about">
         <div class="container" data-aos="fade-up">
 
-            <div class="section-title">
-                <h2 class="text-dark">About Us</h2>
-            </div>
+                <h2 class="text-dark fw-bold my-5 text-center">About Us</h2>
 
             <div class="row content">
                 <div class="col pt-4 pt-lg-0">

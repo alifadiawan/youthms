@@ -154,14 +154,14 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="/chat" class="nav-link">
                         <i class="nav-icon fa-solid fa-comment-dots"></i>
                         <p>
                             Chat
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="{{route('portfolio.index')}}" class="nav-link">
                         <i class="nav-icon fa-solid fa-briefcase"></i>

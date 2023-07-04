@@ -7,7 +7,6 @@
     <nav id="navbar" class="navbar navbar-expand">
         <ul class="navbar-nav">
 
-
             <li class="nav-item"><a class="nav-link" href="{{ route('blogs.index') }}">Blog</a></li>
 
             {{-- <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.index') }}">Store</a></li> --}}
