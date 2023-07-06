@@ -325,7 +325,7 @@
                     @foreach ($pembayaran as $p)
                         <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
                             <div class="alert alert-danger" role="alert">
-                                {{ $p->note_admin }},{{ date('d F Y', strtotime($t->tanggal_transaksi)) }} Klik disini
+                                {{ $p->note_admin }}, bayar sebelum {{ date('d F Y', strtotime($t->tanggal_transaksi)) }} Klik disini
                                 untuk bayar
                             </div>
                         </a>

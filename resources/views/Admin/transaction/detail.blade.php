@@ -3,7 +3,7 @@
 @section('judul', 'Transaction')
 
 <div class="container w-50">
-    <a href="{{ route('transaksi.history') }}" class="my-5">
+    <a href="{{ route('transaksi.index') }}" class="my-5">
         <i class="fas fa-arrow-left"></i>
     </a>
     <div class="row">
@@ -132,6 +132,11 @@
                                     <div class="col">
                                         <a href="" class="btn btn-block btn-outline-info rounded-pill">
                                             Share
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="{{ route('pembayaran.show',$trx[0]->id) }}" class="btn btn-block btn-outline-info rounded-pill">
+                                            Bukti Pembayaran
                                         </a>
                                     </div>
                                 </div>
