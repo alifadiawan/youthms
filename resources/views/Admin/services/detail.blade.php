@@ -3,53 +3,53 @@
 @section('judul', 'Detail')
 
 <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-lg-8 col-11">
         <div class="card rounded">
             <div class="card-body">
 
                 {{-- ID Pelanggan --}}
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="col-lg col-6">
                         <strong>ID Layanan</strong>
                     </div>
-                    <div class="col">
+                    <div class="col-lg col-6">
                         <p>{{ $services->id_service }}</p>
                     </div>
                 </div>
 
                 {{-- Jenis Layanan --}}
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="col-lg col-6">
                         <strong>Jenis Layanan</strong>
                     </div>
-                    <div class="col">
+                    <div class="col-lg col-6">
                         <p class="text-capitalize">{{ $services->jenis_layanan->layanan }}</p>
                     </div>
                 </div>
 
                 {{-- Judul --}}
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="col-lg col-6">
                         <strong>Judul</strong>
                     </div>
-                    <div class="col">
+                    <div class="col-lg col-6">
                         <p class="text-capitalize">{{ $services->judul }}</p>
                     </div>
                 </div>
 
                 {{-- Deskripsi --}}
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="col-lg col-6">
                         <strong>Deskripsi</strong>
                     </div>
-                    <div class="col">
+                    <div class="col-lg col-6">
                         <p>{{ $services->deskripsi }}</p>
                     </div>
                 </div>
 
                 {{-- Foto --}}
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="col-lg col-6">
                         <strong>Foto</strong>
                     </div>
                     <div class="col">
