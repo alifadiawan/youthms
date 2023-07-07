@@ -8,7 +8,6 @@
                 <tr style="background-color: #0EA1E2">
                     <th class="text-white">No</th>
                     <th class="text-white">Nama</th>
-                    {{-- <th class="text-white">Jasa yang dipesan</th> --}}
                     <th class="text-white">Total harga</th>
                     <th class="text-white">Status</th>
                     <th class="text-white">Detail</th>

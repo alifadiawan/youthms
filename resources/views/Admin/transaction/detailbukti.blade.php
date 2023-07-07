@@ -6,7 +6,7 @@
     @foreach ($pembayaran as $p)
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <a href="{{ route('pembayaran.list') }}" class="btn my-3">
+                <a href="{{ route('transaksi.show',$transaksi[0]->id) }}" class="btn my-3">
                     <i class="fas fa-arrow-left"></i></a>
                 @foreach ($transaksi as $t)
                     {{ $t->unique_code }}
@@ -56,7 +56,7 @@
                                         @method('put')
                                         <input type="hidden" name="user_id" value="{{ $user->id }}">
                                         <input type="hidden" value="checked" name="status">
-                                        <button type="submit" class="btn btn-sm btn-success">accept</button>
+                                        <button type="submit" class="btn btn-success w-100">accept</button>
                                     </form>
                                 </div>
 

@@ -22,8 +22,11 @@ class PembayaranController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
-    {
+    public function index()
+    { 
+        $pembayaran = pembayaran::all();
+        $compact = ['pembayaran'];
+        return view('Admin.transaction.bukti', compact($compact));
     }
 
     public function pembayaran($id)
@@ -137,14 +140,6 @@ class PembayaranController extends Controller
         return redirect()->route('transaksi.show', $tid);
         // return redirect()->back();
     }
-
-    public function listpembayaran()
-    {
-        $pembayaran = pembayaran::all();
-        $compact = ['pembayaran'];
-        return view('Admin.transaction.bukti', compact($compact));
-    }
-
 
     /**
      * Display the specified resource.
