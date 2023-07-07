@@ -114,7 +114,45 @@ h6 {
     width: fit-content;
 }
 
-@media (max-width: 576px) {
+@media all and (min-width: 1024px) and (max-width: 1280px) { }
+
+@media all and (min-width: 768px) and (max-width: 1024px) { 
+    #caption {
+        position: absolute;
+        top: 30%;
+        left: 5%;
+        width: 30%;
+    }
+    h3{
+        text-align: left;
+        font-size: 30px;
+    }
+
+    #text{
+        text-align: left;
+        font-size: 16px;
+    }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) { 
+    #caption {
+        position: absolute;
+        top: 20%;
+        left: 5%;
+        width: 30%;
+    }
+    h3{
+        text-align: left;
+        font-size: 20px;
+    }
+
+    #text{
+        text-align: left;
+        font-size: 13px;
+    }
+}
+
+@media all and (max-width: 480px) { 
     #caption {
         position: absolute;
         top: 13%;
@@ -128,9 +166,29 @@ h6 {
 
     #text{
         text-align: left;
-        font-size: 7px;
+        font-size: 10px;
     }
 }
+
+
+/* Button */
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+    .text-capitalize.btn.btn.yms-outline-blue.rounded-5{
+        width: 170px;
+        margin: 0px 10px 0 10px;
+    }
+ }
+
+@media all and (max-width: 480px) {
+    .text-capitalize.btn.btn.yms-outline-blue.rounded-5{
+        width: 170px;
+        margin: 0px 10px 0 10px;
+    }
+ }
+
+
+
 
 /*--------------------------------------------------------------
 # Back to top button

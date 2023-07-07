@@ -89,7 +89,7 @@
                                 {{-- {{ $p->produk->harga }j} --}}
                             @endforeach
                             <div class="footer" style="position: absolute; bottom:20px; right:50px; left: 50px">
-                                <p class="fw-bold">Rp {{ number_format($total, 0, ',', '.') }}</p>
+                                 <p class="fw-bold">Rp {{ number_format($total, 0, ',', '.') }}</p>
                                 @guest
                                 <a href="/login" class="btn yms-blue mt-4">Beli Sekarang</a>
                                 @endguest
