@@ -26,18 +26,18 @@
                                 <div class="konten">
                                     <div class="row">
                                         <div class="col text-center">
-                                            @if (in_array($detail[0]->transaksi_id, $adm_utang))
+                                            @if (in_array($t->id, $adm_utang))
                                                 <h5 class="h3 mb-0 me-auto text-danger font-weight-bold">BELUM BAYAR
                                                 </h5>
-                                            @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
+                                            @elseif(in_array($t->id, $adm_kredit))
                                                 <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">KREDIT</h5>
-                                            @elseif(in_array($detail[0]->transaksi_id, $adm_pending))
+                                            @elseif(in_array($t->id, $adm_pending))
                                                 <h5 class="h3 mb-0 me-auto text-info font-weight-bold">PENDING</h5>
-                                            @elseif(in_array($detail[0]->transaksi_id, $adm_declined))
+                                            @elseif(in_array($t->id, $adm_declined))
                                                 <h5 class="h3 mb-0 me-auto text-dark font-weight-bold">DECLINED</h5>
-                                            @elseif(in_array($detail[0]->transaksi_id, $adm_lunas))
+                                            @elseif(in_array($t->id, $adm_lunas))
                                                 <h5 class="mb-0 me-auto text-success font-weight-bold">LUNAS</h5>
-                                            @elseif(in_array($detail[0]->transaksi_id, $adm_checking))
+                                            @elseif(in_array($t->id, $adm_checking))
                                                 <h5 class="mb-0 me-auto text-primary font-weight-bold">CHECKING</h5>
                                             @endif
                                             <p class="text-muted">{{ $t->tanggal_transaksi }}</p>
@@ -114,7 +114,8 @@
 
                                     <div class="row justify-content-center">
                                         @foreach ($pembayaran as $p)
-                                            <div class="col-lg col-12 text-center text-lg-left mt-lg-0 mt-4g font-weight-bold">
+                                            <div
+                                                class="col-lg col-12 text-center text-lg-left mt-lg-0 mt-4g font-weight-bold">
                                                 Bukti transfer
                                             </div>
                                             <div class="col text-right">
@@ -126,46 +127,46 @@
                                         @endforeach
                                     </div>
 
-                            <div class="footer mt-3">
-                                <div class="row">
-                                    <div class="col">
-                                        <a href="" class="btn btn-block btn-outline-info rounded-pill">
-                                            Download
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="" class="btn btn-block btn-outline-info rounded-pill">
-                                            Share
-                                        </a>
-                                    </div>
-                                    @if (in_array($detail[0]->transaksi_id, $adm_kredit))
-                                        <div class="col">
-                                            <a href="{{ route('pembayaran.show', $t->id) }}"
-                                                class="btn btn-block btn-outline-info rounded-pill">
-                                                Bukti Pembayaran Kredit
-                                            </a>
+                                    <div class="footer mt-3">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="" class="btn btn-block btn-outline-info rounded-pill">
+                                                    Download
+                                                </a>
+                                            </div>
+                                            <div class="col">
+                                                <a href="" class="btn btn-block btn-outline-info rounded-pill">
+                                                    Share
+                                                </a>
+                                            </div>
+                                            @if (in_array($detail[0]->transaksi_id, $adm_kredit))
+                                                <div class="col">
+                                                    <a href="{{ route('pembayaran.show', $t->id) }}"
+                                                        class="btn btn-block btn-outline-info rounded-pill">
+                                                        Bukti Pembayaran Kredit
+                                                    </a>
+                                                </div>
+                                            @elseif(in_array($detail[0]->transaksi_id, $adm_lunas))
+                                                <div class="col">
+                                                    <a href="{{ route('pembayaran.show', $t->id) }}"
+                                                        class="btn btn-block btn-outline-info rounded-pill">
+                                                        Bukti Pembayaran
+                                                    </a>
+                                                </div>
+                                            @else
+                                            @endif
                                         </div>
-                                    @elseif(in_array($detail[0]->transaksi_id, $adm_lunas))
-                                        <div class="col">
-                                            <a href="{{ route('pembayaran.show', $t->id) }}"
-                                                class="btn btn-block btn-outline-info rounded-pill">
-                                                Bukti Pembayaran
-                                            </a>
-                                        </div>
-                                    @else
-                                    @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-            @endforeach
+            </div>
         </div>
-    </div>
-</div>
 
 
-{{-- <div class="container">
+        {{-- <div class="container">
 
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -338,4 +339,4 @@
 
     </div>
 </div> --}}
-@endsection
+    @endsection
