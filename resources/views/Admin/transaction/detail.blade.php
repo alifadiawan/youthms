@@ -134,11 +134,22 @@
                                             Share
                                         </a>
                                     </div>
-                                    <div class="col">
-                                        <a href="{{ route('pembayaran.show',$trx[0]->id) }}" class="btn btn-block btn-outline-info rounded-pill">
-                                            Bukti Pembayaran
-                                        </a>
-                                    </div>
+                                    @if (in_array($detail[0]->transaksi_id, $adm_kredit))
+                                        <div class="col">
+                                            <a href="{{ route('pembayaran.show', $t->id) }}"
+                                                class="btn btn-block btn-outline-info rounded-pill">
+                                                Bukti Pembayaran Kredit
+                                            </a>
+                                        </div>
+                                    @elseif(in_array($detail[0]->transaksi_id, $adm_lunas))
+                                        <div class="col">
+                                            <a href="{{ route('pembayaran.show', $t->id) }}"
+                                                class="btn btn-block btn-outline-info rounded-pill">
+                                                Bukti Pembayaran
+                                            </a>
+                                        </div>
+                                    @else
+                                    @endif
                                 </div>
                             </div>
                         </div>
