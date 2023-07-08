@@ -59,7 +59,7 @@
                     <table class="table table-striped table-valign-middle">
                         <thead>
                             <tr>
-                                <th>Produk</th>
+                                <th>Kode Transaksi  </th>
                                 <th>Tanggal Pembelian</th>
                                 <th>More Info</th>
                             </tr>
@@ -68,15 +68,16 @@
                             @foreach($transaksi as $t)
                             <tr>
                                 <td>
-                                    @foreach($t->transaksi_detail as $td)
+                                    {{ $t->unique_code }}
+                                    {{-- @foreach($t->transaksi_detail as $td)
                                         {{$td->produk->nama_produk}}<br>
-                                    @endforeach
+                                    @endforeach --}}
                                 </td>
                                 <td>
                                     {{date('d F Y',strtotime($t->tanggal_transaksi))}}
                                 </td>
                                 <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#exampleModal">
+                                    <a href="{{ route('transaksi.show', $t->id) }}" class="text-muted">
                                         <i class="fa-solid fa-circle-info"></i>
                                     </a>
                                 </td>

@@ -2,125 +2,129 @@
 @section('content')
 @section('judul', 'Transaction')
 
-<div class="container w-50">
-    <a href="{{ route('transaksi.index') }}" class="my-5">
-        <i class="fas fa-arrow-left"></i>
-    </a>
-    <div class="row">
-        <div class="col">
-            @foreach ($trx as $t)
-                <div class="card rounded-lg shadow">
-                    <div class="card-header yms-blue">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <img src="{{ asset('youth-logo.svg') }}" width="150px" alt="">
-                            </div>
-                            <div class="col text-right">
-                                <p>{{ $t->unique_code }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="konten">
-                            <div class="row">
-                                <div class="col text-center">
-                                    @if (in_array($detail[0]->transaksi_id, $adm_utang))
-                                        <h5 class="h3 mb-0 me-auto text-danger font-weight-bold">BELUM BAYAR</h5>
-                                    @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
-                                        <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">KREDIT</h5>
-                                    @elseif(in_array($detail[0]->transaksi_id, $adm_pending))
-                                        <h5 class="h3 mb-0 me-auto text-info font-weight-bold">PENDING</h5>
-                                    @elseif(in_array($detail[0]->transaksi_id, $adm_declined))
-                                        <h5 class="h3 mb-0 me-auto text-dark font-weight-bold">DECLINED</h5>
-                                    @elseif(in_array($detail[0]->transaksi_id, $adm_lunas))
-                                        <h5 class="mb-0 me-auto text-success font-weight-bold">LUNAS</h5>
-                                    @elseif(in_array($detail[0]->transaksi_id, $adm_checking))
-                                        <h5 class="mb-0 me-auto text-primary font-weight-bold">CHECKING</h5>
-                                    @endif
-                                    <p class="text-muted">{{ $t->tanggal_transaksi }}</p>
+<div class="row justify-content-center">
+    <div class="col-lg-7 col-11">
+        <div class="container">
+            <a href="{{ route('transaksi.index') }}" class="my-5">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <div class="row">
+                <div class="col">
+                    @foreach ($trx as $t)
+                        <div class="card rounded-lg shadow">
+                            <div class="card-header yms-blue">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <img src="{{ asset('youth-logo.svg') }}" width="150px" alt="">
+                                    </div>
+                                    <div class="col text-right">
+                                        <p>{{ $t->unique_code }}</p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="penerima">
-
-                                @foreach ($detail as $d)
-                                    <div class="row mt-3">
-                                        <div class="col">
-                                            {{ $d->produk->nama_produk }}
-                                        </div>
-                                        <div class="col text-right">
-                                            {{ $d->quantity }}
-                                        </div>
-                                        <div class="col text-right">
-                                            Rp. {{ number_format($d->quantity * $d->produk->harga, 0, ',', '.') }}
+                            <div class="card-body">
+                                <div class="konten">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            @if (in_array($detail[0]->transaksi_id, $adm_utang))
+                                                <h5 class="h3 mb-0 me-auto text-danger font-weight-bold">BELUM BAYAR
+                                                </h5>
+                                            @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
+                                                <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">KREDIT</h5>
+                                            @elseif(in_array($detail[0]->transaksi_id, $adm_pending))
+                                                <h5 class="h3 mb-0 me-auto text-info font-weight-bold">PENDING</h5>
+                                            @elseif(in_array($detail[0]->transaksi_id, $adm_declined))
+                                                <h5 class="h3 mb-0 me-auto text-dark font-weight-bold">DECLINED</h5>
+                                            @elseif(in_array($detail[0]->transaksi_id, $adm_lunas))
+                                                <h5 class="mb-0 me-auto text-success font-weight-bold">LUNAS</h5>
+                                            @elseif(in_array($detail[0]->transaksi_id, $adm_checking))
+                                                <h5 class="mb-0 me-auto text-primary font-weight-bold">CHECKING</h5>
+                                            @endif
+                                            <p class="text-muted">{{ $t->tanggal_transaksi }}</p>
                                         </div>
                                     </div>
-                                @endforeach
-                            </div>
 
-                            <div class="pengirim">
-                                <hr class="my-3">
+                                    <div class="penerima">
 
-                                <div class="row">
-                                    <div class="col">
-                                        total
+                                        @foreach ($detail as $d)
+                                            <div class="row mt-3">
+                                                <div class="col">
+                                                    {{ $d->produk->nama_produk }}
+                                                </div>
+                                                <div class="col text-right">
+                                                    {{ $d->quantity }}
+                                                </div>
+                                                <div class="col text-right">
+                                                    Rp.
+                                                    {{ number_format($d->quantity * $d->produk->harga, 0, ',', '.') }}
+                                                </div>
+                                            </div>
+                                        @endforeach
                                     </div>
-                                    <div class="col text-right">
-                                        Rp. {{ number_format($total, 0, ',', '.') }}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        biaya admin
-                                    </div>
-                                    <div class="col text-right">
-                                        Rp. {{ number_format($admin, 0, ',', '.') }}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        grandtotal
-                                    </div>
-                                    <div class="col text-right">
-                                        Rp. {{ number_format($grandtotal, 0, ',', '.') }}
-                                    </div>
-                                </div>
-                            </div>
 
-                            <hr class="my-3">
-                            <div class="row">
-                                @foreach ($pembayaran as $p)
-                                    <div class="col">
-                                        metode pembayaran
-                                    </div>
-                                    <div class="col text-right">
-                                        @if ($p->bank_id == !null)
-                                            <img class="img-thumbnail border-0"
-                                                src="{{ asset('illustration/' . $p->bank->image) }}"
-                                                style="width: 80px" alt="">
-                                        @elseif ($p->ewallet_id == !null)
-                                            <img class="img-thumbnail border-0"
-                                                src="{{ asset('illustration/' . $p->ewallet->image) }}"
-                                                style="width: 80px" alt="">
-                                        @endif
+                                    <div class="pengirim">
+                                        <hr class="my-3">
 
+                                        <div class="row">
+                                            <div class="col">
+                                                total
+                                            </div>
+                                            <div class="col text-right">
+                                                Rp. {{ number_format($total, 0, ',', '.') }}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                biaya admin
+                                            </div>
+                                            <div class="col text-right">
+                                                Rp. {{ number_format($admin, 0, ',', '.') }}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                grandtotal
+                                            </div>
+                                            <div class="col text-right">
+                                                Rp. {{ number_format($grandtotal, 0, ',', '.') }}
+                                            </div>
+                                        </div>
                                     </div>
-                                @endforeach
-                            </div>
 
-                            <div class="row">
-                                @foreach ($pembayaran as $p)
-                                    <div class="col">
-                                        Bukti transfer
-                                    </div>
-                                    <div class="col text-right">
-                                        <img src="{{ asset('./bukti_transfer/' . $p->bukti_tf) }}"
-                                            class="card-img-top " alt="..."
-                                            style="max-width: 15.3rem; height: 15.3rem; object-fit:cover;">
+                                    <hr class="my-3">
+                                    <div class="row">
+                                        @foreach ($pembayaran as $p)
+                                            <div class="col">
+                                                metode pembayaran
+                                            </div>
+                                            <div class="col text-right">
+                                                @if ($p->bank_id == !null)
+                                                    <img class="img-thumbnail border-0"
+                                                        src="{{ asset('illustration/' . $p->bank->image) }}"
+                                                        style="width: 80px" alt="">
+                                                @elseif ($p->ewallet_id == !null)
+                                                    <img class="img-thumbnail border-0"
+                                                        src="{{ asset('illustration/' . $p->ewallet->image) }}"
+                                                        style="width: 80px" alt="">
+                                                @endif
 
+                                            </div>
+                                        @endforeach
                                     </div>
-                                @endforeach
-                            </div>
+
+                                    <div class="row justify-content-center">
+                                        @foreach ($pembayaran as $p)
+                                            <div class="col-lg col-12 text-center text-lg-left mt-lg-0 mt-4g font-weight-bold">
+                                                Bukti transfer
+                                            </div>
+                                            <div class="col text-right">
+                                                <img src="{{ asset('./bukti_transfer/' . $p->bukti_tf) }}"
+                                                    class="card-img-top " alt="..."
+                                                    style="max-width: 15.3rem; height: 15.3rem; object-fit:cover;">
+
+                                            </div>
+                                        @endforeach
+                                    </div>
 
                             <div class="footer mt-3">
                                 <div class="row">
