@@ -144,7 +144,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ route('pembayaran.index') }}" class="nav-link">
 
                                 <i class="far fa-circle nav-icon"></i>
@@ -152,7 +152,7 @@
                                     Detail Bayar
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
                 {{-- <li class="nav-item">

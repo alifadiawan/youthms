@@ -126,32 +126,40 @@
                                         @endforeach
                                     </div>
 
-                                    <div class="footer mt-3">
-                                        <div class="row">
-                                            <div class="col">
-                                                <a href="" class="btn btn-block btn-outline-info rounded-pill">
-                                                    Download
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a href="" class="btn btn-block btn-outline-info rounded-pill">
-                                                    Share
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a href="{{ route('pembayaran.show', $trx[0]->id) }}"
-                                                    class="btn btn-block btn-outline-info rounded-pill">
-                                                    Bukti Pembayaran
-                                                </a>
-                                            </div>
-                                        </div>
+                            <div class="footer mt-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="" class="btn btn-block btn-outline-info rounded-pill">
+                                            Download
+                                        </a>
                                     </div>
+                                    <div class="col">
+                                        <a href="" class="btn btn-block btn-outline-info rounded-pill">
+                                            Share
+                                        </a>
+                                    </div>
+                                    @if (in_array($detail[0]->transaksi_id, $adm_kredit))
+                                        <div class="col">
+                                            <a href="{{ route('pembayaran.show', $t->id) }}"
+                                                class="btn btn-block btn-outline-info rounded-pill">
+                                                Bukti Pembayaran Kredit
+                                            </a>
+                                        </div>
+                                    @elseif(in_array($detail[0]->transaksi_id, $adm_lunas))
+                                        <div class="col">
+                                            <a href="{{ route('pembayaran.show', $t->id) }}"
+                                                class="btn btn-block btn-outline-info rounded-pill">
+                                                Bukti Pembayaran
+                                            </a>
+                                        </div>
+                                    @else
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
