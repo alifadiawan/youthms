@@ -186,7 +186,7 @@
                         <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="card card-hover border-0 shadow">
                                 <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
-                                style="max-width: 15.3rem; height: 15.3rem; object-fit:cover;">
+                                style="max-width: 19rem; height: 19rem object-fit:cover;">
                                 <div class="card-body">
                                     <p class="card-title text-capitalize fw-bold text-truncate">{{ $p->nama_produk }}</p>
                                     <p class="card-title text-secondary">{{ $ls->judul }}</p>

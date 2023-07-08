@@ -36,9 +36,11 @@
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch my-4 mt-md-0" data-aos="zoom-in"
                         data-aos-delay="200">
                         <div class="icon-box text-center text-lg-start">
-                            <h4 class="text-center text-uppercase text-lg-start">{{ $item->layanan }}</h4>
-                            <p>{{ $item->deskripsi }}</p>
-                            <a href="{{ route('services.index') }}" class="">Lihat lebih lanjut</a>
+                            <div class="d-flex flex-column" style="height: 100%">
+                                <h4 class="text-center text-uppercase text-lg-start fw-bold">{{ $item->layanan }}</h4>
+                                <p style="height: 100%">{{ $item->deskripsi }}</p>
+                                <a href="{{ route('services.index') }}">Lihat lebih lanjut</a>
+                            </div>
                         </div>
                     </div>
                 @endforeach

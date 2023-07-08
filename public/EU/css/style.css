@@ -172,6 +172,9 @@ h6 {
 
 
 /* Button */
+.text-capitalize.btn.btn.yms-outline-blue.rounded-5{
+    margin: 0px 6px 0 6px;
+}
 
 @media all and (min-width: 480px) and (max-width: 768px) {
     .text-capitalize.btn.btn.yms-outline-blue.rounded-5{
