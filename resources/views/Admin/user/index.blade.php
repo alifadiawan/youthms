@@ -59,36 +59,40 @@
                 </div>
             @endif
         </div>
-        <table id="userTable" class="table table-striped table-hover mt-2 bg-white">
-            <thead>
-                <tr style="background-color: #0EA1E2">
-                    <th class="text-white">No</th>
-                    <th class="text-white">Username</th>
-                    <th class="text-white">Role</th>
-                    <th class="text-white">Action</th>
-                </tr>
-            </thead>
-            <tbody id="userTableBody">
-                @if (count($user) < 1)
-                    <tr>
-                        <td colspan="5" class="text-center">Belum Ada User !!</td>
+        <div class="table-responsive">
+
+            <table id="userTable" class="table table-striped table-hover mt-2 bg-white">
+                <thead>
+                    <tr style="background-color: #0EA1E2">
+                        <th class="text-white">No</th>
+                        <th class="text-white">Username</th>
+                        <th class="text-white">Role</th>
+                        <th class="text-white">Action</th>
                     </tr>
-                @else
-                    @foreach ($user as $u)
-                        <tr class="userTableRow">
-                            <td scope="row">{{ $loop->iteration }}</td>
-                            <td>{{ $u->username }}</td>
-                            <td class="text-capitalize">{{ $u->role->role }}</td>
-                            <td>
-                                <a href="{{ route('user.show', $u->id) }}"
-                                    class="btn btn-sm btn text-white rounded-pill"
-                                    style="background-color: #0EA1E2">Detail</a>
-                            </td>
+                </thead>
+                <tbody id="userTableBody">
+                    @if (count($user) < 1)
+                        <tr>
+                            <td colspan="5" class="text-center">Belum Ada User !!</td>
                         </tr>
-                    @endforeach
-                @endif
-            </tbody>
-        </table>
+                    @else
+                        @foreach ($user as $u)
+                            <tr class="userTableRow">
+                                <td scope="row">{{ $loop->iteration }}</td>
+                                <td>{{ $u->username }}</td>
+                                <td class="text-capitalize">{{ $u->role->role }}</td>
+                                <td>
+                                    <a href="{{ route('user.show', $u->id) }}"
+                                        class="btn btn-sm btn text-white rounded-pill"
+                                        style="background-color: #0EA1E2">Detail</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
+        </div>
+
         <div class="row">
             {{ $user->links() }}
         </div>
@@ -99,29 +103,33 @@
         <div class="card p-3">
             <button data-toggle="modal" data-target="#addJabatan" class="btn btn-md text-white rounded mb-2 mr-1"
                 style="background-color: #1864BA; width: 42%;">Tambah</button>
-            <table class="table table-borderless table-hover mt-2 text-center bg-white">
-                <thead>
-                    <tr style="background-color: #0EA1E2">
-                        <th class="text-white">Role</th>
-                        <th class="text-white">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (count($role) < 1)
-                        <tr>
-                            <td colspan="2" class="text-center">Kosong</td>
+            <div class="table-responsive">
+
+                <table class="table table-borderless table-hover mt-2 text-center bg-white">
+                    <thead>
+                        <tr style="background-color: #0EA1E2">
+                            <th class="text-white">Role</th>
+                            <th class="text-white">Action</th>
                         </tr>
-                    @else
-                        @foreach ($role as $r)
+                    </thead>
+                    <tbody>
+                        @if (count($role) < 1)
                             <tr>
-                                <td class="text-capitalize">{{ $r->role }}</td>
-                                <td><button data-toggle="modal" data-target="#hapusRole{{ $r->id }}"
-                                        class="btn text-danger"><i class="fas fa fa-trash"></i></button></td>
+                                <td colspan="2" class="text-center">Kosong</td>
                             </tr>
-                        @endforeach
-                    @endif
-                </tbody>
-            </table>
+                        @else
+                            @foreach ($role as $r)
+                                <tr>
+                                    <td class="text-capitalize">{{ $r->role }}</td>
+                                    <td><button data-toggle="modal" data-target="#hapusRole{{ $r->id }}"
+                                            class="btn text-danger"><i class="fas fa fa-trash"></i></button></td>
+                                </tr>
+                            @endforeach
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+            
         </div>
     </div>
 @endif
@@ -226,7 +234,8 @@
                         var newRow = '<tr>' +
                             '<td>' + counter + '</td>' +
                             '<td>' + user.username + '</td>' +
-                            '<td class="text-capitalize">' + user.role.role + '</td>' +
+                            '<td class="text-capitalize">' + user.role.role +
+                            '</td>' +
                             '<td><a href="' + detailUrl +
                             '" class="btn btn-sm btn text-white rounded-pill" style="background-color: #0EA1E2">Detail</a></td>' +
                             // Tambahkan kolom tambahan sesuai kebutuhan
