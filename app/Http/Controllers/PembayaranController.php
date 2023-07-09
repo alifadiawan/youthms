@@ -134,7 +134,7 @@ class PembayaranController extends Controller
         })->get();
         $message = "Pembayaran Baru Telah Masuk !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('pembayaran.list')); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('transaksi.index')); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
         // return view('EU.history.index', $tid);
         return redirect()->route('transaksi.show', $tid);

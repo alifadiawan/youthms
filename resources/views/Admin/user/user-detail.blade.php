@@ -91,7 +91,7 @@
                             Biodata Belum di Isi Oleh User.
                         </div>
                     @else
-                        @foreach ($Member as $m)
+                        @foreach ($member as $m)
                             <tr>
                                 <td class="text-center"><strong>Kode Employee</strong></td>
                                 <td>{{ $m->id_member }}</td>
@@ -126,7 +126,7 @@
                         Biodata Belum di Isi Oleh User.
                     </div>
                 @else
-                    @foreach ($Member as $m)
+                    @foreach ($member as $m)
                         <div class="row my-3">
                             <div class="col-sm-3">
                                 <p class="h5 font-weight-bold mb-0">Kode Employee</p>
