@@ -374,6 +374,7 @@
                                                                                     {{ $w->nama }}</p>
                                                                             </div>
                                                                         </div>
+                                                                        <hr>
                                                                     </li>
                                                                 </ul>
                                                             </div>
