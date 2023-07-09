@@ -12,13 +12,13 @@
                 <div class="card-body">
                     <h1 class="h3 font-weight-bold text-center">Hero</h1>
                     <div class="row align-items-center">
-                        <div class="col">
+                        <div class="col-lg col-12">
                             <div class="row justify-content-center ">
                                 <img id="illustration" src="{{ asset('./illustration/'.$i->hero_ills) }}"
                                     style="width: 18rem">
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-lg col-12">
                             <h1 class="h3 ">{{$i->hero_text}}</h1>
                         </div>
                     </div>

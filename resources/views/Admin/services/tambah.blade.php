@@ -3,7 +3,7 @@
 @section('judul', 'Tambah service')
 
 <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-11 col-lg-8">
         <div class="card rounded">
             <div class="card-body">
 
@@ -12,10 +12,10 @@
 
                     {{-- Jenis Layanan --}}
                     <div class="row mb-3">
-                        <div class="col">
+                        <div class="col-lg col-12">
                             <strong>Jenis Layanan</strong>
                         </div>
-                        <div class="col">
+                        <div class="col-lg col-12">
                             <select name="jenis_layanan_id" id="" class="form-control">
                                 <option value="">Pilih layanan</option>
                                 @foreach ($jenis_layanan as $item)
@@ -27,30 +27,30 @@
 
                     {{-- Judul --}}
                     <div class="row mb-3">
-                        <div class="col">
+                        <div class="col-lg col-12">
                             <strong>Judul</strong>
                         </div>
-                        <div class="col">
+                        <div class="col-lg col-12">
                             <input type="text" name="judul" placeholder="judul" class="form-control" required>
                         </div>
                     </div>
 
                     {{-- Deskripsi --}}
                     <div class="row mb-3">
-                        <div class="col">
+                        <div class="col-lg col-12">
                             <strong>Deskripsi</strong>
                         </div>
-                        <div class="col">
+                        <div class="col-lg col-12">
                             <textarea name="deskripsi" class="form-control" required></textarea>
                         </div>
                     </div>
 
                     {{-- Foto --}}
                     <div class="row mb-3">
-                        <div class="col">
+                        <div class="col-lg col-12">
                             <strong>Foto</strong>
                         </div>
-                        <div class="col">
+                        <div class="col-lg col-12">
                             <input type="file" name="foto" id="foto" class="form-control" required>
                             <img id="preview" class="form-control" src="#"> 
                         </div>

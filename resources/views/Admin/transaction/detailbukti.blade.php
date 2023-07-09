@@ -6,7 +6,7 @@
     @foreach ($pembayaran as $p)
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <a href="{{ route('pembayaran.list') }}" class="btn my-3">
+                <a href="{{ route('transaksi.show', $transaksi[0]->id) }}" class="btn my-3">
                     <i class="fas fa-arrow-left"></i></a>
                 @foreach ($transaksi as $t)
                     {{ $t->unique_code }}
@@ -56,7 +56,7 @@
                                         @method('put')
                                         <input type="hidden" name="user_id" value="{{ $user->id }}">
                                         <input type="hidden" value="checked" name="status">
-                                        <button type="submit" class="btn btn-sm btn-success">accept</button>
+                                        <button type="submit" class="btn btn-success w-100">accept</button>
                                     </form>
                                 </div>
 
@@ -168,13 +168,12 @@
                                     {{-- {{ $r->note_admin }} --}}
                                 </div>
                             </div>
-                            <ul class="list-group list-group-flush">
+                            {{-- <ul class="list-group list-group-flush">
                                 @foreach ($detail as $d)
                                     <ul class="list-group list-group-flush">
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center px-0 pb-0">
                                             {{ $d->produk->nama_produk }}
-                                            {{-- <span>Rp. {{ number_format($d->produk->harga * $d->quantity, 0, ',', '.') }}</span> --}}
                                             <span>Rp {{ number_format($d->produk->harga, 0, ',', '.') }}</span>
                                         </li>
                                     </ul>
@@ -207,7 +206,7 @@
                                         </li>
                                     </ul>
                                 @endforeach
-                            </ul>
+                            </ul> --}}
                         </div>
                     </div>
                 </div>

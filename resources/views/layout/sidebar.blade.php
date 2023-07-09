@@ -128,7 +128,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('transaksi.history') }}" class="nav-link">
+                            <a href="{{ route('transaksi.index') }}" class="nav-link">
+                            {{-- <a href="{{ route('transaksi.history') }}" class="nav-link"> --}}
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Transaksi
@@ -143,25 +144,25 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('pembayaran.list') }}" class="nav-link">
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('pembayaran.index') }}" class="nav-link">
 
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Detail Bayar
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="/chat" class="nav-link">
                         <i class="nav-icon fa-solid fa-comment-dots"></i>
                         <p>
                             Chat
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="{{route('portfolio.index')}}" class="nav-link">
                         <i class="nav-icon fa-solid fa-briefcase"></i>

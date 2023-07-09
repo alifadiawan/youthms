@@ -7,47 +7,58 @@
         <div class="card p-3">
             @if (count($segmen) > 0)
                 <a href="{{ route('blogs.create') }}" class="btn btn-md text-white rounded mb-2 mr-1"
-                    style="background-color: #1864BA; width: 17%;">Tambah Artikel</a>
+                    style="background-color: #1864BA;">Tambah Artikel</a>
             @else
                 <a href="{{ route('blogs.create') }}" class="btn btn-md text-white rounded mb-2 mr-1 disabled"
-                    style="background-color: #1864BA; width: 17%;">Tambah Artikel</a>
+                    style="background-color: #1864BA;">Tambah Artikel</a>
             @endif
-            <table class="table table-striped table-hover mt-2">
-                <thead>
-                    <tr style="background-color: #0EA1E2">
-                        <th class="text-white">No</th>
-                        <th class="text-white">Tanggal</th>
-                        <th class="text-white">Judul</th>
-                        <th class="text-white">Author</th>
-                        <th class="text-white">Segmen</th>
-                        <th class="text-white">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (count($data) == 0)
-                        <tr>
-                            <td colspan="6" class="text-center">Belum Ada Artikel !!</td>
+            <div class="table-responsive">
+
+                <table class="table table-striped table-hover mt-2" id="blog-container">
+                    <thead>
+                        <tr style="background-color: #0EA1E2">
+                            <th class="text-white">No</th>
+                            <th class="text-white">Tanggal</th>
+                            <th class="text-white">Judul</th>
+                            <th class="text-white">Author</th>
+                            <th class="text-white">Segmen</th>
+                            <th class="text-white">Action</th>
                         </tr>
-                    @else
-                        @foreach ($data as $i)
+                    </thead>
+                    <tbody>
+                        @if (count($data) == 0)
                             <tr>
-                                <td scope="row">{{ $loop->iteration }}</td>
-                                <td>{{ $i->tanggal }}</td>
-                                <td>{{ $i->judul }}</td>
-                                <td>{{ $i->users->username}}</td>
-                                <td>{{ $i->segmen->segmen }}</td>
-                                <td>
-                                    <a href="{{ route('blogs.show', $i->id) }}"
-                                        class="btn btn-sm btn text-white rounded-pill"
-                                        style="background-color: #0EA1E2">Detail</a>
-                                </td>
+                                <td colspan="6" class="text-center">Belum Ada Artikel !!</td>
                             </tr>
-                        @endforeach
-                    @endif
-                </tbody>
-            </table>
-            <div class="row">
-                {{$data->links()}}
+                        @else
+                            @foreach ($data as $i)
+                                <tr>
+                                    <td scope="row">{{ $loop->iteration }}</td>
+                                    <td>{{ $i->tanggal }}</td>
+                                    <td>{{ $i->judul }}</td>
+                                    <td>{{ $i->users->username }}</td>
+                                    <td>{{ $i->segmen->segmen }}</td>
+                                    <td>
+                                        <a href="{{ route('blogs.show', $i->id) }}"
+                                            class="btn btn-sm btn text-white rounded-pill"
+                                            style="background-color: #0EA1E2">Detail</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row" id="blog-pagination">
+                <nav>
+                    <ul class="pagination">
+                        @for ($page = 1; $page <= $data->lastPage(); $page++)
+                            <li class="page-item"><a class="page-link"
+                                    href="{{ $data->url($page) }}">{{ $page }}</a></li>
+                        @endfor
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
@@ -97,9 +108,9 @@
             </div>
             <div class="row text-center p-3">
                 <div class="col">
-                <button class="btn btn-success">Simpan</button>
-                <button class="btn" data-dismiss="modal">Batal</button>
-            </div>
+                    <button class="btn btn-success">Simpan</button>
+                    <button class="btn" data-dismiss="modal">Batal</button>
+                </div>
             </div>
             </form>
         </div>
@@ -117,13 +128,40 @@
                 </div>
                 <div class="row text-center p-3">
                     <div class="col">
-                    <a href="{{ route('segmen.hapus', $hapus->id) }}" class="btn btn-danger text-white">Hapus</a>
-                    <button class="btn" data-dismiss="modal">Tidak</button>
-                </div>
+                        <a href="{{ route('segmen.hapus', $hapus->id) }}" class="btn btn-danger text-white">Hapus</a>
+                        <button class="btn" data-dismiss="modal">Tidak</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endforeach
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('#blog-pagination').on('click', '.pagination a', function(event) {
+        event.preventDefault();
+
+        //add class active di li pagination
+        $('#blog-pagination .pagination li').removeClass('active');
+        $(this).parent('li').addClass('active');
+
+        //inisialisasi url pagination
+        var url = $(this).attr('href');
+
+        $.ajax({
+            url: url,
+            dataType: 'html',
+            type: 'get',
+            success: function(response) {
+                $('#blog-container').html('');
+                $('#blog-container').html(response);
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+    });
+</script>
 
 @endsection

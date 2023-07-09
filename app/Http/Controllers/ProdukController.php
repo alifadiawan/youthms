@@ -53,11 +53,11 @@ class ProdukController extends Controller
             $role = auth()->user()->role->role;
             $uid = auth()->user()->id;
 
-            $m = member::where('user_id', $uid);
+            $m = Member::where('user_id', $uid);
             $mid = $m->pluck('id')->first();
             $member = $m->get();
 
-            $cart = cart::where('member_id', $mid)->get();
+            $cart = Cart::where('member_id', $mid)->get();
             $admin = ['admin', 'owner'];
 
             if (in_array($role, $admin)) {
@@ -71,12 +71,6 @@ class ProdukController extends Controller
             return view('EU.store.index', compact($compact));
         }
     }
-
-    // public function getCartQuantity($productId)
-    // {
-    //     $quantity = Cart::where('produk_id', $productId)->value('quantity');
-    //     return response()->json(['quantity' => $quantity]);
-    // }
 
     public function updateQuantity(Request $request)
     {
