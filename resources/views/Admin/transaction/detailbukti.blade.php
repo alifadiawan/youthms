@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('content')
-@section('judul', 'Transaction')
+@section('judul', 'Show Pembayaran')
 
 <div class="container">
     @foreach ($pembayaran as $p)

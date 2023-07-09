@@ -15,9 +15,14 @@ class request_user extends Model
         return $this->belongsTo(transaksi::class);
     }
 
-    public function termin()
+    public function termins()
     {
         return $this->hasMany(termin::class);
+    }
+
+    public function pembayaran()
+    {
+        return $this->hasMany(pembayaran::class);
     }
 
 }

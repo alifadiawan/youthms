@@ -22,14 +22,7 @@ return new class extends Migration
             // $table->foreign('gateaways_id')->references('id')->on('gateaways')
             //     ->onUpdate('cascade')
             //     ->onDelete('cascade');
-            $table->unsignedBigInteger('banks_id')->nullable();
-            $table->foreign('banks_id')->references('id')->on('banks')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->unsignedBigInteger('ewallets_id')->nullable();
-            $table->foreign('ewallets_id')->references('id')->on('ewallets')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            // $table->foreignId('pembayarans_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->unsignedBigInteger('produk_id');
             $table->foreign('produk_id')->references('id')->on('produk')
                 ->onUpdate('cascade')

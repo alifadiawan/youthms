@@ -4,7 +4,7 @@
 
     {{-- lunas --}}
     <div id="container" class="container my-5">
-        <a href="{{ route('transaksi.history') }}" class="btn btn-lg mb-3">
+        <a href="{{ route('transaksi.index') }}" class="btn btn-lg mb-3">
             <i class="fas fa-arrow-left"></i>
         </a>
 
@@ -51,13 +51,6 @@
                                                     {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
                                                 </div>
                                             </div>
-                                            {{-- <div class="row">
-                                                    <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai
-                                                    </div>
-                                                    <div class="col text-end text-lg">
-                                                        31 Mei 2023
-                                                    </div>
-                                                </div> --}}
                                         </div>
                                     </div>
                                 @endif
@@ -325,7 +318,8 @@
                     @foreach ($pembayaran as $p)
                         <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
                             <div class="alert alert-danger" role="alert">
-                                {{ $p->note_admin }}, bayar sebelum {{ date('d F Y', strtotime($t->tanggal_transaksi)) }} Klik disini
+                                {{ $p->note_admin }}, bayar sebelum {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
+                                Klik disini
                                 untuk bayar
                             </div>
                         </a>
@@ -821,6 +815,7 @@
                         </tbody>
                     </table>
                     <hr>
+
                     {{-- detail kredit --}}
                     <table class="table table-bordered">
                         <thead class="bg-light text-dark">
@@ -832,12 +827,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($detail as $d)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $loop->iteration }}</td>
+                            @foreach ($requser as $r)
+                                @if ($r->pembayaran->isEmpty())
+                                    <tr>
+                                        <td colspan="4" class="text-center">belum ada pembayaran</td>
+                                    </tr>
+                                @else
+                                    @foreach ($r->pembayaran as $p)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $p }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             @endforeach
                         </tbody>
 

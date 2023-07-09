@@ -10,6 +10,7 @@ use App\Models\TransaksiDetail;
 use Illuminate\Http\Request;
 use App\Models\bank;
 use App\Models\ewallet;
+use App\Models\request_user;
 use Illuminate\Support\Facades\File;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,7 @@ class PembayaranController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    { 
+    {
         $pembayaran = pembayaran::all();
         $compact = ['pembayaran'];
         return view('Admin.transaction.bukti', compact($compact));
@@ -62,7 +63,9 @@ class PembayaranController extends Controller
         $admin = $total * 0.11;
         $grandtotal = $total + $admin;
 
-        $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid', 't', 'transaksi', 'bank', 'ewallet'];
+        $cek_kredit = request_user::where('transaksi_id', $tid)->first();
+
+        $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid', 'transaksi', 'bank', 'ewallet', 'cek_kredit'];
         return view('EU.transaction.pembayaran', compact($compact));
     }
 
@@ -103,7 +106,6 @@ class PembayaranController extends Controller
         $transaksi = Transaksi::where('id', $tid)->get();
         $bank = bank::where('nama', $request->bank)->first();
         $wallet = ewallet::where('nama', $request->wallet)->first();
-        // return $gateaway;
 
         $pembayaran_data = [
             'transaksi_id' => $tid,
@@ -118,10 +120,13 @@ class PembayaranController extends Controller
         }
 
         $pembayaran = pembayaran::all();
-        if($pembayaran->contains('transaksi_id',$tid)){
-            $duplicate = $pembayaran->where('transaksi_id',$tid);
+        if ($pembayaran->contains('transaksi_id', $tid)) {
+            $duplicate = $pembayaran->where('transaksi_id', $tid);
             $old = $duplicate->sortByDesc('created_at')->pop();
             $old->delete();
+        }
+
+        if ($request) {
         }
 
 
@@ -144,8 +149,11 @@ class PembayaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pembayaran $pembayaran)
+
+    public function show(Pembayaran $pembayaran,Request $Request)
     {
+        // $previous = $Request->headers->get('referer');
+        // return $previous;
         // $pembayaran = pembayaran::where()->get();
         $tid = $pembayaran->transaksi_id;
         // return $pembayaran; 
@@ -172,6 +180,13 @@ class PembayaranController extends Controller
         return view('Admin.transaction.detailbukti', compact($compact));
     }
 
+    public function detail_kredit(Transaksi $id)
+    {
+        $tid = $id->id;
+        $requser = request_user::where('transaksi_id', $tid)->first();
+        return view('Admin.transaction.detail_bukti', compact('requser'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -186,15 +201,17 @@ class PembayaranController extends Controller
     public function update(Request $request, Pembayaran $pembayaran)
     {
         $status = $request->status;
+
+        
         $p = $pembayaran->update([
             'status' => $status,
-            'note_admin'=>$request->note
+            'note_admin' => $request->note
         ]);
-        
+
         $tid = $pembayaran->transaksi_id;
         $transaksi = transaksi::where('id', $tid)->first();
         $total = $transaksi->total;
-        if($status == 'checked'){
+        if ($status == 'checked') {
             $transaksi->update([
                 'total_bayar' => $total
             ]);
@@ -209,9 +226,9 @@ class PembayaranController extends Controller
             $message = "Pembayaranmu Telah Ditolak, Maaf :(";
         }
         $notification = new TransaksiNotification($message);
-        $notification->setUrl(route('transaksi.history')); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('transaksi.index')); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
-        return redirect()->route('pembayaran.list');
+        return redirect()->route('pembayaran.index');
     }
 
     /**
