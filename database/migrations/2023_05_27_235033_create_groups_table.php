@@ -15,10 +15,10 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('group');
             $table->string('kode');
-            $table->unsignedBigInteger('admin_id');
-            $table->foreign('admin_id')->references('id')->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            // $table->unsignedBigInteger('admin_id');
+            // $table->foreign('admin_id')->references('id')->on('users')
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade');
             $table->timestamps();
         });
     }
