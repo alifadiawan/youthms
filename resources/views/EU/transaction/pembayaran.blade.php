@@ -238,6 +238,9 @@
                             </div> --}}
 
                             <!-- Virtaul Account -->
+                            @if ($cek_kredit)
+                                
+                            @else
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -261,7 +264,6 @@
                                                     <label for="">Jangka Waktu</label>
                                                     <div class="row">
                                                         <div class="col">
-                                                            {{-- pending --}}
                                                             <label for="">tanggal mulai</label>
                                                             <input type="date" id="tanggal" name="tanggal_mulai"
                                                                 class="form-control" value="{{ date('Y-m-d') }}"
@@ -291,6 +293,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
 
                             <!-- E-wallet -->
                             {{-- <div class="accordion-item">

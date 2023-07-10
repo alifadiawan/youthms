@@ -15,7 +15,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pembayaran as $p)
+                @foreach ($requesr as $p)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $p->transaksi->member->name }}</td>

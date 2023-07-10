@@ -195,13 +195,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/transaksi_kredit', [TransaksiController::class, 'kredit'])->name('transaksi.kredit');
 
     Route::resource('transaksidetail', transaksidetailController::class);
-    Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
+    // Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
     // Route::get('/transaksi_pembayaran/{id}', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
 
     Route::resource('pembayaran', pembayaranController::class);
     Route::get('/list_pembayaran', [pembayaranController::class,'listpembayaran'])->name('pembayaran.list');
     Route::get('/transaksi_pembayaran/{id}', [pembayaranController::class, 'pembayaran'])->name('pembayaran.pembayaran');
     Route::get('/cara/{id}', [pembayaranController::class, 'cara'])->name('pembayaran.cara');
+    Route::get('/transaksi/{id}/detail_kredit', [pembayaranController::class, 'detail_kredit'])->name('pembayaran.detail_kredit');
 
     // route::get('/lunas', function () {
     //     return view('EU.transaction.lunas');

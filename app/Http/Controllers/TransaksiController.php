@@ -41,7 +41,7 @@ class TransaksiController extends Controller
         $user_role = $auth->role->role;
 
         // mencari status transaksi
-        $trx = Transaksi::paginate(5);
+        $trx = Transaksi::latest()->paginate(13);
         // nyoba termin sedang berlangsung & termin yang di decline
 
         $kredit = [];
@@ -256,10 +256,11 @@ class TransaksiController extends Controller
         $pembayaran = pembayaran::where('transaksi_id', $tid)->get();
 
         // mencari request user, jika melakukan kredit
-        $requser = request_user::where('transaksi_id', $trxid)->get();
+        $requser = null;
+        $requser = request_user::where('transaksi_id', $trxid)->with('pembayaran')->get();
 
         $selisih = 0;
-        if ($requser->isNotEmpty()) {
+        if (!$requser->isEmpty()) {
             foreach ($requser as $r) {
                 $tglmulai = carbon::parse($r->tanggal_mulai);
                 $tglselesai = carbon::parse($r->jatuh_tempo);
@@ -335,8 +336,6 @@ class TransaksiController extends Controller
             $EU_kredit = collect($kredit)->pluck('id')->toArray();
             $EU_pending = collect($pending)->pluck('id')->toArray();
             $EU_declined = collect($declined)->pluck('id')->toArray();
-            // return 'oke';
-            // return $EU_denied;
 
             $status_EU = ['EU_utang', 'EU_kredit', 'EU_lunas', 'EU_declined', 'EU_denied', 'EU_pending', 'EU_checking', 'selisih'];
             return view('EU.transaction.detail', compact($compact, $status_EU));

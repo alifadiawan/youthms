@@ -13,7 +13,7 @@ class Transaksi extends Model
 
     public function member()
     {
-        return $this->belongsTo(member::class);
+        return $this->belongsTo(Member::class);
     }
 
     public function transaksi_detail()
@@ -21,9 +21,9 @@ class Transaksi extends Model
         return $this->hasMany(TransaksiDetail::class);
     }
 
-    public function reuqestuser()
+    public function request_user()
     {
-        return $this->hasMany(reuqestuser::class);
+        return $this->hasMany(request_user::class);
     }
 
     public function pembayaran()

@@ -158,7 +158,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'username' => 'client2',                
-                'password' => bcrypt('12345678'), 
+                'password' => bcrypt('123'), 
                 'email' => 'client2@youthms.id',
                 'role_id' => '2',
             ],

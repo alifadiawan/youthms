@@ -59,10 +59,13 @@
                     <ul>
                         <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                         </li>
-                        <li><a class="dropdown-item" href="{{ route('transaksi.history', auth()->user()->id) }}">Histori
+                        <li><a class="dropdown-item" href="{{ route('transaksi.index', auth()->user()->id) }}">Histori
                                 Transaksi</a>
                         </li>
-                        <li><a class="dropdown-item" href="{{route('gc.index')}}">Group Chat</a></li>
+                        <li><a class="dropdown-item" href="{{ route('pembayaran.index', auth()->user()->id) }}">Histori
+                                Pembayaran</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{route('gc.index')}}">Chats</a></li>
                         <li>
                             @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
                         <li>

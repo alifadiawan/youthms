@@ -41,7 +41,6 @@ class DatabaseSeeder extends Seeder
             TransaksiDetailSeeder::class,
             RequestUserSeeder::class,
             PembayaranSeeder::class,
-            TerminSeeder::class,
 
             //misc
             VisitorSeeder::class,

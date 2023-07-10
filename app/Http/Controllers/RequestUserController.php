@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\request_user;
 use App\Models\Member;
+use App\Models\Pembayaran;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\TransaksiNotification;
 use Illuminate\Support\Facades\Notification;
-use App\Models\termin;
 use App\Models\Transaksi;
 use App\Models\TransaksiDetail;
 use Illuminate\Http\Request;
@@ -34,7 +34,7 @@ class RequestUserController extends Controller
         if ($user_role == "client") {
             $compact = [];
             // return view('EU.transaction.kredit', compact($compact));
-            return redirect()->route('transaksi.history');
+            return redirect()->route('transaksi.index');
         }
 
         $request_user = request_user::all();
@@ -66,18 +66,21 @@ class RequestUserController extends Controller
         $reqid = $request;
         
         $request_user = request_user::where('id', $reqid)->get();;
-
+        
+        $totaltermin = 0;
         foreach($request_user as $r){
             $trxid = $r->transaksi_id;
             $status = $r->status;
             
-            $termin = termin::where('requser_id',$reqid)->get();
+            $termin = Pembayaran::where('request_user_id',$reqid)->get();
+            if (!is_null($termin) && !$termin->isEmpty()) {
+                foreach ($termin as $t ) {
+                    $totaltermin +=  $t->harga;
+                }   
+            }
         }
         
-        $totaltermin = 0;
-        foreach ($termin as $t ) {
-            $totaltermin +=  $t->harga;
-        }   
+
 
         // mengambil kolom transaksi 
         $transaksi = Transaksi::where('id', $trxid)->get();
@@ -143,7 +146,7 @@ class RequestUserController extends Controller
             $message = "Maaf Ajuan Kreditmu Ditolak Karena\n".$request_user->note_admin;
         }
         $notification = new TransaksiNotification($message);
-        $notification->setUrl(route('transaksi.history')); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('transaksi.index')); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
 
         return redirect()->route('requestuser.index');

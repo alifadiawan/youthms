@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('content')
-@section('judul', 'Status Pembayaran')
+@section('judul', 'Status Termin')
 
 <div class="container">
 
