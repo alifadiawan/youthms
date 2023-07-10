@@ -1,6 +1,8 @@
 @extends('layout.admin')
 @section('content')
-@section('judul', 'List Pembayaran ')
+@section('judul', 'Detail Kredit')
+
+{{-- detail total seluruh kredit di suatu transaksi  --}}
 <div class="card">
     <div class="col-lg-12">
         <table class="table table-striped mt-2">
