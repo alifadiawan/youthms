@@ -67,10 +67,21 @@ class GroupChatController extends Controller
         return redirect()->route('gc.index');
     }
 
-    public function removeUser(Group $group, User $user)
+    public function removeAdmin(Group $group, Request $request)
     {
-        $group->users()->detach($user->id);
-        return redirect()->route('groups.show', $group->id);
+        $userid = $request->input('users');
+        $group->admin()->detach($userid);
+        return redirect()->route('gc.index');
+    }
+
+    public function removeUser(Group $group, Request $request)
+    {
+        $userid = $request->input('users');
+        if ($group->admin()->where('user_id', $userid)->exists()) {
+            $group->admin()->detach($userid);
+        }
+        $group->users()->detach($userid);
+        return redirect()->route('gc.index');
     }
 
     public function showMessage(Group $group)
@@ -97,5 +108,30 @@ class GroupChatController extends Controller
         else {
             return redirect()->back()->with('error', 'Kode Yang Anda Masukkan Salah !!');
         }
+    }
+
+    public function leftGroup(Group $group)
+    {
+        $userid = auth()->user()->id;
+        $group->users()->detach($userid);
+
+        if ($group->users()->get()->isEmpty()) {
+            $group->delete();
+        } else {
+            if ($group->admin()->where('user_id', $userid)->exists()) {
+                $group->admin()->detach($userid);
+                if ($group->admin()->get()->isEmpty()) {
+                    $new_admin = $group->users()->first();
+                    $group->admin()->attach($new_admin);
+                }
+            }
+        }
+        return redirect()->route('gc.index');
+    }
+
+    public function removeGroup(Group $group)
+    {
+        $group->delete();
+        return redirect()->route('gc.index');
     }
 }
