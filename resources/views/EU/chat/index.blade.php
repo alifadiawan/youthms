@@ -22,8 +22,8 @@
                                         <input type="text" class="form-control" id="inlineFormInputGroup"
                                             placeholder="Search" aria-label="search">
                                         @if(auth()->user()->role->role == 'admin')
-                                        <a class="add" data-bs-toggle="modal" data-bs-target="#addGroupModal" href="#"><img class="img-fluid"
-                                                src="https://mehedihtml.com/chatbox/assets/img/add.svg" alt="add"></a>
+                                        <a class="add" data-bs-toggle="modal" data-bs-target="#addGroupModal" href="#">TAMBAH</a>
+                                        <a class="add" data-bs-toggle="modal" data-bs-target="#joinGroupModal" href="#">JOIN</a>
                                         @else
                                         <a class="add" data-bs-toggle="modal" data-bs-target="#joinGroupModal" href="#"><img class="img-fluid"
                                                 src="https://mehedihtml.com/chatbox/assets/img/add.svg" alt="add"></a>
