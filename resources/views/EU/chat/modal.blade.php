@@ -1,7 +1,7 @@
 <!-- Add Member Modal -->
 <div class="modal fade" id="addMember" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addMemberLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content" style="height: 500px; width: 500px">
             <div class="modal-body">
                 <form action="{{ route('gc.users.add', ['group' => $group->id]) }}" method="post">
                     @csrf

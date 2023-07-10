@@ -46,9 +46,9 @@
                     <div class="row">
                         <div class="col">
                             <a href="{{ route('store.edit', $product->id) }}"
-                                class="btn btn-warning text-white">Edit</a>
+                                class="btn btn-warning text-white"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                             <a class="btn btn-danger" data-toggle="modal" data-target="#hapusproduk{{ $product->id }}">
-                                Hapus
+                                <i class="fa-solid fa-trash"></i> Hapus
                             </a>
                             <a href="{{ route('store.index') }}" class="btn btn-secondary">cancel</a>
                         </div>
@@ -70,7 +70,7 @@
                 <h3 class="text-center">Yakin Ingin Menghapus {{ $product->nama_produk }} ?</h3>
             </div>
             <div class="modal-footer justify-content-center">
-                <a href="{{ route('store.hapus', $product->id) }}" class="btn btn-danger text-white">Hapus</a>
+                <a href="{{ route('store.hapus', $product->id) }}" class="btn btn-danger text-white"><i class="fa-solid fa-trash"></i> Hapus</a>
                 <a class="btn btn-outline-secondary" data-dismiss="modal">tidak</a>
             </div>
         </div>

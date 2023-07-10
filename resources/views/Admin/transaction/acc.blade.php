@@ -3,14 +3,12 @@
 @section('judul', 'Status Pembayaran')
 
 <div class="container">
-
     <div class="row">
 
         <!-- table status -->
         <div class="col">
             <div class="card">
                 <div class="table-responsive">
-
                     <table class="table table-borderless">
                         <thead class="yms-blue">
                             <tr>
