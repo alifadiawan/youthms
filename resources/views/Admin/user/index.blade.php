@@ -55,7 +55,7 @@
             @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
                 <div class="col-5 text-right">
                     <a href="{{ route('user.create') }}" class="btn btn-md text-white rounded"
-                        style="background-color: #1864BA;">Tambah User</a>
+                        style="background-color: #1864BA;"><i class="fa-solid fa-plus"></i>  User</a>
                 </div>
             @endif
         </div>
@@ -102,8 +102,8 @@
     <div class="col-lg-3">
         <div class="card p-3">
             <button data-toggle="modal" data-target="#addJabatan" class="btn btn-md text-white rounded mb-2 mr-1"
-                style="background-color: #1864BA; width: 42%;">Tambah</button>
-            <div class="table-responsive">
+                style="background-color: #1864BA; width: 42%;"><i class="fa-solid fa-plus"></i> Tambah</button>
+            <div class="table-responsive" style="max-height: 25rem">
 
                 <table class="table table-borderless table-hover mt-2 text-center bg-white">
                     <thead>

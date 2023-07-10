@@ -30,13 +30,13 @@
                             class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
                     <ul class="dropdown-menu">
                         @if($group->admin()->where('user_id', auth()->user()->id)->exists())
-                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addMember">Tambah Member</a>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addMember"><i class="fa-solid fa-user-plus"></i> Tambah Member</a>
                         </li>
-                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#removeMember">Hapus Member</a>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#removeMember"><i class="fa-solid fa-user-xmark"></i> Hapus Member</a>
                         </li>
-                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addAdmin">Tambah Admin</a>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addAdmin"><i class="fa-solid fa-user-gear"></i> Tambah Admin</a>
                         </li>
-                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#removeAdmin">Hapus Admin</a>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#removeAdmin"> Hapus Admin</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -52,7 +52,7 @@
                             <form action="{{route('gc.left', ['group' => $group->id])}}" id="left-group-form" method="POST">
                                 @csrf
                             </form>
-                            <button class="dropdown-item" id="left-group-button">Left Group</button>
+                            <button class="dropdown-item" id="left-group-button"><i class="fa-solid fa-arrow-right-from-bracket"></i> Left Group</button>
                         </li>
                     </ul>
                 </li>

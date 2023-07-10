@@ -5,7 +5,7 @@
 <div class="card p-3">
     <div class="row">
         <div class="col">
-            <a href="{{ route('store.create') }}" class="btn mb-3 text-white" style="background-color: #1864BA">Tambah
+            <a href="{{ route('store.create') }}" class="btn mb-3 text-white" style="background-color: #1864BA"><i class="fa-solid fa-plus"></i> Tambah
                 produk</a>
             <div class="table-responsive">
 
@@ -33,8 +33,8 @@
                                     <td>Rp. {{ number_format($item->harga) }}</td>
                                     <td>
                                         <a href="{{ route('store.showid', $item->id) }}"
-                                            class="btn btn-sm rounded-pill text-white"
-                                            style="background-color: #0EA1E2">Detail</a>
+                                            class="btn btn-sm text-white"
+                                            style="background-color: #0EA1E2"><i class="fa-solid fa-xl fa-circle-info"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

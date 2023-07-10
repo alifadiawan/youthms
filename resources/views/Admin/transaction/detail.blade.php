@@ -48,13 +48,13 @@
 
                                         @foreach ($detail as $d)
                                             <div class="row mt-3">
-                                                <div class="col">
+                                                <div class="col-lg col-10">
                                                     {{ $d->produk->nama_produk }}
                                                 </div>
-                                                <div class="col text-right">
-                                                    {{ $d->quantity }}
+                                                <div class="col-lg col-2 text-right">
+                                                    {{ $d->quantity }}x
                                                 </div>
-                                                <div class="col text-right">
+                                                <div class="col text-lg-right text-left">
                                                     Rp.
                                                     {{ number_format($d->quantity * $d->produk->harga, 0, ',', '.') }}
                                                 </div>
@@ -67,7 +67,7 @@
 
                                         <div class="row">
                                             <div class="col">
-                                                total
+                                                Total
                                             </div>
                                             <div class="col text-right">
                                                 Rp. {{ number_format($total, 0, ',', '.') }}
@@ -75,17 +75,18 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                biaya admin
+                                                Biaya admin
                                             </div>
                                             <div class="col text-right">
                                                 Rp. {{ number_format($admin, 0, ',', '.') }}
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="row">
-                                            <div class="col">
-                                                grandtotal
+                                            <div class="col font-weight-bold">
+                                                Grandtotal
                                             </div>
-                                            <div class="col text-right">
+                                            <div class="col text-right font-weight-bold">
                                                 Rp. {{ number_format($grandtotal, 0, ',', '.') }}
                                             </div>
                                         </div>
