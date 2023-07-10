@@ -62,6 +62,9 @@
                         <li><a class="dropdown-item" href="{{ route('transaksi.index', auth()->user()->id) }}">Histori
                                 Transaksi</a>
                         </li>
+                        <li><a class="dropdown-item" href="{{ route('pembayaran.index', auth()->user()->id) }}">Histori
+                                Pembayaran</a>
+                        </li>
                         <li><a class="dropdown-item" href="{{route('gc.index')}}">Chats</a></li>
                         <li>
                             @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')

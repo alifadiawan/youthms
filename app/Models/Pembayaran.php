@@ -15,9 +15,9 @@ class Pembayaran extends Model
         return $this->belongsTo(transaksi::class);
     }
 
-    public function request_users()
+    public function request_user()
     {
-        return $this->belongsTo(request_users::class);
+        return $this->belongsTo(request_user::class);
     }
 
     

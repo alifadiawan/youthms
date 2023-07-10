@@ -33,6 +33,7 @@ return new class extends Migration
             // $table->foreign('gateaway_id')->references('id')->on('gateaways')
             // ->onUpdate('cascade')
             // ->onDelete('cascade');
+            $table->string('total_bayar')->nullable();
             $table->foreignId('request_user_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('pembayaran_ke')->nullable();
             $table->unsignedBigInteger('bank_id')->nullable();
