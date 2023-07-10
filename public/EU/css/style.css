@@ -12,6 +12,7 @@
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
+    /* overflow: hidden; */
 }
 
 a {
@@ -570,6 +571,18 @@ h6 {
     border-radius: 0px 0px 200px 200px;
 }
 
+#head {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 600px){
+    #kategori{
+        margin-left: 20px;
+    }
+}
 
 @media (max-width: 575px) {
     #hero-portofolio{
@@ -925,6 +938,11 @@ section {
     font-size: 26px;
 }
 
+.about h5, h2{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+}
+
 .about .content ul {
     list-style: none;
     padding: 0;
@@ -1244,6 +1262,7 @@ section {
 --------------------------------------------------------------*/
 .services {
     margin-top: 20px;
+    font-family: "Poppins", sans-serif;
 }
 .services .icon-box {
     box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.3);
@@ -1251,6 +1270,10 @@ section {
     border-radius: 25px;
     transition: all ease-in-out 0.4s;
     background: #fff;
+    font-family: "Poppins", sans-serif;
+}
+
+.services h1{
     font-family: "Poppins", sans-serif;
 }
 
@@ -1309,6 +1332,12 @@ section {
 
 .main-banner {
     display: flex;
+    font-family: "Poppins", sans-serif;
+}
+
+.main-banner h1{
+    font-family: "Poppins", sans-serif;
+
 }
 
 .main-banner img {

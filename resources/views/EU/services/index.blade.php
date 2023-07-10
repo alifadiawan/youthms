@@ -19,7 +19,7 @@
     </section>
     @endforeach
 
-    <h1 data-aos="fade-up" data-aos-duration="1000" class="text-center text-bold">Layanan Yang Kami Tawarkan</h1>
+    <h1 data-aos="fade-up" data-aos-duration="1000" class="text-center text-dark" style="font-family: Poppins, sans-serif; font-weight:bold">Layanan Yang Kami Tawarkan</h1>
 @foreach($jenis_layanan as $jenis)
     @php
         $layanan = strtolower(str_replace(' ', '_', $jenis->layanan));

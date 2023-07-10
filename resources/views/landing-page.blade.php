@@ -180,7 +180,7 @@
     <section id="about" class="about">
         <div class="container" data-aos="fade-up">
 
-                <h2 class="text-dark fw-bold my-5 text-center">About Us</h2>
+                <h2 class="text-dark fw-bold my-5 text-center" style="font-size: 42px">About Us</h2>
 
             <div class="row content">
                 <div class="col pt-4 pt-lg-0">
