@@ -2,72 +2,54 @@
 @section('content')
 @section('judul', 'Show Pembayaran')
 
+{{-- detail sebuah struk pembayaran  --}}
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <a href="{{ url()->previous() }}" class="btn my-3">
                 <i class="fas fa-arrow-left"></i></a>
-            {{ $requser->transaksi->unique_code }}
 
             <div class="card">
                 <div class="col-lg-12">
-                    <table class="table table-striped mt-2">
+                    <table>
                         <thead>
-                            <tr style="background-color: #0EA1E2">
-                                <th class="text-white">No</th>
-                                <th class="text-white">Nama</th>
-                                <th class="text-white">Total harga</th>
-                                <th class="text-white">Status</th>
-                                <th class="text-white">Metode</th>
-                                <th class="text-white">Detail</th>
+                            <tr>
+                                <td>kode unik pembayaran</td>
+                                <td>total dibayar</td>
+                                <td>status pembayaran</td>
+                                <td>metode pembayaran</td>
+                                <td>bukti penmbayaran</td>
                             </tr>
                         </thead>
                         <tbody>
-
-                            @if ($requser->pembayaran->isEmpty())
                             <tr>
-                                <td colspan="6" class="text-center">belum ada pembayaran</td>
-                            </tr>
-                            @else
-                                @foreach ($requser->pembayaran as $p)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $p->transaksi->member->name }}</td>
-                                        <td>Rp. {{ number_format($p->transaksi->total, 0, ',', '.') }}</td>
-                                        <td>
+                                <td>
+                                    {{ $pembayaran->unique_code }}
 
-                                            @if ($p->status == 'checking')
-                                                <button disabled="disabled"
-                                                    class="btn btn-sm btn-warning"></button><span
-                                                    class="badge">{{ $p->status }}</span>
-                                            @elseif($p->status == 'checked')
-                                                <button disabled="disabled"
-                                                    class="btn btn-sm btn-success"></button><span
-                                                    class="badge">{{ $p->status }}</span>
-                                            @elseif($p->status == 'declined')
-                                                <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
-                                                    class="badge">{{ $p->status }}</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($p->bank_id)
-                                                <div class="row">
-                                                    <img src="{{ asset('illustration/' . $p->bank->image) }}"
-                                                        alt="" style="width: 75px">
-                                                </div>
-                                            @elseif($p->ewallet_id)
-                                                <span>
-                                                    <img src="{{ asset('illustration/' . $p->ewallet->image) }}"
-                                                        alt="" style="width: 75px"></span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('pembayaran.show', $p->id) }}"
-                                                class="btn-sm btn-success">Detail</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @endif
+                                </td>
+                                <td>
+
+                                    Rp. {{ number_format($pembayaran->total_bayar, '0', ',', '.') }}
+                                </td>
+                                <td>
+
+                                    {{ $pembayaran->status }}
+                                </td>
+                                <td>
+
+                                    @if ($pembayaran->ewallet)
+                                        <img src="{{ asset('illustration/' . $pembayaran->ewallet->image) }}"
+                                            alt="">
+                                    @else
+                                        <img src="{{ asset('illustration/' . $pembayaran->bank->image) }}"
+                                            alt="">
+                                    @endif
+                                </td>
+                                <td>
+                                    <img src="{{ asset('bukti_transfer/' . $pembayaran->bukti_tf) }}" alt="">
+
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

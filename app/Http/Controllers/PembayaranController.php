@@ -23,6 +23,7 @@ class PembayaranController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         $auth = auth()->user();
@@ -41,26 +42,9 @@ class PembayaranController extends Controller
                 $cek_pembayaran = Pembayaran::where('transaksi_id', $ck->id)->get();
 
                 if ($cek_pembayaran->isNotEmpty()) {
-                    $pembayaran[]=$cek_pembayaran;
+                    $pembayaran[] = $cek_pembayaran;
                 }
             }
-            // return $cek_transaksi;  
-            // $cek_req = [];
-            // foreach ($cek_transaksi as $ct) {
-            //     // Mengecek jika ada data di request user atau tidak
-            //     $cek_req = request_user::where('transaksi_id', $ct->id)->get();
-
-            //     // Jika ada data di request user, mencari pembayaran berdasarkan request_user_id
-            //     if ($cek_req->isNotEmpty()) {
-            //         foreach ($cek_req as $cr) {
-            //             $ck[] = Pembayaran::where('request_user_id', $cr->id)->get();
-            //         }
-            //     }
-
-            //     // Jika tidak ada data di request user, mencari pembayaran berdasarkan transaksi_id
-            //     $cp[] = Pembayaran::where('transaksi_id', $ct->id)->get();
-            // }
-            // return $cek_transaksi;
             $compact = ['cek_transaksi', 'pembayaran'];
             return view('EU.transaction.listpembayaran', compact($compact));
         }
@@ -162,8 +146,8 @@ class PembayaranController extends Controller
             $old->delete();
         }
 
-        if ($request) {
-        }
+        // if ($request) {
+        // }
 
 
         pembayaran::create($pembayaran_data);
@@ -188,31 +172,12 @@ class PembayaranController extends Controller
 
     public function show(Pembayaran $pembayaran, Request $Request)
     {
-        // $previous = $Request->headers->get('referer');
-        // return $previous;
-        // $pembayaran = pembayaran::where()->get();
+        $auth = auth()->user();
+        $cek_user = $auth->role->role;
+
         $tid = $pembayaran->transaksi_id;
-        // return $pembayaran; 
-        $pembayaran = $pembayaran->where('transaksi_id', $tid)->get();
-        $transaksi = transaksi::where('id', $tid)->get();
-        $detail = transaksidetail::where('transaksi_id', $tid)->get();
-        $total = 0;
-        foreach ($detail as $d) {
-            $total += $d->produk->harga * $d->quantity;
-        }
-        // mencari biaya admin serta harga setelah admin
-        $admin = $total * 0.11;
-        $grandtotal = $total + $admin;
-        // return $admin;
 
-        $mid = $transaksi->value('member_id');
-        $member = Member::where('id', $mid)->value('user_id');
-        $userid = User::where('id', $member)->value('id');
-        // return $userid;
-        $user = User::find($userid);
-        // return $user;
-
-        $compact = ['pembayaran', 'transaksi', 'detail', 'total', 'admin', 'grandtotal', 'user'];
+        $compact = ['pembayaran'];
         return view('Admin.transaction.detailbukti', compact($compact));
     }
 
@@ -220,7 +185,7 @@ class PembayaranController extends Controller
     {
         $tid = $id->id;
         $requser = request_user::where('transaksi_id', $tid)->with('pembayaran')->first();
-        return view('Admin.transaction.detailbukti', compact('requser'));
+        return view('Admin.transaction.detail_kredit', compact('requser'));
     }
 
     /**
