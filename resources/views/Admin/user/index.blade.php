@@ -55,7 +55,7 @@
             @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
                 <div class="col-5 text-right">
                     <a href="{{ route('user.create') }}" class="btn btn-md text-white rounded"
-                        style="background-color: #1864BA;"><i class="fa-solid fa-plus"></i> Tambah User</a>
+                        style="background-color: #1864BA;"><i class="fa-solid fa-plus"></i>  User</a>
                 </div>
             @endif
         </div>
