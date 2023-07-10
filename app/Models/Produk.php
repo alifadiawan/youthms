@@ -19,11 +19,16 @@ class Produk extends Model
 
     public function cart()
     {
-        return $this->hasMany(cart::class);
+        return $this->hasMany(Cart::class);
     }
 
     public function hasnocart()
     {
         return !$this->cart;
+    }
+
+    public function paket()
+    {
+        return $this->belongsToMany(Paket::class, 'paket_produk', 'produk_id', 'paket_id');
     }
 }

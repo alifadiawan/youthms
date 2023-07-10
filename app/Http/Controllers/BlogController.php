@@ -19,7 +19,7 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $today = date('Y-m-d');
@@ -55,6 +55,9 @@ class BlogController extends Controller
             $u = auth()->user()->role->role;
             $admin = ['admin', 'owner'];
             if (in_array($u, $admin)) {
+                if ($request->ajax()) {
+                    return view('Admin.blog.blog-pagination', compact('data', 'segmen'));
+                }
                 return view('Admin.blog.index', compact('segmen', 'data'));
             }else{
                 return view('EU.blog.index', compact($compact));
@@ -90,7 +93,7 @@ class BlogController extends Controller
         elseif ($type == 'terpilih') {
             // code...
             $terpilih = Blog::whereHas('segmen', function ($query){
-                $query->where('segmen', 'PEMROGRAMMAN');
+                $query->where('id', 3);
             })->get();
             $blog = $terpilih;
         }

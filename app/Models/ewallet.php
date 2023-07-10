@@ -12,7 +12,7 @@ class ewallet extends Model
 
     public function pembayaran()
     {
-        return $this->hasMany(pembayaran::class);
+        return $this->hasMany(Pembayaran::class);
     }
     public function transaksidetail()
     {

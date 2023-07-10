@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             LandingSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            UserkwSeeder::class,
 
             // end user
             MemberSeeder::class,
@@ -30,6 +31,8 @@ class DatabaseSeeder extends Seeder
             ServicesSeeder::class,
             ServicesIllsSeeder::class,
             ProdukSeeder::class,
+            PaketSeeder::class,
+            ProdukPaketseeder::class,
             
             
             // transaksi

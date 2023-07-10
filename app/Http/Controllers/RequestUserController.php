@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\request_user;
 use App\Models\Member;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\TransaksiNotification;
+use Illuminate\Support\Facades\Notification;
 use App\Models\termin;
 use App\Models\Transaksi;
 use App\Models\TransaksiDetail;
@@ -93,8 +97,16 @@ class RequestUserController extends Controller
         // mencari harga total
         $grandtotal = $total + $admin;
 
+
+        $req = request_user::where('id', $reqid)->value('transaksi_id');
+        $trx = transaksi::where('id', $req)->value('member_id');
+        $mid = member::where('id', $trx)->value('user_id');
+        $userid = user::where('id', $mid)->value('id');
+        $user = user::find($userid);
+        // return $user;
+
         // $admin = 
-        $compact = ['request_user', 'detail', 'transaksi','total','grandtotal','admin','status','termin','totaltermin'];
+        $compact = ['request_user', 'detail', 'transaksi','total','grandtotal','admin','status','termin','totaltermin', 'user'];
         return view('Admin.transaction.YesNo', compact($compact));
     }
 
@@ -120,7 +132,20 @@ class RequestUserController extends Controller
             'note_admin' => $request->note, 
         ]);
 
-        notify()->success('status berhasil diperbarui');
+
+        notify()->success('Status Berhasil Diperbarui !!');
+        // mengirim notifikasi
+        $uid = $request->user_id;
+        $user = user::find($uid);
+        if ($request_user->status == 'accept') {
+            $message = "Pengajuan Kreditmu Telah Diterima\nSilahkan Hubungi Admin\nUntuk Info Lebih Lanjut";
+        } else {
+            $message = "Maaf Ajuan Kreditmu Ditolak Karena\n".$request_user->note_admin;
+        }
+        $notification = new TransaksiNotification($message);
+        $notification->setUrl(route('transaksi.history')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+
         return redirect()->route('requestuser.index');
 
 

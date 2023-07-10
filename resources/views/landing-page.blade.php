@@ -5,8 +5,8 @@
     <section class="hero" id="hero" class="d-flex align-items-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 d-flex flex-column justify-content-center order-2 mt-5 mt-lg-0 order-lg-1" data-aos="fade-up"
-                    data-aos-delay="200">
+                <div class="col-lg-6 d-flex flex-column justify-content-center order-2 mt-5 mt-lg-0 order-lg-1"
+                    data-aos="fade-up" data-aos-delay="200">
                     @foreach ($text as $item)
                         <h1>{{ $item->mainline }}</h1>
                         <h2>{{ $item->secondline }}</h2>
@@ -14,7 +14,8 @@
                     @endforeach
                 </div>
                 @foreach ($illustration as $i)
-                    <div class="col-lg-6 order-1 order-lg-2 hero-img align-items-center" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="col-lg-6 order-1 order-lg-2 hero-img align-items-center" data-aos="zoom-in"
+                        data-aos-delay="200">
                         <img src="{{ asset('./illustration/' . $i->illustration) }}" class="img-fluid">
                     </div>
                 @endforeach
@@ -35,9 +36,11 @@
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch my-4 mt-md-0" data-aos="zoom-in"
                         data-aos-delay="200">
                         <div class="icon-box text-center text-lg-start">
-                            <h4 class="text-center text-uppercase text-lg-start">{{$item->layanan}}</h4>
-                            <p>{{$item->deskripsi}}</p>
-                            <a href="{{route('services.index')}}" class="">Lihat lebih lanjut</a>
+                            <div class="d-flex flex-column" style="height: 100%">
+                                <h4 class="text-center text-uppercase text-lg-start fw-bold">{{ $item->layanan }}</h4>
+                                <p style="height: 100%">{{ $item->deskripsi }}</p>
+                                <a href="{{ route('services.index') }}">Lihat lebih lanjut</a>
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -66,44 +69,40 @@
             </div>
 
             <div class="row justify-content-between">
+                @foreach ($paket as $p)
+                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                        data-aos-delay="200">
+                        <div class="icon-box text-center" style="width: 100%; height: 30rem;">
+                            <h4>{{ $p->nama_paket }}</h4>
+                            @foreach ($produk->where('paket_id', $p->id) as $pp)
+                                <ul class="m-0">
+                                    <li class="paket text-start">{{ $pp->produk->nama_produk }}</li>
+                                </ul>
+                            @endforeach
 
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200" >
-                    <div class="icon-box text-center" style="width: 20rem">
-                        <h4><a href="">Paket A</a></h4>
-                        <p>Full Marketing Web</p>
-                        <p>Logo for business web</p>
-                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="icon-box text-center" style="width: 20rem">
-                        <h4><a href="">Paket B</a></h4>
-                        <p>Full Marketing Web</p>
-                        <p>Logo for business web</p>
-                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="icon-box text-center" style="width: 20rem">
-                        <h4><a href="">Paket C</a></h4>
-                        <p>Full Marketing Web</p>
-                        <p>Logo for business web</p>
-                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="icon-box text-center" style="width: 20rem">
-                        <h4><a href="">Paket D</a></h4>
-                        <p>Full Marketing Web</p>
-                        <p>Logo for business web</p>
-                        <a href="/store" class="btn yms-blue mt-4">Detail</a>
-                    </div>
-                </div>
+                            @php
+                                
+                                $total = 0;
+                            @endphp
+                            @foreach ($produk->where('paket_id', $p->id) as $p)
+                                @php
+                                    $total += $p->produk->harga;
+                                @endphp
+                                {{-- {{ $p->produk->harga }j} --}}
+                            @endforeach
+                            <div class="footer" style="position: absolute; bottom:20px; right:50px; left: 50px">
+                                 <p class="fw-bold">Rp {{ number_format($total, 0, ',', '.') }}</p>
+                                @guest
+                                <a href="/login" class="btn yms-blue mt-4">Beli Sekarang</a>
+                                @endguest
 
+                                @auth
+                                <a href="/store" class="btn yms-blue mt-4">Beli Sekarang</a>
+                                @endauth
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
 
         </div>
@@ -121,7 +120,7 @@
 
                 @foreach ($partner as $item)
                     <div class="col-lg-3 col-md-4 col-sm-7 d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('./partner/'.$item->partner) }}" class="img-fluid" alt="">
+                        <img src="{{ asset('./partner/' . $item->partner) }}" class="img-fluid" alt="">
                     </div>
                 @endforeach
 
@@ -139,11 +138,11 @@
             <div class="carousel-inner">
                 @foreach ($testi as $item)
                     <div class="carousel-item active">
-                        <img class="rounded-circle shadow-1-strong mb-4" src="{{ asset('./testimonial/'.$item->foto) }}"
+                        <img class="rounded-circle shadow-1-strong mb-4" src="{{ asset('./testimonial/' . $item->foto) }}"
                             alt="avatar" style="width: 150px;" />
                         <div class="row d-flex justify-content-center">
                             <div class="col-lg-8">
-                                <h5 class="mb-3">{{$item->nama}}</h5>
+                                <h5 class="mb-3">{{ $item->nama }}</h5>
                                 <p>{{ $item->jabatan }}</p>
                                 <p class="">
                                     <i class="fas fa-quote-left pe-2"></i>
@@ -181,22 +180,16 @@
     <section id="about" class="about">
         <div class="container" data-aos="fade-up">
 
-            <div class="section-title">
-                <h2 class="text-dark">About Us</h2>
-            </div>
+                <h2 class="text-dark fw-bold my-5 text-center" style="font-size: 42px">About Us</h2>
 
             <div class="row content">
                 <div class="col pt-4 pt-lg-0">
                     <h5>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ad ratione consectetur possimus
-                        totam excepturi repellat, minima rem tempora doloremque incidunt officia expedita voluptatem quas
-                        voluptate quaerat voluptatum illum? Nesciunt.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sunt sequi, quibusdam ea consectetur
-                        architecto. Illo, architecto iusto sit provident ducimus ab ad expedita commodi porro, quae eos
-                        inventore quo.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad molestias ab, aliquam praesentium neque
-                        amet obcaecati consequuntur quas delectus maxime natus ipsa quae dolorum temporibus voluptatibus
-                        modi? Ipsam, commodi aspernatur?
+                        Youthms.id merupakan startup yang berkembang di bidang pelayanan jasa teknologi. Kami menyediakan berbagai jenis layanan dan sub layanan, mulai dari bidang desain grafis hingga pembuatan aplikasi. Youthms.id membantu mengembangkan bisnis anda dengan mudah menggunakan kecanggihan teknologi dan jasa yang kami berikan kepada anda.
+                    </h5>
+                    <br>
+                    <h5>
+                        Kami adalah mitra terpercaya yang siap membantu mewujudkan potensi penuh bisnis Anda. Dengan tim ahli yang terdiri dari pengembang aplikasi berpengalaman, desainer kreatif yang menghasilkan karya visual menakjubkan, ahli pemasaran yang menggunakan strategi digital terkini, dan tim pengedit yang menyempurnakan konten, kami memberikan layanan berkualitas tinggi untuk mencapai kesuksesan bersama.
                     </h5>
                 </div>
             </div>
@@ -550,4 +543,10 @@
         </div>
 
     </div> --}}
+
+    <style>
+        .paket {
+            list-style-type: disc;
+        }
+    </style>
 @endsection

@@ -3,7 +3,7 @@
 @section('judul', 'Tambah produk')
 
 <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-lg-8 col-11">
         <div class="card rounded shadow-md">
             <div class="card-body">
                 <form action="{{ route('store.store') }}" method="POST" enctype="multipart/form-data">

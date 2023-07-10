@@ -11,14 +11,22 @@ use Illuminate\Http\Request;
 use App\Models\bank;
 use App\Models\ewallet;
 use Illuminate\Support\Facades\File;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewMessageNotification;
+use App\Notifications\TransaksiNotification;
+use Illuminate\Support\Facades\Notification;
 
 class PembayaranController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
-    {
+    public function index()
+    { 
+        $pembayaran = pembayaran::all();
+        $compact = ['pembayaran'];
+        return view('Admin.transaction.bukti', compact($compact));
     }
 
     public function pembayaran($id)
@@ -70,12 +78,8 @@ class PembayaranController extends Controller
         $transaksi = Transaksi::where('id', $tid)->get();
         $bank = bank::where('nama', $nama)->get();
         $ewallet = ewallet::where('nama', $nama)->get();
-        // return $ewallet;
-        // return $gateaway;
-        // return $tid;
-        // return $transaksi;
 
-        $compact = ['bank', 'ewallet', 'transaksi'];
+        $compact = ['bank', 'ewallet', 'transaksi', 'nama'];
         return view('EU.transaction.cara', compact($compact));
     }
 
@@ -103,32 +107,39 @@ class PembayaranController extends Controller
 
         $pembayaran_data = [
             'transaksi_id' => $tid,
-            'status' => $request->status,
+            'status' => "checking",
             'bukti_tf' => $nama_file,
         ];
 
         if ($bank) {
             $pembayaran_data['bank_id'] = $bank->id;
         } elseif ($wallet) {
-            $pembayaran_data['wallet_id'] = $wallet->id;
+            $pembayaran_data['ewallet_id'] = $wallet->id;
+        }
+
+        $pembayaran = pembayaran::all();
+        if($pembayaran->contains('transaksi_id',$tid)){
+            $duplicate = $pembayaran->where('transaksi_id',$tid);
+            $old = $duplicate->sortByDesc('created_at')->pop();
+            $old->delete();
         }
 
 
         pembayaran::create($pembayaran_data);
 
         notify()->success('Pembayaran Anda Akan Kami Proses !');
+        // mengirim notifikasi
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Pembayaran Baru Telah Masuk !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('pembayaran.list')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
         // return view('EU.history.index', $tid);
         return redirect()->route('transaksi.show', $tid);
         // return redirect()->back();
     }
-
-    public function listpembayaran()
-    {
-        $pembayaran = pembayaran::all();
-        $compact = ['pembayaran'];
-        return view('Admin.transaction.bukti', compact($compact));
-    }
-
 
     /**
      * Display the specified resource.
@@ -138,7 +149,7 @@ class PembayaranController extends Controller
         // $pembayaran = pembayaran::where()->get();
         $tid = $pembayaran->transaksi_id;
         // return $pembayaran; 
-        $pembayaran = $pembayaran->where('transaksi_id',$tid)->get();
+        $pembayaran = $pembayaran->where('transaksi_id', $tid)->get();
         $transaksi = transaksi::where('id', $tid)->get();
         $detail = transaksidetail::where('transaksi_id', $tid)->get();
         $total = 0;
@@ -148,8 +159,16 @@ class PembayaranController extends Controller
         // mencari biaya admin serta harga setelah admin
         $admin = $total * 0.11;
         $grandtotal = $total + $admin;
+        // return $admin;
 
-        $compact = ['pembayaran', 'transaksi', 'detail', 'total', 'admin', 'grandtotal'];
+        $mid = $transaksi->value('member_id');
+        $member = Member::where('id', $mid)->value('user_id');
+        $userid = User::where('id', $member)->value('id');
+        // return $userid;
+        $user = User::find($userid);
+        // return $user;
+
+        $compact = ['pembayaran', 'transaksi', 'detail', 'total', 'admin', 'grandtotal', 'user'];
         return view('Admin.transaction.detailbukti', compact($compact));
     }
 
@@ -166,7 +185,33 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
-        //
+        $status = $request->status;
+        $p = $pembayaran->update([
+            'status' => $status,
+            'note_admin'=>$request->note
+        ]);
+        
+        $tid = $pembayaran->transaksi_id;
+        $transaksi = transaksi::where('id', $tid)->first();
+        $total = $transaksi->total;
+        if($status == 'checked'){
+            $transaksi->update([
+                'total_bayar' => $total
+            ]);
+        }
+
+        // mengirim notifikasi
+        $uid = $request->user_id;
+        $user = user::find($uid);
+        if ($pembayaran->status == 'checked') {
+            $message = "Pembayaranmu Telah Masuk\nSilahkan Hubungi Admin\nUntuk Info Lebih Lanjut";
+        } else {
+            $message = "Pembayaranmu Telah Ditolak, Maaf :(";
+        }
+        $notification = new TransaksiNotification($message);
+        $notification->setUrl(route('transaksi.history')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+        return redirect()->route('pembayaran.list');
     }
 
     /**

@@ -13,7 +13,7 @@
             @endforeach
 
             @foreach ($request_user as $r)
-                @if ($r->status == null)
+                @if ($r->status == "pending")
                     <div class="card">
                         <div class="card-header">
                             @foreach ($request_user as $r)
@@ -31,12 +31,32 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    @php
+                                        $tanggalMulai = app(\Illuminate\Support\Carbon::class)->parse($r->tanggal_mulai);
+                                        $jatuhTempo = app(\Illuminate\Support\Carbon::class)->parse($r->jatuh_tempo);
+
+                                        $selisihHari = $tanggalMulai->diffInDays($jatuhTempo) . ' Hari';
+                                        $selisihBulan = $tanggalMulai->diffInMonths($jatuhTempo);
+
+                                        // Jika selisih lebih dari 30 hari, ubah ke dalam format "1 bulan"
+                                        if ($selisihBulan >= 1) {
+                                            $selisihHari = $selisihBulan . ' Bulan';
+                                        }
+                                    @endphp
                                     <div class="col">
                                         <h5 class="mb-0 me-auto">Permintaan Jangka waktu kredit</h5>
                                     </div>
                                     <div class="col text-right">
                                         {{-- <h5 class="mb-0 me-auto font-weight-bold">1 Bulan</h5> --}}
-                                        <h5 class="mb-0 me-auto font-weight-bold">pending</h5>
+                                        <h5 class="mb-0 me-auto font-weight-bold">{{$selisihHari}}</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="mb-0 me-auto">Status</h5>
+                                    </div>
+                                    <div class="col text-right">
+                                        <h5 class="mb-0 me-auto font-weight-bold text-uppercase">{{$r->status}}</h5>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -46,9 +66,7 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <h5 class="mb-0 me-auto text-muted">Saya ingin menciicl transaksi ini dalam
-                                            seminggu 2x
-                                            dalam sebulan</h5>
+                                        <h5 class="mb-0 me-auto text-muted">{{$r->deskripsi}}</h5>
                                     </div>
                                 </div>
 
@@ -58,6 +76,7 @@
                                         <form action="{{ route('requestuser.update', $r->id) }}" method="POST">
                                             @csrf
                                             @method('put')
+                                            <input type="hidden" name="user_id" value="{{$user->id}}">
                                             <input type="hidden" value="accept" name="status">
                                             @foreach ($request_user as $r)
                                                 <input type="hidden" value="{{ $r->id }}" name="requser_id">
@@ -68,15 +87,10 @@
                                     </div>
 
                                     <div class="col">
-                                        {{-- <form action="{{ route('requestuser.update', $r->id) }}" method="POST"> --}}
-                                        {{-- @csrf
-                                            @method('put') --}}
-                                        {{-- <input type="hidden" value="declined" name="status"> --}}
                                         <a class="btn btn-danger w-100" data-toggle="modal"
                                             data-target="#declinedModal">
                                             declined
                                         </a>
-                                        {{-- </form> --}}
                                     </div>
 
                                     {{-- benekno modal e lip ;-; --}}
@@ -90,6 +104,7 @@
                                                     <div class="modal-body">
                                                         <div class="form-group">
                                                             <label for="note">Alasan ditolaknya request?</label>
+                                                            <input type="hidden" name="user_id" value="{{$user->id}}">
                                                             <input type="hidden" name="status" value="declined">
                                                             @foreach ($request_user as $r)
                                                                 <input type="hidden" value="{{ $r->id }}"
@@ -99,7 +114,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer text-left">
-                                                        <button class="btn btn-primary" type="submit">Save
+                                                        <button class="btn btn-primary w-30" type="submit">Save
                                                             changes</button>
                                                         <button class="btn btn-secondary"
                                                             data-dismiss="modal">Close</button>

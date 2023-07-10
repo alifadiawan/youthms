@@ -42,17 +42,6 @@
                 <span class="dropdown-item dropdown-header" id="notificationCount">{{ count($notifications) }}
                     Notifications</span>
                 <div class="dropdown-divider"></div>
-                <!-- <a href="#" class="dropdown-item">
-            <i class="fa-solid fa-circle-info text-warning"></i> Produk Telah di Update
-          </a>
-          <a href="#" class="dropdown-item">
-            <i class="fa-solid fa-circle-info text-danger"></i> Produk Telah di Hapus
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <a href="#" class="dropdown-item">
-            <i class="fa-solid fa-circle-info text-success"></i> Produk Telah di Tambahkan
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a> -->
 
                 @include('Admin.notif')
             </ul>

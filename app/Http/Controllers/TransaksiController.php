@@ -31,10 +31,129 @@ class TransaksiController extends Controller
      */
     public function index()
     {
+        // mencari data user & member
+        $auth = auth()->user();
+        $user_role = $auth->role->role;
+        $user = $auth->id;
+        $member = member::where('user_id', $user)->pluck('id')->first();
+
+        // mencari role
+        $user_role = $auth->role->role;
+
+        // mencari status transaksi
+        $trx = Transaksi::paginate(5);
+        // nyoba termin sedang berlangsung & termin yang di decline
+
+        $kredit = [];
+        $pending = [];
+        $utang = [];
+        $lunas = [];
+        $declined = [];
+        $checking = [];
+        $denied = [];
+
+
+        // pengkondisian jika role user = client, akan terlempar ke history index
+        $requestUser = request_user::all();
+        $pembayaran = pembayaran::all();
+
+        if ($user_role == 'client') {
+            $all = transaksi::where('member_id', $member)->get();
+
+            foreach ($all as $t) {
+                $req = $requestUser->where('transaksi_id', $t->id)->first();
+                $pemb = $pembayaran->where('transaksi_id', $t->id)->first();
+                // $pemb = $pembayaran->where('transaksi_id', $t->id)->first();
+                // return 'oke';
+                if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
+                    $checking[] = $t;
+                } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
+                    $utang[] = $t;
+                } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
+                    $kredit[] = $t;
+                } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
+                    $kredit[] = $t;
+                } elseif ($t->total_bayar == 0 && $req && $req->status == "pending") {
+                    $pending[] = $t;
+                } elseif ($t->total_bayar == 0 && $req && $req->status == "declined") {
+                    $declined[] = $t;
+                } elseif ($t->total_bayar == 0 && !$req) {
+                    $utang[] = $t;
+                } elseif ($t->total_bayar >= $t->total && $req && $req->status == "accept") {
+                    $lunas[] = $t;
+                } elseif ($t->total_bayar >= $t->total && $pemb && $pemb->status == "checked") {
+                    $lunas[] = $t;
+                }
+            }
+
+            // denied
+            $ux = collect($denied)->pluck('id')->toArray();
+
+            // checking
+            $uc = collect($checking)->pluck('id')->toArray();
+
+            // belum bayar
+            $uu = collect($utang)->pluck('id')->toarray();
+
+            // kredit ongoing
+            $uk = collect($kredit)->pluck('id')->toarray();
+
+            // kredit pending
+            $up = collect($pending)->pluck('id')->toarray();
+
+            // kredit decline
+            $ud = collect($declined)->pluck('id')->toarray();
+            // $ud = $declined;
+
+            // lunas
+            $ul = collect($lunas)->pluck('id')->toarray();
+
+            $status = ['utang', 'kredit', 'lunas', 'pending', 'declined', 'all'];
+            $stts = ['uu', 'uk', 'ul', 'up', 'ud', 'uc'];
+            $compact = [$status, $stts];
+            return view('EU.history.index', compact($compact));
+        } else {
+
+            $trnsk = transaksi::all();
+            foreach ($trnsk as $t) {
+                $req = $requestUser->where('transaksi_id', $t->id)->first();
+                $pemb = $pembayaran->where('transaksi_id', $t->id)->first();
+                // return 'oke';
+                if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
+                    $checking[] = $t;
+                } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
+                    $utang[] = $t;
+                } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
+                    $kredit[] = $t;
+                } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
+                    $kredit[] = $t;
+                } elseif ($t->total_bayar == 0 && $req && $req->status == "pending") {
+                    $pending[] = $t;
+                } elseif ($t->total_bayar == 0 && $req && $req->status == "declined") {
+                    $declined[] = $t;
+                } elseif ($t->total_bayar == 0 && !$req) {
+                    $utang[] = $t;
+                } elseif ($t->total_bayar >= $t->total && !$req) {
+                    $lunas[] = $t;
+                } elseif ($t->total_bayar >= $t->total && $req && $req->status == "accept") {
+                    $lunas[] = $t;
+                }
+            }
+            $uc = collect($checking)->pluck('id')->toArray();
+            $ux = collect($denied)->pluck('id')->toArray();
+            $ul = collect($lunas)->pluck('id')->toArray();
+            $uu = collect($utang)->pluck('id')->toArray();
+            $uk = collect($kredit)->pluck('id')->toArray();
+            $up = collect($pending)->pluck('id')->toArray();
+            $ud = collect($declined)->pluck('id')->toArray();
+            // $compact = array_merge($compact, [$uu, $ul, $uk, $up, $ud]);
+            $staff_super = ['admin', 'owner'];
+            $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
+            $compact = ['staff_super', 'staff', 'trx', 'uu', 'ul', 'uk', 'up', 'ud', 'uc'];
+
+            return view('Admin.transaction.index', compact($compact));
+        }
     }
-
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -121,123 +240,6 @@ class TransaksiController extends Controller
      * Display the specified resource.
      */
 
-    public function history()
-    {
-        // mencari data user & member
-        $auth = auth()->user();
-        $user_role = $auth->role->role;
-        $user = $auth->id;
-        $member = member::where('user_id', $user)->pluck('id')->first();
-
-        // mencari role
-        $user_role = $auth->role->role;
-
-        // mencari status transaksi
-        $trx = Transaksi::paginate(5);
-        // nyoba termin sedang berlangsung & termin yang di decline
-
-        $kredit = [];
-        $pending = [];
-        $utang = [];
-        $lunas = [];
-        $declined = [];
-        $checking = [];
-
-        // pengkondisian jika role user = client, akan terlempar ke history index
-        $requestUser = request_user::all();
-        $pembayaran = pembayaran::all();
-
-        if ($user_role == 'client') {
-            $all = transaksi::where('member_id', $member)->get();
-
-            foreach ($all as $t) {
-                $req = $requestUser->where('transaksi_id', $t->id)->first();
-                $pemb = $pembayaran->where('transaksi_id', $t->id)->first();
-                // $pemb = $pembayaran->where('transaksi_id', $t->id)->first();
-                // return 'oke';
-                if ($t->total_bayar == 0  && $pemb && $pemb->status == "pending") {
-                    $checking[] = $t;
-                } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
-                    $kredit[] = $t;
-                } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
-                    $kredit[] = $t;
-                } elseif ($t->total_bayar == 0 && $req && $req->status == "pending") {
-                    $pending[] = $t;
-                } elseif ($t->total_bayar == 0 && $req && $req->status == "declined") {
-                    $declined[] = $t;
-                } elseif ($t->total_bayar == 0 && !$req) {
-                    $utang[] = $t;
-                } elseif ($t->total_bayar >= $t->total && $req && $req->status == "accept") {
-                    $lunas[] = $t;
-                } elseif ($t->total_bayar >= $t->total && $pemb && $pemb->status == "checked") {
-                    $lunas[] = $t;
-                }
-            }
-
-            // checking
-            $uc = collect($checking)->pluck('id')->toArray();
-
-            // belum bayar
-            $uu = collect($utang)->pluck('id')->toarray();
-
-            // kredit ongoing
-            $uk = collect($kredit)->pluck('id')->toarray();
-
-            // kredit pending
-            $up = collect($pending)->pluck('id')->toarray();
-
-            // kredit decline
-            $ud = collect($declined)->pluck('id')->toarray();
-            // $ud = $declined;
-
-            // lunas
-            $ul = collect($lunas)->pluck('id')->toarray();
-
-
-            $status = ['utang', 'kredit', 'lunas', 'pending', 'declined', 'all'];
-            $stts = ['uu', 'uk', 'ul', 'up', 'ud', 'uc'];
-            $compact = [$status, $stts];
-            return view('EU.history.index', compact($compact));
-        } else {
-
-            $trnsk = transaksi::all();
-            foreach ($trnsk as $t) {
-                $req = $requestUser->where('transaksi_id', $t->id)->first();
-                $pemb = $pembayaran->where('transaksi_id', $t->id)->first();
-                // return 'oke';
-                if ($t->total_bayar == 0  && $pemb && $pemb->status == "pending") {
-                    $checking[] = $t;
-                } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
-                    $kredit[] = $t;
-                } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
-                    $kredit[] = $t;
-                } elseif ($t->total_bayar == 0 && $req && $req->status == "pending") {
-                    $pending[] = $t;
-                } elseif ($t->total_bayar == 0 && $req && $req->status == "declined") {
-                    $declined[] = $t;
-                } elseif ($t->total_bayar == 0 && !$req) {
-                    $utang[] = $t;
-                } elseif ($t->total_bayar >= $t->total && !$req) {
-                    $lunas[] = $t;
-                } elseif ($t->total_bayar >= $t->total && $req && $req->status == "accept") {
-                    $lunas[] = $t;
-                }
-            }
-            $uc = collect($checking)->pluck('id')->toArray();
-            $ul = collect($lunas)->pluck('id')->toArray();
-            $uu = collect($utang)->pluck('id')->toArray();
-            $uk = collect($kredit)->pluck('id')->toArray();
-            $up = collect($pending)->pluck('id')->toArray();
-            $ud = collect($declined)->pluck('id')->toArray();
-            // $compact = array_merge($compact, [$uu, $ul, $uk, $up, $ud]);
-            $staff_super = ['admin', 'owner'];
-            $staff = ['programmer', 'ui/ux', 'sekretariat', 'reborn'];
-            $compact = ['staff_super', 'staff', 'trx', 'uu', 'ul', 'uk', 'up', 'ud', 'uc'];
-
-            return view('Admin.transaction.index', compact($compact));
-        }
-    }
-
     public function show(Transaksi $transaksi)
     {
         $auth = auth()->user();
@@ -250,7 +252,8 @@ class TransaksiController extends Controller
         $tid = $transaksi->id;
         $trxid = $tid;
         $trx = transaksi::where('id', $transaksi->id)->get();
-        $pembayaran = pembayaran::where('transaksi_id', $tid)->where('status', 'pending')->get();
+        // $pembayaran = pembayaran::where('transaksi_id', $tid)->where('status', 'pending')->get();
+        $pembayaran = pembayaran::where('transaksi_id', $tid)->get();
 
         // mencari request user, jika melakukan kredit
         $requser = request_user::where('transaksi_id', $trxid)->get();
@@ -289,8 +292,9 @@ class TransaksiController extends Controller
         $lunas = [];
         $declined = [];
         $checking = [];
+        $denied = [];
 
-        $pembayaran = pembayaran::where('transaksi_id', $tid)->get();
+        // $pembayaran = pembayaran::where('transaksi_id', $tid)->get();
         $pembayaran_loop = pembayaran::all();
 
         // bayar 
@@ -303,8 +307,10 @@ class TransaksiController extends Controller
                 $pemb = $pembayaran_loop->where('transaksi_id', $t->id)->first();
 
                 // return 'oke';
-                if ($t->total_bayar == 0  && $pemb && $pemb->status == "pending") {
+                if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                     $checking[] = $t;
+                } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
+                    $utang[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $kredit[] = $t;
                 } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
@@ -323,16 +329,17 @@ class TransaksiController extends Controller
             }
 
             $EU_checking = collect($checking)->pluck('id')->toArray();
+            $EU_denied = collect($denied)->pluck('id')->toArray();
             $EU_lunas = collect($lunas)->pluck('id')->toArray();
             $EU_utang = collect($utang)->pluck('id')->toArray();
             $EU_kredit = collect($kredit)->pluck('id')->toArray();
             $EU_pending = collect($pending)->pluck('id')->toArray();
             $EU_declined = collect($declined)->pluck('id')->toArray();
+            // return 'oke';
+            // return $EU_denied;
 
-
-            $status_EU = ['EU_utang', 'EU_kredit', 'EU_lunas', 'EU_declined', 'EU_pending', 'EU_checking', 'selisih'];
+            $status_EU = ['EU_utang', 'EU_kredit', 'EU_lunas', 'EU_declined', 'EU_denied', 'EU_pending', 'EU_checking', 'selisih'];
             return view('EU.transaction.detail', compact($compact, $status_EU));
-            //     return view('EU.transaction.cash', compact($compact));
         } else {
             $all = transaksi::all();
 
@@ -341,8 +348,10 @@ class TransaksiController extends Controller
                 $pemb = $pembayaran_loop->where('transaksi_id', $t->id)->first();
 
                 // return 'oke';
-                if ($t->total_bayar == 0  && $pemb && $pemb->status == "pending") {
+                if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                     $checking[] = $t;
+                } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
+                    $utang[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $kredit[] = $t;
                 } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
@@ -361,11 +370,12 @@ class TransaksiController extends Controller
                 $adm_lunas = collect($lunas)->pluck('id')->toArray();
             }
             $adm_checking = collect($checking)->pluck('id')->toArray();
+            $adm_denied = collect($denied)->pluck('id')->toArray();
             $adm_utang = collect($utang)->pluck('id')->toArray();
             $adm_kredit = collect($kredit)->pluck('id')->toArray();
             $adm_pending = collect($pending)->pluck('id')->toArray();
             $adm_declined = collect($declined)->pluck('id')->toArray();
-            
+
 
             $status = ['adm_utang', 'adm_kredit', 'adm_lunas', 'adm_pending', 'adm_declined', 'adm_checking'];
             $compact = ['detail', 'total', 'grandtotal', 'admin', $status, 'trx', 'detail', 'pembayaran'];
@@ -398,6 +408,14 @@ class TransaksiController extends Controller
             'transaksi_id' => $r->transaksi_id
         ]);
 
+        // mengirim notifikasi
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Ajuan Kredit Baru !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('requestuser.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
 
         return redirect()->route('requestuser.index', ['trxid' => $trxid]);
     }

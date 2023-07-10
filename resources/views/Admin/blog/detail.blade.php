@@ -56,7 +56,7 @@
                 <textarea id="isi" name="isi" style="display: none;">{{ $blog->isi }}</textarea>
 
                 <div id="tampilan_isi">
-
+                    {{ $blog->isi }}
                 </div>
             </div>
         </div>

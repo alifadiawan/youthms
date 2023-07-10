@@ -7,11 +7,9 @@
         <div id="thumbnail" class="text-start">
             <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
             <div id="caption">
-                <h3 class="text-white text-wrap">wawasdwa</h3>
-                <p id="text" class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus
-                    fugit
-                    pariatur, magnam aliquam et qui hic corporis odio neque nobis doloribus quidem delectus saepe commodi
-                    illum minima blanditiis nostrum quod.</p>
+                <h3 class="text-white text-wrap" style="font-family: Poppins, sans-serif; font-weight:bold; ">Store</h3>
+                <p id="text" class="text-white h3">YouthMS memiliki berbagai jenis Produk dari beberapa Jenis Layanan,
+                    mulai dari Aplikasi, Marketing, Desain, dan Editing</p>
             </div>
         </div>
     </div>
@@ -19,19 +17,16 @@
 
     <!-- tombol kategori jasa -->
     <div class="container mb-5 mt-3">
-        <div class="d-flex flex-row justify-content-center justify-content-lg-start gap-3">
-            {{-- <a href="" class="btn yms-outline-blue rounded-5z">All</a>
-            @foreach ($layanan as $l)
-            <a href="{{ route('store.showtype', $link) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
-            @endforeach --}}
-            <a href="{{ route('store.index') }}" class="text-capitalize my-3 btn yms-outline rounded-5 active">All</a>
-            @foreach ($layanan as $l)
-            @php
-                $link = str_replace(' ', '_', $l->layanan)
-            @endphp
-                <a href="{{ route('store.showtype', $link) }}"
-                    class=" my-3 text-capitalize btn yms-outline rounded-5 active">{{ $l->layanan }}</a>
-            @endforeach
+        <div class="d-flex flex-row justify-content-start" style="overflow-y:auto;">
+            <div class="d-flex flex-row">
+                <a href="{{ route('store.index') }}" class="text-capitalize btn btn yms-outline-blue rounded-5">All</a>
+                @foreach ($layanan as $l)
+                    @php
+                        $link = str_replace(' ', '_', $l->layanan);
+                    @endphp
+                    <a href="{{ route('store.showtype', $link) }}" class="text-capitalize btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
+                @endforeach
+            </div>
         </div>
     </div>
 
@@ -51,9 +46,9 @@
                         <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
                             style="max-width: 15.3rem; height: 15.3rem; object-fit:cover;">
                         <div class="card-body">
-                            <p class="card-title text-capitalize fw-bold text-truncate" >{{ $p->nama_produk }} </p>
+                            <p class="card-title text-capitalize fw-bold text-truncate">{{ $p->nama_produk }} </p>
                             {{-- <p class="card-title text-secondary">{{ $p->services->judul }}</p> --}}
-                            <p class="card-text" >Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
+                            <p class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
                             @guest
                                 <a href="{{ route('authcheck') }}" class="btn yms-blue w-100 rounded-5">
                                     <i class="fa-solid fa-cart-plus"></i> Buy
@@ -191,9 +186,9 @@
                         <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="card card-hover border-0 shadow">
                                 <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top " alt="..."
-                                    style="max-width: 19rem; height: 19rem">
+                                style="max-width: 19rem; height: 19rem object-fit:cover;">
                                 <div class="card-body">
-                                    <p class="card-title text-capitalize fw-bold text-truncate" >{{ $p->nama_produk }}</p>
+                                    <p class="card-title text-capitalize fw-bold text-truncate">{{ $p->nama_produk }}</p>
                                     <p class="card-title text-secondary">{{ $ls->judul }}</p>
                                     <p class="card-text">Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
                                     @guest

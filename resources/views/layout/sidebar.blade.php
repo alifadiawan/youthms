@@ -101,7 +101,22 @@
                         <p>
                             Store
                         </p>
+                        <i class="right fas fa-angle-left"></i>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('store.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('paket.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Paket</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="/transaksi" class="nav-link">
@@ -113,7 +128,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('transaksi.history') }}" class="nav-link">
+                            <a href="{{ route('transaksi.index') }}" class="nav-link">
+                            {{-- <a href="{{ route('transaksi.history') }}" class="nav-link"> --}}
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Transaksi
@@ -128,33 +144,25 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/paket" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Paket
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('pembayaran.list') }}" class="nav-link">
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('pembayaran.index') }}" class="nav-link">
 
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Detail Bayar
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="/chat" class="nav-link">
                         <i class="nav-icon fa-solid fa-comment-dots"></i>
                         <p>
                             Chat
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="{{route('portfolio.index')}}" class="nav-link">
                         <i class="nav-icon fa-solid fa-briefcase"></i>

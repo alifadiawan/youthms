@@ -59,70 +59,30 @@
                     <table class="table table-striped table-valign-middle">
                         <thead>
                             <tr>
-                                <th>Produk</th>
+                                <th>Kode Transaksi  </th>
                                 <th>Tanggal Pembelian</th>
-                                <th>Nama Pembeli</th>
                                 <th>More Info</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($transaksi as $t)
                             <tr>
                                 <td>
-                                    <span class="badge bg-danger">NEW</span>
-                                    Aplikasi Kasir
+                                    {{ $t->unique_code }}
+                                    {{-- @foreach($t->transaksi_detail as $td)
+                                        {{$td->produk->nama_produk}}<br>
+                                    @endforeach --}}
                                 </td>
                                 <td>
-                                    13 Mei 2023
+                                    {{date('d F Y',strtotime($t->tanggal_transaksi))}}
                                 </td>
-                                <td>Steven</td>
                                 <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#exampleModal">
+                                    <a href="{{ route('transaksi.show', $t->id) }}" class="text-muted">
                                         <i class="fa-solid fa-circle-info"></i>
                                     </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    React Native
-                                </td>
-                                <td>
-                                    3 Mei 2023
-                                </td>
-                                <td>Ilham</td>
-                                <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#exampleModal">
-                                        <i class="fa-solid fa-circle-info"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Logo
-                                </td>
-                                <td>
-                                    28 April 2023
-                                </td>
-                                <td>Alif</td>
-                                <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#exampleModal">
-                                        <i class="fa-solid fa-circle-info"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Web Profile
-                                </td>
-                                <td>
-                                    20 April 2023
-                                </td>
-                                <td>Rafli</td>
-                                <td>
-                                    <a href="#" class="text-muted">
-                                        <i class="fa-solid fa-circle-info"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

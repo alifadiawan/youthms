@@ -27,6 +27,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\TransaksiDetailController;
 use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\PaketController;
 use App\Models\Services;
 
 /*
@@ -94,18 +95,6 @@ Route::post('/group-chat/join', [GroupChatController::class, 'joinGroup'])->name
 //landing page
 Route::get('/', [EUController::class, 'index'])->name('landingpageEU.index');
 
-Route::get('/paket', function () {
-    return view('Admin.paket.index');
-});
-
-// Route::get('/tambah-paket', function () {
-//     return view('Admin.paket.add');
-// });
-Route::get('/detail-paket', function () {
-    return view('Admin.paket.detail');
-});
-
-
 //history transaksi
 Route::get('/history-transaction', function () {
     return view('EU.history.index');
@@ -132,6 +121,10 @@ Route::get('/blogs/{type}/show', [BlogController::class, 'showtype'])->name('blo
 //services
 Route::resource('services', ServicesController::class);
 Route::get('/services/detail/{services}', [ServicesController::class, 'show'])->name('services.show');
+
+//paket
+Route::resource('paket', PaketController::class);
+Route::get('/paket/{paket}/hapus', [PaketController::class, 'hapus'])->name('paket.hapus');
 
 //profile
 Route::get('/profile', function () {
@@ -174,6 +167,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
     Route::get('/filter', [UserController::class, 'filterUsers'])->name('user.filter');
     Route::get('user/{id}/hapus', [UserController::class, 'hapus'])->name('user.hapus');
+
+    //notif
+    Route::post('/read', [NotificationController::class, 'read'])->name('read');
+    Route::get('/read_chat/{notifId}', [NotificationController::class, 'read_chat'])->name('read.chat');
 
     // transaction
     Route::resource('/transaksi', TransaksiController::class);
@@ -296,8 +293,4 @@ Route::middleware('admin')->group(function () {
     Route::get('/portofolio-ilustrasi', [PortofolioController::class, 'ilustrasi_index'])->name('portofolio.ilustrasi');
     Route::get('/portofolio-ilustrasi/edit/{id}', [PortofolioController::class, 'ilustrasi_edit'])->name('portofolio.edit_ilustrasi');
     Route::put('/portofolio-ilustrasi/update/{id}', [PortofolioController::class, 'ilustrasi_update'])->name('portofolio.update_ilustrasi');
-
-    //notif
-    Route::post('/read', [NotificationController::class, 'read'])->name('read');
-    Route::get('/read_chat/{notifId}', [NotificationController::class, 'read_chat'])->name('read.chat');
 });

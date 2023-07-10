@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
@@ -35,7 +36,7 @@ class DashboardController extends Controller
             'chart_title' => 'Penjualan',
             'report_type' => 'group_by_date',
             'model' => 'App\Models\Transaksi',
-            'group_by_field' => 'tanggal',
+            'group_by_field' => 'created_at',
             'group_by_period' => 'month',
             'chart_type' => 'bar',
             'chart_color' =>  "51, 133, 255"
@@ -47,7 +48,9 @@ class DashboardController extends Controller
 
         $uid = auth()->user()->id;
         // return $uid;
-        return view('Admin.dashboard', compact('chart1', 'chart2'));
+
+        $transaksi = Transaksi::orderBy('tanggal_transaksi', 'desc')->take(4)->get();
+        return view('Admin.dashboard', compact('chart1', 'chart2', 'transaksi'));
     }
 
     /**
