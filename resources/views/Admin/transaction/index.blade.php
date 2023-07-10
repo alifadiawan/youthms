@@ -4,7 +4,6 @@
 <div class="card">
     <div class="col-lg-12">
         <div class="table-responsive">
-
             <table class="table table-striped mt-2">
                 <thead>
                     <tr style="background-color: #0EA1E2">
