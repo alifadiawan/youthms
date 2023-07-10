@@ -47,8 +47,8 @@ class GroupChatController extends Controller
         $group = Group::create([
             'group' => $request->input('group'),
             'kode' => $random,
-            'admin_id' => auth()->user()->id,
         ]);
+        $group->admin()->attach(auth()->user()->id);
         $group->users()->attach(auth()->user()->id);
         return redirect()->route('gc.index');
     }
@@ -57,6 +57,13 @@ class GroupChatController extends Controller
     {
         $userid = $request->input('users');
         $group->users()->attach($userid);
+        return redirect()->route('gc.index');
+    }
+
+    public function addAdmin(Group $group, Request $request)
+    {
+        $userid = $request->input('users');
+        $group->admin()->attach($userid);
         return redirect()->route('gc.index');
     }
 
