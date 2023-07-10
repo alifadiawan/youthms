@@ -85,4 +85,9 @@ class User extends Authenticatable
         return $this->hasMany(GroupMessage::class);
     }
 
+    public function admin()
+    {
+        return $this->belongsToMany(User::class, 'group_admins');
+    }
+
 }
