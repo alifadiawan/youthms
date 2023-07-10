@@ -77,6 +77,10 @@
                     <a class="dropdown-item" href="/">
                         Ke Dashboard EU
                     </a>
+                    <a class="dropdown-item" href="{{route('gc.index')}}">
+                        <i class="fas fa-comments fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Group Chat
+                    </a>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Logout
