@@ -69,16 +69,33 @@ route::get('/invoice', function () {
 
 
 
-
+//group chat
 Route::get('/group-chat', [GroupChatController::class, 'index'])->name('gc.index');
+
+//send
 Route::post('/group-chat/send-message', [GroupChatController::class, 'sendMessage'])->name('gc.send');
+
+//add group
 Route::post('/group-chat/store', [GroupChatController::class, 'store'])->name('gc.store');
+
+//show group
 Route::get('/group-chat/{group}', [GroupChatController::class, 'showMessage'])->name('gc.show');
+
+//add
 Route::post('/group-chat/{group}/add-users', [GroupChatController::class, 'addUser'])->name('gc.users.add');
-Route::post('/group-chat/{group}/add-admin', [GroupChatController::class, 'addAdmin'])->name('gc.users.admin');
+Route::post('/group-chat/{group}/add-admin', [GroupChatController::class, 'addAdmin'])->name('gc.admin.add');
+
+//remove
 Route::post('/group-chat/{group}/remove-users', [GroupChatController::class, 'removeUser'])->name('gc.users.remove');
+Route::post('/group-chat/{group}/remove-admin', [GroupChatController::class, 'removeAdmin'])->name('gc.admin.remove');
+
+//load
 Route::get('/group-chat/load/{group}', [GroupChatController::class, 'loadNewMessage'])->name('gc.load');
+
+//group
 Route::post('/group-chat/join', [GroupChatController::class, 'joinGroup'])->name('gc.join');
+Route::post('/group-chat/{group}/left', [GroupChatController::class, 'leftGroup'])->name('gc.left');
+Route::get('/group-chat/{group}/delete', [GroupChatController::class, 'removeGroup'])->name('gc.delete');
 
 
 

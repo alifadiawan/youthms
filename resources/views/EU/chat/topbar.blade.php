@@ -29,103 +29,84 @@
                         data-bs-toggle="dropdown" aria-expanded="false"><i
                             class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addMember">Tambahkan Member</a>
+                        @if($group->admin()->where('user_id', auth()->user()->id)->exists())
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addMember">Tambah Member</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#removeMember">Hapus Member</a>
                         </li>
                         <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addAdmin">Tambah Admin</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#removeAdmin">Hapus Admin</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Something else
-                                here</a></li>
+                        <li>
+                            <form action="{{route('gc.delete', ['group' => $group->id])}}" id="delete-group-form" method="GET">
+                                @csrf
+                            </form>
+                            <button class="dropdown-item" id="delete-group-button">Hapus Group</button>
+                        </li>
+                        @endif
+                        <li>
+                            <form action="{{route('gc.left', ['group' => $group->id])}}" id="left-group-form" method="POST">
+                                @csrf
+                            </form>
+                            <button class="dropdown-item" id="left-group-button">Left Group</button>
+                        </li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
 </div>
-<!-- Add Member Modal -->
-<div class="modal fade" id="addMember" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addMemberLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <form action="{{ route('gc.users.add', ['group' => $group->id]) }}" method="post">
-                    @csrf
-                    <div class="row justify-content-center">
-                        <div class="col">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Username</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($users as $user)
-                                        <tr>
-                                            <td>{{ $user->username }} (Role : {{$user->role->role}})</td>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="users[]" value="{{ $user->id }}">
-                                                    <label class="form-check-label">Tambahkan</label>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Tambah</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>   
-<!-- Add Admin Modal -->
-<div class="modal fade" id="addAdmin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addMemberLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <form action="{{ route('gc.users.admin', ['group' => $group->id]) }}" method="post">
-                    @csrf
-                    <div class="row justify-content-center">
-                        <div class="col">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Username</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($group->users as $admin)
-                                        @if(!$group->admin()->where('user_id', $admin->id)->exists())
-                                            <tr>
-                                                <td>{{ $admin->username }}</td>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="users[]" value="{{ $admin->id }}">
-                                                        <label class="form-check-label">Tambahkan</label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endif
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Tambah</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>   
+
+@include('EU.chat.modal')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  // Temukan tombol dropdown dengan ID delete-button
+  @if($group->admin()->where('user_id', auth()->user()->id)->exists())
+  const deleteButton = document.getElementById('delete-group-button');
+
+  deleteButton.addEventListener('click', function() {
+    Swal.fire({
+      title: 'Yakin Ingin Menghapus Group ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yakin !'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Ambil form yang berisi tombol delete-button
+        const formDelete = document.getElementById('delete-group-form');
+        
+        // Submit form
+        formDelete.submit();
+      }
+    });
+  });
+  @endif
+  const leftButton = document.getElementById('left-group-button');
+
+  leftButton.addEventListener('click', function() {
+    Swal.fire({
+      title: 'Yakin Ingin Keluar ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yakin !'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Ambil form yang berisi tombol left-button
+        const formLeft = document.getElementById('left-group-form');
+        
+        // Submit form
+        formLeft.submit();
+      }
+    });
+  });
+</script>
 </section>
