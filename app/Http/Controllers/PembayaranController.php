@@ -123,14 +123,17 @@ class PembayaranController extends Controller
         $file->move($tujuan_upload, $nama_file);
 
         $tid = $request->transaksi_id;
-        $transaksi = Transaksi::where('id', $tid)->get();
+        $transaksi = Transaksi::find($tid);
         $bank = bank::where('nama', $request->bank)->first();
         $wallet = ewallet::where('nama', $request->wallet)->first();
 
+        // return $transaksi;
         $pembayaran_data = [
             'transaksi_id' => $tid,
             'status' => "checking",
             'bukti_tf' => $nama_file,
+            'total_bayar' => 0,
+            'unique_code' => $transaksi->unique_code,
         ];
 
         if ($bank) {
@@ -140,11 +143,11 @@ class PembayaranController extends Controller
         }
 
         $pembayaran = pembayaran::all();
-        if ($pembayaran->contains('transaksi_id', $tid)) {
-            $duplicate = $pembayaran->where('transaksi_id', $tid);
-            $old = $duplicate->sortByDesc('created_at')->pop();
-            $old->delete();
-        }
+        // if ($pembayaran->contains('transaksi_id', $tid) && $pembayaran->request_user_id->isempty()) {
+        //     $duplicate = $pembayaran->where('transaksi_id', $tid);
+        //     $old = $duplicate->sortByDesc('created_at')->pop();
+        //     $old->delete();
+        // }
 
         // if ($request) {
         // }
@@ -183,8 +186,8 @@ class PembayaranController extends Controller
 
     public function detail_kredit(Transaksi $id)
     {
-        $tid = $id->id;
-        $requser = request_user::where('transaksi_id', $tid)->with('pembayaran')->first();
+        // return $id;
+        // $requser = request_user::where('transaksi_id', $tid)->with('pembayaran')->first();
         return view('Admin.transaction.detail_kredit', compact('requser'));
     }
 
