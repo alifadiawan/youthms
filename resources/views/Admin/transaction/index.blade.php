@@ -2,9 +2,9 @@
 @section('content')
 @section('judul', 'Transaction')
 <div class="card">
-    <div class="col-lg-12">
-        <div class="table-responsive">
+    <div class="card-body">
 
+        <div class="table-responsive">
             <table class="table table-striped mt-2">
                 <thead>
                     <tr style="background-color: #0EA1E2">
@@ -60,10 +60,13 @@
                         </tr>
                     @endforeach
                 </tbody>
-                {{ $trx->links() }}
+
             </table>
         </div>
 
+        {{ $trx->links() }}
+
     </div>
+
 </div>
 @endsection

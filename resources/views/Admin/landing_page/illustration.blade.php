@@ -10,14 +10,15 @@
             <h1 class="h3 font-weight-bold">Landing page Picture</h1>
             <div class="card mb-5">
                 <div class="card-body">
-                    @foreach($illustration as $i)
-                    <div class="row justify-content-center">
-                        <img id="illustration" src="{{ asset('./illustration/'.$i->illustration) }}">
-                    </div>
-                    <br>
-                    <div class="row">
-                        <a href="{{route('landing.illustration_edit', $i->id)}}" class="text-start btn btn-warning">Edit</a>
-                    </div>
+                    @foreach ($illustration as $i)
+                        <div class="row justify-content-center">
+                            <img id="illustration" src="{{ asset('./illustration/' . $i->illustration) }}">
+                        </div>
+                        <br>
+                        <div class="row">
+                            <a href="{{ route('landing.illustration_edit', $i->id) }}"
+                                class="text-start btn btn-warning">Edit</a>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -28,23 +29,27 @@
                     <div class="text-left">
                         <h1 class="h3 font-weight-bold">Testimonial</h1>
                     </div>
-                    <div class="text-right">
-                        <a href="{{route('landing.partner_create')}}" class="btn btn-md btn-success">Tambah</a>
-                    </div>
                 </div>
             </div>
             <div class="card">
                 <div class="card-body">
-                    @foreach($partner as $p)
-                    <div class="col">
-                        <img id="partner" src="{{ asset('./partner/'.$p->partner) }}">
-                        <a href="{{route('landing.partner_edit', $p->id)}}" class="text-start btn btn-warning">Edit</a>
-                        <a href="{{route('landing.partner_hapus', $p->id)}}" class="text-start btn btn-danger">Hapus</a>
-                    </div>
+                    @foreach ($partner as $p)
+                        <div class="col">
+                            <img id="partner" src="{{ asset('./partner/' . $p->partner) }}">
+                            
+                        </div>
+                        <div class="col mt-3">
+                            <a href="{{ route('landing.partner_create') }}" class="btn btn-md btn-success"><i
+                                class="fa-solid fa-plus"></i> Tambah</a>
+                        <a href="{{ route('landing.partner_edit', $p->id) }}" class="text-start btn btn-warning"><i
+                                class="fa-solid fa-pen-to-square"></i> Edit</a>
+                        <a href="{{ route('landing.partner_hapus', $p->id) }}" class="text-start btn btn-danger"><i
+                                class="fa-solid fa-trash"></i> Hapus</a>
+                        </div>
                     @endforeach
-                </div>
-                <div class="card-footer  d-flex justify-content-end">
-                    {{$partner->links()}}
+                    <div class="mt-3">
+                        {{ $partner->links() }}
+                    </div>
                 </div>
             </div>
 
@@ -53,10 +58,10 @@
 
     <style>
         /*#preview {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-        }*/
+                width: 100%;
+                height: 200px;
+                object-fit: contain;
+            }*/
 
         #illustration {
             width: 100%;
@@ -79,7 +84,6 @@
             margin-left: -7.5px;
             justify-content: space-between;
         }
-
     </style>
 
     <!-- <script>
