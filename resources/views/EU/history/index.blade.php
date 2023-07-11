@@ -7,25 +7,27 @@
         <div class="row gap-2 mb-3">
             <div class="col">
                 <h2 class="fw-bold text-dark" style="font-family: Poppins, sans-serif">History Transaksi (24)</h2>
+                <h2 class="fw-bold text-dark" style="font-family: Poppins, sans-serif">History Transaksi (24)</h2>
             </div>
         </div>
         <!-- content -->
         <div class="card text-left">
-            <img class="card-img-top" src="holder.js/100px180/" alt="">
+            {{-- <img class="card-img-top" src="holder.js/100px180/" alt=""> --}}
             <div class="card-body">
 
                 <div class="d-flex flex-row align-items-center justify-content-end gap-3">
                     <div class="form-group">
-                        <select name="" class="form-select" id="">
-                            <option value="">Sort by</option>
-                            <option value="">Kredit</option>
-                            <option value="">Lunas</option>
-                            <option value="">Checking</option>
-                            <option value="">Declined</option>
+                        <select name="sort_status" class="form-select" id="sort_status">
+                            <option value="all">Sort by</option>
+                            <option value="kredit">Kredit</option>
+                            <option value="lunas">Lunas</option>
+                            <option value="pending">Pending</option>
+                            <option value="checking">Checking</option>
+                            <option value="decined">Declined</option>
                         </select>
                     </div>
                 </div>
-                
+
                 <table class="table mt-3">
                     <thead style="background-color: rgb(231, 230, 230); ">
                         <tr>
@@ -36,7 +38,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="sort">
                         @foreach ($all as $a)
                             <tr>
                                 <td scope="row">{{ \Carbon\Carbon::parse($a->tanggal_transaksi)->format('d F Y') }}
@@ -77,7 +79,8 @@
                                 @endif
                                 <td>
                                     <form action="{{ route('transaksi.show', $a->id) }}">
-                                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i></button>
+                                        <button type="submit" class="btn btn-primary"><i
+                                                class="fa-solid fa-circle-info"></i></button>
                                     </form>
                                 </td>
                             </tr>
@@ -365,6 +368,7 @@
                 </div>
             </div>
         </div> --}}
+        </div> --}}
         {{-- <a href="" class="btn btn-sm btn-outline-primary active">Semua Transaksi</a>
                     <a href="" class="btn btn-sm btn-outline-secondary">Berhasil</a>
                     <a href="" class="btn btn-sm btn-outline-secondary">Sedang Berlangsung</a>
@@ -545,6 +549,102 @@
                 </div>
             </div> --}}
     </div>
-    </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        const sortBySelect = $('#sort_status');
+        const tablebody = $('#sort');
+
+        sortBySelect.on('change', function() {
+            const selectedVal = sortBySelect.val();
+
+            $.ajax({
+                url: '/history-transaksi/status',
+                method: 'GET',
+                success: function(response) {
+                    let filteredData = [];
+                    console.log(response.data.kredit);
+
+                    if (selectedVal === 'kredit') {
+                        filteredData = response.data.kredit;
+                    }
+                    //  else if (selectedVal === 'lunas') {
+                    //     filteredData = response.data.lunas;
+                    // } else if (selectedVal === 'pending') {
+                    //     filteredData = response.data.pending;
+                    // } else if (selectedVal === 'checking') {
+                    //     filteredData = response.data.checking;
+                    // } else if (selectedVal === 'declined') {
+                    //     filteredData = response.data.declined;
+                    // } else {
+                    //     filteredData = response.data.all;
+                    // }
+
+                    updateTable(filteredData);
+                },
+                error: function(error) {
+                    console.log('Error: ', error);
+                }
+
+            });
+        });
+
+        function updateTable(data) {
+            // tablebody.empty();
+            $('#sort').empty();
+
+            $.each(data, function(index, item) {
+                var row = $('<tr></tr>');
+
+                var dateCell = $('<td></td>').text(item.tanggal_transaksi);
+                row.append(dateCell);
+
+                var totalCell = $('<td></td>').text(item.total);
+                row.append(totalCell);
+
+                var totalBayarCell = $('<td></td>').text(item.total_bayar);
+                row.append(totalBayarCell);
+
+                var statusCell = $('<td></td>').text(item.status);
+                row.append(statusCell);
+
+                var buttonCell = $('<td></td>');
+                var button = $('<button></button>').text('Detail');
+                button.on('click', function() {
+                    // Logika saat tombol Detail diklik
+                });
+                buttonCell.append(button);
+                row.append(buttonCell);
+
+                // tablebody.append(row);
+            });
+
+            $('#sort').show();
+        }
+
+        // try 1
+        // $(document).ready(function() {
+        //     $('$sort_status').on(change, function() {
+        //         var selected = $(this).val();
+        //         $('#sort').attrr('id', selected);
+        //     });
+        // });
+
+        // try 2
+        // document.addEventListener('DOMContentLoad', function() {
+        //     var sort = document.getElementById('sort_status');
+        //     var body = document.body;
+
+        //     sort.addEventListener('change', function() {
+        //         var selected = sort.value;
+        //         body.setAttribute('data-sort', selected);
+        //     });
+        // })
+
+
+
+        // Lakukan pengolahan sesuai dengan nilai-nilai yang dipilih
+    </script>
 @endsection
