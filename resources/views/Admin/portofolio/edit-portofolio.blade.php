@@ -12,7 +12,7 @@
             <div class="content">
                 
                 <div class="row mb-4">
-                    <div class="col-4">
+                    <div class="col-lg-4 col-4">
                         <p>Project</p>
                         <input type="text" class="form-control" name="project" id="project" value="{{$porto->project}}">
                         <p>Deskripsi</p>
@@ -24,8 +24,6 @@
                             <option value="{{$s->id}}" @if($s->id == $porto->services_id) selected @endif>{{$s->judul}}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="col">
                     </div>
                 </div>
 

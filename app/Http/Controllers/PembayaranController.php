@@ -220,7 +220,7 @@ class PembayaranController extends Controller
         $total_bayar = $request->total_bayar;
         $total_lunas = $transaksi->total;
         if ($total_bayar) {
-            $transaksi->update(['total_bayar' => $total_bayar]);
+            $transaksi->update(['total_bayar' => $transaksi->total_bayar + $total_bayar]);
         } else {
             $transaksi->update(['total_bayar' => $total_lunas]);
         }
