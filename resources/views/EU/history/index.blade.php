@@ -6,11 +6,87 @@
         <!-- tombol -->
         <div class="row gap-2 mb-3">
             <div class="col">
-                <h2 class="fw-bold text-dark" style="font-family: Poppins, sans-serif">History Transaksi</h2>
+                <h2 class="fw-bold text-dark" style="font-family: Poppins, sans-serif">History Transaksi (24)</h2>
             </div>
         </div>
         <!-- content -->
-        <div class="konten">
+        <div class="card text-left">
+            <img class="card-img-top" src="holder.js/100px180/" alt="">
+            <div class="card-body">
+
+                <div class="d-flex flex-row align-items-center justify-content-end gap-3">
+                    <div class="form-group">
+                        <select name="" class="form-select" id="">
+                            <option value="">Sort by</option>
+                            <option value="">Kredit</option>
+                            <option value="">Lunas</option>
+                            <option value="">Checking</option>
+                            <option value="">Declined</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <table class="table mt-3">
+                    <thead style="background-color: rgb(231, 230, 230); ">
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Total</th>
+                            <th>Total Bayar</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($all as $a)
+                            <tr>
+                                <td scope="row">{{ \Carbon\Carbon::parse($a->tanggal_transaksi)->format('d F Y') }}
+
+                                </td>
+                                <td>Rp. {{ number_format($a->total, 0, ',', '.') }}</td>
+                                <td>Rp. {{ number_format($a->total_bayar, 0, ',', '.') }}</td>
+                                @if (in_array($a->id, $uu))
+                                    <td>
+                                        <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
+                                            class="badge text-dark">Belum Bayar</span>
+                                    </td>
+                                @elseif(in_array($a->id, $uk))
+                                    <td>
+                                        <button disabled="disabled" class="btn btn-sm btn-warning"></button><span
+                                            class="badge text-dark">Kredit</span>
+                                    </td>
+                                @elseif(in_array($a->id, $up))
+                                    <td>
+                                        <button disabled="disabled" class="btn btn-sm btn-info"></button><span
+                                            class="badge text-dark">Pending</span>
+                                    </td>
+                                @elseif(in_array($a->id, $ud))
+                                    <td>
+                                        <button disabled="disabled" class="btn btn-sm btn-dark"></button><span
+                                            class="badge text-dark">Declined</span>
+                                    </td>
+                                @elseif(in_array($a->id, $ul))
+                                    <td>
+                                        <button disabled="disabled" class="btn btn-sm btn-success"></button><span
+                                            class="badge text-dark">Lunas</span>
+                                    </td>
+                                @elseif(in_array($a->id, $uc))
+                                    <td>
+                                        <button disabled="disabled" class="btn btn-sm btn-primary"></button><span
+                                            class="badge text-dark">Checking</span>
+                                    </td>
+                                @endif
+                                <td>
+                                    <form action="{{ route('transaksi.show', $a->id) }}">
+                                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {{-- <div class="konten">
             <!-- filter -->
             <div class="row my-3">
                 <div class="col">
@@ -288,7 +364,7 @@
                     <!-- transaksi success -->
                 </div>
             </div>
-        </div>
+        </div> --}}
         {{-- <a href="" class="btn btn-sm btn-outline-primary active">Semua Transaksi</a>
                     <a href="" class="btn btn-sm btn-outline-secondary">Berhasil</a>
                     <a href="" class="btn btn-sm btn-outline-secondary">Sedang Berlangsung</a>
