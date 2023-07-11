@@ -213,14 +213,16 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
-        
+
 
         $request_user = request_user::where('transaksi_id', $pembayaran->transaksi_id)->first();
         $transaksi = Transaksi::find($pembayaran->transaksi_id);
         $total_bayar = $request->total_bayar;
         $total_lunas = $transaksi->total;
         if ($total_bayar) {
-            $transaksi->update(['total_bayar' => $total_bayar]);
+            $transaksi->update([
+                'total_bayar' => $transaksi->total_bayar + $total_bayar
+            ]);
         } else {
             $transaksi->update(['total_bayar' => $total_lunas]);
         }

@@ -364,7 +364,7 @@ class TransaksiController extends Controller
                 } elseif ($t->total_bayar >= $t->total && !$req) {
                     $lunas[] = $t;
                 } elseif ($t->total_bayar >= $t->total && $req && $req->status == "accept") {
-                    $lunas[] = $t;
+                    $lunas[] = $t;  
                 }
                 $adm_lunas = collect($lunas)->pluck('id')->toArray();
             }
