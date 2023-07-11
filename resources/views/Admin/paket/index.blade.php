@@ -19,20 +19,20 @@
                 </thead>
                 <tbody>
                     @foreach ($paket as $p)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $p->nama_paket }}</td>
-                            <td>
-                                <ul>
-                                    @foreach ($p->produk as $pp)
-                                        <li>{{ $pp->nama_produk }}</li>
-                                    @endforeach
-                                </ul>
-                            </td>
-                            <td>
-                                <a href="{{ route('paket.hapus', $p->id) }}" class="btn btn-danger">Hapus</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $p->nama_paket }}</td>
+                                <td>
+                                    <ul>
+                                        @foreach ($p->paket_produk as $pp)
+                                            <li>{{ $pp->produk->nama_produk }}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td>
+                                    <a href="{{ route('paket.hapus', $p->id) }}" class="btn btn-danger">Hapus</a>
+                                </td>
+                            </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -84,7 +84,7 @@
 
 <style>
     /* ordered list */
-    ul li{
+    ul li {
         list-style-type: disc;
     }
 </style>
