@@ -92,41 +92,6 @@
                                         </div>
                                     </div>
 
-                                    <hr class="my-3">
-                                    <div class="row">
-                                        @foreach ($pembayaran as $p)
-                                            <div class="col">
-                                                metode pembayaran
-                                            </div>
-                                            <div class="col text-right">
-                                                @if ($p->bank_id == !null)
-                                                    <img class="img-thumbnail border-0"
-                                                        src="{{ asset('illustration/' . $p->bank->image) }}"
-                                                        style="width: 80px" alt="">
-                                                @elseif ($p->ewallet_id == !null)
-                                                    <img class="img-thumbnail border-0"
-                                                        src="{{ asset('illustration/' . $p->ewallet->image) }}"
-                                                        style="width: 80px" alt="">
-                                                @endif
-
-                                            </div>
-                                        @endforeach
-                                    </div>
-
-                                    <div class="row justify-content-center">
-                                        @foreach ($pembayaran as $p)
-                                            <div
-                                                class="col-lg col-12 text-center text-lg-left mt-lg-0 mt-4g font-weight-bold">
-                                                Bukti transfer
-                                            </div>
-                                            <div class="col text-right">
-                                                <img src="{{ asset('./bukti_transfer/' . $p->bukti_tf) }}"
-                                                    class="card-img-top " alt="..."
-                                                    style="max-width: 15.3rem; height: 15.3rem; object-fit:cover;">
-
-                                            </div>
-                                        @endforeach
-                                    </div>
 
                                     <div class="footer mt-3">
                                         <div class="row">

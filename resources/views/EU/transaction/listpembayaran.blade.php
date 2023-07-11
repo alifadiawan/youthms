@@ -45,9 +45,9 @@
                                     <td>
                                         <a href="{{ route('pembayaran.show', $p->id) }}"
                                             class="btn-sm btn-success">Detail</a>
-
                                     </td>
-                                </tr>
+                                </tr> 
+                                
                             @endforeach
                         @endforeach
 
