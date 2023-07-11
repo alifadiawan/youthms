@@ -127,14 +127,21 @@ class PembayaranController extends Controller
         $bank = bank::where('nama', $request->bank)->first();
         $wallet = ewallet::where('nama', $request->wallet)->first();
 
-        // return $transaksi;
+        $request_user = request_user::where('transaksi_id', $tid)->first();
+
         $pembayaran_data = [
             'transaksi_id' => $tid,
             'status' => "checking",
             'bukti_tf' => $nama_file,
             'total_bayar' => 0,
-            'unique_code' => $transaksi->unique_code,
+
         ];
+        if ($request_user) {
+            $pembayaran_data['unique_code'] = $transaksi->unique_code;
+            $pembayaran_data['request_user_id'] = $request_user->id;
+        } else {
+            $pembayaran_data['unique_code'] = $transaksi->unique_code . 'L';
+        }
 
         if ($bank) {
             $pembayaran_data['bank_id'] = $bank->id;
@@ -175,12 +182,14 @@ class PembayaranController extends Controller
 
     public function show(Pembayaran $pembayaran, Request $Request)
     {
+        $cek_kredit = $pembayaran->with('request_user')->get();
+        // $cek_kredit = $pembayaran;
+        // return $cek_kredit;
         $auth = auth()->user();
         $cek_user = $auth->role->role;
-
         $tid = $pembayaran->transaksi_id;
 
-        $compact = ['pembayaran'];
+        $compact = ['pembayaran', 'cek_kredit'];
         return view('Admin.transaction.detailbukti', compact($compact));
     }
 
@@ -204,26 +213,31 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
-        $status = $request->status;
+        
 
+        $request_user = request_user::where('transaksi_id', $pembayaran->transaksi_id)->first();
+        $transaksi = Transaksi::find($pembayaran->transaksi_id);
+        $total_bayar = $request->total_bayar;
+        $total_lunas = $transaksi->total;
+        if ($total_bayar) {
+            $transaksi->update(['total_bayar' => $total_bayar]);
+        } else {
+            $transaksi->update(['total_bayar' => $total_lunas]);
+        }
+        $status = $request->status;
 
         $p = $pembayaran->update([
             'status' => $status,
-            'note_admin' => $request->note
+            'note_admin' => $request->note,
+            'request_user_id' => $request_user->id,
+            'total_bayar' => $request->total_bayar
         ]);
 
         $tid = $pembayaran->transaksi_id;
         $transaksi = transaksi::where('id', $tid)->first();
-        $total = $transaksi->total;
-        if ($status == 'checked') {
-            $transaksi->update([
-                'total_bayar' => $total
-            ]);
-        }
 
         // mengirim notifikasi
-        $uid = $request->user_id;
-        $user = user::find($uid);
+        $user = $pembayaran->transaksi->member->user;
         if ($pembayaran->status == 'checked') {
             $message = "Pembayaranmu Telah Masuk\nSilahkan Hubungi Admin\nUntuk Info Lebih Lanjut";
         } else {
