@@ -822,6 +822,7 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Tanggal</th>
+                                <th>Metode</th>
                                 <th>Bukti</th>
                                 <th>Total</th>
                             </tr>
@@ -835,8 +836,24 @@
                                 @else
                                     @foreach ($r->pembayaran as $p)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $p }}</td>
+                                            @if ($p->total_bayar == 0)
+                                                <td colspan="4" class="text-center">belum ada pembayaran</td>
+                                            @else
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ date('d F Y', strtotime($p->created_at)) }}</td>
+                                                @if ($p->bank)
+                                                    <td><img src="{{ asset('illustration/' . $p->bank->image) }}"
+                                                            alt="" style="width: 50px">
+                                                    </td>
+                                                @else
+                                                    <td><img src="{{ asset('illustration/' . $p->ewallet->image) }}"
+                                                            alt="" style="width: 50px">
+                                                    </td>
+                                                @endif
+                                                <td><img src="{{ asset('bukti_transfer/' . $p->bukti_tf) }}"
+                                                        style="width: 50px" alt=""> </td>
+                                                <td>Rp. {{ number_format($p->total_bayar, 0, ',', '.') }}</td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 @endif
@@ -844,26 +861,46 @@
                         </tbody>
 
                         <tbody>
-                            <tr>
-                                <td colspan="3" class="text-end">Total</td>
-                                <td colspan="1" class="">Rp
-                                    {{ number_format($total, 0, ',', '.') }}</td>
-                            </tr>
+                            @foreach ($requser as $r)
+                                @foreach ($r->pembayaran as $p)
+                                    <tr>
+                                        <td colspan="4" class="text-end">Total</td>
+                                        <td colspan="1" class="">Rp
+                                            {{-- {{ $p }} --}}
+                                            jumlah yang telah dibayar
+                                            {{-- {{ number_format($p, 0, ',', '.') }}</td> --}}
+                                    </tr>
+                                @endforeach
+                            @endforeach
                         </tbody>
                         <tbody>
-                            <tr class="h5">
-                                <td class="text-end fw-bold" colspan="3">Grand Total</td>
-                                <td class="fw-bold"><span id="total-transaksi-b">Rp
-                                        {{ number_format($t->total, 0, ',', '.') }}</span></td>
-                            </tr>
+
+                            @foreach ($requser as $r)
+                                @foreach ($r->pembayaran as $p)
+                                    <tr class="h5">
+                                        <td class="text-end fw-bold" colspan="4"></td>
+                                        <td class="fw-bold"><span id="total-transaksi-b">Rp
+                                                {{-- {{ number_format($t->total, 0, ',', '.') }}</span> --}}
+                                                grand total = total bayar - total harga
+                                            </td>
+                                    </tr>
+                                @endforeach
+                            @endforeach
                         </tbody>
-                        <tbody>
-                            <tr>
-                                <td colspan="3" class="text-end">Total Kekurangan</td>
-                                <td colspan="1" class="">Rp
-                                    {{ number_format($admin, 0, ',', '.') }}</td>
-                            </tr>
-                        </tbody>
+                        {{-- <tbody>
+
+                            @foreach ($requser as $r)
+                                @foreach ($r->pembayaran as $p)
+                                    <tr>
+                                        <td colspan="4" class="text-end">Total Kekurangan</td>
+                                        <td colspan="1" class="">Rp
+                                            {{ number_format($admin, 0, ',', '.') }}
+                                            total Kekurangan = total 
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endforeach
+                        </tbody> --}}
                     </table>
                 </div>
                 {{-- </div> --}}

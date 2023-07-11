@@ -3,7 +3,7 @@
 @section('judul', 'Show Pembayaran')
 
 <div class="container" style="max-width: 50rem">
-    <a href="btn" class="pl-0 pb-3">
+    <a href="{{ url()->previous() }}" class="pl-0 pb-3">
         <i class="fas fa-arrow-left"></i>
     </a>
     <div class="row">
@@ -29,26 +29,22 @@
                     <div class="konten">
                         <div class="row">
                             <div class="col text-center">
+                                @if ($pembayaran->request_user_id != null)
+                                    <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">kredit
+                                    </h5>
+                                @endif
                                 <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">{{ $pembayaran->status }}</h5>
-                                {{-- @if (in_array($detail[0]->transaksi_id, $adm_utang))
-                                <h5 class="h3 mb-0 me-auto text-danger font-weight-bold">belum bayar</h5>
-                            @elseif(in_array($detail[0]->transaksi_id, $adm_kredit))
-                                <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">KREDIT</h5>
-                            @elseif(in_array($detail[0]->transaksi_id, $adm_pending))
-                                <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">PENDING</h5>
-                            @elseif(in_array($detail[0]->transaksi_id, $adm_declined))
-                                <h5 class="h3 mb-0 me-auto text-dark font-weight-bold">DECLINED</h5>
-                            @else
-                                <h5 class="mb-0 me-auto text-success font-weight-bold">LUNAS</h5>
-                            @endif --}}
                                 <p class="text-muted">Total</p>
                             </div>
                         </div>
 
                         <div class="row my-2">
-                            <div class="col text-center">
-                                <p class="h3">Rp.{{ number_format($pembayaran->total_bayar, '0', ',', '.') }}</p>
-                            </div>
+                            @if ($pembayaran->request_user_id == null)
+                                <div class="col text-center">
+                                    <p class="h3">Rp.{{ number_format($pembayaran->total_bayar, '0', ',', '.') }}
+                                    </p>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="penerima">
@@ -62,25 +58,69 @@
                             </div>
                         </div>
 
+
+
                         <div class="footer mt-3">
-                            <div class="row">
-                                <div class="col">
-                                    <a href="" class="btn btn-success w-100 yms-outline-blue rounded-pill">
-                                        Accept
-                                    </a>
+                            @if ($pembayaran->status == 'checked')
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="btn btn-success w-100 yms-outline-blue rounded-pill">
+                                            download
+                                        </button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-success w-100 yms-outline-blue rounded-pill">
+                                            share
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <a href="" class="btn btn-outline-danger w-100 yms-outline-blue rounded-pill">
-                                        Decline
-                                    </a>
-                                </div>
-                            </div>
+                            @else
+                                <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
+                                    @csrf
+                                    @method('put')
+
+                                    @if ($pembayaran->request_user_id != null)
+                                        <div class="total bayar">
+                                            <div class="row">
+                                                <div class="col">
+                                                    Total Bayar
+                                                </div>
+                                                <div class="col text-right">
+                                                    Rp. <input type="number" placeholder="total bayar"
+                                                        name="total_bayar" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="hidden" value="checked" name="status">
+                                            <button type="submit"
+                                                class="btn btn-success w-100 yms-outline-blue rounded-pill">
+                                                Accept
+                                            </button>
+                                        </div>
+                                </form>
+                                <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
+                                    @csrf
+                                    @method('put')
+                                    <div class="col">
+                                        <input type="hidden" value="decline" name="status">
+                                        <button type="submit"
+                                            class="btn btn-outline-danger w-100 yms-outline-blue rounded-pill">
+                                            Decline
+                                        </button>
+                                </form>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 {{-- <div class="container">

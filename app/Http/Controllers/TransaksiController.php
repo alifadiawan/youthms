@@ -58,7 +58,7 @@ class TransaksiController extends Controller
         $pembayaran = pembayaran::all();
 
         if ($user_role == 'client') {
-            $all = transaksi::where('member_id', $member)->get();
+            $all = Transaksi::where('member_id', $member)->latest()->get();
 
             foreach ($all as $t) {
                 $req = $requestUser->where('transaksi_id', $t->id)->first();
@@ -397,8 +397,9 @@ class TransaksiController extends Controller
         }
         // tambahen alert / notif agar semua kolom harus diisi  
 
-        $trxid = $r->transaksi_id;
-        $req_user = request_user::create([
+        // return $r;
+        $transaksi = Transaksi::find($r->transaksi_id);
+        $request_user = request_user::create([
             'nama_pemesan' => $r->nama_pemesan,
             'tanggal_mulai' => $r->tanggal_mulai,
             'jatuh_tempo' => $r->jatuh_tempo,
@@ -406,6 +407,7 @@ class TransaksiController extends Controller
             'status' => $r->status,
             'transaksi_id' => $r->transaksi_id
         ]);
+
 
         // mengirim notifikasi
         $user = User::whereHas('role', function ($query) {
@@ -416,7 +418,7 @@ class TransaksiController extends Controller
         $notification->setUrl(route('requestuser.index')); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
 
-        return redirect()->route('requestuser.index', ['trxid' => $trxid]);
+        return redirect()->route('requestuser.index', ['trxid' => $r->transaksi_id]);
     }
 
     // public function pending()
