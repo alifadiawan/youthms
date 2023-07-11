@@ -3,6 +3,8 @@
 @section('judul', 'List Pembayaran ')
 <div class="card">
     <div class="col-lg-12">
+        <div class="table-responsive">
+
         <table class="table table-striped mt-2">
             <thead>
                 <tr style="background-color: #0EA1E2">
@@ -52,6 +54,8 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+
     </div>
 </div>
 @endsection

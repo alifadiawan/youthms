@@ -7,6 +7,7 @@
         <div class="row gap-2 mb-3">
             <div class="col">
                 <h2 class="fw-bold text-dark" style="font-family: Poppins, sans-serif">History Transaksi (24)</h2>
+                <h2 class="fw-bold text-dark" style="font-family: Poppins, sans-serif">History Transaksi (24)</h2>
             </div>
         </div>
         <!-- content -->
@@ -366,6 +367,7 @@
                     <!-- transaksi success -->
                 </div>
             </div>
+        </div> --}}
         </div> --}}
         {{-- <a href="" class="btn btn-sm btn-outline-primary active">Semua Transaksi</a>
                     <a href="" class="btn btn-sm btn-outline-secondary">Berhasil</a>
