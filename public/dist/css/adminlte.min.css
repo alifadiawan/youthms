@@ -458,6 +458,12 @@ hr {
     border-top: 1px solid rgba(0, 0, 0, .1)
 }
 
+@media only screen and (max-width: 600px) {
+    #gambar-porto{
+        max-width: 100%;
+    }
+}
+
 .small,
 small {
     font-size: 80%;
@@ -55827,5 +55833,6 @@ a.text-muted:hover {
 .dark-mode .border-dark {
     border-color: #4b545c !important
 }
+
 
 /*# sourceMappingURL=adminlte.min.css.map */

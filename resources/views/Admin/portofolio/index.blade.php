@@ -5,21 +5,25 @@
 
 
 <div class="container">
+    {{-- <div class="d-flex flex-row">
+        <h4 class="mb-3" style="font-weight: bold">Portfolio</h4>
+    </div> --}}
 
     <!-- portofolio -->
     <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex flex-row text-center">
-                            <a href="{{ route('portfolio.index') }}" class="text-capitalize my-3 active btn yms-blue w-20 rounded-5" style="margin-right: 6px;">All</a>
+                    <div class="d-flex flex-row justify-content-start" style="overflow-y:auto;">
+                        <div class="d-flex flex-row">
+                            <a href="{{ route('portfolio.index') }}" class="text-capitalize my-3 active btn yms-blue rounded-5" style="margin-right: 6px;">All</a>
                             @foreach ($layanan as $l)
                                 <a href="{{ route('portfolio.showtype', $l->layanan) }}"
                                     class=" my-3 text-capitalize active btn yms-blue w-20 rounded-5" style="margin-right: 6px;">{{ $l->layanan }}</a>
                             @endforeach
                         </div>
                     </div>
-                    <a href="{{ route('portfolio.create') }}" class="btn btn-success mb-2">Tambah</a>
+                    <a href="{{ route('portfolio.create') }}" class="btn btn-success mb-2" style="width: 100%">Tambah</a>
                     <div class="row justify-content-start">
                         @if ($porto->isEmpty())
                             <div class="col-lg-12">
@@ -28,7 +32,7 @@
                         @else
                             @foreach ($porto as $p)
                                 <div class="col">
-                                    <div class="card" style="width: 20rem;">
+                                    <div class="card" id="gambar-porto" style="width: 25rem;">
                                         <img src="{{ asset('./portofolio/' . $p->cover) }}" class="card-img-top"
                                             alt="...">
                                         <div class="card-body text-center">
