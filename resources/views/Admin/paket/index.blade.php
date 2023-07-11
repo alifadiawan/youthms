@@ -8,17 +8,18 @@
     <a href="#" class="btn yms-blue my-3" data-toggle="modal" data-target="#tambah-paket">Tambah Paket</a>
     <div class="card shadow">
         <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Paket</th>
-                        <th>Isi Paket</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($paket as $p)
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Paket</th>
+                            <th>Isi Paket</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($paket as $p)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $p->nama_paket }}</td>
@@ -33,9 +34,11 @@
                                     <a href="{{ route('paket.hapus', $p->id) }}" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 </div>
