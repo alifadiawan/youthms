@@ -42,7 +42,7 @@
                             @endif
                         @endforeach
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications p-3">
                         <li class="dropdown-header" id="notificationCount">
                             You have {{count($notifications)}} new notifications
                         </li>
