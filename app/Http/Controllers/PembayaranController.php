@@ -20,9 +20,28 @@ use DateInterval;
 use DateTime;
 use DateTimeZone;
 use Illuminate\Support\Facades\Notification;
+use Dompdf\Dompdf;
 
 class PembayaranController extends Controller
 {
+    public function PDF(Request $Request)
+    {
+        // return $Request;
+        $pembayaran = Pembayaran::find($Request->id);
+        $auth = auth()->user();
+        $cek_user = $auth->role->role;
+     
+        $data = [
+            'pembayaran' => $pembayaran,
+            'title' => 'print pdf',
+        ];
+
+        $pdf = new Dompdf();
+        $pdf->loadHTML(view('EU.transaction.detaildownload', ['pembayaran' => $pembayaran]));
+        $pdf->setPaper('A4', 'potrait');
+        $pdf->render();
+        $pdf->stream();
+    }
     /**
      * Display a listing of the resource.
      */
@@ -200,8 +219,7 @@ class PembayaranController extends Controller
         $cek_kredit = $pembayaran->with('request_user')->get();
         $compact = ['pembayaran', 'cek_kredit'];
         if ($cek_user == 'client') {
-
-
+            // return view('EU.transaction.detaildownload', compact($compact));
             return view('EU.transaction.detailpembayaran', compact($compact));
         } elseif ($cek_user == 'admin') {
 
