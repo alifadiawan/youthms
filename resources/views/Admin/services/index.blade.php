@@ -126,10 +126,18 @@
             <div class="modal-body">
                 <form action="{{ route('jenislayanan.store') }}" method="post">
                     @csrf
-                    <div>
+                    <div class="form-group">
                         <label for="">Nama Layanan</label>
                         <input type="text" class="form-control" placeholder="jasa editing" name="layanan"
                             id="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Deskripsi</label>
+                        <textarea name="deskripsi" id="deskripsi" class="form-control" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Link ilustrasi</label>
+                        <input type="text" class="form-control" name="link_illus" id="link_illus">
                     </div>
             </div>
             <div class="row text-center p-3">
