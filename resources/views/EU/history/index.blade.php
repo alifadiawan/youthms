@@ -161,7 +161,6 @@
             var tanggalFilter = $('#sort_tanggal').val().toLowerCase();
 
             $('.main-row').hide();
-<<<<<<< HEAD
             if (statusFilter === 'all') {
                 $('.main-row').show();
             }
@@ -176,19 +175,6 @@
                     matchesTanggalFilter = tanggal.includes(tanggalFilter);
                 }
 
-=======
-            $('.main-row').filter(function() {
-                var status = $(this).find('td:eq(4) span.badge').text().toLowerCase();
-                var tanggal = $(this).find('td:eq(1)').text().toLowerCase();
-
-                var matchesStatusFilter = status.includes(statusFilter);
-                var matchesTanggalFilter = true; // Default true jika filter tanggal kosong
-
-                if (tanggalFilter !== "Tanggal") {
-                    matchesTanggalFilter = tanggal.includes(tanggalFilter);
-                }
-
->>>>>>> 7637770fc1904f7a8b81bfae4b226c75c2d0f9a9
                 return matchesStatusFilter && matchesTanggalFilter;
             }).show();
         }
