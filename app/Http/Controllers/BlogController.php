@@ -56,15 +56,15 @@ class BlogController extends Controller
             $admin = ['admin', 'owner'];
             if (in_array($u, $admin)) {
                 if ($request->ajax()) {
-                    return view('Admin.blog.blog-pagination', compact('data', 'segmen'));
+                    return view('Admin.Blog.blog-pagination', compact('data', 'segmen'));
                 }
-                return view('Admin.blog.index', compact('segmen', 'data'));
+                return view('Admin.Blog.index', compact('segmen', 'data'));
             }else{
-                return view('EU.blog.index', compact($compact));
+                return view('EU.Blog.index', compact($compact));
             }
         } else {
             // return redirect()->route('blogs.type');
-            return view('EU.blog.index', compact($compact));
+            return view('EU.Blog.index', compact($compact));
         }
     }
 
@@ -110,7 +110,7 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         // return $blog;
-        return view('Admin.blog.detail', compact('blog'));
+        return view('Admin.Blog.detail', compact('blog'));
     }
 
     public function showtype($type)
@@ -121,7 +121,7 @@ class BlogController extends Controller
             $query->where('segmen', $type);
         })->get();
         // return $blog;
-        return view('EU.blog.segmen', compact('blog', 'type'));
+        return view('EU.Blog.segmen', compact('blog', 'type'));
     }
 
     public function detail(Request $request, Blog $blog)
@@ -131,7 +131,7 @@ class BlogController extends Controller
         $visitor->increment('visitor');
         $visitor->save();
         $rekom = Blog::where('segmen_id' , $blog->segmen_id)->take(4)->get();
-        return view('EU.blog.show', compact('blog', 'visitor', 'rekom'));
+        return view('EU.Blog.show', compact('blog', 'visitor', 'rekom'));
     }
 
     /**
@@ -140,7 +140,7 @@ class BlogController extends Controller
     public function create()
     {
         $segmen = Segmen::all();
-        return view('Admin.blog.add', compact('segmen'));
+        return view('Admin.Blog.add', compact('segmen'));
     }
 
     /**
@@ -218,7 +218,7 @@ class BlogController extends Controller
     {
         $segmen = Segmen::all();
         $data = Blog::find($blog->id);
-        return view('Admin.blog.edit', compact('data', 'segmen'));
+        return view('Admin.Blog.edit', compact('data', 'segmen'));
     }
 
     /**
