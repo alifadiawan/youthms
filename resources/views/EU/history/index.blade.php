@@ -16,8 +16,9 @@
             <div class="card-body">
 
                 <div class="d-flex flex-row align-items-center justify-content-end gap-3">
-                    <label>Sort By (Tanggal) (Status) :</label>
+                    <label>Sort By :</label>
                     <div class="form-group">
+<<<<<<< HEAD
                         <input type="text" value="" placeholder="Tanggal" readonly class="form-control"
                             pattern="\d{4}-\d{2}-\d{2}" name="sort_tanggal" id="sort_tanggal">
                     </div>
@@ -41,6 +42,30 @@
                         <button onClick="window.location.reload();" class="btn btn-outline-secondary"><i
                                 class="fa-solid fa-rotate fa-lg"></i></button>
                     </div>
+=======
+                        <div class="input-group">
+                            <input type="text" value="" placeholder="Tanggal" readonly class="form-control"
+                                pattern="\d{4}-\d{2}-\d{2}" name="sort_tanggal" id="sort_tanggal">
+                            <button class="btn btn-outline-secondary" id="clear_button"><i
+                                    class="fa-solid fa-rotate fa-lg"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select name="sort_status" class="form-select" id="sort_status">
+                                <option value="">Semua</option>
+                                <option value="belum bayar">Belum Bayar</option>
+                                <option value="kredit">Kredit</option>
+                                <option value="lunas">Lunas</option>
+                                <option value="pending">Pending</option>
+                                <option value="checking">Checking</option>
+                                <option value="declined">Declined</option>
+                            </select>
+                            <button onClick="window.location.reload();" class="btn btn-outline-secondary"><i
+                                    class="fa-solid fa-rotate fa-lg"></i></button>
+                        </div>
+                    </div>  
+>>>>>>> 7637770fc1904f7a8b81bfae4b226c75c2d0f9a9
                 </div>
 
                 <table class="table mt-3">
@@ -96,8 +121,7 @@
                                 @endif
                                 <td>
                                     <form action="{{ route('transaksi.show', $a->id) }}">
-                                        <button type="submit" class="btn btn-primary"><i
-                                                class="fa-solid fa-circle-info"></i></button>
+                                        <button type="submit" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i> Detail</button>
                                     </form>
                                 </td>
                             </tr>
@@ -137,6 +161,7 @@
             var tanggalFilter = $('#sort_tanggal').val().toLowerCase();
 
             $('.main-row').hide();
+<<<<<<< HEAD
             if (statusFilter === 'all') {
                 $('.main-row').show();
             }
@@ -151,6 +176,19 @@
                     matchesTanggalFilter = tanggal.includes(tanggalFilter);
                 }
 
+=======
+            $('.main-row').filter(function() {
+                var status = $(this).find('td:eq(4) span.badge').text().toLowerCase();
+                var tanggal = $(this).find('td:eq(1)').text().toLowerCase();
+
+                var matchesStatusFilter = status.includes(statusFilter);
+                var matchesTanggalFilter = true; // Default true jika filter tanggal kosong
+
+                if (tanggalFilter !== "Tanggal") {
+                    matchesTanggalFilter = tanggal.includes(tanggalFilter);
+                }
+
+>>>>>>> 7637770fc1904f7a8b81bfae4b226c75c2d0f9a9
                 return matchesStatusFilter && matchesTanggalFilter;
             }).show();
         }
