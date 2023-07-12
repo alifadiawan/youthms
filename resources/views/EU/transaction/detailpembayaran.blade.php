@@ -1,4 +1,4 @@
-@extends('layout-landing2.body')
+    @extends('layout-landing2.body')
 @section('content')
 
     <div class="container" style="max-width: 50rem">
