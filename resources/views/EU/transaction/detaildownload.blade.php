@@ -31,17 +31,17 @@
                 <div class="card shadow">
                     <div class="card-header yms-blue">
                         <div class="row align-items-center">
-                            <div class="col">
+                            {{-- <div class="col">
                                 @if ($pembayaran->ewallet)
                                     <img src="{{ public_path('illustration/' . $pembayaran->ewallet->image) }}" alt=""
-                                    {{-- <img src="{{ asset('illustration/' . $pembayaran->ewallet->image) }}" alt="" --}}
+                                    
                                         style="max-width: 110px">
                                 @else
-                                    {{-- <img src="{{ asset('illustration/' . $pembayaran->bank->image) }}" alt="" --}}
+                                   
                                     <img src="{{ public_path('illustration/' . $pembayaran->bank->image) }}" alt=""
                                         style="max-width: 110px">
                                 @endif
-                            </div>
+                            </div> --}}
                             <div class="col text-right">
                                 {{ $pembayaran->unique_code }}
                             </div>
@@ -83,14 +83,14 @@
 
                             <div class="penerima">
                                 <div class="row">
-                                    <div class="col">
+                                    {{-- <div class="col">
                                         Bukti Pembayaran
-                                    </div>
-                                    <div class="col text-right">
-                                        {{-- <img src="{{ asset('bukti_transfer/' . $pembayaran->bukti_tf) }}" --}}
+                                    </div> --}}
+                                    {{-- <div class="col text-right">
+                                        
                                         <img src="{{ public_path('bukti_transfer/' . $pembayaran->bukti_tf) }}"
                                             alt="">
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 
@@ -98,19 +98,7 @@
 
                             <div class="footer mt-3">
                                 @if ($pembayaran->status == 'checked')
-                                    <div class="row">
-                                        <div class="col">
-                                            <form action="{{ route('pembayaran.pdf') }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="id" value="{{ $pembayaran->id }}">
-                                                <button type="submit" name="pdf" value="download_EU"
-                                                    class="btn btn-success w-100 yms-outline-blue rounded-pill">
-                                                    download
-                                                </button>
-
-                                            </form>
-                                        </div>
-                                    </div>
+                                   
                                 @else
                                     <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
                                         @csrf

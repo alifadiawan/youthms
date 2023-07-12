@@ -12,7 +12,7 @@ use App\Models\Cart;
 use App\Models\Transaksi;
 use App\Models\Member;
 use App\Models\Pembayaran;
-use App\Models\request_user;
+use App\Models\Request_user;
 use App\Models\TransaksiDetail;
 
 class UserController extends Controller
@@ -90,11 +90,11 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $uid = auth()->user()->id;
-        $users = user::where('id', $uid)->get();
-        $member = member::where('user_id', $uid)->get();
+        $users = User::where('id', $uid)->get();
+        $member = Member::where('user_id', $uid)->get();
         $mid = $member->value('id');
-        $cart = cart::where('member_id', $mid)->get();
-        $transaksi = transaksi::where('member_id', $mid)->get();
+        $cart = Cart::where('member_id', $mid)->get();
+        $transaksi = Transaksi::where('member_id', $mid)->get();
         $checking = [];
         $pending = [];
         $kredit = [];
@@ -104,8 +104,9 @@ class UserController extends Controller
 
         foreach ($transaksi as $t) {
             $acum[] =  $t->id;
-            $pemb = pembayaran::where('transaksi_id', $t->id)->first();
-            $req = request_user::where('transaksi_id', $t->id)->first();
+            $pemb = Pembayaran::where('transaksi_id', $t->id)->first();
+            $req = Request_user::where('transaksi_id', $t->id)->first();
+            $pembayaran_checking = $t->pembayaran()->where('status', 'checking')->exists();
             if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                 $checking[] = $t;
             } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
@@ -122,6 +123,8 @@ class UserController extends Controller
                 $lunas[] = $t;
             } elseif ($t->total_bayar >= $t->total && $pemb && $pemb->status == "checked") {
                 $lunas[] = $t;
+            }elseif ($t->total_bayar > 0 && $pembayaran_checking) {
+                $checking[] =  $t;
             }
         }
 
@@ -130,10 +133,14 @@ class UserController extends Controller
         $ck = count($kredit);
         $cp = count($pending);
         $cl = count($lunas);
-        $trx_berjalan = $cc + $cu + $ck + $cp;
-        $trx_kredit = $ck;
-        $trx_riwayat = $cl;
+        $cd = count($declined);
 
+        
+        $trx_berjalan = $cc + $cu + $cp;
+        $trx_kredit = $ck;
+        $trx_riwayat = $cl + $cd;
+     
+        
         $u = auth()->user()->role->role;
         $staff = ['admin', 'owner'];
         if (in_array($u, $staff)) {
@@ -158,8 +165,8 @@ class UserController extends Controller
         $staff = ['admin', 'owner'];
         $uid = auth()->user()->id;
 
-        $users = user::where('id', $uid)->get();
-        $member = member::where('user_id', $uid)->get();
+        $users = User::where('id', $uid)->get();
+        $member = Member::where('user_id', $uid)->get();
         // return $member;
 
         // pembuatan id_member
@@ -248,7 +255,7 @@ class UserController extends Controller
             $idm = $request->id_member;
 
             // return $request;
-            member::updateorcreate([
+            Member::updateorcreate([
                 'user_id' => $id,
             ], [
                 'id_member' => $request->id_member != null ? $request->id_member : null,

@@ -23,11 +23,11 @@ class Transaksi extends Model
 
     public function request_user()
     {
-        return $this->hasMany(request_user::class);
+        return $this->hasMany(Request_user::class);
     }
 
     public function pembayaran()
     {
-        return $this->hasOne(pembayaran::class);
+        return $this->hasOne(Pembayaran::class);
     }
 }

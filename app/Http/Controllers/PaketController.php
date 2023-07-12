@@ -17,7 +17,7 @@ class PaketController extends Controller
      */
     public function index()
     {
-        $paket = Paket::with('paket_produk')->get();
+        $paket = Paket::with('produk')->get();
         $produk = Produk::all();
         // return $paket;
         return view('Admin.paket.index', compact('paket', 'produk'));

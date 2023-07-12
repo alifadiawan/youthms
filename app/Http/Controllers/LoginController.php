@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\request_user;
+use App\Models\Request_user;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -46,7 +46,7 @@ class LoginController extends Controller
 
             $telat = [];
             foreach ($transaksi as $t) {
-                $req = request_user::where('transaksi_id', $t->id)->first();
+                $req = Request_user::where('transaksi_id', $t->id)->first();
                 if ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $telat[] = $t;
                 } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
@@ -55,7 +55,7 @@ class LoginController extends Controller
             }
 
             if ($telat != null) {
-                $message = 'hayolo telat';
+                $message = 'Kredit anda telah melampaui jatuh tempo !!!';
                 $notif = new TransaksiNotification($message);
                 $notif->setUrl(route('transaksi.index'));
                 Notification::send($cek_user, $notif);

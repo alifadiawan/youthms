@@ -18,24 +18,24 @@ class RequestUserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(request $request)
+    public function index(Request $request)
     {
         $trxid = $request->trxid;
         $auth = auth()->user();
         $user = $auth->id;
-        $member = member::where('user_id', $user)->pluck('id')->first();
+        $member = Member::where('user_id', $user)->pluck('id')->first();
         $user_role = $auth->role->role;
         // return $user_role;
 
-        $requestUser = request_user::all();
-        $all = transaksi::where('member_id', $member)->get();
+        $requestUser = Request_user::all();
+        $all = Transaksi::where('member_id', $member)->get();
         // $pending = request_user::where('transaksi_id', $trxid)->get();
 
         if ($user_role == "client") {
             return redirect()->route('transaksi.show', $trxid);
         }
 
-        $request_user = request_user::all();
+        $request_user = Request_user::all();
         $compact = ['request_user', 'member', 'user'];
         return view('Admin.transaction.acc', compact($compact));
     }
@@ -59,11 +59,11 @@ class RequestUserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(request_user $request_user, $request)
+    public function show(Request_user $request_user, $request)
     {
         $reqid = $request;
 
-        $request_user = request_user::where('id', $reqid)->get();;
+        $request_user = Request_user::where('id', $reqid)->get();;
 
         $totaltermin = 0;
         foreach ($request_user as $r) {
@@ -99,11 +99,11 @@ class RequestUserController extends Controller
         $grandtotal = $total + $admin;
 
 
-        $req = request_user::where('id', $reqid)->value('transaksi_id');
-        $trx = transaksi::where('id', $req)->value('member_id');
-        $mid = member::where('id', $trx)->value('user_id');
-        $userid = user::where('id', $mid)->value('id');
-        $user = user::find($userid);
+        $req = Request_user::where('id', $reqid)->value('transaksi_id');
+        $trx = Transaksi::where('id', $req)->value('member_id');
+        $mid = Member::where('id', $trx)->value('user_id');
+        $userid = User::where('id', $mid)->value('id');
+        $user = User::find($userid);
         // return $user;
 
         // $admin = 
@@ -122,11 +122,11 @@ class RequestUserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, request_user $request_user)
+    public function update(Request $request, Request_user $request_user)
     {
         $reqid = $request->requser_id;
         // return $reqid;
-        $request_user = request_user::find($reqid);
+        $request_user = Request_user::find($reqid);
         $request_user->update([
             'status' => $request->status,
             'note_admin' => $request->note,
@@ -137,7 +137,7 @@ class RequestUserController extends Controller
         notify()->success('Status Berhasil Diperbarui !!');
         // mengirim notifikasi
         $uid = $request->user_id;
-        $user = user::find($uid);
+        $user = User::find($uid);
         if ($request_user->status == 'accept') {
             $message = "Pengajuan Kreditmu Telah Diterima\nSilahkan Hubungi Admin\nUntuk Info Lebih Lanjut";
         } else {
