@@ -989,22 +989,22 @@
                                 @else
                                     @foreach ($r->pembayaran as $p)
                                         <tr>
-                                            @if ($p->total_bayar == 0)
-                                                <td colspan="5" class="text-center">belum ada pembayaran</td>
-                                            @else
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ date('d F Y', strtotime($p->created_at)) }}</td>
-                                                @if ($p->bank)
-                                                    <td><img src="{{ asset('illustration/' . $p->bank->image) }}"
-                                                            alt="" style="width: 50px">
-                                                    </td>
-                                                @else
-                                                    <td><img src="{{ asset('illustration/' . $p->ewallet->image) }}"
-                                                            alt="" style="width: 50px">
-                                                    </td>
-                                                @endif
-                                                <td><a href="{{ route('pembayaran.show', $p->id) }}">show pembayaran</a>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ date('d F Y', strtotime($p->created_at)) }}</td>
+                                            @if ($p->bank)
+                                                <td><img src="{{ asset('illustration/' . $p->bank->image) }}"
+                                                        alt="" style="width: 50px">
                                                 </td>
+                                            @else
+                                                <td><img src="{{ asset('illustration/' . $p->ewallet->image) }}"
+                                                        alt="" style="width: 50px">
+                                                </td>
+                                            @endif
+                                            <td><a href="{{ route('pembayaran.show', $p->id) }}">show pembayaran</a>
+                                            </td>
+                                            @if ($p->total_bayar == 0)
+                                                <td>dicek admin</td>
+                                            @else
                                                 <td>Rp. {{ number_format($p->total_bayar, 0, ',', '.') }}</td>
                                             @endif
                                         </tr>

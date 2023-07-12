@@ -340,7 +340,6 @@ class TransaksiController extends Controller
         }
 
         $role = auth()->user()->role->role;
-        $requestUser = request_user::all();
 
 
         $kredit = [];
@@ -351,6 +350,7 @@ class TransaksiController extends Controller
         $checking = [];
         $denied = [];
 
+        $requestUser = request_user::all();
         $pembayaran_loop = pembayaran::all();
 
         // bayar 
@@ -362,9 +362,12 @@ class TransaksiController extends Controller
                 $req = $requestUser->where('transaksi_id', $t->id)->first();
                 $pemb = $pembayaran_loop->where('transaksi_id', $t->id)->first();
 
-                // return 'oke';
+                $pembayaran_checking = $t->pembayaran()->where('status', 'checking')->exists();
+
                 if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                     $checking[] = $t;
+                } elseif ($t->total_bayar > 0 && $pembayaran_checking) {
+                    $checking[] =  $t;
                 } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
                     $utang[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
@@ -383,6 +386,12 @@ class TransaksiController extends Controller
                     $lunas[] = $t;
                 }
             }
+            // 
+            // elseif ($t->pembayaran->status()->where('status', "checking")->exists()) {
+            //     $checking[] = $t;
+            // }
+            // 
+
 
             $EU_checking = collect($checking)->pluck('id')->toArray();
             $EU_denied = collect($denied)->pluck('id')->toArray();
@@ -513,6 +522,5 @@ class TransaksiController extends Controller
     // type bank
     public function bank()
     {
-        # code...
     }
 }

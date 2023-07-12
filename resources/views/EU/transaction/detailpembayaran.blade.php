@@ -75,11 +75,6 @@
                                                 download
                                             </button>
                                         </div>
-                                        <div class="col">
-                                            <button class="btn btn-success w-100 yms-outline-blue rounded-pill">
-                                                share
-                                            </button>
-                                        </div>
                                     </div>
                                 @else
                                     <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
