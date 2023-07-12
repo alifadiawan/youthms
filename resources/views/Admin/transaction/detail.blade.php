@@ -93,6 +93,63 @@
                                     </div>
 
 
+                                    @if (in_array($t->id, $adm_kredit))
+                                        <table class="table table-striped mt-2">
+                                            <thead>
+                                                <tr style="background-color: #0EA1E2">
+                                                    <th class="text-white">No</th>
+                                                    <th class="text-white">Nama</th>
+                                                    <th class="text-white">Total harga</th>
+                                                    <th class="text-white">Status</th>
+                                                    <th class="text-white">Metode</th>
+                                                    <th class="text-white">Detail</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($pembayaran as $p)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $p->transaksi->member->name }}</td>
+                                                        <td>Rp. {{ number_format($p->transaksi->total, 0, ',', '.') }}
+                                                        </td>
+                                                        <td>
+
+                                                            @if ($p->status == 'checking')
+                                                                <button disabled="disabled"
+                                                                    class="btn btn-sm btn-warning"></button><span
+                                                                    class="badge">{{ $p->status }}</span>
+                                                            @elseif($p->status == 'checked')
+                                                                <button disabled="disabled"
+                                                                    class="btn btn-sm btn-success"></button><span
+                                                                    class="badge">{{ $p->status }}</span>
+                                                            @elseif($p->status == 'declined')
+                                                                <button disabled="disabled"
+                                                                    class="btn btn-sm btn-danger"></button><span
+                                                                    class="badge">{{ $p->status }}</span>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if ($p->bank_id)
+                                                                <div class="row">
+                                                                    <img src="{{ asset('illustration/' . $p->bank->image) }}"
+                                                                        alt="" style="width: 75px">
+                                                                </div>
+                                                            @elseif($p->ewallet_id)
+                                                                <span>
+                                                                    <img src="{{ asset('illustration/' . $p->ewallet->image) }}"
+                                                                        alt="" style="width: 75px"></span>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('pembayaran.show', $p->id) }}"
+                                                                class="btn-sm btn-success">Detail</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    @endif
+
                                     <div class="footer mt-3">
                                         <div class="row">
                                             <div class="col">
@@ -100,27 +157,6 @@
                                                     Download
                                                 </a>
                                             </div>
-                                            <div class="col">
-                                                <a href="" class="btn btn-block btn-outline-info rounded-pill">
-                                                    Share
-                                                </a>
-                                            </div>
-                                            @if (in_array($t->id, $adm_kredit))
-                                                <div class="col">
-                                                    <a href="{{ route('pembayaran.detail_kredit', $t->id) }}"
-                                                        class="btn btn-block btn-outline-info rounded-pill">
-                                                        Bukti Pembayaran Kredit
-                                                    </a>
-                                                </div>
-                                            @elseif(in_array($t->id, $adm_lunas))
-                                                <div class="col">
-                                                    <a href="{{ route('pembayaran.show', $t->id) }}"
-                                                        class="btn btn-block btn-outline-info rounded-pill">
-                                                        Bukti Pembayaran
-                                                    </a>
-                                                </div>
-                                            @else
-                                            @endif
                                         </div>
                                     </div>
                                 </div>

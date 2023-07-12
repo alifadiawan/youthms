@@ -33,8 +33,13 @@
                                     <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">kredit
                                     </h5>
                                 @endif
-                                <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">{{ $pembayaran->status }}</h5>
-                                <p class="text-muted">Total</p>
+                                @if ($pembayaran->status == 'checking')
+                                    <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">{{ $pembayaran->status }}
+                                    </h5>
+                                @else
+                                    <h5 class="h3 mb-0 me-auto text-success font-weight-bold">{{ $pembayaran->status }}
+                                    </h5>
+                                @endif
                             </div>
                         </div>
 
