@@ -17,7 +17,7 @@
 
     <!-- tombol kategori jasa -->
     <div class="container mb-5 mt-3">
-        <div class="d-flex flex-row justify-content-start" style="overflow-y:auto;">
+        <div class="d-flex flex-row justify-content-start" style="overflow-y:hidden;">
             <div class="d-flex flex-row">
                 <a href="{{ route('store.index') }}" class="text-capitalize btn btn yms-outline-blue rounded-5">All</a>
                 @foreach ($layanan as $l)

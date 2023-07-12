@@ -325,11 +325,14 @@
                         </a>
                     @endforeach
                 @else
-                    <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
+                    {{-- <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
                         <div class="alert alert-danger" role="alert">
-                            Bayar sebelum {{ date('d F Y', strtotime($t->tanggal_transaksi)) }} Klik disini untuk bayar
+                            Bayar sebelum {{ date('d F Y', strtotime($t->tanggal_transaksi)) }} <br> Klik disini untuk bayar
                         </div>
-                    </a>
+                    </a> --}}
+                    <div class="alert alert-danger" role="alert">
+                        Bayar sebelum {{ date('d F Y', strtotime($t->tanggal_transaksi)) }} <br> <a href="{{ route('pembayaran.pembayaran', $t->id) }}">Klik disini untuk bayar </a>
+                    </div>
                 @endif
                 <div class="card shadow rounded-3">
                     <div class="row my-3 mx-3 mx-lg-4">
@@ -703,11 +706,10 @@
             <!-- Kredit -->
             @if (in_array($t->id, $EU_kredit))
                 @section('title', '| Kredit')
-                <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
-                    <div class="alert alert-danger" role="alert">
-                        Klik disini untuk bayar
-                    </div>
-                </a>
+        
+                <div class="alert alert-warning" role="alert">
+                    <a href="{{ route('pembayaran.pembayaran', $t->id) }}">Klik disini untuk bayar</a>
+                </div>
                 <div class="card shadow rounded-3">
                     <div class="row my-3 mx-3 mx-lg-4">
                         <div class="col-6 col-lg text-start">
@@ -769,6 +771,7 @@
 
                 {{-- detail produk --}}
                 <div class="konten mt-3 mx-3">
+                    <h4 class="text-muted">Detail</h4>
                     <table class="table table-bordered">
                         <thead class="bg-light text-dark">
                             <tr>
@@ -814,9 +817,10 @@
                             </tr>
                         </tbody>
                     </table>
-                    <hr>
+                    
 
                     {{-- detail kredit --}}
+                    <h4 class="text-muted">History Pembayaran</h4>
                     <table class="table table-bordered">
                         <thead class="bg-light text-dark">
                             <tr>
@@ -831,7 +835,7 @@
                             @foreach ($requser as $r)
                                 @if ($r->pembayaran->isEmpty())
                                     <tr>
-                                        <td colspan="4" class="text-center">belum ada pembayaran</td>
+                                        <td colspan="5" class="text-center">belum ada pembayaran</td>
                                     </tr>
                                 @else
                                     @foreach ($r->pembayaran as $p)

@@ -3,33 +3,29 @@
 @section('content')
 
 
-    <div id="store" class="row" data-aos="fade-right" data-aos-duration="1000">
-        <div id="thumbnail" class="text-start">
-            <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
-            <div id="caption">
-                <h3 class="text-white">aowkaokwa</h3>
-                <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus fugit
-                    pariatur, magnam aliquam et qui hic corporis odio neque nobis doloribus quidem delectus saepe commodi
-                    illum minima blanditiis nostrum quod.</p>
-            </div>
+<div id="store" class="row" data-aos="fade-right" data-aos-duration="1000">
+    <div id="thumbnail" class="text-start">
+        <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
+        <div id="caption">
+            <h3 class="text-white text-wrap h1 text-bold">Store</h3>
+            <p id="text" class="text-white h3">YouthMS memiliki berbagai jenis Produk dari beberapa Jenis Layanan,
+                mulai dari Aplikasi, Marketing, Desain, dan Editing</p>
         </div>
     </div>
+</div>
 
-    <div class="container mb-5 mt-3">
-        {{-- navbar kategori --}}
-        <div class="d-flex flex-row text-center gap-3">
-            {{-- <a href="" class="btn yms-outline-blue rounded-5z">All</a>
-            @foreach ($layanan as $l)
-            <a href="{{ route('store.showtype', $link) }}" class="btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
-            @endforeach --}}
-            <a href="{{ route('store.index') }}" class="text-capitalize my-3 btn yms-outline rounded-5 active">All</a>
-            @foreach ($layanan as $l)
-            @php
-                $link = str_replace(' ', '_', $l->layanan)
-            @endphp
-                <a href="{{ route('store.showtype', $link) }}"
-                    class=" my-3 text-capitalize btn yms-outline rounded-5 active">{{ $l->layanan }}</a>
-            @endforeach
+        <div class="container mb-5 mt-3">
+            <div class="d-flex flex-row justify-content-start" style="overflow-y:hidden;">
+                <div class="d-flex flex-row">
+                    <a href="{{ route('store.index') }}" class="text-capitalize btn btn yms-outline-blue rounded-5">All</a>
+                    @foreach ($layanan as $l)
+                        @php
+                            $link = str_replace(' ', '_', $l->layanan);
+                        @endphp
+                        <a href="{{ route('store.showtype', $link) }}" class="text-capitalize btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
+                    @endforeach
+                </div>
+            </div>
         </div>
         @if (count($errors) > 0)
             <div class="alert alert-success" role="alert">
