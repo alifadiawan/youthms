@@ -98,7 +98,6 @@
 
                             <div class="footer mt-3">
                                 @if ($pembayaran->status == 'checked')
-                                   
                                 @else
                                     <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
                                         @csrf

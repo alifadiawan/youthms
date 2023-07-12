@@ -16,9 +16,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use App\Notifications\TransaksiNotification;
-use DateInterval;
-use DateTime;
-use DateTimeZone;
 use Illuminate\Support\Facades\Notification;
 use Dompdf\Dompdf;
 
@@ -30,7 +27,7 @@ class PembayaranController extends Controller
         $pembayaran = Pembayaran::find($Request->id);
         $auth = auth()->user();
         $cek_user = $auth->role->role;
-     
+
         $data = [
             'pembayaran' => $pembayaran,
             'title' => 'print pdf',
@@ -229,12 +226,12 @@ class PembayaranController extends Controller
         }
     }
 
-    public function detail_kredit(Transaksi $id)
-    {
-        // return $id;
-        // $requser = request_user::where('transaksi_id', $tid)->with('pembayaran')->first();
-        return view('Admin.transaction.detail_kredit', compact('requser'));
-    }
+    // public function detail_kredit(Transaksi $id)
+    // {
+    //     // return $id;
+    //     // $requser = request_user::where('transaksi_id', $tid)->with('pembayaran')->first();
+    //     return view('Admin.transaction.detail_kredit', compact('requser'));
+    // }
 
     /**
      * Show the form for editing the specified resource.

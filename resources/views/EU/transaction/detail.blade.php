@@ -454,7 +454,7 @@
             {{-- view belum bayar --}}
             @if (in_array($t->id, $EU_utang))
                 @section('title', '| Belum Bayar')
-                @if ($pembayaran->isnotempty())
+                @if ($pembayaran->isNotEmpty())
                     @foreach ($pembayaran as $p)
                         <a href="{{ route('pembayaran.pembayaran', $t->id) }}">
                             <div class="alert alert-danger" role="alert">

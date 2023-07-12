@@ -122,7 +122,7 @@
                 var status = $(this).find('td:eq(3) span.badge').text().toLowerCase();
 
                 var matchesStatusFilter = status.includes(statusFilter);
-                
+
 
                 return matchesStatusFilter;
             }).show();

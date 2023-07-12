@@ -385,7 +385,7 @@
                     </div>
                 </div> --}}
                 {{-- <form action=""> --}}
-                @if ($bank->isnotempty())
+                @if ($bank->isNotEmpty())
                     <div class="row">
                         @foreach ($bank as $b)
                             <div class="col-12">
@@ -426,7 +426,7 @@
                             </div>
                         @endforeach
                     </div>
-                @elseif ($ewallet->isnotempty())
+                @elseif ($ewallet->isNotEmpty())
                     <div class="row">
                         @foreach ($ewallet as $w)
                             <div class="col-12">
@@ -526,11 +526,11 @@
                                 <input type="file" class="form-control mt-2" name="bukti" id="bukti" required>
                             </div>
                             <input type="hidden" name="transaksi_id" value="{{ $t->id }}">
-                            @if ($bank->isnotempty())
+                            @if ($bank->isNotEmpty())
                                 @foreach ($bank as $b)
                                     <input type="hidden" name="bank" value="{{ $b->nama }}">
                                 @endforeach
-                            @elseif($ewallet->isnotempty())
+                            @elseif($ewallet->isNotEmpty())
                                 @foreach ($ewallet as $w)
                                     <input type="hidden" name="wallet" value="{{ $w->nama }}">
                                 @endforeach

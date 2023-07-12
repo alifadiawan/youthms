@@ -100,7 +100,7 @@
                                                     <button type="submit" class="btn w-100 yms-outline-blue rounded-pill">
                                                         Download
                                                     </button>
-                                                    <input type="hidden" name="id" value="{{$pembayaran->id}}">
+                                                    <input type="hidden" name="id" value="{{ $pembayaran->id }}">
                                                 </form>
                                             </div>
                                         </div>
@@ -122,10 +122,8 @@
                                                     </div>
                                                 </div>
                                             @endif
-
-
+                                    @endif
                                 </div>
-                                @endif
                             </div>
                         </div>
                     </div>
