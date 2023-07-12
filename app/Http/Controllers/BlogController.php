@@ -25,8 +25,8 @@ class BlogController extends Controller
         $today = date('Y-m-d');
         // $action = 'get-populer';
 
-        $Sweek = carbon::now()->subweek();
-        $Eweek = carbon::now();
+        $Sweek = Carbon::now()->subweek();
+        $Eweek = Carbon::now();
         $get = 'populer';
 
         $populer = Blog::orderBy('visitor', 'desc')->get();
@@ -37,8 +37,8 @@ class BlogController extends Controller
         // $terpilih = blog::where()->get();        //pending
 
         $segmen = Segmen::all();
-        $sekarang = carbon::now();
-        $lastweek = carbon::now()->subweek();
+        $sekarang = Carbon::now();
+        $lastweek = Carbon::now()->subweek();
         $atas = Blog::where('id', '=', 1)->get();
         // return $atas;
         $recently_uploaded = Blog::orderBy('created_at', 'desc')->take(3)->get();
@@ -76,8 +76,8 @@ class BlogController extends Controller
         $today = date('Y-m-d');
         // $action = 'get-populer';
 
-        $Sweek = carbon::now()->subweek();
-        $Eweek = carbon::now();
+        $Sweek = Carbon::now()->subweek();
+        $Eweek = Carbon::now();
 
         // $blog = blog::all();
         if ($type == 'populer') {

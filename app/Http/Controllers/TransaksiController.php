@@ -12,7 +12,7 @@ use App\Models\Member;
 //untuk notif
 use App\Models\User;
 use App\Models\Cart;
-use App\Models\request_user;
+use App\Models\Request_user;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
@@ -20,7 +20,7 @@ use Illuminate\Http\Request;
 // use Symfony\Component\HttpFoundation\Session\Session;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
-use App\Models\visitor;
+use App\Models\Visitor;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Carbon;
 
@@ -35,7 +35,7 @@ class TransaksiController extends Controller
         $auth = auth()->user();
         $user_role = $auth->role->role;
         $user = $auth->id;
-        $member = member::where('user_id', $user)->pluck('id')->first();
+        $member = Member::where('user_id', $user)->pluck('id')->first();
 
         // mencari role
         $user_role = $auth->role->role;
@@ -54,12 +54,12 @@ class TransaksiController extends Controller
 
 
         // pengkondisian jika role user = client, akan terlempar ke history index
-        $requestUser = request_user::all();
-        $pembayaran = pembayaran::all();
+        $requestUser = Request_user::all();
+        $pembayaran = Pembayaran::all();
 
         if ($user_role == 'client') {
             $all = Transaksi::where('member_id', $member)->latest()->get();
-            
+
             foreach ($all as $t) {
                 $req = $requestUser->where('transaksi_id', $t->id)->first();
                 $pemb = $pembayaran->where('transaksi_id', $t->id)->first();
@@ -83,7 +83,7 @@ class TransaksiController extends Controller
                     $lunas[] = $t;
                 } elseif ($t->total_bayar >= $t->total && $pemb && $pemb->status == "checked") {
                     $lunas[] = $t;
-                }elseif ($t->total_bayar > 0 && $pembayaran_checking) {
+                } elseif ($t->total_bayar > 0 && $pembayaran_checking) {
                     $checking[] =  $t;
                 }
             }
@@ -113,7 +113,7 @@ class TransaksiController extends Controller
             return view('EU.history.index', compact($compact));
         } else {
 
-            $trnsk = transaksi::all();
+            $trnsk = Transaksi::all();
             foreach ($trnsk as $t) {
                 $req = $requestUser->where('transaksi_id', $t->id)->first();
                 $pemb = $pembayaran->where('transaksi_id', $t->id)->first();
@@ -137,7 +137,7 @@ class TransaksiController extends Controller
                     $lunas[] = $t;
                 } elseif ($t->total_bayar >= $t->total && $req && $req->status == "accept") {
                     $lunas[] = $t;
-                }elseif ($t->total_bayar > 0 && $pembayaran_checking) {
+                } elseif ($t->total_bayar > 0 && $pembayaran_checking) {
                     $checking[] =  $t;
                 }
             }
@@ -169,7 +169,7 @@ class TransaksiController extends Controller
 
         // mencari data user & member
         $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->pluck('id')->first();
+        $member = Member::where('user_id', $user)->pluck('id')->first();
 
         // mencari harga total & admin
         $harga = $request->total;
@@ -182,7 +182,7 @@ class TransaksiController extends Controller
         $kode = $pre . $unik;
 
         // membuat sebuah struk transaksi
-        $trx = transaksi::create([
+        $trx = Transaksi::create([
             'tanggal_transaksi' => $today,
             'unique_code' => $kode,
             'member_id' => $request->member_id,
@@ -192,10 +192,10 @@ class TransaksiController extends Controller
 
         // mencari id transaksi yang telah dibuat
         $trxid = $trx->id;
-        $transaksi = transaksi::where('id', $trxid)->first();
+        $transaksi = Transaksi::where('id', $trxid)->first();
 
         //mencari sebuah keranjang di user
-        $cart = cart::where('member_id', $member)->get();
+        $cart = Cart::where('member_id', $member)->get();
 
         // looping semua produk yang telah dibeli lalu dimasukkan ke tabel transaksi detail
         foreach ($cart as $c) {
@@ -209,7 +209,7 @@ class TransaksiController extends Controller
         TransaksiDetail::insert($trxdetail);
 
         // setelah produk / looping habis maka suatu keranjang di bersihkan 
-        cart::where('member_id', $member)->delete();
+        Cart::where('member_id', $member)->delete();
 
         // mencari produk di transaksi detail, serta menghitung harganya
         $total = 0;
@@ -243,18 +243,18 @@ class TransaksiController extends Controller
         $auth = auth()->user();
         $user = $auth->id;
         $user_role = $auth->role->role;
-        $member = member::where('user_id', $user)->pluck('id')->first();
+        $member = Member::where('user_id', $user)->pluck('id')->first();
 
 
         $tid = [];
         $tid = $transaksi->id;
         $trxid = $tid;
-        $trx = transaksi::where('id', $transaksi->id)->get();
-        $pembayaran = pembayaran::where('transaksi_id', $tid)->get();
+        $trx = Transaksi::where('id', $transaksi->id)->get();
+        $pembayaran = Pembayaran::where('transaksi_id', $tid)->get();
 
         // mencari request user, jika melakukan kredit
         $requser = null;
-        $requser = request_user::where('transaksi_id', $trxid)->with('pembayaran')->get();
+        $requser = Request_user::where('transaksi_id', $trxid)->with('pembayaran')->get();
 
 
         // mencari detail transaksi id dengan $trxid
@@ -277,8 +277,8 @@ class TransaksiController extends Controller
         if (!$requser->isEmpty()) {
             foreach ($requser as $r) {
                 // mencari  tanggal mulai & tanggal selesai
-                $tglmulai = carbon::parse($r->tanggal_mulai);
-                $tglselesai = carbon::parse($r->jatuh_tempo);
+                $tglmulai = Carbon::parse($r->tanggal_mulai);
+                $tglselesai = Carbon::parse($r->jatuh_tempo);
                 foreach ($r->pembayaran as $p) {
                     $cek[] = $total_bayar_user += $p->total_bayar;
                 }
@@ -304,13 +304,13 @@ class TransaksiController extends Controller
         $checking = [];
         $denied = [];
 
-        $requestUser = request_user::all();
-        $pembayaran_loop = pembayaran::all();
+        $requestUser = Request_user::all();
+        $pembayaran_loop = Pembayaran::all();
 
         // bayar 
         if ($user_role == 'client') {
 
-            $all = transaksi::where('member_id', $member)->get();
+            $all = Transaksi::where('member_id', $member)->get();
 
             foreach ($all as $t) {
                 $req = $requestUser->where('transaksi_id', $t->id)->first();
@@ -358,7 +358,7 @@ class TransaksiController extends Controller
             $status_EU = ['EU_utang', 'EU_kredit', 'EU_lunas', 'EU_declined', 'EU_denied', 'EU_pending', 'EU_checking', 'selisih'];
             return view('EU.transaction.detail', compact($compact, $status_EU));
         } else {
-            $all = transaksi::all();
+            $all = Transaksi::all();
 
             foreach ($all as $t) {
                 $req = $requestUser->where('transaksi_id', $t->id)->first();
@@ -384,7 +384,7 @@ class TransaksiController extends Controller
                     $lunas[] = $t;
                 } elseif ($t->total_bayar >= $t->total && $req && $req->status == "accept") {
                     $lunas[] = $t;
-                }elseif ($t->total_bayar > 0 && $pembayaran_checking) {
+                } elseif ($t->total_bayar > 0 && $pembayaran_checking) {
                     $checking[] =  $t;
                 }
                 $adm_lunas = collect($lunas)->pluck('id')->toArray();
@@ -402,10 +402,10 @@ class TransaksiController extends Controller
         }
     }
 
-    public function kredit(request $r)
+    public function kredit(Request $r)
     {
 
-        $validator = validator::make($r->all(), [
+        $validator = Validator::make($r->all(), [
             'nama_pemesan' => 'required',
             'tanggal_mulai' => 'required',
             'jatuh_tempo' => 'required',
@@ -418,7 +418,7 @@ class TransaksiController extends Controller
 
         // return $r;
         $transaksi = Transaksi::find($r->transaksi_id);
-        $request_user = request_user::create([
+        $request_user = Request_user::create([
             'nama_pemesan' => $r->nama_pemesan,
             'tanggal_mulai' => $r->tanggal_mulai,
             'jatuh_tempo' => $r->jatuh_tempo,

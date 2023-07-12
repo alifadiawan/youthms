@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EU;
 use Illuminate\Http\Request;
-use App\Models\visitor;
+use App\Models\Visitor;
 use App\Models\Services;
 use App\Models\Produk;
 use App\Models\Transaksi;
@@ -19,7 +19,6 @@ use App\Models\LandingIllustration;
 use App\Models\LandingPartner;
 use Mckenziearts\Notify\LaravelNotify;
 use App\Models\LandingText;
-use App\Models\paket_produk;
 
 class EUController extends Controller
 {
@@ -29,7 +28,7 @@ class EUController extends Controller
     public function index(Request $request)
     {
         $ip = $request->ip();
-        $visitor = visitor::firstOrCreate(['ip_address' => $ip]);
+        $visitor = Visitor::firstOrCreate(['ip_address' => $ip]);
         $visitor->increment('visits');
         $visitor->save();
 
@@ -49,23 +48,22 @@ class EUController extends Controller
         $jenis_layanan = JenisLayanan::all();
 
         //paket
-        $paket = Paket::all();
-        $produk = paket_produk::all();
+        $paket = Paket::with('produk');
         // $produk = paket_produk::where('paket_id',$p->id)->get();
         
         if (auth()->check()) {
             $uid = auth()->user()->id;
 
-            $m = member::where('user_id', $uid);
+            $m = Member::where('user_id', $uid);
             $mid = $m->pluck('id')->first();
             $member = $m->get();
 
-            $cart = cart::where('member_id', $mid)->get();
+            $cart = Cart::where('member_id', $mid)->get();
 
-            return view('landing-page', compact('text', 'illustration', 'partner', 'produk', 'paket', 'testi', 'jenis_layanan', 'member', 'cart'));
+            return view('landing-page', compact('text', 'illustration', 'partner', 'paket', 'testi', 'jenis_layanan', 'member', 'cart'));
         }
 
-        return view('landing-page', compact('text', 'illustration', 'partner', 'produk', 'paket', 'testi', 'jenis_layanan'));
+        return view('landing-page', compact('text', 'illustration', 'partner', 'paket', 'testi', 'jenis_layanan'));
     }
 
     /**
@@ -73,7 +71,7 @@ class EUController extends Controller
      */
     public function create()
     {
-        if (auth::check()) {
+        if (Auth::check()) {
             return 'eu';
         } else {
             notify()->success('Anda belum login');
@@ -100,16 +98,16 @@ class EUController extends Controller
 
         $layanan = JenisLayanan::with('services.produk')->get();
 
-        $cek = produk::doesnthave('cart')->pluck('id')->toarray();
-        $cart = produk::has('cart')->get('id');
+        $cek = Produk::doesntHave('cart')->pluck('id')->toArray();
+        $cart = Produk::has('cart')->get('id');
 
-        $c = produk::wherein('id', $cart)->get('id');
+        $c = Produk::whereIn('id', $cart)->get('id');
 
         $compact = ['layanan', 'c'];
 
-        if (auth::check()) {
+        if (Auth::check()) {
             $user = auth()->user()->id;
-            $member = member::where('user_id', $user)->get();
+            $member = Member::where('user_id', $user)->get();
             $compact = array_merge($compact, ['user', 'member']);
         }
         return view('EU.store.index', compact($compact));
@@ -121,7 +119,7 @@ class EUController extends Controller
         $jenis_layanan =  JenisLayanan::where('layanan', $type)->first();
 
         // $user = auth()->user()->id;
-        // $member = member::where('user_id', $user)->get();
+        // $member = Member::where('user_id', $user)->get();
         // return $member;
 
         $jl = JenisLayanan::where('layanan', $type)->first();
@@ -133,18 +131,18 @@ class EUController extends Controller
                 $z[$serv->id] = $serv;
             }
         }
-        $cek = produk::doesnthave('cart')->pluck('id')->toarray();
-        $cart = produk::has('cart')->get('id');
+        $cek = Produk::doesntHave('cart')->pluck('id')->toArray();
+        $cart = Produk::has('cart')->get('id');
 
         $irisan_produk = array_intersect_key($pr, array_flip($cek));
-        $produk = produk::wherein('id', $pr)->get();
-        $p = produk::wherein('id', $pr)->get('id');
-        $c = produk::wherein('id', $cart)->get('id');
+        $produk = Produk::whereIn('id', $pr)->get();
+        $p = Produk::whereIn('id', $pr)->get('id');
+        $c = Produk::whereIn('id', $cart)->get('id');
 
         $compact = ['layanan', 'produk', 'jenis_layanan', 'c'];
-        if (auth::check()) {
+        if (Auth::check()) {
             $user = auth()->user()->id;
-            $member = member::where('user_id', $user)->get();
+            $member = Member::where('user_id', $user)->get();
             $compact = array_merge($compact, ['user', 'member']);
         }
 
@@ -158,7 +156,7 @@ class EUController extends Controller
     {
         // return true;
         $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->get();
+        $member = Member::where('user_id', $user)->get();
 
         return view('EU.user.index', compact('member'));
     }
@@ -167,7 +165,7 @@ class EUController extends Controller
     {
         // return true;
         $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->get();
+        $member = Member::where('user_id', $user)->get();
 
         return view('EU.user.index', compact('member'));
     }
@@ -176,7 +174,7 @@ class EUController extends Controller
     {
         // return true;
         $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->get();
+        $member = Member::where('user_id', $user)->get();
 
         return view('EU.user.index', compact('member'));
     }
@@ -185,7 +183,7 @@ class EUController extends Controller
     {
         // return true;
         $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->get();
+        $member = Member::where('user_id', $user)->get();
 
         return view('EU.user.index', compact('member'));
     }

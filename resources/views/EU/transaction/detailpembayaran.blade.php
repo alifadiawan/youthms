@@ -95,9 +95,13 @@
                                     @if ($pembayaran->status == 'checked')
                                         <div class="row">
                                             <div class="col">
-                                                <button class="btn btn-success w-100 yms-outline-blue rounded-pill">
-                                                    download
-                                                </button>
+                                                <form action="{{ route('pembayaran.pdf') }}" method="post">
+                                                    @csrf
+                                                    <button type="submit" class="btn w-100 yms-outline-blue rounded-pill">
+                                                        Download
+                                                    </button>
+                                                    <input type="hidden" name="id" value="{{$pembayaran->id}}">
+                                                </form>
                                             </div>
                                         </div>
                                     @else

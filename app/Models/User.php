@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function testimoni()
     {
-        return $this->hasMany(testimonial::class);
+        return $this->hasMany(Testimonial::class);
     }
 
     public function blog()

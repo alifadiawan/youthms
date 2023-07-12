@@ -16,10 +16,32 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use App\Notifications\TransaksiNotification;
+use DateInterval;
+use DateTime;
+use DateTimeZone;
 use Illuminate\Support\Facades\Notification;
+use Dompdf\Dompdf;
 
 class PembayaranController extends Controller
 {
+    public function PDF(Request $Request)
+    {
+        // return $Request;
+        $pembayaran = Pembayaran::find($Request->id);
+        $auth = auth()->user();
+        $cek_user = $auth->role->role;
+     
+        $data = [
+            'pembayaran' => $pembayaran,
+            'title' => 'print pdf',
+        ];
+
+        $pdf = new Dompdf();
+        $pdf->loadHTML(view('EU.transaction.detaildownload', ['pembayaran' => $pembayaran]));
+        $pdf->setPaper('A4', 'potrait');
+        $pdf->render();
+        $pdf->stream();
+    }
     /**
      * Display a listing of the resource.
      */
@@ -30,7 +52,7 @@ class PembayaranController extends Controller
         $cek_user = $auth->role->role;
         $pembayaran = [];
         if ($cek_user == 'admin') {
-            $pembayaran = pembayaran::all();
+            $pembayaran = Pembayaran::all();
             $compact = ['pembayaran'];
             return view('Admin.transaction.bukti', compact($compact));
         } elseif ($cek_user == 'client') {
@@ -60,16 +82,16 @@ class PembayaranController extends Controller
 
         // mencari data user & member
         $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->pluck('id')->first();
+        $member = Member::where('user_id', $user)->pluck('id')->first();
 
         // mencari transaksi id dengan menggunakkan id member
         // $gateaway = gateaway::all();
-        $bank = bank::all();
+        $bank = Bank::all();
         $ewallet = ewallet::all();
 
 
         $tid = $id;
-        $transaksi = transaksi::where('id', $tid)->get();
+        $transaksi = Transaksi::where('id', $tid)->get();
 
         // mencari detail transaksi id dengan $trxid
         $detail = TransaksiDetail::where('transaksi_id', $tid)->get();
@@ -84,7 +106,7 @@ class PembayaranController extends Controller
         $admin = $total * 0.11;
         $grandtotal = $total + $admin;
 
-        $cek_kredit = request_user::where('transaksi_id', $tid)->first();
+        $cek_kredit = Request_user::where('transaksi_id', $tid)->first();
 
         $compact = ['detail', 'total', 'grandtotal', 'admin', 'tid', 'transaksi', 'bank', 'ewallet', 'cek_kredit'];
         return view('EU.transaction.pembayaran', compact($compact));
@@ -100,8 +122,8 @@ class PembayaranController extends Controller
         // return $nama;
         $tid = $request->transaksi_id;
         $transaksi = Transaksi::where('id', $tid)->get();
-        $bank = bank::where('nama', $nama)->get();
-        $ewallet = ewallet::where('nama', $nama)->get();
+        $bank = Bank::where('nama', $nama)->get();
+        $ewallet = Ewallet::where('nama', $nama)->get();
 
         $compact = ['bank', 'ewallet', 'transaksi', 'nama'];
         return view('EU.transaction.cara', compact($compact));
@@ -125,8 +147,8 @@ class PembayaranController extends Controller
 
         $tid = $request->transaksi_id;
         $transaksi = Transaksi::find($tid);
-        $bank = bank::where('nama', $request->bank)->first();
-        $wallet = ewallet::where('nama', $request->wallet)->first();
+        $bank = Bank::where('nama', $request->bank)->first();
+        $wallet = Ewallet::where('nama', $request->wallet)->first();
 
         $request_user = request_user::where('transaksi_id', $tid)->first();
 
@@ -158,7 +180,7 @@ class PembayaranController extends Controller
             $pembayaran_data['ewallet_id'] = $wallet->id;
         }
 
-        $pembayaran = pembayaran::all();
+        $pembayaran = Pembayaran::all();
         // if ($pembayaran->contains('transaksi_id', $tid) && $pembayaran->request_user_id->isempty()) {
         //     $duplicate = $pembayaran->where('transaksi_id', $tid);
         //     $old = $duplicate->sortByDesc('created_at')->pop();
@@ -169,7 +191,7 @@ class PembayaranController extends Controller
         // }
 
 
-        pembayaran::create($pembayaran_data);
+        Pembayaran::create($pembayaran_data);
 
         notify()->success('Pembayaran Anda Akan Kami Proses !');
         // mengirim notifikasi
@@ -198,8 +220,11 @@ class PembayaranController extends Controller
         $cek_kredit = $pembayaran->with('request_user')->get();
         $compact = ['pembayaran', 'cek_kredit'];
         if ($cek_user == 'client') {
+            // return view('EU.transaction.detaildownload', compact($compact));
             return view('EU.transaction.detailpembayaran', compact($compact));
         } elseif ($cek_user == 'admin') {
+
+
             return view('Admin.transaction.detailbukti', compact($compact));
         }
     }
@@ -226,7 +251,7 @@ class PembayaranController extends Controller
     {
 
 
-        $request_user = request_user::where('transaksi_id', $pembayaran->transaksi_id)->first();
+        $request_user = Request_user::where('transaksi_id', $pembayaran->transaksi_id)->first();
         $transaksi = Transaksi::find($pembayaran->transaksi_id);
         $total_bayar = $request->total_bayar;
         $total_lunas = $transaksi->total;
@@ -247,7 +272,7 @@ class PembayaranController extends Controller
         ]);
 
         $tid = $pembayaran->transaksi_id;
-        $transaksi = transaksi::where('id', $tid)->first();
+        $transaksi = Transaksi::where('id', $tid)->first();
 
         // mengirim notifikasi
         $user = $pembayaran->transaksi->member->user;
