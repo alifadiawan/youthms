@@ -106,6 +106,7 @@ class UserController extends Controller
             $acum[] =  $t->id;
             $pemb = pembayaran::where('transaksi_id', $t->id)->first();
             $req = request_user::where('transaksi_id', $t->id)->first();
+            $pembayaran_checking = $t->pembayaran()->where('status', 'checking')->exists();
             if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                 $checking[] = $t;
             } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
@@ -122,6 +123,8 @@ class UserController extends Controller
                 $lunas[] = $t;
             } elseif ($t->total_bayar >= $t->total && $pemb && $pemb->status == "checked") {
                 $lunas[] = $t;
+            }elseif ($t->total_bayar > 0 && $pembayaran_checking) {
+                $checking[] =  $t;
             }
         }
 
@@ -130,10 +133,14 @@ class UserController extends Controller
         $ck = count($kredit);
         $cp = count($pending);
         $cl = count($lunas);
-        $trx_berjalan = $cc + $cu + $ck + $cp;
-        $trx_kredit = $ck;
-        $trx_riwayat = $cl;
+        $cd = count($declined);
 
+        
+        $trx_berjalan = $cc + $cu + $cp;
+        $trx_kredit = $ck;
+        $trx_riwayat = $cl + $cd;
+     
+        
         $u = auth()->user()->role->role;
         $staff = ['admin', 'owner'];
         if (in_array($u, $staff)) {

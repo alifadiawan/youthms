@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="card-body">
-                
+
                 <div class="table-responsive">
                     <table class="table mt-3">
                         <thead style="background-color: rgb(231, 230, 230); ">
@@ -63,53 +63,60 @@
                             </tr>
                         </thead>
                         <tbody id="sort">
-                            @foreach ($all as $a)
-                                <tr class="main-row">
-                                    <td>{{ $loop->iteration }}.</td>
-                                    <td scope="row">{{ \Carbon\Carbon::parse($a->tanggal_transaksi)->format('d F Y') }}
-
-                                    </td>
-                                    <td>Rp. {{ number_format($a->total, 0, ',', '.') }}</td>
-                                    <td>Rp. {{ number_format($a->total_bayar, 0, ',', '.') }}</td>
-                                    @if (in_array($a->id, $uu))
-                                        <td>
-                                            <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
-                                                class="badge text-dark">Belum Bayar</span>
-                                        </td>
-                                    @elseif(in_array($a->id, $uk))
-                                        <td>
-                                            <button disabled="disabled" class="btn btn-sm btn-warning"></button><span
-                                                class="badge text-dark">Kredit</span>
-                                        </td>
-                                    @elseif(in_array($a->id, $up))
-                                        <td>
-                                            <button disabled="disabled" class="btn btn-sm btn-info"></button><span
-                                                class="badge text-dark">Pending</span>
-                                        </td>
-                                    @elseif(in_array($a->id, $ud))
-                                        <td>
-                                            <button disabled="disabled" class="btn btn-sm btn-dark"></button><span
-                                                class="badge text-dark">Declined</span>
-                                        </td>
-                                    @elseif(in_array($a->id, $ul))
-                                        <td>
-                                            <button disabled="disabled" class="btn btn-sm btn-success"></button><span
-                                                class="badge text-dark">Lunas</span>
-                                        </td>
-                                    @elseif(in_array($a->id, $uc))
-                                        <td>
-                                            <button disabled="disabled" class="btn btn-sm btn-primary"></button><span
-                                                class="badge text-dark">Checking</span>
-                                        </td>
-                                    @endif
-                                    <td>
-                                        <form action="{{ route('transaksi.show', $a->id) }}">
-                                            <button type="submit" class="btn btn-outline-primary"><i
-                                                    class="fa-solid fa-circle-info"></i> Detail</button>
-                                        </form>
-                                    </td>
+                            @if ($all->isEmpty())
+                                <tr class="text-center fw-bold text-uppercase">
+                                    <td colspan="6"><h2 class="mt-3">Belum ada Transaksi</h2></td>
                                 </tr>
-                            @endforeach
+                            @else
+                                @foreach ($all as $a)
+                                    <tr class="main-row">
+                                        <td>{{ $loop->iteration }}.</td>
+                                        <td scope="row">
+                                            {{ \Carbon\Carbon::parse($a->tanggal_transaksi)->format('d F Y') }}
+
+                                        </td>
+                                        <td>Rp. {{ number_format($a->total, 0, ',', '.') }}</td>
+                                        <td>Rp. {{ number_format($a->total_bayar, 0, ',', '.') }}</td>
+                                        @if (in_array($a->id, $uu))
+                                            <td>
+                                                <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
+                                                    class="badge text-dark">Belum Bayar</span>
+                                            </td>
+                                        @elseif(in_array($a->id, $uk))
+                                            <td>
+                                                <button disabled="disabled" class="btn btn-sm btn-warning"></button><span
+                                                    class="badge text-dark">Kredit</span>
+                                            </td>
+                                        @elseif(in_array($a->id, $up))
+                                            <td>
+                                                <button disabled="disabled" class="btn btn-sm btn-info"></button><span
+                                                    class="badge text-dark">Pending</span>
+                                            </td>
+                                        @elseif(in_array($a->id, $ud))
+                                            <td>
+                                                <button disabled="disabled" class="btn btn-sm btn-dark"></button><span
+                                                    class="badge text-dark">Declined</span>
+                                            </td>
+                                        @elseif(in_array($a->id, $ul))
+                                            <td>
+                                                <button disabled="disabled" class="btn btn-sm btn-success"></button><span
+                                                    class="badge text-dark">Lunas</span>
+                                            </td>
+                                        @elseif(in_array($a->id, $uc))
+                                            <td>
+                                                <button disabled="disabled" class="btn btn-sm btn-primary"></button><span
+                                                    class="badge text-dark">Checking</span>
+                                            </td>
+                                        @endif
+                                        <td>
+                                            <form action="{{ route('transaksi.show', $a->id) }}">
+                                                <button type="submit" class="btn btn-outline-primary"><i
+                                                        class="fa-solid fa-circle-info"></i> Detail</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

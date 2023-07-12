@@ -28,6 +28,7 @@ class PembayaranController extends Controller
     {
         $auth = auth()->user();
         $cek_user = $auth->role->role;
+        $pembayaran = [];
         if ($cek_user == 'admin') {
             $pembayaran = pembayaran::all();
             $compact = ['pembayaran'];
