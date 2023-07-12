@@ -18,31 +18,6 @@
                 <div class="d-flex flex-row align-items-center justify-content-end gap-3">
                     <label>Sort By :</label>
                     <div class="form-group">
-<<<<<<< HEAD
-                        <input type="text" value="" placeholder="Tanggal" readonly class="form-control"
-                            pattern="\d{4}-\d{2}-\d{2}" name="sort_tanggal" id="sort_tanggal">
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-outline-secondary" id="clear_button">
-                            Clear Tanggal
-                        </button>
-                    </div>
-                    <div class="form-group">
-                        <select name="sort_status" class="form-select" id="sort_status">
-                            <option value="all">Semua</option>
-                            <option value="belum bayar">Belum Bayar</option>
-                            <option value="kredit">Kredit</option>
-                            <option value="lunas">Lunas</option>
-                            <option value="pending">Pending</option>
-                            <option value="checking">Checking</option>
-                            <option value="declined">Declined</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <button onClick="window.location.reload();" class="btn btn-outline-secondary"><i
-                                class="fa-solid fa-rotate fa-lg"></i></button>
-                    </div>
-=======
                         <div class="input-group">
                             <input type="text" value="" placeholder="Tanggal" readonly class="form-control"
                                 pattern="\d{4}-\d{2}-\d{2}" name="sort_tanggal" id="sort_tanggal">
@@ -65,7 +40,6 @@
                                     class="fa-solid fa-rotate fa-lg"></i></button>
                         </div>
                     </div>  
->>>>>>> 7637770fc1904f7a8b81bfae4b226c75c2d0f9a9
                 </div>
 
                 <table class="table mt-3">
