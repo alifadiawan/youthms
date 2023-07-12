@@ -25,8 +25,8 @@
                                 <td>{{ $p->nama_paket }}</td>
                                 <td>
                                     <ul>
-                                        @foreach ($p->paket_produk as $pp)
-                                            <li>{{ $pp->produk->nama_produk }}</li>
+                                        @foreach ($p->produk as $pp)
+                                            <li id="list">{{ $pp->nama_produk }}</li>
                                         @endforeach
                                     </ul>
                                 </td>
@@ -87,7 +87,7 @@
 
 <style>
     /* ordered list */
-    ul li {
+    ul #list {
         list-style-type: disc;
     }
 </style>

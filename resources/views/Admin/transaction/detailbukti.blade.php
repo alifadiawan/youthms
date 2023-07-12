@@ -44,12 +44,12 @@
                         </div>
 
                         <div class="row my-2">
-                            @if ($pembayaran->request_user_id == null)
+                            {{-- @if ($pembayaran->request_user_id == null)
                                 <div class="col text-center">
                                     <p class="h3">Rp.{{ number_format($pembayaran->total_bayar, '0', ',', '.') }}
                                     </p>
                                 </div>
-                            @endif
+                            @endif --}}
                         </div>
 
                         <div class="penerima">
@@ -95,21 +95,24 @@
                                         <div class="row">
                                             <div class="col">
                                                 <input type="hidden" value="checked" name="status">
-                                                <button type="submit"
-                                                    class="btn btn-success w-100 yms-outline-blue rounded-pill">
+                                                <button class="btn btn-success w-100 yms-outline-blue rounded-pill">
                                                     Accept
                                                 </button>
                                             </div>
+                                        </div>
                                     </form>
                                     <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
                                         @csrf
                                         @method('put')
-                                        <div class="col">
-                                            <input type="hidden" value="decline" name="status">
-                                            <button type="submit"
-                                                class="btn btn-outline-danger w-100 yms-outline-blue rounded-pill">
-                                                Decline
-                                            </button>
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <input type="hidden" value="decline" name="status">
+                                                <button
+                                                    class="btn btn-danger w-100 yms-outline-blue rounded-pill">
+                                                    Decline
+                                                </button>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                             @endif
