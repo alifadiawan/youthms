@@ -29,7 +29,7 @@ Route::get('/transaksi/total', [CartController::class, 'getTotalTransaksi'])->na
 Route::get('/cart/quantity', [ProdukController::class, 'getCartQuantity'])->name('api.quantity.cart');
 Route::post('/produk/cart/update', [ProdukController::class, 'updateQuantity'])->name('api.update.cart');
 
-Route::get('/history-transaksi/status', [TransaksiController::class, 'findstatus'])->name('api.transaksi.findstatus');
+// Route::get('/history-transaksi/status', [TransaksiController::class, 'findstatus'])->name('api.transaksi.findstatus');
 
 
 // Route::get('/get-data', [BlogController::class, 'getData'])->name('api.getData.blog');

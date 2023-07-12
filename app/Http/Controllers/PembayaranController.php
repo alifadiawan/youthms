@@ -182,15 +182,17 @@ class PembayaranController extends Controller
 
     public function show(Pembayaran $pembayaran, Request $Request)
     {
-        $cek_kredit = $pembayaran->with('request_user')->get();
-        // $cek_kredit = $pembayaran;
-        // return $cek_kredit;
         $auth = auth()->user();
         $cek_user = $auth->role->role;
         $tid = $pembayaran->transaksi_id;
 
+        $cek_kredit = $pembayaran->with('request_user')->get();
         $compact = ['pembayaran', 'cek_kredit'];
-        return view('Admin.transaction.detailbukti', compact($compact));
+        if ($cek_user == 'client') {
+            return view('EU.transaction.detailpembayaran', compact($compact));
+        } elseif ($cek_user == 'admin') {
+            return view('Admin.transaction.detailbukti', compact($compact));
+        }
     }
 
     public function detail_kredit(Transaksi $id)

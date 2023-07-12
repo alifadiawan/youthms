@@ -244,18 +244,6 @@
                                         {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
                                     </div>
                                 </div>
-                                {{-- <div class="row">
-                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
-                                        <div class="col text-end text-lg">
-                                            31 Mei 2023
-                                        </div>
-                                    </div> --}}
-                                {{-- <div class="row">
-                                        <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Jatuh Tempo</div>
-                                        <div class="col text-end text-lg text-danger">
-                                            10 Hari lagi
-                                        </div>
-                                    </div> --}}
                             </div>
                         </div>
                     </div>
@@ -306,6 +294,76 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+                            @if ($requser->isNotEmpty())
+                                <table class="table table-bordered">
+                                    <thead class="bg-light text-dark">
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Tanggal</th>
+                                            <th>Metode</th>
+                                            <th>Bukti</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($requser as $r)
+                                            @if ($r->pembayaran->isEmpty())
+                                                <tr>
+                                                    <td colspan="5" class="text-center">belum ada pembayaran</td>
+                                                </tr>
+                                            @else
+                                                @foreach ($r->pembayaran as $p)
+                                                    <tr>
+                                                        @if ($p->total_bayar == 0)
+                                                            <td colspan="5" class="text-center">belum ada pembayaran</td>
+                                                        @else
+                                                            <td>{{ $loop->iteration }}</td>
+                                                            <td>{{ date('d F Y', strtotime($p->created_at)) }}</td>
+                                                            @if ($p->bank)
+                                                                <td><img src="{{ asset('illustration/' . $p->bank->image) }}"
+                                                                        alt="" style="width: 50px">
+                                                                </td>
+                                                            @else
+                                                                <td><img src="{{ asset('illustration/' . $p->ewallet->image) }}"
+                                                                        alt="" style="width: 50px">
+                                                                </td>
+                                                            @endif
+                                                            <td><a href="{{ route('pembayaran.show', $p->id) }}">show
+                                                                    pembayaran</a>
+                                                            </td>
+                                                            <td>Rp. {{ number_format($p->total_bayar, 0, ',', '.') }}</td>
+                                                        @endif
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="4" class="text-end">Total</td>
+                                            <td colspan="1" class="">Rp
+                                                {{ number_format($total_bayar_user, 0, ',', '.') }}
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr class="h5">
+                                            <td class="text-end fw-bold" colspan="4">Total Harga Transaksi </td>
+                                            <td class="fw-bold"><span id="total-transaksi-b">Rp
+                                                    {{ number_format($t->total, 0, ',', '.') }}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                    <tbody>
+                                        <tr class="h5">
+                                            <td class="text-end fw-bold" colspan="4">Total Harga Kekuragan </td>
+                                            <td class="fw-bold"><span id="total-transaksi-b">Rp
+                                                    {{ number_format($total_kekurangan, 0, ',', '.') }}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            @endif
                         </table>
                     </div>
                 </div>
@@ -373,13 +431,13 @@
                                     31 Mei 2023
                                 </div>
                             </div> --}}
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Jatuh Tempo</div>
                                     <div class="col text-end text-lg text-danger">
-                                        {{-- 10 Hari lagi --}}
+                                        10 Hari lagi
                                         ongoing fiture
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -759,10 +817,18 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-12 col-lg-9 col-md-6 my-0 my-lg-0 fw-bold">Jatuh Tempo</div>
-                                        <div class="col text-end text-lg text-danger">
-                                            {{ $selisih }} Hari lagi
-                                        </div>
+                                        @if ($r->jatuh_tempo > $r->tanggal_mulai)
+                                            <div class="col-12 col-lg-9 col-md-6 my-0 my-lg-0 fw-bold">Jatuh Tempo</div>
+                                            <div class="col text-end text-lg text-danger">
+                                                {{ $selisih }} Hari lagi
+                                            </div>
+                                        @else
+                                            <div class="col-12 col-lg-9 col-md-6 my-0 my-lg-0 fw-bold">Jatuh Tempo</div>
+                                            <div class="col text-end text-lg text-danger">
+                                                Pembayaran Terlambat
+                                                {{ today()->addDays($r->jatuh_tempo)->diffInDays(today()) }} Hari
+                                            </div>
+                                        @endif
                                     </div>
                             @endforeach
                         </div>
@@ -841,7 +907,7 @@
                                     @foreach ($r->pembayaran as $p)
                                         <tr>
                                             @if ($p->total_bayar == 0)
-                                                <td colspan="4" class="text-center">belum ada pembayaran</td>
+                                                <td colspan="5" class="text-center">belum ada pembayaran</td>
                                             @else
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ date('d F Y', strtotime($p->created_at)) }}</td>
@@ -854,8 +920,8 @@
                                                             alt="" style="width: 50px">
                                                     </td>
                                                 @endif
-                                                <td><img src="{{ asset('bukti_transfer/' . $p->bukti_tf) }}"
-                                                        style="width: 50px" alt=""> </td>
+                                                <td><a href="{{ route('pembayaran.show', $p->id) }}">show pembayaran</a>
+                                                </td>
                                                 <td>Rp. {{ number_format($p->total_bayar, 0, ',', '.') }}</td>
                                             @endif
                                         </tr>
@@ -865,46 +931,29 @@
                         </tbody>
 
                         <tbody>
-                            @foreach ($requser as $r)
-                                @foreach ($r->pembayaran as $p)
-                                    <tr>
-                                        <td colspan="4" class="text-end">Total</td>
-                                        <td colspan="1" class="">Rp
-                                            {{-- {{ $p }} --}}
-                                            jumlah yang telah dibayar
-                                            {{-- {{ number_format($p, 0, ',', '.') }}</td> --}}
-                                    </tr>
-                                @endforeach
-                            @endforeach
+                            <tr>
+                                <td colspan="4" class="text-end">Total</td>
+                                <td colspan="1" class="">Rp
+                                    {{ number_format($total_bayar_user, 0, ',', '.') }}
+                            </tr>
                         </tbody>
                         <tbody>
-
-                            @foreach ($requser as $r)
-                                @foreach ($r->pembayaran as $p)
-                                    <tr class="h5">
-                                        <td class="text-end fw-bold" colspan="4"></td>
-                                        <td class="fw-bold"><span id="total-transaksi-b">Rp
-                                                {{-- {{ number_format($t->total, 0, ',', '.') }}</span> --}}
-                                                grand total = total bayar - total harga
-                                            </td>
-                                    </tr>
-                                @endforeach
-                            @endforeach
+                            <tr class="h5">
+                                <td class="text-end fw-bold" colspan="4">Total Harga Transaksi </td>
+                                <td class="fw-bold"><span id="total-transaksi-b">Rp
+                                        {{ number_format($t->total, 0, ',', '.') }}</span>
+                                </td>
+                            </tr>
                         </tbody>
-                        {{-- <tbody>
 
-                            @foreach ($requser as $r)
-                                @foreach ($r->pembayaran as $p)
-                                    <tr>
-                                        <td colspan="4" class="text-end">Total Kekurangan</td>
-                                        <td colspan="1" class="">Rp
-                                            {{ number_format($admin, 0, ',', '.') }}
-                                            total Kekurangan = total 
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @endforeach
-                        </tbody> --}}
+                        <tbody>
+                            <tr class="h5">
+                                <td class="text-end fw-bold" colspan="4">Total Harga Kekuragan </td>
+                                <td class="fw-bold"><span id="total-transaksi-b">Rp
+                                        {{ number_format($total_kekurangan, 0, ',', '.') }}</span>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 {{-- </div> --}}

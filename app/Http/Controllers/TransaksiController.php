@@ -201,72 +201,6 @@ class TransaksiController extends Controller
         }
     }
 
-    public function findstatus()
-    {
-        $auth = auth()->user();
-        $user_role = $auth->role->role;
-        $user = $auth->id;
-        $member = member::where('user_id', $user)->pluck('id')->first();
-
-        $requestUser = request_user::all();
-        $pembayaran = pembayaran::all();
-
-        $all = Transaksi::where('member_id', $member)->latest()->get();
-
-        foreach ($all as $t) {
-            $req = $requestUser->where('transaksi_id', $t->id)->first();
-            $pemb = $pembayaran->where('transaksi_id', $t->id)->first();
-            if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
-                $checking[] = $t;
-            } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
-                $utang[] = $t;
-            } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
-                $kredit[] = $t;
-            } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
-                $kredit[] = $t;
-            } elseif ($t->total_bayar == 0 && $req && $req->status == "pending") {
-                $pending[] = $t;
-            } elseif ($t->total_bayar == 0 && $req && $req->status == "declined") {
-                $declined[] = $t;
-            } elseif ($t->total_bayar == 0 && !$req) {
-                $utang[] = $t;
-            } elseif ($t->total_bayar >= $t->total && $req && $req->status == "accept") {
-                $lunas[] = $t;
-            } elseif ($t->total_bayar >= $t->total && $pemb && $pemb->status == "checked") {
-                $lunas[] = $t;
-            }
-        }
-
-
-        // checking
-        $uc = collect($checking)->pluck('id')->toArray();
-
-        // belum bayar
-        $uu = collect($utang)->pluck('id')->toarray();
-
-        // kredit ongoing
-        $uk = collect($kredit)->pluck('id')->toarray();
-
-        // kredit pending
-        $up = collect($pending)->pluck('id')->toarray();
-
-        // kredit decline
-        $ud = collect($declined)->pluck('id')->toarray();
-
-        // lunas
-        $ul = collect($lunas)->pluck('id')->toarray();
-
-        $data = [
-            'checking' => $uc,
-            'utang' => $uu,
-            'kredit' => $uk,
-            'declined' => $ud,
-            'lunas' => $ul,
-        ];
-
-        return response()->json($data);
-    }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -361,21 +295,13 @@ class TransaksiController extends Controller
         $tid = $transaksi->id;
         $trxid = $tid;
         $trx = transaksi::where('id', $transaksi->id)->get();
-        // $pembayaran = pembayaran::where('transaksi_id', $tid)->where('status', 'pending')->get();
         $pembayaran = pembayaran::where('transaksi_id', $tid)->get();
 
         // mencari request user, jika melakukan kredit
         $requser = null;
         $requser = request_user::where('transaksi_id', $trxid)->with('pembayaran')->get();
 
-        $selisih = 0;
-        if (!$requser->isEmpty()) {
-            foreach ($requser as $r) {
-                $tglmulai = carbon::parse($r->tanggal_mulai);
-                $tglselesai = carbon::parse($r->jatuh_tempo);
-            }
-            $selisih = $tglmulai->diffInDays($tglselesai);
-        }
+
 
         // mencari detail transaksi id dengan $trxid
         $detail = TransaksiDetail::where('transaksi_id', $trxid)->get();
@@ -392,6 +318,27 @@ class TransaksiController extends Controller
 
         $compact = ['detail', 'total', 'grandtotal', 'admin', 'trx', 'requser', 'pembayaran'];
 
+        $selisih = 0;
+        $total_bayar_user = 0;
+        if (!$requser->isEmpty()) {
+            foreach ($requser as $r) {
+                // mencari  tanggal mulai & tanggal selesai
+                $tglmulai = carbon::parse($r->tanggal_mulai);
+                $tglselesai = carbon::parse($r->jatuh_tempo);
+                foreach ($r->pembayaran as $p) {
+                    $cek[] = $total_bayar_user += $p->total_bayar;
+                }
+            }
+            // mencari total harga di transaksi 
+            $total_harga = Transaksi::find($trxid);
+
+            // mencari selisih tanggal  
+            $selisih = $tglmulai->diffInDays($tglselesai);
+            $total_kekurangan =  $total_harga->total - $total_bayar_user;
+            $transaksi_kredit = ['total_kekurangan', 'total_bayar_user'];
+            array_push($compact, $transaksi_kredit);
+        }
+
         $role = auth()->user()->role->role;
         $requestUser = request_user::all();
 
@@ -404,7 +351,6 @@ class TransaksiController extends Controller
         $checking = [];
         $denied = [];
 
-        // $pembayaran = pembayaran::where('transaksi_id', $tid)->get();
         $pembayaran_loop = pembayaran::all();
 
         // bayar 
