@@ -7,8 +7,8 @@
         <div id="thumbnail" class="text-start">
             <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
             <div id="caption">
-                <h3 class="text-white text-wrap h1 text-bold">Store</h3>
-                <p id="text" class="text-white h3">YouthMS memiliki berbagai jenis Produk dari beberapa Jenis Layanan,
+                <h3 class="text-white text-wrap h1 fw-bold">Store</h3>
+                <p id="text" class="text-white">YouthMS memiliki berbagai jenis Produk dari beberapa Jenis Layanan,
                     mulai dari Aplikasi, Marketing, Desain, dan Editing</p>
             </div>
         </div>
@@ -17,7 +17,7 @@
 
     <!-- tombol kategori jasa -->
     <div class="container mb-5 mt-3">
-        <div class="d-flex flex-row justify-content-start" style="overflow-y:auto;">
+        <div class="d-flex flex-row justify-content-start" style="overflow-y:hidden;">
             <div class="d-flex flex-row">
                 <a href="{{ route('store.index') }}" class="text-capitalize btn btn yms-outline-blue rounded-5">All</a>
                 @foreach ($layanan as $l)
