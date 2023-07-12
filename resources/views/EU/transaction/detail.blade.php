@@ -102,6 +102,81 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                @if ($requser->isNotEmpty())
+                                    <h4 class="text-muted">History Pembayaran</h4>
+                                    <table class="table table-bordered">
+                                        <thead class="bg-light text-dark">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Tanggal</th>
+                                                <th>Metode</th>
+                                                <th>Bukti</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($requser as $r)
+                                                @if ($r->pembayaran->isEmpty())
+                                                    <tr>
+                                                        <td colspan="5" class="text-center">belum ada pembayaran</td>
+                                                    </tr>
+                                                @else
+                                                    @foreach ($r->pembayaran as $p)
+                                                        <tr>
+                                                            @if ($p->total_bayar == 0)
+                                                                <td colspan="5" class="text-center">belum ada
+                                                                    pembayaran</td>
+                                                            @else
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td>{{ date('d F Y', strtotime($p->created_at)) }}</td>
+                                                                @if ($p->bank)
+                                                                    <td><img src="{{ asset('illustration/' . $p->bank->image) }}"
+                                                                            alt="" style="width: 50px">
+                                                                    </td>
+                                                                @else
+                                                                    <td><img src="{{ asset('illustration/' . $p->ewallet->image) }}"
+                                                                            alt="" style="width: 50px">
+                                                                    </td>
+                                                                @endif
+                                                                <td><a href="{{ route('pembayaran.show', $p->id) }}">show
+                                                                        pembayaran</a>
+                                                                </td>
+                                                                <td>Rp.
+                                                                    {{ number_format($p->total_bayar, 0, ',', '.') }}
+                                                                </td>
+                                                            @endif
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        </tbody>
+
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="4" class="text-end">Total</td>
+                                                <td colspan="1" class="">Rp
+                                                    {{ number_format($total_bayar_user, 0, ',', '.') }}
+                                            </tr>
+                                        </tbody>
+                                        <tbody>
+                                            <tr class="h5">
+                                                <td class="text-end fw-bold" colspan="4">Total Harga Transaksi </td>
+                                                <td class="fw-bold"><span id="total-transaksi-b">Rp
+                                                        {{ number_format($t->total, 0, ',', '.') }}</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                        <tbody>
+                                            <tr class="h5">
+                                                <td class="text-end fw-bold" colspan="4">Total Harga Kekuragan </td>
+                                                <td class="fw-bold"><span id="total-transaksi-b">Rp
+                                                        {{ number_format($total_kekurangan, 0, ',', '.') }}</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -314,21 +389,28 @@
                                             @else
                                                 @foreach ($r->pembayaran as $p)
                                                     <tr>
-                                                        @if ($p->total_bayar == 0)
-                                                            <td colspan="5" class="text-center">belum ada pembayaran</td>
+                                                        {{-- @if ($p->total_bayar == 0)
+                                                            <td colspan="5" class="text-center">belum ada pembayaran</td> --}}
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ date('d F Y', strtotime($p->created_at)) }}</td>
+                                                        @if ($p->bank)
+                                                            <td><img src="{{ asset('illustration/' . $p->bank->image) }}"
+                                                                    alt="" style="width: 50px">
+                                                            </td>
                                                         @else
-                                                            <td>{{ $loop->iteration }}</td>
-                                                            <td>{{ date('d F Y', strtotime($p->created_at)) }}</td>
-                                                            @if ($p->bank)
-                                                                <td><img src="{{ asset('illustration/' . $p->bank->image) }}"
-                                                                        alt="" style="width: 50px">
-                                                                </td>
-                                                            @else
-                                                                <td><img src="{{ asset('illustration/' . $p->ewallet->image) }}"
-                                                                        alt="" style="width: 50px">
-                                                                </td>
-                                                            @endif
-                                                            <td><a href="{{ route('pembayaran.show', $p->id) }}">show
+                                                            <td><img src="{{ asset('illustration/' . $p->ewallet->image) }}"
+                                                                    alt="" style="width: 50px">
+                                                            </td>
+                                                        @endif
+                                                        @if ($p->status == 'checking')
+                                                            <td><a href="{{ route('return.back') }}"
+                                                                    class="btn btn-danger">show
+                                                                    pembayaran</a>
+                                                            </td>
+                                                            <td>dicek admin</td>
+                                                        @else
+                                                            <td><a href="{{ route('pembayaran.show', $p->id) }}"
+                                                                    class="btn btn-primary">show
                                                                     pembayaran</a>
                                                             </td>
                                                             <td>Rp. {{ number_format($p->total_bayar, 0, ',', '.') }}</td>
@@ -389,7 +471,8 @@
                         </div>
                     </a> --}}
                     <div class="alert alert-danger" role="alert">
-                        Bayar sebelum {{ date('d F Y', strtotime($t->tanggal_transaksi)) }} <br> <a href="{{ route('pembayaran.pembayaran', $t->id) }}">Klik disini untuk bayar </a>
+                        Bayar sebelum {{ date('d F Y', strtotime($t->tanggal_transaksi)) }} <br> <a
+                            href="{{ route('pembayaran.pembayaran', $t->id) }}">Klik disini untuk bayar </a>
                     </div>
                 @endif
                 <div class="card shadow rounded-3">
@@ -764,7 +847,7 @@
             <!-- Kredit -->
             @if (in_array($t->id, $EU_kredit))
                 @section('title', '| Kredit')
-        
+
                 <div class="alert alert-warning" role="alert">
                     <a href="{{ route('pembayaran.pembayaran', $t->id) }}">Klik disini untuk bayar</a>
                 </div>
@@ -883,7 +966,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    
+
 
                     {{-- detail kredit --}}
                     <h4 class="text-muted">History Pembayaran</h4>
