@@ -16,6 +16,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use App\Notifications\TransaksiNotification;
+use DateInterval;
+use DateTime;
+use DateTimeZone;
 use Illuminate\Support\Facades\Notification;
 
 class PembayaranController extends Controller
@@ -197,8 +200,12 @@ class PembayaranController extends Controller
         $cek_kredit = $pembayaran->with('request_user')->get();
         $compact = ['pembayaran', 'cek_kredit'];
         if ($cek_user == 'client') {
+
+
             return view('EU.transaction.detailpembayaran', compact($compact));
         } elseif ($cek_user == 'admin') {
+
+
             return view('Admin.transaction.detailbukti', compact($compact));
         }
     }
