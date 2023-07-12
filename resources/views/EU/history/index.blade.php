@@ -6,7 +6,8 @@
         <!-- tombol -->
         <div class="row gap-2 mb-3">
             <div class="col">
-                <h2 class="fw-bold text-dark" style="font-family: Poppins, sans-serif">History Transaksi ({{$all->count()}})</h2>
+                <h2 class="fw-bold text-dark" style="font-family: Poppins, sans-serif">History Transaksi ({{ $all->count() }})
+                </h2>
             </div>
         </div>
         <!-- content -->
@@ -17,7 +18,8 @@
                 <div class="d-flex flex-row align-items-center justify-content-end gap-3">
                     <label>Sort By (Tanggal) (Status) :</label>
                     <div class="form-group">
-                        <input type="text" value="" placeholder="Tanggal" readonly class="form-control" pattern="\d{4}-\d{2}-\d{2}" name="sort_tanggal" id="sort_tanggal">
+                        <input type="text" value="" placeholder="Tanggal" readonly class="form-control"
+                            pattern="\d{4}-\d{2}-\d{2}" name="sort_tanggal" id="sort_tanggal">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-outline-secondary" id="clear_button">
@@ -26,7 +28,7 @@
                     </div>
                     <div class="form-group">
                         <select name="sort_status" class="form-select" id="sort_status">
-                            <option value="">Semua</option>
+                            <option value="all">Semua</option>
                             <option value="belum bayar">Belum Bayar</option>
                             <option value="kredit">Kredit</option>
                             <option value="lunas">Lunas</option>
@@ -55,7 +57,7 @@
                     <tbody id="sort">
                         @foreach ($all as $a)
                             <tr class="main-row">
-                                <td>{{$loop->iteration}}.</td>
+                                <td>{{ $loop->iteration }}.</td>
                                 <td scope="row">{{ \Carbon\Carbon::parse($a->tanggal_transaksi)->format('d F Y') }}
 
                                 </td>
@@ -104,7 +106,7 @@
                 </table>
             </div>
         </div>
-        </div>
+    </div>
     </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -112,7 +114,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         flatpickr("#sort_tanggal", {
-          dateFormat: "d F Y"
+            dateFormat: "d F Y"
         });
 
         $(document).ready(function() {
@@ -131,23 +133,26 @@
         })
 
         function filterData() {
-          var statusFilter = $('#sort_status').val().toLowerCase();
-          var tanggalFilter = $('#sort_tanggal').val().toLowerCase();
+            var statusFilter = $('#sort_status').val().toLowerCase();
+            var tanggalFilter = $('#sort_tanggal').val().toLowerCase();
 
-          $('.main-row').hide();
-          $('.main-row').filter(function() {
-            var status = $(this).find('td:eq(4) span.badge').text().toLowerCase();
-            var tanggal = $(this).find('td:eq(1)').text().toLowerCase();
-
-            var matchesStatusFilter = status.includes(statusFilter);
-            var matchesTanggalFilter = true; // Default true jika filter tanggal kosong
-
-            if (tanggalFilter !== "Tanggal") {
-              matchesTanggalFilter = tanggal.includes(tanggalFilter);
+            $('.main-row').hide();
+            if (statusFilter === 'all') {
+                $('.main-row').show();
             }
+            $('.main-row').filter(function() {
+                var status = $(this).find('td:eq(4) span.badge').text().toLowerCase();
+                var tanggal = $(this).find('td:eq(1)').text().toLowerCase();
 
-            return matchesStatusFilter && matchesTanggalFilter;
-          }).show();
+                var matchesStatusFilter = status.includes(statusFilter);
+                var matchesTanggalFilter = true; // Default true jika filter tanggal kosong
+
+                if (tanggalFilter !== "Tanggal") {
+                    matchesTanggalFilter = tanggal.includes(tanggalFilter);
+                }
+
+                return matchesStatusFilter && matchesTanggalFilter;
+            }).show();
         }
     </script>
 @endsection
