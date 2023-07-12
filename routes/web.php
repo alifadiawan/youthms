@@ -72,6 +72,10 @@ Route::get('/back', function () {
 })->name('return.back');
 
 
+Route::get('testdownload', function () {
+    return view('EU.transaction.detaildownload');
+});
+
 
 //group chat
 Route::get('/group-chat', [GroupChatController::class, 'index'])->name('gc.index');
@@ -204,6 +208,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('pembayaran', pembayaranController::class);
     Route::get('/list_pembayaran', [pembayaranController::class, 'listpembayaran'])->name('pembayaran.list');
+    Route::post('/history-pembayaran', [pembayaranController::class, 'PDF'])->name('pembayaran.pdf');
     Route::get('/transaksi_pembayaran/{id}', [pembayaranController::class, 'pembayaran'])->name('pembayaran.pembayaran');
     Route::get('/cara/{id}', [pembayaranController::class, 'cara'])->name('pembayaran.cara');
     Route::get('/transaksi/{id}/detail_kredit', [pembayaranController::class, 'detail_kredit'])->name('pembayaran.detail_kredit');
