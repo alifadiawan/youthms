@@ -45,7 +45,7 @@
                         <p class="h5 font-weight-bold mb-0">Role</p>
                     </div>
                     <div class="col-sm-9">
-                        <p class="text mb-0 text-capitalize">{{$user->role->role}}</p>
+                        <p class="text mb-0 text-capitalize">{{ $user->role->role }}</p>
                     </div>
                 </div>
                 <hr>
