@@ -4412,15 +4412,21 @@ input[type="button"].btn-block {
   justify-content: space-between;
 }
 
-.navbar-brand {
+/* .navbar-brand {
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 0.5rem;
   font-size: 1.25rem;
+  font-weight: 800;
   line-height: inherit;
   white-space: nowrap;
-}
+} */
+
+/* .navbar-nav.nav-item.d-flex.flex-row p {
+  font-size: 4rem;
+} */
+
 
 .navbar-brand:hover, .navbar-brand:focus {
   text-decoration: none;

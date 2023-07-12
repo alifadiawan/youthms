@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('content-title', 'Landing Page Illustration')
-@section('judul', 'Landing Page | Illustration')
+@section('judul', 'Illustration')
 @section('content')
 
     <div class="container">

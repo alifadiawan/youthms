@@ -9,7 +9,7 @@ use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewMessageNotification;
 use Illuminate\Support\Facades\Notification;
-use App\Models\visitor;
+use App\Models\Visitor;
 use Illuminate\Support\Str;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
@@ -24,7 +24,7 @@ class DashboardController extends Controller
         $online_visitor = [
             'chart_title' => 'Visitor Counter',
             'report_type' => 'group_by_date',
-            'model' => 'App\Models\visitor',
+            'model' => 'App\Models\Visitor',
             'group_by_field' => 'created_at',
             'group_by_period' => 'day',
             'chart_type' => 'line',
