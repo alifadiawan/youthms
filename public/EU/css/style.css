@@ -104,7 +104,7 @@ h6 {
 
 #caption {
     position: absolute;
-    top: 35%;
+    top: 40%;
     left: 5%;
     width: 30%;
 }
@@ -114,9 +114,34 @@ h6 {
     width: fit-content;
 }
 
-@media all and (min-width: 1024px) and (max-width: 1280px) {}
+@media all and (min-width: 1024px) and (max-width: 1280px) {
+    h3 {
+        text-align: left;
+        font-weight: 700 !important;
+    }
+}
 
 @media all and (min-width: 768px) and (max-width: 1024px) {
+    #caption {
+        position: absolute;
+        top: 35%;
+        left: 5%;
+        width: 30%;
+    }
+
+    h3 {
+        text-align: left;
+        font-weight: 700 !important;
+        font-size: 30px;
+    }
+
+    #text {
+        text-align: left;
+        font-size: 15px;
+    }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
     #caption {
         position: absolute;
         top: 30%;
@@ -126,16 +151,17 @@ h6 {
 
     h3 {
         text-align: left;
-        font-size: 30px;
+        font-weight: 700 !important;
+        font-size: 20px;
     }
 
     #text {
         text-align: left;
-        font-size: 16px;
+        font-size: 12px;
     }
 }
 
-@media all and (min-width: 480px) and (max-width: 768px) {
+@media all and (max-width: 480px) {
     #caption {
         position: absolute;
         top: 20%;
@@ -145,31 +171,13 @@ h6 {
 
     h3 {
         text-align: left;
-        font-size: 20px;
+        font-weight: 700 !important;
+        font-size: 20px !important;
     }
 
     #text {
         text-align: left;
-        font-size: 13px;
-    }
-}
-
-@media all and (max-width: 480px) {
-    #caption {
-        position: absolute;
-        top: 13%;
-        left: 5%;
-        width: 30%;
-    }
-
-    h3 {
-        text-align: left;
-        font-size: 20px;
-    }
-
-    #text {
-        text-align: left;
-        font-size: 10px;
+        font-size: 9px;
     }
 }
 

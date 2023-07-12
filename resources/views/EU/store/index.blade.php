@@ -7,8 +7,8 @@
         <div id="thumbnail" class="text-start">
             <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
             <div id="caption">
-                <h3 class="text-white text-wrap h1 text-bold">Store</h3>
-                <p id="text" class="text-white h3">YouthMS memiliki berbagai jenis Produk dari beberapa Jenis Layanan,
+                <h3 class="text-white text-wrap h1 fw-bold">Store</h3>
+                <p id="text" class="text-white">YouthMS memiliki berbagai jenis Produk dari beberapa Jenis Layanan,
                     mulai dari Aplikasi, Marketing, Desain, dan Editing</p>
             </div>
         </div>
