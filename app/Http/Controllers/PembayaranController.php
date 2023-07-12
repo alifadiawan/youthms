@@ -139,6 +139,14 @@ class PembayaranController extends Controller
         if ($request_user) {
             $pembayaran_data['unique_code'] = $transaksi->unique_code;
             $pembayaran_data['request_user_id'] = $request_user->id;
+
+            $cek_p = Pembayaran::where('transaksi_id', $tid)->where('request_user_id', $request_user->id)->first();
+            if ($cek_p) {
+                $pembayaran_data['pembayaran_ke'] =  $cek_p->pembayaran_ke + 1;
+            } else {
+                $transaksi->update(['unique_code' => $transaksi->unique_code . 'K']);
+                $pembayaran_data['pembayaran_ke'] = 1;
+            }
         } else {
             $pembayaran_data['unique_code'] = $transaksi->unique_code . 'L';
         }

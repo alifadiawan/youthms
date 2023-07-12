@@ -73,58 +73,52 @@
                                             download
                                         </button>
                                     </div>
-                                    <div class="col">
-                                        <button class="btn btn-success w-100 yms-outline-blue rounded-pill">
-                                            share
-                                        </button>
-                                    </div>
-                                </div>
-                            @else
-                                <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
-                                    @csrf
-                                    @method('put')
+                                @else
+                                    <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
+                                        @csrf
+                                        @method('put')
 
-                                    @if ($pembayaran->request_user_id != null)
-                                        <div class="total bayar">
-                                            <div class="row">
-                                                <div class="col">
-                                                    Total Bayar
-                                                </div>
-                                                <div class="col text-right">
-                                                    Rp. <input type="number" placeholder="total bayar"
-                                                        name="total_bayar" required>
+                                        @if ($pembayaran->request_user_id != null)
+                                            <div class="total bayar">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        Total Bayar
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        Rp. <input type="number" placeholder="total bayar"
+                                                            name="total_bayar" required>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endif
+                                        @endif
 
-                                    <div class="row">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="hidden" value="checked" name="status">
+                                                <button type="submit"
+                                                    class="btn btn-success w-100 yms-outline-blue rounded-pill">
+                                                    Accept
+                                                </button>
+                                            </div>
+                                    </form>
+                                    <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
+                                        @csrf
+                                        @method('put')
                                         <div class="col">
-                                            <input type="hidden" value="checked" name="status">
+                                            <input type="hidden" value="decline" name="status">
                                             <button type="submit"
-                                                class="btn btn-success w-100 yms-outline-blue rounded-pill">
-                                                Accept
+                                                class="btn btn-outline-danger w-100 yms-outline-blue rounded-pill">
+                                                Decline
                                             </button>
-                                        </div>
-                                </form>
-                                <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
-                                    @csrf
-                                    @method('put')
-                                    <div class="col">
-                                        <input type="hidden" value="decline" name="status">
-                                        <button type="submit"
-                                            class="btn btn-outline-danger w-100 yms-outline-blue rounded-pill">
-                                            Decline
-                                        </button>
-                                </form>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
-                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 </div>
 

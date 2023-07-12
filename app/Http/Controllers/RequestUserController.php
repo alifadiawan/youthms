@@ -32,9 +32,7 @@ class RequestUserController extends Controller
         // $pending = request_user::where('transaksi_id', $trxid)->get();
 
         if ($user_role == "client") {
-            $compact = [];
-            // return view('EU.transaction.kredit', compact($compact));
-            return redirect()->route('transaksi.index');
+            return redirect()->route('transaksi.show', $trxid);
         }
 
         $request_user = request_user::all();
@@ -64,22 +62,22 @@ class RequestUserController extends Controller
     public function show(request_user $request_user, $request)
     {
         $reqid = $request;
-        
+
         $request_user = request_user::where('id', $reqid)->get();;
-        
+
         $totaltermin = 0;
-        foreach($request_user as $r){
+        foreach ($request_user as $r) {
             $trxid = $r->transaksi_id;
             $status = $r->status;
-            
-            $termin = Pembayaran::where('request_user_id',$reqid)->get();
+
+            $termin = Pembayaran::where('request_user_id', $reqid)->get();
             if (!is_null($termin) && !$termin->isEmpty()) {
-                foreach ($termin as $t ) {
+                foreach ($termin as $t) {
                     $totaltermin +=  $t->harga;
-                }   
+                }
             }
         }
-        
+
 
 
         // mengambil kolom transaksi 
@@ -96,7 +94,7 @@ class RequestUserController extends Controller
 
         // mencari harga admin
         $admin = $total * 0.11;
-    
+
         // mencari harga total
         $grandtotal = $total + $admin;
 
@@ -109,7 +107,7 @@ class RequestUserController extends Controller
         // return $user;
 
         // $admin = 
-        $compact = ['request_user', 'detail', 'transaksi','total','grandtotal','admin','status','termin','totaltermin', 'user'];
+        $compact = ['request_user', 'detail', 'transaksi', 'total', 'grandtotal', 'admin', 'status', 'termin', 'totaltermin', 'user'];
         return view('Admin.transaction.YesNo', compact($compact));
     }
 
@@ -131,10 +129,10 @@ class RequestUserController extends Controller
         $request_user = request_user::find($reqid);
         $request_user->update([
             'status' => $request->status,
-            'note_admin' => $request->note, 
+            'note_admin' => $request->note,
         ]);
 
-     
+
 
         notify()->success('Status Berhasil Diperbarui !!');
         // mengirim notifikasi
@@ -143,16 +141,13 @@ class RequestUserController extends Controller
         if ($request_user->status == 'accept') {
             $message = "Pengajuan Kreditmu Telah Diterima\nSilahkan Hubungi Admin\nUntuk Info Lebih Lanjut";
         } else {
-            $message = "Maaf Ajuan Kreditmu Ditolak Karena\n".$request_user->note_admin;
+            $message = "Maaf Ajuan Kreditmu Ditolak Karena\n" . $request_user->note_admin;
         }
         $notification = new TransaksiNotification($message);
         $notification->setUrl(route('transaksi.index')); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
 
         return redirect()->route('requestuser.index');
-
-
-        
     }
 
     /**
