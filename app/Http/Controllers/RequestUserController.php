@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\request_user;
+use App\Models\Request_user;
 use App\Models\Member;
 use App\Models\Pembayaran;
 use App\Models\User;
