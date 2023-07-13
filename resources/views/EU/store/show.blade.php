@@ -3,47 +3,50 @@
 @section('content')
 
 
-<div id="store" class="row" data-aos="fade-right" data-aos-duration="1000">
-    <div id="thumbnail" class="text-start">
-        <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
-        <div id="caption">
-            <h3 class="text-white text-wrap h1 text-bold">Store</h3>
-            <p id="text" class="text-white h3">YouthMS memiliki berbagai jenis Produk dari beberapa Jenis Layanan,
-                mulai dari Aplikasi, Marketing, Desain, dan Editing</p>
+    <!-- hero section -->
+    <div id="store" class="row" data-aos="fade-right" data-aos-duration="1000">
+        <div id="thumbnail" class="text-start">
+            <img src="{{ asset('illustration/store-illustration.png') }}" class="img-fluid" alt="">
+            <div id="caption">
+                <h3 class="text-white text-wrap h1 fw-bold">Store</h3>
+                <p id="text" class="text-white">YouthMS memiliki berbagai jenis Produk dari beberapa Jenis Layanan,
+                    mulai dari Aplikasi, Marketing, Desain, dan Editing</p>
+            </div>
         </div>
     </div>
-</div>
 
-        <div class="container mb-5 mt-3">
-            <div class="d-flex flex-row justify-content-start" style="overflow-y:hidden;">
-                <div class="d-flex flex-row">
-                    <a href="{{ route('store.index') }}" class="text-capitalize btn btn yms-outline-blue rounded-5">All</a>
-                    @foreach ($layanan as $l)
-                        @php
-                            $link = str_replace(' ', '_', $l->layanan);
-                        @endphp
-                        <a href="{{ route('store.showtype', $link) }}" class="text-capitalize btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        @if (count($errors) > 0)
-            <div class="alert alert-success" role="alert">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+    <div class="container mb-5 mt-3">
+        <div class="d-flex flex-row justify-content-start" style="overflow-y:hidden;">
+            <div class="d-flex flex-row">
+                <a href="{{ route('store.index') }}" class="text-capitalize btn btn yms-outline-blue rounded-5">All</a>
+                @foreach ($layanan as $l)
+                    @php
+                        $link = str_replace(' ', '_', $l->layanan);
+                    @endphp
+                    <a href="{{ route('store.showtype', $link) }}"
+                        class="text-capitalize btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
                 @endforeach
             </div>
-        @endif
+        </div>
+    </div>
+    @if (count($errors) > 0)
+        <div class="alert alert-success" role="alert">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </div>
+    @endif
 
 
-        <!-- promo content -->
+    <!-- promo content -->
+    <div class="container">
         <p class="h2 fw-bold text-capitalize mt-3">{{ $jenis_layanan->layanan }}</p>
         <div class="row rows-cols-lg-4 justify-content-center justify-content-md-start gx-3 my-3" data-aos="fade-down"
             data-aos-duration="1000">
             @foreach ($produk as $p)
                 <div class="my-3 col-lg-3 col-md-6 col-sm-6 col-6">
                     <div class="card card-hover border-0 shadow">
-                        <img src="{{ asset('produk/'.$p->foto) }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('produk/' . $p->foto) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title text-capitalize fw-bold">{{ $p->nama_produk }}</p>
                             <p class="card-title text-secondary">{{ $p->services->judul }}</p>
@@ -123,8 +126,10 @@
                 </div>
             @endforeach
         </div>
-        {{-- @endforeach --}}
-        {{-- <div class="my-3 col-lg-4 col-md-6 col-sm-12">
+    </div>
+
+    {{-- @endforeach --}}
+    {{-- <div class="my-3 col-lg-4 col-md-6 col-sm-12">
             <div class="card">
                 <img src="{{ asset('illustration/bmw.jpg') }}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -150,7 +155,7 @@
                     </div>
                 </div>
             </div> --}}
-        {{-- <p class="h2 fw-bold">PROMO</p>
+    {{-- <p class="h2 fw-bold">PROMO</p>
         <div class="d-flex row mb-5 justify-content-center">
             <div class="my-3 col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
