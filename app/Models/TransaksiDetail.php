@@ -13,16 +13,16 @@ class TransaksiDetail extends Model
 
     public function produk()
     {
-        return $this->belongsTo(produk::class);
+        return $this->belongsTo(Produk::class);
     }
 
     public function bank()
     {
-        return $this->belongsTo(bank::class);
+        return $this->belongsTo(Bank::class);
     }
 
     public function ewallet()
     {
-        return $this->belongsTo(ewallet::class);
+        return $this->belongsTo(Ewallet::class);
     }
 }

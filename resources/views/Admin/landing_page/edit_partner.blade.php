@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('content-title', 'Landing Page Our Partner')
-@section('judul', 'Landing Page | Edit Partner')
+@section('judul', 'Edit Partner')
 @section('content')
 
     <div class="container">
@@ -13,14 +13,14 @@
                         @csrf
                         @method('PUT')
                         <div class="row justify-content-center">
-                            <div class="col-4">
+                            <div class="col-4 col-12">
                                 <div class="form-group">
                                     <label>Partner Lama : </label>
                                     <br><br><br>
                                     <img src="{{asset('./partner/'.$partner->partner)}}" id="lama">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 col-12">
                                 <div class="form-group">
                                     <label for="partner">Partner Baru : </label>
                                     <input type="file" name="partner" id="partner" class="form-control">
@@ -28,9 +28,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <button class="text-start btn btn-warning">Edit</button>
-                            <br>
+                        <div class="d-flex flex-row ">
+                            <button class="text-start btn btn-warning mr-1">Edit</button>
                             <a href="{{route('landing.illustration')}}" class="text-start btn btn-secondary">Cancel</a>
                         </div>
                     </form>

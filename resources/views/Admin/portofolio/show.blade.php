@@ -39,7 +39,7 @@
                 @foreach ($pic as $p)
                 <div class="col mt-3">
                     <a class="pop{{$p->id}}" data-toggle="modal" data-target="#foto{{$p->id}}">
-                        <img src="{{ asset('./portofolio/'.$p->foto) }}" alt="" style="width: 15rem;">
+                        <img src="{{ asset('./portofolio/'.$p->foto) }}" alt="" style="width: 20rem;">
                     </a>
                 </div>
                 @endforeach

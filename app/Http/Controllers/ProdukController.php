@@ -41,7 +41,7 @@ class ProdukController extends Controller
             ->pluck('produk_id');
 
         // mencari id produk yang banyak di minati di tabel produk 
-        $populer = produk::whereIn('id', $produkpopuler)->with(['services', 'services.jenis_layanan'])->get();
+        $populer = Produk::whereIn('id', $produkpopuler)->with(['services', 'services.jenis_layanan'])->get();
 
         // return $populer;
 
@@ -174,7 +174,7 @@ class ProdukController extends Controller
                 $z[$serv->id] = $serv;
             }
         }
-        $produk = produk::wherein('id', $pr)->get();
+        $produk = Produk::wherein('id', $pr)->get();
 
         // inisialiasi compact
         $compact = ['layanan', 'produk', 'jenis_layanan'];
@@ -184,11 +184,11 @@ class ProdukController extends Controller
             // cek user & member
             $user = auth()->user()->id;
             // $member = member::where('user_id', $user)->get();
-            $m = member::where('user_id', $user);
+            $m = Member::where('user_id', $user);
             $mid = $m->pluck('id')->first();
             $member = $m->get();
             // mengecek keranjang 
-            $cart = cart::where('member_id', $mid)->get();
+            $cart = Cart::where('member_id', $mid)->get();
             $compact = array_merge($compact, ['user', 'member', 'cart']);
             return view('EU.store.show', compact($compact));
         }

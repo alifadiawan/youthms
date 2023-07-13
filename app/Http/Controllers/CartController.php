@@ -18,12 +18,12 @@ class CartController extends Controller
     {
         // mencari data user & member
         $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->pluck('id')->first();
-        $cart = cart::where('member_id', $member)->get()->sortByDesc('cart.created_at');
+        $member = Member::where('user_id', $user)->pluck('id')->first();
+        $cart = Cart::where('member_id', $member)->get()->sortByDesc('cart.created_at');
         // return $cart;
 
         $totalTransaksi = 0;
-        $cart = cart::where('member_id', $member)->get();
+        $cart = Cart::where('member_id', $member)->get();
         // return $cart;
         foreach ($cart as $c) {
             $totalTransaksi += $c->quantity * $c->produk->harga;
@@ -84,7 +84,7 @@ class CartController extends Controller
     public function store(Request $request)
     {
         // return $request;
-        cart::create($request->all());
+        Cart::create($request->all());
         notify()->success('item berhasil ditambahkan');
 
         return redirect()->back();
@@ -121,11 +121,11 @@ class CartController extends Controller
     {
         // mencari data user & member
         $user = auth()->user()->id;
-        $member = member::where('user_id', $user)->pluck('id')->first();
+        $member = Member::where('user_id', $user)->pluck('id')->first();
 
 
         // mencari produk di tabel cart menggunakkan id member lalu dihapus
-        $item = cart::where('member_id', $member)->where('produk_id', $id)->first();
+        $item = Cart::where('member_id', $member)->where('produk_id', $id)->first();
         $item->delete();
         return redirect()->back();
     }

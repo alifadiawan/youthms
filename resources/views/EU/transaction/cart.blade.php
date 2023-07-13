@@ -19,8 +19,8 @@
 
 
                 <div class="card mb-4">
-                    <div class="card-header py-3">
-                        <h5 class="mb-0">Cart</h5>
+                    <div class="card-header py-3" style="background-color: #406cab">
+                        <h5 class="mb-0 text-white" style="font-family: Poppins">Cart</h5>
                     </div>
 
                     @if ($cart->isEmpty())

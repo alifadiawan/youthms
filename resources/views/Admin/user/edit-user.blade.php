@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-sm-9">
                                 <input class="form-control" type="text" value="{{ $user->email }}"name="email"
-                                        id="email">
+                                    id="email">
                             </div>
                         </div>
                         <hr>
@@ -37,23 +37,25 @@
                             </div>
                             <div class="col-sm-9">
                                 @if (auth()->user()->role->role == 'owner' || auth()->user()->role->role == 'admin')
-                                        <select class="form-control form-select" name="role_id" id="role_id">
-                                            <option>Pilih Role</option>
-                                            @foreach ($role as $r)
-                                                <option value="{{ $r->id }}" @if($r->id == $user->role_id) selected @endif>
-                                                    {{ $r->role }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    @else
-                                        <select disabled class="form-control form-select" name="role_id" id="role_id">
-                                            @foreach ($role as $r)
-                                                <option value="{{ $r->id }}" @if($r->id == $user->role_id) selected @endif>
-                                                    {{ $r->role }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    @endif
+                                    <select class="form-control form-select" name="role_id" id="role_id">
+                                        <option>Pilih Role</option>
+                                        @foreach ($role as $r)
+                                            <option value="{{ $r->id }}"
+                                                @if ($r->id == $user->role_id) selected @endif>
+                                                {{ $r->role }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                @else
+                                    <select disabled class="form-control form-select" name="role_id" id="role_id">
+                                        @foreach ($role as $r)
+                                            <option value="{{ $r->id }}"
+                                                @if ($r->id == $user->role_id) selected @endif>
+                                                {{ $r->role }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                @endif
                             </div>
                         </div>
                         <hr>
@@ -63,8 +65,8 @@
                             </div>
                             <div class="col-sm-9">
                                 <input class="form-control" type="password"
-                                        placeholder="!! Hanya Isi Jika Ingin Ganti Password !!" name="password"
-                                        id="password">
+                                    placeholder="!! Hanya Isi Jika Ingin Ganti Password !!" name="password"
+                                    id="password">
                             </div>
                         </div>
                         <hr>
@@ -119,7 +121,7 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-success">Simpan</button>
-                <a class="btn btn-secondary" href="{{URL()->previous()}}">Batal</a>
+                <a class="btn btn-secondary" href="{{ url()->previous() }}">Batal</a>
             </div>
         </form>
     </div>

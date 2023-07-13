@@ -34,72 +34,75 @@
 
                     <!-- Trending Bottom -->
 
-                    <div class="trending-bottom">
-                        <div class="row">
-                            @foreach ($recently_uploaded as $ru)
-                                <div class="col-lg-4" style="margin-top: 50px">
-                                    <div class="single-bottom mb-35">
-                                        <div class="trend-bottom-img mb-30">
-                                            <img src="{{ asset('blog/' . $ru->foto) }}" alt="" height="190px">
-                                        </div>
-                                        <div class="trend-bottom-cap">
-                                            <span class="color1">{{ $ru->segmen->segmen }}</span>
-                                            <h4><a href="{{ route('blogs.detail', $ru->id) }}">{{ $ru->judul }}</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="row">
-                            @foreach ($recently_lastweek as $rl)
-                                <div class="col-lg-3" style="margin-top: 50px">
-                                    <div class="single-bottom mb-35">
-                                        <div class="trend-bottom-img mb-30">
-                                            <img src="{{ asset('blog/' . $rl->foto) }}" alt="" width="100%"
-                                                height="190px">
-                                        </div>
-                                        <div class="trend-bottom-cap">
-                                            <span class="color1">{{ $rl->segmen->segmen }}</span>
-                                            <h4><a href="{{ route('blogs.detail', $rl->id) }}">{{ $rl->judul }}</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                <!-- Right content -->
-                <div class="col-lg-3">
-                    <div class="card" style="border-radius: 25px">
-                        <div class="card-body">
-                            <div class="header container mb-2 mt-3">
-                                <div class="d-flex flex-row text-center gap-3" style="justify-content: center">
-                                    <a type="submit" href="#" onclick="show('populer')" class="btn-populer rounded-5"
-                                        style="width:70px; height:100%"><i class="fa-solid fa-star"></i></a>
-                                    <a type="submit" href="#" onclick="show('weekly')" class="btn-terkini rounded-5"
-                                        style="width:70px; height:100%"><i class="fa-solid fa-chart-simple"></i></a>
-                                    <a type="submit" href="#" onclick="show('terpilih')"
-                                        class="btn-terpilih rounded-5" style="width:70px; height:100%"><i
-                                            class="fa-regular fa-hand-pointer"></i></a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="overflow-auto" style="max-width: 100%; max-height: 575px;">
-                                <div class="col-lg-12" id="menu">
-                                    @foreach ($populer as $p)
-                                        <div class="trand-right-single d-flex">
-                                            <div class="trand-right-img">
-                                                <img src="{{ asset('blog/' . $p->foto) }}" alt="" width="100px"
-                                                    height="100px">
-                                            </div>
-                                            <div class="trand-right-cap">
-                                                <span class="color1">POPULER</span>
-                                                <h4><a href="/blog-detail">{{ $p->judul }}</a>
-                                                </h4>
+                            <div class="trending-bottom">
+                                <div class="row">
+                                    @foreach ($recently_uploaded as $ru)
+                                        <div class="col-lg-4" style="margin-top: 50px">
+                                            <div class="single-bottom mb-35">
+                                                <div class="trend-bottom-img mb-30">
+                                                    <img src="{{ asset('blog/'.$ru->foto) }}" alt=""
+                                                        height="190px">
+                                                </div>
+                                                <div class="trend-bottom-cap">
+                                                    <span class="color1">{{$ru->segmen->segmen}}</span>
+                                                    <h4><a href="{{route('blogs.detail', $ru->id)}}">{{$ru->judul}}</a></h4>
+                                                </div>
                                             </div>
                                         </div>
                                     @endforeach
-                                    {{-- <div class="trand-right-single d-flex">
+                                </div>
+                                <div class="row">
+                                    @foreach ($recently_lastweek as $rl)
+                                        <div class="col-lg-3" style="margin-top: 50px">
+                                            <div class="single-bottom mb-35">
+                                                <div class="trend-bottom-img mb-30">
+                                                    <img src="{{ asset('blog/'.$rl->foto) }}" alt=""
+                                                        width="100%" height="190px">
+                                                </div>
+                                                <div class="trend-bottom-cap">
+                                                    <span class="color1">{{$rl->segmen->segmen}}</span>
+                                                    <h4><a href="{{route('blogs.detail',$rl->id)}}">{{$rl->judul}}</a></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right content -->
+                        <div class="col-lg-3">
+                            <div class="card" style="border-radius: 25px">
+                                <div class="card-body">
+                                    <div class="header container mb-2 mt-3">
+                                        <div class="d-flex flex-row text-center gap-3" style="justify-content: center">
+                                                <a type="submit" href="#" onclick="show('populer')" class="btn-populer rounded-5"
+                                                    style="width:70px; height:100%"><i
+                                                        class="fa-solid fa-star"></i></a>
+                                                <a type="submit" href="#" onclick="show('weekly')" class="btn-terkini rounded-5"
+                                                    style="width:70px; height:100%"><i
+                                                        class="fa-solid fa-chart-simple"></i></a>
+                                                <a type="submit" href="#" onclick="show('terpilih')" class="btn-terpilih rounded-5"
+                                                    style="width:70px; height:100%"><i
+                                                        class="fa-regular fa-hand-pointer"></i></a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="overflow-auto" style="max-width: 100%; max-height: 575px;">
+                                        <div class="col-lg-12" id="menu">
+                                                @foreach ($populer as $p)
+                                                    <div class="trand-right-single d-flex">
+                                                        <div class="trand-right-img">
+                                                            <img src="{{ asset('blog/'.$p->foto) }}" alt=""
+                                                                width="100px" height="100px">
+                                                        </div>
+                                                        <div class="trand-right-cap">
+                                                            <span class="color1">POPULER</span>
+                                                            <h4><a href="/blog-detail">{{$p->judul}}</a>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            {{-- <div class="trand-right-single d-flex">
                                                 <div class="trand-right-img">
                                                     <img src="assets/img/images/course-11.jpg" alt="" width="100%" height="100%">
                                                 </div>

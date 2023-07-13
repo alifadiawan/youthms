@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('content-title', 'Landing Page Edit Illustration')
-@section('judul', 'Landing Page | Edit Illustration')
+@section('judul', 'Edit Illustration')
 @section('content')
 
     <div class="container">
@@ -11,13 +11,13 @@
                     @csrf
                     @method('PUT')
                     <div class="row justify-content-center ">
-                        <div class="col">
+                        <div class="col-12 col-lg-6">
                             <div class="form-group">
                                 <label>Illustration Lama : </label>
                                 <img src="{{asset('./illustration/'.$illustration->illustration)}}" id="lama">
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-lg-6">
                             <div class="form-group">
                                 <label for="illustration">Illustration Baru : </label>
                                 <input type="file" name="illustration" id="illustration" class="form-control">

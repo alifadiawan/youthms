@@ -144,15 +144,15 @@
                                 </p>
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
+                        <li class="nav-item">
                             <a href="{{ route('pembayaran.index') }}" class="nav-link">
 
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    Detail Bayar
+                                    List Pembayaran
                                 </p>
                             </a>
-                        </li> --}}
+                        </li>
                     </ul>
                 </li>
                 {{-- <li class="nav-item">

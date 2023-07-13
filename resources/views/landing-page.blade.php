@@ -74,9 +74,9 @@
                         data-aos-delay="200">
                         <div class="icon-box text-center" style="width: 100%; height: 30rem;">
                             <h4>{{ $p->nama_paket }}</h4>
-                            @foreach ($produk->where('paket_id', $p->id) as $pp)
+                            @foreach ($p->produk as $pp)
                                 <ul class="m-0">
-                                    <li class="paket text-start">{{ $pp->produk->nama_produk }}</li>
+                                    <li class="paket text-start">{{ $pp->nama_produk }}</li>
                                 </ul>
                             @endforeach
 
@@ -84,11 +84,11 @@
                                 
                                 $total = 0;
                             @endphp
-                            @foreach ($produk->where('paket_id', $p->id) as $p)
+                            @foreach ($p->produk as $pt)
                                 @php
-                                    $total += $p->produk->harga;
+                                    $total += $pt->harga;
                                 @endphp
-                                {{-- {{ $p->produk->harga }j} --}}
+                                
                             @endforeach
                             <div class="footer" style="position: absolute; bottom:20px; right:50px; left: 50px">
                                  <p class="fw-bold">Rp {{ number_format($total, 0, ',', '.') }}</p>
@@ -135,14 +135,15 @@
     <section id="testimonial">
         <!-- Carousel wrapper -->
         <div id="carouselExampleControls" class="carousel slide text-center text-white" data-bs-ride="carousel">
+            <h2 class="fw-bold mb-4" style="font-family: Poppins">Testimonials</h2>
             <div class="carousel-inner">
                 @foreach ($testi as $item)
                     <div class="carousel-item active">
-                        <img class="rounded-circle shadow-1-strong mb-4" src="{{ asset('./testimonial/' . $item->foto) }}"
-                            alt="avatar" style="width: 150px;" />
+                        <img class="rounded-5 shadow-1-strong mb-4" src="{{ asset('./testimonial/' . $item->foto) }}"
+                            alt="avatar" style="width: 100px; height:3cm" />
                         <div class="row d-flex justify-content-center">
                             <div class="col-lg-8">
-                                <h5 class="mb-3">{{ $item->nama }}</h5>
+                                <h5 class="mb-3 fw-bold" style="font-family: Poppins">{{ $item->nama }}</h5>
                                 <p>{{ $item->jabatan }}</p>
                                 <p class="">
                                     <i class="fas fa-quote-left pe-2"></i>

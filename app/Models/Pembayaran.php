@@ -12,21 +12,22 @@ class Pembayaran extends Model
 
     public function transaksi()
     {
-        return $this->belongsTo(transaksi::class);
+        return $this->belongsTo(Transaksi::class);
     }
 
-    // public function gateaways()
-    // {
-    //     return $this->belongsTo(gateaway::class);
-    // }
+    public function request_user()
+    {
+        return $this->belongsTo(Request_user::class);
+    }
+
     
     public function bank()
     {
-        return $this->belongsTo(bank::class);
+        return $this->belongsTo(Bank::class);
     }
 
     public function ewallet()
     {
-        return $this->belongsTo(ewallet::class);
+        return $this->belongsTo(Ewallet::class);
     }
 }

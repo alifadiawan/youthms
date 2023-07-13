@@ -3,9 +3,6 @@
 @section('content')
 @section('judul', 'Porto Page Illustration')
 
-
-
-
 <div class="container">
     <div class="row">
         <div class="col">
@@ -13,10 +10,10 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         @foreach($ills as $i)
-                        <div class="col-4">
+                        <div class="col-lg-5 col-12">
                             <img id="illustration" src="{{ asset('./illustration/'.$i->foto) }}" style="width: 20rem">
                         </div>
-                        <div class="col">
+                        <div class="col-12">
                             <h1 class="h3 font-weight-bold">{{$i->text_head}}</h1>
                             <p>{{$i->text_body}}</p>
 

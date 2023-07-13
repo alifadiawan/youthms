@@ -50,7 +50,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <input type="submit" value="Submit" class="btn text-white" style="background-color: #0EA1E2">
+                            <button type="submit" class="btn text-white" style="background-color: #0EA1E2"><i class="fa-solid fa-check"></i> Tambah</button>
                             <a href="{{ route('store.index') }}" class="btn btn-secondary">cancel</a>
                         </div>
                     </div>

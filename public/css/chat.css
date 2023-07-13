@@ -227,6 +227,20 @@ message-area
     padding: 15px;
 }
 
+#group{
+    z-index: 999;
+}
+
+.chat-list{
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 0.3rem;
+    height: 90vh;
+    overflow: hidden;
+    min-height: calc(100% - 1rem);
+}
+
 .chat-area .modal-content {
     border: none;
     border-radius: 0;
@@ -242,8 +256,24 @@ message-area
     width: auto;
     overflow: hidden;
     height: 100%;
-    border-left: 1px solid #ccc;
+
 }
+
+/* Ripple effect */
+.ripple {
+    background-position: center;
+    transition: background 0.8s;
+  }
+  .ripple:hover {
+    background: #cbcbcb radial-gradient(circle, transparent 1%, #b3b3b3 1%) center/15000%;
+    border-radius: 10px;
+  }
+  .ripple:active {
+    background-color: #cbcbcb;
+    border-radius: 10px;
+    background-size: 100%;
+    transition: background 0s;
+  }
 
 .chatbox .modal-dialog,
 .chatlist .modal-dialog {
@@ -718,13 +748,13 @@ button:focus {
     }
 
     .chatlist {
-        width: 100%;
+        width: 0%;
     }
 
     .chatbox {
         width: 100%;
         position: absolute;
-        left: 1000px;
+        left: 10px;
         right: 0;
         background: #fff;
         transition: all 0.5s ease;

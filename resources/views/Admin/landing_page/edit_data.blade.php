@@ -1,6 +1,6 @@
 @extends('layout.admin')
-@section('content-title', 'Landing Page Data')
-@section('judul', 'Landing Page | Edit Data')
+@section('content-title', 'Landing Page Testimonial')
+@section('judul', 'Edit Testimonial')
 @section('content')
 
 <div class="container">
@@ -13,14 +13,14 @@
                         @csrf
                         @method('PUT')
                         <div class="row justify-content-center">
-                            <div class="col-4">
+                            <div class="col-4 col-12">
                                 <div class="form-group">
                                     <label>Foto Lama : </label>
                                     <br><br><br>
                                     <img src="{{asset('./testimonial/'.$data->foto)}}" id="lama">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 col-12">
                                 <div class="form-group">
                                     <label for="foto">Foto Baru (Optional) : </label>
                                     <input type="file" name="foto" id="foto" class="form-control">

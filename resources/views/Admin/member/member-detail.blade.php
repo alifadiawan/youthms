@@ -15,7 +15,7 @@
                 <p class="h4 text-center text-bold mt-2">AKUN </p>
                 <div class="row my-3">
                     <div class="col-sm-3">
-                        <p class="h5 font-weight-bold mb-0">Username</p>
+                        <p class="h5 font-weight-bold mb-0">ID Member</p>
                     </div>
                     <div class="col-sm-9">
                         <p class="text mb-0">{{ $member->id_member }}</p>

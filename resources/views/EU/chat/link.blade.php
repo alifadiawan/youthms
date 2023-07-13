@@ -92,4 +92,8 @@
     #chat1 .form-outline .form-control~.form-label {
         color: #bfbfbf;
     }
+
+
+    
+
 </style>

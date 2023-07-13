@@ -22,7 +22,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS0000001',
                 'total' => 293039,
                 'total_bayar' => 293039,
-                'member_id' => 2,
+                'member_id' =>1,
                 'created_at' => Carbon::parse('2023-7-4')
             ],
             [
@@ -30,7 +30,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS0000002',
                 'total' => 2847146,
                 'total_bayar' => 2847146,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-7-3')
             ],
             [
@@ -38,7 +38,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS0000003',
                 'total' => 1645020,
                 'total_bayar' => 1645020,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-7-1')
             ],
             [
@@ -46,7 +46,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS0000004',
                 'total' => 382950,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-7-6')
             ],
             [
@@ -54,7 +54,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5611394',
                 'total' => 318570,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-6-2')
             ],
             [
@@ -62,7 +62,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS7553512',
                 'total' => 342989,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-6-1')
             ],
             [
@@ -70,7 +70,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5662173',
                 'total' => 738149,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-5-12')
             ],
             [
@@ -78,7 +78,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5662173',
                 'total' => 738149,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-5-13')
             ],
             [
@@ -86,7 +86,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5662173',
                 'total' => 738149,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-5-14')
             ],
             [
@@ -94,7 +94,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5662173',
                 'total' => 738149,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-8-14')
             ],
             [
@@ -102,7 +102,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5662173',
                 'total' => 738149,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-8-14')
             ],
             [
@@ -110,7 +110,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5662173',
                 'total' => 738149,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-8-14')
             ],
             [
@@ -118,7 +118,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5662173',
                 'total' => 738149,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-8-14')
             ],
             [
@@ -126,7 +126,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5662173',
                 'total' => 738149,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-8-14')
             ],
             [
@@ -134,7 +134,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5662173',
                 'total' => 738149,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-9-14')
             ],
             [
@@ -142,7 +142,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5662173',
                 'total' => 738149,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-9-14')
             ],
             [
@@ -150,7 +150,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5662173',
                 'total' => 738149,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-9-14')
             ],
             [
@@ -158,7 +158,7 @@ class TransaksiSeeder extends Seeder
                 'unique_code' => 'YMS5662173',
                 'total' => 738149,
                 'total_bayar' => 0,
-                'member_id' => 2,
+                'member_id' => 1,
                 'created_at' => Carbon::parse('2023-9-14')
             ],
 

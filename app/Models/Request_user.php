@@ -5,19 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class request_user extends Model
+class Request_user extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
     public function transaksi()
     {
-        return $this->belongsTo(transaksi::class);
+        return $this->belongsTo(Transaksi::class);
     }
 
-    public function termin()
+    public function termins()
     {
-        return $this->hasMany(termin::class);
+        return $this->hasMany(Termin::class);
+    }
+
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class);
     }
 
 }

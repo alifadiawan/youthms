@@ -2,15 +2,16 @@
 @section('content')
 @section('judul', 'Transaction')
 <div class="card">
-    <div class="col-lg-12">
-        <div class="table-responsive">
+    <div class="card-body">
 
+        <div class="table-responsive">
             <table class="table table-striped mt-2">
                 <thead>
                     <tr style="background-color: #0EA1E2">
-                        <th class="text-white">No</th>
+                        <th class="text-white">kode transaksi</th>
                         <th class="text-white">Nama</th>
                         <th class="text-white">Total harga</th>
+                        <th class="text-white">Tanggal</th>
                         <th class="text-white">Status</th>
                         <th class="text-white">Detail</th>
                     </tr>
@@ -18,10 +19,10 @@
                 <tbody>
                     @foreach ($trx as $t)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $t->unique_code }}</td>
                             <td>{{ $t->member->name }}</td>
-                            {{-- <td>skip sek males</td> --}}
                             <td>Rp {{ number_format($t->total, 0, ',', '.') }}</td>
+                            <td>{{ \Carbon\carbon::parse($t->created_at)->format('d F Y') }}</td>
                             @if (in_array($t->id, $uu))
                                 <td>
                                     <button disabled="disabled" class="btn btn-sm btn-danger"></button><span
@@ -59,10 +60,13 @@
                         </tr>
                     @endforeach
                 </tbody>
-                {{ $trx->links() }}
+
             </table>
         </div>
 
+        {{ $trx->links() }}
+
     </div>
+
 </div>
 @endsection

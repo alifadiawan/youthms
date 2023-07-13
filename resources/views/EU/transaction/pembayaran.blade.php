@@ -238,59 +238,63 @@
                             </div> --}}
 
                             <!-- Virtaul Account -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseFour" aria-expanded="false"
-                                        aria-controls="flush-collapseFour">
-                                        <i class="fa-solid fa-credit-card me-2"></i> Kredit
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseFour" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        <form action="{{ route('transaksi.kredit') }}" method="post">
-                                            @csrf
-                                            <div class="form">
-                                                <div class="form-gorup">
-                                                    <label for="">Nama Pemesan / Instansi</label>
-                                                    <input type="text" class="form-control" name="nama_pemesan"
-                                                        value="{{ old('nama_pemesan') }}" required>
-                                                </div>
-                                                <div class="form-gorup">
-                                                    <label for="">Jangka Waktu</label>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            {{-- pending --}}
-                                                            <label for="">tanggal mulai</label>
-                                                            <input type="date" id="tanggal" name="tanggal_mulai"
-                                                                class="form-control" value="{{ date('Y-m-d') }}"
-                                                                min="{{ date('Y-m-d') }}" required>
-                                                        </div>
-                                                        <div class="col">
-                                                            <label for="">tanggal akhir</label>
-                                                            <input type="date" name="jatuh_tempo" class="form-control"
-                                                                min="{{ date('Y-m-d') }}"
-                                                                value="{{ old('jatuh_tempo') }}" required>
-                                                        </div>
+                            @if ($cek_kredit)
+                            @else
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                            aria-controls="flush-collapseFour">
+                                            <i class="fa-solid fa-credit-card me-2"></i> Kredit
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <form action="{{ route('transaksi.kredit') }}" method="post">
+                                                @csrf
+                                                <div class="form">
+                                                    <div class="form-gorup">
+                                                        <label for="">Nama Pemesan / Instansi</label>
+                                                        <input type="text" class="form-control" name="nama_pemesan"
+                                                            value="{{ old('nama_pemesan') }}" required>
+                                                    </div>
+                                                    <div class="form-gorup">
+                                                        <label for="">Jangka Waktu</label>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label for="">tanggal mulai</label>
+                                                                <input type="date" id="tanggal" name="tanggal_mulai"
+                                                                    class="form-control" value="{{ date('Y-m-d') }}"
+                                                                    min="{{ date('Y-m-d') }}" required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <label for="">tanggal akhir</label>
+                                                                <input type="date" name="jatuh_tempo"
+                                                                    class="form-control"
+                                                                    min="{{ date('Y-m-d', strtotime('+1 day')) }}"
+                                                                    value="{{ old('jatuh_tempo') }}" required>
+                                                            </div>
 
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-gorup">
+                                                        <label for="">Deskripsi (opsional)</label>
+                                                        <textarea class="form-control" name="deskripsi" cols="30" rows="10">{{ old('deskripsi') }}</textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="status" value="pending">
+                                                        <input type="hidden" name="transaksi_id"
+                                                            value="{{ $tid }}">
+                                                        <button class="btn btn-primary" type="submit">kirim
+                                                            request</button>
                                                     </div>
                                                 </div>
-                                                <div class="form-gorup">
-                                                    <label for="">Deskripsi (opsional)</label>
-                                                    <textarea class="form-control" name="deskripsi" cols="30" rows="10">{{ old('deskripsi') }}</textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="hidden" name="status" value="pending">
-                                                    <input type="hidden" name="transaksi_id"
-                                                        value="{{ $tid }}">
-                                                    <button class="btn btn-primary" type="submit">kirim request</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
 
                             <!-- E-wallet -->
                             {{-- <div class="accordion-item">

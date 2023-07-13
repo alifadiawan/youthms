@@ -67,17 +67,43 @@ route::get('/invoice', function () {
     return view('EU.transaction.alphastude');
 });
 
+Route::get('/back', function () {
+    return redirect()->back();
+})->name('return.back');
 
 
+Route::get('testdownload', function () {
+    return view('EU.transaction.detaildownload');
+});
 
+
+//group chat
 Route::get('/group-chat', [GroupChatController::class, 'index'])->name('gc.index');
+
+//send
 Route::post('/group-chat/send-message', [GroupChatController::class, 'sendMessage'])->name('gc.send');
+
+//add group
 Route::post('/group-chat/store', [GroupChatController::class, 'store'])->name('gc.store');
+
+//show group
 Route::get('/group-chat/{group}', [GroupChatController::class, 'showMessage'])->name('gc.show');
+
+//add
 Route::post('/group-chat/{group}/add-users', [GroupChatController::class, 'addUser'])->name('gc.users.add');
+Route::post('/group-chat/{group}/add-admin', [GroupChatController::class, 'addAdmin'])->name('gc.admin.add');
+
+//remove
 Route::post('/group-chat/{group}/remove-users', [GroupChatController::class, 'removeUser'])->name('gc.users.remove');
+Route::post('/group-chat/{group}/remove-admin', [GroupChatController::class, 'removeAdmin'])->name('gc.admin.remove');
+
+//load
 Route::get('/group-chat/load/{group}', [GroupChatController::class, 'loadNewMessage'])->name('gc.load');
+
+//group
 Route::post('/group-chat/join', [GroupChatController::class, 'joinGroup'])->name('gc.join');
+Route::post('/group-chat/{group}/left', [GroupChatController::class, 'leftGroup'])->name('gc.left');
+Route::get('/group-chat/{group}/delete', [GroupChatController::class, 'removeGroup'])->name('gc.delete');
 
 
 
@@ -177,13 +203,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/transaksi_kredit', [TransaksiController::class, 'kredit'])->name('transaksi.kredit');
 
     Route::resource('transaksidetail', transaksidetailController::class);
-    Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
+    // Route::get('/history', [TransaksiController::class, 'history'])->name('transaksi.history');
     // Route::get('/transaksi_pembayaran/{id}', [TransaksiController::class, 'pembayaran'])->name('transaksi.pembayaran');
 
     Route::resource('pembayaran', pembayaranController::class);
-    Route::get('/list_pembayaran', [pembayaranController::class,'listpembayaran'])->name('pembayaran.list');
+    Route::get('/list_pembayaran', [pembayaranController::class, 'listpembayaran'])->name('pembayaran.list');
+    Route::post('/history-pembayaran', [pembayaranController::class, 'PDF'])->name('pembayaran.pdf');
     Route::get('/transaksi_pembayaran/{id}', [pembayaranController::class, 'pembayaran'])->name('pembayaran.pembayaran');
     Route::get('/cara/{id}', [pembayaranController::class, 'cara'])->name('pembayaran.cara');
+    Route::get('/transaksi/{id}/detail_kredit', [pembayaranController::class, 'detail_kredit'])->name('pembayaran.detail_kredit');
 
     // route::get('/lunas', function () {
     //     return view('EU.transaction.lunas');

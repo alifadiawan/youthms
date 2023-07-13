@@ -21,7 +21,7 @@
                 <div class="card-body">
 
                     <div class="row justify-content-center">
-                        <div class="col-4">
+                        <div class="col-4 col-12">
                             <img id="testi" src="{{ asset('./testimonial/'.$d->foto) }}">
                         </div>
                     </div>

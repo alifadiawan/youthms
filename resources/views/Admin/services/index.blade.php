@@ -48,8 +48,8 @@
                         @foreach ($services as $item)
                             <tr>
                                 <td scope="row">{{ $loop->iteration }}</td>
-                                <td>{{ $item->jenis_layanan->layanan }}</td>
-                                <td>{{ $item->judul }}</td>
+                                <td class="text-capitalize">{{ $item->jenis_layanan->layanan }}</td>
+                                <td class="text-capitalize">{{ $item->judul }}</td>
                                 <td>
                                     <a href="{{ route('services.show', $item->id) }}"
                                         class="btn btn-info btn-sm rounded-pill"
@@ -72,17 +72,15 @@
 
             <div class="row mb-3">
                 <div class="col">
-                    <a class="btn text-white" data-toggle="modal" data-target="#exampleModal"
-                        style="background-color: #1864BA">Tambah
-                        jenis layanan</a>
+                    <h3 class="text-bold mt-2 mb-2">Jenis layanan</h3>
                 </div>
             </div>
 
             <table class="table">
                 <thead class="text-white" style="background-color: #0EA1E2">
                     <tr>
-                        <th>Nama layanan</th>
-                        <th>Action</th>
+                        <th class="text-center">Nama layanan</th>
+                        <!-- <th>Action</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -93,14 +91,14 @@
                     @else
                         @foreach ($jenis_layanan as $item)
                             <tr class="text-center">
-                                <td>{{ $item->layanan }}</td>
-                                <td>
+                                <td class="text-capitalize">{{ $item->layanan }}</td>
+                                {{-- <td>
                                     <button type="button" class="btn btn-sm text-white" data-toggle="modal"
                                         data-target="#hapusjenislayanan{{ $item->id }}"
                                         style="background-color: #1864BA">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                     @endif
@@ -126,10 +124,18 @@
             <div class="modal-body">
                 <form action="{{ route('jenislayanan.store') }}" method="post">
                     @csrf
-                    <div>
+                    <div class="form-group">
                         <label for="">Nama Layanan</label>
                         <input type="text" class="form-control" placeholder="jasa editing" name="layanan"
                             id="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Deskripsi</label>
+                        <textarea name="deskripsi" id="deskripsi" class="form-control" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Link ilustrasi</label>
+                        <input type="text" class="form-control" name="link_illus" id="link_illus">
                     </div>
             </div>
             <div class="row text-center p-3">

@@ -4,7 +4,7 @@
         <input type="text" class="form-control" name="message" id="message-input" aria-label="message…"
             placeholder="Write message…">
         <input type="hidden" name="group_id" value="{{$group->id}}">
-        <button type="button" id="send-button"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+        <button type="submit" id="send-button"><i class="fa fa-paper-plane" aria-hidden="true"></i>
             Send</button>
     </form>
 {{-- 
@@ -27,7 +27,8 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $('#send-button').click(function() {
+    $('#message-form').submit(function(e) {
+        e.preventDefault();
         var message = $('#message-input').val();
         var groupId = $('input[name="group_id"]').val();
         var csrfToken = $('input[name="_token"]').val();

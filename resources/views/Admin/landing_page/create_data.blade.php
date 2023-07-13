@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('content-title', 'Landing Page Data')
-@section('judul', 'Landing Page | Create Data')
+@section('judul', 'Create Testimonial')
 @section('content')
 
 <div class="container">
@@ -12,7 +12,7 @@
                     <form action="{{route('landing.data_store')}}" enctype="multipart/form-data" method="post">
                         @csrf
                         <div class="row justify-content-center">
-                            <div class="col-4">
+                            <div class="col-4 col-12 col-md-6">
                                 <div class="form-group">
                                     <label for="foto">Photo : </label>
                                     <input type="file" name="foto" id="foto" class="form-control">

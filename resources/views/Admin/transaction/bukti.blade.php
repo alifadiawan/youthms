@@ -1,8 +1,10 @@
 @extends('layout.admin')
 @section('content')
-@section('judul', 'Transaction')
+@section('judul', 'List Pembayaran ')
 <div class="card">
     <div class="col-lg-12">
+        <div class="table-responsive">
+
         <table class="table table-striped mt-2">
             <thead>
                 <tr style="background-color: #0EA1E2">
@@ -21,6 +23,7 @@
                         <td>{{ $p->transaksi->member->name }}</td>
                         <td>Rp. {{ number_format($p->transaksi->total, 0, ',', '.') }}</td>
                         <td>
+
                             @if ($p->status == 'checking')
                                 <button disabled="disabled" class="btn btn-sm btn-warning"></button><span
                                     class="badge">{{ $p->status }}</span>
@@ -51,6 +54,8 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+
     </div>
 </div>
 @endsection
