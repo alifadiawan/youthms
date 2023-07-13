@@ -74,9 +74,9 @@
                         data-aos-delay="200">
                         <div class="icon-box text-center" style="width: 100%; height: 30rem;">
                             <h4>{{ $p->nama_paket }}</h4>
-                            @foreach ($produk->where('paket_id', $p->id) as $pp)
+                            @foreach ($p->produk as $pp)
                                 <ul class="m-0">
-                                    <li class="paket text-start">{{ $pp->produk->nama_produk }}</li>
+                                    <li class="paket text-start">{{ $pp->nama_produk }}</li>
                                 </ul>
                             @endforeach
 
@@ -84,11 +84,11 @@
                                 
                                 $total = 0;
                             @endphp
-                            @foreach ($produk->where('paket_id', $p->id) as $p)
+                            @foreach ($p->produk as $pt)
                                 @php
-                                    $total += $p->produk->harga;
+                                    $total += $pt->harga;
                                 @endphp
-                                {{-- {{ $p->produk->harga }j} --}}
+                                
                             @endforeach
                             <div class="footer" style="position: absolute; bottom:20px; right:50px; left: 50px">
                                  <p class="fw-bold">Rp {{ number_format($total, 0, ',', '.') }}</p>
@@ -180,7 +180,7 @@
     <section id="about" class="about">
         <div class="container" data-aos="fade-up">
 
-                <h2 class="text-dark fw-bold my-5 text-center">About Us</h2>
+                <h2 class="text-dark fw-bold my-5 text-center" style="font-size: 42px">About Us</h2>
 
             <div class="row content">
                 <div class="col pt-4 pt-lg-0">

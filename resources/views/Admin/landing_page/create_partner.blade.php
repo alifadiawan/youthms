@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('content-title', 'Landing Page Our Partner')
-@section('judul', 'Landing Page | Create Partner')
+@section('judul', 'Create Partner')
 @section('content')
 
     <div class="container">
@@ -12,7 +12,7 @@
                     <form action="{{route('landing.partner_store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row justify-content-center">
-                            <div class="col-4">
+                            <div class="col-lg-4 col">
                                 <div class="form-group">
                                     <label for="partner">Partner Baru : </label>
                                     <input type="file" name="partner" id="partner" class="form-control">

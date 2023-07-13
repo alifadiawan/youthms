@@ -37,6 +37,17 @@
         margin-right: 6px;
     }
 
+    .navbar-brand {
+        display: inline-block;
+        /* padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem; */
+        margin-right: 0.5rem;
+        font-size: 1.1rem;
+        font-weight: 900;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
     @media all and (min-width: 480px) and (max-width: 768px) {
 
         #btn-y {

@@ -35,22 +35,24 @@
                 <!-- Notifications Dropdown Menu -->
                 <li class="dropdown nav-item">
                     <a href="#" class="nav-link nav-icon">
-                        <i class="far fa-bell "></i>
                         @foreach ($notifications as $notification)
                             @if ($notification->type === 'App\Notifications\TransaksiNotification')
-                                <span class="qty posisition-absolute badge bg-danger position-absolute top-0 translate-middle badge rounded-pill">{{ count($notifications) }}</span>
+                                <i class="far fa-bell ">
+                                    <span
+                                        class="qty posisition badge bg-danger position top-0 translate-middle badge rounded-pill">{{ count($notifications) }}</span>
+                                </i>
                             @endif
                         @endforeach
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications p-3">
                         <li class="dropdown-header" id="notificationCount">
-                            You have {{count($notifications)}} new notifications
+                            You have {{ count($notifications) }} new notifications
                         </li>
                         <li>
-                          <hr class="dropdown-divider">
+                            <hr class="dropdown-divider">
                         </li>
                         <!-- <li> -->
-                            @include('EU.notif')
+                        @include('EU.notif')
                         <!-- </li> -->
                     </ul>
                 </li>
@@ -65,7 +67,7 @@
                         <li><a class="dropdown-item" href="{{ route('pembayaran.index', auth()->user()->id) }}">Histori
                                 Pembayaran</a>
                         </li>
-                        <li><a class="dropdown-item" href="{{route('gc.index')}}">Chats</a></li>
+                        <li><a class="dropdown-item" href="{{ route('gc.index') }}">Chats</a></li>
                         <li>
                             @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
                         <li>
@@ -119,30 +121,30 @@
 
     <!-- .navbar -->
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).on('click', '.notification-item', function(e) {
-        e.preventDefault();
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).on('click', '.notification-item', function(e) {
+            e.preventDefault();
 
-        var url = $(this).data('url');
+            var url = $(this).data('url');
 
-        // Kirim permintaan Ajax untuk mengubah status notifikasi menjadi "dibaca"
-        $.ajax({
-            url: '{{ route('read') }}',
-            type: 'POST',
-            data: {
-                _token: '{{ csrf_token() }}',
-                notificationUrl: url
-            },
-            success: function(response) {
-                // Redirect pengguna ke URL yang disimpan pada notifikasi
-                window.location.href = url;
-            },
-            error: function(xhr, status, error) {
-                // Tindakan penanganan kesalahan jika diperlukan
-            }
+            // Kirim permintaan Ajax untuk mengubah status notifikasi menjadi "dibaca"
+            $.ajax({
+                url: '{{ route('read') }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    notificationUrl: url
+                },
+                success: function(response) {
+                    // Redirect pengguna ke URL yang disimpan pada notifikasi
+                    window.location.href = url;
+                },
+                error: function(xhr, status, error) {
+                    // Tindakan penanganan kesalahan jika diperlukan
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 </div>

@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('content-title', 'Landing Page edit Data')
-@section('judul', 'Landing Page | Edit Data')
+@section('judul', 'Edit Data')
 @section('content')
 
 

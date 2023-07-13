@@ -48,7 +48,7 @@ class EUController extends Controller
         $jenis_layanan = JenisLayanan::all();
 
         //paket
-        $paket = Paket::with('produk');
+        $paket = Paket::with('produk')->get();
         // $produk = paket_produk::where('paket_id',$p->id)->get();
         
         if (auth()->check()) {

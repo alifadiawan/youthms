@@ -3,18 +3,20 @@
 
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" id="hamburger" href="#" role="button"><i
-                    class="fas fa-bars"></i></a>
-            <a class="navbar-brand"><strong>@yield('judul')</strong></a>
+            <div class="d-flex flex-row align-items-center">
+                <a class="nav-link" data-widget="pushmenu" id="hamburger" href="#" role="button"><i
+                        class="fas fa-bars"></i></a>
+                <p class="navbar-brand">@yield('judul')</p>
+            </div>
         </li>
     </ul>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto align-items-center">
 
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
+            <a class="nav-link px-1" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
                 @foreach ($notifications as $notification)
                     @if ($notification->type === 'App\Notifications\NewNotification')
@@ -30,7 +32,7 @@
 
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
+            <a class="nav-link mr-1" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
                 @foreach ($notifications as $notification)
                     @if ($notification->type === 'App\Notifications\NewMessageNotification')
@@ -51,12 +53,14 @@
         <!-- Nav Item - User Information -->
         @auth
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                {{-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    {{ auth()->user()->username }}
-                </a>
+                
+                </a> --}}
+                <img src="{{asset('illustration/user.png')}}" class="my-2 mx-1" data-toggle="dropdown" href="#" id="navbarDropdown" style="width: 30px">
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <span class="dropdown-item dropdown-header">AKUN</span>
+                    <span class="dropdown-item dropdown-header">{{ auth()->user()->username }}
+                    </span>
                     <div class="dropdown-divider"></div>
                     @if (auth()->user()->hasIncompleteProfile())
                         <a class="dropdown-item" href="{{ route('employee.create') }}">
