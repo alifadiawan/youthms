@@ -32,7 +32,6 @@ class DatabaseSeeder extends Seeder
             ServicesIllsSeeder::class,
             ProdukSeeder::class,
             PaketSeeder::class,
-            ProdukPaketseeder::class,
             
             
             // transaksi
@@ -41,7 +40,6 @@ class DatabaseSeeder extends Seeder
             TransaksiDetailSeeder::class,
             RequestUserSeeder::class,
             PembayaranSeeder::class,
-            TerminSeeder::class,
 
             //misc
             VisitorSeeder::class,

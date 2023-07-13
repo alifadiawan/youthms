@@ -29,18 +29,12 @@ return new class extends Migration
             $table->foreign('transaksi_id')->references('id')->on('transaksi')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            // $table->unsignedBigInteger('gateaway_id');
-            // $table->foreign('gateaway_id')->references('id')->on('gateaways')
-            // ->onUpdate('cascade')
-            // ->onDelete('cascade');
-            $table->unsignedBigInteger('bank_id')->nullable();
-            $table->foreign('bank_id')->references('id')->on('banks')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->unsignedBigInteger('ewallet_id')->nullable();
-            $table->foreign('ewallet_id')->references('id')->on('ewallets')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->string('total_bayar')->nullable();
+            $table->string('unique_code');
+            $table->foreignId('request_user_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('bank_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('ewallet_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('pembayaran_ke')->nullable();
             $table->string('status');
             $table->string('note_admin')->nullable();
             $table->string('bukti_tf');

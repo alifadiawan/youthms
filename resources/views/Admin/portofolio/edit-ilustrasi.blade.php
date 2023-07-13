@@ -33,6 +33,9 @@
                         <div class="col">
                             <button class="btn btn-success">Submit</button>
                         </div>
+                        <div class="col">
+                            <a href="{{route('portofolio.ilustrasi')}}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
                     </div>
                 </form>
             </div>

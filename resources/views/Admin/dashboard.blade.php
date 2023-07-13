@@ -3,19 +3,18 @@
 @section('content-title', 'Dashboard')
 @section('content')
 
-@if(auth()->user()->hasIncompleteProfile())
-    
+    @if (auth()->user()->hasIncompleteProfile())
+
         <div class="alert alert-warning">
-            Anda harus segera melengkapi biodata Anda. 
-            @if(auth()->user()->roles->contains('role', 'client')) 
-            <a href="{{route('member.create')}}" class="text-primary">Klik ini.</a> 
-            @else 
-            <a href="{{route('employee.create')}}" class="text-primary">Klik ini.</a> 
+            Anda harus segera melengkapi biodata Anda.
+            @if (auth()->user()->roles->contains('role', 'client'))
+                <a href="{{ route('member.create') }}" class="text-primary">Klik ini.</a>
+            @else
+                <a href="{{ route('employee.create') }}" class="text-primary">Klik ini.</a>
             @endif
         </div>
-@endif
+    @endif
     <div class="row">
-
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header border-0">
@@ -59,29 +58,29 @@
                     <table class="table table-striped table-valign-middle">
                         <thead>
                             <tr>
-                                <th>Kode Transaksi  </th>
+                                <th>Kode Transaksi </th>
                                 <th>Tanggal Pembelian</th>
                                 <th>More Info</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($transaksi as $t)
-                            <tr>
-                                <td>
-                                    {{ $t->unique_code }}
-                                    {{-- @foreach($t->transaksi_detail as $td)
+                            @foreach ($transaksi as $t)
+                                <tr>
+                                    <td>
+                                        {{ $t->unique_code }}
+                                        {{-- @foreach ($t->transaksi_detail as $td)
                                         {{$td->produk->nama_produk}}<br>
                                     @endforeach --}}
-                                </td>
-                                <td>
-                                    {{date('d F Y',strtotime($t->tanggal_transaksi))}}
-                                </td>
-                                <td>
-                                    <a href="{{ route('transaksi.show', $t->id) }}" class="text-muted">
-                                        <i class="fa-solid fa-circle-info"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>
+                                        {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('transaksi.show', $t->id) }}" class="text-muted">
+                                            <i class="fa-solid fa-circle-info"></i>
+                                        </a>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
