@@ -12,7 +12,7 @@
             <div class="content">
                 
                 <div class="row mb-4">
-                    <div class="col-lg-4 col-4">
+                    <div class="col-lg-12 col-md-6">
                         <p>Project</p>
                         <input type="text" class="form-control" name="project" id="project" value="{{$porto->project}}">
                         <p>Deskripsi</p>
@@ -42,7 +42,7 @@
 
 
                 <div class="row mt-5" id="screenshots-container">
-                    <div class="col">
+                    <div class="col-md-6 col-lg-3   ">
                         <div class="form-group">
                             <label for="cover">Cover Baru : </label>
                             <input type="file" name="cover" id="illustration" class="form-control">
