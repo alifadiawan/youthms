@@ -12,6 +12,7 @@
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
+    /* overflow: hidden; */
 }
 
 a {
@@ -595,7 +596,6 @@ h6 {
     border-radius: 0px 0px 200px 200px;
 }
 
-@media all and (min-width: 1024px) and (max-width: 1280px) { }
 
 @media all and (min-width: 768px) and (max-width: 1024px) { }
 
@@ -980,6 +980,11 @@ section {
     font-size: 26px;
 }
 
+.about h5, h2{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+}
+
 .about .content ul {
     list-style: none;
     padding: 0;
@@ -1303,6 +1308,7 @@ section {
 --------------------------------------------------------------*/
 .services {
     margin-top: 20px;
+    font-family: "Poppins", sans-serif;
 }
 
 .services .icon-box {
@@ -1311,6 +1317,10 @@ section {
     border-radius: 25px;
     transition: all ease-in-out 0.4s;
     background: #fff;
+    font-family: "Poppins", sans-serif;
+}
+
+.services h1{
     font-family: "Poppins", sans-serif;
 }
 
@@ -1369,6 +1379,12 @@ section {
 
 .main-banner {
     display: flex;
+    font-family: "Poppins", sans-serif;
+}
+
+.main-banner h1{
+    font-family: "Poppins", sans-serif;
+
 }
 
 .main-banner img {
@@ -2006,7 +2022,7 @@ section {
 
 .cara-bayar .card.box1 {
     width: 650px;
-    height: 800px;
+    height: max-content;
     font-family: "Poppins", sans-serif;
     background-color: #406cab;
     color: #fff;
@@ -3188,7 +3204,7 @@ section {
     align-items: center;
     margin-left: 400px;
     font-family: "Poppins", sans-serif;
-    animation: floating 3s ease-out infinite;
+    animation: floating 2s ease-out infinite;
 }
 
 @keyframes floating {

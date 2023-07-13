@@ -4,35 +4,35 @@
         <div class="container" data-aos="fade-up">
             <div class="trending-area fix">
                 <div class="trending-main">
-                            <a href="{{ route('blogs.index') }}" class="text-capitalize my-3 btn yms-outline rounded-5 active">All</a>
-                            @foreach ($segmen as $s)
-                            @php
-                                $link = strtolower(str_replace(' ', '_', $s->segmen));
-                            @endphp
-                                <a href="{{ route('blogs.showtype', $link) }}"
-                                    class=" my-3 text-capitalize btn yms-outline rounded-5 active">{{ $s->segmen }}</a>
-                            @endforeach
-                            @foreach ($atas as $b)
-                    <div class="row mt-40">
-                        <div class="col-lg-8">
-                            <!-- Trending Top -->
-                            <div class="trending-top mb-30">
-                                <div class="trend-top-img">
-                                    {{-- <img src="{{ asset('blog/'.$b->foto) }}" alt="" width="100%"
+                    <a href="{{ route('blogs.index') }}" class="text-capitalize my-3 btn yms-outline rounded-5 active">All</a>
+                    @foreach ($segmen as $s)
+                        @php
+                            $link = strtolower(str_replace(' ', '_', $s->segmen));
+                        @endphp
+                        <a href="{{ route('blogs.showtype', $link) }}"
+                            class=" my-3 text-capitalize btn yms-outline rounded-5 active">{{ $s->segmen }}</a>
+                    @endforeach
+                    @foreach ($atas as $b)
+                        <div class="row mt-40">
+                            <div class="col-lg-9">
+                                <!-- Trending Top -->
+                                <div class="trending-top mb-30">
+                                    <div class="trend-top-img">
+                                        {{-- <img src="{{ asset('blog/'.$b->foto) }}" alt="" width="100%"
                                                 height="100%" style="border-radius: 20px"> --}}
-                                    <img src="{{ asset('blog/'.$b->foto) }}" alt="" width="100%"
-                                        height="100%" style="border-radius:25px">
+                                        <img src="{{ asset('blog/' . $b->foto) }}" alt="" width="100%"
+                                            height="100%" style="border-radius:25px">
 
-                                    <div class="trend-top-cap">
-                                        {{-- <span>Pemrograman 5</span> --}}
-                                        <h2><a href="{{route('blogs.detail', $b->id)}}">{{$b->judul}}</a>
-                                        </h2>
+                                        <div class="trend-top-cap">
+                                            {{-- <span>Pemrograman 5</span> --}}
+                                            <h2><a href="{{ route('blogs.detail', $b->id) }}">{{ $b->judul }}</a>
+                                            </h2>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            @endforeach
+                    @endforeach
 
-                            <!-- Trending Bottom -->
+                    <!-- Trending Bottom -->
 
                             <div class="trending-bottom">
                                 <div class="row">
@@ -70,19 +70,19 @@
                             </div>
                         </div>
                         <!-- Right content -->
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="card" style="border-radius: 25px">
                                 <div class="card-body">
                                     <div class="header container mb-2 mt-3">
-                                        <div class="d-flex flex-row text-center justify-content-center gap-3">
+                                        <div class="d-flex flex-row text-center gap-3" style="justify-content: center">
                                                 <a type="submit" href="#" onclick="show('populer')" class="btn-populer rounded-5"
-                                                    style="height:100%"><i
+                                                    style="width:70px; height:100%"><i
                                                         class="fa-solid fa-star"></i></a>
                                                 <a type="submit" href="#" onclick="show('weekly')" class="btn-terkini rounded-5"
-                                                    style="height:100%"><i
+                                                    style="width:70px; height:100%"><i
                                                         class="fa-solid fa-chart-simple"></i></a>
                                                 <a type="submit" href="#" onclick="show('terpilih')" class="btn-terpilih rounded-5"
-                                                    style="height:100%"><i
+                                                    style="width:70px; height:100%"><i
                                                         class="fa-regular fa-hand-pointer"></i></a>
                                         </div>
                                     </div>
@@ -111,13 +111,13 @@
                                                     <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
                                                 </div>
                                             </div> --}}
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-
                         </div>
-                        <!-- End Of Right Content -->
+                    </div>
+
+                </div>
+                <!-- End Of Right Content -->
 
     </section>
     </div>
@@ -126,12 +126,12 @@
     </div>
     </section>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function show(type) {
-        $.get('/blogs/type/' + type, function(data) {
-            $('#menu').html(data);
-        })
-    }
-</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function show(type) {
+            $.get('/blogs/type/' + type, function(data) {
+                $('#menu').html(data);
+            })
+        }
+    </script>
 @endsection
