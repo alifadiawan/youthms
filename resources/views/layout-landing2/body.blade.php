@@ -13,9 +13,21 @@
 <body>
 
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top">
-        @include('layout-landing2.topbar')
-    </header>
+
+    @if (Route::currentRouteName() === 'pembayaran.pembayaran')
+        <header id="header-empty" class="fixed-top">
+            @include('layout-landing2.topbar-empty')
+        </header>
+    @elseif (Route::currentRouteName() === 'pembayaran.cara')
+        <header id="header-empty" class="fixed-top">
+            @include('layout-landing2.topbar-empty')
+        </header>
+    @else
+        <header id="header" class="fixed-top">
+            @include('layout-landing2.topbar')
+        </header>
+    @endif
+
     <!-- End Header -->
 
 
@@ -26,9 +38,11 @@
 
 
     <!-- footer -->
-    <footer>
-        @include('layout-landing2.footer')
-    </footer>
+    @unless (Route::currentRouteName() === 'pembayaran.pembayaran')
+        <footer>
+            @include('layout-landing2.footer')
+        </footer>
+    @endunless
     <!-- end footer -->
 
 
@@ -37,7 +51,7 @@
     {{-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a> --}}
 
-    <!-- end preloader --> 
+    <!-- end preloader -->
 
 
     @include('layout-landing2.script')

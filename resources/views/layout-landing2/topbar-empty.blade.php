@@ -2,14 +2,14 @@
 <div class="container d-flex align-items-center">
 
     <!-- logo -->
-    <a href="/" class="logo me-auto"><img src="{{ asset('youth-logo.png') }}" alt="" class="img-fluid"></a>
+    <a href="/" class="logo"><img src="{{ asset('yms-logo-notext.png') }}" alt="" class="img-fluid">  Youthms</a>
 
     <nav id="navbar" class="navbar navbar-expand">
-        <ul class="navbar-nav">
+        {{-- <ul class="navbar-nav">
 
             <li class="nav-item"><a class="nav-link" href="{{ route('blogs.index') }}">Blog</a></li>
 
-            {{-- <li class="nav-item"><a class="nav-link" href="{{ route('transaksi.index') }}">Store</a></li> --}}
+     
             <li class="nav-item"><a class="nav-link" href="{{ route('store.index') }}">Store</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('services.index') }}">Service</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('portfolio.index') }}">Portofolio</a></li>
@@ -80,14 +80,14 @@
                             </a>
                         </li>
                     </ul>
-                    {{-- <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         {{ auth()->user()->username }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {{-- <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li> --}}
-                    {{-- <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
+                        <li><a class="dropdown-item" href="{{ route('storeEU.edit_profile') }}">Edit Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a> 
                 </li>
                 <li>
                     <hr class="dropdown-divider">
@@ -109,19 +109,19 @@
                 </li>
             </ul>
 
-            </li> --}}
+            </li> 
                 @endauth
 
 
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        </ul> --}}
+        {{-- <i class="bi bi-list mobile-nav-toggle"></i> --}}
     </nav>
 
 
 
     <!-- .navbar -->
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).on('click', '.notification-item', function(e) {
             e.preventDefault();
@@ -145,6 +145,6 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 
 </div>

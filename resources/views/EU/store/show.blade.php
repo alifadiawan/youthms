@@ -72,7 +72,7 @@
                                     <div class="row rows-cols-2 gx-2 gy-2 bg-light">
                                         <div class="col-lg-9 col-12">
                                             <div class="d-flex gap-0">
-                                                <button class="btn btn-sm yms-blue rounded-5 px-3 me-2"
+                                                <button class="btn btn-sm yms-blue rounded-5 px-3 me-0 me-lg-2 me-md-2 me-sm-2"
                                                     onclick="decreaseQuantity(this)">
                                                     <i class="fas fa-minus"></i>
                                                 </button>
@@ -84,7 +84,7 @@
                                                         type="number" class="form-control" readonly />
                                                 </div>
 
-                                                <button class="btn btn-sm yms-blue rounded-5 px-3 ms-2"
+                                                <button class="btn btn-sm yms-blue rounded-5 px-3 ms-0 ms-lg-2 ms-md-2 ms-sm-2"
                                                     onclick="increaseQuantity(this)">
                                                     <i class="fas fa-plus"></i>
                                                 </button>
@@ -95,7 +95,7 @@
                                             <form action="{{ route('cart.destroy', $p->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-danger me-2">
+                                                <button type="submit" class="btn btn-danger me-2" style="width: 100%">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>

@@ -6,8 +6,8 @@
 
     <section class="h-100">
         <div class="container py-5">
-            <a href="{{ route('store.index') }}" class="btn">
-                <i class="fas fa-arrow-left"></i> Store
+            <a href="{{ route('store.index') }}" class="btn m-0 p-0">
+                <i class="fas fa-arrow-left"></i> Back to Store
             </a>
             <div class="row d-flex justify-content-center my-4">
 
@@ -15,23 +15,21 @@
                     <div class="col-12">
                     @else
                         <div class="col-md-8">
+                            <h5 class="p-0 m-0 mt-3 text-lg-start text-center fw-bold text-muted mb-4">MY SHOPPING CART</h5>
                 @endif
 
 
-                <div class="card mb-4">
-                    <div class="card-header py-3">
-                        <h5 class="mb-0">Cart</h5>
-                    </div>
+                <div class="card mb-4 shadow">
 
                     @if ($cart->isEmpty())
-                        <h2 class="p-3 text-center fw-bold">Belum ada barang</h2>
+                        <h2 class="p-3 py-5 text-center fw-bold">BELUM ADA BARANG</h2>
                     @endif
 
                     <div class="card-body">
                         @foreach ($cart as $c)
                             <!-- Single item -->
-                            <div class="row my-3">
-                                <div class="col-lg-3 col-md-12 col-4 mb-4 mb-lg-0">
+                            <div class="row my-3 align-items-center">
+                                <div class="col-lg-3 col-md-12 col-5 mb-lg-0">
                                     <!-- Image -->
                                     <div class="bg-image hover-overlay hover-zoom ripple rounded"
                                         data-mdb-ripple-color="light">
@@ -44,21 +42,13 @@
                                     <!-- Image -->
                                 </div>
 
-                                <div class="col-lg-5 col-md-6 col-8 mb-4 mb-lg-0">
-                                    <!-- Data -->
+                                <div class="col-lg-5 col-md-6 col-7 mb-lg-0">
+                                    <!-- Item names -->
                                     <p class="text-capitalize text-start"><strong>{{ $c->produk->nama_produk }}</strong></p>
-                                    <form action="{{ route('cart.destroy', $c->produk_id) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger me-2" data-mdb-toggle="tooltip"
-                                            title="Remove item">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
-                                    <!-- Data -->
+                                    <!-- end item names -->
 
                                     <!-- Quantity -->
-                                    <div class="d-flex mb-4 my-lg-5 my-3" style="max-width: 150px">
+                                    <div class="d-flex mb-2 my-3" style="max-width: 150px">
                                         <button class="btn btn-outline-primary me-2" onclick="decreaseQuantity(this);">
                                             <i class="fas fa-minus"></i>
                                         </button>
@@ -75,15 +65,30 @@
                                         </button>
                                     </div>
                                     <!-- Quantity -->
+
+
                                 </div>
 
-                                <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 text-end">
+                                    <div
+                                        class="d-flex flex-row justify-content-lg-end justify-content-between align-items-center gap-2">
+                                        <!-- Price -->
+                                        <p class="text-end text-lg-end fw-bold m-0 p-0 order-lg-0 order-2">
+                                            Rp. {{ number_format($c->produk->harga, 0, ',', '.') }}
+                                        </p>
+                                        <!-- Price -->
 
-                                    <!-- Price -->
-                                    <p class="text-end text-lg-end">
-                                        <strong>Rp. {{ number_format($c->produk->harga, 0, ',', '.') }} </strong>
-                                    </p>
-                                    <!-- Price -->
+                                        <!-- delete button -->
+                                        <form action="{{ route('cart.destroy', $c->produk_id) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger me-2 order-lg-0 order-1"
+                                                data-mdb-toggle="tooltip" title="Remove item">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+
                                 </div>
                             </div>
                             <!-- Single item -->
@@ -138,34 +143,39 @@
                 <div class="col-md-4" style="display: none">
                 @else
                     <div class="col-md-4">
+                        <h5 class="p-0 m-0 mt-3 text-lg-start text-center fw-bold text-muted mb-4">SUMMARY</h5>
             @endif
 
 
-            <div class="card mb-4">
-                <div class="card-header py-3">
-                    <h5 class="mb-0">Summary</h5>
-                </div>
+            <div class="card mb-4 shadow">
                 <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        @foreach ($cart as $c)
-                            <li
-                                class="list-group-item d-flex justify-content-between align-items-center px-0 text-capitalize">
-                                {{ $c->produk->nama_produk }}
+
+                    @foreach ($cart as $c)
+                        <div class="row">
+
+                            <div class="col-lg-6 col-6 order-1 order-lg-0">
+                                <p class="m-0 p-0 fw-bold"> {{ $c->produk->nama_produk }}</p>
+
+                            </div>
+                            <div class="col-lg-2 col-12 order-3 order-lg-0">
                                 <span id="qty_{{ $c->id }}">{{ $c->quantity }}x</span>
+                            </div>
+                            <div class="col order-2 order-lg-0">
                                 <span id="total-price_{{ $c->id }}">Rp.
                                     {{ number_format($c->quantity * $c->produk->harga, 0, ',', '.') }}</span>
-                            </li>
-                        @endforeach
-                        <li class="list-group-item d-flex justify-content-end align-items-center border-0 px-0 mb-3">
-                            <div>
-                                <strong> <span id="total-transaksi-b">Total : Rp.
-                                        {{ number_format($totalTransaksi, 0, ',', '.') }}</span></strong>
-                                <strong><span id="total-transaksi" style="display: none;">Total : Rp.
-                                    </span></strong>
                             </div>
-                            <span><strong></strong></span>
-                        </li>
-                    </ul>
+                        </div>
+                    @endforeach
+                    <hr>
+                    <li class="list-group-item d-flex justify-content-end align-items-center border-0 px-0 mb-3">
+                        <div>
+                            <strong> <span id="total-transaksi-b">Total : Rp.
+                                    {{ number_format($totalTransaksi, 0, ',', '.') }}</span></strong>
+                            <strong><span id="total-transaksi" style="display: none;">Total : Rp.
+                                </span></strong>
+                        </div>
+                        <span><strong></strong></span>
+                    </li>
                     <form id="checkout-form" action="{{ route('transaksi.create') }}" method="put">
                         @csrf
                         @method('put')
@@ -174,11 +184,12 @@
                         @foreach ($cart as $c)
                             <input type="hidden" name="produk_id[]" value="{{ $c->produk->id }}">
                         @endforeach
-                        <button type="submit" id="checkout" class="btn btn-success btn-lg btn-block" style="display: ">
-                            Go to checkout
-                        </button>
+                        <div class="d-grid">
+                            <button type="submit" id="checkout" class="btn yms-blue text-center" style="display: ">
+                                CHECKOUT
+                            </button>
+                        </div>
                     </form>
-                    <hr>
                 </div>
             </div>
         </div>
