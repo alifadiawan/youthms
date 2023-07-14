@@ -10,12 +10,12 @@
             @csrf
             <div class="content">
                 <div class="row mb-4">
-                    <div class="col-4">
-                        <p>Nama Project</p>
-                        <input type="text" placeholder="Eagle Eye" class="form-control" name="project" id="project" required>
-                        <p>Deskripsi</p>
-                        <textarea name="deskripsi" class="form-control" id="deskripsi" cols="30" rows="5"></textarea>
-                        <p>Services : </p>
+                    <div class="col-md-6 col-lg-12">
+                        <p style="font-weight: bold">Nama Project</p>
+                        <input type="text" placeholder="Eagle Eye" class="form-control mb-3" name="project" id="project" required>
+                        <p style="font-weight: bold">Deskripsi</p>
+                        <textarea name="deskripsi" class="form-control mb-3" id="deskripsi" cols="30" rows="5"></textarea>
+                        <p style="font-weight: bold">Services : </p>
                         <select class="form-control form-select text-capitalize" name="services_id">
                             <option value="">Pilih Services</option>
                             @foreach($services as $s)
@@ -27,13 +27,19 @@
                     </div>
                 </div>
 
-                <div class="col">
-                    <div class="form-group">
-                        <label for="illustration">Cover : </label>
-                        <input type="file" name="cover" id="illustration" class="form-control">
-                        <img id="preview" src="#" class="form-control">
+                
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                     </div>
-                </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="illustration" name="cover"
+                        aria-describedby="inputGroupFileAddon01">
+                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                    <img id="preview" src="#" class="form-control">
+                  </div>
+                  
                 <div class="row" id="screenshots-container">
                     <div class="col">
                         <div class="form-group">
