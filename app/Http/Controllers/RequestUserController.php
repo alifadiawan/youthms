@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\request_user;
+use App\Models\Request_user;
 use App\Models\Member;
+use App\Models\Pembayaran;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\TransaksiNotification;
 use Illuminate\Support\Facades\Notification;
-use App\Models\termin;
 use App\Models\Transaksi;
 use App\Models\TransaksiDetail;
 use Illuminate\Http\Request;
@@ -18,26 +18,24 @@ class RequestUserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(request $request)
+    public function index(Request $request)
     {
         $trxid = $request->trxid;
         $auth = auth()->user();
         $user = $auth->id;
-        $member = member::where('user_id', $user)->pluck('id')->first();
+        $member = Member::where('user_id', $user)->pluck('id')->first();
         $user_role = $auth->role->role;
         // return $user_role;
 
-        $requestUser = request_user::all();
-        $all = transaksi::where('member_id', $member)->get();
+        $requestUser = Request_user::all();
+        $all = Transaksi::where('member_id', $member)->get();
         // $pending = request_user::where('transaksi_id', $trxid)->get();
 
         if ($user_role == "client") {
-            $compact = [];
-            // return view('EU.transaction.kredit', compact($compact));
-            return redirect()->route('transaksi.history');
+            return redirect()->route('transaksi.show', $trxid);
         }
 
-        $request_user = request_user::all();
+        $request_user = Request_user::all();
         $compact = ['request_user', 'member', 'user'];
         return view('Admin.transaction.acc', compact($compact));
     }
@@ -61,23 +59,26 @@ class RequestUserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(request_user $request_user, $request)
+    public function show(Request_user $request_user, $request)
     {
         $reqid = $request;
-        
-        $request_user = request_user::where('id', $reqid)->get();;
 
-        foreach($request_user as $r){
+        $request_user = Request_user::where('id', $reqid)->get();;
+
+        $totaltermin = 0;
+        foreach ($request_user as $r) {
             $trxid = $r->transaksi_id;
             $status = $r->status;
-            
-            $termin = termin::where('requser_id',$reqid)->get();
+
+            $termin = Pembayaran::where('request_user_id', $reqid)->get();
+            if (!is_null($termin) && !$termin->isEmpty()) {
+                foreach ($termin as $t) {
+                    $totaltermin +=  $t->harga;
+                }
+            }
         }
-        
-        $totaltermin = 0;
-        foreach ($termin as $t ) {
-            $totaltermin +=  $t->harga;
-        }   
+
+
 
         // mengambil kolom transaksi 
         $transaksi = Transaksi::where('id', $trxid)->get();
@@ -93,20 +94,20 @@ class RequestUserController extends Controller
 
         // mencari harga admin
         $admin = $total * 0.11;
-    
+
         // mencari harga total
         $grandtotal = $total + $admin;
 
 
-        $req = request_user::where('id', $reqid)->value('transaksi_id');
-        $trx = transaksi::where('id', $req)->value('member_id');
-        $mid = member::where('id', $trx)->value('user_id');
-        $userid = user::where('id', $mid)->value('id');
-        $user = user::find($userid);
+        $req = Request_user::where('id', $reqid)->value('transaksi_id');
+        $trx = Transaksi::where('id', $req)->value('member_id');
+        $mid = Member::where('id', $trx)->value('user_id');
+        $userid = User::where('id', $mid)->value('id');
+        $user = User::find($userid);
         // return $user;
 
         // $admin = 
-        $compact = ['request_user', 'detail', 'transaksi','total','grandtotal','admin','status','termin','totaltermin', 'user'];
+        $compact = ['request_user', 'detail', 'transaksi', 'total', 'grandtotal', 'admin', 'status', 'termin', 'totaltermin', 'user'];
         return view('Admin.transaction.YesNo', compact($compact));
     }
 
@@ -121,35 +122,32 @@ class RequestUserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, request_user $request_user)
+    public function update(Request $request, Request_user $request_user)
     {
-        // return $request;
         $reqid = $request->requser_id;
         // return $reqid;
-        $request_user = request_user::find($reqid);
+        $request_user = Request_user::find($reqid);
         $request_user->update([
             'status' => $request->status,
-            'note_admin' => $request->note, 
+            'note_admin' => $request->note,
         ]);
+
 
 
         notify()->success('Status Berhasil Diperbarui !!');
         // mengirim notifikasi
         $uid = $request->user_id;
-        $user = user::find($uid);
+        $user = User::find($uid);
         if ($request_user->status == 'accept') {
             $message = "Pengajuan Kreditmu Telah Diterima\nSilahkan Hubungi Admin\nUntuk Info Lebih Lanjut";
         } else {
-            $message = "Maaf Ajuan Kreditmu Ditolak Karena\n".$request_user->note_admin;
+            $message = "Maaf Ajuan Kreditmu Ditolak Karena\n" . $request_user->note_admin;
         }
         $notification = new TransaksiNotification($message);
-        $notification->setUrl(route('transaksi.history')); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('transaksi.index')); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
 
         return redirect()->route('requestuser.index');
-
-
-        
     }
 
     /**

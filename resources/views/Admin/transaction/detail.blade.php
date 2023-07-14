@@ -48,13 +48,13 @@
 
                                         @foreach ($detail as $d)
                                             <div class="row mt-3">
-                                                <div class="col">
+                                                <div class="col-lg col-10">
                                                     {{ $d->produk->nama_produk }}
                                                 </div>
-                                                <div class="col text-right">
-                                                    {{ $d->quantity }}
+                                                <div class="col-lg col-2 text-right">
+                                                    {{ $d->quantity }}x
                                                 </div>
-                                                <div class="col text-right">
+                                                <div class="col text-lg-right text-left">
                                                     Rp.
                                                     {{ number_format($d->quantity * $d->produk->harga, 0, ',', '.') }}
                                                 </div>
@@ -67,7 +67,7 @@
 
                                         <div class="row">
                                             <div class="col">
-                                                total
+                                                Total
                                             </div>
                                             <div class="col text-right">
                                                 Rp. {{ number_format($total, 0, ',', '.') }}
@@ -75,57 +75,80 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                biaya admin
+                                                Biaya admin
                                             </div>
                                             <div class="col text-right">
                                                 Rp. {{ number_format($admin, 0, ',', '.') }}
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="row">
-                                            <div class="col">
-                                                grandtotal
+                                            <div class="col font-weight-bold">
+                                                Grandtotal
                                             </div>
-                                            <div class="col text-right">
+                                            <div class="col text-right font-weight-bold">
                                                 Rp. {{ number_format($grandtotal, 0, ',', '.') }}
                                             </div>
                                         </div>
                                     </div>
 
-                                    <hr class="my-3">
-                                    <div class="row">
-                                        @foreach ($pembayaran as $p)
-                                            <div class="col">
-                                                metode pembayaran
-                                            </div>
-                                            <div class="col text-right">
-                                                @if ($p->bank_id == !null)
-                                                    <img class="img-thumbnail border-0"
-                                                        src="{{ asset('illustration/' . $p->bank->image) }}"
-                                                        style="width: 80px" alt="">
-                                                @elseif ($p->ewallet_id == !null)
-                                                    <img class="img-thumbnail border-0"
-                                                        src="{{ asset('illustration/' . $p->ewallet->image) }}"
-                                                        style="width: 80px" alt="">
-                                                @endif
 
-                                            </div>
-                                        @endforeach
-                                    </div>
+                                    @if (in_array($t->id, $adm_kredit))
+                                        <table class="table table-striped mt-2">
+                                            <thead>
+                                                <tr style="background-color: #0EA1E2">
+                                                    <th class="text-white">No</th>
+                                                    <th class="text-white">Nama</th>
+                                                    <th class="text-white">Total harga</th>
+                                                    <th class="text-white">Status</th>
+                                                    <th class="text-white">Metode</th>
+                                                    <th class="text-white">Detail</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($pembayaran as $p)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $p->transaksi->member->name }}</td>
+                                                        <td>Rp. {{ number_format($p->transaksi->total, 0, ',', '.') }}
+                                                        </td>
+                                                        <td>
 
-                                    <div class="row justify-content-center">
-                                        @foreach ($pembayaran as $p)
-                                            <div
-                                                class="col-lg col-12 text-center text-lg-left mt-lg-0 mt-4g font-weight-bold">
-                                                Bukti transfer
-                                            </div>
-                                            <div class="col text-right">
-                                                <img src="{{ asset('./bukti_transfer/' . $p->bukti_tf) }}"
-                                                    class="card-img-top " alt="..."
-                                                    style="max-width: 15.3rem; height: 15.3rem; object-fit:cover;">
-
-                                            </div>
-                                        @endforeach
-                                    </div>
+                                                            @if ($p->status == 'checking')
+                                                                <button disabled="disabled"
+                                                                    class="btn btn-sm btn-warning"></button><span
+                                                                    class="badge">{{ $p->status }}</span>
+                                                            @elseif($p->status == 'checked')
+                                                                <button disabled="disabled"
+                                                                    class="btn btn-sm btn-success"></button><span
+                                                                    class="badge">{{ $p->status }}</span>
+                                                            @elseif($p->status == 'declined')
+                                                                <button disabled="disabled"
+                                                                    class="btn btn-sm btn-danger"></button><span
+                                                                    class="badge">{{ $p->status }}</span>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if ($p->bank_id)
+                                                                <div class="row">
+                                                                    <img src="{{ asset('illustration/' . $p->bank->image) }}"
+                                                                        alt="" style="width: 75px">
+                                                                </div>
+                                                            @elseif($p->ewallet_id)
+                                                                <span>
+                                                                    <img src="{{ asset('illustration/' . $p->ewallet->image) }}"
+                                                                        alt="" style="width: 75px"></span>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('pembayaran.show', $p->id) }}"
+                                                                class="btn-sm btn-success">Detail</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    @endif
 
                                     <div class="footer mt-3">
                                         <div class="row">
@@ -134,27 +157,6 @@
                                                     Download
                                                 </a>
                                             </div>
-                                            <div class="col">
-                                                <a href="" class="btn btn-block btn-outline-info rounded-pill">
-                                                    Share
-                                                </a>
-                                            </div>
-                                            @if (in_array($detail[0]->transaksi_id, $adm_kredit))
-                                                <div class="col">
-                                                    <a href="{{ route('pembayaran.show', $t->id) }}"
-                                                        class="btn btn-block btn-outline-info rounded-pill">
-                                                        Bukti Pembayaran Kredit
-                                                    </a>
-                                                </div>
-                                            @elseif(in_array($detail[0]->transaksi_id, $adm_lunas))
-                                                <div class="col">
-                                                    <a href="{{ route('pembayaran.show', $t->id) }}"
-                                                        class="btn btn-block btn-outline-info rounded-pill">
-                                                        Bukti Pembayaran
-                                                    </a>
-                                                </div>
-                                            @else
-                                            @endif
                                         </div>
                                     </div>
                                 </div>

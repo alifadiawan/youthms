@@ -13,7 +13,7 @@
             @endforeach
 
             @foreach ($request_user as $r)
-                @if ($r->status == "pending")
+                @if ($r->status == 'pending')
                     <div class="card">
                         <div class="card-header">
                             @foreach ($request_user as $r)
@@ -34,10 +34,10 @@
                                     @php
                                         $tanggalMulai = app(\Illuminate\Support\Carbon::class)->parse($r->tanggal_mulai);
                                         $jatuhTempo = app(\Illuminate\Support\Carbon::class)->parse($r->jatuh_tempo);
-
+                                        
                                         $selisihHari = $tanggalMulai->diffInDays($jatuhTempo) . ' Hari';
                                         $selisihBulan = $tanggalMulai->diffInMonths($jatuhTempo);
-
+                                        
                                         // Jika selisih lebih dari 30 hari, ubah ke dalam format "1 bulan"
                                         if ($selisihBulan >= 1) {
                                             $selisihHari = $selisihBulan . ' Bulan';
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="col text-right">
                                         {{-- <h5 class="mb-0 me-auto font-weight-bold">1 Bulan</h5> --}}
-                                        <h5 class="mb-0 me-auto font-weight-bold">{{$selisihHari}}</h5>
+                                        <h5 class="mb-0 me-auto font-weight-bold">{{ $selisihHari }}</h5>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -56,7 +56,8 @@
                                         <h5 class="mb-0 me-auto">Status</h5>
                                     </div>
                                     <div class="col text-right">
-                                        <h5 class="mb-0 me-auto font-weight-bold text-uppercase">{{$r->status}}</h5>
+                                        <h5 class="mb-0 me-auto font-weight-bold text-uppercase">{{ $r->status }}
+                                        </h5>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -66,7 +67,7 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <h5 class="mb-0 me-auto text-muted">{{$r->deskripsi}}</h5>
+                                        <h5 class="mb-0 me-auto text-muted">{{ $r->deskripsi }}</h5>
                                     </div>
                                 </div>
 
@@ -76,7 +77,7 @@
                                         <form action="{{ route('requestuser.update', $r->id) }}" method="POST">
                                             @csrf
                                             @method('put')
-                                            <input type="hidden" name="user_id" value="{{$user->id}}">
+                                            <input type="hidden" name="user_id" value="{{ $user->id }}">
                                             <input type="hidden" value="accept" name="status">
                                             @foreach ($request_user as $r)
                                                 <input type="hidden" value="{{ $r->id }}" name="requser_id">
@@ -104,7 +105,8 @@
                                                     <div class="modal-body">
                                                         <div class="form-group">
                                                             <label for="note">Alasan ditolaknya request?</label>
-                                                            <input type="hidden" name="user_id" value="{{$user->id}}">
+                                                            <input type="hidden" name="user_id"
+                                                                value="{{ $user->id }}">
                                                             <input type="hidden" name="status" value="declined">
                                                             @foreach ($request_user as $r)
                                                                 <input type="hidden" value="{{ $r->id }}"
@@ -138,23 +140,24 @@
                         <div class="col">
                             <h5 class="mb-0 me-auto">Status</h5>
                         </div>
+                        @foreach ($request_user as $r)
+                            <div class="col text-right">
+                                @if ($r->status == 'declined')
+                                    <h5 class="mb-0 me-auto text-danger font-weight-bold">DECLINED</h5>
+                                @elseif($r->status == 'accept')
+                                    <h5 class="mb-0 me-auto text-success font-weight-bold">ACCEPTED</h5>
+                                @else
+                                    <h5 class="mb-0 me-auto text-warning font-weight-bold">PENDING</h5>`
+                                @endif
+                            </div>
+                        @endforeach
                     </div>
-                    @foreach ($request_user as $r)
-                        <div class="col text-right">
-                            @if ($r->status == 'declined')
-                                <h5 class="mb-0 me-auto text-danger font-weight-bold">DECLINED</h5>
-                            @elseif($r->status == 'accept')
-                                <h5 class="mb-0 me-auto text-success font-weight-bold">ACCEPTED</h5>
-                            @else
-                                <h5 class="mb-0 me-auto text-warning font-weight-bold">PENDING</h5>`
-                            @endif
-                        </div>
-                    @endforeach
                     <div class="col text-right">
                     </div>
                 </div>
                 <div class="card-body ">
-                    <span>alasan ditolak</span>
+                    <p>alasan ditolak</p>
+                    <br>
                     @foreach ($request_user as $r)
                         <div class="">
                             <div class="bg-dark">

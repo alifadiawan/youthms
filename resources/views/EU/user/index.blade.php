@@ -138,7 +138,7 @@
                                         <i class="fa-solid fa-bag-shopping fa-2xl"></i>
                                     </div>
                                 </div>
-                                <a href="{{ route('transaksi.history', auth()->user()->id) }}"
+                                <a href="{{ route('transaksi.index') }}"
                                     class="btn-sm btn-selengkapnya btn">Selengkapnya</a>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                                     <div class="col mr-2">
                                         {{-- <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Riwayat Transaksi</div> --}}
-                                        <div class="h5 mt-3 font-weight-bold text-gray-800">{{ $trx_kredit }} Transaksi<span
+                                        <div class="h5 mt-3 font-weight-bold text-gray-800">{{ $trx_riwayat }} Transaksi<span
                                                 class="qty posisition-absolute badge bg-secondary position-absolute top-0 translate-middle badge">Riwayat
                                                 Transaksi</span></div>
                                     </div>
@@ -160,7 +160,7 @@
                                         <i class="fa-solid fa-clock-rotate-left fa-2xl"></i>
                                     </div>
                                 </div>
-                                <a href="{{ route('transaksi.history', auth()->user()->id) }}"
+                                <a href="{{ route('transaksi.index') }}"
                                     class="btn-sm btn-selengkapnya btn">Selengkapnya</a>
 
                             </div>
@@ -184,7 +184,7 @@
                                         <i class="fa-solid fa-user-gear fa-2xl"></i>
                                     </div>
                                 </div>
-                                <a href="{{ route('transaksi.history', auth()->user()->id) }}"
+                                <a href="{{ route('transaksi.index') }}"
                                     class="btn-sm btn-selengkapnya btn">Selengkapnya</a>
 
                             </div>

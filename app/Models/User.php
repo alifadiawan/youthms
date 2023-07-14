@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function testimoni()
     {
-        return $this->hasMany(testimonial::class);
+        return $this->hasMany(Testimonial::class);
     }
 
     public function blog()
@@ -83,6 +83,11 @@ class User extends Authenticatable
     public function group_messages()
     {
         return $this->hasMany(GroupMessage::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsToMany(User::class, 'group_admins');
     }
 
 }

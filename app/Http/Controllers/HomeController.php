@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\visitor;
+use App\Models\Visitor;
 use App\Models\LandingData;
 use App\Models\LandingPartner;
 use App\Models\LandingIllustration;
@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $ip = $request->ip();
-        $visitor = visitor::firstOrCreate(['ip_address' => $ip]);
+        $visitor = Visitor::firstOrCreate(['ip_address' => $ip]);
         $visitor->increment('visits');
         $visitor->save();
 

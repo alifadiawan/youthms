@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Paket extends Model
 {
     use HasFactory;
-    protected $guarded =[];
+    protected $guarded = [];
 
-    public function paket_produk()
+
+    public function produk()
     {
-        return $this->hasmany(paket_produk::class);
+        return $this->belongsToMany(Produk::class, 'paket_produks');
     }
-
 }

@@ -1,12 +1,12 @@
     <footer class="text-white text-center" style="background-color: #406CAB;">
     <div class="d-flex justify-content-center">
         <div class="col mt-5 mb-5">
-            <img src="{{ asset('youth-logo.png') }}" alt="" style="height: 50px;">
+            <img src="{{ asset('youth-logo.svg') }}" alt="Youthms Logo" class="m-3 brand-images" width="300px">
         </div>
     </div>
     <!-- Grid container -->
     <div class="container p-4">
-        <div class="row mt-4">
+        <div class="row mt-2">
             <div class="col-lg-4 col-md-4 mb-4 mb-md-0">
                 <h5 class="text-uppercase mb-4 fw-bold" style="font-family: Poppins, sans-serif">Address</h5>
                 <p>

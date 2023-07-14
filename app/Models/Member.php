@@ -16,6 +16,11 @@ class Member extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
+    }
+
     public function cart()
     {
         return $this->hasMany(Cart::class);

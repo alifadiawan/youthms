@@ -2,7 +2,7 @@
 <div class="container d-flex align-items-center">
 
     <!-- logo -->
-    <a href="/" class="logo me-auto"><img src="{{ asset('youth-logo.png') }}" alt="" class="img-fluid"></a>
+    <a href="/" class="logo me-auto"><img src="{{ asset('youth-logo.svg') }}" alt="Youthms Logo" class="m-3 brand-images img-fluid" width="200px"></a>
 
     <nav id="navbar" class="navbar navbar-expand">
         <ul class="navbar-nav">
@@ -33,20 +33,27 @@
                 </li>
 
                 <!-- Notifications Dropdown Menu -->
-                <li class="dropdown"><a href="#" class="nav-link"><i class="far fa-bell "></i>
+                <li class="dropdown nav-item">
+                    <a href="#" class="nav-link nav-icon">
                         @foreach ($notifications as $notification)
                             @if ($notification->type === 'App\Notifications\TransaksiNotification')
-                                <span class="qty posisition-absolute badge bg-danger position-absolute top-0 translate-middle badge rounded-pill">{{ count($notifications) }}</span>
+                                <i class="far fa-bell ">
+                                    <span
+                                        class="qty posisition badge bg-danger position top-0 translate-middle badge rounded-pill">{{ count($notifications) }}</span>
+                                </i>
                             @endif
                         @endforeach
                     </a>
-                    <ul>
-                        <li class="dropdown-item dropdown-header mx-2" id="notificationCount">{{ count($notifications) }}
-                            Notifications</li>
-                        <div class="dropdown-divider"></div>
-                        <li>
-                            @include('Admin.notif')
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications p-3">
+                        <li class="dropdown-header" id="notificationCount">
+                            You have {{ count($notifications) }} new notifications
                         </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <!-- <li> -->
+                        @include('EU.notif')
+                        <!-- </li> -->
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#"><span>{{ auth()->user()->username }}</span> <i
@@ -54,10 +61,13 @@
                     <ul>
                         <li><a class="dropdown-item" href="{{ route('user.show', auth()->user()->id) }}">Profile</a>
                         </li>
-                        <li><a class="dropdown-item" href="{{ route('transaksi.history', auth()->user()->id) }}">Histori
+                        <li><a class="dropdown-item" href="{{ route('transaksi.index', auth()->user()->id) }}">Histori
                                 Transaksi</a>
                         </li>
-                        <!-- <li><a class="dropdown-item" href="/group-chat">Chats</a></li> -->
+                        <li><a class="dropdown-item" href="{{ route('pembayaran.index', auth()->user()->id) }}">Histori
+                                Pembayaran</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('gc.index') }}">Chats</a></li>
                         <li>
                             @if (auth()->user()->role->role == 'admin' || auth()->user()->role->role == 'owner')
                         <li>
@@ -111,30 +121,30 @@
 
     <!-- .navbar -->
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).on('click', '.notification-item', function(e) {
-        e.preventDefault();
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).on('click', '.notification-item', function(e) {
+            e.preventDefault();
 
-        var url = $(this).data('url');
+            var url = $(this).data('url');
 
-        // Kirim permintaan Ajax untuk mengubah status notifikasi menjadi "dibaca"
-        $.ajax({
-            url: '{{ route('read') }}',
-            type: 'POST',
-            data: {
-                _token: '{{ csrf_token() }}',
-                notificationUrl: url
-            },
-            success: function(response) {
-                // Redirect pengguna ke URL yang disimpan pada notifikasi
-                window.location.href = url;
-            },
-            error: function(xhr, status, error) {
-                // Tindakan penanganan kesalahan jika diperlukan
-            }
+            // Kirim permintaan Ajax untuk mengubah status notifikasi menjadi "dibaca"
+            $.ajax({
+                url: '{{ route('read') }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    notificationUrl: url
+                },
+                success: function(response) {
+                    // Redirect pengguna ke URL yang disimpan pada notifikasi
+                    window.location.href = url;
+                },
+                error: function(xhr, status, error) {
+                    // Tindakan penanganan kesalahan jika diperlukan
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 </div>

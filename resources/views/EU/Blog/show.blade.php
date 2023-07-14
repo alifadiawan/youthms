@@ -3,7 +3,7 @@
 @section('content')
     <div id="container" class="container mt-5">
         <div class="row align-items-center">
-            <div class="col-lg-8">
+            <div class="col-lg-8 col-md-12 col-12">
                 <a href="/blogs" class="">
                     <i class="fas fa-arrow-left"></i> Back
                 </a>
@@ -23,7 +23,7 @@
 
 
             <!-- berita terkait -->
-            <div class="col-lg-4 align-items-center border border-secondary p-3">
+            <div class="col-lg-4 col-md-12 col-12 align-items-center border border-secondary p-3">
                 <h3 class="fw-bold">Berita Terkait</h3>
 
                 <!-- berita -->
