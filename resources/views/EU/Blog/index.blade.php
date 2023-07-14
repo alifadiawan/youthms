@@ -97,7 +97,7 @@
                                                         </div>
                                                         <div class="trand-right-cap">
                                                             <span class="color1">POPULER</span>
-                                                            <h4><a href="/blog-detail">{{$p->judul}}</a>
+                                                            <h4><a href="{{ route('blogs.detail', $p->id) }}">{{$p->judul}}</a>
                                                             </h4>
                                                         </div>
                                                     </div>
