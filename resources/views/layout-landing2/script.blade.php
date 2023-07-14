@@ -45,12 +45,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel" style="font-family: Poppins"><i class="fa-solid fa-lock"></i> Logout</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h3 class="text-center" style="font-size: 25px;">Anda Yakin Ingin Logout ?</h3>
-            </div>
+                <h3 class="text-center" style="font-size: 25px; font-family: Poppins;"><i class="fa-solid fa-circle-question"></i> Anda Yakin Ingin Logout ?</h3>
+            </div> 
             <div class="modal-footer">
                 <form action="{{ route('logout') }}" method="post">
                     @csrf

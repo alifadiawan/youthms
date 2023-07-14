@@ -19,7 +19,10 @@
                 @endif
 
 
-                <div class="card mb-4 shadow">
+                <div class="card mb-4">
+                    <div class="card-header py-3" style="background-color: #406cab">
+                        <h5 class="mb-0 text-white" style="font-family: Poppins">Cart</h5>
+                    </div>
 
                     @if ($cart->isEmpty())
                         <h2 class="p-3 py-5 text-center fw-bold">BELUM ADA BARANG</h2>

@@ -135,14 +135,15 @@
     <section id="testimonial">
         <!-- Carousel wrapper -->
         <div id="carouselExampleControls" class="carousel slide text-center text-white" data-bs-ride="carousel">
+            <h2 class="fw-bold mb-4" style="font-family: Poppins">Testimonials</h2>
             <div class="carousel-inner">
                 @foreach ($testi as $item)
                     <div class="carousel-item active">
-                        <img class="rounded-circle shadow-1-strong mb-4" src="{{ asset('./testimonial/' . $item->foto) }}"
-                            alt="avatar" style="width: 150px;" />
+                        <img class="rounded-5 shadow-1-strong mb-4" src="{{ asset('./testimonial/' . $item->foto) }}"
+                            alt="avatar" style="width: 100px; height:3cm" />
                         <div class="row d-flex justify-content-center">
                             <div class="col-lg-8">
-                                <h5 class="mb-3">{{ $item->nama }}</h5>
+                                <h5 class="mb-3 fw-bold" style="font-family: Poppins">{{ $item->nama }}</h5>
                                 <p>{{ $item->jabatan }}</p>
                                 <p class="">
                                     <i class="fas fa-quote-left pe-2"></i>
