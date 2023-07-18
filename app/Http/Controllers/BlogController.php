@@ -210,7 +210,7 @@ class BlogController extends Controller
     {
         $segmen = Segmen::all();
         $data = Blog::find($blog->id);
-        return view('Admin.Blog.edit', compact('data', 'segmen'));
+        return view('Admin.B log.edit', compact('data', 'segmen'));
     }
 
     /**
