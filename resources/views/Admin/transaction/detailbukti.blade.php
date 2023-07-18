@@ -36,6 +36,9 @@
                                 @if ($pembayaran->status == 'checking')
                                     <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">{{ $pembayaran->status }}
                                     </h5>
+                                @elseif($pembayaran->status == 'declined')
+                                    <h5 class="h3 mb-0 me-auto text-danger font-weight-bold">{{ $pembayaran->status }}
+                                    </h5>
                                 @else
                                     <h5 class="h3 mb-0 me-auto text-success font-weight-bold">{{ $pembayaran->status }}
                                     </h5>
@@ -43,14 +46,8 @@
                             </div>
                         </div>
 
-                        <div class="row my-2">
-                            {{-- @if ($pembayaran->request_user_id == null)
-                                <div class="col text-center">
-                                    <p class="h3">Rp.{{ number_format($pembayaran->total_bayar, '0', ',', '.') }}
-                                    </p>
-                                </div>
-                            @endif --}}
-                        </div>
+                        {{-- <div class="row my-2">
+                        </div> --}}
 
                         <div class="penerima">
                             <div class="row">
@@ -79,6 +76,7 @@
                                             </form>
                                         </div>
                                     </div>
+                                @elseif($pembayaran->status == 'declined')
                                 @else
                                     <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
                                         @csrf
