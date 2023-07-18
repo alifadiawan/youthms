@@ -252,7 +252,7 @@ h6 {
     background-color: #406cab;
     transition: all 0.5s;
     z-index: 997;
-    padding: 15px 0;
+    padding: 1px 0;
 }
 
 #header.header-scrolled,
@@ -281,6 +281,41 @@ h6 {
 #container {
     padding-top: 72px;
 }
+
+/*--------------------------------------------------------------
+# Header-empty
+--------------------------------------------------------------*/
+#header-empty {
+    background-color: #ffffff;
+    transition: all 0.5s;
+    z-index: 997;
+    padding: 15px 0;
+}
+
+#header-empty.header-scrolled,
+#header-empty.header-inner-pages {
+    background: #406cab;
+}
+
+#header-empty .logo {
+    font-size: 25px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+}
+
+#header-empty .logo a {
+    color: #fff;
+}
+
+#header-empty .logo img {
+    max-height: 60px;
+}
+
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -439,7 +474,7 @@ h6 {
     }
 
     .logo {
-        width: 100px !important;
+        /* width: 100px !important; */
     }
 
     .navbar ul {
@@ -594,6 +629,7 @@ h6 {
     #hero-portofolio {
         border-radius: 0px 0px 100px 100px;
         padding-bottom: 200px;
+        padding-top: 72px;
     }
 
     h1 {
@@ -609,6 +645,7 @@ h6 {
 
 @media all and (max-width: 480px) {
     #hero-portofolio {
+        padding-top: 72px;
         border-radius: 0px 0px 100px 100px;
         padding-bottom: 200px;
     }
