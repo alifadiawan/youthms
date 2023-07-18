@@ -68,7 +68,7 @@ class TransaksiController extends Controller
                 if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                     $checking[] = $t;
                 } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
-                    $utang[] = $t;
+                    $declined[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $kredit[] = $t;
                 } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
@@ -323,7 +323,7 @@ class TransaksiController extends Controller
                 } elseif ($t->total_bayar > 0 && $pembayaran_checking) {
                     $checking[] =  $t;
                 } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
-                    $utang[] = $t;
+                    $declined[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $kredit[] = $t;
                 } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
@@ -369,7 +369,7 @@ class TransaksiController extends Controller
                 if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                     $checking[] = $t;
                 } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
-                    $utang[] = $t;
+                    $declined[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $kredit[] = $t;
                 } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {

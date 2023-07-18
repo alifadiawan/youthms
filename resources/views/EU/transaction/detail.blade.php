@@ -740,11 +740,6 @@
             {{-- VIEW DECLINED --}}
             @if (in_array($t->id, $EU_declined))
                 @section('title', '| Declined')
-                {{-- <a href="{{ route('transaksi.pembayaran',$t->id) }}">
-                        <div class="alert alert-danger" role="alert">
-                            Bayar sebelum .... Klik disini untuk bayar
-                        </div>
-                    </a> --}}
                 <div class="card shadow rounded-3">
                     <div class="row my-3 mx-3 mx-lg-4">
                         <div class="col-6 col-lg text-start">
@@ -765,21 +760,21 @@
                                     {{ $t->member->user->email }}
                                 </div>
                             </div>
-                            @foreach ($requser as $r)
-                                <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
-                                    <div class="row">
-                                        <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0 text-start text-lg-end">Status
-                                        </div>
-                                        <div class="col text-end text-lg text-danger fw-bold">
-                                            DECLINED
-                                        </div>
+                            <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
+                                <div class="row">
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0 text-start text-lg-end">Status
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
-                                        <div class="col text-end text-lg">
-                                            {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
-                                        </div>
+                                    <div class="col text-end text-lg text-danger fw-bold">
+                                        DECLINED
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
+                                    <div class="col text-end text-lg">
+                                        {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
+                                    </div>
+                                </div>
+                                @foreach ($requser as $r)
                                     <div class="row">
                                         <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
                                         <div class="col text-end text-lg">
@@ -792,14 +787,14 @@
                                             {{ date('d F Y', strtotime($r->jatuh_tempo)) }}
                                         </div>
                                     </div>
-                                    {{-- <div class="row">
+                                @endforeach
+                                {{-- <div class="row">
                                     <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Jatuh Tempo</div>
                                     <div class="col text-end text-lg text-danger">
                                         10 Hari lagi
                                     </div>
                                 </div> --}}
-                                </div>
-                            @endforeach
+                            </div>
                         </div>
                         @foreach ($requser as $ru)
                             <div class="row">

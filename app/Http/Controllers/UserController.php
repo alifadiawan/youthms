@@ -109,6 +109,10 @@ class UserController extends Controller
             $pembayaran_checking = $t->pembayaran()->where('status', 'checking')->exists();
             if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                 $checking[] = $t;
+            } elseif ($t->total_bayar > 0 && $pembayaran_checking) {
+                $checking[] =  $t;
+            } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
+                $declined[] = $t;
             } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                 $kredit[] = $t;
             } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
@@ -119,12 +123,10 @@ class UserController extends Controller
                 $declined[] = $t;
             } elseif ($t->total_bayar == 0 && !$req) {
                 $utang[] = $t;
+            } elseif ($t->total_bayar >= $t->total && !$req) {
+                $lunas[] = $t;
             } elseif ($t->total_bayar >= $t->total && $req && $req->status == "accept") {
                 $lunas[] = $t;
-            } elseif ($t->total_bayar >= $t->total && $pemb && $pemb->status == "checked") {
-                $lunas[] = $t;
-            }elseif ($t->total_bayar > 0 && $pembayaran_checking) {
-                $checking[] =  $t;
             }
         }
 
@@ -135,12 +137,12 @@ class UserController extends Controller
         $cl = count($lunas);
         $cd = count($declined);
 
-        
+
         $trx_berjalan = $cc + $cu + $cp;
         $trx_kredit = $ck;
         $trx_riwayat = $cl + $cd;
-     
-        
+
+
         $u = auth()->user()->role->role;
         $staff = ['admin', 'owner'];
         if (in_array($u, $staff)) {
@@ -148,7 +150,7 @@ class UserController extends Controller
             return view('Admin.user.user-detail', compact('user', 'member'));
         } else {
 
-            return view('EU.user.index', compact('uid', 'users', 'member', 'users','trx_berjalan','trx_kredit','trx_riwayat'));
+            return view('EU.user.index', compact('uid', 'users', 'member', 'users', 'trx_berjalan', 'trx_kredit', 'trx_riwayat'));
         }
     }
 
