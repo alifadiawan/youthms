@@ -24,6 +24,7 @@ class PembayaranController extends Controller
     public function PDF(Request $Request)
     {
         // return $Request;
+        // return 'oke';
         $pembayaran = Pembayaran::find($Request->id);
         $auth = auth()->user();
         $cek_user = $auth->role->role;
@@ -33,8 +34,9 @@ class PembayaranController extends Controller
             'title' => 'print pdf',
         ];
 
+        return view('EU.transaction.detaildownload', compact('pembayaran'));
         $pdf = new Dompdf();
-        $pdf->loadHTML(view('EU.transaction.detaildownload', ['pembayaran' => $pembayaran]));
+        // $pdf->loadHTML(view('EU.transaction.detaildownload', compact('pembayaran')));
         $pdf->setPaper('A4', 'potrait');
         $pdf->render();
         $pdf->stream();
@@ -137,7 +139,12 @@ class PembayaranController extends Controller
     public function store(Request $request)
     {
         // return $request;
+        $this->validate($request, [
+            'bukti' => 'required|mimes:png,jpg,jpeg'
+        ]);
+        
         $file = $request->file('bukti');
+
         $nama_file = time() . "_" . $file->getClientOriginalName();
         $tujuan_upload = './bukti_transfer/';
         $file->move($tujuan_upload, $nama_file);
