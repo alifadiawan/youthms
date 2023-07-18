@@ -35,7 +35,7 @@
                 @foreach ($jenis_layanan as $item)
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch my-4 mt-md-0" data-aos="zoom-in"
                         data-aos-delay="200">
-                        <div class="icon-box text-center text-lg-start" style="width: 100%">
+                        <div class="icon-box text-center text-lg-start" style="width: 100%p">
                             <div class="d-flex flex-column" style="height: 100%">
                                 <h4 class="text-center text-uppercase text-lg-start fw-bold">{{ $item->layanan }}</h4>
                                 <p style="height: 100%">{{ $item->deskripsi }}</p>
