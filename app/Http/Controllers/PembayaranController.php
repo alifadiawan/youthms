@@ -138,6 +138,7 @@ class PembayaranController extends Controller
     {
         // return $request;
         $file = $request->file('bukti');
+        // sleep(3);
         $nama_file = time() . "_" . $file->getClientOriginalName();
         $tujuan_upload = './bukti_transfer/';
         $file->move($tujuan_upload, $nama_file);
