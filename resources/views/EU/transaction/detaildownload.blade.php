@@ -170,7 +170,7 @@
                                         <td width="50%" style="padding: 20px;"><strong
                                                 style="color: #333; font-size: 24px;">Rp.
                                                 {{ number_format($pembayaran->total_bayar, 0, ',', '.') }}</strong>
-                                            Paid</td>
+                                            Terbayar</td>
                                         <td align="right" width="50%" style="padding: 20px;">Thanks for using
                                             <span class="il">Youthms.id</span>
                                         </td>
@@ -205,73 +205,77 @@
                                             @endif
                                             <table cellspacing="0"
                                                 style="border-collapse: collapse; margin-bottom: 40px;">
+                                                @foreach ($pembayaran->transaksi->transaksi_detail as $p)
                                                 <tbody>
                                                     <tr>
-                                                        @foreach ($pembayaran->transaksi->transaksi_detail as $p)
-                                                            <td style="padding: 5px 0;">{{ $p->produk->nama_produk  }}</td>
 
-                                                            <td align="right" style="padding: 5px 0;">(qty/{{$p->quantity}})</td>
-                                                            {{-- yang ini buat harga per produk
-                                                                <td align="right" style="padding: 5px 0;">{{$p->produk->harga}}</td>  --}}
-                                                            <td align="right" style="padding: 5px 0;">subtotal/{{$p->subtotal}}</td>
-                                                        @endforeach
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td
-                                                            style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
-                                                            Jumlah Yang Dibayarkan</td>
-                                                        <td align="right"
-                                                            style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
-                                                            Rp.
-                                                            {{ number_format($pembayaran->total_bayar, 0, ',', '.') }}
+                                                        <td style="padding: 5px 0;">{{ $p->produk->nama_produk }}
                                                         </td>
+
+                                                        <td align="right" style="padding: 5px 20px;"> Rp.
+                                                            {{ number_format($p->produk->harga, 0, ',', '.') }}
+                                                        </td>
+                                                        <td align="right" style="padding: 5px 20px;">
+                                                            x{{ $p->quantity }} </td>
+
+                                                        <td align="left" style="padding: 10px 0;">
+                                                            Rp.
+                                                            {{ number_format($p->subtotal, 0, ',', '.') }}
+                                                            @endforeach
                                                     </tr>
+
                                                 </tbody>
                                             </table>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="5px" style="padding: 0;"></td>
-                    </tr>
-
-                    <tr style="color: #666; font-size: 12px;">
-                        <td width="5px" style="padding: 10px 0;"></td>
-                        <td style="clear: both; display: block; margin: 0 auto; max-width: 600px; padding: 10px 0;">
-                            <table width="100%" cellspacing="0" style="border-collapse: collapse;">
-                                <tbody>
-                                    <tr>
-                                        <td width="40%" valign="top" style="padding: 10px 0;">
-                                            <h4 style="margin: 0;">Butuh Bantuan?</h4>
-                                            <p
-                                                style="color: #666; font-size: 12px; font-weight: normal; margin-bottom: 10px;">
-                                                Silahkan kunjungi
-                                                <a href="#" style="color: #666;" target="_blank">
-                                                    Support Center
-                                                </a>
-                                                dan ajukan pertanyaan anda
-                                            </p>
-                                        </td>
-                                        <td width="10%" style="padding: 10px 0;">&nbsp;</td>
-                                        <td width="40%" valign="top" style="padding: 10px 0;">
-                                            <h4 style="margin: 0;"><span class="il">Youth e-Marketing
-                                                    Service</span> Indonesia
-                                            </h4>
-                                            <p
-                                                style="color: #666; font-size: 12px; font-weight: normal; margin-bottom: 10px;">
-                                                <a href="#">Perum Bluru Permai
-                                                    Blok V 25, Sidoarjo</a>
-                                            </p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="5px" style="padding: 10px 0;"></td>
+                                        <tr>
+                                            <td
+                                                style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
+                                                Amount paid</td>
+                                            <td align="right"
+                                                style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
+                                                Rp.
+                                                {{ number_format($pembayaran->total_bayar, 0, ',', '.') }}</td>
+                                        </tr>
+                    </td>
                     </tr>
                 </tbody>
+            </table>
+            </td>
+            <td width="5px" style="padding: 0;"></td>
+            </tr>
+
+            <tr style="color: #666; font-size: 12px;">
+                <td width="5px" style="padding: 10px 0;"></td>
+                <td style="clear: both; display: block; margin: 0 auto; max-width: 600px; padding: 10px 0;">
+                    <table width="100%" cellspacing="0" style="border-collapse: collapse;">
+                        <tbody>
+                            <tr>
+                                <td width="40%" valign="top" style="padding: 10px 0;">
+                                    <h4 style="margin: 0;">Butuh Bantuan?</h4>
+                                    <p style="color: #666; font-size: 12px; font-weight: normal; margin-bottom: 10px;">
+                                        Silahkan kunjungi
+                                        <a href="#" style="color: #666;" target="_blank">
+                                            Support Center
+                                        </a>
+                                        dan ajukan pertanyaan anda
+                                    </p>
+                                </td>
+                                <td width="10%" style="padding: 10px 0;">&nbsp;</td>
+                                <td width="40%" valign="top" style="padding: 10px 0;">
+                                    <h4 style="margin: 0;"><span class="il">Youth e-Marketing
+                                            Service</span> Indonesia
+                                    </h4>
+                                    <p style="color: #666; font-size: 12px; font-weight: normal; margin-bottom: 10px;">
+                                        <a href="#">Perum Bluru Permai
+                                            Blok V 25, Sidoarjo</a>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td width="5px" style="padding: 10px 0;"></td>
+            </tr>
+            </tbody>
             </table>
         </div>
     </div>
