@@ -788,12 +788,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                {{-- <div class="row">
-                                    <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Jatuh Tempo</div>
-                                    <div class="col text-end text-lg text-danger">
-                                        10 Hari lagi
-                                    </div>
-                                </div> --}}
                             </div>
                         </div>
                         @foreach ($requser as $ru)

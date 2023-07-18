@@ -148,7 +148,7 @@
                                         </td>
                                         <td style="color: #999; font-size: 12px; padding: 0; text-align: right;"
                                             align="right">
-                                            Nama Pembeli<br />
+                                            {{ $pembayaran->transaksi->member->name }}<br />
                                             Invoice : {{ $pembayaran->unique_code }}<br />
                                             Tanggal Pembayaran :{{ $pembayaran->created_at }}
                                         </td>
@@ -208,12 +208,15 @@
                                                 <tbody>
                                                     <tr>
                                                         @foreach ($pembayaran->transaksi->transaksi_detail as $p)
-                                                            <td style="padding: 5px 0;">{{ $p->produk->nama_produk  }}</td>
+                                                            <td style="padding: 5px 0;">{{ $p->produk->nama_produk }}
+                                                            </td>
 
-                                                            <td align="right" style="padding: 5px 0;">(qty/{{$p->quantity}})</td>
+                                                            <td align="right" style="padding: 5px 0;">
+                                                                (qty/{{ $p->quantity }})</td>
                                                             {{-- yang ini buat harga per produk
                                                                 <td align="right" style="padding: 5px 0;">{{$p->produk->harga}}</td>  --}}
-                                                            <td align="right" style="padding: 5px 0;">subtotal/{{$p->subtotal}}</td>
+                                                            <td align="right" style="padding: 5px 0;">
+                                                                subtotal/{{ $p->subtotal }}</td>
                                                         @endforeach
                                                     </tr>
 

@@ -258,25 +258,31 @@ class PembayaranController extends Controller
         if ($status == "declined") {
             $pembayaran->update(['status' => 'declined']);
         } else {
-
-
+            // mencari status kredit
             $request_user = Request_user::where('transaksi_id', $pembayaran->transaksi_id)->first();
+            // mencari id transaksi
             $transaksi = Transaksi::find($pembayaran->transaksi_id);
+            // mencari total yang dibayarkan melalui view
             $total_bayar = $request->total_bayar;
+            
+            // mencari total bayar di tabel transaksi
             $total_lunas = $transaksi->total;
+            
+            // jika ada request total bayar, maka akan masuk kredit, jika tidak maka langsung lunas
             if ($total_bayar) {
                 $p['request_user_id'] = $request_user->id;
+                $p['total_bayar'] = $request->total_bayar;
                 $transaksi->update([
                     'total_bayar' => $transaksi->total_bayar + $total_bayar
                 ]);
             } else {
                 $transaksi->update(['total_bayar' => $total_lunas]);
+                $p['total_bayar'] = $total_lunas;
             }
 
             $p = [
                 'status' => $status,
                 'note_admin' => $request->note,
-                'total_bayar' => $request->total_bayar
             ];
             $pembayaran->update($p);
             $tid = $pembayaran->transaksi_id;
