@@ -37,7 +37,14 @@
                 <li class="dropdown nav-item">
                     <a href="#" class="nav-link nav-icon">
                         <i class="far fa-bell "></i>
-                        <span class="qty posisition badge bg-danger position top-0 translate-middle badge rounded-pill">{{ count($notifications) }}</span>
+                        {{-- @foreach ($notification as $n)
+                            
+                        @endforeach --}}
+                        @if ($notifications->isEmpty())
+                        {{-- <span class="qty posisition badge bg-danger position top-0 translate-middle badge rounded-pill">{{ count($notifications) }}</span> --}}
+                            @else
+                            <span class="qty posisition badge bg-danger position top-0 translate-middle badge rounded-pill">{{ count($notifications) }}</span>
+                        @endif
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications p-3">
                         <li class="dropdown-header" id="notificationCount">

@@ -142,7 +142,7 @@ class PembayaranController extends Controller
         $this->validate($request, [
             'bukti' => 'required|mimes:png,jpg,jpeg'
         ]);
-        
+
         $file = $request->file('bukti');
 
         $nama_file = time() . "_" . $file->getClientOriginalName();
@@ -253,30 +253,35 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
-
-
-        $request_user = Request_user::where('transaksi_id', $pembayaran->transaksi_id)->first();
-        $transaksi = Transaksi::find($pembayaran->transaksi_id);
-        $total_bayar = $request->total_bayar;
-        $total_lunas = $transaksi->total;
-        if ($total_bayar) {
-            $p['request_user_id'] = $request_user->id;
-            $transaksi->update([
-                'total_bayar' => $transaksi->total_bayar + $total_bayar
-            ]);
-        } else {
-            $transaksi->update(['total_bayar' => $total_lunas]);
-        }
+        // mengecek apakah di status = declined 
         $status = $request->status;
+        if ($status == "declined") {
+            $pembayaran->update(['status' => 'declined']);
+        } else {
 
-        $p = [
-            'status' => $status,
-            'note_admin' => $request->note,
-            'total_bayar' => $request->total_bayar
-        ];
-        $pembayaran->update($p);
-        $tid = $pembayaran->transaksi_id;
-        $transaksi = Transaksi::where('id', $tid)->first();
+
+            $request_user = Request_user::where('transaksi_id', $pembayaran->transaksi_id)->first();
+            $transaksi = Transaksi::find($pembayaran->transaksi_id);
+            $total_bayar = $request->total_bayar;
+            $total_lunas = $transaksi->total;
+            if ($total_bayar) {
+                $p['request_user_id'] = $request_user->id;
+                $transaksi->update([
+                    'total_bayar' => $transaksi->total_bayar + $total_bayar
+                ]);
+            } else {
+                $transaksi->update(['total_bayar' => $total_lunas]);
+            }
+
+            $p = [
+                'status' => $status,
+                'note_admin' => $request->note,
+                'total_bayar' => $request->total_bayar
+            ];
+            $pembayaran->update($p);
+            $tid = $pembayaran->transaksi_id;
+            $transaksi = Transaksi::where('id', $tid)->first();
+        }
 
         // mengirim notifikasi
         $user = $pembayaran->transaksi->member->user;
