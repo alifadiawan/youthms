@@ -29,7 +29,7 @@
     <section id="services" class="services section-bg">
         <div class="container" data-aos="fade-up">
             <div class="section-title">
-                <h2 class="text-dark">Our Services</h2>
+                <h2 class="text-dark" style="font-family: Poppins">Our Services</h2>
             </div>
             <div class="row justify-content-around">
                 @foreach ($jenis_layanan as $item)
@@ -114,7 +114,7 @@
     <section id="clients" class="clients section-bg">
         <div class="container">
 
-            <h2 class="text-dark fw-bold">Our Partners</h2>
+            <h2 class="text-dark fw-bold">OUR PARTNERS</h2>
 
             <div class="row justify-content-center" data-aos="zoom-in">
 
@@ -135,7 +135,7 @@
     <section id="testimonial">
         <!-- Carousel wrapper -->
         <div id="carouselExampleControls" class="carousel slide text-center text-white" data-bs-ride="carousel">
-            <h2 class="fw-bold mb-4" style="font-family: Poppins">Testimonials</h2>
+            <h2 class="fw-bold mb-4" style="font-family: Poppins">TESTIMONIALS</h2>
             <div class="carousel-inner">
                 @foreach ($testi as $item)
                     <div class="carousel-item active">
