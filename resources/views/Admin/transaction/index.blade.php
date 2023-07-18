@@ -3,7 +3,39 @@
 @section('judul', 'Transaction')
 <div class="card">
     <div class="card-body">
+        <div class="row justify-content-start align-items-center ps-1 pb-2">
+            <label>Sort by :</label>
+        </div>
+        <div class="row justify-content-start align-items-center gap-2 gap-lg-0">
+            <div class="col-12 col-lg-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" value="" placeholder="Tanggal" readonly class="form-control"
+                            pattern="\d{4}-\d{2}-\d{2}" name="sort_tanggal" id="sort_tanggal">
+                        <button class="btn btn-outline-secondary" id="clear_button"><i
+                                class="fa-solid fa-rotate fa-lg"></i></button>
+                    </div>
+                </div>
 
+            </div>
+            <div class="col-12 col-lg-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <select name="sort_status" class="form-control form-select" id="sort_status">
+                            <option value="">Semua</option>
+                            <option value="belum bayar">Belum Bayar</option>
+                            <option value="kredit">Kredit</option>
+                            <option value="lunas">Lunas</option>
+                            <option value="pending">Pending</option>
+                            <option value="checking">Checking</option>
+                            <option value="declined">Declined</option>
+                        </select>
+                        <button onClick="window.location.reload();" class="btn btn-outline-secondary"><i
+                                class="fa-solid fa-rotate fa-lg"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="table-responsive">
             <table class="table table-striped mt-2">
                 <thead>
@@ -18,7 +50,7 @@
                 </thead>
                 <tbody>
                     @foreach ($trx as $t)
-                        <tr>
+                        <tr class="main-row">
                             <td>{{ $t->unique_code }}</td>
                             <td>{{ $t->member->name }}</td>
                             <td>Rp {{ number_format($t->total, 0, ',', '.') }}</td>
@@ -69,4 +101,51 @@
     </div>
 
 </div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    flatpickr("#sort_tanggal", {
+        dateFormat: "d F Y"
+    });
+
+    $(document).ready(function() {
+        $('#sort_status').on('change', function() {
+            filterData();
+        });
+
+        $('#sort_tanggal').on('change', function() {
+            filterData();
+        });
+
+        $('#clear_button').on('click', function() {
+            $('#sort_tanggal').val('');
+            filterData();
+        });
+    })
+
+    function filterData() {
+        var statusFilter = $('#sort_status').val().toLowerCase();
+        var tanggalFilter = $('#sort_tanggal').val().toLowerCase();
+
+        $('.main-row').hide();
+        if (statusFilter === 'all') {
+            $('.main-row').show();
+        }
+        $('.main-row').filter(function() {
+            var status = $(this).find('td:eq(4) span.badge').text().toLowerCase();
+            var tanggal = $(this).find('td:eq(3)').text().toLowerCase();
+
+            var matchesStatusFilter = status.includes(statusFilter);
+            var matchesTanggalFilter = true; // Default true jika filter tanggal kosong
+
+            if (tanggalFilter !== "Tanggal") {
+                matchesTanggalFilter = tanggal.includes(tanggalFilter);
+            }
+
+            return matchesStatusFilter && matchesTanggalFilter;
+        }).show();
+    }
+</script>
 @endsection

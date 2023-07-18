@@ -259,7 +259,7 @@ Route::middleware('admin')->group(function () {
     Route::resource('/dashboard', DashboardController::class);
 
     //services
-    Route::POST('jenislayanan', [JenisLayananController::class, 'store'])->name('jenislayanan.store');
+    Route::resource('jenislayanan', JenisLayananController::class);
     Route::GET('jenislayanan/{id}/hapus', [JenisLayananController::class, 'hapus'])->name('jenislayanan.hapus');
     Route::GET('services/{id}/hapus', [ServicesController::class, 'hapus'])->name('services.hapus');
     Route::get('id_services', [ServicesController::class, 'id_services']);

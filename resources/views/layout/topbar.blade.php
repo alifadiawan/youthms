@@ -15,7 +15,7 @@
     <ul class="navbar-nav ml-auto align-items-center">
 
         <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
+        {{-- <li class="nav-item dropdown">
             <a class="nav-link px-1" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
                 @foreach ($notifications as $notification)
@@ -28,7 +28,7 @@
                 @include('Admin.chat-notif')
                 <a href="/chat" class="dropdown-item dropdown-footer">See All Messages</a>
             </div>
-        </li>
+        </li> --}}
 
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">

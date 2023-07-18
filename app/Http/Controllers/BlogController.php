@@ -23,18 +23,9 @@ class BlogController extends Controller
     {
 
         $today = date('Y-m-d');
-        // $action = 'get-populer';
-
-        $Sweek = Carbon::now()->subweek();
-        $Eweek = Carbon::now();
         $get = 'populer';
 
-        $populer = Blog::orderBy('visitor', 'desc')->get();
-        $weekly = Blog::whereBetween('created_at', [$Sweek, $Eweek])->orwhereBetween('updated_at', [$Sweek, $Eweek])->get();
-        $terpilih = Blog::whereHas('segmen', function ($query){
-            $query->where('id', 3);
-        })->get();
-        // $terpilih = blog::where()->get();        //pending
+        $populer = Blog::orderBy('visitor', 'desc')->paginate(5);
 
         $segmen = Segmen::all();
         $sekarang = Carbon::now();
@@ -46,10 +37,10 @@ class BlogController extends Controller
         $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(4)->get();
         // return $terpilih;
 
-        $compact = ['populer', 'weekly',  'terpilih', 'segmen', 'recently_uploaded', 'recently_lastweek','get', 'atas'];
+        $compact = ['populer', 'segmen', 'recently_uploaded', 'recently_lastweek','get', 'atas'];
 
         $segmen = Segmen::all();
-        $data = Blog::paginate(5);
+        $data = Blog::paginate(25);
         $pag = Blog::paginate(5);
         if (auth()->check()) {
             $u = auth()->user()->role->role;
@@ -82,19 +73,19 @@ class BlogController extends Controller
         // $blog = blog::all();
         if ($type == 'populer') {
             // code...
-            $populer = Blog::orderBy('visitor', 'desc')->get();
+            $populer = Blog::orderBy('visitor', 'desc')->paginate(5);
             $blog = $populer;
         } 
         elseif ($type == 'weekly') {
             // code...
-            $weekly = Blog::whereBetween('created_at', [$Sweek, $Eweek])->orwhereBetween('updated_at', [$Sweek, $Eweek])->get();
+            $weekly = Blog::whereBetween('created_at', [$Sweek, $Eweek])->orwhereBetween('updated_at', [$Sweek, $Eweek])->paginate(5);
             $blog = $weekly;
         } 
         elseif ($type == 'terpilih') {
             // code...
             $terpilih = Blog::whereHas('segmen', function ($query){
                 $query->where('id', 3);
-            })->get();
+            })->paginate(5);
             $blog = $terpilih;
         }
         
@@ -120,8 +111,9 @@ class BlogController extends Controller
         $blog = Blog::whereHas('segmen', function ($query) use ($type) {
             $query->where('segmen', $type);
         })->get();
+        $segmen = Segmen::all();
         // return $blog;
-        return view('EU.Blog.segmen', compact('blog', 'type'));
+        return view('EU.Blog.segmen', compact('blog', 'type', 'segmen'));
     }
 
     public function detail(Request $request, Blog $blog)

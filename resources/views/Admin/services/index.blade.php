@@ -56,6 +56,7 @@
                                         style="background-color: #0EA1E2">Detail</a>
                                 </td>
                             </tr>
+
                         @endforeach
                     @endif
                 </tbody>
@@ -79,8 +80,8 @@
             <table class="table">
                 <thead class="text-white" style="background-color: #0EA1E2">
                     <tr>
-                        <th class="text-center">Nama layanan</th>
-                        <!-- <th>Action</th> -->
+                        <th>Nama layanan</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,15 +91,15 @@
                         </tr>
                     @else
                         @foreach ($jenis_layanan as $item)
-                            <tr class="text-center">
+                            <tr>
                                 <td class="text-capitalize">{{ $item->layanan }}</td>
-                                {{-- <td>
+                                <td>
                                     <button type="button" class="btn btn-sm text-white" data-toggle="modal"
-                                        data-target="#hapusjenislayanan{{ $item->id }}"
+                                        data-target="#editModal{{ $item->id }}"
                                         style="background-color: #1864BA">
-                                        <i class="fa-solid fa-trash"></i>
+                                        <i class="fa-solid fa-edit"></i>
                                     </button>
-                                </td> --}}
+                                </td>
                             </tr>
                         @endforeach
                     @endif
@@ -115,27 +116,20 @@
 </div>
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- Edit Modal -->
+@foreach ($jenis_layanan as $edit)
+<div class="modal fade" id="editModal{{$edit->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
 
             <div class="modal-body">
-                <form action="{{ route('jenislayanan.store') }}" method="post">
+                <form action="{{ route('jenislayanan.update', $edit->id) }}" method="post">
                     @csrf
-                    <div class="form-group">
-                        <label for="">Nama Layanan</label>
-                        <input type="text" class="form-control" placeholder="jasa editing" name="layanan"
-                            id="">
-                    </div>
+                    @method('PUT')
                     <div class="form-group">
                         <label for="">Deskripsi</label>
-                        <textarea name="deskripsi" id="deskripsi" class="form-control" cols="30" rows="10"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Link ilustrasi</label>
-                        <input type="text" class="form-control" name="link_illus" id="link_illus">
+                        <textarea name="deskripsi" id="deskripsi" class="form-control" cols="30" rows="10">{{$edit->deskripsi}}</textarea>
                     </div>
             </div>
             <div class="row text-center p-3">
@@ -148,9 +142,10 @@
         </div>
     </div>
 </div>
+@endforeach
 
 <!-- hapus jenis layanan -->
-@foreach ($jenis_layanan as $hapus)
+{{-- @foreach ($jenis_layanan as $hapus)
     <div class="modal fade" id="hapusjenislayanan{{ $hapus->id }}" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -168,6 +163,6 @@
             </div>
         </div>
     </div>
-@endforeach
+@endforeach --}}
 
 @endsection

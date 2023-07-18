@@ -16,13 +16,13 @@ class SegmenSeeder extends Seeder
         //
         $segmen = [
             [
-                'segmen' => 'DESIGN'
+                'segmen' => 'design'
             ],
             [
-                'segmen' => 'MARKETING'
+                'segmen' => 'marketing'
             ],
             [
-                'segmen' => 'PEMROGRAMAN'
+                'segmen' => 'pemrograman'
             ],
         ];
         segmen::insert($segmen);

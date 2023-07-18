@@ -31,7 +31,7 @@ class ProdukController extends Controller
         $services = Services::all();
 
         // produk populer di limit maximal 5
-        $product = Produk::paginate(5);
+        $product = Produk::paginate(20);
 
         // mencari produk yang palign banyak diminati di tabel transaksi detail
         $produkpopuler = TransaksiDetail::select('produk_id', DB::raw('SUM(quantity) as total_quantity'))
