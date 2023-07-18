@@ -252,7 +252,7 @@ h6 {
     background-color: #406cab;
     transition: all 0.5s;
     z-index: 997;
-    padding: 15px 0;
+    padding: 1px 0;
 }
 
 #header.header-scrolled,
@@ -277,6 +277,11 @@ h6 {
 #header .logo img {
     max-height: 40px;
 }
+
+#container {
+    padding-top: 72px;
+}
+
 /*--------------------------------------------------------------
 # Header-empty
 --------------------------------------------------------------*/
@@ -310,9 +315,7 @@ h6 {
     max-height: 60px;
 }
 
-#container {
-    padding-top: 72px;
-}
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -626,6 +629,7 @@ h6 {
     #hero-portofolio {
         border-radius: 0px 0px 100px 100px;
         padding-bottom: 200px;
+        padding-top: 72px;
     }
 
     h1 {
@@ -641,6 +645,7 @@ h6 {
 
 @media all and (max-width: 480px) {
     #hero-portofolio {
+        padding-top: 72px;
         border-radius: 0px 0px 100px 100px;
         padding-bottom: 200px;
     }
