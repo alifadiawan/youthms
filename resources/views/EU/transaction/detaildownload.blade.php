@@ -23,9 +23,9 @@
 
 
     <div class="container" style="max-width: 50rem">
-        <a href="{{ url()->previous() }}" class="pl-0 pb-3">
+        {{-- <a href="{{ url()->previous() }}" class="pl-0 pb-3">
             <i class="fas fa-arrow-left"></i>
-        </a>
+        </a> --}}
         {{-- Format PDF Lama --}}
         {{-- <div class="row">
             <div class="col">
@@ -207,11 +207,16 @@
                                                 style="border-collapse: collapse; margin-bottom: 40px;">
                                                 <tbody>
                                                     <tr>
-                                                        <td style="padding: 5px 0;">Nama Produk</td>
-                                                        <td align="right" style="padding: 5px 0;">Free plan (10,000
-                                                            msg/month)</td>
+                                                        @foreach ($pembayaran->transaksi->transaksi_detail as $p)
+                                                            <td style="padding: 5px 0;">{{ $p->produk->nama_produk  }}</td>
+
+                                                            <td align="right" style="padding: 5px 0;">(qty/{{$p->quantity}})</td>
+                                                            {{-- yang ini buat harga per produk
+                                                                <td align="right" style="padding: 5px 0;">{{$p->produk->harga}}</td>  --}}
+                                                            <td align="right" style="padding: 5px 0;">subtotal/{{$p->subtotal}}</td>
+                                                        @endforeach
                                                     </tr>
-                                                    
+
                                                     <tr>
                                                         <td
                                                             style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
@@ -251,7 +256,8 @@
                                         </td>
                                         <td width="10%" style="padding: 10px 0;">&nbsp;</td>
                                         <td width="40%" valign="top" style="padding: 10px 0;">
-                                            <h4 style="margin: 0;"><span class="il">Youth e-Marketing Service</span> Indonesia
+                                            <h4 style="margin: 0;"><span class="il">Youth e-Marketing
+                                                    Service</span> Indonesia
                                             </h4>
                                             <p
                                                 style="color: #666; font-size: 12px; font-weight: normal; margin-bottom: 10px;">
@@ -315,7 +321,7 @@
 <!--End of Tawk.to Script-->
 
 <!-- Logout Modal -->
-<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -334,6 +340,6 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 </html>

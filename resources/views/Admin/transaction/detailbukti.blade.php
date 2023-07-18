@@ -68,10 +68,16 @@
                         <div class="footer mt-3">
                             @if ($pembayaran->status == 'checked')
                                 <div class="row">
-                                    <div class="col">
-                                        <button class="btn btn-success w-100 yms-outline-blue rounded-pill">
-                                            download
-                                        </button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <form action="{{ route('pembayaran.pdf') }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn w-100 yms-outline-blue rounded-pill">
+                                                    Download
+                                                </button>
+                                                <input type="hidden" name="id" value="{{ $pembayaran->id }}">
+                                            </form>
+                                        </div>
                                     </div>
                                 @else
                                     <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
@@ -106,9 +112,8 @@
                                         @method('put')
                                         <div class="row mt-2">
                                             <div class="col">
-                                                <input type="hidden" value="decline" name="status">
-                                                <button
-                                                    class="btn btn-danger w-100 yms-outline-blue rounded-pill">
+                                                <input type="hidden" value="declined" name="status">
+                                                <button class="btn btn-danger w-100 yms-outline-blue rounded-pill">
                                                     Decline
                                                 </button>
                                             </div>

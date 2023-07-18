@@ -288,7 +288,7 @@ class TransaksiController extends Controller
 
             // mencari selisih tanggal  
             $selisih = $tglmulai->diffInDays($tglselesai);
-            $total_kekurangan =  $total_harga->total - $total_bayar_user;
+            $total_kekurangan =  $total_harga->total - $total_bayar_user;   
             $transaksi_kredit = ['total_kekurangan', 'total_bayar_user'];
             array_push($compact, $transaksi_kredit);
         }
