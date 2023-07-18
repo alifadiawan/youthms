@@ -182,18 +182,16 @@ h6 {
     }
 }
 
-
-
 /* Button */
 .text-capitalize.btn.btn.yms-outline-blue.rounded-5 {
     margin: 0px 6px 0 6px;
 }
 
-
 @media all and (min-width: 480px) and (max-width: 768px) {
     .text-capitalize.btn.btn.yms-outline-blue.rounded-5 {
         width: 170px;
         margin: 0px 10px 0 10px;
+
     }
 
     #btn-y {
@@ -213,9 +211,6 @@ h6 {
         margin: 0px 10px 0 10px;
     }
 }
-
-
-
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -333,7 +328,7 @@ h6 {
 .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
-.navbar li:hover>a {
+.navbar li:hover > a {
     color: #47b2e4;
 }
 
@@ -358,7 +353,7 @@ h6 {
 .navbar .dropdown ul {
     display: block;
     position: absolute;
-    left: 14px;
+    left: 1px;
     top: calc(100% + 30px);
     margin: 0;
     padding: 10px 0;
@@ -389,11 +384,11 @@ h6 {
 
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover>a {
+.navbar .dropdown ul li:hover > a {
     color: #47b2e4;
 }
 
-.navbar .dropdown:hover>ul {
+.navbar .dropdown:hover > ul {
     opacity: 1;
     top: 100%;
     visibility: visible;
@@ -405,7 +400,7 @@ h6 {
     visibility: hidden;
 }
 
-.navbar .dropdown .dropdown:hover>ul {
+.navbar .dropdown .dropdown:hover > ul {
     opacity: 1;
     top: 0;
     left: 100%;
@@ -417,13 +412,10 @@ h6 {
         left: -90%;
     }
 
-    .navbar .dropdown .dropdown:hover>ul {
+    .navbar .dropdown .dropdown:hover > ul {
         left: -100%;
     }
-
-
 }
-
 
 /**
 * Mobile Navigation 
@@ -497,7 +489,7 @@ h6 {
 
 .navbar-mobile a:hover,
 .navbar-mobile .active,
-.navbar-mobile li:hover>a {
+.navbar-mobile li:hover > a {
     color: #47b2e4;
 }
 
@@ -533,11 +525,11 @@ h6 {
 
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover>a {
+.navbar-mobile .dropdown ul li:hover > a {
     color: #47b2e4;
 }
 
-.navbar-mobile .dropdown>.dropdown-active {
+.navbar-mobile .dropdown > .dropdown-active {
     display: block;
 }
 
@@ -579,7 +571,6 @@ h6 {
     .hero {
         border-radius: 0px 0px 100px 0px;
         padding-bottom: 400px;
-
     }
 }
 
@@ -596,10 +587,10 @@ h6 {
     border-radius: 0px 0px 200px 200px;
 }
 
+@media all and (min-width: 768px) and (max-width: 1024px) {
+}
 
-@media all and (min-width: 768px) and (max-width: 1024px) { }
-
-@media all and (min-width: 480px) and (max-width: 768px) { 
+@media all and (min-width: 480px) and (max-width: 768px) {
     #hero-portofolio {
         border-radius: 0px 0px 100px 100px;
         padding-bottom: 200px;
@@ -621,15 +612,12 @@ h6 {
         border-radius: 0px 0px 100px 100px;
         padding-bottom: 200px;
     }
- }
-
-
+}
 
 .hero-portofolio h1 {
     font-family: "Poppins", sans-serif;
     font-weight: bold;
 }
-
 
 /* 
 #hero .container {
@@ -852,6 +840,8 @@ section {
 #testimonial {
     background-color: #406cab;
     border-radius: 150px 150px 150px 150px;
+    margin-right: 10px;
+    margin-left: 2px;
 }
 
 @media (max-width: 576px) {
@@ -980,7 +970,8 @@ section {
     font-size: 26px;
 }
 
-.about h5, h2{
+.about h5,
+h2 {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
 }
@@ -995,7 +986,7 @@ section {
     position: relative;
 }
 
-.about .content ul li+li {
+.about .content ul li + li {
     margin-top: 10px;
 }
 
@@ -1073,7 +1064,7 @@ section {
     list-style: none;
 }
 
-.why-us .accordion-list li+li {
+.why-us .accordion-list li + li {
     margin-top: 15px;
 }
 
@@ -1135,7 +1126,6 @@ section {
 }
 
 @media (max-width: 1024px) {
-
     .why-us .content,
     .why-us .accordion-list {
         padding-left: 0;
@@ -1320,7 +1310,7 @@ section {
     font-family: "Poppins", sans-serif;
 }
 
-.services h1{
+.services h1 {
     font-family: "Poppins", sans-serif;
 }
 
@@ -1382,9 +1372,8 @@ section {
     font-family: "Poppins", sans-serif;
 }
 
-.main-banner h1{
+.main-banner h1 {
     font-family: "Poppins", sans-serif;
-
 }
 
 .main-banner img {
@@ -1433,9 +1422,7 @@ section {
         font-size: 20px;
         margin-bottom: -300px;
     }
-
 }
-
 
 .layanan h1 {
     font-family: "Poppins", sans-serif;
@@ -1813,7 +1800,12 @@ section {
 }
 
 @media (max-width: 767px) {
-    .trending-area .trending-main .trending-top .trend-top-img .trend-top-cap h2 {
+    .trending-area
+        .trending-main
+        .trending-top
+        .trend-top-img
+        .trend-top-cap
+        h2 {
         font-size: 15px;
     }
 }
@@ -1824,11 +1816,20 @@ section {
     line-height: 1.3;
 }
 
-.trending-area .trending-main .trending-bottom .single-bottom .trend-bottom-img {
+.trending-area
+    .trending-main
+    .trending-bottom
+    .single-bottom
+    .trend-bottom-img {
     overflow: hidden;
 }
 
-.trending-area .trending-main .trending-bottom .single-bottom .trend-bottom-img img {
+.trending-area
+    .trending-main
+    .trending-bottom
+    .single-bottom
+    .trend-bottom-img
+    img {
     width: 100%;
     margin-bottom: 20px;
     border-radius: 15px;
@@ -1836,7 +1837,12 @@ section {
     transition: all 0.5s ease-out 0s;
 }
 
-.trending-area .trending-main .trending-bottom .single-bottom .trend-bottom-cap span {
+.trending-area
+    .trending-main
+    .trending-bottom
+    .single-bottom
+    .trend-bottom-cap
+    span {
     color: #000;
     text-transform: uppercase;
     font-size: 11px;
@@ -1847,22 +1853,44 @@ section {
     display: inline-block;
 }
 
-.trending-area .trending-main .trending-bottom .single-bottom .trend-bottom-cap h4 {
+.trending-area
+    .trending-main
+    .trending-bottom
+    .single-bottom
+    .trend-bottom-cap
+    h4 {
     font-size: 18px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .trending-area .trending-main .trending-bottom .single-bottom .trend-bottom-cap h4 {
+    .trending-area
+        .trending-main
+        .trending-bottom
+        .single-bottom
+        .trend-bottom-cap
+        h4 {
         font-size: 16px;
     }
 }
 
-.trending-area .trending-main .trending-bottom .single-bottom .trend-bottom-cap h4 a {
+.trending-area
+    .trending-main
+    .trending-bottom
+    .single-bottom
+    .trend-bottom-cap
+    h4
+    a {
     font-weight: 500;
     line-height: 1.4;
 }
 
-.trending-area .trending-main .trending-bottom .single-bottom .trend-bottom-cap h4 a:hover {
+.trending-area
+    .trending-main
+    .trending-bottom
+    .single-bottom
+    .trend-bottom-cap
+    h4
+    a:hover {
     color: #2fa5fb;
 }
 
@@ -1906,7 +1934,8 @@ section {
 }
 
 @media screen and (min-width: 576px) {
-    .trending .card-right {}
+    .trending .card-right {
+    }
 }
 
 .trending .card-right {
@@ -2172,11 +2201,11 @@ section {
     border: 1px solid #ddd;
 } */
 
-.cara-bayar .btn-group>.btn-group:not(:last-child)>.btn,
-.cara-bayar .btn-group>.btn:not(:last-child):not(.dropdown-toggle),
-.cara-bayar .btn-group>.btn-group:not(:first-child)>.btn,
-.cara-bayar .btn-group>.btn:nth-child(n + 3),
-.cara-bayar .btn-group> :not(.btn-check)+.btn {
+.cara-bayar .btn-group > .btn-group:not(:last-child) > .btn,
+.cara-bayar .btn-group > .btn:not(:last-child):not(.dropdown-toggle),
+.cara-bayar .btn-group > .btn-group:not(:first-child) > .btn,
+.cara-bayar .btn-group > .btn:nth-child(n + 3),
+.cara-bayar .btn-group > :not(.btn-check) + .btn {
     border-radius: 50px;
     margin-right: 20px;
 }
@@ -2411,7 +2440,10 @@ section {
     position: relative;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+.portfolio-details
+    .portfolio-details-slider
+    .swiper-pagination
+    .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
     background-color: #fff;
@@ -2419,7 +2451,10 @@ section {
     border: 1px solid #47b2e4;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+.portfolio-details
+    .portfolio-details-slider
+    .swiper-pagination
+    .swiper-pagination-bullet-active {
     background-color: #47b2e4;
 }
 
@@ -2442,7 +2477,7 @@ section {
     font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li+li {
+.portfolio-details .portfolio-info ul li + li {
     margin-top: 10px;
 }
 
@@ -2554,7 +2589,7 @@ section {
     color: #fff;
 }
 
-.team .member .social a+a {
+.team .member .social a + a {
     margin-left: 8px;
 }
 
@@ -2696,7 +2731,7 @@ section {
     list-style: none;
 }
 
-.faq .faq-list li+li {
+.faq .faq-list li + li {
     margin-top: 15px;
 }
 
@@ -2873,7 +2908,7 @@ section {
     font-weight: 600;
 }
 
-.contact .php-email-form .error-message br+br {
+.contact .php-email-form .error-message br + br {
     margin-top: 25px;
 }
 
@@ -2988,11 +3023,11 @@ section {
     font-size: 14px;
 }
 
-.breadcrumbs ol li+li {
+.breadcrumbs ol li + li {
     padding-left: 10px;
 }
 
-.breadcrumbs ol li+li::before {
+.breadcrumbs ol li + li::before {
     display: inline-block;
     padding-right: 10px;
     color: #4668a2;
@@ -3011,7 +3046,6 @@ section {
 #footer h5 {
     color: #fff;
     font-family: "Poppins", sans-serif;
-
 }
 
 #footer .footer-newsletter {
@@ -3247,3 +3281,5 @@ section {
     width: 500px;
     margin-top: -80px;
 }
+
+/* Struk PDF Gan */
