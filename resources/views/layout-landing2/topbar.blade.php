@@ -2,7 +2,8 @@
 <div class="container d-flex align-items-center">
 
     <!-- logo -->
-    <a href="/" class="logo me-auto"><img src="{{ asset('youth-logo.svg') }}" alt="Youthms Logo" class="m-3 brand-images img-fluid" width="200px"></a>
+    <a href="/" class="logo me-auto"><img src="{{ asset('youth-logo.svg') }}" alt="Youthms Logo"
+            class="m-3 brand-images img-fluid" width="200px"></a>
 
     <nav id="navbar" class="navbar navbar-expand">
         <ul class="navbar-nav">

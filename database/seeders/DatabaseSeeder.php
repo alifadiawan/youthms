@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             LandingSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
-            // UserkwSeeder::class,
+            UserkwSeeder::class,
 
             // end user
             MemberSeeder::class,
