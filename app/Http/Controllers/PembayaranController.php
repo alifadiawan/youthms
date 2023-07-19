@@ -34,9 +34,9 @@ class PembayaranController extends Controller
             'title' => 'print pdf',
         ];
 
-        return view('EU.transaction.detaildownload', compact('pembayaran'));
+        // return view('EU.transaction.detaildownload', compact('pembayaran'));
         $pdf = new Dompdf();
-        // $pdf->loadHTML(view('EU.transaction.detaildownload', compact('pembayaran')));
+        $pdf->loadHTML(view('EU.transaction.detaildownload', compact('pembayaran')));
         $pdf->setPaper('A4', 'potrait');
         $pdf->render();
         $pdf->stream();

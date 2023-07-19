@@ -145,8 +145,9 @@
                                                     style="height: 50px; max-width: 100%; width: 157px;" height="50"
                                                     width="157" />
                                             </a> --}}
+                                            <h4>Youthms.id</h4>
                                         </td>
-                                        <td style="color: #999; font-size: 12px; padding: 0; text-align: right;"
+                                        <td style="color: #999; font-size: 12px; padding: 0; text-align: right; font-family:Poppins;"
                                             align="right">
                                             {{ $pembayaran->transaksi->member->name }}<br />
                                             Invoice : {{ $pembayaran->unique_code }}<br />
@@ -170,7 +171,7 @@
                                         <td width="50%" style="padding: 20px;"><strong
                                                 style="color: #333; font-size: 24px;">Rp.
                                                 {{ number_format($pembayaran->total_bayar, 0, ',', '.') }}</strong>
-                                            Paid</td>
+                                            Terbayar</td>
                                         <td align="right" width="50%" style="padding: 20px;">Thanks for using
                                             <span class="il">Youthms.id</span>
                                         </td>
@@ -206,21 +207,24 @@
                                             <table cellspacing="0"
                                                 style="border-collapse: collapse; margin-bottom: 40px;">
                                                 <tbody>
-                                                    <tr>
-                                                        @foreach ($pembayaran->transaksi->transaksi_detail as $p)
+                                                    @foreach ($pembayaran->transaksi->transaksi_detail as $p)
+                                                        <tr>
                                                             <td style="padding: 5px 0;">{{ $p->produk->nama_produk }}
                                                             </td>
 
-                                                            <td align="right" style="padding: 5px 0;">
-                                                                (qty/{{ $p->quantity }})</td>
-                                                            {{-- yang ini buat harga per produk
-                                                                <td align="right" style="padding: 5px 0;">{{$p->produk->harga}}</td>  --}}
-                                                            <td align="right" style="padding: 5px 0;">
-                                                                subtotal/{{ $p->subtotal }}</td>
-                                                        @endforeach
-                                                    </tr>
+                                                            <td align="right" style="padding: 5px 20px;">Rp.
+                                                                {{ number_format($p->produk->harga, 0, ',', '.') }}
+                                                            </td>
+                                                            <td align="right" style="padding: 5px 20px;">
+                                                                x {{ $p->quantity }}</td>
 
-                                                    <tr>
+                                                            <td align="right" style="padding: 5px 10px;">
+                                                                Rp.
+                                                                {{ number_format($p->subtotal, 0, ',', '.') }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    <br>
+                                                    <tr style="align-content: center">
                                                         <td
                                                             style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
                                                             Jumlah Yang Dibayarkan</td>
@@ -232,6 +236,8 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
+
+
                                         </td>
                                     </tr>
                                 </tbody>
@@ -344,5 +350,16 @@
         </div>
     </div>
 </div> --}}
+<style>
+    body{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
 
+    body h3{
+        text-transform: uppercase;
+    }
+    body tr .jumlah{
+        margin-right: 100px
+    }
+</style>
 </html>
