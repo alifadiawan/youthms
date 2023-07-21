@@ -47,9 +47,9 @@ class BlogController extends Controller
             $admin = ['admin', 'owner'];
             if (in_array($u, $admin)) {
                 if ($request->ajax()) {
-                    return view('Admin.Blog.blog-pagination', compact('data', 'segmen'));
+                    return view('Admin.blog.blog-pagination', compact('data', 'segmen'));
                 }
-                return view('Admin.Blog.index', compact('segmen', 'data'));
+                return view('Admin.blog.index', compact('segmen', 'data'));
             }else{
                 return view('EU.Blog.index', compact($compact));
             }
@@ -101,7 +101,7 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         // return $blog;
-        return view('Admin.Blog.detail', compact('blog'));
+        return view('Admin.blog.detail', compact('blog'));
     }
 
     public function showtype($type)
@@ -132,7 +132,7 @@ class BlogController extends Controller
     public function create()
     {
         $segmen = Segmen::all();
-        return view('Admin.Blog.add', compact('segmen'));
+        return view('Admin.blog.add', compact('segmen'));
     }
 
     /**
@@ -210,7 +210,7 @@ class BlogController extends Controller
     {
         $segmen = Segmen::all();
         $data = Blog::find($blog->id);
-        return view('Admin.B log.edit', compact('data', 'segmen'));
+        return view('Admin.blog.edit', compact('data', 'segmen'));
     }
 
     /**
