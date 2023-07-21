@@ -8,8 +8,8 @@ use App\Models\Member;
 use App\Models\Transaksi;
 use App\Models\TransaksiDetail;
 use Illuminate\Http\Request;
-use App\Models\bank;
-use App\Models\ewallet;
+use App\Models\Bank;
+use App\Models\Ewallet;
 use App\Models\request_user;
 use Illuminate\Support\Facades\File;
 use App\Models\User;
@@ -86,7 +86,7 @@ class PembayaranController extends Controller
         // mencari transaksi id dengan menggunakkan id member
         // $gateaway = gateaway::all();
         $bank = Bank::all();
-        $ewallet = ewallet::all();
+        $ewallet = Ewallet::all();
 
 
         $tid = $id;
