@@ -476,8 +476,4 @@ class TransaksiController extends Controller
     {
     }
 
-    // type bank
-    public function bank()
-    {
-    }
 }
