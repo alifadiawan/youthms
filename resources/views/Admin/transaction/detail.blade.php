@@ -150,15 +150,25 @@
                                         </table>
                                     @endif
 
-                                    <div class="footer mt-3">
-                                        <div class="row">
-                                            <div class="col">
-                                                <a href="" class="btn btn-block btn-outline-info rounded-pill">
-                                                    Download
-                                                </a>
+                                    @if (in_array($t->id,$adm_lunas))
+                                        <div class="footer mt-3">
+                                            <div class="row">
+                                                <div class="col">
+                                                    @foreach ($pembayaran as $p)
+                                                        <form action="{{ route('pembayaran.pdf') }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="id"
+                                                                value="{{ $p->id }}">
+                                                            <button class="btn btn-block btn-outline-info rounded-pill">
+                                                                download
+                                                                {{-- {{  }} --}}
+                                                            </button>
+                                                        </form>
+                                                    @endforeach
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
