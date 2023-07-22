@@ -230,6 +230,12 @@
                                                             Jumlah Yang Dibayarkan</td>
                                                         <td align="right"
                                                             style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
+                                                        </td>
+                                                        <td align="right"
+                                                            style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
+                                                        </td>
+                                                        <td align="right"
+                                                            style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
                                                             Rp.
                                                             {{ number_format($pembayaran->total_bayar, 0, ',', '.') }}
                                                         </td>
@@ -351,15 +357,17 @@
     </div>
 </div> --}}
 <style>
-    body{
+    body {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
 
-    body h3{
+    body h3 {
         text-transform: uppercase;
     }
-    body tr .jumlah{
+
+    body tr .jumlah {
         margin-right: 100px
     }
 </style>
+
 </html>

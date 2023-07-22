@@ -396,7 +396,7 @@ class TransaksiController extends Controller
             $adm_pending = collect($pending)->pluck('id')->toArray();
             $adm_declined = collect($declined)->pluck('id')->toArray();
 
-
+            // return $adm_lunas;
             $status_EU = ['adm_utang', 'adm_kredit', 'adm_lunas', 'adm_declined', 'adm_denied', 'adm_pending', 'adm_checking', 'selisih'];
             return view('Admin.transaction.detail', compact($compact, $status_EU));
         }
