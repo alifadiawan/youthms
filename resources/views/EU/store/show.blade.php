@@ -16,17 +16,14 @@
     </div>
 
     <div class="container mb-5 mt-3">
-        <div class="d-flex flex-row justify-content-start" style="overflow-y:hidden;">
-            <div class="d-flex flex-row">
-                <a href="{{ route('store.index') }}" class="text-capitalize btn btn yms-outline-blue rounded-5">All</a>
+        <div class="d-flex flex-row gap-2 justify-content-lg-start justify-content-md-start justify-content-around flex-lg-row flex-wrap">
+            <a href="{{ route('store.index') }}" class="text-capitalize btn btn yms-outline-blue rounded-5">All</a>
                 @foreach ($layanan as $l)
                     @php
                         $link = str_replace(' ', '_', $l->layanan);
                     @endphp
-                    <a href="{{ route('store.showtype', $link) }}"
-                        class="text-capitalize btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
+                    <a href="{{ route('store.showtype', $link) }}" class="text-capitalize btn yms-outline-blue rounded-5">{{ $l->layanan }}</a>
                 @endforeach
-            </div>
         </div>
     </div>
     @if (count($errors) > 0)

@@ -26,10 +26,11 @@ class BlogController extends Controller
         $get = 'populer';
 
         $populer = Blog::orderBy('visitor', 'desc')->paginate(5);
-
+        
         $segmen = Segmen::all();
         $sekarang = Carbon::now();
         $lastweek = Carbon::now()->subweek();
+        $trending = Blog::orderBy('visitor', 'desc')->whereDate('created_at', '<=', $lastweek)->take(5)->get();
         $atas = Blog::where('id', '=', 1)->get();
         // return $atas;
         $recently_uploaded = Blog::orderBy('created_at', 'desc')->take(3)->get();
@@ -37,7 +38,7 @@ class BlogController extends Controller
         $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(3)->get();
         // return $terpilih;
 
-        $compact = ['populer', 'segmen', 'recently_uploaded', 'recently_lastweek','get', 'atas'];
+        $compact = ['populer', 'segmen', 'recently_uploaded', 'recently_lastweek','get', 'atas', 'trending'];
 
         $segmen = Segmen::all();
         $data = Blog::paginate(25);
