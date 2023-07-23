@@ -36,6 +36,9 @@
                                 @if ($pembayaran->status == 'checking')
                                     <h5 class="h3 mb-0 me-auto text-warning font-weight-bold">{{ $pembayaran->status }}
                                     </h5>
+                                @elseif($pembayaran->status == 'declined')
+                                    <h5 class="h3 mb-0 me-auto text-danger font-weight-bold">{{ $pembayaran->status }}
+                                    </h5>
                                 @else
                                     <h5 class="h3 mb-0 me-auto text-success font-weight-bold">{{ $pembayaran->status }}
                                     </h5>
@@ -43,14 +46,8 @@
                             </div>
                         </div>
 
-                        <div class="row my-2">
-                            {{-- @if ($pembayaran->request_user_id == null)
-                                <div class="col text-center">
-                                    <p class="h3">Rp.{{ number_format($pembayaran->total_bayar, '0', ',', '.') }}
-                                    </p>
-                                </div>
-                            @endif --}}
-                        </div>
+                        {{-- <div class="row my-2">
+                        </div> --}}
 
                         <div class="penerima">
                             <div class="row">
@@ -68,11 +65,18 @@
                         <div class="footer mt-3">
                             @if ($pembayaran->status == 'checked')
                                 <div class="row">
-                                    <div class="col">
-                                        <button class="btn btn-success w-100 yms-outline-blue rounded-pill">
-                                            download
-                                        </button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <form action="{{ route('pembayaran.pdf') }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn w-100 yms-outline-blue rounded-pill">
+                                                    Download
+                                                </button>
+                                                <input type="hidden" name="id" value="{{ $pembayaran->id }}">
+                                            </form>
+                                        </div>
                                     </div>
+                                @elseif($pembayaran->status == 'declined')
                                 @else
                                     <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
                                         @csrf
@@ -106,9 +110,8 @@
                                         @method('put')
                                         <div class="row mt-2">
                                             <div class="col">
-                                                <input type="hidden" value="decline" name="status">
-                                                <button
-                                                    class="btn btn-danger w-100 yms-outline-blue rounded-pill">
+                                                <input type="hidden" value="declined" name="status">
+                                                <button class="btn btn-danger w-100 yms-outline-blue rounded-pill">
                                                     Decline
                                                 </button>
                                             </div>

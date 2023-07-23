@@ -103,84 +103,101 @@
                                     </tbody>
                                 </table>
 
-                                @if ($requser->isNotEmpty())
-                                    <h4 class="text-muted">History Pembayaran</h4>
-                                    <table class="table table-bordered">
-                                        <thead class="bg-light text-dark">
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Tanggal</th>
-                                                <th>Metode</th>
-                                                <th>Bukti</th>
-                                                <th>Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($requser as $r)
-                                                @if ($r->pembayaran->isEmpty())
-                                                    <tr>
-                                                        <td colspan="5" class="text-center">belum ada pembayaran</td>
-                                                    </tr>
-                                                @else
-                                                    @foreach ($r->pembayaran as $p)
+
+                                {{-- editen seng iki --}}
+                                @if ($pembayaran->isNotEmpty())
+                                    @if ($requser->isEmpty())
+                                        @foreach ($pembayaran as $p)
+                                            <a href="{{ route('pembayaran.show', $p->id) }}">
+                                                <h1>show pembayaran </h1>
+                                            </a>
+                                        @endforeach
+                                    @else
+                                        <h4 class="text-muted">History Pembayaran</h4>
+                                        <table class="table table-bordered">
+                                            <thead class="bg-light text-dark">
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Metode</th>
+                                                    <th>Bukti</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($requser as $r)
+                                                    @if ($r->pembayaran->isEmpty())
                                                         <tr>
-                                                            @if ($p->total_bayar == 0)
-                                                                <td colspan="5" class="text-center">belum ada
-                                                                    pembayaran</td>
-                                                            @else
-                                                                <td>{{ $loop->iteration }}</td>
-                                                                <td>{{ date('d F Y', strtotime($p->created_at)) }}</td>
-                                                                @if ($p->bank)
-                                                                    <td><img src="{{ asset('illustration/' . $p->bank->image) }}"
-                                                                            alt="" style="width: 50px">
-                                                                    </td>
+                                                            <td colspan="5" class="text-center">belum ada pembayaran</td>
+                                                        </tr>
+                                                    @else
+                                                        @foreach ($r->pembayaran as $p)
+                                                            <tr>
+                                                                @if ($p->total_bayar == 0)
+                                                                    <td colspan="5" class="text-center">belum ada
+                                                                        pembayaran</td>
                                                                 @else
-                                                                    <td><img src="{{ asset('illustration/' . $p->ewallet->image) }}"
-                                                                            alt="" style="width: 50px">
+                                                                    <td>{{ $loop->iteration }}</td>
+                                                                    <td>{{ date('d F Y', strtotime($p->created_at)) }}</td>
+                                                                    @if ($p->bank)
+                                                                        <td><img src="{{ asset('illustration/' . $p->bank->image) }}"
+                                                                                alt="" style="width: 50px">
+                                                                        </td>
+                                                                    @else
+                                                                        <td><img src="{{ asset('illustration/' . $p->ewallet->image) }}"
+                                                                                alt="" style="width: 50px">
+                                                                        </td>
+                                                                    @endif
+                                                                    <td><a href="{{ route('pembayaran.show', $p->id) }}">show
+                                                                            pembayaran</a>
+                                                                    </td>
+                                                                    <td>Rp.
+                                                                        {{ number_format($p->total_bayar, 0, ',', '.') }}
                                                                     </td>
                                                                 @endif
-                                                                <td><a href="{{ route('pembayaran.show', $p->id) }}">show
-                                                                        pembayaran</a>
-                                                                </td>
-                                                                <td>Rp.
-                                                                    {{ number_format($p->total_bayar, 0, ',', '.') }}
-                                                                </td>
-                                                            @endif
-                                                        </tr>
-                                                    @endforeach
-                                                @endif
-                                            @endforeach
-                                        </tbody>
+                                                            </tr>
+                                                        @endforeach
+                                                    @endif
+                                                @endforeach
+                                            </tbody>
 
-                                        <tbody>
-                                            <tr>
-                                                <td colspan="4" class="text-end">Total</td>
-                                                <td colspan="1" class="">Rp
-                                                    {{ number_format($total_bayar_user, 0, ',', '.') }}
-                                            </tr>
-                                        </tbody>
-                                        <tbody>
-                                            <tr class="h5">
-                                                <td class="text-end fw-bold" colspan="4">Total Harga Transaksi </td>
-                                                <td class="fw-bold"><span id="total-transaksi-b">Rp
-                                                        {{ number_format($t->total, 0, ',', '.') }}</span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="4" class="text-end">Total</td>
+                                                    <td colspan="1" class="">Rp
+                                                        {{ number_format($total_bayar_user, 0, ',', '.') }}
+                                                </tr>
+                                            </tbody>
+                                            <tbody>
+                                                <tr class="h5">
+                                                    <td class="text-end fw-bold" colspan="4">Total Harga Transaksi </td>
+                                                    <td class="fw-bold"><span id="total-transaksi-b">Rp
+                                                            {{ number_format($t->total, 0, ',', '.') }}</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
 
-                                        <tbody>
-                                            <tr class="h5">
-                                                <td class="text-end fw-bold" colspan="4">Total Harga Kekuragan </td>
-                                                <td class="fw-bold"><span id="total-transaksi-b">Rp
-                                                        {{ number_format($total_kekurangan, 0, ',', '.') }}</span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
+                                            @if ($total_kekurangan > 0)
+                                                <tbody>
+                                                    <tr class="h5">
+                                                        <td class="text-end fw-bold" colspan="4">Total Harga Kekurangan
+                                                        </td>
+                                                        <td class="fw-bold">
+                                                            <span id="total-transaksi-b">Rp
+                                                                {{ number_format($total_kekurangan, 0, ',', '.') }}
+                                                                {{-- @else
+                                                                {{ Str::replaceLast('-', '+', number_format($total_kekurangan, 0, ',', '.')) }} --}}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            @endif
+                                        </table>
+                                    @endif
                                 @endif
                             </div>
                         </div>
                     </div>
-                </div>
             @endif
 
 
@@ -723,11 +740,6 @@
             {{-- VIEW DECLINED --}}
             @if (in_array($t->id, $EU_declined))
                 @section('title', '| Declined')
-                {{-- <a href="{{ route('transaksi.pembayaran',$t->id) }}">
-                        <div class="alert alert-danger" role="alert">
-                            Bayar sebelum .... Klik disini untuk bayar
-                        </div>
-                    </a> --}}
                 <div class="card shadow rounded-3">
                     <div class="row my-3 mx-3 mx-lg-4">
                         <div class="col-6 col-lg text-start">
@@ -748,21 +760,21 @@
                                     {{ $t->member->user->email }}
                                 </div>
                             </div>
-                            @foreach ($requser as $r)
-                                <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
-                                    <div class="row">
-                                        <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0 text-start text-lg-end">Status
-                                        </div>
-                                        <div class="col text-end text-lg text-danger fw-bold">
-                                            DECLINED
-                                        </div>
+                            <div class="col-12 col-lg my-5 my-lg-0 text-lg-end text-start">
+                                <div class="row">
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0 text-start text-lg-end">Status
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
-                                        <div class="col text-end text-lg">
-                                            {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
-                                        </div>
+                                    <div class="col text-end text-lg text-danger fw-bold">
+                                        DECLINED
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Transaksi Dibuat</div>
+                                    <div class="col text-end text-lg">
+                                        {{ date('d F Y', strtotime($t->tanggal_transaksi)) }}
+                                    </div>
+                                </div>
+                                @foreach ($requser as $r)
                                     <div class="row">
                                         <div class="col-6 col-lg-9 col-md-6 my-0 my-lg-0">Tanggal Mulai</div>
                                         <div class="col text-end text-lg">
@@ -775,14 +787,8 @@
                                             {{ date('d F Y', strtotime($r->jatuh_tempo)) }}
                                         </div>
                                     </div>
-                                    {{-- <div class="row">
-                                    <div class="col-6 col-lg col-md-6 my-0 my-lg-0">Jatuh Tempo</div>
-                                    <div class="col text-end text-lg text-danger">
-                                        10 Hari lagi
-                                    </div>
-                                </div> --}}
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                         @foreach ($requser as $ru)
                             <div class="row">
@@ -968,6 +974,7 @@
                     </table>
 
 
+                    {{-- editen --}}
                     {{-- detail kredit --}}
                     <h4 class="text-muted">History Pembayaran</h4>
                     <table class="table table-bordered">
@@ -1042,8 +1049,9 @@
                 {{-- </div> --}}
             @endif
         @endforeach
+    </div>
 
-        {{-- <div class="row">
+    {{-- <div class="row">
                         <div class="col text-muted">
                             Segera bayar sebelum
                         </div>
@@ -1059,7 +1067,7 @@
                             -
                         </div>
                     </div> --}}
-        {{-- <div class="row">
+    {{-- <div class="row">
                                 <div class="col text-muted">
                                     Segera bayar sebelum
                                 </div>
@@ -1076,8 +1084,8 @@
                                 </div>
                             </div> --}}
 
-        <!-- list items -->
-        {{-- <table class="table table-bordered table-responsive mt-5">
+    <!-- list items -->
+    {{-- <table class="table table-bordered table-responsive mt-5">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -1114,7 +1122,7 @@
                     </tr>
                 </tbody>
             </table> --}}
-    </div>
+
 
     {{-- </div> --}}
 

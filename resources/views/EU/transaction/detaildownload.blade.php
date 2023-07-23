@@ -23,25 +23,16 @@
 
 
     <div class="container" style="max-width: 50rem">
-        <a href="{{ url()->previous() }}" class="pl-0 pb-3">
+        {{-- <a href="{{ url()->previous() }}" class="pl-0 pb-3">
             <i class="fas fa-arrow-left"></i>
-        </a>
-        <div class="row">
+        </a> --}}
+        {{-- Format PDF Lama --}}
+        {{-- <div class="row">
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header yms-blue">
                         <div class="row align-items-center">
-                            {{-- <div class="col">
-                                @if ($pembayaran->ewallet)
-                                    <img src="{{ public_path('illustration/' . $pembayaran->ewallet->image) }}" alt=""
-                                    
-                                        style="max-width: 110px">
-                                @else
-                                   
-                                    <img src="{{ public_path('illustration/' . $pembayaran->bank->image) }}" alt=""
-                                        style="max-width: 110px">
-                                @endif
-                            </div> --}}
+                            
                             <div class="col text-right">
                                 {{ $pembayaran->unique_code }}
                             </div>
@@ -83,14 +74,7 @@
 
                             <div class="penerima">
                                 <div class="row">
-                                    {{-- <div class="col">
-                                        Bukti Pembayaran
-                                    </div> --}}
-                                    {{-- <div class="col text-right">
-                                        
-                                        <img src="{{ public_path('bukti_transfer/' . $pembayaran->bukti_tf) }}"
-                                            alt="">
-                                    </div> --}}
+                                    
                                 </div>
                             </div>
 
@@ -142,6 +126,168 @@
                     </div>
                 </div>
             </div>
+        </div> --}}
+
+        {{-- Format PDF Baru --}}
+        <div bgcolor="#f6f6f6" style="color: #333; height: 100%; width: 100%;" height="100%" width="100%">
+            <table bgcolor="#f6f6f6" cellspacing="0" style="border-collapse: collapse; padding: 40px; width: 100%;"
+                width="100%">
+                <tbody>
+                    <tr>
+                        <td width="5px" style="padding: 0;"></td>
+                        <td style="clear: both; display: block; margin: 0 auto; max-width: 600px; padding: 10px 0;">
+                            <table width="100%" cellspacing="0" style="border-collapse: collapse;">
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: 0;">
+                                            {{-- <a href="#" style="color: #348eda;" target="_blank">
+                                                <img src="http://www.domain.com/path/to/public/youth-logo.svg" alt="Bootdey.com"
+                                                    style="height: 50px; max-width: 100%; width: 157px;" height="50"
+                                                    width="157" />
+                                            </a> --}}
+                                            <h4>Youthms.id</h4>
+                                        </td>
+                                        <td style="color: #999; font-size: 12px; padding: 0; text-align: right; font-family:Poppins;"
+                                            align="right">
+                                            {{ $pembayaran->transaksi->member->name }}<br />
+                                            Invoice : {{ $pembayaran->unique_code }}<br />
+                                            Tanggal Pembayaran :{{ $pembayaran->created_at }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td width="5px" style="padding: 0;"></td>
+                    </tr>
+
+                    <tr>
+                        <td width="5px" style="padding: 0;"></td>
+                        <td bgcolor="#FFFFFF"
+                            style="border: 1px solid #000; clear: both; display: block; margin: 0 auto; max-width: 600px; padding: 0;">
+                            <table width="100%"
+                                style="background: #f9f9f9; border-bottom: 1px solid #eee; border-collapse: collapse; color: #999;">
+                                <tbody>
+                                    <tr>
+                                        <td width="50%" style="padding: 20px;"><strong
+                                                style="color: #333; font-size: 24px;">Rp.
+                                                {{ number_format($pembayaran->total_bayar, 0, ',', '.') }}</strong>
+                                            Terbayar</td>
+                                        <td align="right" width="50%" style="padding: 20px;">Thanks for using
+                                            <span class="il">Youthms.id</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td style="padding: 0;"></td>
+                        <td width="5px" style="padding: 0;"></td>
+                    </tr>
+                    <tr>
+                        <td width="5px" style="padding: 0;"></td>
+                        <td
+                            style="border: 1px solid #000; border-top: 0; clear: both; display: block; margin: 0 auto; max-width: 600px; padding: 0;">
+                            <table cellspacing="0"
+                                style="border-collapse: collapse; border-left: 1px solid #000; margin: 0 auto; max-width: 600px;">
+                                <tbody>
+                                    <tr>
+                                        <td valign="top" style="padding: 20px;">
+                                            @if ($pembayaran->request_user_id != null)
+                                                <h3 class="h3 mb-0 me-auto font-weight-bold uppercase">Kredit
+                                                </h3>
+                                            @endif
+                                            @if ($pembayaran->status == 'checking')
+                                                <h3 class="h3 mb-0 me-auto font-weight-bold uppercase">
+                                                    {{ $pembayaran->status }}
+                                                </h3>
+                                            @else
+                                                <h3 class="h3 mb-0 me-auto text-success font-weight-bold uppercase">
+                                                    {{ $pembayaran->status }}
+                                                </h3>
+                                            @endif
+                                            <table cellspacing="0"
+                                                style="border-collapse: collapse; margin-bottom: 40px;">
+                                                <tbody>
+                                                    @foreach ($pembayaran->transaksi->transaksi_detail as $p)
+                                                        <tr>
+                                                            <td style="padding: 5px 0;">{{ $p->produk->nama_produk }}
+                                                            </td>
+
+                                                            <td align="right" style="padding: 5px 20px;">Rp.
+                                                                {{ number_format($p->produk->harga, 0, ',', '.') }}
+                                                            </td>
+                                                            <td align="right" style="padding: 5px 20px;">
+                                                                x {{ $p->quantity }}</td>
+
+                                                            <td align="right" style="padding: 5px 10px;">
+                                                                Rp.
+                                                                {{ number_format($p->subtotal, 0, ',', '.') }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    <br>
+                                                    <tr style="align-content: center">
+                                                        <td
+                                                            style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
+                                                            Jumlah Yang Dibayarkan</td>
+                                                        <td align="right"
+                                                            style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
+                                                        </td>
+                                                        <td align="right"
+                                                            style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
+                                                        </td>
+                                                        <td align="right"
+                                                            style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">
+                                                            Rp.
+                                                            {{ number_format($pembayaran->total_bayar, 0, ',', '.') }}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td width="5px" style="padding: 0;"></td>
+                    </tr>
+
+                    <tr style="color: #666; font-size: 12px;">
+                        <td width="5px" style="padding: 10px 0;"></td>
+                        <td style="clear: both; display: block; margin: 0 auto; max-width: 600px; padding: 10px 0;">
+                            <table width="100%" cellspacing="0" style="border-collapse: collapse;">
+                                <tbody>
+                                    <tr>
+                                        <td width="40%" valign="top" style="padding: 10px 0;">
+                                            <h4 style="margin: 0;">Butuh Bantuan?</h4>
+                                            <p
+                                                style="color: #666; font-size: 12px; font-weight: normal; margin-bottom: 10px;">
+                                                Silahkan kunjungi
+                                                <a href="#" style="color: #666;" target="_blank">
+                                                    Support Center
+                                                </a>
+                                                dan ajukan pertanyaan anda
+                                            </p>
+                                        </td>
+                                        <td width="10%" style="padding: 10px 0;">&nbsp;</td>
+                                        <td width="40%" valign="top" style="padding: 10px 0;">
+                                            <h4 style="margin: 0;"><span class="il">Youth e-Marketing
+                                                    Service</span> Indonesia
+                                            </h4>
+                                            <p
+                                                style="color: #666; font-size: 12px; font-weight: normal; margin-bottom: 10px;">
+                                                <a href="#">Perum Bluru Permai
+                                                    Blok V 25, Sidoarjo</a>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td width="5px" style="padding: 10px 0;"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
@@ -190,7 +336,7 @@
 <!--End of Tawk.to Script-->
 
 <!-- Logout Modal -->
-<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -209,6 +355,19 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+<style>
+    body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    body h3 {
+        text-transform: uppercase;
+    }
+
+    body tr .jumlah {
+        margin-right: 100px
+    }
+</style>
 
 </html>

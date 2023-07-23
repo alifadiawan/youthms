@@ -116,7 +116,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer text-left">
-                                                        <button class="btn btn-primary w-30" type="submit">Save
+                                                        <button class="btn btn-primary w-30" >Save
                                                             changes</button>
                                                         <button class="btn btn-secondary"
                                                             data-dismiss="modal">Close</button>

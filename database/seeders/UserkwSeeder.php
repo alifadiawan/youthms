@@ -22,6 +22,12 @@ class UserkwSeeder extends Seeder
                 'email' => 'ilhxm@gmail.com',
                 'role_id' => '1',
             ],
+            [
+                'username' => 'customer',
+                'password' => bcrypt('123'),
+                'email' => 'cust@gmail.com',
+                'role_id' => '2',
+            ],
         ];
 
         $member = [
@@ -32,6 +38,14 @@ class UserkwSeeder extends Seeder
                 'no_hp' =>"0857123123",
                 'alamat' => "Indonesia",
                 'user_id' => '25'
+            ],
+            [
+                'id_member' => "000113",
+                'name' => "Ilham starss",
+                'nik' => "102021023912",
+                'no_hp' =>"0857123123",
+                'alamat' => "Indonesia",
+                'user_id' => '26'
             ],
         ];
 

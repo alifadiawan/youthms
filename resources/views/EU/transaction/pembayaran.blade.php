@@ -1,11 +1,11 @@
 @extends('layout-landing2.body')
 @section('content')
     <div id="container" class="container">
+        <a href="{{ route('cart.index') }}" class="btn mt-5 mb-3">
+            <i class="fas fa-arrow-left"></i></a>
 
-        <div class="row d-flex justify-content-center my-4">
-            <div class="col-md-8">
-                <a href="{{ route('cart.index') }}" class="btn my-3">
-                    <i class="fas fa-arrow-left"></i></a>
+        <div class="row d-flex ">
+            <div class="col-lg-7">
                 <div class="card mb-3 shadow rounded-3">
                     @foreach ($transaksi as $t)
                         <div class="row my-3 mx-3 mx-lg-4">
@@ -167,11 +167,13 @@
                 </div> --}}
 
 
+
+            </div>
+            <div class="col-lg-5">
                 <!-- MEtode pembayaran -->
                 <div class="card mb-4 mb-lg-0 p-0">
-                    <div class="card-header">
-                        <h5 class="mb-0 me-auto fw-bold" style="font-family: Poppins, sans-serif;">Metode Pembayaran</h5>
-                    </div>
+                    <h5 class="mb-0 me-auto fw-bold m-3" style="font-family: Poppins, sans-serif;">Pilih Metode Pembayaran</h5>
+                    <hr>
                     <div class="card-body">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
@@ -222,22 +224,22 @@
                             </div>
                             <!-- Virtaul Account -->
                             {{-- <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                        aria-controls="flush-collapseTwo">
-                                        <i class="fa-solid fa-building-columns me-2"></i> Virtual Account
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the second item's
-                                        accordion body. Let's imagine this being filled with some actual content.</div>
-                                </div>
-                            </div> --}}
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                        aria-controls="flush-collapseTwo">
+                        <i class="fa-solid fa-building-columns me-2"></i> Virtual Account
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                        demonstrate the <code>.accordion-flush</code> class. This is the second item's
+                        accordion body. Let's imagine this being filled with some actual content.</div>
+                </div>
+            </div> --}}
 
-                            <!-- Virtaul Account -->
+                            <!-- Virtual Account -->
                             @if ($cek_kredit)
                             @else
                                 <div class="accordion-item">
@@ -298,43 +300,43 @@
 
                             <!-- E-wallet -->
                             {{-- <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                        aria-controls="flush-collapseThree">
-                                        <i class="fa-solid fa-money-bill me-2"></i> E-Wallet
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionFlushExample">
-                                </div>
-                            </div>
-                            <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <form action="">
-                                        <div class="row">
-                                            <div class="col">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseThree" aria-expanded="false"
+                        aria-controls="flush-collapseThree">
+                        <i class="fa-solid fa-money-bill me-2"></i> E-Wallet
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                </div>
+            </div>
+            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <form action="">
+                        <div class="row">
+                            <div class="col">
 
-                                                <a href="">
-                                                    <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt="">
-                                                        <button>ceritanya gambarnya gopay</button>
-                                                </a>
-                                                <a href="">
-                                                    <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt="">
-                                                        <button>ceritanya gambarnya shoppee</button>
-                                                </a>
-                                                <a href="">
-                                                    <img class="img-thumbnail border-0"
-                                                        style="width: 15rem" alt="">
-                                                        <button>ceritanya gambarnya qris</button>
-                                                </a>
-                                                <div class="row">
-                                                    <a href="/cara-wallet" style="justify-content: start" class="btn" type="button">
-                                                        {{-- <img class="img-thumbnail border-0"
-                                                            style="width: 15rem" alt=""> --}}
+                                <a href="">
+                                    <img class="img-thumbnail border-0"
+                                        style="width: 15rem" alt="">
+                                        <button>ceritanya gambarnya gopay</button>
+                                </a>
+                                <a href="">
+                                    <img class="img-thumbnail border-0"
+                                        style="width: 15rem" alt="">
+                                        <button>ceritanya gambarnya shoppee</button>
+                                </a>
+                                <a href="">
+                                    <img class="img-thumbnail border-0"
+                                        style="width: 15rem" alt="">
+                                        <button>ceritanya gambarnya qris</button>
+                                </a>
+                                <div class="row">
+                                    <a href="/cara-wallet" style="justify-content: start" class="btn" type="button">
+                                        {{-- <img class="img-thumbnail border-0"
+                                            style="width: 15rem" alt=""> --}}
 
                             <!-- E-wallet -->
                             <div class="accordion-item">
@@ -396,48 +398,47 @@
 
 
                         {{-- <div class="row justify-content-center">
-                            <div class="col">
-                                <a href="" class="btn card-hover">
-                                    <div class="card" style="width: 23rem;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"> <i class="fa-solid fa-building-columns"></i> Virtual Account
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#transfer-bank">
-                                    <div class="card" style="width: 23rem;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"> <i class="fa-solid fa-money-bill-transfer"></i> Transfer Bank</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#kredit">
-                                    <div class="card" style="width: 23rem;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"> <i class="fa-solid fa-credit-card"></i> kredit </h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#cash">
-                                    <div class="card" style="width: 23rem;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"> <i class="fa-solid fa-money-bill"></i> cash</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div> --}}
+            <div class="col">
+                <a href="" class="btn card-hover">
+                    <div class="card" style="width: 23rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"> <i class="fa-solid fa-building-columns"></i> Virtual Account
+                            </h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#transfer-bank">
+                    <div class="card" style="width: 23rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"> <i class="fa-solid fa-money-bill-transfer"></i> Transfer Bank</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#kredit">
+                    <div class="card" style="width: 23rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"> <i class="fa-solid fa-credit-card"></i> kredit </h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a class="btn card-hover" data-bs-toggle="modal" data-bs-target="#cash">
+                    <div class="card" style="width: 23rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"> <i class="fa-solid fa-money-bill"></i> cash</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div> --}}
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

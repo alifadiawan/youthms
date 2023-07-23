@@ -8,8 +8,8 @@ use App\Models\Member;
 use App\Models\Transaksi;
 use App\Models\TransaksiDetail;
 use Illuminate\Http\Request;
-use App\Models\bank;
-use App\Models\ewallet;
+use App\Models\Bank;
+use App\Models\Ewallet;
 use App\Models\request_user;
 use Illuminate\Support\Facades\File;
 use App\Models\User;
@@ -23,7 +23,8 @@ class PembayaranController extends Controller
 {
     public function PDF(Request $Request)
     {
-        // return $Request;
+        // return $Request;    
+        // return 'oke';
         $pembayaran = Pembayaran::find($Request->id);
         $auth = auth()->user();
         $cek_user = $auth->role->role;
@@ -33,8 +34,9 @@ class PembayaranController extends Controller
             'title' => 'print pdf',
         ];
 
+        return view('EU.transaction.detaildownload', compact('pembayaran'));
         $pdf = new Dompdf();
-        $pdf->loadHTML(view('EU.transaction.detaildownload', ['pembayaran' => $pembayaran]));
+        // $pdf->loadHTML(view('EU.transaction.detaildownload', compact('pembayaran')));
         $pdf->setPaper('A4', 'potrait');
         $pdf->render();
         $pdf->stream();
@@ -84,7 +86,7 @@ class PembayaranController extends Controller
         // mencari transaksi id dengan menggunakkan id member
         // $gateaway = gateaway::all();
         $bank = Bank::all();
-        $ewallet = ewallet::all();
+        $ewallet = Ewallet::all();
 
 
         $tid = $id;
@@ -137,7 +139,12 @@ class PembayaranController extends Controller
     public function store(Request $request)
     {
         // return $request;
+        $this->validate($request, [
+            'bukti' => 'required|mimes:png,jpg,jpeg'
+        ]);
+
         $file = $request->file('bukti');
+
         $nama_file = time() . "_" . $file->getClientOriginalName();
         $tujuan_upload = './bukti_transfer/';
         $file->move($tujuan_upload, $nama_file);
@@ -246,30 +253,41 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
-
-
-        $request_user = Request_user::where('transaksi_id', $pembayaran->transaksi_id)->first();
-        $transaksi = Transaksi::find($pembayaran->transaksi_id);
-        $total_bayar = $request->total_bayar;
-        $total_lunas = $transaksi->total;
-        if ($total_bayar) {
-            $p['request_user_id'] = $request_user->id;
-            $transaksi->update([
-                'total_bayar' => $transaksi->total_bayar + $total_bayar
-            ]);
-        } else {
-            $transaksi->update(['total_bayar' => $total_lunas]);
-        }
+        // mengecek apakah di status = declined 
         $status = $request->status;
+        if ($status == "declined") {
+            $pembayaran->update(['status' => 'declined']);
+        } else {
+            // mencari status kredit
+            $request_user = Request_user::where('transaksi_id', $pembayaran->transaksi_id)->first();
+            // mencari id transaksi
+            $transaksi = Transaksi::find($pembayaran->transaksi_id);
+            // mencari total yang dibayarkan melalui view
+            $total_bayar = $request->total_bayar;
 
-        $p = [
-            'status' => $status,
-            'note_admin' => $request->note,
-            'total_bayar' => $request->total_bayar
-        ];
-        $pembayaran->update($p);
-        $tid = $pembayaran->transaksi_id;
-        $transaksi = Transaksi::where('id', $tid)->first();
+            // mencari total bayar di tabel transaksi
+            $total_lunas = $transaksi->total;
+            // return $total_bayar;
+            // return $total_lunas;
+            // jika ada request total bayar, maka akan masuk kredit, jika tidak maka langsung lunas
+            if ($total_bayar != null) {
+                $pemb_data['request_user_id'] = $request_user->id;
+                $pemb_data['total_bayar'] = $request->total_bayar;
+                $transaksi->update([
+                    'total_bayar' => $transaksi->total_bayar + $total_bayar
+                ]);
+            } else {
+                $transaksi->update(['total_bayar' => $total_lunas]);
+                $pemb_data['total_bayar'] = $total_lunas;
+            }
+
+            $pemb_data['status'] = $status;
+            $pemb_data['note_admin'] = $request->note;
+
+            $pembayaran->update($pemb_data);
+            $tid = $pembayaran->transaksi_id;
+            $transaksi = Transaksi::where('id', $tid)->first();
+        }
 
         // mengirim notifikasi
         $user = $pembayaran->transaksi->member->user;

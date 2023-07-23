@@ -23,18 +23,9 @@ class BlogController extends Controller
     {
 
         $today = date('Y-m-d');
-        // $action = 'get-populer';
-
-        $Sweek = Carbon::now()->subweek();
-        $Eweek = Carbon::now();
         $get = 'populer';
 
-        $populer = Blog::orderBy('visitor', 'desc')->get();
-        $weekly = Blog::whereBetween('created_at', [$Sweek, $Eweek])->orwhereBetween('updated_at', [$Sweek, $Eweek])->get();
-        $terpilih = Blog::whereHas('segmen', function ($query){
-            $query->where('id', 3);
-        })->get();
-        // $terpilih = blog::where()->get();        //pending
+        $populer = Blog::orderBy('visitor', 'desc')->paginate(5);
 
         $segmen = Segmen::all();
         $sekarang = Carbon::now();
@@ -43,28 +34,28 @@ class BlogController extends Controller
         // return $atas;
         $recently_uploaded = Blog::orderBy('created_at', 'desc')->take(3)->get();
         // return $recently_uploaded;
-        $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(4)->get();
+        $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(3)->get();
         // return $terpilih;
 
-        $compact = ['populer', 'weekly',  'terpilih', 'segmen', 'recently_uploaded', 'recently_lastweek','get', 'atas'];
+        $compact = ['populer', 'segmen', 'recently_uploaded', 'recently_lastweek','get', 'atas'];
 
         $segmen = Segmen::all();
-        $data = Blog::paginate(5);
+        $data = Blog::paginate(25);
         $pag = Blog::paginate(5);
         if (auth()->check()) {
             $u = auth()->user()->role->role;
             $admin = ['admin', 'owner'];
             if (in_array($u, $admin)) {
                 if ($request->ajax()) {
-                    return view('Admin.Blog.blog-pagination', compact('data', 'segmen'));
+                    return view('Admin.blog.blog-pagination', compact('data', 'segmen'));
                 }
-                return view('Admin.Blog.index', compact('segmen', 'data'));
+                return view('Admin.blog.index', compact('segmen', 'data'));
             }else{
                 return view('EU.Blog.index', compact($compact));
             }
         } else {
             // return redirect()->route('blogs.type');
-            return view('EU.Blog.index', compact($compact));
+            return view('EU.blog.index', compact($compact));
         }
     }
 
@@ -82,19 +73,19 @@ class BlogController extends Controller
         // $blog = blog::all();
         if ($type == 'populer') {
             // code...
-            $populer = Blog::orderBy('visitor', 'desc')->get();
+            $populer = Blog::orderBy('visitor', 'desc')->paginate(5);
             $blog = $populer;
         } 
         elseif ($type == 'weekly') {
             // code...
-            $weekly = Blog::whereBetween('created_at', [$Sweek, $Eweek])->orwhereBetween('updated_at', [$Sweek, $Eweek])->get();
+            $weekly = Blog::whereBetween('created_at', [$Sweek, $Eweek])->orwhereBetween('updated_at', [$Sweek, $Eweek])->paginate(5);
             $blog = $weekly;
         } 
         elseif ($type == 'terpilih') {
             // code...
             $terpilih = Blog::whereHas('segmen', function ($query){
                 $query->where('id', 3);
-            })->get();
+            })->paginate(5);
             $blog = $terpilih;
         }
         
@@ -110,7 +101,7 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         // return $blog;
-        return view('Admin.Blog.detail', compact('blog'));
+        return view('Admin.blog.detail', compact('blog'));
     }
 
     public function showtype($type)
@@ -120,8 +111,9 @@ class BlogController extends Controller
         $blog = Blog::whereHas('segmen', function ($query) use ($type) {
             $query->where('segmen', $type);
         })->get();
+        $segmen = Segmen::all();
         // return $blog;
-        return view('EU.Blog.segmen', compact('blog', 'type'));
+        return view('EU.Blog.segmen', compact('blog', 'type', 'segmen'));
     }
 
     public function detail(Request $request, Blog $blog)
@@ -140,7 +132,7 @@ class BlogController extends Controller
     public function create()
     {
         $segmen = Segmen::all();
-        return view('Admin.Blog.add', compact('segmen'));
+        return view('Admin.blog.add', compact('segmen'));
     }
 
     /**
@@ -218,7 +210,7 @@ class BlogController extends Controller
     {
         $segmen = Segmen::all();
         $data = Blog::find($blog->id);
-        return view('Admin.Blog.edit', compact('data', 'segmen'));
+        return view('Admin.blog.edit', compact('data', 'segmen'));
     }
 
     /**

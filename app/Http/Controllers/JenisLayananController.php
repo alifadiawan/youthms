@@ -66,9 +66,22 @@ class JenisLayananController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JenisLayanan $jenisLayanan)
+    public function update(Request $request, $id)
     {
-        //
+        $jenis = JenisLayanan::find($id);
+        $jenis->deskripsi = $request->deskripsi;
+        $jenis->save();
+        notify()->success('Jenis Layanan Berhasil Diedit !!');
+        // mengirim notifikasi
+        $user = User::whereHas('role', function ($query) {
+            $query->whereIn('role', ['admin', 'owner']);
+        })->get();
+        $message = "Jenis Layanan Berhasil Diedit !!";
+        $notification = new NewMessageNotification($message);
+        $notification->setUrl(route('services.index')); // Ganti dengan rute yang sesuai
+        Notification::send($user, $notification);
+
+        return redirect('/services');
     }
 
     /**
@@ -90,7 +103,7 @@ class JenisLayananController extends Controller
         })->get();
         $message = "Jenis Layanan Berhasil Dihapus !!";
         $notification = new NewMessageNotification($message);
-        $notification->setUrl(route('user.index')); // Ganti dengan rute yang sesuai
+        $notification->setUrl(route('services.index')); // Ganti dengan rute yang sesuai
         Notification::send($user, $notification);
         return redirect()->back();
     }

@@ -34,8 +34,8 @@
         <h1 class="text-center text-uppercase fw-bold mt-5">All of our projects</h1>
 
 
-        <div class="d-flex flex-row justify-content-start justify-content-lg-start justify-content-md-center gap-2" style="overflow-y: auto;">
-            <div class="d-flex flex-row gap-2">
+        <div class="flex-row justify-content-center justify-content-lg-start  flex-wrap justify-sm-center">
+            <div class="flex-row">
                 <a href="{{ route('portfolio.index') }}" class="text-capitalize my-3 active btn yms-outline-blue w-20 rounded-5" style="width: 170px">All</a>
                 @foreach ($layanan as $l)
                     @php

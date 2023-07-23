@@ -30,8 +30,8 @@
     <!-- project grid -->
     <div class="container">
         <h1 class="text-center text-uppercase fw-bold mt-5">All of our projects</h1>
-        <div class="d-flex flex-row justify-content-start gap-2" style="overflow-y: auto;">
-            <div class="d-flex flex-row gap-2">
+        <div class="flex-row justify-content-start">
+            <div class="flex-row gap-2">
                 <a href="{{ route('portfolio.index') }}" class="text-capitalize my-3 active btn yms-outline-blue w-20 rounded-5" style="width: 170px">All</a>
                 @foreach ($layanan as $l)
                     @php

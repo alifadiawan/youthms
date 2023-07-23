@@ -46,8 +46,7 @@ class ServicesSeeder extends Seeder
 
             ];
 
-
-        $marketing = 
+        $desain =
             [
                 [
                     $id => '0004',
@@ -56,36 +55,31 @@ class ServicesSeeder extends Seeder
                     $desk => 'lorem ipsum dolor sit amet',
                     $foto => 'service-example3.png'
                 ],
-
-            ];
-
-        $desain =
-            [
                 [
                     $id => '0005',
                     $judul => 'ui',
-                    $jenis => '3',
+                    $jenis => '2',
                     $desk => 'lorem ipsum dolor sit amet',
                     $foto => 'service-example1.png'
                 ],
                 [
                     $id => '0006',
                     $judul => 'ux',
-                    $jenis => '3',
+                    $jenis => '2',
                     $desk => 'lorem ipsum dolor sit amet',
                     $foto => 'service-example2.png'
                 ],
                 [
                     $id => '0007',
                     $judul => 'designing',
-                    $jenis => '3',
+                    $jenis => '2',
                     $desk => 'lorem ipsum dolor sit amet',
                     $foto => 'service-example3.png'
                 ],
                 [
                     $id => '0008',
                     $judul => 'pencetakan',
-                    $jenis => '3',
+                    $jenis => '2',
                     $desk => 'lorem ipsum dolor sit amet',
                     $foto => 'service-example3.png'
                 ],
@@ -96,7 +90,7 @@ class ServicesSeeder extends Seeder
                 [
                     $id => '0009',
                     $judul => 'word',
-                    $jenis => '4',
+                    $jenis => '3',
                     $desk => 'lorem ipsum dolor sit amet',
                     $foto => 'service-example3.png'
                 ],
@@ -104,42 +98,42 @@ class ServicesSeeder extends Seeder
                 [
                     $id => '0010',
                     $judul => 'powerpoint',
-                    $jenis => '4',
+                    $jenis => '3',
                     $desk => 'lorem ipsum dolor sit amet',
                     $foto => 'service-example3.png'
                 ],
                 [
                     $id => '0011',
                     $judul => 'buku',
-                    $jenis => '4',
+                    $jenis => '3',
                     $desk => 'lorem ipsum dolor sit amet',
                     $foto => 'service-example3.png'
                 ],
                 [
                     $id => '0012',
                     $judul => 'surat',
-                    $jenis => '4',
+                    $jenis => '3',
                     $desk => 'lorem ipsum dolor sit amet',
                     $foto => 'service-example3.png'
                 ],
                 [
                     $id => '0013',
                     $judul => 'pengecekan',
-                    $jenis => '4',
+                    $jenis => '3',
                     $desk => 'lorem ipsum dolor sit amet',
                     $foto => 'service-example3.png'
                 ],
                 [
                     $id => '0014',
                     $judul => 'pengetikan',
-                    $jenis => '4',
+                    $jenis => '3',
                     $desk => 'lorem ipsum dolor sit amet',
                     $foto => 'service-example3.png'
                 ],
             ];
 
         Services::insert($aplikasi);
-        Services::insert($marketing);
+        // Services::insert($marketing);
         Services::insert($desain);
         Services::insert($editing);
     }

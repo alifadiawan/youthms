@@ -53,21 +53,26 @@
                                     </div>
                                 </div>
 
-                                <div class="penerima">
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            Bukti Pembayaran
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <img class="img-fluid"
-                                                src="{{ asset('bukti_transfer/' . $pembayaran->bukti_tf) }}" alt="">
+                                @if ($pembayaran->status == 'checked')
+                                    <div class="penerima">
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                Bukti Pembayaran
+                                            </div>
+                                            <div class="col-12 text-center">
+                                                <img class="img-fluid"
+                                                    src="{{ asset('bukti_transfer/' . $pembayaran->bukti_tf) }}"
+                                                    alt="">
+                                            </div>
                                         </div>
                                     </div>
+                                @endif
 
-                                </div>
+                            </div>
 
-                                <div class="pengirim">
-                                    <hr class="my-3">
+                            <div class="pengirim">
+                                <hr class="my-3">
+                                @if ($pembayaran->status == 'checked')
                                     <div class="row">
                                         <div class="col">
                                             Total :
@@ -77,57 +82,55 @@
                                                 Rp.{{ number_format($pembayaran->total_bayar, '0', ',', '.') }}
                                             </div>
                                         @endif
-                                        {{-- <div class="col text-end">
-                                            Rp. {{ number_format($pembayaran->total_bayar, 0, ',', '.') }}
-                                        </div> --}}
                                     </div>
+                                @endif
+                                <div class="row">
+                                    <div class="col">
+                                        Pembayar
+                                    </div>
+                                    <div class="col text-end">
+                                        {{ $pembayaran->transaksi->member->name }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="footer mt-3">
+                                @if ($pembayaran->status == 'checked')
                                     <div class="row">
                                         <div class="col">
-                                            Pembayar
-                                        </div>
-                                        <div class="col text-end">
-                                            Ilham Bintang
+                                            <form action="{{ route('pembayaran.pdf') }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn w-100 yms-outline-blue rounded-pill">
+                                                    Download
+                                                </button>
+                                                <input type="hidden" name="id" value="{{ $pembayaran->id }}">
+                                            </form>
                                         </div>
                                     </div>
-                                </div>
+                                @else
+                                    <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
+                                        @csrf
+                                        @method('put')
 
-                                <div class="footer mt-3">
-                                    @if ($pembayaran->status == 'checked')
-                                        <div class="row">
-                                            <div class="col">
-                                                <form action="{{ route('pembayaran.pdf') }}" method="post">
-                                                    @csrf
-                                                    <button type="submit" class="btn w-100 yms-outline-blue rounded-pill">
-                                                        Download
-                                                    </button>
-                                                    <input type="hidden" name="id" value="{{ $pembayaran->id }}">
-                                                </form>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
-                                            @csrf
-                                            @method('put')
-
-                                            @if ($pembayaran->request_user_id != null)
-                                                <div class="total bayar">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            Total Bayar
-                                                        </div>
-                                                        <div class="col text-right">
-                                                            Rp. <input type="number" placeholder="total bayar"
-                                                                name="total_bayar" required>
-                                                        </div>
+                                        @if ($pembayaran->request_user_id != null)
+                                            <div class="total bayar">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        Total Bayar
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        Rp. <input type="number" placeholder="total bayar"
+                                                            name="total_bayar" required>
                                                     </div>
                                                 </div>
-                                            @endif
-                                    @endif
-                                </div>
+                                            </div>
+                                        @endif
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     @endsection

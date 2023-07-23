@@ -68,7 +68,7 @@ class TransaksiController extends Controller
                 if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                     $checking[] = $t;
                 } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
-                    $utang[] = $t;
+                    $declined[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $kredit[] = $t;
                 } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
@@ -288,7 +288,7 @@ class TransaksiController extends Controller
 
             // mencari selisih tanggal  
             $selisih = $tglmulai->diffInDays($tglselesai);
-            $total_kekurangan =  $total_harga->total - $total_bayar_user;
+            $total_kekurangan =  $total_harga->total - $total_bayar_user;   
             $transaksi_kredit = ['total_kekurangan', 'total_bayar_user'];
             array_push($compact, $transaksi_kredit);
         }
@@ -323,7 +323,7 @@ class TransaksiController extends Controller
                 } elseif ($t->total_bayar > 0 && $pembayaran_checking) {
                     $checking[] =  $t;
                 } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
-                    $utang[] = $t;
+                    $declined[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $kredit[] = $t;
                 } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
@@ -369,7 +369,7 @@ class TransaksiController extends Controller
                 if ($t->total_bayar == 0  && $pemb && $pemb->status == "checking") {
                     $checking[] = $t;
                 } elseif ($t->total_bayar == 0  && $pemb && $pemb->status == "declined") {
-                    $utang[] = $t;
+                    $declined[] = $t;
                 } elseif ($t->total > $t->total_bayar && $req && $req->status == "accept") {
                     $kredit[] = $t;
                 } elseif ($t->total_bayar == 0 && $req && $req->status == "accept") {
@@ -396,7 +396,7 @@ class TransaksiController extends Controller
             $adm_pending = collect($pending)->pluck('id')->toArray();
             $adm_declined = collect($declined)->pluck('id')->toArray();
 
-
+            // return $adm_lunas;
             $status_EU = ['adm_utang', 'adm_kredit', 'adm_lunas', 'adm_declined', 'adm_denied', 'adm_pending', 'adm_checking', 'selisih'];
             return view('Admin.transaction.detail', compact($compact, $status_EU));
         }
@@ -476,8 +476,4 @@ class TransaksiController extends Controller
     {
     }
 
-    // type bank
-    public function bank()
-    {
-    }
 }
