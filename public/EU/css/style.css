@@ -1399,7 +1399,7 @@ h2 {
     font-weight: bold;
     font-size: 35px;
     margin-top: -20px;
-    align-items: flex-end;
+    align-items: center;
     line-height: normal;
     color: #000;
 }
@@ -1460,6 +1460,7 @@ h2 {
         margin-bottom: -300px;
     }
 }
+
 
 .layanan h1 {
     font-family: "Poppins", sans-serif;

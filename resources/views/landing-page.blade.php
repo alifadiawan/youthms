@@ -185,13 +185,13 @@
 
             <div class="row content">
                 <div class="col pt-4 pt-lg-0">
-                    <h5>
+                    <p>
                         Youthms.id merupakan startup yang berkembang di bidang pelayanan jasa teknologi. Kami menyediakan berbagai jenis layanan dan sub layanan, mulai dari bidang desain grafis hingga pembuatan aplikasi. Youthms.id membantu mengembangkan bisnis anda dengan mudah menggunakan kecanggihan teknologi dan jasa yang kami berikan kepada anda.
-                    </h5>
+                    </p>
                     <br>
-                    <h5>
+                    <p>
                         Kami adalah mitra terpercaya yang siap membantu mewujudkan potensi penuh bisnis Anda. Dengan tim ahli yang terdiri dari pengembang aplikasi berpengalaman, desainer kreatif yang menghasilkan karya visual menakjubkan, ahli pemasaran yang menggunakan strategi digital terkini, dan tim pengedit yang menyempurnakan konten, kami memberikan layanan berkualitas tinggi untuk mencapai kesuksesan bersama.
-                    </h5>
+                    </p>
                 </div>
             </div>
 
