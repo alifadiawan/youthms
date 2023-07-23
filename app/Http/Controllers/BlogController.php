@@ -34,7 +34,7 @@ class BlogController extends Controller
         // return $atas;
         $recently_uploaded = Blog::orderBy('created_at', 'desc')->take(3)->get();
         // return $recently_uploaded;
-        $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(4)->get();
+        $recently_lastweek = Blog::whereDate('created_at', '<=', $lastweek)->take(3)->get();
         // return $terpilih;
 
         $compact = ['populer', 'segmen', 'recently_uploaded', 'recently_lastweek','get', 'atas'];

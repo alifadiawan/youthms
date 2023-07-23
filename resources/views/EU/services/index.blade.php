@@ -6,12 +6,12 @@
     <section class="main-banner mt-5" id="main-banner">
         <div id="hero-services">
             <div class="container">
-                <div class="row align-items-center" data-aos="fade-up" data-aos-duration="2000">
+                <div class="row align-items-center md-12" data-aos="fade-up" data-aos-duration="2000">
                     <div class="col-lg-8">
                         <img class="img-fluid" src="{{ asset('illustration/'.$i->hero_ills) }}" alt="">
                     </div>
-                    <div class="col-lg-4 col-sm-4">
-                        <p>{{$i->hero_text}}</p>
+                    <div class="col-lg-4 col-sm-12 col-md-12">
+                        <p class="text-center">{{$i->hero_text}}</p>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
                 integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
             <div class="container">
-                <div class="row align-items-center" data-aos="fade-up" data-aos-duration="2000">
+                <div class="row align-items-center  align-items-stretch" data-aos="fade-up" data-aos-duration="2000">
                     <div class="col-lg-6 col-md-6 order-2 order-md-1 mt-4 pt-2 mt-sm-0 opt-sm-0">
                         <div class="row align-items-center">
                             <lottie-player src="{{$jenis->link_illus}}"

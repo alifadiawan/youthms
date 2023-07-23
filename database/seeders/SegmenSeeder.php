@@ -18,9 +18,9 @@ class SegmenSeeder extends Seeder
             [
                 'segmen' => 'design'
             ],
-            [
-                'segmen' => 'marketing'
-            ],
+            // [
+            //     'segmen' => 'marketing'
+            // ],
             [
                 'segmen' => 'pemrograman'
             ],
