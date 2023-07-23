@@ -1405,7 +1405,7 @@ h2 {
 }
 
 .main-banner {
-    display: flex;
+    /* display: flex; */
     font-family: "Poppins", sans-serif;
 }
 
