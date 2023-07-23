@@ -15,17 +15,18 @@
                     <div class="row mt-40">
                         <div class="col-lg-8">
                             <div class="accordion accordion-flush" id="accordionFlushExample">
-                                <div class="accordion-item">
+                                <div class="accordion-item" >
                                     <h2 class="accordion-header" id="flush-headingOne">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapseOne" aria-expanded="false"
                                             aria-controls="flush-collapseOne">
-                                            <span class="fw-bold" style="font-size: 22px">Trending Artikel #1</span>
+                                            <span class="fw-bold" style="font-size: 22px">Trending Artikel</span>
                                         </button>
                                     </h2>
                                     <hr>
+                                    <div class="overflow-auto" style="max-height: 575px;">
                                     @foreach ($trending as $b)
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                        <div id="flush-collapseOne" class="accordion-collapse collaps"
                                             aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                             <div class="trending-top mb-30">
                                                 <div class="trend-top-img">
@@ -44,6 +45,7 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                    </div>
                                 </div>
                             </div>
                             <!-- Trending Top -->
