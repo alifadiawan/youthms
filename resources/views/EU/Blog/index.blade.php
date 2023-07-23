@@ -20,7 +20,7 @@
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapseOne" aria-expanded="false"
                                             aria-controls="flush-collapseOne">
-                                            <span class="fw-bold" style="font-size: 22px">Trending Artikel #1</span>
+                                            <span class="fw-bold" style="font-size: 22px">Trending Artikel</span>
                                         </button>
                                     </h2>
                                     <hr>
