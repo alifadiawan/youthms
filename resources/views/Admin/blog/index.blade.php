@@ -6,15 +6,19 @@
     <div class="col-lg-9">
         <div class="card p-3">
             <div class="card-body">
-                @if (count($segmen) > 0)
-                    <a href="{{ route('blogs.create') }}" class="btn btn-md text-white rounded mb-2 mr-1"
-                        style="background-color: #1864BA;">Tambah Artikel</a>
-                @else
-                    <a href="{{ route('blogs.create') }}" class="btn btn-md text-white rounded mb-2 mr-1 disabled"
-                        style="background-color: #1864BA;">Tambah Artikel</a>
-                @endif
-                <div class="row justify-content-start align-items-center ps-1 pb-2">
-                    <label>Sort by :</label>
+                <div class="row align-items-center justify-content-end">
+                    <div class="col-lg-11 col-md-10 col-sm-10 col-8 mb-3 mb-lg-0">
+                        <label>Sort by :</label>
+                    </div>
+                    <div class="col m-0 p-0">
+                        @if (count($segmen) > 0)
+                            <a href="{{ route('blogs.create') }}" class="btn btn-sm text-white rounded"
+                                style="background-color: #1864BA;">Tambah Artikel</a>
+                        @else
+                            <a href="{{ route('blogs.create') }}" class="btn btn-sm text-white rounded disabled"
+                                style="background-color: #1864BA;">Tambah Artikel</a>
+                        @endif
+                    </div>
                 </div>
                 <div class="row justify-content-start align-items-center gap-2 gap-lg-0">
                     <div class="col-12 col-lg-3">
@@ -37,8 +41,6 @@
                                     <option class="text-capitalize" value="{{$ss->segmen}}">{{$ss->segmen}}</option>
                                     @endforeach
                                 </select>
-                                <button onClick="window.location.reload();" class="btn btn-outline-secondary"><i
-                                        class="fa-solid fa-rotate fa-lg"></i></button>
                             </div>
                         </div>
                     </div>

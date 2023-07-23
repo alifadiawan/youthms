@@ -189,25 +189,25 @@ h6 {
 
 @media all and (min-width: 480px) and (max-width: 768px) {
     .text-capitalize.btn.btn.yms-outline-blue.rounded-5 {
-        width: 170px;
+        width: 140px;
         margin: 0px 10px 0 10px;
 
     }
 
     #btn-y {
-        width: 170px;
+        width: 140px;
         margin: 0px 10px 0 10px;
     }
 }
 
 @media all and (max-width: 480px) {
     .text-capitalize.btn.btn.yms-outline-blue.rounded-5 {
-        width: 170px;
+        width: 140px;
         margin: 0px 10px 0 10px;
     }
 
     #btn-y {
-        width: 170px;
+        width: 140px;
         margin: 0px 10px 0 10px;
     }
 }
