@@ -56,7 +56,7 @@ class BlogController extends Controller
             }
         } else {
             // return redirect()->route('blogs.type');
-            return view('EU.blog.index', compact($compact));
+            return view('EU.Blog.index', compact($compact));
         }
     }
 

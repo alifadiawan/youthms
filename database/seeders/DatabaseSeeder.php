@@ -35,11 +35,11 @@ class DatabaseSeeder extends Seeder
             
             
             // transaksi
-            TransaksiSeeder::class,
+            // TransaksiSeeder::class,
             GateawaySeeder::class,
-            TransaksiDetailSeeder::class,
-            RequestUserSeeder::class,
-            PembayaranSeeder::class,
+            // TransaksiDetailSeeder::class,
+            // RequestUserSeeder::class,
+            // PembayaranSeeder::class,
 
             //misc
             VisitorSeeder::class,
