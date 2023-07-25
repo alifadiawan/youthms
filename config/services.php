@@ -34,7 +34,7 @@ return [
     'google' => [
     'client_id' => '229445746535-qfh9bvg95uvmhjsdek2us2ta0iusd38s.apps.googleusercontent.com',
     'client_secret' => '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',
-    'redirect' => 'http://www.youthms.id/callback/google',
+    'redirect' => 'http://youthms.id/callback/google',
   ], 
 
 ];
